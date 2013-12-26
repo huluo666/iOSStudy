@@ -15,7 +15,7 @@ int shift(unsigned char num, int n)
 {
     int digit = 8*sizeof(unsigned char);
     n %= digit;
-    unsigned char result = (num << n) + (num >> (digit-n));
+    unsigned char result = (num << n) | (num >> (digit-n)); // (num << n) + (num >> (digit-n))
     return result;
 }
 
