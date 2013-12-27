@@ -1,0 +1,16 @@
+int i = 1;
+for (i=1; i++ < 4; )
+	;
+结果i=5
+
+0337 ----- 十六进
+
+Xcode 
+删除一行: command+delete
+左右缩进: command+[, command+]
+
+
+
+
+
+
