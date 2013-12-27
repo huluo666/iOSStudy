@@ -67,5 +67,40 @@ int exer5()
     print_triangle(5);
     print_triangle(8);
     print_triangle2(10);
+    
+    // Mr.wang's solution
+    for (int i=0; i<5; i++)
+    {
+        if (i==0 || i== 4)
+        {
+            printf("*");
+        }
+        if (i==1 || i==3)
+        {
+            printf("**");
+        }
+        if (i==2)
+        {
+            printf("***");
+        }
+        printf("\n");
+    }
+    
+    printf("-----------\n");
+    // Mr.wang's solution 2
+    for (int i=0; i<5; i++)
+    {
+        printf("*");
+        if (i>=1 && i<=3)
+        {
+            printf("*");
+        }
+        if (i==2)
+        {
+            printf("*");
+        }
+         printf("\n");
+    }
     return 0;
 }
+

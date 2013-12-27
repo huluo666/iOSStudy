@@ -13,23 +13,23 @@
 int exer2()
 {
     printf("第2题:\n");
-    char getch;
+    char ch;
     printf("请输入一个字符:");
-    //    scanf("%c", &getch);
-    getch = getchar();
-    if (getch>=97 && getch <=122) // 小写字母
+    //    scanf("%c", &ch);
+    ch = getchar();
+    if (ch>=97 && ch <=122) // 小写字母
     {
-        printf("%c\n", getch-32);
+        printf("%c\n", ch-32);
     }
-    else if (getch>=65 && getch<=90) // 大写字母
+    else if (ch>=65 && ch<=90) // 大写字母
     {
-        printf("%c\n", getch+32);
+        printf("%c\n", ch+32);
     }
-    else if (getch>= 48 && getch<=57) // 数字
+    else if (ch>=48 && ch<=57) // 数字
     {
-        printf("%c\n",getch);
+        printf("%c\n",ch);
     }
-    else if (getch == 32) // 空格
+    else if (ch == 32) // 空格
     {
         printf("space\n");
     }
@@ -40,3 +40,18 @@ int exer2()
     
     return 0;
 }
+
+/*
+ printf("请输入字符：\n");
+ char ch;
+ scanf("%c",&ch);
+ if (ch >='a'&&ch<='z') {
+ printf("%c\n",ch += 'A'-'a');
+ } else if (ch>='0'&&ch<='9') {
+ printf("%c\n",ch);
+ } else if (ch == ' ') {
+ printf("space\n");
+ } else {
+ printf("other\n");
+ }
+*/

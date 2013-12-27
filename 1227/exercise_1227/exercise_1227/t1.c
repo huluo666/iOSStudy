@@ -32,7 +32,7 @@ int exer1()
     int mon = date / 100;
     int day = date % 100;
     int num = 0;
-    
+    /*
     switch (mon)
     {
         case 1:
@@ -71,9 +71,37 @@ int exer1()
         case 12:
             num = 31+28+31+30+31+30+31+31+30+31+30+day;
             break;
-            
     }
-    
+    */
+    switch (mon)
+    {
+        case 12:
+            num += 31;
+        case 11:
+            num += 30;
+        case 10:
+            num += 31;
+        case 9:
+            num += 30;
+        case 8:
+            num += 31;
+        case 7:
+            num += 31;
+        case 6:
+            num += 30;
+        case 5:
+            num += 31;
+        case 4:
+            num += 30;
+        case 3:
+            num += 31;
+        case 2:
+            num += 28;
+        case 1:
+            num += day;
+        default:
+            break;
+    }
     
     printf("今天是2013年的第%d天\n", num);
     
