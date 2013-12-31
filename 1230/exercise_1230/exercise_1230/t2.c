@@ -50,11 +50,13 @@ void print_arr(int *arr, int len)
 
 int exer2()
 {
+    printf("第2题:\n");
+    
     int arr1[10] = {0}, arr2[10] = {0};
     // 产生数组
     for (int i=0; i<10; i++)
     {
-        srand((unsigned)time(NULL));//初始化随机数
+//        srand((unsigned)time(NULL));//初始化随机数
         arr1[i] = random()%30;
         arr2[i] = random()%30;
     }

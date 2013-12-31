@@ -36,6 +36,7 @@ int exer7();
 int exer8();
 int exer9();
 int exer10();
+
 int main(int argc, const char * argv[])
 {
    

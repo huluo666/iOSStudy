@@ -12,11 +12,11 @@ int exer5()
 {
     printf("第5题:\n");
     
-    char s;
+    char s[5];
     int count = 0;
     for (int i=0; i<5; i++)
     {
-        if (s1[i] == '.')
+        if (s[i] == '.')
         {
             count = i;
         }
