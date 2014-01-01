@@ -11,17 +11,25 @@
 int exer8()
 {
     printf("第8题:\n");
-    char  str[81] = "this is a test";
+
+    char sentence[100] = "this is a test sentence";
     int word = 1;
-    for (int i=0; i<81 ; i++)
+    // 将第一个字符装换为大写
+    if (sentence[0]>='a' && sentence[0]<='z')
     {
-        if (str[i] == ' ')
+        sentence[0] = sentence[0] + 'A'-'a';
+    }
+    
+    for (int i=1; sentence[i]!='\0'; i++)
+    {
+        if (sentence[i-1]==' ' && sentence[i]>='a' && sentence[0]<='z')
         {
             word++;
+            sentence[i] = sentence[i] + 'A'-'a';
         }
-//        printf("%c", str[i]);
-        
     }
+
+    printf("转换后为:\n%s\n", sentence);
     printf("word=%d", word);
     
     printf("\n\n");

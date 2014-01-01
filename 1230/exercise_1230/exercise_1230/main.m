@@ -37,9 +37,9 @@ int exer8();
 int exer9();
 int exer10();
 
+// not finished: t5, t7, t10
 int main(int argc, const char * argv[])
 {
-   
     exer1();
     exer2();
     exer3();

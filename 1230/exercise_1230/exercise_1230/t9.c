@@ -17,18 +17,6 @@ int strToDigit(char * str)
     return tmp;
 }
 
-int strToDigit2(char *str)
-{
-    int tmp = 0;
-    while (*str)
-    {
-        tmp *= 10;
-        tmp += *str - '0';
-        ++str;
-    }
-    return tmp;
-}
-
 int exer9()
 {
     printf("第9题:\n");
@@ -42,7 +30,6 @@ int exer9()
 
     sum = strToDigit(a)+strToDigit(b)+strToDigit(c)+strToDigit(d);
     
-
     printf("sum=%d\n", sum);
     printf("\n\n");
     return 0;

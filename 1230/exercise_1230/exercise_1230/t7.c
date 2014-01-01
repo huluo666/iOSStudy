@@ -11,7 +11,21 @@
 int exer7()
 {
     printf("第7题:\n");
+    int z[100000] = {0};
+    for (int i = 0; i<100000; i++) {
+        z[i] = arc4random()%1000000;
+    }
     
+    int x[1000000] = {0};
+    for (int i = 0; i<100000; i++) {
+        x[z[i]] += 1;//qq号
+    }
+    
+    for (int i = 0; i<100000; i++) {
+        if (x[z[i]] >= 2) {
+            printf("%d\n",z[i]);
+        }
+    }
     
     
     printf("\n\n");
