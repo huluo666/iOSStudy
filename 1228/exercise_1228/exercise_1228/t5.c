@@ -16,18 +16,26 @@ int exer5()
     {
         for (int black=0; black<=3; black++)
         {
+            /*
             for (int blue=0; blue<=6; blue++)
             {
                 if (red+blue+black == 8)
                 {
+                    printf("red=%d black=%d blue%d\n", red, black, blue);
                     count++;
                 }
-//                printf("\n\n");
             }
+             */
+            
+            if (8-(red+black)<=6)
+            {
+                printf("red=%d black=%d blue=%d\n", red, black, 8-(red+black));
+                count++;
+            }
+
         }
-//        printf("\n");
     }
-    printf("共%d方法", count);
+    printf("共%d种方法", count);
     printf("\n\n");
     return 0;
 }

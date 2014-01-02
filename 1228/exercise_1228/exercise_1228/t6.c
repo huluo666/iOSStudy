@@ -78,3 +78,25 @@ int exer6()
     printf("\n\n");
     return 0;
 }
+
+// teacher's soulution
+void t6t()
+{
+    for (int i = 1; i<5; i++) {
+        for (int j = 0; j<5; j++) {
+            if (i == j) {
+                continue;
+            }
+            for (int k = 0; k<5; k++) {
+                if (i == k || j == k) {
+                    continue;
+                }
+                for (int l = 0; l<5; l++) {
+                    if (i != l && j != l && k != l) {
+                        printf("%d%d%d%d\n",i,j,k,l);
+                    }
+                }
+            }
+        }
+    }
+}

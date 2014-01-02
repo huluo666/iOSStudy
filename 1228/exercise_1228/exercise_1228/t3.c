@@ -16,6 +16,8 @@
  
  */
 #include <stdio.h>
+void t2t();
+
 int exer3()
 {
     printf("第3题:\n");
@@ -50,6 +52,32 @@ int exer3()
         
         printf("\n");
     }
+    t2t();
     printf("\n\n");
     return 0;
 }
+
+// teacher's solution
+void t2t()
+{
+    for (int i = 0; i<5; i++)
+    {
+        for (int j = 0; j<fabs(i-2); j++)
+        {
+            printf(" ");
+        }
+        
+        //2个条件
+        int a = 2*i+1;
+        if (i>2) {
+            a = -2*i+9;
+        }
+        
+        for (int j=0; j<a; j++)
+        {
+            printf("*");
+        }
+        printf("\n");
+    }
+}
+

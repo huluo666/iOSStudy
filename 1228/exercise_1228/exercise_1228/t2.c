@@ -29,3 +29,37 @@ int exer2()
     printf("\n\n");
     return 0;
 }
+
+
+// teacher's solution
+/*
+if (i/100==3 && i/10%10==3 &&i %10==3)
+    continue;
+*/
+
+/*
+ for (int i = 2; i<=1000; i++) {//1.
+ //i.
+ //2.
+ if (i%10 == 3 || i/10%10==3 || i/100 == 3) {
+ continue;
+ }
+ //i  3.
+ BOOL is = YES;
+ for (int j = 2; j<=i-1; j++) {
+ if (i%j == 0 ) {
+ is = NO;
+ }
+ }
+ if (is) {
+ printf("%d ",i);
+ }
+ }
+ printf("\n");
+ 
+ 
+*/
+
+
+
+

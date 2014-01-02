@@ -46,7 +46,7 @@ int main(int argc, const char * argv[])
     exer4();
     exer5();
     exer6();
-    exer7();
+//    exer7();
     exer8();
     exer9();
     exer10();

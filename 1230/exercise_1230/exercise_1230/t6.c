@@ -16,8 +16,8 @@ int exer6()
 {
     printf("第6题:\n");
     
-    const int n=4,m=5;   // 假设数组为4行5列
-    int a[n][m] = { 6, 9, 9, 2, 7,
+    const int N=4,M=5;   // 假设数组为4行5列
+    int a[N][M] = { 6, 9, 9, 2, 7,
                     4, 9, 5, 4, 2,
                     9, 9, 8, 7, 9,
                     7, 8, 4, 5, 6};
@@ -37,21 +37,21 @@ int exer6()
     */
     
     // 输出矩阵
-    for(i=0;i<n;i++)
+    for(i=0;i<N;i++)
     {
-        for(j=0;j<m;j++)
+        for(j=0;j<M;j++)
         {
             printf("%d ", a[i][j]);
         }
         printf("\n");
     }
 
-    for(i=0;i<n;i++)   // 开始时，假设a[i][0]最大，将列号（0）赋给maxj保存
+    for(i=0; i<N; i++)   // 开始时，假设a[i][0]最大，将列号（0）赋给maxj保存
     {
         max  = a[i][0];
         maxj = 0;
         
-        for(j=0; j<m; j++)    // 找出第i行中的最大数
+        for(j=0; j<M; j++)    // 找出第i行中的最大数
         {
             if(max < a[i][j])
             {
@@ -61,7 +61,7 @@ int exer6()
         }
         
         flag = 1;    // 先假设是鞍点，用1为真来代表
-        for(int k=0; k<n; k++)
+        for(int k=0; k<N; k++)
         {
             if(max > a[k][maxj])  // 将最大数和其同分裂元素相比
             {
@@ -84,4 +84,30 @@ int exer6()
     
     printf("\n\n");
     return 0;
+}
+
+// teacher's solution
+void t6t()
+{
+    int a[][3] = {}; // 初始化。。。
+    for ( int i = 0; i<3; i++) {
+        for (int j = 0; j<3; j++) {
+            //a[i][j]
+            int max = a[i][j];
+            int min = a[i][j];
+            for (int m = 0; m<3; m++) {
+                if (max < a[i][m]) {
+                    max = a[i][m];
+                }
+            }
+            for (int m = 0; m<3; m++) {
+                if (min > a[m][j]) {
+                    min = a[m][j];
+                }
+            }
+            if (a[i][j] == max &&a[i][j] == min) {
+                printf("鞍点是a[%d][%d] = %d\n",i,j,a[i][j]);
+            }
+        }
+    }
 }
