@@ -37,5 +37,5 @@ void exer2()
     printf("3的个数为：%d",  count);
     free(string);
     
-    printf("\n");
+    printf("\n\n");
 }

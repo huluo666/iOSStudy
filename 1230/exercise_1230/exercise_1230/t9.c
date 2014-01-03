@@ -26,7 +26,7 @@ int exer9()
     char *d = "456abc";
     
     int sum = (int)(atol(a)+ atol(b)+ atol(c)+ atol(d));
-    printf("%d\n", sum);
+    printf("sum%d\n", sum);
 
     sum = strToDigit(a)+strToDigit(b)+strToDigit(c)+strToDigit(d);
     

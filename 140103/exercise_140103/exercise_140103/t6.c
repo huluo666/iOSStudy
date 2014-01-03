@@ -7,6 +7,8 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 // 6、实现字符串的加法，规则如下，字符串按照每个字符逐个相加，数字相加为对应的2个数相加后取其个位，其他的相加取ASCII大的字符，若一个字符串长度不够，其后需补上长度较长的字符串剩下的部分。
 
 char *stringPlus(char *s1,char *s2)
@@ -41,7 +43,9 @@ void exer6()
 {
     printf("第6题:\n");
     
-    
-    
+    char *s1 = "123kdjoa00d";
+    char *s2 = "123kdoeis";
+    char *s3 = stringPlus(s1, s2);
+    printf("%s", s3);
     printf("\n");
 }

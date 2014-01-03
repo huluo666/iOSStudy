@@ -198,6 +198,8 @@ int getMaxRepeatCount(int arr[], int len)
     return max;
 }
 
+
+
 // 第5题
 void converString(char *str) // 接受字符串
 {
@@ -304,6 +306,7 @@ int main(int argc, const char * argv[])
     int arr[] = {1, 1, 3, 2, 1, 2, 3};
     int countTimes = getMaxRepeatCount(arr, sizeof(arr)/sizeof(arr[0]));
     printf("maxRepeatCount=%d\n\n", countTimes);
+
     
     // 第5题
     printf("第5题:\n");
