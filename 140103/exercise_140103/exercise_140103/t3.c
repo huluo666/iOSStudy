@@ -8,6 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+
 // 3、	一个班有15名同学编号0-14，成绩分别为50-90分不等，将这些同学的编号按照60分及格，80分优秀的标准分别分配到不及格、及格、优秀3个数组中。
 void exer3()
 {
@@ -33,9 +34,9 @@ void exer3()
 //    printf("count=%d\n", failCount);
 //    printf("count=%d\n", greatCount);
     
-    int *pass = (int *) malloc(passCount*sizeof(int));
-    int *fail = (int *) malloc(failCount*sizeof(int));
-    int *great = (int *) malloc(greatCount*sizeof(int));
+    int *pass = malloc(passCount*sizeof(int));
+    int *fail =  malloc(failCount*sizeof(int));
+    int *great = malloc(greatCount*sizeof(int));
     
     int *p = pass, *f = fail, *g = great;
 

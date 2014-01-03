@@ -27,6 +27,7 @@ int strToDigit2(const char *str) //不会截掉非数字部分
     return tmp;
 }
 
+// 如果字符串转换为Int超出范围会出错
 int compareByASCII(const char *str1, const char *str2)  // > = < 分别对应 1,0,-1
 {
     int val1 = strToDigit2(str1);
@@ -36,6 +37,29 @@ int compareByASCII(const char *str1, const char *str2)  // > = < 分别对应 1,
     {
        ret = val1>val2 ? 1:-1;
     }
+    return ret;
+}
+
+// 利用了字符值自动转为整型
+int compareByASCII2(const char *str1, const char *str2)
+{
+    int sum1 = 0;
+    int sum2 = 0;
+    while (*str1++)
+    {
+        sum1 += *str1;
+    }
+    while (*str2++)
+    {
+        sum2 += *str2;
+    }
+    
+    int ret = 0;
+    if (sum1 != sum2)
+    {
+        ret = sum1>sum2 ? 1:-1;
+    }
+    
     return ret;
 }
 
@@ -59,6 +83,7 @@ void exer5()
     char *str2 = "123a";
     
     printf("%d\n", compareByASCII(str1, str2));
+    printf("%d\n", compareByASCII2(str1, str2));
     printf("%d\n", compareByValue(str1, str2));
     
     
