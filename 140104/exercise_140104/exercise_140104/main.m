@@ -13,11 +13,10 @@ int exer3();
 int exer4();
 int main(int argc, const char * argv[])
 {
-    exer1();
-    exer2();
+//    exer1();
+//    exer2();
     exer3();
-    exer4();
-    
+//    exer4();
     return 0;
 }
 
