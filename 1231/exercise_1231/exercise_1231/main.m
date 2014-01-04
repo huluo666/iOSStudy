@@ -34,8 +34,8 @@ int retCount(int num)
     return myriad+thousands+hundreds+units;
 }
 
-// 第2题
 
+// 第2题
 char *convert(char *str, char *dest)
 {
     for (int i=0; *(str+i); i++)
@@ -51,6 +51,27 @@ char *convert(char *str, char *dest)
     }
     return dest;
 }
+
+
+/*
+// 动态分配内存方法
+char *convert2(const char *str)
+{
+    char *p = malloc(strlen(str)/sizeof(char)+1);
+    
+    for (int i=0; *(str+i); i++)
+    {
+        if (*(str+i)>='a' && *(str+i) <='z')
+        {
+            *(p+i) = *(str+i)+'A'-'a';
+        }
+        else
+        {
+            *(p+i) = *(str+i);
+        }
+    }
+    return p;
+}*/
 
 
 // 第3题
@@ -98,7 +119,7 @@ int strToDigit2(char *str)
 }
 
 // 函数中如何获取到数组的长度?
-void mergeArrandSort(int *intArr, char *chArr[])
+void mergeArrandSort(int *intArr, int end, char *chArr[])
 {
     int arr[100] = {0};
     int len = (int)strlen(*chArr);
@@ -110,7 +131,7 @@ void mergeArrandSort(int *intArr, char *chArr[])
         arr[n] = (int)strToDigit2(chArr[n]);
     }
     
-    for (int j=0; j<5; j++, n++) // length=5
+    for (int j=0; j<end; j++, n++) // length=5
     {
         arr[n] = intArr[j];
     }
@@ -125,6 +146,32 @@ void mergeArrandSort(int *intArr, char *chArr[])
     printf("\n\n");
 }
 
+// teracher's solution
+int intValue(char *s)
+{
+    //"1234"
+    int bit = 1;
+    int value = 0;
+    for (int i= 0; i<strlen(s); i++) {
+        value += bit * (s[strlen(s)-i-1] - '0');
+        bit *= 10;
+    }
+    return value;
+}
+
+void combain(int a[],int n,char *b[],int m,int c[])
+{
+    for (int i = 0; i<m+n; i++) {
+        if (i<n) {
+            c[i] = a[i];
+        } else {
+            c[i] = intValue(b[i-n]);
+        }
+    }
+    //排序并输出
+}
+
+////////////
 
 // 第4题
 int getMaxRepeatCount(int arr[], int len)
@@ -147,14 +194,15 @@ int getMaxRepeatCount(int arr[], int len)
         
         count = 0;
     }
-//    printf("%d ", max);
+    
     return max;
 }
 
-// 第5题
-void converString(char *str)
-{
 
+
+// 第5题
+void converString(char *str) // 接受字符串
+{
     // 先将字符串拷贝一份到字符串数组
     char record[100] = {0};
     int len=0;
@@ -166,18 +214,19 @@ void converString(char *str)
     
     if (record[0]>='a' && record[0]<='z')
     {
-        record[0] = record[0]+'A'-'a';
+        record[0] += 'A'-'a';
     }
     
     for (int i=1; *(record+i); i++) // i<len
     {
-        if (record[i-1] == ' ' && record[i]>='a' && record[i]<='z')
+        if ((record[i-1] == ' ' || record[i-1] == ','
+             || record[i-1] == '.' || record[i-1] == '\n')
+            && record[i]>='a' && record[i]<='z')
         {
-            record[i] = record[i]+'A'-'a';
+            record[i] += 'A'-'a';
         }
     }
     printf("%s", record);
-
     
     /*
     // 注意:字符串不能修改值,需要改的话,拷贝到数组
@@ -187,7 +236,43 @@ void converString(char *str)
     }
     printf("%s", str);
     */
+ 
 }
+
+void converString2(char str[]) // 接受数组
+{
+    if (str[0]>='a' && str[0]<='z')
+    {
+        str[0] += 'A'-'a';
+    }
+    
+    for (int i=1; i<strlen(str); i++)
+    {
+        if ((str[i-1] == ' ' || str[i-1] == ','
+             || str[i-1] == '.' || str[i-1] == '\n')
+            && str[i]>='a' && str[i]<='z')
+        {
+            str[i] += 'A'-'a';
+        }
+    }
+}
+
+// teacher'l solution
+void translate(char s[])
+{
+    //s = "avc dfa yutre 123 dfadfa.fsad fd\ndf."
+    if (s[0] >= 'a'&&s[0]<='z') {
+        s[0] += 'A'-'a';
+    }
+    for (int i = 1; i<strlen(s)-1; i++) {
+        if (s[i] == ' '||s[i]=='\n'||s[i]=='.'||s[i] == ',') {
+            if (s[i+1]>='a'&&s[i+1]<='z') {
+                s[i+1] += 'A'-'a';
+            }
+        }
+    }
+}
+
 
 int main(int argc, const char * argv[])
 {
@@ -212,7 +297,7 @@ int main(int argc, const char * argv[])
     printf("第3题:\n");
     int intArr[] = {1, 23, 45, 111,122};
     char *chArr[] = {"111", "222", "33"};
-    mergeArrandSort(intArr, chArr);
+    mergeArrandSort(intArr, 5, chArr);
     printf("\n\n");
     
     
@@ -221,14 +306,17 @@ int main(int argc, const char * argv[])
     int arr[] = {1, 1, 3, 2, 1, 2, 3};
     int countTimes = getMaxRepeatCount(arr, sizeof(arr)/sizeof(arr[0]));
     printf("maxRepeatCount=%d\n\n", countTimes);
+
     
     // 第5题
     printf("第5题:\n");
-    char *line = "this is a test!";
+    char *line = "this is a test!, anf.algaaogd\nhhh";
     converString(line);
+    printf("\n");
+    char string[] = "this is a test!, anf.algaaogd\nhhh";
+    converString(string);
     printf("\n\n");
-    
-    
+
     return 0;
 }
 
@@ -249,4 +337,3 @@ int main(int argc, const char * argv[])
  
  
 */
-

@@ -37,7 +37,11 @@ int exer8();
 int exer9();
 int exer10();
 
-// not finished: t5, t7, t10
+int array[10][10] = {0};
+int findForOne();
+
+
+// not finished: t7, t10
 int main(int argc, const char * argv[])
 {
     exer1();
@@ -46,10 +50,102 @@ int main(int argc, const char * argv[])
     exer4();
     exer5();
     exer6();
-//    exer7();
+
+    printf("第7题:\n");
+    const int COUNT = 1000;
+    int qq[COUNT] = {0};
+    //模拟qq号
+    for (int i=0; i<COUNT; i++)
+    {
+        qq[i] = arc4random()%COUNT;
+    }
+    
+    // 记录重复qq号
+    int record[COUNT] = {0};
+    for (int i=0; i<COUNT; i++)
+    {
+        record[qq[i]] += 1; // record 数组下标为qq号码，值为重复的次数
+    }
+    
+    // 找出重复的qq号
+    printf("重复的qq号为：\n");
+    for (int i=0; i<COUNT; i++)
+    {
+        if (record[i]>=2)
+        {
+            printf("qq号%-3d 重复%d次\n", i, record[i]);
+        }
+    }
+    
+    
+    printf("\n\n");
+    
+    
     exer8();
     exer9();
-    exer10();
+    
+    // 第10题
+    
+    for (int i = 0; i<10; i++) {
+        for (int j = 0; j<10; j++) {
+            array[i][j] = arc4random()%2;
+        }
+    }
+    
+    int n = 2;
+    if (n == 1) {
+        //随即一张票
+        int ticket = findForOne();
+        printf("卖出去的票是%d\n",ticket);
+    }
+    if (n == 2) {
+        //并排连座
+        BOOL find = NO;
+        for (int i = 0; i<10; i++) {
+            for (int j = 0; j<9; j++) {
+                if (array[i][j] == 0&&array[i][j+1] == 0) {
+                    printf("卖出去的票是：%d %d\n",10*i+j+1,10*i+j+2);
+                    array[i][j] = 1;
+                    array[i][j+1] = 1;
+                    find = YES;
+                    goto PPT;
+                }
+            }
+        }
+    PPT:
+        if (!find) {
+            //....
+            //随即2张票
+            int ticket1 = findForOne();
+            int ticket2 = findForOne();
+            printf("卖出去的票是：%d和%d\n",ticket1,ticket2);
+        }
+    }
+
+    
     return 0;
+}
+
+
+int findForOne()
+{
+    int s[100] = {0};
+    int k = 0;
+    for (int i = 0; i<10; i++) {
+        for (int j = 0; j<10; j++) {
+            if (array[i][j] == 0) {
+                s[k] = i*10 + j+1;
+                k++;
+            }
+        }
+    }
+    int index = arc4random()%k;
+    int x = s[k]/10;
+    int y = s[k]%10-1;
+    if (s[k]%10 == 0) {
+        y = 9;
+    }
+    array[x][y] = 1;
+    return s[index];
 }
 
