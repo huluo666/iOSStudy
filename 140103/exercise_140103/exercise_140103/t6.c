@@ -44,6 +44,11 @@ void exer6()
     printf("第6题:\n");
     
     char *s1 = "123kdj4a00d";
+
+    char *s1 = "123kdj";
+
+    char *s1 = "123kdj4a00d";
+
     char *s2 = "123kdoeis";
     char *s3 = stringPlus(s1, s2);
     printf("%s", s3);

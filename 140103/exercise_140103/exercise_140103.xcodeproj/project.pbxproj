@@ -243,6 +243,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "exercise_140103/exercise_140103-Prefix.pch";
+<<<<<<< HEAD
+=======
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+>>>>>>> origin/feature
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -252,6 +256,10 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "exercise_140103/exercise_140103-Prefix.pch";
+<<<<<<< HEAD
+=======
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+>>>>>>> origin/feature
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
