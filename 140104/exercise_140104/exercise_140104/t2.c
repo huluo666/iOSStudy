@@ -18,25 +18,43 @@ typedef struct
 
 typedef struct
 {
-    int width;
-    int area;
+    int x;
+    int y;
+} Pointer;
+
+typedef struct
+{
+    Pointer p1;
+    Pointer p2;
 } Rectangle;
+
 
 double areaDivide(Rect r1, Rect r2)
 {
     return abs(r1.heigth*r1.width - r2.heigth*r2.width);
 }
 
+double areaDivide2(Rectangle r1, Rectangle r2)
+{
+    
+    return abs((r1.p1.x - r2.p1.y)*(r1.p2.x-r2.p2.y) - (r2.p1.x - r2.p1.x)*(r2.p2.x-r2.p2.y));
+}
+
 int exer2()
 {
     printf("第2题:\n");
     
+    // 1.
     Rect r1 = {12, 23};
     Rect r2 = {8, 43};
     double div = areaDivide(r1, r2);
-    
     printf("面积差是：%f\n", div);
     
+    // 2.
+    Rectangle r3 = {1, 3, 2, 7};
+    Rectangle r4 = {5, 2, 4, 9};
+    div = areaDivide2(r3, r4);
+    printf("面积差是：%f\n", div);
     printf("\n");
     
     return 0;

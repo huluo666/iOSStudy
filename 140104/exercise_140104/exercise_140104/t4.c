@@ -75,7 +75,7 @@ void findLoser(Student s[], int n)
         int   en = s[i].en;
         int  com = s[i].com;
         
-        if ((math<60&&en<60) || (math<60&&com<60) || (en<60&&com<60))
+        if ((math<60&&en<60) || (math<60&&com<60) || (en<60&&com<60)) // 改为 <60 的>=2科？
         {
             // 可以简化为一个同学不及格的门数
             printf("%s ", s[i].name);
