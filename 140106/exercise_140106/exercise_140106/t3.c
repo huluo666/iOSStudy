@@ -40,18 +40,19 @@ int exer3()
         for (int k='0'; k<'9'; k++)
         {
             int count = 0;
-            while (*s++)
+            for (int i=0; i<10; i++)
             {
-                if (*s == k)
+                if (k == s[i])
                 {
                     count++;
                 }
             }
-            if (count >= 2) {
+            if (count >= 2)
+            {
                 flag = 0;
             }
+            
         }
-        
         if (flag == 1)
         {
             printf("%d ", i);
