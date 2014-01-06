@@ -49,8 +49,42 @@ char *maxString(char *str[], int n)
 }
 
 
+
+int js(int n)
+{
+    if (n>1)
+    {
+        n = js(n-1)*n;
+    }
+    return n;
+}
+
+// 将8个字符串拼接成一个字符串
+char *append(char *s1, char *s2)
+{
+    char *s = malloc(strlen(s1)+strlen(s2)+1);
+    sprintf(s, "%s%s", s1, s2);
+    return s;
+}
+
+char *append8(char *str[], int n)
+{
+    int count = 0;
+    for (int i=0; i<8; i++)
+    {
+        count = (int) strlen(str[i]);
+    }
+    char *s = malloc(count+1);
+
+    s = append(append(append(str[0], str[1]), append(str[2], str[3])), append(append(str[4], str[5]), append(str[6], str[7])));
+    return s;
+}
+
 int main(int argc, const char * argv[])
 {
+    
+    int sum = js(3);
+    printf("%d\n", sum);
     
     /*
     Student *stu = malloc(sizeof(Student));
@@ -158,12 +192,23 @@ int main(int argc, const char * argv[])
     }
 
     
+    // 穷举
+    // 逻辑性、可能性、是否
+    // 求素数
     
     
     
+    // 递归
+//    js(5);
     
     
     
+    // 分治
+//    max(max(a, b) max(c, d));
+    // 函数，将8个字符串拼接成一个字符串
+    
+    // 贪心
+//    2.88元钱
     
     
     
