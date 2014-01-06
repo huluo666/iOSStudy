@@ -12,16 +12,16 @@
 //3、	一人岁数的3次方是四位数，四次方是六位数，并知道此人岁数的3次方和4次方用遍了0～9十个数字。编写一程序求此人的岁数。
 int exer3()
 {
-    // 用遍了0～9十个数字 说明 4位数和6位数一起没得重复
+    // 用遍了0～9十个数字 说明 4位数和6位数合在一起不会重复
     printf("第3题:\n");
     for (int i=0; i<100; i++)
     {
-        if (i*i*i<1000 && i*i*i*i>9999)
+        if (i*i*i<1000 || i*i*i>9999)
         {
             continue;
         }
         
-        if (i*i*i<100000 && i*i*i*i>999999)
+        if (i*i*i*i<100000 || i*i*i*i>999999)
         {
             continue;
         }
@@ -29,38 +29,32 @@ int exer3()
         char *s = malloc(11);
         sprintf(s, "%d%d", i*i*i, i*i*i*i);
         
-        if (strlen(s)!=10)
-        {
-            continue;
-        }
-        
-        
+        // 找重复
         int flag = 1;
- 
         for (int k='0'; k<'9'; k++)
         {
             int count = 0;
-            for (int i=0; i<10; i++)
+            for (int j=0; j<10; j++)
             {
-                if (k == s[i])
+                if (k == *(s+j))
                 {
                     count++;
                 }
             }
+
             if (count >= 2)
             {
                 flag = 0;
             }
-            
+
         }
+        
         if (flag == 1)
         {
             printf("%d ", i);
         }
-        
     }
-    
-    
+
     printf("\n\n");
     
     return 0;
@@ -96,7 +90,6 @@ for (int i=11; i<22; i++) {
  
 #include <stdio.h>
 #include <math.h>
-
 #ifndef MIN
 #define MIN(a, b) ((a) < (b) ? (a) : (b))
 #endif
@@ -104,7 +97,6 @@ for (int i=11; i<22; i++) {
 #ifndef MAX
 #define MAX(a, b) ((a) > (b) ? (a) : (b))
 #endif
-
 
 int
 cal_ones(int a, int b)

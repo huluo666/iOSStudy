@@ -57,6 +57,60 @@ void print_arr(int *arr, int len)
 }
 
 
+void findStudent(Student stu[], int n);
+void printStudent(Student stu[], int n);
+int exer2()
+{
+    
+    printf("第2题:\n");
+    Student s1 = {"Lucy", 22, 57, 79};
+    Student s2 = {"Mike", 32, 36, 29};
+    Student s3 = {"Matt", 25, 56, 89};
+    Student s4 = {"Lily", 12, 86, 99};
+    Student s5 = {"Eric", 72, 58, 77};
+    Student stu[] = {s1, s2, s3, s4, s5};
+    
+    findStudent(stu, 5);
+    printf("------\n");
+    printStudent(stu, 5);
+    printf("\n\n");
+    
+    return 0;
+    
+}
+
+void printStudent(Student stu[], int n)
+{
+    for (int i=0; i<n; i++)
+    {
+        int mathCount = 0, enCount = 0, comCount = 0;
+        for (int j=0; j<n; j++) // 找到每个同学每科比其他同学高的次数
+        {
+            if (stu[i].math > stu[j].math)
+            {
+                mathCount++;
+            }
+            
+            if (stu[i].en > stu[j].en)
+            {
+                enCount++;
+            }
+            
+            if (stu[i].com > stu[j].com)
+            {
+                comCount++;
+            }
+        }
+        
+        // 只要有两科及以上比其他同学高的次数大于等于2即符合要求(前三)
+        if ((mathCount>=2) + (enCount>=2) + (enCount>=2) >=2) // 找到符合要求的
+        {
+            printf("name=%s, math=%d, en=%d, com=%d\n", stu[i].name, stu[i].math, stu[i].en, stu[i].com);
+        }
+    }
+}
+
+
 // 找出符合要求的学生
 void findStudent(Student stu[], int n)
 {
@@ -130,10 +184,10 @@ void findStudent(Student stu[], int n)
     printf("\n");
     for (int i=0; i<9; i++)
     {
-//        printf("%s ", all[i]);
+        //        printf("%s ", all[i]);
     }
     printf("\n");
-
+    
     
     // 找出>=2科前三的人并存入姓名
     int count = 0;
@@ -152,7 +206,7 @@ void findStudent(Student stu[], int n)
         
         if (count >= 2)
         {
-//            printf("%s ", all[i]);
+            //            printf("%s ", all[i]);
             // 保存姓名(去除重复)？？？？？？？
             // ....
             kk[p++] = all[i];
@@ -161,35 +215,12 @@ void findStudent(Student stu[], int n)
     }
     
     kk[p] = '\0';
-    printf("p=%d ", p);
-    int x = p;
-    printf("x=%d", x);
-
+    
+    
     // 对数组去重
     // ..
-//    char *save[9] = {};
-//    int m = 0;
-//    save[0] = kk[0];
-//
-//    for (int i=1; i<p-1; i++)
-//    {
-//        for (int j=i; j<p-1; j++)
-//        {
-//            if (strcmp(kk[j], kk[i]) == 0)
-//            {
-//                ;
-//            }
-//            else
-//            {
-//                save[m++] = kk[j];
-//            }
-//        }
-//    }
-    printf("x=%d ", x);
-//    printf("m=%d ", m);
     
     
-
     
     // 根据姓名打印学生信息
     printf("p=%d", p);
@@ -208,26 +239,8 @@ void findStudent(Student stu[], int n)
     
 }
 
-int exer2()
-{
-    
-    printf("第2题:\n");
-    Student s1 = {"Lucy", 22, 57, 79};
-    Student s2 = {"Mike", 32, 36, 29};
-    Student s3 = {"Matt", 25, 56, 89};
-    Student s4 = {"Lily", 12, 86, 99};
-    Student s5 = {"Eric", 72, 58, 77};
-    Student stu[] = {s1, s2, s3, s4, s5};
-    
-    findStudent(stu, 5);
-    
-    printf("\n\n");
-    
-    return 0;
-    
-}
 
-//
+//teacher's solution
 /*
 void print(Student stu[5])
 {
@@ -247,7 +260,6 @@ void print(Student stu[5])
                 count3++;
             }
         }
-        
         if ((count1>=2) + (count2>=2) + (count3>=2) >= 2) {
             printf("name = %s,class1:%d,class2:%d,class3:%d\n",stu[i].name,stu[i].class[0],stu[i].class[1],stu[i].class[2]);
         }

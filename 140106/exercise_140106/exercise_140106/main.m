@@ -22,12 +22,6 @@ int exer3();
 int exer4();
 int main(int argc, const char * argv[])
 {
-//    char age[10000] = {0};
-//    for (int i=11; i<22; i++) {
-//        sprintf(age,"%d%d",i*i*i,i*i*i*i);
-//        printf("%s\n",age);
-//    }
-
     exer1();
     exer2();
     exer3();
