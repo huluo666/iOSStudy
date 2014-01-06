@@ -36,10 +36,12 @@ void sortPersonByName(Person p[], int n)
     {
         for (int j=0; j<n-i-1; j++)
         {
-//            if (<#condition#>)
-//            {
-//                <#statements#>
-//            }
+            if (strcmp(p[j].name, p[j+1].name))
+            {
+//                Person p = p[j];
+                
+                
+            }
         }
     }
     printf("\n");
@@ -67,3 +69,25 @@ int exer3()
     printf("\n");
     return 0;
 }
+
+/*
+ 
+ 
+
+PersonInfo per1 = {"wa1","130898687668"};
+PersonInfo per2 = {"za2","130876677667"};
+PersonInfo per3 = {"xa3","139766755678"};
+
+PersonInfo pers[3] = {per1,per2,per3};
+for (int i = 0; i<2; i++) {
+    for (int j = 0; j<2-i; j++) {
+        if (strcmp(pers[j].name, pers[j+1].name)>0) {
+            PersonInfo temp = pers[j];
+            pers[j] = pers[j+1];
+            pers[j+1] = temp;
+        }
+    }
+}
+ */
+
+
