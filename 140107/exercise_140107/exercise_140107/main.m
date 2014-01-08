@@ -25,13 +25,10 @@ typedef struct _Student
 void traverse(Student *root, Student *shift);
 Student *delete(Student *root,int number);
 void  insert(Student *root, Student *node, int number);
-void swap(Student *root, int m, int n);
-Student *reverse(Student *root);
 void exchange(Student *head, int m, int n);
 
 int main(int argc, const char * argv[])
 {
-
     // 1...
     // 创建链表
     Student *root = malloc(sizeof(Student));
@@ -59,8 +56,9 @@ int main(int argc, const char * argv[])
     int del = 3;
 
     delete(root, del);
+
     traverse(root, shift);
-    
+ 
 
     // 2...
     // 3 插入 5号后面
@@ -79,10 +77,9 @@ int main(int argc, const char * argv[])
     w5->number = 5;
     insert(root, w5, 1);
     traverse(root, shift);
-    
+
     // 3...
-    exchange(root, 5, 9);
-    traverse(root, shift);
+//    exchange(root, 3, 5); // crash
     
     return 0;
 
@@ -116,7 +113,6 @@ Student *delete(Student *root,int number)
             }
             else
             {
-                
                 Student *str = root->next->next;
                 ret = root->next;
                 free(root->next);
@@ -148,75 +144,10 @@ void  insert(Student *root, Student *node, int number)
 }
 
 
-void exchange(Student *head, int m, int n)
+void exchange(Student *root, int m, int n)
 {
-    Student *stu_m = delete(head, m);
-    insert(head, stu_m, n);
-    Student *stu_n = delete(head, n);
-    insert(head, stu_n, m-2);
+    Student *stu_m = delete(root, m);
+    insert(root, stu_m, n);
+    Student *stu_n = delete(root, n);
+    insert(root, stu_n, m-2);
 }
-
-/*
- // error
-void swap(Student *root, int m, int n)
-{
-    Student *s1 = malloc(sizeof(Student));
-    Student *s2 = malloc(sizeof(Student));
-    Student *p1, *p2;
-    
-    while (root->next)
-    {
-        if (root->next->number == m)
-        {
-            p1 = root->next;
-            s1->number = m;
-            s1->name = root->next->name;
-//            s1->next = root->next->next;
-            continue;
-        }
-        
-        if (root->next->number == n)
-        {
-            p2 = root->next;
-            s2->number = n;
-            s2->name = root->next->name;
-//            s2->next = root->next->next;
-        }
-
-    }
-    p1->name = s2->name;
-    p2->name = s1->name;
-    
-//    p1->next = s2->next;
-//    p2->next = s1->next;
-    
-    p1->number = n;
-    p2->number = m;
-}
-
-Student *reverse(Student *root)
-{
-    if (root == NULL || root->next==NULL)
-        return root;
-    
-    Student *p1, *p2, *p3;
-    
-    // 前面两个节点
-    p1 = root;
-    p2 = root->next;
-    
-    while (p2->next != NULL)
-    {
-        p3 = p2->next;
-        p2->next = p1;
-        p1 = p2;
-        p2 = p1;
-    }
-    
-    p2->next = p1;
-    root->next = NULL;
-    root = p2;
-    return root;
-}
- */
-
