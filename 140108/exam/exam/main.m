@@ -208,7 +208,7 @@ void printConsumerInfo(Consumer cons)
 }
 
 // 指定折扣
-void discount(Product pro[], int n, float d) // 0<n<1
+void discount(Product pro[], int n, float d) // 0<d<1
 {
     for (int i=0; i<n; i++)
     {
