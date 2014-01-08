@@ -233,7 +233,7 @@ void sortByUDID(Product pro[], int n)
     }
 }
 
-Product *buy(Consumer *cons, Type type, Color color, Product ip[], int n, Product pa[], int p, Product pm[], int q) // 未完待续
+Product *buy(Consumer *cons, Type type, Color color, Product ip[], int n, Product pa[], int p, Product pm[], int q)
 {
     // 获取顾客购买列表长度
     int count = 0;
