@@ -12,7 +12,7 @@
 /*
  C阶段综合题：
  有一个社交网络平台，实现其简单功能：
- 1、	定义2种角色，分别为普通客户2名、vip客户2名，普通客户可以转变为vip
+ 1、	定义2种角色，分别为普通客户2名、vip客户2名struct _Customer，普通客户可以转变为vip
  2、	关注与粉丝：a用户可关注b用户（普通客户和vip均可），关注后b用户的粉丝数加1。
  3、	vip客户可以花钱购买粉丝，每次可花费3元购买1名粉丝
  4、	将所有普通客户按粉丝数排列。
@@ -37,6 +37,7 @@ typedef struct _Customer
     int      fans; // record fans count
 //    int    follow; // record follow count
     int      paid; // expense
+//    struct _Customer *next; // 链表实现， 具体follow的有哪些人，fans有哪些人
 } Customer;
 
 
@@ -48,7 +49,6 @@ void printPaid(Customer cus);
 //void sortByFans(Customer cus[], int n);
 void printNormalInfoAfterSort(Customer cus[], int n);
 int profit(Customer cuss[], int n);
-
 
 int main(int argc, const char * argv[])
 {
@@ -81,7 +81,7 @@ int main(int argc, const char * argv[])
     Customer cuss[] = {cus1, cus2, cus3, cus4, cus5};
     printNormalInfoAfterSort(cuss, 5);
     
-    // 5.
+    // 5. 计算利润
     int gain = profit(cuss, 5);
     printf("\n公司总盈利为：￥%d", gain);
     printf("\n");
@@ -158,6 +158,7 @@ void sortByFans(Customer cuss[], int n)
     }
 }
 
+// 按粉丝数量排序打印普通客户
 void printNormalInfoAfterSort(Customer cuss[], int n)
 {
     sortByFans(cuss, n);
@@ -170,6 +171,7 @@ void printNormalInfoAfterSort(Customer cuss[], int n)
     }
 }
 
+// 利润
 int profit(Customer cuss[], int n)
 {
     int ret = 0;
