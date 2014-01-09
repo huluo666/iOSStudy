@@ -1,0 +1,11 @@
+cmd-n			新建文件
+cmd-shift-n		新建工程
+cmd-return		分割窗口
+cmd-opt-return		取消分割窗口
+cmd-ctl-up/down 	文件切换(.h/.m)
+cmd-ctl-left/right	前进、后退
+cmd-opt-`		移动光标聚焦
+com-shift-c/y		debug窗口
+cmd-‘、”			跳到问题处	
+
+
