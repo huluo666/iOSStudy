@@ -9,3 +9,4 @@ com-shift-c/y		debug窗口
 cmd-‘、”			跳到问题处	
 
 
+xcode为什么没有这些快捷键：删除一行、
