@@ -16,8 +16,15 @@
  4.	熟练写出类的初始化
  5.	掌握基本的类的引用方法
  */
+#define min(a, b) a>b ? a:b
+
 int main(int argc, const char * argv[])
 {
+    
+    int a = 4>>1, b = 0;
+    printf("a=%d, b=%d\n", a, b);
+    printf("-----%d\n", min(1^0,0));
+    
 
     @autoreleasepool
     {
