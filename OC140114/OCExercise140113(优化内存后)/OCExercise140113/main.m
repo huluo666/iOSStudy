@@ -29,11 +29,16 @@ int main(int argc, const char * argv[])
                                 @"23", @"age",
                                 @"female", @"sex",
                                 @"513020199208121523", @"IDNumber",nil];
+//    NSLog(@"retainCount = %ld", [mDic retainCount]);
     NSLog(@"name= %@, age = %@, sex = %@, IDNumber = %@",
           [mDic objectForKey:@"name"],
           [mDic objectForKey:@"age"],
           [mDic objectForKey:@"sex"],
           [mDic objectForKey:@"IDNumber"]);
+    
+    
+     NSLog(@"retainCount = %ld", [mDic retainCount]);
+    
     
     
     // 2
@@ -64,6 +69,9 @@ int main(int argc, const char * argv[])
     Student *reslut =  [Student findTheYoungestExcellentStudent:studentArray];
     NSLog(@"%@", [reslut name]);
     
+    [stu1 release];
+    [stu2 release];
+    [stu3 release];
     
 
     
