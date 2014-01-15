@@ -48,8 +48,9 @@ int main(int argc, const char * argv[])
     Student *stu2 = [[Student alloc] initWithName:@"Lili" sex:@"Famale" IDNumber:@"513020199208121541" age:27];
     Student *stu3 = [[Student alloc] initWithName:@"Matt" sex:@"Male" IDNumber:@"513020199208121110" age:24];
     
-    NSMutableArray *studentArray = [NSMutableArray arrayWithObjects:stu1, stu2, stu3, nil];
-    
+//    NSMutableArray *studentArray = [NSMutableArray arrayWithObjects:stu1, stu2, stu3, nil];
+    NSMutableArray *studentArray = [[NSMutableArray alloc] initWithObjects:stu1, stu2, stu3, nil];
+ 
     // 4
     NSLog(@"4.\n");
     NSString *IDNumberString = @"513020199208121541";
@@ -72,8 +73,7 @@ int main(int argc, const char * argv[])
     [stu1 release];
     [stu2 release];
     [stu3 release];
-    
-
+    [studentArray release];
     
     return 0;
 }
