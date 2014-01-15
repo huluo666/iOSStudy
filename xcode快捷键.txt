@@ -6,9 +6,9 @@ cmd-ctl-up/down 	文件切换(.h/.m)
 cmd-ctl-left/right	前进、后退
 cmd-opt-`		移动光标聚焦
 com-shift-c/y		debug窗口
-cmd-‘、”			跳到问题处	
+cmd-’			跳到问题处	
 cmd-opt-0		隐藏、显示右边utilds窗口
 cmd-0			隐藏、显示左边导航窗口
-
+		
 
 xcode为什么没有这些快捷键：删除一行、
