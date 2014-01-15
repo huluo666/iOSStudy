@@ -14,10 +14,12 @@
     NSMutableArray *_students;
 }
 
+
 - (id)initWithStudents:(NSMutableArray *)students;
 
 - (void)setStudents:(NSMutableArray *)students;
 - (NSMutableArray *)students;
+
 
 /**
  * @brief: 使用身份证号查询学员

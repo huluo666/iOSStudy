@@ -51,7 +51,6 @@ int main(int argc, const char * argv[])
     [student release];
     [student2 release];
     
-    
 
     return 0;
 }

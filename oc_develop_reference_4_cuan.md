@@ -1,5 +1,16 @@
 # OC Develop Reference 4 cuan
 
+##字符串的拆分与合并
+
+```
+NSString *string = @"0180go923o08d";
+NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890"];
+NSString *result = [[string componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
+NSLog(@"%@", result);
+```
+
+- - -
+ 
 #目录
 
 - 为什么需要内存管理?
@@ -42,15 +53,8 @@
 - 使用retain方法持有的对象，需要手动release进行释放，并且保持retain以及release次数想相同
 - 集合类可以持有集合中的对象(retain一次)，当集合对象自身销毁时，会将自身中的所有对象release一次
 - 持有集合类，不会增加内部对象的引用计数值
+- set/init里面retain与dealloc里面release相对应。
 
-##字符串的拆分与合并
-
-```
-NSString *string = @"0180go923o08d";
-NSCharacterSet *set = [NSCharacterSet characterSetWithCharactersInString:@"1234567890"];
-NSString *result = [[string componentsSeparatedByCharactersInSet:set] componentsJoinedByString:@""];
-NSLog(@"%@", result);
-```
 
 - - -
 
