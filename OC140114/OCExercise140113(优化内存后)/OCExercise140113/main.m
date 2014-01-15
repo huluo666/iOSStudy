@@ -36,11 +36,7 @@ int main(int argc, const char * argv[])
           [mDic objectForKey:@"sex"],
           [mDic objectForKey:@"IDNumber"]);
     
-    
      NSLog(@"retainCount = %ld", [mDic retainCount]);
-    
-    
-    
     // 2
     
     // 3
