@@ -16,7 +16,7 @@
 @property (assign) NSInteger            age;
 @property (retain) NSMutableDictionary *mDic;
 
-
+- (void)dealloc;
 - (id) initWithName:(NSString *)name sex:(NSString *)sex IDNumber:(NSString *)IDNumber age:(NSInteger)age;
 - (NSInteger) countAgeDiffToStudent:(Student *)student;
 - (void) addTitle;

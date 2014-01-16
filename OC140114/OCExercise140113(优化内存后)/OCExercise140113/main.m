@@ -29,13 +29,14 @@ int main(int argc, const char * argv[])
                                 @"23", @"age",
                                 @"female", @"sex",
                                 @"513020199208121523", @"IDNumber",nil];
+//    NSLog(@"retainCount = %ld", [mDic retainCount]);
     NSLog(@"name= %@, age = %@, sex = %@, IDNumber = %@",
           [mDic objectForKey:@"name"],
           [mDic objectForKey:@"age"],
           [mDic objectForKey:@"sex"],
           [mDic objectForKey:@"IDNumber"]);
     
-    
+     NSLog(@"retainCount = %ld", [mDic retainCount]);
     // 2
     
     // 3
@@ -43,8 +44,9 @@ int main(int argc, const char * argv[])
     Student *stu2 = [[Student alloc] initWithName:@"Lili" sex:@"Famale" IDNumber:@"513020199208121541" age:27];
     Student *stu3 = [[Student alloc] initWithName:@"Matt" sex:@"Male" IDNumber:@"513020199208121110" age:24];
     
-    NSMutableArray *studentArray = [NSMutableArray arrayWithObjects:stu1, stu2, stu3, nil];
-    
+//    NSMutableArray *studentArray = [NSMutableArray arrayWithObjects:stu1, stu2, stu3, nil];
+    NSMutableArray *studentArray = [[NSMutableArray alloc] initWithObjects:stu1, stu2, stu3, nil];
+ 
     // 4
     NSLog(@"4.\n");
     NSString *IDNumberString = @"513020199208121541";
@@ -64,8 +66,10 @@ int main(int argc, const char * argv[])
     Student *reslut =  [Student findTheYoungestExcellentStudent:studentArray];
     NSLog(@"%@", [reslut name]);
     
-    
-
+    [stu1 release];
+    [stu2 release];
+    [stu3 release];
+    [studentArray release];
     
     return 0;
 }
