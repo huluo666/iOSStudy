@@ -13,8 +13,8 @@
 @property (copy, nonatomic)     NSString  *name;
 @property (assign, nonatomic)   NSInteger   age;
 @property (copy, nonatomic)     NSString  *IDNumber;
-@property (readonly, nonatomic) NSDate    *birthday;
-@property (readonly, nonatomic) NSString  *type;
+@property (copy, readonly, nonatomic) NSDate    *birthday;
+@property (copy, readonly, nonatomic) NSString  *type;
 @property (assign, nonatomic)   NSPoint   pointer;
 
 /*!

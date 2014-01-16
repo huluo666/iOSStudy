@@ -18,19 +18,19 @@
  */
 int main(int argc, const char * argv[])
 {
+
+    
     Student *student = [[Student alloc]
                         initWithName:@"Mike"
                         age:22
                         IDNumber:@"513030199108131723"
                         pointer:NSMakePoint(1, 5)];
-    
     NSLog(@"%@", student);
     
     Student *otherStudent = [[Student alloc] init];
     [otherStudent setPointer:NSMakePoint(2, 6)];
 
     NSLog(@"%f", [student distanceWithStudent:otherStudent]);
-    
     [student release];
     [otherStudent release];
     return 0;

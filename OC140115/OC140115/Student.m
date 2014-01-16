@@ -31,7 +31,7 @@
 
 -(NSString *)description
 {
-    return [NSString stringWithFormat:@"name = %@, age = %ld, code = %@", self.name, self.age, self.code];
+    return [NSString stringWithFormat:@"name = %@, age = %ld, code = %@", _name, _age, _code];
 }
 
 - (NSInteger)AgeDiffBetweenWithStudent:(Student *)student

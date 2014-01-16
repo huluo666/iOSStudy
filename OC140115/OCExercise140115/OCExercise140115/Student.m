@@ -43,12 +43,12 @@
 {
     return [NSString stringWithFormat:
             @"name = %@, age = %ld, IDNumber = %@, birthday = %@, type = %@ row = %f,  col= %f",
-            self.name, self.age, self.IDNumber, self.birthday, self.type,self.pointer.x, self.pointer.y];
+            _name, _age, _IDNumber, _birthday, _type, _pointer.x, _pointer.y];
 }
 
 - (CGFloat) distanceWithStudent:(Student *)student
 {
-    return sqrt(pow(self.pointer.x - student.pointer.x, 2) + pow(self.pointer.y - student.pointer.y, 2));
+    return sqrt(pow(_pointer.x - student.pointer.x, 2) + pow(_pointer.y - student.pointer.y, 2));
 }
 
 @end
