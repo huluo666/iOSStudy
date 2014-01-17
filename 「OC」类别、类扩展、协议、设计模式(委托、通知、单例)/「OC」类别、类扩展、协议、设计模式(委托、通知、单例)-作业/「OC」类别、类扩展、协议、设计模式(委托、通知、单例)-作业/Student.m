@@ -1,0 +1,99 @@
+//
+//  Student.m
+//  「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业
+//
+//  Created by cuan on 14-1-17.
+//  Copyright (c) 2014年 cuan. All rights reserved.
+//
+
+#import "Student.h"
+
+static Student *studentSingleton = nil;
+
+@implementation Student
+
+- (id)init
+{
+    if (self = [super init])
+    {
+        _name = @"默认";
+        _code = @"0";
+    }
+    
+    return self;
+}
+
+- (id)initWithName:(NSString *)name code:(NSString *)code
+{
+    if (self = [super init])
+    {
+        _name = [name copy];
+        _code = [code copy];
+    }
+    
+    return self;
+}
+
+- (id)initWithName:(NSString *)name code:(NSString *)code scores:(NSMutableArray *)scores
+{
+    if (self = [super init])
+    {
+        [self initWithName:name code:code];
+        _scores = scores;
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [_name release];
+    [_code release];
+    [_scores release];
+    [super dealloc];
+}
+
+- (NSInteger)comareRetainCount:(Student *)student
+{
+    if (!student)
+    {
+        return [self retainCount];
+    }
+    return [self retainCount] - [student retainCount];
+}
+
+- (NSComparisonResult)compare:(id)object
+{
+    return [[self name] compare:[object name]];
+}
+
+- (double)calculateAvg
+{
+    int avg = 0;
+    
+    for (NSNumber *score in _scores)
+    {
+        avg += [score integerValue];
+    }
+    
+    return avg;
+}
+
++ (instancetype)sharedStudent
+{
+    if (!studentSingleton)
+    {
+        studentSingleton = [[self alloc] initWithName:@"张三" code:@"0001" scores:[NSMutableArray arrayWithObjects:@91, @83, nil] ];
+    }
+    
+    return studentSingleton;
+}
+
+@end
+
+
+
+
+
+
+
+

@@ -49,6 +49,10 @@ Student.m
 } 
 
 ```
+
+- 创建对象时尽量使用autorelease	- 创建临时对象时,尽量同时在同一行中 autorelease 掉,而非使用单独的 release 语句	- 虽然这样会稍微有点慢,但这样可以阻止因为提前 return 或其他意外情况导致的内存泄露。通盘来看这是值得的。如:
+		```	// 避免这样使用(除非有性能的考虑)	MyController* controller = [[MyController alloc] init];	// ... 这里的代码可能会提前return ...	[controller release];	// 这样更好	MyController* controller = [[[MyController alloc] init] autorelease];
+	```
 ### @class
 - @class 用于.h文件种，声明一个类
 - \#import用于.m文件，拷贝整个.文件

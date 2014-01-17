@@ -1,0 +1,286 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95ABBCE71888FBDB00648CD4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ABBCE61888FBDB00648CD4 /* Foundation.framework */; };
+		95ABBCEA1888FBDB00648CD4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ABBCE91888FBDB00648CD4 /* main.m */; };
+		95ABBCEE1888FBDB00648CD4 /* _OC____________________________.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 95ABBCED1888FBDB00648CD4 /* _OC____________________________.1 */; };
+		95ABBCF61889027700648CD4 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ABBCF51889027700648CD4 /* Student.m */; };
+		95ABBD0718890FF200648CD4 /* NSDate+DateCate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ABBD0618890FF200648CD4 /* NSDate+DateCate.m */; };
+		95ABBD0B188919FB00648CD4 /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ABBD0A188919FB00648CD4 /* Teacher.m */; };
+		95ABBD0E1889207700648CD4 /* GoodStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ABBD0D1889207700648CD4 /* GoodStudent.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		95ABBCE11888FBDB00648CD4 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				95ABBCEE1888FBDB00648CD4 /* _OC____________________________.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		95ABBCE31888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95ABBCE61888FBDB00648CD4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		95ABBCE91888FBDB00648CD4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		95ABBCEC1888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业-Prefix.pch"; sourceTree = "<group>"; };
+		95ABBCED1888FBDB00648CD4 /* _OC____________________________.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "_OC____________________________.1"; sourceTree = "<group>"; };
+		95ABBCF41889027700648CD4 /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		95ABBCF51889027700648CD4 /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		95ABBD0518890FF200648CD4 /* NSDate+DateCate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSDate+DateCate.h"; path = "../NSDate+DateCate.h"; sourceTree = "<group>"; };
+		95ABBD0618890FF200648CD4 /* NSDate+DateCate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSDate+DateCate.m"; path = "../NSDate+DateCate.m"; sourceTree = "<group>"; };
+		95ABBD08188918E400648CD4 /* Protocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Protocol.h; sourceTree = "<group>"; };
+		95ABBD09188919FB00648CD4 /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
+		95ABBD0A188919FB00648CD4 /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
+		95ABBD0C1889207700648CD4 /* GoodStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodStudent.h; sourceTree = "<group>"; };
+		95ABBD0D1889207700648CD4 /* GoodStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodStudent.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95ABBCE01888FBDB00648CD4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95ABBCE71888FBDB00648CD4 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95ABBCDA1888FBDB00648CD4 = {
+			isa = PBXGroup;
+			children = (
+				95ABBCE81888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业 */,
+				95ABBCE51888FBDB00648CD4 /* Frameworks */,
+				95ABBCE41888FBDB00648CD4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		95ABBCE41888FBDB00648CD4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95ABBCE31888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95ABBCE51888FBDB00648CD4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95ABBCE61888FBDB00648CD4 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95ABBCE81888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业 */ = {
+			isa = PBXGroup;
+			children = (
+				95ABBCE91888FBDB00648CD4 /* main.m */,
+				95ABBD08188918E400648CD4 /* Protocol.h */,
+				95ABBCF41889027700648CD4 /* Student.h */,
+				95ABBCF51889027700648CD4 /* Student.m */,
+				95ABBD0518890FF200648CD4 /* NSDate+DateCate.h */,
+				95ABBD0618890FF200648CD4 /* NSDate+DateCate.m */,
+				95ABBD09188919FB00648CD4 /* Teacher.h */,
+				95ABBD0A188919FB00648CD4 /* Teacher.m */,
+				95ABBD0C1889207700648CD4 /* GoodStudent.h */,
+				95ABBD0D1889207700648CD4 /* GoodStudent.m */,
+				95ABBCED1888FBDB00648CD4 /* _OC____________________________.1 */,
+				95ABBCEB1888FBDB00648CD4 /* Supporting Files */,
+			);
+			path = "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业";
+			sourceTree = "<group>";
+		};
+		95ABBCEB1888FBDB00648CD4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95ABBCEC1888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		95ABBCE21888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95ABBCF11888FBDB00648CD4 /* Build configuration list for PBXNativeTarget "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业" */;
+			buildPhases = (
+				95ABBCDF1888FBDB00648CD4 /* Sources */,
+				95ABBCE01888FBDB00648CD4 /* Frameworks */,
+				95ABBCE11888FBDB00648CD4 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业";
+			productName = "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业";
+			productReference = 95ABBCE31888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95ABBCDB1888FBDB00648CD4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = cuan;
+			};
+			buildConfigurationList = 95ABBCDE1888FBDB00648CD4 /* Build configuration list for PBXProject "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 95ABBCDA1888FBDB00648CD4;
+			productRefGroup = 95ABBCE41888FBDB00648CD4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95ABBCE21888FBDB00648CD4 /* 「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95ABBCDF1888FBDB00648CD4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95ABBD0B188919FB00648CD4 /* Teacher.m in Sources */,
+				95ABBCEA1888FBDB00648CD4 /* main.m in Sources */,
+				95ABBD0718890FF200648CD4 /* NSDate+DateCate.m in Sources */,
+				95ABBD0E1889207700648CD4 /* GoodStudent.m in Sources */,
+				95ABBCF61889027700648CD4 /* Student.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		95ABBCEF1888FBDB00648CD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		95ABBCF01888FBDB00648CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		95ABBCF21888FBDB00648CD4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业/「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		95ABBCF31888FBDB00648CD4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业/「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95ABBCDE1888FBDB00648CD4 /* Build configuration list for PBXProject "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95ABBCEF1888FBDB00648CD4 /* Debug */,
+				95ABBCF01888FBDB00648CD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95ABBCF11888FBDB00648CD4 /* Build configuration list for PBXNativeTarget "「OC」类别、类扩展、协议、设计模式(委托、通知、单例)-作业" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95ABBCF21888FBDB00648CD4 /* Debug */,
+				95ABBCF31888FBDB00648CD4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95ABBCDB1888FBDB00648CD4 /* Project object */;
+}
