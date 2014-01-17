@@ -105,6 +105,29 @@
 	```
 - block可以访问外面定义的变量
 - 如果外面的变量用__block声明，就可以在block内部修改
+- block与指针函数的区别于联系
+
+	```
+	// 定义了Sum这种Block类型
+    typedef int (^Sum) (int, int);
+    
+    // 定义了sump这种指针类型，这种指针是指向函数的
+    typedef int (*Sump) (int, int);
+    
+    // 定义了一个block变量
+    Sum sum1 = ^(int a, int b) {
+        return a + b;
+    };
+    
+    int c = sum1(10, 10);
+    NSLog(@"%i", c);
+    
+    // 定义一个指针变量p指向sum函数
+    Sump p = sum;
+    // c = (*p)(9, 8);
+    c = p(9, 8);
+    NSLog(@"%i", c);
+	```
 
 
 
