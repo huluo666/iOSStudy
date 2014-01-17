@@ -40,6 +40,11 @@ int main(int argc, const char * argv[])
     GoodStudent *goodStudent = [[GoodStudent alloc] init];
     NSLog(@"%@", goodStudent);
   
+#pragma mark 学生单例
+    Student *singletonStudent = [Student sharedStudent];
+    NSLog(@"%@", singletonStudent);
+    
+    
 #pragma mark 平均分
     Student *Student1 = [[Student alloc] initWithName:@"stu1" code:@"1" scores:[NSMutableArray arrayWithObjects:@92, @78, nil]];
     Student *Student2 = [[Student alloc] initWithName:@"stu2" code:@"2" scores:[NSMutableArray arrayWithObjects:@83, @87, nil]];

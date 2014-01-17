@@ -88,12 +88,9 @@ static Student *studentSingleton = nil;
     return studentSingleton;
 }
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"name = %@, code = %@", _name, _code];
+}
+
 @end
-
-
-
-
-
-
-
-
