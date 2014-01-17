@@ -1,0 +1,287 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		657C5B6E1829CADE00865BF5 /* GoodStudent.m in Sources */ = {isa = PBXBuildFile; fileRef = 657C5B6D1829CADE00865BF5 /* GoodStudent.m */; };
+		6586EE6818295415009F863F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6586EE6718295415009F863F /* Foundation.framework */; };
+		6586EE6B18295415009F863F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6586EE6A18295415009F863F /* main.m */; };
+		6586EE6F18295415009F863F /* ____________________.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6586EE6E18295415009F863F /* ____________________.1 */; };
+		6586EE791829546A009F863F /* NSDate+DateComponents.m in Sources */ = {isa = PBXBuildFile; fileRef = 6586EE761829546A009F863F /* NSDate+DateComponents.m */; };
+		6586EE7E18295C7D009F863F /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 6586EE7D18295C7D009F863F /* Student.m */; };
+		6586EE8118295C89009F863F /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6586EE8018295C89009F863F /* Teacher.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		6586EE6218295415009F863F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				6586EE6F18295415009F863F /* ____________________.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		657C5B6C1829CADE00865BF5 /* GoodStudent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoodStudent.h; sourceTree = "<group>"; };
+		657C5B6D1829CADE00865BF5 /* GoodStudent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoodStudent.m; sourceTree = "<group>"; };
+		6586EE6418295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "八、类别、类扩展、协议、单例、封装、继承"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6586EE6718295415009F863F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		6586EE6A18295415009F863F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6586EE6D18295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "八、类别、类扩展、协议、单例、封装、继承-Prefix.pch"; sourceTree = "<group>"; };
+		6586EE6E18295415009F863F /* ____________________.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = "____________________.1"; sourceTree = "<group>"; };
+		6586EE751829546A009F863F /* NSDate+DateComponents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+DateComponents.h"; sourceTree = "<group>"; };
+		6586EE761829546A009F863F /* NSDate+DateComponents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+DateComponents.m"; sourceTree = "<group>"; };
+		6586EE7B18295A00009F863F /* CustomProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomProtocol.h; sourceTree = "<group>"; };
+		6586EE7C18295C7D009F863F /* Student.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Student.h; sourceTree = "<group>"; };
+		6586EE7D18295C7D009F863F /* Student.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Student.m; sourceTree = "<group>"; };
+		6586EE7F18295C89009F863F /* Teacher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Teacher.h; sourceTree = "<group>"; };
+		6586EE8018295C89009F863F /* Teacher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6586EE6118295415009F863F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6586EE6818295415009F863F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6586EE5B18295414009F863F = {
+			isa = PBXGroup;
+			children = (
+				6586EE6918295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承 */,
+				6586EE6618295415009F863F /* Frameworks */,
+				6586EE6518295415009F863F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6586EE6518295415009F863F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6586EE6418295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6586EE6618295415009F863F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6586EE6718295415009F863F /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6586EE6918295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承 */ = {
+			isa = PBXGroup;
+			children = (
+				6586EE6A18295415009F863F /* main.m */,
+				6586EE7C18295C7D009F863F /* Student.h */,
+				6586EE7D18295C7D009F863F /* Student.m */,
+				657C5B6C1829CADE00865BF5 /* GoodStudent.h */,
+				657C5B6D1829CADE00865BF5 /* GoodStudent.m */,
+				6586EE7F18295C89009F863F /* Teacher.h */,
+				6586EE8018295C89009F863F /* Teacher.m */,
+				6586EE7B18295A00009F863F /* CustomProtocol.h */,
+				6586EE751829546A009F863F /* NSDate+DateComponents.h */,
+				6586EE761829546A009F863F /* NSDate+DateComponents.m */,
+				6586EE6E18295415009F863F /* ____________________.1 */,
+				6586EE6C18295415009F863F /* Supporting Files */,
+			);
+			path = "八、类别、类扩展、协议、单例、封装、继承";
+			sourceTree = "<group>";
+		};
+		6586EE6C18295415009F863F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6586EE6D18295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6586EE6318295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6586EE7218295415009F863F /* Build configuration list for PBXNativeTarget "八、类别、类扩展、协议、单例、封装、继承" */;
+			buildPhases = (
+				6586EE6018295415009F863F /* Sources */,
+				6586EE6118295415009F863F /* Frameworks */,
+				6586EE6218295415009F863F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "八、类别、类扩展、协议、单例、封装、继承";
+			productName = "八、类别、类扩展、协议、单例、封装、继承";
+			productReference = 6586EE6418295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6586EE5C18295415009F863F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "张鹏";
+			};
+			buildConfigurationList = 6586EE5F18295415009F863F /* Build configuration list for PBXProject "八、类别、类扩展、协议、单例、封装、继承" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 6586EE5B18295414009F863F;
+			productRefGroup = 6586EE6518295415009F863F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6586EE6318295415009F863F /* 八、类别、类扩展、协议、单例、封装、继承 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6586EE6018295415009F863F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6586EE791829546A009F863F /* NSDate+DateComponents.m in Sources */,
+				6586EE6B18295415009F863F /* main.m in Sources */,
+				6586EE8118295C89009F863F /* Teacher.m in Sources */,
+				657C5B6E1829CADE00865BF5 /* GoodStudent.m in Sources */,
+				6586EE7E18295C7D009F863F /* Student.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		6586EE7018295415009F863F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		6586EE7118295415009F863F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		6586EE7318295415009F863F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "八、类别、类扩展、协议、单例、封装、继承/八、类别、类扩展、协议、单例、封装、继承-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6586EE7418295415009F863F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "八、类别、类扩展、协议、单例、封装、继承/八、类别、类扩展、协议、单例、封装、继承-Prefix.pch";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6586EE5F18295415009F863F /* Build configuration list for PBXProject "八、类别、类扩展、协议、单例、封装、继承" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6586EE7018295415009F863F /* Debug */,
+				6586EE7118295415009F863F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6586EE7218295415009F863F /* Build configuration list for PBXNativeTarget "八、类别、类扩展、协议、单例、封装、继承" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6586EE7318295415009F863F /* Debug */,
+				6586EE7418295415009F863F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6586EE5C18295415009F863F /* Project object */;
+}
