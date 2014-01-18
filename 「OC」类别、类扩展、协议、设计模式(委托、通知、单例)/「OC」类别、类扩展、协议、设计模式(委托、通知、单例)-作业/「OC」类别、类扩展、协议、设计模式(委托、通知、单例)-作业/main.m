@@ -74,15 +74,11 @@ int main(int argc, const char * argv[])
     // 教师持有所有学生
     teacher.studentArray = students;
     
+//    NSLog(@"%@", teacher.studentArray);
+    
     [teacher send];
     
-    
-    
-    
-    
-    
-    
-    
+   
     
 #pragma mark  释放空间
     [student release];
