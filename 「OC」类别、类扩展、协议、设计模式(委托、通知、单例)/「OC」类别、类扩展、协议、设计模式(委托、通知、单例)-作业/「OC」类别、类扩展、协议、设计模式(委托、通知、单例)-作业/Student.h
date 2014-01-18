@@ -9,24 +9,41 @@
 #import <Foundation/Foundation.h>
 #import "Protocol.h"
 
+@class Student;
+
+@protocol StudentDelegate <NSObject>
+
+- (void) printStudent:(Student *)student averageScore:(double)averageScore;
+
+@end
+
 @interface Student : NSObject <Protocol>
 {
-    NSString *_name;
     NSString *_code;
+    NSString *_name;
+    NSMutableArray *_scores;
+    
+    id<StudentDelegate> _delegate;
 }
 
 @property (copy, nonatomic) NSString *name;
 @property (copy, nonatomic) NSString *code;
 @property (retain, nonatomic) NSMutableArray *scores;
+@property (assign, nonatomic) id<StudentDelegate> delegate;
+
 
 - (id)initWithName:(NSString *)name code:(NSString *)code;
 - (id)initWithName:(NSString *)name code:(NSString *)code scores:(NSMutableArray *)scores;
 - (double)calculateAvg;
 
+/*!
+ *    计算自身成绩
+ */
+- (void)calculateAverageScore;
+
 + (instancetype)sharedStudent;
 
 @end
-
 
 @interface Student ()
 

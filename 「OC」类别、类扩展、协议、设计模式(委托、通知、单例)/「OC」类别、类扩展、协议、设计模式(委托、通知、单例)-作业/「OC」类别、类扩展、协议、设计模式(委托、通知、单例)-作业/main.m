@@ -10,6 +10,7 @@
 #import "Student.h"
 #import "NSDate+DateCate.h"
 #import "GoodStudent.h"
+#import "Teacher.h"
 /*
  1.	在Student类中使用延展增加一个比较2个Student的retainCount值的方法，返回他们的差值。
  2.	使用类目给NSDate类增加2个方法，分别返回当前时间是几点和几分（NSString类型），如3点58分，分别返回@“3”和@“58”。
@@ -21,6 +22,7 @@
 */
 int main(int argc, const char * argv[])
 {
+
     
 #pragma mark  初始化
     Student *student = [[Student alloc] init];
@@ -46,11 +48,41 @@ int main(int argc, const char * argv[])
     
     
 #pragma mark 平均分
-    Student *Student1 = [[Student alloc] initWithName:@"stu1" code:@"1" scores:[NSMutableArray arrayWithObjects:@92, @78, nil]];
-    Student *Student2 = [[Student alloc] initWithName:@"stu2" code:@"2" scores:[NSMutableArray arrayWithObjects:@83, @87, nil]];
-    Student *Student3 = [[Student alloc] initWithName:@"stu3" code:@"3" scores:[NSMutableArray arrayWithObjects:@72, @80, nil]];
-    Student *Student4 = [[Student alloc] initWithName:@"stu4" code:@"4" scores:[NSMutableArray arrayWithObjects:@91, @88, nil]];
-    Student *Student5 = [[Student alloc] initWithName:@"stu5" code:@"5" scores:[NSMutableArray arrayWithObjects:@(88), @(91), nil]];
+    
+    // 初始化老师
+    Teacher *teacher = [[Teacher alloc] init];
+    teacher.name = @"Tom";
+    teacher.code = @"122222";
+    
+    // 初始化学生
+    Student *student1 = [[Student alloc] initWithName:@"stu1" code:@"1" scores:[NSMutableArray arrayWithObjects:@92, @78, nil]];
+    Student *student2 = [[Student alloc] initWithName:@"stu2" code:@"2" scores:[NSMutableArray arrayWithObjects:@83, @87, nil]];
+    Student *student3 = [[Student alloc] initWithName:@"stu3" code:@"3" scores:[NSMutableArray arrayWithObjects:@72, @80, nil]];
+    Student *student4 = [[Student alloc] initWithName:@"stu4" code:@"4" scores:[NSMutableArray arrayWithObjects:@91, @88, nil]];
+    Student *student5 = [[Student alloc] initWithName:@"stu5" code:@"5" scores:[NSMutableArray arrayWithObjects:@(88), @(91), nil]];
+    
+    // 将老师设置为学生的委托对象
+    student1.delegate = teacher;
+    student2.delegate = teacher;
+    student3.delegate = teacher;
+    student4.delegate = teacher;
+    student5.delegate = teacher;
+    
+    // 将学生添加进数组
+    NSMutableArray *students = [NSMutableArray arrayWithObjects:student1, student2, student3, student4, student5, nil];
+    
+    // 教师持有所有学生
+    teacher.studentArray = students;
+    
+    [teacher send];
+    
+    
+    
+    
+    
+    
+    
+    
     
 #pragma mark  释放空间
     [student release];
@@ -58,5 +90,6 @@ int main(int argc, const char * argv[])
     [otherStudent release];
     [date release];
     return 0;
+  
 }
 

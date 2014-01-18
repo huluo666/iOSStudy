@@ -14,7 +14,7 @@
 {
 //    NSDate *nowDate = [NSDate date];
 //    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-    return [NSDateFormatter localizedStringFromDate:[NSDate date] dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle];
+    return [NSDateFormatter localizedStringFromDate:self dateStyle:NSDateFormatterNoStyle timeStyle:NSDateFormatterShortStyle];
 }
 
 - (NSString *)hours

@@ -8,10 +8,26 @@
 
 #import <Foundation/Foundation.h>
 #import "Protocol.h"
+#import "Student.h"
 
 
-@interface Teacher : NSObject <Protocol>
 
+@interface Teacher : NSObject <Protocol, StudentDelegate>
+{
+    NSMutableArray *_studentArray;
+    NSMutableArray *_averageScores;
+}
+
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *code;
 @property (retain, nonatomic) NSMutableArray *studentArray;
+@property (retain, nonatomic) NSMutableArray *averageScores;
 
+- (id)initWithName:(NSString *)name
+              code:(NSString *)code
+      studentArray:(NSMutableArray *)studentArray;
+
+- (void)send;
 @end
+
+extern NSString * const TeacherNotificationName;

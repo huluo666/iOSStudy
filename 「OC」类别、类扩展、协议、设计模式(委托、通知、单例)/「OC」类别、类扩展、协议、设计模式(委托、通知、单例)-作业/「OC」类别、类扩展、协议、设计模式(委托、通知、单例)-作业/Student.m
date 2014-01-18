@@ -93,4 +93,19 @@ static Student *studentSingleton = nil;
     return [NSString stringWithFormat:@"name = %@, code = %@", _name, _code];
 }
 
+
+- (void)calculateAverageScore
+{
+    double averageScore = 0 ;
+    if (_scores && [_scores count] > 0)
+    {
+        for (NSNumber *score in _scores)
+        {
+            averageScore += [score integerValue];
+        }
+        averageScore /= [_scores count];
+    }
+    
+}
+
 @end

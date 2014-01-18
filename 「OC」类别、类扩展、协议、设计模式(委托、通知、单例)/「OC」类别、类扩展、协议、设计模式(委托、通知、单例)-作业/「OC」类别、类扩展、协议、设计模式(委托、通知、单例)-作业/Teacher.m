@@ -8,12 +8,50 @@
 
 #import "Teacher.h"
 
+NSString * const TeacherNotificationName = @"TeacherNotificationName";
+
 @implementation Teacher
-@dynamic name;
+
+- (id)initWithName:(NSString *)name
+              code:(NSString *)code
+      studentArray:(NSMutableArray *)studentArray
+{
+    if (self = [super init])
+    {
+        _name = [name copy];
+        _code = [code copy];
+        _studentArray = studentArray;
+    }
+    return  self;
+}
+
+- (void)dealloc
+{
+    [_name release];
+    [_code release];
+    [super dealloc];
+}
+
 
 - (NSComparisonResult)compare:(id)object
 {
     return [[self name] compare:[object name]];
+}
+
+- (void)printStudent:(Student *)student averageScore:(double)averageScore
+{
+    // 保存并统计学生信息以及平均分
+    [_averageScores addObject:@{@"name":student.name, @"averageScore":@(averageScore), @"code":student.code}];
+    
+    if ([_averageScores count] == [_studentArray count])
+    {
+        NSLog(@"%@", _averageScores);
+    }
+}
+
+- (void)send
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:TeacherNotificationName object:self];
 }
 
 @end
