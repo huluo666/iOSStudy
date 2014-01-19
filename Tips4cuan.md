@@ -2,13 +2,133 @@
 
 **此内容未经过验证，纯属个人总结**
 ## 索引
+- [代码规范](#nameMessage)
 - [retain/release](#retain_release)
 - [@class](#@class)
 - [category](#category)
 - [protocol](#protocol)
 - [block](#block)
 
+<h3 id="nameMessage"> 代码规范 </h3>
 
+**变量**
+
+变量的命令应尽量做到自描述。除了在for()循环语句中，单字母的变量应该避免使用（如i,j,k等）。一般循环语句的当前对象的命名前缀包括“one”、“a/an”。对于简单的单个对象使用“item”命名.
+
+尽量的使用属性而非实例变量。除了在初始化方法（init，initWithCoder：等）、dealloc方法以及自定义setter与getter方法中访问属性合成的实例变量，其他的情况使用属性进行访问。
+
+---
+
+**命名**
+
+对于NSString、NSArray、NSNumber或BOOL类型，变量的命名一般不需要表明其类型。
+
+如果变量不是以上基本常用类型，则变量的命名就应该反映出自身的类型。但有时仅需要某些类的一个实例的情况下，那么只需要基于类名进行命名。
+
+大部分情况下，NSArray或NSSet类型的变量只需要使用单词复数形式（比如mailboxes），不必在命名中包含“mutable”。如果复数变量不是NSArray或NSSet类型，则需要指定其类型。
+
+---
+
+**init与dealloc**
+
+dealloc方法应该被放置在实现方法的顶部，直接在@synthesize或@dynamic语句之后。init方法应该被放置在dealloc方法的下面。
+
+---
+
+**字面值**
+
+对于NSString，NSDictionary，NSArray和NSNumber类，当需要创建这些类的不可变实例时，应该使用这些类的字面值表示形式。使用字面值表示的时候nil不需要传入NSArray和NSDictionary中作为字面值。这种语法兼容老的iOS版本，因此可以在iOS5或者更老的版本中使用它。
+
+良好的风格：
+
+```
+NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
+
+NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
+
+NSNumber *shouldUseLiterals = @YES;
+
+NSNumber *buildingZIPCode = @10018;
+```
+ 
+不良的风格：
+
+```
+NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
+
+NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
+
+NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
+
+NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
+```
+ 
+如非必要，避免使用特定类型的数字（相较于使用5.3f，应使用5.3）。
+
+---
+
+**方法命名**
+
+一个方法的命名首先描述返回什么，接着是什么情况下被返回。方法签名中冒号的前面描述传入参数的类型。以下类方法和实例方法命名的格式语法：
+
+```
+[object/class thing+condition];
+
+[object/class thing+input:input];
+
+[object/class thing+identifer:input];
+```
+ 
+Cocoa命名举例：
+
+```
+realPath    = [path     stringByExpandingTildeInPath];
+
+fullString  = [string   stringByAppendingString:@"Extra Text"];
+
+object      = [array    objectAtIndex:3];
+
+// 类方法
+
+newString   = [NSString stringWithFormat:@"%f",1.5];
+
+newArray    = [NSArray  arrayWithObject:newString];
+```
+
+良好的自定义方法命名风格：
+
+```
+recipients  = [email    recipientsSortedByLastName];
+
+newEmail    = [CDCEmail emailWithSubjectLine:@"Extra Text"];
+
+emails      = [mailbox  messagesReceivedAfterDate:yesterdayDate];
+```
+
+当需要获取对象值的另一种类型的时候，方法命名的格式语法如下：
+
+```
+[object adjective+thing];
+
+[object adjective+thing+condition];
+
+[object adjective+thing+input:input];
+```
+ 
+良好的自定义方法命名风格：
+
+```
+capitalized = [name    capitalizedString];
+
+rate        = [number  floatValue];
+
+newString   = [string  decomposedStringWithCanonicalMapping];
+
+subarray    = [array   subarrayWithRange:segment];
+```
+方法签名尽量做到含义明确。
+
+---
 
 <h3 id="retain_release"> retain/release </h3>
 - `消息涉及到对成员变量操作的时候考虑retain/copy`

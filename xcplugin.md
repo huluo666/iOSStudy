@@ -8,4 +8,11 @@ https://github.com/questbeat/Lin-Xcode5
 https://github.com/garnett/AutoresizeMask-for-Xcode  
 https://github.com/atcuan/MiniXcode 			// 隐藏toolbar
 https://github.com/holtwick/HOStringSense-for-Xcode //转义字符
+
+https://github.com/mattt/Xcode-Snippets 快捷代码块
+
+// 主题
+https://github.com/tursunovic/xcode-themes
+https://github.com/vinhnx/Ciapre-Xcode-theme
+
 ```
