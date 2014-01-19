@@ -13,6 +13,12 @@
 
 @protocol StudentDelegate <NSObject>
 
+/**
+ *  通过平均分打印学生信息
+ *
+ *  @param student      学生对象
+ *  @param averageScore 学生自身平均分
+ */
 - (void) printStudent:(Student *)student averageScore:(double)averageScore;
 
 @end
@@ -40,6 +46,11 @@
  *    计算自身成绩
  */
 - (void)calculateAverageScore;
+
+/**
+ *   注册通知中心
+ */
+- (void) registerNotification;
 
 + (instancetype)sharedStudent;
 

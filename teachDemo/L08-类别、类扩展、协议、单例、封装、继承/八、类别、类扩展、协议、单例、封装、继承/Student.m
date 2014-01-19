@@ -103,6 +103,8 @@ static Student * student = nil;
         }
         averageScore /= [_scores count];
     }
+    
+    NSLog(@"ave = %f", averageScore);
     // 平均分计算完成，将计算结果及自身对象传给委托对象，委托对象进行后续处理
     if (_delegate &&
         [_delegate respondsToSelector:@selector(student:completeProcessAverageScore:)]) {

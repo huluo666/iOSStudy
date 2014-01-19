@@ -39,7 +39,9 @@ static Student *studentSingleton = nil;
     if (self = [super init])
     {
         [self initWithName:name code:code];
-        _scores = scores;
+        _scores = [scores retain];
+        
+        [self registerNotification];
     }
     return self;
 }
@@ -49,6 +51,8 @@ static Student *studentSingleton = nil;
     [_name release];
     [_code release];
     [_scores release];
+    _delegate = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
@@ -93,6 +97,16 @@ static Student *studentSingleton = nil;
     return [NSString stringWithFormat:@"name = %@, code = %@", _name, _code];
 }
 
+extern NSString * const TeacherNotificationName;
+- (void) registerNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(calculateAverageScore)
+                                                 name:TeacherNotificationName
+                                               object:nil];
+}
+
+
 
 - (void)calculateAverageScore
 {
@@ -106,6 +120,13 @@ static Student *studentSingleton = nil;
         averageScore /= [_scores count];
     }
     
+    NSLog(@"avg = %f", averageScore);
+    
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(printStudent:averageScore:)])
+    {
+        [_delegate printStudent:self averageScore:averageScore];
+    }
 }
 
 

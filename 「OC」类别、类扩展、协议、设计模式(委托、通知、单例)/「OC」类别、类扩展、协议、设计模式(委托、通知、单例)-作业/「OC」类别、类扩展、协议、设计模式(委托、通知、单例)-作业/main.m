@@ -25,40 +25,38 @@ int main(int argc, const char * argv[])
 
     
 #pragma mark  初始化
-    Student *student = [[Student alloc] init];
-    Student *otherStudent = [[Student alloc] init];
-    
-    
-#pragma mark 比返回2个学生的retainCount的差值
-    [student retain];
-    NSLog(@"%ld", (long)[student comareRetainCount:otherStudent]);
-    
-#pragma mark 返回当前时间是几点和几分（NSString类型），如3点58分，分别返回@“3”和@“58”。
-    NSDate *date = [[NSDate alloc] init];
-    NSLog(@"%@", [date hours]);
-    NSLog(@"%@", [date minutes]);
-   
-#pragma mark 定义一个协议，实现一个必须的属性name和可选属性code...
-    GoodStudent *goodStudent = [[GoodStudent alloc] init];
-    NSLog(@"%@", goodStudent);
-  
-#pragma mark 学生单例
-    Student *singletonStudent = [Student sharedStudent];
-    NSLog(@"%@", singletonStudent);
+//    Student *student = [[Student alloc] init];
+//    Student *otherStudent = [[Student alloc] init];
+//    
+//    
+//#pragma mark 比返回2个学生的retainCount的差值
+//    [student retain];
+//    NSLog(@"%ld", (long)[student comareRetainCount:otherStudent]);
+//    
+//#pragma mark 返回当前时间是几点和几分（NSString类型），如3点58分，分别返回@“3”和@“58”。
+//    NSDate *date = [[NSDate alloc] init];
+//    NSLog(@"%@", [date hours]);
+//    NSLog(@"%@", [date minutes]);
+//   
+//#pragma mark 定义一个协议，实现一个必须的属性name和可选属性code...
+//    GoodStudent *goodStudent = [[GoodStudent alloc] init];
+//    NSLog(@"%@", goodStudent);
+//  
+//#pragma mark 学生单例
+//    Student *singletonStudent = [Student sharedStudent];
+//    NSLog(@"%@", singletonStudent);
     
     
 #pragma mark 平均分
     
     // 初始化老师
-    Teacher *teacher = [[Teacher alloc] init];
-    teacher.name = @"Tom";
-    teacher.code = @"122222";
+    Teacher *teacher = [[Teacher alloc] initWithName:@"Tom" code:@"12222" studentArray:nil];
     
     // 初始化学生
-    Student *student1 = [[Student alloc] initWithName:@"stu1" code:@"1" scores:[NSMutableArray arrayWithObjects:@92, @78, nil]];
-    Student *student2 = [[Student alloc] initWithName:@"stu2" code:@"2" scores:[NSMutableArray arrayWithObjects:@83, @87, nil]];
-    Student *student3 = [[Student alloc] initWithName:@"stu3" code:@"3" scores:[NSMutableArray arrayWithObjects:@72, @80, nil]];
-    Student *student4 = [[Student alloc] initWithName:@"stu4" code:@"4" scores:[NSMutableArray arrayWithObjects:@91, @88, nil]];
+    Student *student1 = [[Student alloc] initWithName:@"stu1" code:@"1" scores:[NSMutableArray arrayWithObjects:@42, @78, nil]];
+    Student *student2 = [[Student alloc] initWithName:@"stu2" code:@"2" scores:[NSMutableArray arrayWithObjects:@71, @87, nil]];
+    Student *student3 = [[Student alloc] initWithName:@"stu3" code:@"3" scores:[NSMutableArray arrayWithObjects:@2, @80, nil]];
+    Student *student4 = [[Student alloc] initWithName:@"stu4" code:@"4" scores:[NSMutableArray arrayWithObjects:@61, @78, nil]];
     Student *student5 = [[Student alloc] initWithName:@"stu5" code:@"5" scores:[NSMutableArray arrayWithObjects:@(88), @(91), nil]];
     
     // 将老师设置为学生的委托对象
@@ -73,18 +71,20 @@ int main(int argc, const char * argv[])
     
     // 教师持有所有学生
     teacher.studentArray = students;
-    
-//    NSLog(@"%@", teacher.studentArray);
-    
+//    for (int i = 0;  i < 5; i++)
+//    {
+//        NSLog(@"%@", [students[i] scores]);
+//        [students[i] calculateAverageScore];
+//    }
     [teacher send];
-    
+    NSLog(@"%ld", [[teacher averageScores] count]);
    
     
 #pragma mark  释放空间
-    [student release];
-    [student release];
-    [otherStudent release];
-    [date release];
+//    [student release];
+//    [student release];
+//    [otherStudent release];
+//    [date release];
     return 0;
   
 }

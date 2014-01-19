@@ -21,6 +21,7 @@ NSString * const TeacherNotificationName = @"TeacherNotificationName";
         _name = [name copy];
         _code = [code copy];
         _studentArray = studentArray;
+        _averageScores = [[NSMutableArray alloc] init];
     }
     return  self;
 }
@@ -29,6 +30,8 @@ NSString * const TeacherNotificationName = @"TeacherNotificationName";
 {
     [_name release];
     [_code release];
+    [_studentArray release];
+    [_averageScores release];
     [super dealloc];
 }
 

@@ -26,7 +26,9 @@
 - (id)initWithName:(NSString *)name
               code:(NSString *)code
       studentArray:(NSMutableArray *)studentArray;
-
+/**
+ *  给监听器发送消息
+ */
 - (void)send;
 @end
 
