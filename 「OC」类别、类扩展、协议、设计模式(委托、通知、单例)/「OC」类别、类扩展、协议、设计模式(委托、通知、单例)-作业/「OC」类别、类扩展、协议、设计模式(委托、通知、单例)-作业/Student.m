@@ -23,22 +23,12 @@ static Student *studentSingleton = nil;
     return self;
 }
 
-- (id)initWithName:(NSString *)name code:(NSString *)code
+- (id)initWithName:(NSString *)name code:(NSString *)code scores:(NSMutableArray *)scores
 {
     if (self = [super init])
     {
         _name = [name copy];
         _code = [code copy];
-    }
-    
-    return self;
-}
-
-- (id)initWithName:(NSString *)name code:(NSString *)code scores:(NSMutableArray *)scores
-{
-    if (self = [super init])
-    {
-        [self initWithName:name code:code];
         _scores = [scores retain];
         
         [self registerNotification];
@@ -119,9 +109,6 @@ extern NSString * const TeacherNotificationName;
         }
         averageScore /= [_scores count];
     }
-    
-    NSLog(@"avg = %f", averageScore);
-    
     
     if (_delegate && [_delegate respondsToSelector:@selector(printStudent:averageScore:)])
     {

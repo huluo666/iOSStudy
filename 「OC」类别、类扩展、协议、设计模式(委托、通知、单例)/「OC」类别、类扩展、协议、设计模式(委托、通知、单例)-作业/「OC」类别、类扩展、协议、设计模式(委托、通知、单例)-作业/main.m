@@ -25,26 +25,26 @@ int main(int argc, const char * argv[])
 
     
 #pragma mark  初始化
-//    Student *student = [[Student alloc] init];
-//    Student *otherStudent = [[Student alloc] init];
-//    
-//    
-//#pragma mark 比返回2个学生的retainCount的差值
-//    [student retain];
-//    NSLog(@"%ld", (long)[student comareRetainCount:otherStudent]);
-//    
-//#pragma mark 返回当前时间是几点和几分（NSString类型），如3点58分，分别返回@“3”和@“58”。
-//    NSDate *date = [[NSDate alloc] init];
-//    NSLog(@"%@", [date hours]);
-//    NSLog(@"%@", [date minutes]);
-//   
-//#pragma mark 定义一个协议，实现一个必须的属性name和可选属性code...
-//    GoodStudent *goodStudent = [[GoodStudent alloc] init];
-//    NSLog(@"%@", goodStudent);
-//  
-//#pragma mark 学生单例
-//    Student *singletonStudent = [Student sharedStudent];
-//    NSLog(@"%@", singletonStudent);
+    Student *student = [[Student alloc] init];
+    Student *otherStudent = [[Student alloc] init];
+    
+    
+#pragma mark 比返回2个学生的retainCount的差值
+    [student retain];
+    NSLog(@"%ld", (long)[student comareRetainCount:otherStudent]);
+    
+#pragma mark 返回当前时间是几点和几分（NSString类型），如3点58分，分别返回@“3”和@“58”。
+    NSDate *date = [[NSDate alloc] init];
+    NSLog(@"%@", [date hours]);
+    NSLog(@"%@", [date minutes]);
+   
+#pragma mark 定义一个协议，实现一个必须的属性name和可选属性code...
+    GoodStudent *goodStudent = [[GoodStudent alloc] init];
+    NSLog(@"%@", goodStudent);
+  
+#pragma mark 学生单例
+    Student *singletonStudent = [Student sharedStudent];
+    NSLog(@"%@", singletonStudent);
     
     
 #pragma mark 平均分
@@ -71,20 +71,18 @@ int main(int argc, const char * argv[])
     
     // 教师持有所有学生
     teacher.studentArray = students;
-//    for (int i = 0;  i < 5; i++)
-//    {
-//        NSLog(@"%@", [students[i] scores]);
-//        [students[i] calculateAverageScore];
-//    }
+
     [teacher send];
     NSLog(@"%ld", [[teacher averageScores] count]);
    
     
 #pragma mark  释放空间
-//    [student release];
-//    [student release];
-//    [otherStudent release];
-//    [date release];
+    [student release];
+    [student release];
+    [otherStudent release];
+    [date release];
+    [teacher release];
+    [goodStudent release];
     
     return 0;
   

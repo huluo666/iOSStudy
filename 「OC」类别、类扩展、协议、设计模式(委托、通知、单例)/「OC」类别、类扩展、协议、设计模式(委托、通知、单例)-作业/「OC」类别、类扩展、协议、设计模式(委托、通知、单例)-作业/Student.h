@@ -37,8 +37,6 @@
 @property (retain, nonatomic) NSMutableArray *scores;
 @property (assign, nonatomic) id<StudentDelegate> delegate;
 
-
-- (id)initWithName:(NSString *)name code:(NSString *)code;
 - (id)initWithName:(NSString *)name code:(NSString *)code scores:(NSMutableArray *)scores;
 - (double)calculateAvg;
 
