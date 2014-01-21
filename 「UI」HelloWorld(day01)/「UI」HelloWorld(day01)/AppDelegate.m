@@ -56,9 +56,9 @@
 //    button.backgroundColor = [UIColor colorWithRed:0.314 green:0.706 blue:0.523 alpha:1.000];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     // 设置边界大小
-    button.bounds = CGRectMake(0, 0, 100, 30);
+    button.bounds    = CGRectMake(0, 0, 100, 30);
     // 设置位置
-    button.center = CGPointMake(160, CGRectGetMaxY(_textField.frame)+50);
+    button.center    = CGPointMake(160, CGRectGetMaxY(_textField.frame)+50);
     [button setTitle:@"确定" forState:UIControlStateNormal];
     [button setTitle:@"高亮" forState:UIControlStateHighlighted];
     // 关联按钮事件
