@@ -9,6 +9,9 @@
 - [protocol](#protocol)
 - [block](#block)
 
+- [UIView](#UIView)
+
+
 <h3 id="nameMessage"> 代码规范 </h3>
 
 **变量**
@@ -249,8 +252,15 @@ subarray    = [array   subarrayWithRange:segment];
     NSLog(@"%i", c);
 	```
 
+---
 
+<h3 id="UIView"> UIView </h3>
 
+UIView常见属性以及含义
+
+- frame:  	相对于父视图的位置和大小(CGRect)
+- bounds: 	相对于自己的的位置和大小(CGRect)
+- center:	相对于父视图自己的中心点
 
 
 
