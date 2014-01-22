@@ -362,6 +362,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "「UI」HelloWorld(day01)/「UI」HelloWorld(day01)-Prefix.pch";
 				INFOPLIST_FILE = "「UI」HelloWorld(day01)/「UI」HelloWorld(day01)-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
@@ -376,6 +377,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "「UI」HelloWorld(day01)/「UI」HelloWorld(day01)-Prefix.pch";
 				INFOPLIST_FILE = "「UI」HelloWorld(day01)/「UI」HelloWorld(day01)-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;

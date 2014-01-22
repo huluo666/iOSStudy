@@ -59,6 +59,7 @@ Markdown 的目标是实现「易读易写」。
 
 总之， Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像\*强调\*。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。
 
+
 <h3 id="html">兼容 HTML</h3>
 
 Markdown 语法的目标是：成为一种适用于网络的*书写*语言。
@@ -128,7 +129,6 @@ Markdown 将会把它转换为：
 * * *
 
 <h2 id="block">区块元素</h2>
-
 
 <h3 id="p">段落和换行</h3>
 
@@ -582,6 +582,7 @@ Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符�
 
 <h3 id="code">代码</h3>
 
+
 如果要标记一小段行内代码，你可以用反引号把它包起来（`` ` ``），例如：
 
     Use the `printf()` function.
@@ -598,7 +599,10 @@ Markdown 使用星号（`*`）和底线（`_`）作为标记强调字词的符�
 
     <p><code>There is a literal backtick (`) here.</code></p>
 
-代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：
+代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号： 
+
+
+
 
 	A single backtick in a code span: `` ` ``
 	
@@ -754,3 +758,4 @@ Mac 平台
 * [Sublime Text 2](http://www.sublimetext.com/2) + [MarkdownEditing](http://ttscoff.github.com/MarkdownEditing/) / [教程](http://lucifr.com/2012/07/12/markdownediting-for-sublime-text-2/)
 
 \*** 如有更好的 Markdown 免费编辑器推荐，请到[这里反馈](https://gitcafe.com/riku/Markdown-Syntax-CN/tickets/1)，谢谢！
+

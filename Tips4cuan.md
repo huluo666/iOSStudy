@@ -44,27 +44,26 @@ dealloc方法应该被放置在实现方法的顶部，直接在@synthesize或@d
 
 良好的风格：
 
-```
-NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
+	NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
+	
+	NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
+	
+	NSNumber *shouldUseLiterals = @YES;
+	
+	NSNumber *buildingZIPCode = @10018;
 
-NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
-
-NSNumber *shouldUseLiterals = @YES;
-
-NSNumber *buildingZIPCode = @10018;
-```
  
 不良的风格：
 
-```
-NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
 
-NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
+	NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
+	
+	NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
+	
+	NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
+	
+	NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 
-NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
-
-NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
-```
  
 如非必要，避免使用特定类型的数字（相较于使用5.3f，应使用5.3）。
 
@@ -74,61 +73,56 @@ NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
 
 一个方法的命名首先描述返回什么，接着是什么情况下被返回。方法签名中冒号的前面描述传入参数的类型。以下类方法和实例方法命名的格式语法：
 
-```
-[object/class thing+condition];
+	[object/class thing+condition];
+	
+	[object/class thing+input:input];
+	
+	[object/class thing+identifer:input];
 
-[object/class thing+input:input];
-
-[object/class thing+identifer:input];
-```
- 
 Cocoa命名举例：
 
-```
-realPath    = [path     stringByExpandingTildeInPath];
+	realPath    = [path     stringByExpandingTildeInPath];
+	
+	fullString  = [string   stringByAppendingString:@"Extra Text"];
+	
+	object      = [array    objectAtIndex:3];
+	
+	// 类方法
+	
+	newString   = [NSString stringWithFormat:@"%f",1.5];
+	
+	newArray    = [NSArray  arrayWithObject:newString];
 
-fullString  = [string   stringByAppendingString:@"Extra Text"];
-
-object      = [array    objectAtIndex:3];
-
-// 类方法
-
-newString   = [NSString stringWithFormat:@"%f",1.5];
-
-newArray    = [NSArray  arrayWithObject:newString];
-```
 
 良好的自定义方法命名风格：
 
-```
-recipients  = [email    recipientsSortedByLastName];
-
-newEmail    = [CDCEmail emailWithSubjectLine:@"Extra Text"];
-
-emails      = [mailbox  messagesReceivedAfterDate:yesterdayDate];
-```
+	recipients  = [email    recipientsSortedByLastName];
+	
+	newEmail    = [CDCEmail emailWithSubjectLine:@"Extra Text"];
+	
+	emails      = [mailbox  messagesReceivedAfterDate:yesterdayDate];
 
 当需要获取对象值的另一种类型的时候，方法命名的格式语法如下：
 
-```
-[object adjective+thing];
 
-[object adjective+thing+condition];
+	[object adjective+thing];
+	
+	[object adjective+thing+condition];
+	
+	[object adjective+thing+input:input];
 
-[object adjective+thing+input:input];
-```
  
 良好的自定义方法命名风格：
 
-```
-capitalized = [name    capitalizedString];
 
-rate        = [number  floatValue];
+	capitalized = [name    capitalizedString];
+	
+	rate        = [number  floatValue];
+	
+	newString   = [string  decomposedStringWithCanonicalMapping];
+	
+	subarray    = [array   subarrayWithRange:segment];
 
-newString   = [string  decomposedStringWithCanonicalMapping];
-
-subarray    = [array   subarrayWithRange:segment];
-```
 方法签名尽量做到含义明确。
 
 ---
@@ -140,45 +134,46 @@ subarray    = [array   subarrayWithRange:segment];
 - 有一个+1(retain/alloc/new/copy/mutableCopy)就对应一个-1(release)
 - 为什么需要retain/copy？因为当前消息中用到的成员变量在其他方法种也可能需要调用，如果在当前方法中release了，那么-1就可能销毁数据了，其他方法种就出现了访问野指针。所以持有对象+1，对其他方法种不会照成干扰
 
-	```
-	void test(Student *stu) 
-	{
-	    Book *book = [[Book alloc] initWithPrice:3.5];
+		void test(Student *stu) 
+		{
+		    Book *book = [[Book alloc] initWithPrice:3.5];
+		
+		    stu.book = book; // 如果没有retain.等效于_book = book;
+		
+		    [book release];
+		}
+		
+		void test1(Student *stu) 
+		{
+		    [stu readBook];
+		}
+		
+		int main(int argc, const char * argv[])
+		{
+			Student *stu = [[Student alloc] initWithAge:10];
+		
+			test(stu); //book:0
+		
+			test1(stu); // 调用book，野指针错误
+		
+			[stu release];
+		
+		    return 0;
+		}
+		
+		Student.m
+		- (void) readBook
+		{
+			NSLog(@"read %@", _book)
+		} 
+					
 	
-	    stu.book = book; // 如果没有retain.等效于_book = book;
-	
-	    [book release];
-	}
-	
-	void test1(Student *stu) 
-	{
-	    [stu readBook];
-	}
-	
-	int main(int argc, const char * argv[])
-	{
-		Student *stu = [[Student alloc] initWithAge:10];
-	
-		test(stu); //book:0
-	
-		test1(stu); // 调用book，野指针错误
-	
-		[stu release];
-	
-	    return 0;
-	}
-	
-	Student.m
-	- (void) readBook
-	{
-		NSLog(@"read %@", _book)
-	} 
-	
-	```
 
-- 创建对象时尽量使用autorelease	- 创建临时对象时,尽量同时在同一行中 autorelease 掉,而非使用单独的 release 语句	- 虽然这样会稍微有点慢,但这样可以阻止因为提前 return 或其他意外情况导致的内存泄露。通盘来看这是值得的。如:
-		```	// 避免这样使用(除非有性能的考虑)	MyController* controller = [[MyController alloc] init];	// ... 这里的代码可能会提前return ...	[controller release];	// 这样更好	MyController* controller = [[[MyController alloc] init] autorelease];
-	```---
+- 创建对象时尽量使用autorelease
+	- 创建临时对象时,尽量同时在同一行中 autorelease 掉,而非使用单独的 release 语句
+	- 虽然这样会稍微有点慢,但这样可以阻止因为提前 return 或其他意外情况导致的内存泄露。通盘来看这是值得的。如:
+					// 避免这样使用(除非有性能的考虑)			MyController* controller = [[MyController alloc] init];			// ... 这里的代码可能会提前return ...			[controller release];			// 这样更好			MyController* controller = [[[MyController alloc] init] autorelease];
+		---
 
 <h3 id="@class"> @class </h3>
 
@@ -203,9 +198,8 @@ subarray    = [array   subarrayWithRange:segment];
 
 <h3 id="block"> block </h3>
 
-- 类似于java的匿名内部类
-
-	```
+	- 类似于java的匿名内部类
+	
 	int (^sum)(int, int) = ^(int a, int b)
 	{
 		return a + b;
@@ -213,9 +207,7 @@ subarray    = [array   subarrayWithRange:segment];
 	
 	int sum = sum(10, 2);
 	NSLog(@"%i", sum); 
-	```
-	
-	```
+
 	typedef int (^mySum)(int, int);
 	void test()
 	{
@@ -225,50 +217,82 @@ subarray    = [array   subarrayWithRange:segment];
 		}
 		NSLog(@"%i"， sum(10, 2));
 	}
-	```
+	
 - block可以访问外面定义的变量
 - 如果外面的变量用__block声明，就可以在block内部修改
 - block与指针函数的区别于联系
 
-	```
-	// 定义了Sum这种Block类型
-    typedef int (^Sum) (int, int);
-    
-    // 定义了sump这种指针类型，这种指针是指向函数的
-    typedef int (*Sump) (int, int);
-    
-    // 定义了一个block变量
-    Sum sum1 = ^(int a, int b) {
-        return a + b;
-    };
-    
-    int c = sum1(10, 10);
-    NSLog(@"%i", c);
-    
-    // 定义一个指针变量p指向sum函数
-    Sump p = sum;
-    // c = (*p)(9, 8);
-    c = p(9, 8);
-    NSLog(@"%i", c);
-	```
+		// 定义了Sum这种Block类型
+		typedef int (^Sum) (int, int);
+	    
+	    // 定义了sump这种指针类型，这种指针是指向函数的
+	    typedef int (*Sump) (int, int);
+	    
+	    // 定义了一个block变量
+	    Sum sum1 = ^(int a, int b) {
+	        return a + b;
+	    };
+	    
+	    int c = sum1(10, 10);
+	    NSLog(@"%i", c);
+	    
+	    // 定义一个指针变量p指向sum函数
+	    Sump p = sum;
+	    // c = (*p)(9, 8);
+	    c = p(9, 8);
+	    NSLog(@"%i", c);
 
 ---
 
+<h3 id="NSString"> NSString </h3>
+
+- 创建常量字符串
+
+		NSString *aString = @"This is a String";
+	
+- 创建空字符串
+
+		NSString *aString = [[String alloc] init];
+		aString = @"This is a String";
+		
+- 提升速度的方法
+
+		NSString *aString = [[NSString alloc] initWithString:@"This is a String"];
+		
+- 其他方法
+
+		-(id)initWithFormat:(NSString *)format // 便利构造器
+		-(id)initWithData:(NSData *) encoding:(NSStringEncoding) encoding;
+		-(id)initWithCString(const char *)cString encoding:(NSStringEncoding)encoding; // 通过一个c字符串得到一个新字符串
+
+
 <h3 id="UIView"> UIView </h3>
 
-UIView常见属性以及含义
+**UIView常见属性以及含义**
+	
+	- frame:  			相对于父视图的位置和大小(CGRect)
+	- bounds: 			相对于自己的的位置和大小(CGRect)
+	- center:			相对于父视图自己的中心点
+	- transform 		变换属性(CGAffineTransform)
+	- superview		父视图
+	- subviews			子视图
+	- window			当前view所在的window
+	- backgroundColor	背景色(UIColor)
+	- alpha				透明度(CGFloat)
+	- hidden			是否隐藏
+	- userInteractionEnabled	是否开启交互
+	- tag				区分标识
+	- layer				视图层(CALayer)
+	
+	- 屏幕上能够看见的都是UIView
+	- 每一个UIView都是容器
+	- IBAction === void 能让方法显示到storyboard文件的右键列表
+	- IButlet能够让属性显示到storyboard的右键列表
+	- bounds的x,y永远为0(以自身左上角为原点)，frame的x,y以父视图的左上角为原点
 
-- frame:  	相对于父视图的位置和大小(CGRect)
-- bounds: 	相对于自己的的位置和大小(CGRect)
-- center:	相对于父视图自己的中心点
+**UIView的常用方法**
 
-
-
-
-
-
-
-
-
-
-
+	- (void)removeFromSuperview;// 从父视图中移除
+	- (void)addSubview:(UIView *)view;// 添加一个子视图
+	- (BOOL)isDescendantOgView(UIView *)view;// 将某个子视图移到上方显示
+	- (UIView *)viewWithTag:(NSInteger)view;// 取到指定tag值的view  
