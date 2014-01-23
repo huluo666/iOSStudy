@@ -11,7 +11,6 @@
 @interface ViewController ()
 
 - (void)initializeUserInteface;
-
 @end
 
 @implementation ViewController

@@ -11,9 +11,18 @@
 - [OC数据类型](#OCDataType)
 - [NSString](#NSString)
 - [NSArray](#NSArray)
+- [NSDictionary](#NSDictionary)
+- [NSSet](#NSSet)
 - [UIView](#UIView)
-
-
+- [UIButton(按钮)](#UIButton)
+- [UILabel(标签)](#UILabel)
+- [UITextField(文本域)）](#UITextField)
+- [UISwitch(开关)](#UISwitch)
+- [UISlider(滑条)](#UISlider)
+- [UIProgressView(进度条)](#UIProgressView)
+- [UISegmentedControl(分段控件)](#UISegmentedControl)
+- [UIActivityIndicatorView(进度指示器/菊花)](#UIActivityIndicatorView)
+- [UIViewController](#UIViewController)
 
 <h3 id="nameMessage"> 代码规范 </h3>
 
@@ -176,7 +185,7 @@
 	- 创建临时对象时,尽量同时在同一行中 autorelease 掉,而非使用单独的 release 语句
 	- 虽然这样会稍微有点慢,但这样可以阻止因为提前 return 或其他意外情况导致的内存泄露。通盘来看这是值得的。如:
 					// 避免这样使用(除非有性能的考虑)			MyController* controller = [[MyController alloc] init];			// ... 这里的代码可能会提前return ...			[controller release];			// 这样更好			MyController* controller = [[[MyController alloc] init] autorelease];
-		---
+---
 
 <h3 id="@class"> @class </h3>
 
@@ -384,7 +393,70 @@
 	[array objectAtIndex:idx] 简写为array[idx]
 	[array replaceObjectAtIndex:idx withObject:newObj] 简写为array[idx] = newObj;
 	
-****
+**NSMutableArray**
+
+	- (id)initWithCapacity:(NSUInteger)numItems; // 初始化
+	+ (id)arrayWithCapacity:(NSUInteger)numItems;// 初始化
+	- (void)addObject:(id)anObject; // 末尾加入一个元素
+	- (void)insertObject:(id)anObject atIndex:(NSUInteger)index; // 插入一个元素
+	- (void)removeLastObject; // 删除最后一个元素
+	- (void)removeObjectAtIndex:(NSUInteger)index; //删除某一个元素
+	- (void)replaceObjectAtIndex:(NSUInteger)index withObject:(id)anObject; //更改某个位置的元素
+	+ (instancetype)arrayWithObjects:(id)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
+	- (void)addObject:(id)anObject;
+
+---
+
+<h3 id="NSDictionary"> NSDictionary </h3>
+
+**NSDictionary**
+
+	- (instancetype)initWithObjects:(NSArray *)objects forKeys:(NSArray *)keys; // 用数据数组和key值数据初始化
+	- (instancetype)initWithObjectsAndKeys:(id)firstObject, ... NS_REQUIRES_NIL_TERMINATION; // 用key和value对初始化
+	+ (instancetype)dictionaryWithObject:(id)object forKey:(id <NSCopying>)key; // 用某个对象初始化
+	- (id)objectForKey:(id)akey; // 从key获取value值
+	- (id)valueForKey:(id)aKey; // 从key得到value值
+	- (NSArray *)allkeys; // 获取所有的key
+	- (NSArray *)allVlues; // 获取所有的value值
+	
+	- [NSDictionary dictionary] 简写为 @{}
+	- [NSDictionary dictionaryWithObject:o1 forKey:k1] 简写为 @{k1:o1}
+	- [NSDictionary dictionaryWithObjectsAndKeys:o1, k1, o2, k2, o3, k3, nil] 简写为 @{k1:o1, k2:o2, k3:o3}
+
+**NSMutableDictionary**
+- (void)setObject:(id)anObject forKey:(id)key; // 增加和修改可变字典的内容
+- (void)setValue:(id)anvlaue forKey:(id<NSCopying>)aKey; // 增加和修改可变字典的内容
+- (void)removeObjectForkey:(id)aKey; // 删除Key值对应的对象
+- (void)removeAllObjects; // 删除所有字典内容
+
+---
+
+<h3 id="NSSet"> NSSet </h3>
+ 
+**初始化**
+
+	- (id)initWithObjects:(id)firstObject, ...
+	+ (id)setWithObjects:(id)firstObject, ...
+
+**集的元素个数**
+
+	- (NSUInteger)count;
+	- (id)member:(id)object;
+	- (NSEnumerator *)objectEnumerator;
+
+**获取集中的元素**
+
+	- (NSArray *)allObjects;
+	- (id)anyObject;
+	- (BOOL)containsObject:(id)anObject;
+
+**NSMutableSet**
+
+	- (void)addObject:(id)anObject;
+	- (void)removeObject:(id)object;
+	+ (id)setWithObject:(id)object;
+	+ (id)setWithObjects:(const id *)objects count:(NSUInteger)cnt;
+	+ (id)setWithObjects:(id)firstOject, ...
 
 ---
 
@@ -418,3 +490,228 @@
 	- (void)addSubview:(UIView *)view;// 添加一个子视图
 	- (BOOL)isDescendantOgView(UIView *)view;// 将某个子视图移到上方显示
 	- (UIView *)viewWithTag:(NSInteger)view;// 取到指定tag值的view  
+
+---
+
+<h3 id="UIButton"> UIButton(按钮) </h3>
+
+**UIButton初始化**
+
+	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	button.frame = CGRectMake(100, 100, 130, 140);
+	[button setTitle:@"按钮" forState:UIControlStateNormal];
+	[button addTarget:self action:@selector(pressedButton:) forControlEvents:UIControleEventTouchUpInside]
+	
+**事件与回调**
+
+- UIControlEventTouchUpInside // 触摸弹起	
+- UIControlEventValueChanged  // 值变化事件
+- UIControlEventTouchDown	  // 边界内触摸按下事件
+- UIControlEventTouchDownRepeat // 轻击数大于1的重复按下事件
+
+**设置背景和图片**
+
+	- [button setBackgroundImage:[UIImage imageNamed:@"1.png"] forState:UIControlStateNormal];
+	- [button setTitle:@"按钮" forState:UIControlStateNormal];
+		
+	- [lightButton setImage:[UIImage imageNamed:@"开灯"] forState:UIControlStateNormal];
+    - [lightButton setImage:[UIImage imageNamed:@"关灯"] forState:UIControlStateHighlighted]; // 高亮状态
+    - [lightButton setImage:[UIImage imageNamed:@"关灯"] forState:UIControlStateSelected]; // 选中状态
+	- UIControlStateDisable //无法交互状态
+	
+---
+
+<h3 id="UILabel"> UILabel(标签) </h3>	
+	
+**UILabel常用属性**
+
+	- text 					// 设置文本内容
+	- font 					// 设置文本字体格式和大小
+	- textColor 			// 设置文本颜色
+	- textAlignment 		// 设置对齐方式
+	- backgroundColor 		// 设置背景色
+	- numberOfLines 		//文本显示行数，0表示不限制
+	- lineBreakMode   (NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail); // 单词换行|末尾"..."	
+	
+**demo**
+
+	CGSize size = [self sizeWithString:string font:[UIFont systemFontOfSize:15] constraintSize:CGSizeMake(150, 568)];
+
+    UILabel *rightLabel        = [[UILabel alloc] initWithFrame:CGRectMake(165, 250, size.width, size.height)];
+    rightLabel.backgroundColor = [UIColor greenColor];
+    rightLabel.tag             = 14;
+    rightLabel.text            = string;
+    rightLabel.textAlignment   = NSTextAlignmentLeft;
+    rightLabel.font            = [UIFont systemFontOfSize:15];
+    rightLabel.textColor       = [UIColor grayColor];
+    rightLabel.numberOfLines   = 0; //文本显示行数，0表示不限制
+    rightLabel.lineBreakMode   = NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail; // 单词换行|末尾"..."
+    [self.view addSubview:rightLabel];
+    [rightLabel release];
+	
+	// 根据字符内容多少获取Rect的size
+	- (CGSize)sizeWithString:(NSString *)string font:(UIFont *)font constraintSize:(CGSize)constraintSize
+	{
+	    CGRect rect = [string boundingRectWithSize:CGSizeMake(150, 568)
+	                                       options:NSStringDrawingTruncatesLastVisibleLine |
+	                                                NSStringDrawingUsesFontLeading |
+	                                                NSStringDrawingUsesLineFragmentOrigin
+	                                    attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
+	                                       context:nil];
+	    return rect.size;
+	}
+
+---
+
+<h3 id="UITextField"> UITextField(文本域) </h3>
+
+**demo**
+
+	UITextField *textField           = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.view.frame) + 50, CGRectGetMinY(self.view.frame) + 150, 200, 25)];
+    textField.tag = 15;
+    textField.borderStyle            = UITextBorderStyleRoundedRect;
+    textField.placeholder            = @"请输入文本....";
+    textField.font                   = [UIFont systemFontOfSize:10];
+    textField.autocapitalizationType = UITextAutocapitalizationTypeNone;    // 自动大写
+    textField.autocorrectionType     = UITextAutocorrectionTypeNo;          // 自动更正
+    textField.tintColor              = [UIColor redColor];                  // 主色调
+    textField.keyboardType           = UIKeyboardTypeDefault;               // 键盘类型
+    textField.returnKeyType          = UIReturnKeyDone;                     // return键类型
+    textField.clearButtonMode        = UITextFieldViewModeWhileEditing;     // 清除模式
+    textField.delegate               = self;                                // 设置委托
+    textField.secureTextEntry        = YES;
+    [self.view addSubview:textField];	
+
+注意：若要实现UITextFieldDelegate协议中的方法，必须设置delegate为当前对象	
+
+---
+
+<h3 id="UISwitch"> UISwitch(开关) </h3>
+	
+**demo**
+
+	UISwitch *switchControl      = [[UISwitch alloc] initWithFrame:CGRectMake(120, 50, 80, 30)];
+    UISwitch *switchControl      = [[UISwitch alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 40, CGRectGetMinY(self.view.frame) + 55, 80, 30)];
+    switchControl.tintColor      = [UIColor grayColor]; // 主色调,边框
+    switchControl.onTintColor    = [UIColor redColor]; // 开启后颜色
+    switchControl.thumbTintColor = [UIColor blackColor]; // 开关按钮颜色
+	//    switchControl.on             = YES; // 默认开启
+    [switchControl addTarget:self action:@selector(processControl:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:switchControl];
+    [switchControl release];
+
+---
+
+<h3 id="UISlider"> UISlider(滑条) </h3>
+	
+**demo**
+	
+	UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 100, CGRectGetMaxY(switchControl.frame) + 20, 200, 30)];
+    [self.view addSubview:slider];
+    slider.value                 = 0.5;
+    slider.minimumValue          = 0.2; // 最小值
+    slider.maximumValue          = 1.0; // 最大值
+    slider.minimumTrackTintColor = [UIColor redColor]; // 滑条最小进度指示色
+    slider.maximumTrackTintColor = [UIColor grayColor]; // 滑条最大进度指示色
+    slider.continuous            = NO; //是否持续调用事件方法
+    self.view.alpha              = slider.value;
+    [slider addTarget:self action:@selector(processControl:) forControlEvents:UIControlEventValueChanged];
+    [slider release];
+
+---
+
+<h3 id="UIProgressView"> UIProgressView(进度条) </h3>
+
+**demo**
+
+	UIProgressView *progressView   = [[UIProgressView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 100, CGRectGetMaxY(slider.frame) + 20, 200, 30)];
+    progressView.tag               = 20;
+    progressView.progress          = slider.value;
+    progressView.progressTintColor = [UIColor redColor];
+    progressView.trackTintColor    = [UIColor grayColor];
+    [self.view addSubview:progressView];
+    [progressView release];
+    
+---
+
+<h3 id="UISegmentedControl"> UISegmentedControl(分段控件) </h3>
+
+**demo**
+
+	// 分段控件
+    UISegmentedControl *segmentedControl  = [[UISegmentedControl alloc] initWithItems:@[@"白", @"红", @"绿", @"蓝"]];
+    segmentedControl.bounds               = CGRectMake(0, 0, 200, 30);
+    segmentedControl.center               = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMaxY(progressView.frame) + 40);
+    segmentedControl.selectedSegmentIndex = 0; // 当前默认选中的按钮索引
+    segmentedControl.tintColor            = [UIColor blackColor];
+    [segmentedControl addTarget:self action:@selector(processControl:) forControlEvents:UIControlEventValueChanged];
+    [self.view addSubview:segmentedControl];
+    [segmentedControl release];
+
+---
+
+<h3 id="UIActivityIndicatorView"> UIActivityIndicatorView(进度指示器/菊花) </h3>
+
+	// 进度指示器
+    UIActivityIndicatorView *activityIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    activityIndicatorView.bounds           = CGRectMake(0, 0, 40, 40);
+    activityIndicatorView.center           = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMaxY(segmentedControl.frame) + 30);
+	//    activityIndicatorView.hidesWhenStopped = NO; // 进度指示器动画停止后是否显示，默认是YES
+    
+    activityIndicatorView.tag              = 21;
+    [self.view addSubview:activityIndicatorView];
+    [activityIndicatorView release];
+
+---
+
+<h3 id="UIViewController"> UIViewController </h3>
+
+**初始化**
+
+	UIViewController *viewController = 	[[UIViewController alloc] init];
+
+**常用方法**
+
+	- (void)viewDidLoad; //视图加载完成
+	- (void)viewWillAppear:(BOOL)animated; // 将要显示
+	- (void)viewDidAppear:(BOOL)animated; // 显示完成
+	- (void)viewWillDisappear:(BOOL)animated; // 将要移除
+	- (void)viewDidDisappear:(BOOL)animated; // 已经移除
+	- (void)didReceiveMemoryWarning; // 内存警告
+	- (BOOL)shouldAutorotate; // 支持转屏
+	- (NSInteger)supportedInterfaceOrientations; // 支持的转屏方向 
+	- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration; // 控制器试图将要旋转到某个朝向，在方法中处理新的界面布局
+
+**视图控制器的切换**
+ 
+	- [self presentViewController:detailViewControl animated:YES completion:nil];
+	- [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
