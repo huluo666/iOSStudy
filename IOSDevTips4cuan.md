@@ -424,10 +424,11 @@
 	- [NSDictionary dictionaryWithObjectsAndKeys:o1, k1, o2, k2, o3, k3, nil] 简写为 @{k1:o1, k2:o2, k3:o3}
 
 **NSMutableDictionary**
-- (void)setObject:(id)anObject forKey:(id)key; // 增加和修改可变字典的内容
-- (void)setValue:(id)anvlaue forKey:(id<NSCopying>)aKey; // 增加和修改可变字典的内容
-- (void)removeObjectForkey:(id)aKey; // 删除Key值对应的对象
-- (void)removeAllObjects; // 删除所有字典内容
+
+	- (void)setObject:(id)anObject forKey:(id)key; // 增加和修改可变字典的内容
+	- (void)setValue:(id)anvlaue forKey:(id<NSCopying>)aKey; // 增加和修改可变字典的内容
+	- (void)removeObjectForkey:(id)aKey; // 删除Key值对应的对象
+	- (void)removeAllObjects; // 删除所有字典内容
 
 ---
 
