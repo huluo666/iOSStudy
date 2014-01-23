@@ -1,25 +1,23 @@
 //
 //  AppDelegate.m
-//  UITask
+//  UIDemoDay03
 //
-//  Created by cuan on 14-1-22.
+//  Created by cuan on 14-1-23.
 //  Copyright (c) 2014年 cuan. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "LoginViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-//    self.window.rootViewController = [[[ViewController alloc] init] autorelease];
-    self.window.rootViewController = [[[LoginViewController alloc] init] autorelease];
+    self.window.rootViewController = [[[ViewController alloc] init] autorelease];
     
     [self.window makeKeyAndVisible];
     return YES;

@@ -8,39 +8,42 @@
 - [category](#category)
 - [protocol](#protocol)
 - [block](#block)
-
+- [OC数据类型](#OCDataType)
+- [NSString](#NSString)
+- [NSArray](#NSArray)
 - [UIView](#UIView)
+
 
 
 <h3 id="nameMessage"> 代码规范 </h3>
 
 **变量**
 
-变量的命令应尽量做到自描述。除了在for()循环语句中，单字母的变量应该避免使用（如i,j,k等）。一般循环语句的当前对象的命名前缀包括“one”、“a/an”。对于简单的单个对象使用“item”命名.
+- 变量的命令应尽量做到自描述。除了在for()循环语句中，单字母的变量应该避免使用（如i,j,k等）。一般循环语句的当前对象的命名前缀包括“one”、“a/an”。对于简单的单个对象使用“item”命名.
 
-尽量的使用属性而非实例变量。除了在初始化方法（init，initWithCoder：等）、dealloc方法以及自定义setter与getter方法中访问属性合成的实例变量，其他的情况使用属性进行访问。
+- 尽量的使用属性而非实例变量。除了在初始化方法（init，initWithCoder：等）、dealloc方法以及自定义setter与getter方法中访问属性合成的实例变量，其他的情况使用属性进行访问。
 
 ---
 
 **命名**
 
-对于NSString、NSArray、NSNumber或BOOL类型，变量的命名一般不需要表明其类型。
+- 对于NSString、NSArray、NSNumber或BOOL类型，变量的命名一般不需要表明其类型。
 
-如果变量不是以上基本常用类型，则变量的命名就应该反映出自身的类型。但有时仅需要某些类的一个实例的情况下，那么只需要基于类名进行命名。
+- 如果变量不是以上基本常用类型，则变量的命名就应该反映出自身的类型。但有时仅需要某些类的一个实例的情况下，那么只需要基于类名进行命名。
 
-大部分情况下，NSArray或NSSet类型的变量只需要使用单词复数形式（比如mailboxes），不必在命名中包含“mutable”。如果复数变量不是NSArray或NSSet类型，则需要指定其类型。
+- 大部分情况下，NSArray或NSSet类型的变量只需要使用单词复数形式（比如mailboxes），不必在命名中包含“mutable”。如果复数变量不是NSArray或NSSet类型，则需要指定其类型。
 
 ---
 
 **init与dealloc**
 
-dealloc方法应该被放置在实现方法的顶部，直接在@synthesize或@dynamic语句之后。init方法应该被放置在dealloc方法的下面。
+- dealloc方法应该被放置在实现方法的顶部，直接在@synthesize或@dynamic语句之后。init方法应该被放置在dealloc方法的下面。
 
 ---
 
 **字面值**
 
-对于NSString，NSDictionary，NSArray和NSNumber类，当需要创建这些类的不可变实例时，应该使用这些类的字面值表示形式。使用字面值表示的时候nil不需要传入NSArray和NSDictionary中作为字面值。这种语法兼容老的iOS版本，因此可以在iOS5或者更老的版本中使用它。
+- 对于NSString，NSDictionary，NSArray和NSNumber类，当需要创建这些类的不可变实例时，应该使用这些类的字面值表示形式。使用字面值表示的时候nil不需要传入NSArray和NSDictionary中作为字面值。这种语法兼容老的iOS版本，因此可以在iOS5或者更老的版本中使用它。
 
 良好的风格：
 
@@ -71,59 +74,59 @@ dealloc方法应该被放置在实现方法的顶部，直接在@synthesize或@d
 
 **方法命名**
 
-一个方法的命名首先描述返回什么，接着是什么情况下被返回。方法签名中冒号的前面描述传入参数的类型。以下类方法和实例方法命名的格式语法：
+- 一个方法的命名首先描述返回什么，接着是什么情况下被返回。方法签名中冒号的前面描述传入参数的类型。以下类方法和实例方法命名的格式语法：
 
-	[object/class thing+condition];
-	
-	[object/class thing+input:input];
-	
-	[object/class thing+identifer:input];
+		[object/class thing+condition];
+		
+		[object/class thing+input:input];
+		
+		[object/class thing+identifer:input];
 
-Cocoa命名举例：
+- Cocoa命名举例：
 
-	realPath    = [path     stringByExpandingTildeInPath];
-	
-	fullString  = [string   stringByAppendingString:@"Extra Text"];
-	
-	object      = [array    objectAtIndex:3];
-	
-	// 类方法
-	
-	newString   = [NSString stringWithFormat:@"%f",1.5];
-	
-	newArray    = [NSArray  arrayWithObject:newString];
-
-
-良好的自定义方法命名风格：
-
-	recipients  = [email    recipientsSortedByLastName];
-	
-	newEmail    = [CDCEmail emailWithSubjectLine:@"Extra Text"];
-	
-	emails      = [mailbox  messagesReceivedAfterDate:yesterdayDate];
-
-当需要获取对象值的另一种类型的时候，方法命名的格式语法如下：
+		realPath    = [path     stringByExpandingTildeInPath];
+		
+		fullString  = [string   stringByAppendingString:@"Extra Text"];
+		
+		object      = [array    objectAtIndex:3];
+		
+		// 类方法
+		
+		newString   = [NSString stringWithFormat:@"%f",1.5];
+		
+		newArray    = [NSArray  arrayWithObject:newString];
 
 
-	[object adjective+thing];
-	
-	[object adjective+thing+condition];
-	
-	[object adjective+thing+input:input];
+- 良好的自定义方法命名风格：
+
+		recipients  = [email    recipientsSortedByLastName];
+		
+		newEmail    = [CDCEmail emailWithSubjectLine:@"Extra Text"];
+		
+		emails      = [mailbox  messagesReceivedAfterDate:yesterdayDate];
+
+- 当需要获取对象值的另一种类型的时候，方法命名的格式语法如下：
+
+
+		[object adjective+thing];
+		
+		[object adjective+thing+condition];
+		
+		[object adjective+thing+input:input];
 
  
-良好的自定义方法命名风格：
+- 良好的自定义方法命名风格：
 
 
-	capitalized = [name    capitalizedString];
-	
-	rate        = [number  floatValue];
-	
-	newString   = [string  decomposedStringWithCanonicalMapping];
-	
-	subarray    = [array   subarrayWithRange:segment];
+		capitalized = [name    capitalizedString];
+		
+		rate        = [number  floatValue];
+		
+		newString   = [string  decomposedStringWithCanonicalMapping];
+		
+		subarray    = [array   subarrayWithRange:segment];
 
-方法签名尽量做到含义明确。
+- 方法签名尽量做到含义明确。
 
 ---
 
@@ -198,25 +201,25 @@ Cocoa命名举例：
 
 <h3 id="block"> block </h3>
 
-	- 类似于java的匿名内部类
-	
-	int (^sum)(int, int) = ^(int a, int b)
-	{
-		return a + b;
-	}
-	
-	int sum = sum(10, 2);
-	NSLog(@"%i", sum); 
-
-	typedef int (^mySum)(int, int);
-	void test()
-	{
-		mySum sum = ^(int a, int b)
+		- 类似于java的匿名内部类
+		
+		int (^sum)(int, int) = ^(int a, int b)
 		{
 			return a + b;
 		}
-		NSLog(@"%i"， sum(10, 2));
-	}
+		
+		int sum = sum(10, 2);
+		NSLog(@"%i", sum); 
+	
+		typedef int (^mySum)(int, int);
+		void test()
+		{
+			mySum sum = ^(int a, int b)
+			{
+				return a + b;
+			}
+			NSLog(@"%i"， sum(10, 2));
+		}
 	
 - block可以访问外面定义的变量
 - 如果外面的变量用__block声明，就可以在block内部修改
@@ -244,7 +247,34 @@ Cocoa命名举例：
 
 ---
 
+<h3 id="OCDataType"> OC数据类型 </h3>
+
+- NSValue可以用来封装任意数据结构
+
+		(NSValue *)valueWithBytes:(const void *)value objCType:(const char *)type;
+		
+- NSNumber类继承于NSValue，用来封装基本书数据类型，如，int, float等
+
+		+ (NSNumber *)numberWithInt:(int)value;
+		+ (NSNumber *)numberWithFloat:(float)value;
+		+ (NSNumber *)numberWithChar:(char)value;
+		+ (NSNumber *)numberWithBool:(BOOL)value;
+		
+- NSNull用来封装nil值
+
+		+ (NSNull *)null;
+		
+- NSArray、NSSet和NSDictionary等容器只能存储对象，不能存储基本数据类型和结构体，也不能存储nil
+
+- NSString、NSMutableString对字符串封装
+
+- OC特殊数据类型：id, nil, SEL等 
+
+---
+
 <h3 id="NSString"> NSString </h3>
+
+**NSString对象初始化**
 
 - 创建常量字符串
 
@@ -265,6 +295,98 @@ Cocoa命名举例：
 		-(id)initWithData:(NSData *) encoding:(NSStringEncoding) encoding;
 		-(id)initWithCString(const char *)cString encoding:(NSStringEncoding)encoding; // 通过一个c字符串得到一个新字符串
 
+**字符串长度获取**
+		
+- 字符串长度获取
+
+		-(NSInteger)length;
+
+**获取字符串的子串**
+
+- 拼接字符串
+		
+		- (NSString *)stringByAppendingString:(NSString *)aString;
+		- (NSString *)stringByAppendingFormat:(NSString *)format....
+
+- 获取字符串的子串
+
+		- (NSString *)substringFromIndex:(NSUInteger)from;
+		- (NSString *)substring;ToIndex:(NSUInteger)to;
+		- (NSString *)substringWithRang:(NSRang)rang;
+
+- 字符串是否包含别的字符串
+
+		-(BOOL)hasPrefix:(NSString *)aString;
+		-(BOOL)hasSuffix:(NSString *)aString;
+		-(NSRang)rangeOfString:(NSString *)aString;
+
+**字符串的比较**
+
+- 是否相等
+
+		-(BOOL)isEqualToString:(NSString *)str;
+		
+- 比较大小
+
+		-(NSComparisonResult)compare:(NSString *)str;
+
+- 转换大小写
+
+		-(NSString *)uppercaseString;
+		-(NSString *)lowercaseString;
+
+**类型的转换**
+
+	-(double)doubleValue;
+	-(float)floatValue;
+	-(int)intValue;
+	-(NSInteger)integerValue;
+	-(long long)longlongValue;
+	-(BOOL)boolValue;
+	-(double)doubelValue
+	-(id)initWithFormat:(NSString *)format....
+ 
+**可变字符串**
+
+	-(id)initWithCapacity:(NSUInteger)capacity;
+	+(id)stringWithCapacity:(NSUInteger)capacity;
+	-(void)insertString:(NSString *)aString atIndex:(NSUInteger)loc;
+	-(void)deleteCharactersInRang:(NSRange)range;
+	-(void)appendString:(NSString *)aString;
+	-(void)appendFormat:(NSString *)format, ....
+	-(void)setString:(NSString)aString;
+
+---
+
+<h3 id="NSArray"> NSArray </h3>
+
+**初始化**
+
+	+(id)arrayWithObjetcts(id)firstObject, ...
+	+(id)arrayWithArray:(NSArray *)array;
+	-(id)initWithObjects:(id)firstObj, ... NS_REQUIRES_NIL_TERMINATION;
+	-(id)initWithArray:(NSArray *)array;
+
+**数组元素个数**
+
+	int count = [array count]
+
+**获取数组元素**
+
+	[array objectAtIndex:n];
+	[array lastObject];
+	
+**NSArray简化**
+
+	[NSArray array] 简写为@[]
+	[NSArray arrayWithObject:a] 简写为@[a]
+	[NSArray arrayWithObjects:a, b, c, nil] 简写为@[a, b, c]
+	[array objectAtIndex:idx] 简写为array[idx]
+	[array replaceObjectAtIndex:idx withObject:newObj] 简写为array[idx] = newObj;
+	
+****
+
+---
 
 <h3 id="UIView"> UIView </h3>
 

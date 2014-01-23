@@ -1,14 +1,13 @@
 //
 //  AppDelegate.m
-//  UITask
+//  2014.1.23
 //
-//  Created by cuan on 14-1-22.
-//  Copyright (c) 2014年 cuan. All rights reserved.
+//  Created by 张鹏 on 14-1-23.
+//  Copyright (c) 2014年 rimi. All rights reserved.
 //
 
 #import "AppDelegate.h"
 #import "ViewController.h"
-#import "LoginViewController.h"
 
 @implementation AppDelegate
 
@@ -18,8 +17,10 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-//    self.window.rootViewController = [[[ViewController alloc] init] autorelease];
-    self.window.rootViewController = [[[LoginViewController alloc] init] autorelease];
+    ViewController *vc = [[ViewController alloc] init];
+    // window需要一个根控制器
+    self.window.rootViewController = vc;
+    [vc release];
     
     [self.window makeKeyAndVisible];
     return YES;
