@@ -116,7 +116,7 @@ int main(int argc, const char * argv[])
     manager.books = books;
     
     NSLog(@"打印最差的销售员所有未售出的书的信息：");
-    [manager printLoserBooksInfomation];
+    [manager printLoserBooksInformation];
     
 #pragma mark 清理空间
     

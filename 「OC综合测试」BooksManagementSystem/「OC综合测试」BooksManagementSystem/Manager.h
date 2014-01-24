@@ -46,5 +46,5 @@
 /*!
  *    打印最差销售员未售出的书的信息
  */
-- (void)printLoserBooksInfomation;
+- (void)printLoserBooksInformation;
 @end

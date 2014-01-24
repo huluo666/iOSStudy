@@ -17,7 +17,7 @@
     if (!theSalesman || !theBook)
     {
         NSLog(@"kidding!");
-        exit(0);
+        return;
     }
     
     [theSalesman.salesList setValue:@(theBook.price) forKey:theBook.number];
@@ -31,7 +31,7 @@
             ![obj2 isKindOfClass:[Salesman class]])
         {
             NSLog(@"Are you kidding?");
-            exit(0);
+            return 0;
         }
         
         NSComparisonResult result = [@([obj1 sales]) compare:@([obj2 sales])];
@@ -75,7 +75,7 @@
     return nil;
 }
 
-- (void)printLoserBooksInfomation
+- (void)printLoserBooksInformation
 {
     [self sortSalesmanBySales];
     Salesman *loser = _salesmans[[_salesmans count] - 1];

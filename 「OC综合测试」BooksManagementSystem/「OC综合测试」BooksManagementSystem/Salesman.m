@@ -43,7 +43,7 @@
     if (!theBookNumber || theBookNumber.length == 0)
     {
         NSLog(@"Are you fucking kidding me!");
-        exit(0);
+        return;
     }
     
     for (int i = 0; i < [_salesList count]; i++)
