@@ -23,12 +23,12 @@ Markdown 语法说明 (简体中文版)
     *   [兼容 HTML](#html)
     *   [特殊字符自动转换](#autoescape)
 *   [区块元素](#block)
-    *   [段落和换行](#p)
-    *   [标题](#header)
-    *   [区块引用](#blockquote)
-    *   [列表](#list)
-    *   [代码区块](#precode)
-    *   [分隔线](#hr)
+	1. [段落和换行](#p)
+	2. [标题](#header)
+	3. [区块引用](#blockquote)
+	4. [列表](#list)
+	5. [代码区块](#precode)
+	6. [分隔线](#hr)
 *   [区段元素](#span)
     *   [链接](#link)
     *   [强调](#em)
@@ -202,7 +202,7 @@ Markdown 也允许你偷懒只在整个段落的第一行最前面加上 `>` ：
     >
     > Back to the first level.
 
-引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：
+引用的区块内也可以使用其他的 Markdown 语法，包括              标题、列表、代码区块等：
 
 	> ## 这是一个标题。
 	> 
