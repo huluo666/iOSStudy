@@ -1,18 +1,28 @@
 # IOS tips4cuan
 
 **此内容未经过验证，纯属个人总结**
+
 ## 索引
+
+- [一句话知识点](#oneWord)
 - [代码规范](#nameMessage)
 - [retain/release](#retain_release)
+- [ARC](#ARC)
+- [cocoa内存管理规则](#cocoa)
+- [property总结](#propertySummary)
 - [@class](#@class)
 - [category](#category)
-- [protocol](#protocol)
+- [protocol](#protocol) 
 - [block](#block)
 - [OC数据类型](#OCDataType)
 - [NSString](#NSString)
 - [NSArray](#NSArray)
 - [NSDictionary](#NSDictionary)
 - [NSSet](#NSSet)
+- [单例写法](#singleton)
+- [NSFileManger](#NSFileManager)
+- [NSFileHandle](#NSFileHandle)
+- [归档与解档](#archiver)
 - [UIView](#UIView)
 - [UIButton(按钮)](#UIButton)
 - [UILabel(标签)](#UILabel)
@@ -23,6 +33,24 @@
 - [UISegmentedControl(分段控件)](#UISegmentedControl)
 - [UIActivityIndicatorView(进度指示器/菊花)](#UIActivityIndicatorView)
 - [UIViewController](#UIViewController)
+
+
+<h3 id="oneWord"> 一句话知识点 </h3>
+
+- 点语法的本质是getter/setter方法调用于
+- setter/getter里面不能使用self，会造死循环
+- SEL其实是对方法的一种包装，将方法包装成一个SEL类型的数据，去找对应的方法地址。找到地址就可以调用方法。其实消息就是SEL
+- 僵尸对象：所占用内存已经被回收的对象，僵尸对象不能再使用
+- 野指针：指向僵尸对象(不可用内存)的指针，给野指针发消息会报错(EXEC_BAD_ACCESS)
+- 空指针：没有指向任何东西的指针(存的东西是0, NULL, nil)，给空指针发消息不报错
+- BOOL类型property一般指定getter方法格式为isMethod, e.g.:@property (getter=isRich) BOOL rich;
+- 当一个对象调用autorelease方法时，会将整个对象方放到栈顶的释放池 
+- `创建对象时不要直接调用类名，一般用self`.e.g.
+    
+        + (id)person
+        {
+            return [[[self alloc] init] autorelease];
+        }
 
 <h3 id="nameMessage"> 代码规范 </h3>
 
@@ -52,7 +80,7 @@
 
 **字面值**
 
-- 对于NSString，NSDictionary，NSArray和NSNumber类，当需要创建这些类的不可变实例时，应该使用这些类的字面值表示形式。使用字面值表示的时候nil不需要传入NSArray和NSDictionary中作为字面值。这种语法兼容老的iOS版本，因此可以在iOS5或者更老的版本中使用它。
+- 对于NSString，NSDictionary，NSArray和NSNumber类，当需要创建这些类的不可变实例时，应该使用这些类的字面值表示形式。使用字面值表示的时候nil不需要传入NSArray和NSDictionary中作为字面值。这些种语法兼容老的iOS版本，因此可以在iOS5或者更老的版本中使用它。
 
 良好的风格：
 
@@ -62,11 +90,10 @@
 	
 	NSNumber *shouldUseLiterals = @YES;
 	
-	NSNumber *buildingZIPCode = @10018;
+	NSNumber *buildingZIPCode = @10018;555
 
  
 不良的风格：
-
 
 	NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
 	
@@ -105,7 +132,6 @@
 		
 		newArray    = [NSArray  arrayWithObject:newString];
 
-
 - 良好的自定义方法命名风格：
 
 		recipients  = [email    recipientsSortedByLastName];
@@ -116,16 +142,13 @@
 
 - 当需要获取对象值的另一种类型的时候，方法命名的格式语法如下：
 
-
 		[object adjective+thing];
 		
 		[object adjective+thing+condition];
 		
 		[object adjective+thing+input:input];
-
  
 - 良好的自定义方法命名风格：
-
 
 		capitalized = [name    capitalizedString];
 		
@@ -140,9 +163,10 @@
 ---
 
 <h3 id="retain_release"> retain/release </h3>
+
 - `消息涉及到对成员变量操作的时候考虑retain/copy`
 - 哪些方法对成员变量操作？init、setter、类似setter
-- setter/init与dealloc相对应。对象初始化(创建)便retain，对象不需要的时候(小辉)就release
+- setter/init与dealloc相对应。对象初始化(创建)便retain，对象不需要的时候就release
 - 有一个+1(retain/alloc/new/copy/mutableCopy)就对应一个-1(release)
 - 为什么需要retain/copy？因为当前消息中用到的成员变量在其他方法种也可能需要调用，如果在当前方法中release了，那么-1就可能销毁数据了，其他方法种就出现了访问野指针。所以持有对象+1，对其他方法种不会照成干扰
 
@@ -177,20 +201,71 @@
 		- (void) readBook
 		{
 			NSLog(@"read %@", _book)
-		} 
-					
+		} 					
 	
-
 - 创建对象时尽量使用autorelease
 	- 创建临时对象时,尽量同时在同一行中 autorelease 掉,而非使用单独的 release 语句
 	- 虽然这样会稍微有点慢,但这样可以阻止因为提前 return 或其他意外情况导致的内存泄露。通盘来看这是值得的。如:
 					// 避免这样使用(除非有性能的考虑)			MyController* controller = [[MyController alloc] init];			// ... 这里的代码可能会提前return ...			[controller release];			// 这样更好			MyController* controller = [[[MyController alloc] init] autorelease];
 ---
 
+<h3 id="ARC"> ARC </h3>
+
+**ARC的判断准则：只要没有指针指向对象，就会释放对象**
+
+- 指针分2种：强指针和弱指针
+    - 默认情况下，所有指针都是强指针
+    
+**ARC的特点：**
+
+- 不允许调用release、retain、retainCount方法
+- 允许重写dealloc、但是不允许调用[super dealloc]
+- @property的参数
+    - strong: 相当于retain(适用于OC对象类型)
+    - weak: 相当于assign(适用于OC对象类型)
+    - assign: 适用于非OC对象类型
+    - MRC的retain改为strong(循环引用的时使用：一端用strong，一端用weak)
+
+---
+
+<h3 id="cocoa"> Cocoa内存管理规则 </h3>
+
+- 使用alloc、new、copy、mutableCopy生成的对象需要手动释放，这些对象成为堆上的对象
+- 使用以上4种方法以外的方法（遍历初始化）生成的对象，默认retainCount为1，并且设置为自动释放，这些对象可以称作栈上的临时对象，局部变量、方法或者函数传参
+- 使用retain方法持有的对象，需要手动release进行释放，并且保持retain以及release次数想相同
+- 集合类可以持有集合中的对象(retain一次)，当集合对象自身销毁时，会将自身中的所有对象release一次
+- 持有集合类，不会增加内部对象的引用计数值
+- set/init里面retain与dealloc里面release相对应。
+
+---
+
+<h3 id="propertySummary"> 属性的总结 </h3>
+
+- assign:直接赋值，简单、复杂数据类型、SEL(@selector()) 默认属性 避免循环引用(无法释放对象) --delegate:委托、代理设计模式
+- retain:引用计数值+1，适用于对象对象
+- copy:适用于对象，复制，用于NSString,深度复制，retain不加1，对原值release一次
+- readonly:只生成getter
+- readwrite:默认属性，生成getter,setter
+- noatomic：线程不安全
+- atomic:默认，线程安全
+- strong:ARC，强引用
+- weak:ARC,弱引用
+- __ussafe_unretained:类似于assign
+- getter =:规定getter方法的名称
+- **copy:不可变复制，对可变对象复制是深度复制，其它时候一律浅复制**
+- **mutableCopy:可变深度复制**
+- 不可变的对象 通过 copy 不可变的
+- 不可变的对象 通过 mutablecopy 可变的
+- 可变的对象   通过 mutablecopy 可变的
+- 可变的对象   通过 copy 不可变的
+
+---
+
 <h3 id="@class"> @class </h3>
 
-- @class 用于.h文件种，声明一个类
-- \#import用于.m文件，拷贝整个.文件
+- 在.h文件中用@class来声明类，仅仅是告诉编译器，某个名称是一个类
+- 在.m文件中用#import来包含类的所有内容
+- 两端循环引用解决方案：一端用retain, 一端用assign
 
 ---
 
@@ -204,31 +279,32 @@
 <h3 id="protocol"> protocol </h3>
 
 - 与java的接口类似
-- @protocol于@class有一致的用法，提前声明，实现时，在.h文件中声明，在.m中导入
+- @protocol与@class有一致的用法，提前声明，实现时，在.h文件中声明，在.m中导入
+- 协议中方法声明关键字：@required(默认)、@optional(可选)
+- 协议可以定义在单独的文件中，也可以定义在某个类中(这个协议只用在这个类中)，类别同理
 
 ---
 
 <h3 id="block"> block </h3>
 
-		- 类似于java的匿名内部类
-		
-		int (^sum)(int, int) = ^(int a, int b)
+	- 类似于java的匿名内部类
+	
+	int (^sum)(int, int) = ^(int a, int b)
+	{
+		return a + b;
+	}
+	
+	int sum = sum(10, 2);
+	NSLog(@"%i", sum); 
+	typedef int (^mySum)(int, int);
+	void test()
+	{
+		mySum sum = ^(int a, int b)
 		{
 			return a + b;
 		}
-		
-		int sum = sum(10, 2);
-		NSLog(@"%i", sum); 
-	
-		typedef int (^mySum)(int, int);
-		void test()
-		{
-			mySum sum = ^(int a, int b)
-			{
-				return a + b;
-			}
-			NSLog(@"%i"， sum(10, 2));
-		}
+		NSLog(@"%i"， sum(10, 2));
+	}
 	
 - block可以访问外面定义的变量
 - 如果外面的变量用__block声明，就可以在block内部修改
@@ -303,7 +379,16 @@
 		-(id)initWithFormat:(NSString *)format // 便利构造器
 		-(id)initWithData:(NSData *) encoding:(NSStringEncoding) encoding;
 		-(id)initWithCString(const char *)cString encoding:(NSStringEncoding)encoding; // 通过一个c字符串得到一个新字符串
+		
+- e.g.
 
+        NSString *s1 = @"Jack";
+        NSString *s2 = [[NSString alloc] initWithString:@"Jack"];
+        NSString *s3 = [[NSString alloc] initWithFormat:@"my age is %d", 10];
+        NSString *s4 = [[NSString alloc] initWithUTF8String:"Lucy"]; // c字符串 --> OC字符串
+        NSString *s5 = [[NSString alloc] initWithContentsOfFile:@"/Users/cuan/Desktop/1.txt" encoding:NSUTF8StringEncoding error:nil];
+        NSString *s6 = [[NSString alloc] initWithContentsOfURL:@"file:///Users/cuan/demo.txt" encoding:NSUTF8StringEncoding error:nil];
+    
 **字符串长度获取**
 		
 - 字符串长度获取
@@ -328,6 +413,13 @@
 		-(BOOL)hasPrefix:(NSString *)aString;
 		-(BOOL)hasSuffix:(NSString *)aString;
 		-(NSRang)rangeOfString:(NSString *)aString;
+
+**字符串的导出**
+
+    [@"Hello,world" writeToFile:@"/User/cuan/echo.txt" atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    
+    NSURL *url = [NSURL fileURLWithPath:@"/Users/cuan/echo.txt"];
+    [@"hello, every one" writeToURL:url atomically:YES encoding:NSUTF8StringEncoding error:nil];
 
 **字符串的比较**
 
@@ -430,6 +522,18 @@
 	- (void)removeObjectForkey:(id)aKey; // 删除Key值对应的对象
 	- (void)removeAllObjects; // 删除所有字典内容
 
+**字典与数组的联合使用**
+
+    NSArray *persons = @[
+        @{@"name" : @"jack", @"qq" : @"432423423", @"books": @[@"5分钟突破iOS编程", @"5分钟突破android编程"]},
+        @{@"name" : @"rose", @"qq" : @"767567"},
+        @{@"name" : @"jim", @"qq" : @"423423"},
+        @{@"name" : @"jake", @"qq" : @"123123213"}
+        ];
+    
+    NSString *bookName = persons[0][@"books"][1];
+    NSLog(@"%@", bookName);
+
 ---
 
 <h3 id="NSSet"> NSSet </h3>
@@ -461,29 +565,245 @@
 
 ---
 
+<h3 id="singleton"> 单例的写法 </h3>
+
+- 典型的单例写法
+
+		static id sharedMyManager;
+		+ (id)sharedThemeManager
+		{
+			if (sharedMyManager == nil)
+			{
+				sharedMyMamager = [[self alloc] init];
+			}
+			return sharedMyManager;
+		}
+
+- 加锁的写法
+
+		+ (id)sharedThemeManager
+		{
+			@synchronized(self)
+			{
+				if (sharedMyManager == nil)
+				{
+					sharedMyMamager = [[self alloc] init];
+				}
+			}
+			return sharedMyManager;
+		}
+	
+- 第一次实例化创建Lock free
+
+		+ (voidq)initialize
+		{
+			static BOOL initialized = NO;
+			if (initialized == NO)
+			{
+				initialized = YES;
+				sharedMyManager = [[self alloc] init];
+			}
+		}	
+
+- GCD写法
+
+		+ (id)sharedManager
+		{
+			static dispatch_once_t once;
+			dispatch_once(&once, ^{
+				sharedMyManager = [[self alloc] init];
+			});
+			return sharedMyManager;
+		}
+
+- 完整写法
+		
+	**重载下列方法**
+		
+		+ (id)allocWithZone:(NSZone *)zone;
+		+ (id)copyWithZone:(NSZone *)zone;
+		+ (id)retain;
+		+ (void)release;
+		+ (void)autorelease;		
+
+---
+
+<h3 id="NSFileManager"> NSFileManager </h3>
+
+	// 创建一个单例fileManager对象
+	NSFileManager *fileManager = [NSFileManager defaultManager];
+	
+	// 显示当前路径下的所有内容
+	NSError *error = nil;
+	// 浅度遍历
+	NSArray *contentArray =  [fileManager contentsOfDirectoryAtPath:@"/Users/cuan" error:&error];
+	NSLog(@"%@", contentArray);
+	
+	// 深度遍历
+	contentArray = [fileManager subpathsOfDirectoryAtPath:@"/Users/cuan/Github" error:&error];
+	NSLog(@"%@", contentArray);
+	
+	// 创建目录, YES补全中间目录
+	[fileManager createDirectoryAtPath:@"/Users/cuan/Desktop/test" withIntermediateDirectories:YES attributes:nil error:&error];
+	
+	// 创建文件
+	[fileManager createFileAtPath:@"/Users/cuan/Desktop/echo.txt" contents:[@"hello,wolrd" dataUsingEncoding:NSUTF8StringEncoding] attributes:nil];
+	
+	// 文件(夹)的删除
+	[fileManager removeItemAtPath:@"/Users/cuan/Desktop/test" error:&error];
+	
+	// 文件(夹)的拷贝
+	[fileManager copyItemAtPath:@"/Users/cuan/Desktop/echo.txt" toPath:@"/Users/cuan/Desktop/echo2.txt" error:&error];
+	
+	// 文件(夹)的移动
+	[fileManager copyItemAtPath:@"/Users/cuan/Desktop/echo.txt" toPath:@"/Users/cuan/Desktop/mv/echo.txt" error:&error];
+
+---
+
+<h3 id="NSFileHandle"> NSFileHandle </h3>
+
+	// NSFileHandle 文件句柄：对文件内容的操作
+
+    #pragma mark 以只读方式打开文件生成文件句柄
+
+    NSFileHandle *fileHandleReadonly = [NSFileHandle fileHandleForReadingAtPath:@"/Users/cuan/Documents/note.txt"];
+
+    // 通过字节数来读取，每次读取通过指针标记上次读取到的位置
+    NSData *context = [fileHandleReadonly readDataOfLength:10]; // 字节数
+    NSString *contextString = [[NSString alloc] initWithData:context encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", contextString);
+
+    // 一次性读完文件(适用于文件内容不多的情况)
+    context = [fileHandleReadonly readDataToEndOfFile];
+    contextString = [[NSString alloc] initWithData:context encoding:NSUTF8StringEncoding];
+    NSLog(@"%@", contextString);
+
+    #pragma mark 以只写的方式打开文件生成文件句柄
+
+    NSFileHandle *fileHandleWriteOnly = [NSFileHandle fileHandleForWritingAtPath:@"/Users/cuan/Documents/note.txt"];
+
+    // 覆盖
+    [fileHandleWriteOnly writeData:[@"hello" dataUsingEncoding:NSUTF8StringEncoding]];
+
+    // 重写
+    //        [fileHandleWriteOnly truncateFileAtOffset:0]; // 将文件内容截断至0字节，清空
+
+    // 追加
+    [fileHandleWriteOnly seekToEndOfFile]; // 将读写文件指针指向文件末尾
+    [fileHandleWriteOnly writeData:[@"xxxxxx" dataUsingEncoding:NSUTF8StringEncoding]];---
+
+---
+
+<h3 id="archiver"> 归档与解档 </h3>
+
+**对普通的对象归档的要求**
+
+- 对象必须遵守<NSCoding>协议
+- 必须实现以下两个方法
+
+			- (void)encodeWithCoder:(NSCoder *)aCoder
+			{
+			    [aCoder encodeInteger:_age forKey:@"age"];
+			    [aCoder encodeObject:_name forKey:@"name"];
+			    [aCoder encodeObject:_child forKey:@"child"];
+			}
+			
+			- (id)initWithCoder:(NSCoder *)aDecoder
+			{
+			    if (self = [super init])
+			    {
+			        self.name  = [aDecoder decodeObjectForKey:@"name"];
+			        self.age   = [aDecoder decodeIntegerForKey:@"age"];
+			        self.child = [aDecoder decodeObjectForKey:@"child"];
+			    }
+			    return self;
+			}
+
+**demo**
+
+	// 创建字典并存值
+    NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"Lucy", @"name",
+                                @"22", @"age", nil];
+	//        [dictionary  writeToFile:PATH atomically:YES];
+    
+    // 创建数组典并存值
+    NSArray *array = [NSArray arrayWithObjects:@"Lucy", @"22", nil];
+	//        [array writeToFile:PATH atomically:YES];
+    
+    // 创建数据容器
+    NSMutableData *archiverData = [NSMutableData data];
+    // 关联容器与归档管理器
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:archiverData];
+    // 通过归档管理器将数据归档
+    [archiver encodeObject:array forKey:@"array"];
+    [archiver encodeObject:dictionary forKey:@"dictionary"];
+    // 完成编码，(这步很重要)
+    [archiver finishEncoding];
+    // 将归档好的数据写入文件
+    [archiverData writeToFile:PATH atomically:YES];
+    
+    [archiver release];
+    
+	#pragma mark 读取归档数据
+    
+    // 创建解档数据容器
+    NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH]; // 关联解档管理器与数据
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:unarchiverData];
+    // 通过解档管理器和key解档数据
+    NSArray *unArray = [unarchiver decodeObjectForKey:@"array"];
+    NSDictionary *unDictionary = [unarchiver decodeObjectForKey:@"dictionary"];
+    NSLog(@"%@\n%@", unArray, unDictionary);
+    
+    [unarchiverData release];
+    [unarchiver release];
+
+	#pragma mark 普通对象的归档与解档
+    
+    Person *father = [[Person alloc] init];
+    Person *son = [[Person alloc] init];
+    
+    father.name = @"Father";
+    father.age = 32;
+    father.child = son;
+    
+    // 获取归档数据
+    NSData *personData = [NSKeyedArchiver archivedDataWithRootObject:father];
+    // 将归档数据写入文件
+    [personData writeToFile:PATH atomically:YES];
+    // 读出归档数据
+    NSData *unPersonDate = [NSData dataWithContentsOfFile:PATH];
+    // 解档数据
+    Person *unPerson = [NSKeyedUnarchiver unarchiveObjectWithData:unPersonDate];
+    NSLog(@"name = %@, age = %ld, child = %@", unPerson.name, unPerson.age, unPerson.child);
+	
+	[father release];
+    [son release];
+
+---
+
 <h3 id="UIView"> UIView </h3>
 
 **UIView常见属性以及含义**
 	
-	- frame:  			相对于父视图的位置和大小(CGRect)
-	- bounds: 			相对于自己的的位置和大小(CGRect)
-	- center:			相对于父视图自己的中心点
-	- transform 		变换属性(CGAffineTransform)
-	- superview		父视图
-	- subviews			子视图
-	- window			当前view所在的window
-	- backgroundColor	背景色(UIColor)
-	- alpha				透明度(CGFloat)
-	- hidden			是否隐藏
-	- userInteractionEnabled	是否开启交互
-	- tag				区分标识
-	- layer				视图层(CALayer)
+	* frame:  			相对于父视图的位置和大小(CGRect)
+	* bounds: 			相对于自己的的位置和大小(CGRect)
+	* center:			相对于父视图自己的中心点
+	* transform 		变换属性(CGAffineTransform)
+	* superview		父视图
+	* subviews			子视图
+	* window			当前view所在的window
+	* backgroundColor	背景色(UIColor)
+	* alpha				透明度(CGFloat)
+	* hidden			是否隐藏
+	* userInteractionEnabled	是否开启交互
+	* tag				区分标识
+	* layer				视图层(CALayer)
 	
-	- 屏幕上能够看见的都是UIView
-	- 每一个UIView都是容器
-	- IBAction === void 能让方法显示到storyboard文件的右键列表
-	- IButlet能够让属性显示到storyboard的右键列表
-	- bounds的x,y永远为0(以自身左上角为原点)，frame的x,y以父视图的左上角为原点
+	* 屏幕上能够看见的都是UIView
+	* 每一个UIView都是容器
+	* IBAction === void 能让方法显示到storyboard文件的右键列表
+	* IButlet能够让属性显示到storyboard的右键列表
+	* bounds的x,y永远为0(以自身左上角为原点)，frame的x,y以父视图的左上角为原点
 
 **UIView的常用方法**
 
@@ -687,14 +1007,6 @@
  
 	- [self presentViewController:detailViewControl animated:YES completion:nil];
 	- [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];	
-	
-	
-	
-	
-	
-	
-	
-
 	
 	
 	
