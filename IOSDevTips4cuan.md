@@ -1,4 +1,4 @@
-# IOS tips4cuan
+# IOSDevtips4cuan
 
 **此内容未经过验证，纯属个人总结**
 
@@ -23,16 +23,23 @@
 - [NSFileManger](#NSFileManager)
 - [NSFileHandle](#NSFileHandle)
 - [归档与解档](#archiver)
+- [沙盒机制](#sandbox)
 - [UIView](#UIView)
+- [UIViewController](#UIViewController)
 - [UIButton(按钮)](#UIButton)
 - [UILabel(标签)](#UILabel)
 - [UITextField(文本域)）](#UITextField)
+- [UITextView](#UITextView)
 - [UISwitch(开关)](#UISwitch)
 - [UISlider(滑条)](#UISlider)
 - [UIProgressView(进度条)](#UIProgressView)
 - [UISegmentedControl(分段控件)](#UISegmentedControl)
 - [UIActivityIndicatorView(进度指示器/菊花)](#UIActivityIndicatorView)
-- [UIViewController](#UIViewController)
+- [UINavigationController(导航控制器)](#UINavigationController)
+- [UINavigationBar(导航条)](#UINavigationBar)
+- [UINavigationItem](#UINavigationItem)
+- [UIToolBar](#UIToolBar)
+- [codeSnippets](#codeSnippets)
 
 
 <h3 id="oneWord"> 一句话知识点 </h3>
@@ -51,6 +58,11 @@
         {
             return [[[self alloc] init] autorelease];
         }
+
+- 类的本质是对象。是Class类型的对象，简称类对象。 `typedef struct objc_class *Class`. 类名就代表着类对象，每个类只有一个类对象
+
+
+---
 
 <h3 id="nameMessage"> 代码规范 </h3>
 
@@ -271,8 +283,12 @@
 
 <h3 id="category"> category </h3>
 
-- 类别只能扩展方法，不能添加实例变量
 - 类别声明可以和需要扩展的类写在同一个.h文件中，写在原声明后面，实现文件同理
+- 类别是不能为类声明实例变量的。而只能包含方法。但是，所有类作用域中的实例变量同样也在类别的作用域中。包括类声明的所有实例变量，甚至那些声明为 @private 的。
+- 你可为一个类添加的类别的数量没有限制，但是每个类别名必须是唯一的，并且每个类别应当声明/定义不同的方法。
+- 类扩展就像匿名的类别，除了扩展中声明的方法必须在主 @implementation 块中实现。使用 Clang/LLVM 2.0 编译器时，你还可以在一个类扩展中定义属性以及实例变量。
+- 通常我们用类扩展来声明公有的只读属性和私有的读写属性。
+- 类别可以实现原始类的方法，但不推荐这么做，因为它是直接替换原来的方法，这么做后果是再也无法访问原来的方法
 
 ---
 
@@ -781,36 +797,108 @@
 
 ---
 
+<h3 id="sandbox"> 沙盒机制 </h3>
+
+- 获得home目录
+
+		NSString *homeDirectory = NSHomeDirectory();
+		
+- helloworld.app 目录
+	
+		NSString *appPath = [[NSBundle mainBundle] bundlePath];
+		
+- 获取Documents目录
+	
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+		NSString *path = [paths ObjectAtIndex:0];
+
+- 获取Library目录
+		
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+		NSString *path = [paths ObjectAtIndex:0];
+
+- 获取Caches目录
+		
+		NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+		NSString *path = [paths ObjectAtIndex:0];
+		
+
+---
+
 <h3 id="UIView"> UIView </h3>
 
 **UIView常见属性以及含义**
 	
-	* frame:  			相对于父视图的位置和大小(CGRect)
-	* bounds: 			相对于自己的的位置和大小(CGRect)
-	* center:			相对于父视图自己的中心点
-	* transform 		变换属性(CGAffineTransform)
-	* superview		父视图
-	* subviews			子视图
-	* window			当前view所在的window
-	* backgroundColor	背景色(UIColor)
-	* alpha				透明度(CGFloat)
-	* hidden			是否隐藏
-	* userInteractionEnabled	是否开启交互
-	* tag				区分标识
-	* layer				视图层(CALayer)
+* frame:  			相对于父视图的位置和大小(CGRect)/坐标
+* bounds: 			相对于自己的的位置和大小(CGRect)/边框大小
+* center:			相对于父视图自己的中心点
+* transform 		变换属性(CGAffineTransform)
+* superview			父视图
+* subviews			子视图
+* window			当前view所在的window
+* backgroundColor	背景色(UIColor)
+* alpha				透明度(CGFloat)
+* hidden			是否隐藏
+* userInteractionEnabled	是否开启交互
+* tag				区分标识
+* layer				视图层(CALayer)
+* contentMode		内容模式
+* superView			父视图
+* subViews			子视图数组
+* clipsToBounds		剪裁子视图
+* autoresizesSubviews 允许子类view自动布局
+* autoresizingMask	自动布局模式(子类view)
+* alpha				透明度
+
+**TIPS**
+
+* 屏幕上能够看见的都是UIView
+* 每一个UIView都是容器
+* IBAction === void 能让方法显示到storyboard文件的右键列表
+* IButlet能够让属性显示到storyboard的右键列表
+* bounds的x,y永远为0(以自身左上角为原点)，frame的x,y以父视图的左上角为原点
+
+**UIView层的操作常用方法**
+
+- (void)removeFromSuperview; // 从父视图中移除
+- (void)addSubview:(UIView *)view; // 添加一个子视图
+- (void)insertSubview:(UIView *)view belowSubview:(UIView *)slibingSubview; // 插入一个view到某个view的下层
+- (void)insertSubview:(UIView *)view aboveSubview:(UIView *)slibingSubview; // 插入一个view到某个view的上层
+- (void)insertSubview:(UIView *)view atIndex:(NSInteger)index; // 插入一个view到特定层
+- (void)bringSubviewToFront:(UIView *)view; // 将某个view放在最上层
+- (void)sendSubviewToBack:(UIView *)view; // 将某个view放在最下层
+- (BOOL)isDescendantOgView(UIView *)view; // 将某个子视图移到上方显示
+- (void)exchangeSubviewAtIndex:(NSInteger)index1 withSubviewAtIndex:(NSInteger)index2; // 交换两个层的view
+- (UIView *)viewWithTag:(NSInteger)view; // 取到指定tag值的view  
+
+---
+
+<h3 id="UIViewController"> UIViewController </h3>
+
+**初始化**
+
+	UIViewController *viewController = 	[[UIViewController alloc] init];
+
+**UIViewController生命周期**
+
+- (void)viewDidLoad; //视图加载完成
+- (void)viewWillAppear:(BOOL)animated; // 将要显示
+- (void)viewDidAppear:(BOOL)animated; // 显示完成
+- (void)viewWillDisappear:(BOOL)animated; // 将要移除
+- (void)viewDidDisappear:(BOOL)animated; // 已经移除
+- (void)didReceiveMemoryWarning; // 内存警告
+- (BOOL)shouldAutorotate; // 支持转屏
+- (NSInteger)supportedInterfaceOrientations; // 支持的转屏方向 
+- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration; // 控制器试图将要旋转到某个朝向，在方法中处理新的界面布局
 	
-	* 屏幕上能够看见的都是UIView
-	* 每一个UIView都是容器
-	* IBAction === void 能让方法显示到storyboard文件的右键列表
-	* IButlet能够让属性显示到storyboard的右键列表
-	* bounds的x,y永远为0(以自身左上角为原点)，frame的x,y以父视图的左上角为原点
-
-**UIView的常用方法**
-
-	- (void)removeFromSuperview;// 从父视图中移除
-	- (void)addSubview:(UIView *)view;// 添加一个子视图
-	- (BOOL)isDescendantOgView(UIView *)view;// 将某个子视图移到上方显示
-	- (UIView *)viewWithTag:(NSInteger)view;// 取到指定tag值的view  
+**视图控制器的切换**
+	
+	// 设置切换动画效果
+    detailViewControl.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    // 切换到下一视图
+	[self presentViewController:detailViewControl animated:YES completion:nil];
+	// 返回上一视图
+	[self.presentingViewController dismissViewControllerAnimated:YES completion:nil];	
 
 ---
 
@@ -833,8 +921,9 @@
 **设置背景和图片**
 
 	- [button setBackgroundImage:[UIImage imageNamed:@"1.png"] forState:UIControlStateNormal];
+	- button.adjustsImageWhenHightlighted = YES; //高亮按钮变暗(需设置背景图片)
 	- [button setTitle:@"按钮" forState:UIControlStateNormal];
-		
+	
 	- [lightButton setImage:[UIImage imageNamed:@"开灯"] forState:UIControlStateNormal];
     - [lightButton setImage:[UIImage imageNamed:@"关灯"] forState:UIControlStateHighlighted]; // 高亮状态
     - [lightButton setImage:[UIImage imageNamed:@"关灯"] forState:UIControlStateSelected]; // 选中状态
@@ -846,13 +935,14 @@
 	
 **UILabel常用属性**
 
-	- text 					// 设置文本内容
-	- font 					// 设置文本字体格式和大小
-	- textColor 			// 设置文本颜色
-	- textAlignment 		// 设置对齐方式
-	- backgroundColor 		// 设置背景色
-	- numberOfLines 		//文本显示行数，0表示不限制
-	- lineBreakMode   (NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail); // 单词换行|末尾"..."	
+- text 					// 设置文本内容
+- font 					// 设置文本字体格式和大小
+- textColor 			// 设置文本颜色
+- textAlignment 		// 设置对齐方式
+- backgroundColor 		// 设置背景色
+- numberOfLines 		//文本显示行数，0表示不限制
+- lineBreakMode   (NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail); // 单词换行|末尾"..."	
+- baselineAdjustment	// 文本基线位置(只有一行文本时有效)
 	
 **demo**
 
@@ -886,6 +976,26 @@
 
 <h3 id="UITextField"> UITextField(文本域) </h3>
 
+**UITextField常用属性**
+
+- borderStyle 边框样式
+- placeholder 提示文字
+- keyboardType 键盘样式
+- keyboardAppearance 键盘外观
+- secureTextEntry 密文输入
+- clearButtonMode 清楚按钮模式
+- inputView 弹出视图
+- leftView 左侧视图
+- leftViewMode 左侧视图模式
+- rightView 右侧视图
+- rightViewMode 右侧视图模式
+- clearsOnBegingEditing 再次编辑是否清空
+- contentVerticalAlignment 内容纵向对齐方式
+- contentHorizontalAlignment 内容横向对齐方式
+- textAlignment 文本横向对齐方式
+- adjustsFontSizeToFitWidth 文本滚动
+- autocapitalizationType 首字母是否大写
+
 **demo**
 
 	UITextField *textField           = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMinX(self.view.frame) + 50, CGRectGetMinY(self.view.frame) + 150, 200, 25)];
@@ -903,11 +1013,58 @@
     textField.secureTextEntry        = YES;
     [self.view addSubview:textField];	
 
-注意：若要实现UITextFieldDelegate协议中的方法，必须设置delegate为当前对象	
+注意：若要实现<UITextFieldDelegate>协议中的方法，必须设置delegate为当前对象	
+
+**<UITextFieldDelegate>中的方法**
+
+- \- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField; // 文本输入框是否可以进入编辑模式
+- \- (void)textFieldDidBeginEditing:(UITextField *)textField;  // 文本输入框已经进入编辑模式
+- \- (BOOL)textFieldShouldEndEditing:(UITextField *)textField; // 文本输入框是否可以结束编辑模式
+- \- (void)textFieldDidEndEditing:(UITextField *)textField; // 文本输入框已经结束编辑模式
+- \- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; // 替换文本输入框内容
+- \- (BOOL)textFieldShouldClear:(UITextField *)textField; // 文本输入框是否可以点击clear按钮
+- \- (BOOL)textFieldShouldReturn:(UITextField *)textField; // 文本输入框是否可以点击return按钮
+
+---
+
+<h3 id="UITextView"> UITextView </h3>
+
+**UITextView常用属性**
+
+- text 文字内容
+- textColor 文字颜色
+- textAlignment 文字对齐方式
+- selectedRange 控制滚动
+- editable 是否可编辑
+
+**UITextView常用方法**
+
+- \- (void)scrollRangeTovisible:(NSRange)range;
+- \- (void)textViewShouldBeginEditing:(UITextView *)textView;
+- \- (BOOL)textViewShouldEndEditing:(UITextView *)textView;
+- \- (void)textViewDidBeginEditing:(UITextView *)textView;
+- \- (void)textViewDidEndEditing:(UITextView *)textView;
+- \- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text;
+- \- (void)textViewDidChange:(UITextView *)textView;
+- \- (void)textViewDidChangeSelection:(UITextView *)textView;
+
 
 ---
 
 <h3 id="UISwitch"> UISwitch(开关) </h3>
+	
+**UISwitch常用属性**
+
+- isOn 是否打开状态
+- onTintColor 开启状态颜色
+- tintColor 关闭状态颜色
+- thumbTintColor 按钮颜色
+- onImage 开启状态图片
+- offImage 关闭状态图片
+
+**UISwitch常用方法**
+
+- \-(void)setOn:(BOOL)on animated:(BOOL)animated; // 设置开关状态并带有动画效果
 	
 **demo**
 
@@ -925,6 +1082,24 @@
 
 <h3 id="UISlider"> UISlider(滑条) </h3>
 	
+**UISlider常用属性**	
+	
+- value 当前值
+- minimumValue 最小值
+- maximumValue 最大值
+- minimumValueImage 最小值一侧图片
+- maximumValueImage 最大值一侧图片
+- minimumTintColor 最小值颜色
+- maximumTintColor 最大值颜色
+- thumbTintColor 滑块颜色
+
+**UISlider常用方法**
+
+- \- (void)setValue:(float)value animated:(BOOL)animated;
+- \- (void)setThumbImage:(UIImage *)image forState:(UIControlState)state;
+- \- (void)setMinimumTrackImage:(UIImage *)image forState(UIControlState)state;
+- \- (void)setMaximumTrackImage:(UIImage *)image forState(UIControlState)state;
+		
 **demo**
 	
 	UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 100, CGRectGetMaxY(switchControl.frame) + 20, 200, 30)];
@@ -942,6 +1117,14 @@
 ---
 
 <h3 id="UIProgressView"> UIProgressView(进度条) </h3>
+
+**UIProgressView常用属性**
+
+- progress 当前进度值
+- progressTintColor 高亮颜色
+- trackTintColor 轨道颜色
+- progressImage 进度条图片
+- trackImage 轨道图片
 
 **demo**
 
@@ -985,28 +1168,339 @@
 
 ---
 
-<h3 id="UIViewController"> UIViewController </h3>
+<h3 id="UIImageView"> UIImageView </h3>
 
-**初始化**
+**UIImageView常用属性**
 
-	UIViewController *viewController = 	[[UIViewController alloc] init];
+- image 图片
+- animationImages 动画数组
+- animationDuration 动画周期
+- animationRepeatCount 动画循环次数
+- contentMode 内容模式
 
-**常用方法**
+**UIImageViewdog动画**
 
-	- (void)viewDidLoad; //视图加载完成
-	- (void)viewWillAppear:(BOOL)animated; // 将要显示
-	- (void)viewDidAppear:(BOOL)animated; // 显示完成
-	- (void)viewWillDisappear:(BOOL)animated; // 将要移除
-	- (void)viewDidDisappear:(BOOL)animated; // 已经移除
-	- (void)didReceiveMemoryWarning; // 内存警告
-	- (BOOL)shouldAutorotate; // 支持转屏
-	- (NSInteger)supportedInterfaceOrientations; // 支持的转屏方向 
-	- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration; // 控制器试图将要旋转到某个朝向，在方法中处理新的界面布局
+- \- (void)startAnimating; // 开始动画
+- \- (void)stopAnimating; // 结束动画
+- \- (void)isAnimating; // 是否在动画中
 
-**视图控制器的切换**
- 
-	- [self presentViewController:detailViewControl animated:YES completion:nil];
-	- [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];	
+---
+
+<h3 id="UINavigationController"> UINavigatonController(导航控制器) </h3>
+
+**基本概念**
+
+- UINavigationController继承于UIViewController，通过栈的方式来管理视图控制器，视图控制器通过入栈，出栈操作进行切换
+- UINavigationController用于处理复杂的分层数据
+- UINavigationController维护一个视图控制器，任何类型的视图控制器都可以放到导航控制器的栈中
+
+**初始化方法**
+
+- \- (id)initWithRootViewController:(UIViewController *)rootViewController;
+
+**视图入栈和出栈操作**
+	
+	// 入栈
+	DetailNextViewController *detailNextViewController = [[DetailNextViewController alloc] init];
+    [self.navigationController pushViewController:detailNextViewController animated:YES];
+    [detailNextViewController release];
+    
+    // 出栈
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    NSArray *viewControllers = self.navigationController.viewControllers;
+    [self.navigationController popToViewController:viewControllers[1] animated:YES];
+
+**说明**
+
+- viewControllers能够拿到所有视图控制器的实例
+- viewControllers视图控制器在数组中的顺序即为视图控制器在导航控制器栈中的顺序
+- 传参进去的视图控制器实例必须存在于导航控制器栈中
+
+**自定义导航控制器的push、pop动画效果**
+
+在导航器对应视图的layer上，加载自己的动画效果
+
+	+ (CATransition *)addCubeAnimation
+	{
+		CATransition *animation = [CATransition animation];
+		// 设置动画效果
+		animation setType:@"cube";
+		// 设置作用方向
+		[animation setSubType:kCATransitionFromRight];
+		// 设置动画时长
+		[animation setDuration:0.8f];
+		// 设置动画作用范围
+		[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
+		return animation;
+	}
+
+---
+
+<h3 id="UINavigationBar"> UINavigationBar </h3>
+
+**UINavigationBar常用属性和方法**
+
+	//设置导航条样式
+	@property (nonatomic, assign)UIBarStyle barStyle;
+	
+	// 设置导航条自动裁剪属性
+	@property (nonatomic) BOOL clipsToBounds
+	
+	// IOS5以后设置导航条的背景图片和显示模式
+	- (void)setBackgroundImage:(UIImage *)backgroundImage forBarMetrics:(UIBarMetrics)barMetrics;
+	
+	// 隐藏导航条的属性
+	@property (nonatomic, getter=isNavigationBarHidden) BOOL navigationBarHidden;
+	
+	// 隐藏导航条的方法
+	- (void)setNavigationBarHidden:(BOOL)hidden animated:(BOOL)animated;
+
+---
+
+<h3 id="UINavigationItem"> UINavigationItem </h3>
+
+- 每个视图控制器都有一个UINavigationItem属性
+- 每个视图控制器都可以通过UINavigationItem属性来定制导航栏的显示效果
+
+**常用属性和方法**
+
+	// 设置标题，显示在导航栏的中间
+	@property(nonatomic,copy) NSString *title;
+	// 设置标题视图，显示在导航栏的中间位置
+	@property(nonatomic,retain) UIBarButtonItem *backBarButtonItem;
+	// 左侧按钮
+	@property(nonatomic,retain) UIBarButtonItem *leftBarButtonItem;
+	// 右侧按钮
+	@property(nonatomic,retain) UIBarButtonItem *rightBarButtonItem;
+	// 设置左侧按钮
+	- (void)setLeftBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
+	// 设置右侧按钮
+	- (void)setRightBarButtonItem:(UIBarButtonItem *)item animated:(BOOL)animated;
+	
+	@property(nonatomic,copy) NSArray *leftBarButtonItems NS_AVAILABLE_IOS(5_0);
+	@property(nonatomic,copy) NSArray *rightBarButtonItems NS_AVAILABLE_IOS(5_0);
+	- (void)setLeftBarButtonItems:(NSArray *)items animated:(BOOL)animated NS_AVAILABLE_IOS(5_0); 
+	- (void)setRightBarButtonItems:(NSArray *)items animated:(BOOL)animated NS_AVAILABLE_IOS(5_0);
+	
+---
+
+<h3 id="UIToolBar"> UIToolBar </h3>
+
+- UINavigationController有个UIToolBar属性
+- UIToolBar继承于UIView
+- UINavigationController底部工具栏默认处于隐藏状态
+- 每个视图控制器可以通过toolBarItems属性来定制toolBar
+
+---
+
+<h3 id="codeSnippets"> codeSnippets </h3>
+
+**appDelegate.m文件各消息作用说明**
+
+	#pragma mark 程序加载完成,自定义界面加载，数据导入，初始化等
+	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
+	
+	#pragma mark 程序将要失活，保存用户数据，断开网络连接,游戏暂停
+	- (void)applicationWillResignActive:(UIApplication *)application;
+	#pragma mark 程序进入后台,释放界面元素，视频，音频媒体，降低程序的驻留内存开销
+	- (void)applicationDidEnterBackground:(UIApplication *)application;
+	
+	#pragma mark 程序进入前台，恢复界面，数据等
+	- (void)applicationWillEnterForeground:(UIApplication *)application;
+	
+	#pragma mark 程序激活，恢复用户数据，恢复网络连接
+	- (void)applicationDidBecomeActive:(UIApplication *)application;
+	
+	#pragma mark 程序结束
+	- (void)applicationWillTerminate:(UIApplication *)application;
+	
+---
+
+**UIViewController重要消息作用说明**
+
+	// 自定义初始化方法，用于XIB加载控制器界面的时候
+	- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNi
+	
+	// 控制器的视图加载完成
+	- (void)viewDidLoad
+	
+	// 是否支持自动旋转
+	- (NSUInteger)supportedInterfaceOrientations
+	{
+	    return UIInterfaceOrientationMaskAllButUpsideDown;
+	}
+	
+	// 控制器支持设备朝向
+	- (BOOL)shouldAutorotate
+	{
+	    return NO;
+	}
+	
+	// 控制器试图将要旋转到某个朝向，在方法中处理新的界面布局
+	- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+
+---
+
+**切换到下一视图**
+	
+	- (void)showDetail:(UIButton *)sender
+	{
+		DetailViewController *detailViewControl = [[[DetailViewController alloc] init] autorelease];
+		
+		// 设置切换动画效果
+	    detailViewControl.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+	    
+	    // 控制器模态切换
+	    [self presentViewController:detailViewControl animated:YES completion:^{
+	        NSLog(@"Detail View Controller is show. ");
+	    }];
+	}
+
+---
+
+**返回上一个视图**
+
+	- (void)back:(UIButton *)sender
+	{
+	    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
+	        NSLog(@"返回deatail");
+	    }];
+	}	
+	
+---	
+	
+**关闭键盘**
+
+	#pragma mark - <UITextFieldDelegate>
+
+	- (BOOL)textFieldShouldReturn:(UITextField *)textField
+	{
+	    // 关闭键盘
+	    // solution 1
+		//    [textField resignFirstResponder];
+	    
+	    //solution 2
+	    [self.view endEditing:YES];
+	    return YES;
+	}	
+	
+---
+
+**限制长度，过滤输入**
+
+	#pragma mark - <UITextFieldDelegate>
+	#define NUMBER_SET @"0123456789"
+	- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+	{
+	    if (range.location >= 11)
+	    {
+	        return NO;
+	    }
+	    
+	    if ([NUMBER_SET rangeOfString:string].location == NSNotFound)
+	    {
+	        return NO;
+	    }
+	    
+	    return YES;
+	}
+
+---
+
+**根据文本内容多少获取Rect的size(label大小自适应效果)**
+
+	// Before IOS 7
+	CGSize size = [string sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(150, 568) lineBreakMode:NSLineBreakByWordWrapping];
+
+	// After IOS 7
+	- (CGSize)sizeWithString:(NSString *)string font:(UIFont *)font constraintSize:(CGSize)constraintSize
+	{
+	    CGRect rect = [string boundingRectWithSize:CGSizeMake(150, 568)
+	                                       options:NSStringDrawingTruncatesLastVisibleLine |
+	                                                NSStringDrawingUsesFontLeading |
+	                                                NSStringDrawingUsesLineFragmentOrigin
+	                                    attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
+	                                       context:nil];
+	    return rect.size;
+	}
+
+---
+
+**键盘弹出和收起的通知**
+
+	// 注册键盘弹出的系统通知
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@(keyboardWillShow) name:UIKeyboardWillShowNotification Object:nil];
+	
+	- (void)keyboardWillShow
+	{
+		[UIView animateWithDuration:0.25 animations:^{
+			_btn.fram = CGRectMake(10, 220, 300, 30);
+		} completion:^(BOOL finished){
+		
+		}];
+	}
+	
+	// 注册键盘收起的系统通知
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@(keyboardWillhide) name:UIKeyboardWillHideNotification Object:nil];
+	
+	- (void)keyboardWillhide
+	{
+		[UIView animateWithDuration:0.25 animations:^{
+			_btn.fram = CGRectMake(10, 400, 300, 30);
+		} completion:^(BOOL finished){
+		
+		}];
+	}
+	
+---
+	
+**在不同IOS版本中更改UINavigationBar背景图片**	
+
+	@implementation UINavigationBar (custom)
+		
+		static UIImage *backgroundImage = nil;
+		- (void)setNavigationBarWithImage:(UIImage *)bgImage
+		{
+			if (backgroundImage != bgImage)
+			{
+				[backgroundImage release];
+				[backgroundImage = bgImag retain];
+				
+			}
+			
+			// IOS 5.x
+			if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
+			{
+				[self setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
+				if ([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0)
+				{
+					[UIApplication sharedApplication].statusBarStyle = UIBarStyleBlackOpaque;
+				}
+			}
+			else // IOS 4.x
+			{
+				[self drawRect:self.bounds];
+			}
+		}
+		
+		// 重写drawRect方法，在5.x中该方法被废弃
+		- (void)drawRect:(CGRect)rect
+		{
+			[backgroundImage drawInRect:rect];
+		}
+		
+	@end
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

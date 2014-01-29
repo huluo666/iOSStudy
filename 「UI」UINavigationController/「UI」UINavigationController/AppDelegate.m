@@ -1,13 +1,13 @@
 //
 //  AppDelegate.m
-//  UIDemoDay03
+//  「UI」UINavigationController
 //
-//  Created by cuan on 14-1-23.
+//  Created by cuan on 14-1-29.
 //  Copyright (c) 2014年 cuan. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "RootViewController.h"
 
 @implementation AppDelegate
 
@@ -17,7 +17,17 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
-//    self.window.rootViewController = [[[ViewController alloc] init] autorelease];
+    // 创建一个根控制器
+//    RootViewController *root = [[RootViewController alloc] init];
+//    
+//    // 创建一个导航控制器
+//    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:root];
+//    [root release];
+//    
+//    self.window.rootViewController = navigationController;
+//    [navigationController release];
+    
+    self.window.rootViewController = [[[UINavigationController alloc] initWithRootViewController:[[[RootViewController alloc] init] autorelease]] autorelease];
     
     [self.window makeKeyAndVisible];
     return YES;

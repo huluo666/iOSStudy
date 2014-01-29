@@ -469,6 +469,7 @@
 				95A9ABC21890A1F200214328 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95A9ABC31890A1F200214328 /* Build configuration list for PBXNativeTarget "UIDemoDay03Tests" */ = {
 			isa = XCConfigurationList;
@@ -477,6 +478,7 @@
 				95A9ABC51890A1F200214328 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

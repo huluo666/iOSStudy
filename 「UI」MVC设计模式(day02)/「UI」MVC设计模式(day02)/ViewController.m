@@ -34,6 +34,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 50, 320, 50)];
+    NSLog(@"self.view.frame.origin.x = %f", self.view.frame.origin.x); // 0
+    NSLog(@"self.view.frame.origin.y = %f", self.view.frame.origin.y); // 0
+    NSLog(@"self.view.frame.size.width = %f", self.view.frame.size.width); // 320
+    NSLog(@"self.view.frame.origin.height = %f", self.view.frame.size.height); //568 (4.5in)
     label.text = @"ViewController";
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:28];
@@ -122,6 +126,9 @@
 - (void)showDetail:(UIButton *)sender
 {
     DetailViewController *detailViewControl = [[[DetailViewController alloc] init] autorelease];
+    
+    // 设置切换动画效果
+    detailViewControl.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
     // 控制器模态切换
     [self presentViewController:detailViewControl animated:YES completion:^{
