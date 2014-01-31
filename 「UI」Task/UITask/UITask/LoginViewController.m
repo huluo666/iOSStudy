@@ -124,10 +124,10 @@
     [self.view addSubview:activityIndicatorView];
     [activityIndicatorView release];
     
-    UIAlertView *alertView = [[UIAlertView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 100, CGRectGetMaxY(switchControl.frame) + 100, 200, 0)];
-    alertView.tag = AlertVieTag;
-    [self.view addSubview:alertView];
-    [alertView release];
+//    UIAlertView *alertView = [[UIAlertView alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 100, CGRectGetMaxY(switchControl.frame) + 100, 200, 0)];
+//    alertView.tag = AlertVieTag;
+//    [self.view addSubview:alertView];
+//    [alertView release];
     
     UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 100, CGRectGetMaxY(switchControl.frame) + 20, 200, 30)];
     [self.view addSubview:slider];
@@ -139,7 +139,20 @@
     [slider addTarget:self action:@selector(processController:) forControlEvents:UIControlEventValueChanged];
     [slider release];
     
-//    self performSelector:(SEL) withObject:<#(id)#> afterDelay:<#(NSTimeInterval)#>
+//    self performSelector:<#(SEL)#> withObject:<#(id)#> afterDelay:<#(NSTimeInterval)#>
+    
+    // 设置点击空白处收起键盘 关联的消息为：- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+    UIView *view = [[UIView alloc] init];
+    view.frame = CGRectMake(0, 0, 320, 568);
+    view.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:view];
+    [view release];
+    [self.view sendSubviewToBack:view];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
 }
 
 - (void)processController:(UIControl *)sender
@@ -175,8 +188,10 @@
         }
         else
         {
-            UIAlertView *alertView = (UIAlertView *)[self.view viewWithTag:AlertVieTag];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"用户名或者密码错误" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alertView show];
+            [alertView release];
+            [activityIndicatorView stopAnimating];
         }
     }
 }

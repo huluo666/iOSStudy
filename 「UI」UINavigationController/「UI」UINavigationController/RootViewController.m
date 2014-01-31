@@ -86,7 +86,7 @@
     // 通过toolbarItems来定制工具栏的显示，数组中放的是UIBarButtonItem实例
     self.toolbarItems = [NSArray arrayWithObjects:item1, flexibleSpace, item2, flexibleSpace, item3, nil];
 
-#pragma mark UINavigationController的正向传值
+#pragma mark UINavigationController的正向和反向传值
     
     UIButton *button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button1.bounds = CGRectMake(0, 0, 300, 40);

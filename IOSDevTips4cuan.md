@@ -39,6 +39,7 @@
 - [UINavigationBar(导航条)](#UINavigationBar)
 - [UINavigationItem](#UINavigationItem)
 - [UIToolBar](#UIToolBar)
+- [UITabBarController(标签栏控制器)](#UITabBarController)
 - [codeSnippets](#codeSnippets)
 
 
@@ -60,7 +61,8 @@
         }
 
 - 类的本质是对象。是Class类型的对象，简称类对象。 `typedef struct objc_class *Class`. 类名就代表着类对象，每个类只有一个类对象
-
+- NSUserDefaults 里面不能够存储UIViewController实例或者其示例数组
+- 创建视图控制器的时候，最好不要在初始化方法中做与视图相关的操作(getter)，可能引发循环调用
 
 ---
 
@@ -832,7 +834,7 @@
 * frame:  			相对于父视图的位置和大小(CGRect)/坐标
 * bounds: 			相对于自己的的位置和大小(CGRect)/边框大小
 * center:			相对于父视图自己的中心点
-* transform 		变换属性(CGAffineTransform)
+* transform 		变换属性(CGAffineTransform)/翻转或者缩放视图
 * superview			父视图
 * subviews			子视图
 * window			当前view所在的window
@@ -840,15 +842,17 @@
 * alpha				透明度(CGFloat)
 * hidden			是否隐藏
 * userInteractionEnabled	是否开启交互
+* multipleTouchEnabled 是否开启多点触摸
 * tag				区分标识
 * layer				视图层(CALayer)
-* contentMode		内容模式
+* contentMode		内容模式(边界的变化和缩放)
 * superView			父视图
 * subViews			子视图数组
 * clipsToBounds		剪裁子视图
 * autoresizesSubviews 允许子类view自动布局
 * autoresizingMask	自动布局模式(子类view)
 * alpha				透明度
+* contentStech		改变视图内容如何拉伸
 
 **TIPS**
 
@@ -857,6 +861,15 @@
 * IBAction === void 能让方法显示到storyboard文件的右键列表
 * IButlet能够让属性显示到storyboard的右键列表
 * bounds的x,y永远为0(以自身左上角为原点)，frame的x,y以父视图的左上角为原点
+
+**UIView加载过程**
+
+- 首先访问view属性
+- 如果存在view，加载。若不存在，则UIViewController调用loadView方法
+- loadView方法执行如下操作
+	- 如果覆盖了该方法，必须创建view给UIViewController的view属性
+	- 如果没有复写该方法，UIViewController会默认调用initWithNibName:bundle:方法初始化并加载view
+- 通过viewDidLoad方法来执行一些其他任务
 
 **UIView层的操作常用方法**
 
@@ -867,7 +880,7 @@
 - (void)insertSubview:(UIView *)view atIndex:(NSInteger)index; // 插入一个view到特定层
 - (void)bringSubviewToFront:(UIView *)view; // 将某个view放在最上层
 - (void)sendSubviewToBack:(UIView *)view; // 将某个view放在最下层
-- (BOOL)isDescendantOgView(UIView *)view; // 将某个子视图移到上方显示
+- (BOOL)isDescendantOfView(UIView *)view; // 是否是某个视图的子孙视图
 - (void)exchangeSubviewAtIndex:(NSInteger)index1 withSubviewAtIndex:(NSInteger)index2; // 交换两个层的view
 - (UIView *)viewWithTag:(NSInteger)view; // 取到指定tag值的view  
 
@@ -984,7 +997,7 @@
 - keyboardAppearance 键盘外观
 - secureTextEntry 密文输入
 - clearButtonMode 清楚按钮模式
-- inputView 弹出视图
+- inputView 弹出视图(可以自定义键盘)
 - leftView 左侧视图
 - leftViewMode 左侧视图模式
 - rightView 右侧视图
@@ -1295,6 +1308,15 @@
 
 ---
 
+<h3 id="UITabBarController"> UITabBarController </h3>
+
+- UITabBarController继承于视图控制器，通过标签栏项的形式来管理视图控制器，各个标签栏项之间的视图控制器彼此独立，互不影响
+- UITabBarController中各个视图的生命周期和UITabBarController的声明周期是一致的
+- 点击不同的标签栏项(UITabBarItem)，展现不同的视图控制器的view
+- 被点中的标签栏项对应的视图控制器的view处于显示状态，其他的视图控制器的view处于卸载状态
+
+---
+
 <h3 id="codeSnippets"> codeSnippets </h3>
 
 **appDelegate.m文件各消息作用说明**
@@ -1357,6 +1379,11 @@
 	        NSLog(@"Detail View Controller is show. ");
 	    }];
 	}
+	
+	// 导航视图控制器
+	DetailViewController *detailViewController = [[DetailViewController alloc] init];
+	[self.navigationController pushViewController:detailViewController animated:YES];
+    [detailViewController release];
 
 ---
 
@@ -1367,7 +1394,10 @@
 	    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
 	        NSLog(@"返回deatail");
 	    }];
-	}	
+	}
+	
+	// 导航视图控制器
+	[self.navigationController popViewControllerAnimated:YES];	
 	
 ---	
 	
