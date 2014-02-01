@@ -30,6 +30,7 @@
 - [UILabel(标签)](#UILabel)
 - [UITextField(文本域)）](#UITextField)
 - [UITextView](#UITextView)
+- [UIPageControl(分页控件)](#UIPageControl)
 - [UISwitch(开关)](#UISwitch)
 - [UISlider(滑条)](#UISlider)
 - [UIProgressView(进度条)](#UIProgressView)
@@ -1065,6 +1066,21 @@
 
 ---
 
+<h3 id="UIPageControl"> UIPageControl(分页控件) </h3>
+
+**常用属性和方法**
+
+- numberOfPage	共有几个分页"圆圈"
+- currentPage	显示当前的页
+- hideForSinglePage	只存在一页时，是否隐藏，默认YES
+- (void)updateCurrentPageDisplay;	刷新视图
+
+**TIPS**
+
+- 通常与UIScrollView连用，提示用户当前显示的页数 
+
+---
+
 <h3 id="UISwitch"> UISwitch(开关) </h3>
 	
 **UISwitch常用属性**
@@ -1249,6 +1265,14 @@
 		[animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut]];
 		return animation;
 	}
+
+**TIPS**
+
+- 一个导航控制器包含若干个视图控制器
+- 一个导航控制器包含一个NavigationBar和一个toolBar
+- NavigationBar中的"按钮"是一个UINavigationItem(only one)
+- 通过设置UINavigationItem的属性，显示Item(UINavigationBar)
+- UINavigationItem不是由navigationBar控制的，更不是由UINavigationController来控制，而是由当前视图控制器来控制的
 
 ---
 

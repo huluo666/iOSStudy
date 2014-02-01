@@ -26,8 +26,8 @@
 
 - (void)dealloc
 {
-    [super dealloc];
     [_currentSelectedButton release];
+    [super dealloc];
 }
 
 - (void)viewDidLoad
