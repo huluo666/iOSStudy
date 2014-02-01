@@ -1,15 +1,12 @@
 //
 //  AppDelegate.m
-//  「UI」TabBar、Navi联合
+//  「UI」CGAffineTransform
 //
 //  Created by cuan on 14-1-31.
 //  Copyright (c) 2014年 cuan. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "ChatController.h"
-#import "FindViewController.h"
-#import "SettingViewController.h"
 
 @implementation AppDelegate
 
@@ -18,35 +15,68 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
-    ChatController *chatVC = [[ChatController alloc] init];
-    chatVC.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemContacts tag:102] autorelease];
-    UINavigationController *chatNvaiController = [[UINavigationController alloc] initWithRootViewController:chatVC];
-    [chatVC release];
-    FindViewController *findVC = [[FindViewController alloc] init];
-    findVC.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemSearch tag:101] autorelease];
-    UINavigationController *findNaviController = [[UINavigationController alloc] initWithRootViewController:findVC];
-    [findVC release];
+    /*
+    UIView *view = [[UIView alloc] init];
+    view.center = CGPointMake(CGRectGetMidX(self.window.frame), CGRectGetMidY(self.window.frame));
+    view.bounds = CGRectMake(0, 0, 200, 180);
+    view.tag = 100;
+    view.backgroundColor = [UIColor redColor];
+    [self.window addSubview: view];
+    [view release];
     
-    SettingViewController *settingVC = [[SettingViewController alloc] initWithStyle:UITableViewStylePlain];
-    settingVC.tabBarItem = [[[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFeatured tag:103] autorelease];
-    UINavigationController *settingNaivController = [[UINavigationController alloc] initWithRootViewController:settingVC];
-    [settingVC release];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button setBounds:CGRectMake(0, 0, 100, 40)];
+    [button setCenter:CGPointMake(CGRectGetMidX(self.window.frame), CGRectGetMaxY(view.frame) + 40)];
+    [button setTitle:@"点击显示动画" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(viewTranslate) forControlEvents:UIControlEventTouchUpInside];
+    [self.window addSubview:button];
     
-    NSArray *controllers = @[chatNvaiController, findNaviController, settingNaivController];
-    [chatNvaiController release];
-    [findNaviController release];
-    [settingNaivController release];
+    */
     
-    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-    tabBarController.viewControllers = controllers;
-    
-    self.window.rootViewController = tabBarController;
-    [tabBarController release];
-    
+//    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [button1 setCenter:CGPointMake(CGRectGetMidX(self.window.frame), CGRectGetMinY(self.window.frame) + 60)];
+//    [button1 setBounds:CGRectMake(0, 0, 330, 40)];
+//    button1.layer.borderWidth = 1.0f;
+//    button1.layer.borderColor = [UIColor grayColor].CGColor;
+//    [self.window addSubview:button1];
+//
+//    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    [button2 setCenter:CGPointMake(CGRectGetMidX(self.window.frame), CGRectGetMaxY(button1.frame) + 20)];
+//    [button2 setBounds:CGRectMake(0, 0, 330, 40)];
+//    button2.layer.borderWidth = 1.0f;
+//    button2.layer.borderColor = [UIColor grayColor].CGColor;
+//    [self.window addSubview:button2];
+//    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
+
+- (void)viewScale
+{
+    UIView *view = [self.window viewWithTag:100];
+    view.transform = CGAffineTransformScale(view.transform, 0.8, 0.8);
+}
+
+- (void)viewRotate
+{
+    UIView *view = [self.window viewWithTag:100];
+    view.transform = CGAffineTransformRotate(view.transform, 0.2);
+}
+
+- (void)viewTranslate
+{
+    UIView *view = [self.window viewWithTag:100];
+    view.transform = CGAffineTransformTranslate(view.transform, 50, 50);
+}
+
+- (void)dealloc
+{
+    [_window release];
+    [super dealloc];
+}
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

@@ -61,7 +61,7 @@
     [self.navigationItem setTitle:@"RootViewController"];
   
 #pragma mark navigationItem
-    
+
     // 设置导航条左侧按钮
     UIBarButtonItem *itemLeft = [[UIBarButtonItem alloc] initWithTitle:@"首页" style:UIBarButtonItemStylePlain target:self action:@selector(itemClicked:)];
     self.navigationItem.leftBarButtonItem = itemLeft;

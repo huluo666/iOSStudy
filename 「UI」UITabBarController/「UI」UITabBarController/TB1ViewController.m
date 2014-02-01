@@ -24,7 +24,7 @@
 //    if (self = [super init])
 //    {
 //        // 隐藏tabBar，method one
-//        self.hidesBottomBarWhenPushed = YES; // invalid
+//        self.hidesBottomBarWhenPushed = YES; 
 //    }
 //    return self;
 //}

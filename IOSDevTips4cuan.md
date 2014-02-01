@@ -998,6 +998,7 @@
 - secureTextEntry 密文输入
 - clearButtonMode 清楚按钮模式
 - inputView 弹出视图(可以自定义键盘)
+- inputAccessView 共存键盘
 - leftView 左侧视图
 - leftViewMode 左侧视图模式
 - rightView 右侧视图
