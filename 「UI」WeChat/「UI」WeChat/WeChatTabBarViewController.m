@@ -47,8 +47,11 @@
 // 初始化各标签项的导航控制器
 - (void)initControllers
 {
+    
+#pragma mark 使用自定义的导航控制器样式
+    
     ChatViewController *chatVC = [[ChatViewController alloc] init];
-    UINavigationController *chatNavi = [[UINavigationController alloc] initWithRootViewController:chatVC];
+    BaseNavigationController *chatNavi = [[BaseNavigationController alloc] initWithRootViewController:chatVC];
     [chatVC release];
     
     FindViewController *findVC = [[FindViewController alloc] init];

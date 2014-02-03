@@ -37,13 +37,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    
     [self initTabBar];
-    
     [self loadNavigationBarItem];
-    
-    
     self.title = @"微信";
 }
 

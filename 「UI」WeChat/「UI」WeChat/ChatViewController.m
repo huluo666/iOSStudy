@@ -39,8 +39,6 @@
     pushButton.layer.borderColor = [UIColor colorWithWhite:0.721 alpha:1.000].CGColor;
     [pushButton addTarget:self action:@selector(pushVC:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:pushButton];
-    
-   
 }
 
 - (void)pushVC:(UIButton *)sender

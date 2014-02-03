@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		062AB702189F35CD00025E46 /* FindDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 062AB701189F35CD00025E46 /* FindDataSource.m */; };
+		062AB705189F45CE00025E46 /* ContactsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 062AB704189F45CE00025E46 /* ContactsDataSource.m */; };
+		062AB709189F5D2800025E46 /* PersonInformations.m in Sources */ = {isa = PBXBuildFile; fileRef = 062AB708189F5D2800025E46 /* PersonInformations.m */; };
+		062AB70D189F5E9700025E46 /* PersonInformationsDatas.m in Sources */ = {isa = PBXBuildFile; fileRef = 062AB70C189F5E9700025E46 /* PersonInformationsDatas.m */; };
+		062AB710189F6A3400025E46 /* ContactsGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 062AB70F189F6A3400025E46 /* ContactsGroup.m */; };
 		062E28BA189DE17B004DD114 /* tabbar_1_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E28B2189DE17B004DD114 /* tabbar_1_bg.png */; };
 		062E28BB189DE17B004DD114 /* tabBar_add_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E28B3189DE17B004DD114 /* tabBar_add_icon@2x.png */; };
 		062E28BD189DE17B004DD114 /* taBbar_camera_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E28B5189DE17B004DD114 /* taBbar_camera_icon@2x.png */; };
@@ -49,6 +54,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		062AB700189F35CD00025E46 /* FindDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindDataSource.h; sourceTree = "<group>"; };
+		062AB701189F35CD00025E46 /* FindDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindDataSource.m; sourceTree = "<group>"; };
+		062AB703189F45CE00025E46 /* ContactsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsDataSource.h; sourceTree = "<group>"; };
+		062AB704189F45CE00025E46 /* ContactsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsDataSource.m; sourceTree = "<group>"; };
+		062AB707189F5D2800025E46 /* PersonInformations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInformations.h; sourceTree = "<group>"; };
+		062AB708189F5D2800025E46 /* PersonInformations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInformations.m; sourceTree = "<group>"; };
+		062AB70B189F5E9700025E46 /* PersonInformationsDatas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonInformationsDatas.h; sourceTree = "<group>"; };
+		062AB70C189F5E9700025E46 /* PersonInformationsDatas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonInformationsDatas.m; sourceTree = "<group>"; };
+		062AB70E189F6A3400025E46 /* ContactsGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactsGroup.h; sourceTree = "<group>"; };
+		062AB70F189F6A3400025E46 /* ContactsGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactsGroup.m; sourceTree = "<group>"; };
 		062E28B2189DE17B004DD114 /* tabbar_1_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabbar_1_bg.png; sourceTree = "<group>"; };
 		062E28B3189DE17B004DD114 /* tabBar_add_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tabBar_add_icon@2x.png"; sourceTree = "<group>"; };
 		062E28B5189DE17B004DD114 /* taBbar_camera_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "taBbar_camera_icon@2x.png"; sourceTree = "<group>"; };
@@ -117,6 +132,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		062AB6FF189F344600025E46 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				062AB700189F35CD00025E46 /* FindDataSource.h */,
+				062AB701189F35CD00025E46 /* FindDataSource.m */,
+				062AB703189F45CE00025E46 /* ContactsDataSource.h */,
+				062AB704189F45CE00025E46 /* ContactsDataSource.m */,
+			);
+			name = DataSource;
+			sourceTree = "<group>";
+		};
+		062AB706189F5CFA00025E46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				062AB707189F5D2800025E46 /* PersonInformations.h */,
+				062AB708189F5D2800025E46 /* PersonInformations.m */,
+				062AB70E189F6A3400025E46 /* ContactsGroup.h */,
+				062AB70F189F6A3400025E46 /* ContactsGroup.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		062AB70A189F5E7000025E46 /* Datas */ = {
+			isa = PBXGroup;
+			children = (
+				062AB70B189F5E9700025E46 /* PersonInformationsDatas.h */,
+				062AB70C189F5E9700025E46 /* PersonInformationsDatas.m */,
+			);
+			name = Datas;
+			sourceTree = "<group>";
+		};
 		062E28B1189DE17B004DD114 /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +229,9 @@
 		06E168BB189D357700163128 /* 「UI」WeChat */ = {
 			isa = PBXGroup;
 			children = (
+				062AB70A189F5E7000025E46 /* Datas */,
+				062AB706189F5CFA00025E46 /* Model */,
+				062AB6FF189F344600025E46 /* DataSource */,
 				06E168E4189D35B700163128 /* WeChatTabBarViewController */,
 				0641B632189E197F00CA5A96 /* BaseNavigationController */,
 				06E168F7189D373200163128 /* ChatSubViewControllers */,
@@ -367,6 +416,7 @@
 				06E168EA189D363700163128 /* WeChatTabBarViewController.m in Sources */,
 				0641B635189E19D400CA5A96 /* BaseNavigationController.m in Sources */,
 				0641B639189E1CB800CA5A96 /* ContactSubViewController.m in Sources */,
+				062AB705189F45CE00025E46 /* ContactsDataSource.m in Sources */,
 				06E168C6189D357800163128 /* AppDelegate.m in Sources */,
 				06E168F0189D36AA00163128 /* ChatViewController.m in Sources */,
 				06E168FA189D374F00163128 /* FirstChatViewController.m in Sources */,
@@ -374,7 +424,11 @@
 				06E168F3189D36DB00163128 /* FindViewController.m in Sources */,
 				06E168C2189D357800163128 /* main.m in Sources */,
 				06E168FE189D511600163128 /* FindSubViewController.m in Sources */,
+				062AB709189F5D2800025E46 /* PersonInformations.m in Sources */,
+				062AB70D189F5E9700025E46 /* PersonInformationsDatas.m in Sources */,
 				06E168ED189D368000163128 /* MainUIViewControllerFather.m in Sources */,
+				062AB702189F35CD00025E46 /* FindDataSource.m in Sources */,
+				062AB710189F6A3400025E46 /* ContactsGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
