@@ -29,12 +29,15 @@
     NSLog(@"===%@", self.view);
 }
 
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     // 恢复隐藏的标签栏
     NSArray *views = self.tabBarController.view.subviews;
     UIView *tabBar = views[views.count - 1];
-    tabBar.frame = CGRectMake(0, 519, 320, 49);
+    [UIView animateWithDuration:0.35f animations:^{
+        tabBar.frame = CGRectMake(0, 519, 320, 49);
+    }];
 }
 
 - (void)pushButtonPressed

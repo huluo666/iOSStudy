@@ -12,6 +12,13 @@
 
 @implementation Manager
 
+- (void)dealloc
+{
+    [_books release];
+    [_salesmans release];
+    [super dealloc];
+}
+
 - (void)assignSalesman:(Salesman *)theSalesman forBook:(Book *)theBook
 {
     if (!theSalesman || !theBook)

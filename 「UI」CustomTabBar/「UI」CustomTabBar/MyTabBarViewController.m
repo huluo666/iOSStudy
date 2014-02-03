@@ -110,7 +110,11 @@
                 [UIView animateWithDuration:0.3f animations:^{
                     indicatorLabel.center = CGPointMake((btn.tag - 100) * 80 + 40, 46);
                 }];
-                
+            
+                // 上面一种更好，可以自己控制时间
+//                [UIView beginAnimations:nil context:nil];
+//                indicatorLabel.center = CGPointMake((btn.tag - 100) * 80 + 40, 46);
+//                [UIView commitAnimations];
             }
             else
             {

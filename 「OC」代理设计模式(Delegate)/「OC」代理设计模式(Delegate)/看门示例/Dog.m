@@ -11,11 +11,17 @@
 
 @implementation Dog
 
+- (void)dealloc
+{
+    [_timer release];
+    [super dealloc];
+}
+
 - (id)init
 {
     if (self = [super init])
     {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES];
+        _timer = [[NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimer) userInfo:nil repeats:YES] retain];
     }
     return self;
 }

@@ -15,6 +15,7 @@
 {
     [_name release];
     [_currentItem release];
+    [_number release];
     [_itemList release];
     [super dealloc];
 }

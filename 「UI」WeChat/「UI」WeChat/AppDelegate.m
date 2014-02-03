@@ -1,14 +1,13 @@
 //
 //  AppDelegate.m
-//  「UI」TabBar、Navi联合
+//  「UI」WeChat
 //
-//  Created by cuan on 14-1-31.
+//  Created by cuan on 14-2-1.
 //  Copyright (c) 2014年 cuan. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "MainViewController.h"
-
+#import "WeChatTabBarViewController.h"
 
 @implementation AppDelegate
 
@@ -17,9 +16,9 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
-    MainViewController *tabBarController = [[MainViewController alloc] init];
-    self.window.rootViewController = tabBarController;
-    [tabBarController release];
+    WeChatTabBarViewController *tabBarViewController = [[WeChatTabBarViewController alloc] init];
+    self.window.rootViewController = tabBarViewController;
+    [tabBarViewController release];
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];

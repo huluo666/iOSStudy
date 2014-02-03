@@ -48,6 +48,7 @@ int main(int argc, const char * argv[])
         NSLog(@"itemList price avg is %@", [list.itemList valueForKeyPath:@"@avg.price"]);
         NSLog(@"itemList price max is %@", [list.itemList valueForKeyPath:@"@max.price"]);
         NSLog(@"itemList price min is %@", [list.itemList valueForKeyPath:@"@min.price"]);
+        [list release];
     }
     return 0;
 }

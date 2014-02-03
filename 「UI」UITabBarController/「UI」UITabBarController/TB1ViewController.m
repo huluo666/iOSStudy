@@ -30,13 +30,16 @@
 //}
 
 // method two
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     // 通过改变标签栏控制器view的子view的frame的形式，来达到隐藏标签栏的效果
+    [super viewWillAppear:YES];
     NSArray *views = self.tabBarController.view.subviews;
     NSLog(@"``````````%@", views); // <UITabBar: 0x109239a60; frame = (0 519; 320 49)
     UIView *tabBar = views[views.count - 1];
-    tabBar.frame = CGRectMake(0, 519+49, 320, 49);
+    [UIView animateWithDuration:0.15f animations:^{
+        tabBar.frame = CGRectMake(-320, 519, 320, 49);
+    }];
 }
 
 

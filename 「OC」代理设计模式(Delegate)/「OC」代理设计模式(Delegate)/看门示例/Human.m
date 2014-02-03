@@ -15,6 +15,7 @@
 - (void)dealloc
 {
     [_name release];
+    [_dog release];
     [super dealloc];
 }
 
@@ -22,7 +23,7 @@
 {
     if (self = [super init])
     {
-        _name = @"Lucy";
+        _name = [@"Lucy" copy];
     }
     return self;
 }

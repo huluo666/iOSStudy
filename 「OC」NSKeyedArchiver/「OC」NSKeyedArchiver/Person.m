@@ -10,6 +10,13 @@
 
 @implementation Person
 
+- (void)dealloc
+{
+    [_name release];
+    [_child release];
+    [super dealloc];
+}
+
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeInteger:_age forKey:@"age"];

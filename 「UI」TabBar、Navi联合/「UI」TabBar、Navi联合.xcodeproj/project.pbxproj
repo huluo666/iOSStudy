@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06303457189CFA6500207462 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06303456189CFA6500207462 /* MainViewController.m */; };
 		06E18C89189BAA56009A81D8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E18C88189BAA56009A81D8 /* Foundation.framework */; };
 		06E18C8B189BAA56009A81D8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E18C8A189BAA56009A81D8 /* CoreGraphics.framework */; };
 		06E18C8D189BAA56009A81D8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E18C8C189BAA56009A81D8 /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06303455189CFA6500207462 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		06303456189CFA6500207462 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		06E18C85189BAA56009A81D8 /* 「UI」TabBar、Navi联合.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「UI」TabBar、Navi联合.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E18C88189BAA56009A81D8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06E18C8A189BAA56009A81D8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,6 +136,8 @@
 				06E18CCD189BB7A6009A81D8 /* SettingViewController */,
 				06E18C97189BAA56009A81D8 /* AppDelegate.h */,
 				06E18C98189BAA56009A81D8 /* AppDelegate.m */,
+				06303455189CFA6500207462 /* MainViewController.h */,
+				06303456189CFA6500207462 /* MainViewController.m */,
 				06E18CB7189BAA9A009A81D8 /* ChatController.h */,
 				06E18CB8189BAA9A009A81D8 /* ChatController.m */,
 				06E18CBA189BAAAA009A81D8 /* FindViewController.h */,
@@ -301,6 +306,7 @@
 				06E18CC5189BB331009A81D8 /* FindDetailViewController.m in Sources */,
 				06E18C99189BAA56009A81D8 /* AppDelegate.m in Sources */,
 				06E18CD2189BD554009A81D8 /* AccountSettingViewController.m in Sources */,
+				06303457189CFA6500207462 /* MainViewController.m in Sources */,
 				06E18CCB189BB757009A81D8 /* SettingViewController.m in Sources */,
 				06E18CB9189BAA9A009A81D8 /* ChatController.m in Sources */,
 				06E18CC2189BB2DC009A81D8 /* ChatDetailViewController.m in Sources */,

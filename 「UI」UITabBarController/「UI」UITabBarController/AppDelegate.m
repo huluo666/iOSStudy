@@ -42,7 +42,7 @@
 //    navigationController.tabBarItem.title = @"界面一";
   
 #pragma mark 初始化ViewController
-    
+
     // 相当于对tabBarItem.title和navigationItem.title同时赋值
     navigationController.title = @"界面一" ;
     navigationController.tabBarItem.image = [UIImage imageNamed:nil];
