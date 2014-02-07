@@ -14,3 +14,9 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifndef _ROOT_VIEW_CONTROLLER_
+#define _ROOT_VIEW_CONTROLLER_
+#define BLUE_VIEW_SHOW @"Tap show blue view"
+#define RED_VIEW_SHOW @"Tap show red view"
+#endif

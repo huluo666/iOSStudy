@@ -53,6 +53,7 @@
 		06B6B198189FD40500075FC2 /* default_chatroom@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B6B194189FD40500075FC2 /* default_chatroom@2x.png */; };
 		06B6B199189FD40500075FC2 /* default_fmessage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B6B195189FD40500075FC2 /* default_fmessage@2x.png */; };
 		06B6B19A189FD40500075FC2 /* default_servicebrand_contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06B6B196189FD40500075FC2 /* default_servicebrand_contact@2x.png */; };
+		06C8FEB218A3E73E000638F9 /* UIViewController+SettingDecoilClose.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C8FEB118A3E73E000638F9 /* UIViewController+SettingDecoilClose.m */; };
 		06E168B6189D357700163128 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E168B5189D357700163128 /* Foundation.framework */; };
 		06E168B8189D357700163128 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E168B7189D357700163128 /* CoreGraphics.framework */; };
 		06E168BA189D357700163128 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06E168B9189D357700163128 /* UIKit.framework */; };
@@ -145,6 +146,8 @@
 		06B6B194189FD40500075FC2 /* default_chatroom@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_chatroom@2x.png"; sourceTree = "<group>"; };
 		06B6B195189FD40500075FC2 /* default_fmessage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_fmessage@2x.png"; sourceTree = "<group>"; };
 		06B6B196189FD40500075FC2 /* default_servicebrand_contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_servicebrand_contact@2x.png"; sourceTree = "<group>"; };
+		06C8FEB018A3E73E000638F9 /* UIViewController+SettingDecoilClose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SettingDecoilClose.h"; sourceTree = "<group>"; };
+		06C8FEB118A3E73E000638F9 /* UIViewController+SettingDecoilClose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SettingDecoilClose.m"; sourceTree = "<group>"; };
 		06E168B2189D357700163128 /* 「UI」WeChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「UI」WeChat.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		06E168B5189D357700163128 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		06E168B7189D357700163128 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -390,6 +393,8 @@
 			children = (
 				06E168E8189D363700163128 /* WeChatTabBarController.h */,
 				06E168E9189D363700163128 /* WeChatTabBarController.m */,
+				06C8FEB018A3E73E000638F9 /* UIViewController+SettingDecoilClose.h */,
+				06C8FEB118A3E73E000638F9 /* UIViewController+SettingDecoilClose.m */,
 			);
 			name = WeChatTabBarController;
 			sourceTree = "<group>";
@@ -568,6 +573,7 @@
 				062AB709189F5D2800025E46 /* PersonInformations.m in Sources */,
 				062AB70D189F5E9700025E46 /* ContactsDatas.m in Sources */,
 				06E168ED189D368000163128 /* MainUIViewControllerFather.m in Sources */,
+				06C8FEB218A3E73E000638F9 /* UIViewController+SettingDecoilClose.m in Sources */,
 				0689E24218A12A8900934E38 /* ParticularViewController.m in Sources */,
 				06B6B178189FAFA200075FC2 /* FindDatas.m in Sources */,
 				062AB710189F6A3400025E46 /* ContactsGroup.m in Sources */,

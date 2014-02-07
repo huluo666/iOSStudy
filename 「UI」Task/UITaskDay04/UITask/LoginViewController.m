@@ -7,16 +7,8 @@
 //
 
 #import "LoginViewController.h"
-#import "ViewController.h"
-
-#define USER_NAME @"admin"
-#define PASS_WORD @"admin"
-#define UserNameFiledTag 11
-#define PasswordFiledTag 12
-#define LoginInButtonTag 13
-#define SwitchControlTag 14
-#define ActivityIndicatorViewTag 15
-#define AlertVieTag 16
+#import "RootViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -181,10 +173,8 @@
         if ([userNameField.text isEqualToString:USER_NAME] && [passwordField.text isEqualToString:PASS_WORD])
         {
             // 登录成功
-            ViewController *nextPageViewController = [[[ViewController alloc] init] autorelease];
-            [self presentViewController:nextPageViewController animated:YES completion:^{
-                NSLog(@"切换到下一页");
-            }];
+            [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+            [(RootViewController *)[(AppDelegate *)[[UIApplication sharedApplication] delegate] window].rootViewController setLogined:YES];
         }
         else
         {

@@ -455,6 +455,7 @@
 				655CCD9B1891F49300BE63A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		655CCD9C1891F49300BE63A2 /* Build configuration list for PBXNativeTarget "2014.1.24Tests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +464,7 @@
 				655CCD9E1891F49300BE63A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

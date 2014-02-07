@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		062D16D618A4CFCE0028B823 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062D16D518A4CFCE0028B823 /* RootViewController.m */; };
 		95CB5A3C1890FABF000CEEA6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB5A3B1890FABF000CEEA6 /* LoginViewController.m */; };
 		95ECB082188FA34100DC43D9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ECB081188FA34100DC43D9 /* Foundation.framework */; };
 		95ECB084188FA34100DC43D9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ECB083188FA34100DC43D9 /* CoreGraphics.framework */; };
@@ -20,7 +21,6 @@
 		95ECB09D188FA34100DC43D9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95ECB085188FA34100DC43D9 /* UIKit.framework */; };
 		95ECB0A5188FA34100DC43D9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95ECB0A3188FA34100DC43D9 /* InfoPlist.strings */; };
 		95ECB0A7188FA34100DC43D9 /* UITaskTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ECB0A6188FA34100DC43D9 /* UITaskTests.m */; };
-		95ECB0B2188FA35600DC43D9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ECB0B1188FA35600DC43D9 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		062D16D418A4CFCE0028B823 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		062D16D518A4CFCE0028B823 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		95CB5A3A1890FABF000CEEA6 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		95CB5A3B1890FABF000CEEA6 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		95ECB07E188FA34100DC43D9 /* UITask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UITask.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,8 +54,6 @@
 		95ECB0A2188FA34100DC43D9 /* UITaskTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UITaskTests-Info.plist"; sourceTree = "<group>"; };
 		95ECB0A4188FA34100DC43D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		95ECB0A6188FA34100DC43D9 /* UITaskTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITaskTests.m; sourceTree = "<group>"; };
-		95ECB0B0188FA35600DC43D9 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		95ECB0B1188FA35600DC43D9 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +115,10 @@
 			children = (
 				95ECB090188FA34100DC43D9 /* AppDelegate.h */,
 				95ECB091188FA34100DC43D9 /* AppDelegate.m */,
+				062D16D418A4CFCE0028B823 /* RootViewController.h */,
+				062D16D518A4CFCE0028B823 /* RootViewController.m */,
 				95CB5A3A1890FABF000CEEA6 /* LoginViewController.h */,
 				95CB5A3B1890FABF000CEEA6 /* LoginViewController.m */,
-				95ECB0B0188FA35600DC43D9 /* ViewController.h */,
-				95ECB0B1188FA35600DC43D9 /* ViewController.m */,
 				95ECB093188FA34100DC43D9 /* Images.xcassets */,
 				95ECB088188FA34100DC43D9 /* Supporting Files */,
 			);
@@ -250,8 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				95CB5A3C1890FABF000CEEA6 /* LoginViewController.m in Sources */,
-				95ECB0B2188FA35600DC43D9 /* ViewController.m in Sources */,
 				95ECB092188FA34100DC43D9 /* AppDelegate.m in Sources */,
+				062D16D618A4CFCE0028B823 /* RootViewController.m in Sources */,
 				95ECB08E188FA34100DC43D9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
