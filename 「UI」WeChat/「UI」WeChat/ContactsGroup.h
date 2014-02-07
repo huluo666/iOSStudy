@@ -13,6 +13,7 @@
 @property (nonatomic, copy) NSString *groupName; // 分组名
 @property (nonatomic, retain) NSMutableArray *infos; // 分组内容(联系人信息)
 
++ (id)contactsGroup;
 + (id)contactsGroupWithGroupName:(NSString *)groupName;
 
 @end

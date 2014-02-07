@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class MainUIViewControllerFather;
+// 写一个显示设置选项TableView的协议
+@protocol MianVCDelegate <NSObject>
+
+- (void)mainUIViewCotrollerFatherShowSettingTableView:(MainUIViewControllerFather *)mainVCfather;
+
+@end
+
 
 @interface MainUIViewControllerFather : UIViewController
+
+@property (nonatomic, assign) id<MianVCDelegate> delegate;
 
 @end

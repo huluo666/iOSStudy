@@ -26,6 +26,12 @@
     return self;
 }
 
++ (id)contactsGroup
+{
+    ContactsGroup *gp = [[[ContactsGroup alloc] init] autorelease];
+    return gp;
+}
+
 + (id)contactsGroupWithGroupName:(NSString *)groupName
 {
     ContactsGroup *gp = [[[ContactsGroup alloc] init] autorelease];

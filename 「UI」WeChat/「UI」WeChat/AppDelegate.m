@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "WeChatTabBarViewController.h"
+#import "WeChatTabBarController.h"
 
 @implementation AppDelegate
 
@@ -16,7 +16,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     
-    WeChatTabBarViewController *tabBarViewController = [[WeChatTabBarViewController alloc] init];
+    WeChatTabBarController *tabBarViewController = [[WeChatTabBarController alloc] init];
     self.window.rootViewController = tabBarViewController;
     [tabBarViewController release];
     

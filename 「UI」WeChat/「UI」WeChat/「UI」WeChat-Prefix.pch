@@ -14,3 +14,58 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#ifndef __CONST_STRING__
+#define __CONST_STRING__
+#define CHAT @"聊天"
+#define FIND @"发现"
+#define CONTACTS @"通讯录"
+#define BOTTOM_VIEW_TAG 999
+#define LABEL_TAG 222
+#define REGION @"地区"
+#define WECHAT @"微信"
+#define PUSH @"PUSH到下一个页面"
+#define BACK @"返回"
+#define PARTICULAR_GROUP_NAME @"↑"
+#define START_GROUP_NAME @"⭐︎"
+#define OTHERS_GROUP_NAME @"#"
+#define GROUP_NAME @"groupName"
+#define FRIENDS_CIRCLE @"朋友圈"
+#define DETAIL_INFOMATIONS @"详细信息"
+#define WECHAT_NUMBER_PRINT @"微信号: %@"
+#define NICK_NAME_PRINT @"昵称名: %@"
+#define AVATAR @"头像"
+#define REMARK_NAME @"备注名"
+#define NICK_NAME @"昵称名"
+#define SEX @"性别"
+#define ACCOUNT @"账户"
+#define _SIGNATURE @"个性签名"
+#define PHOTOS @"个人相册"
+#define CONTACTS_DETAIL_INFORMATION_CELL_HEIGHT 40
+#define REQUIRED_VIEW_HEIGHT 90
+#define REQUIRED_VIEW_TAG 101
+#define REQUIRED_VIEW_AVATAR_HEIGHT 60
+#define FIND_CELL_HEIGHT_BEFORE_IP5 55
+#define FIND_CELL_HEIGHT_BEFORE_NOW 67
+#define CONTACTS_DETAIL_REQUIRED_INFOS_DEVIDE_COORDINATE_X 80
+#define PHOTOS_CELL_HEIGHT 80.0
+#define TEXT_LINE_HEIGHT @"行高自适应"
+#define CONTENT @"字典内容"
+#define DICT_INFO_KIND @"字典存放的信息种类"
+#define SETTING_TABLE_VIEW_TAG 202
+#define SETTING_TABLE_BG_VIEW_TAG 203
+#define DETAIL_INFOMATION_SETTING_TABLE_VIEW_TAG 202
+#define DETAIL_INFOMATION_SETTING_TABLE_BG_VIEW_TAG 203
+#endif
+
+#ifndef __SEX__
+#define __SEX__
+
+typedef enum
+{
+    male,
+    famale,
+    none
+} Sex;
+
+#endif

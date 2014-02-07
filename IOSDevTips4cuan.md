@@ -1472,7 +1472,7 @@
 	// After IOS 7
 	- (CGSize)sizeWithString:(NSString *)string font:(UIFont *)font constraintSize:(CGSize)constraintSize
 	{
-	    CGRect rect = [string boundingRectWithSize:CGSizeMake(150, 568)
+	    CGRect rect = [string boundingRectWithSize:constraintSize
 	                                       options:NSStringDrawingTruncatesLastVisibleLine |
 	                                                NSStringDrawingUsesFontLeading |
 	                                                NSStringDrawingUsesLineFragmentOrigin

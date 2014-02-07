@@ -11,7 +11,8 @@ NSUInteger codeLineCount(NSString *path);
 
 int main(int argc, const char * argv[])
 {
-    NSString *path = @"/Users/cuan/Github/rimiedu";
+//    NSString *path = @"/Users/cuan/Github/rimiedu";
+    NSString *path = @"/Users/cuan/Documents/Demo/「UI」WeChat";
     NSLog(@"代码总行数为：%ld", codeLineCount(path));
     return 0;
 }
@@ -30,6 +31,7 @@ NSUInteger codeLineCount(NSString *path)
     // 不存在结束方法
     if (!isExist)
     {
+        NSLog(@"请设置有效路径");
         return 0;
     }
     
@@ -58,8 +60,8 @@ NSUInteger codeLineCount(NSString *path)
     {
         // 过滤文件
         NSString *extension = [[path pathExtension] lowercaseString]; // 获取文件扩展名
-        if (![extension isEqualToString:@"h"]
-            && ![extension isEqualToString:@"m"]
+        if (/*![extension isEqualToString:@"h"]
+            && */![extension isEqualToString:@"m"]
             && ![extension isEqualToString:@"c"])
         {
             return 0;
@@ -75,7 +77,7 @@ NSUInteger codeLineCount(NSString *path)
         for (int i = 0; i < array.count; i++)
         {
             // 有效代码行数
-            if ([array[i] hasPrefix:@"//"] ||  [array[i] isEqualToString:@""])
+            if ([array[i] hasPrefix:@"//"] ||  [array[i] isEqualToString:@""] || [array[i] isEqualToString:@"#"])
             {
                 count--;
             }

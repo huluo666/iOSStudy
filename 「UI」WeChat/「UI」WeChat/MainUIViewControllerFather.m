@@ -7,22 +7,22 @@
 //
 
 #import "MainUIViewControllerFather.h"
-#import "WeChatTabBarViewController.h"
+#import "WeChatTabBarController.h"
 
 @interface MainUIViewControllerFather ()
 
-- (void)initTabBar;
+- (void)initNavigationBar;
 - (void)loadNavigationBarItem;
 
 @end
-
+ 
 @implementation MainUIViewControllerFather
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -30,46 +30,34 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:YES];
-    WeChatTabBarViewController *tabBarViewController = (WeChatTabBarViewController *)self.tabBarController;
+    WeChatTabBarController *tabBarViewController = (WeChatTabBarController *)self.tabBarController;
     [tabBarViewController showTabBar];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self initTabBar];
+    [self initNavigationBar];
+    
     [self loadNavigationBarItem];
-    self.title = @"微信";
+    self.title = WECHAT;
 }
 
-- (void)initTabBar
+- (void)initNavigationBar
 {
+    /*
 //    // 设置导航条样式风格
 //    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 //    // 只有barStyle为黑色半透明时背景颜色才有效果，
 //    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0.065 green:0.052 blue:0.035 alpha:1.000];
-    
 //    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"tabBar_bg"]; // invalid
+    */
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"tabBar_bg"] forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)loadNavigationBarItem
 {
     // 右侧items
-    /*
-    UIBarButtonItem *itemMore = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:nil action:nil];
-    UIBarButtonItem *itemAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:nil action:nil];
-    UIBarButtonItem *itemSearch = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:nil action:nil];
-    NSArray *items = @[itemMore, itemAdd, itemSearch];
-    [itemMore release];
-    [itemAdd release];
-    [itemSearch release];
-    self.navigationItem.rightBarButtonItems = items;
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0.768 green:0.868 blue:0.924 alpha:1.000]; // invalid
-    //    self.navigationController.navigationBar setBackgroundImage:<#(UIImage *)#> forBarMetrics:<#(UIBarMetrics)#>
-    */
-
     UIBarButtonItem *itemMore = [[UIBarButtonItem alloc] init];
     itemMore.image = [UIImage imageNamed:@"taBbar_more_icon"];
     itemMore.tintColor = [UIColor whiteColor];
@@ -102,16 +90,22 @@
     
     // 设置中间item
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 40, 30)];
-    titleLabel.text = @"微信";
+    titleLabel.text = WECHAT;
     titleLabel.hidden = YES;
     titleLabel.textColor = [UIColor whiteColor];
     self.navigationItem.titleView = titleLabel;
     [titleLabel release];
+    
+    // 设置项UITableView(ItemMore)
+    
 }
 
-- (void)rithtItemsPressed:(UITabBarItem *)sender
+- (void)rithtItemsPressed:(UIBarButtonItem *)sender
 {
-    NSLog(@"rithtItemsPressed");
+    if ([_delegate respondsToSelector:@selector(mainUIViewCotrollerFatherShowSettingTableView:)])
+    {
+        [_delegate mainUIViewCotrollerFatherShowSettingTableView:self];
+    }
 }
 
 @end
