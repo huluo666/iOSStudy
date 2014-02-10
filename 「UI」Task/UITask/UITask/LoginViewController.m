@@ -131,19 +131,12 @@
     [slider addTarget:self action:@selector(processController:) forControlEvents:UIControlEventValueChanged];
     [slider release];
     
-//    self performSelector:<#(SEL)#> withObject:<#(id)#> afterDelay:<#(NSTimeInterval)#>
-    
-    // 设置点击空白处收起键盘 关联的消息为：- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-    UIView *view = [[UIView alloc] init];
-    view.frame = CGRectMake(0, 0, 320, 568);
-    view.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:view];
-    [view release];
-    [self.view sendSubviewToBack:view];
+//    self performSelector:<#(SEL)#> withObject:<#(id)#> afterDelay:<#(NSTimeInterval)#>r
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    // 设置点击空白处收起键盘
     [self.view endEditing:YES];
 }
 

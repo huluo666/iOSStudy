@@ -9,14 +9,6 @@
 #import "UIViewController+SettingDecoilClose.h"
 #import "WeChatTabBarController.h"
 
-#ifndef _SETTING_TABLE_BG_VIEW_TAG_
-#define _SETTING_TABLE_BG_VIEW_TAG_ 888
-#endif
-
-#ifndef _SETTING_TABLE_VIEW_TAG_
-#define _SETTING_TABLE_VIEW_TAG_ 889
-#endif
-
 @implementation UIViewController (SettingDecoilClose)
 
 - (void)settingDecoilCloseWithFrame:(CGRect)frame color:(UIColor *)color tableViewDataSource:(id <UITableViewDataSource>) dataSource tableViewDalegate:(id <UITableViewDelegate>) delegate forViewController:(UIViewController *)viewController

@@ -275,7 +275,7 @@
             mainView.center = CGPointMake((320 - CONTACTS_DETAIL_REQUIRED_INFOS_DEVIDE_COORDINATE_X)/2 + CONTACTS_DETAIL_REQUIRED_INFOS_DEVIDE_COORDINATE_X, CGRectGetMidY(avatarView.frame) - mainView.bounds.size.height + mainView.frame.size.height/2);
             detailMiddleLabel.center = CGPointMake((320 - CONTACTS_DETAIL_REQUIRED_INFOS_DEVIDE_COORDINATE_X)/2 + CONTACTS_DETAIL_REQUIRED_INFOS_DEVIDE_COORDINATE_X, CGRectGetMidY(mainView.frame) + detailMiddleLabel.bounds.size.height);
             
-            detailMiddleLabelText = [NSString stringWithFormat:WECHAT_NUMBER_PRINT, nickName];
+            detailMiddleLabelText = [NSString stringWithFormat:WECHAT_NUMBER_PRINT, account];
         }
     }
     
