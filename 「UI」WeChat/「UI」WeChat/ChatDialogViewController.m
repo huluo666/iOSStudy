@@ -27,7 +27,9 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    [self customTitleViewWithText:@"与xxx聊天中"];
+//    [self customTitleViewWithText:@"与xxx聊天中"];
+    self.title = @"与XXX聊天中";
+
 }
 
 @end

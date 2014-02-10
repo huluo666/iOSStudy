@@ -10,7 +10,6 @@
 #import "ChatListViewController.h"
 #import "ContactsListViewController.h"
 #import "FindListViewController.h"
-#import "BaseNavigationController.h"
 #import "UIViewController+SettingDecoilClose.h"
 
 @interface WeChatTabBarController ()
@@ -53,17 +52,22 @@
     ChatListViewController *chatVC = [[ChatListViewController alloc] init];
     chatVC.delegate = self;
     UINavigationController *chatNavi = [[UINavigationController alloc] initWithRootViewController:chatVC];
-//    BaseNavigationController *chatNavi = [[BaseNavigationController alloc] initWithRootViewController:chatVC];
+    chatNavi.navigationBar.tintColor = [UIColor whiteColor];
+    chatNavi.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
     [chatVC release];
     
     FindListViewController *findVC = [[FindListViewController alloc] init];
     findVC.delegate = self; 
-    BaseNavigationController *findNavi = [[BaseNavigationController alloc] initWithRootViewController:findVC];
+    UINavigationController *findNavi = [[UINavigationController alloc] initWithRootViewController:findVC];
+    findNavi.navigationBar.tintColor = [UIColor whiteColor];
+    findNavi.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
     [findVC release];
     
     ContactsListViewController *contactsVc = [[ContactsListViewController alloc] init];
     contactsVc.delegate = self;
-    BaseNavigationController *contactsNavi = [[BaseNavigationController alloc] initWithRootViewController:contactsVc];
+    UINavigationController *contactsNavi = [[UINavigationController alloc] initWithRootViewController:contactsVc];
+    contactsNavi.navigationBar.tintColor = [UIColor whiteColor];
+    contactsNavi.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
     [contactsVc release];
     
     self.viewControllers = @[chatNavi, findNavi, contactsNavi];
@@ -161,10 +165,10 @@
     UIView *bottomView = (UIView *)[self.view viewWithTag:BOTTOM_VIEW_TAG];
 //    bottomView.hidden = YES;
     /*
-//    [UIView beginAnimations:nil context:nil];
-//    [UIView setAnimationDelay:0.15f];
-//    bottomView.center = CGPointMake(-CGRectGetMidX(self.view.frame), CGRectGetMinY(self.view.frame) + 20 + 44 + 35/2.0);
-//    [UIView commitAnimations];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDelay:0.15f];
+    bottomView.center = CGPointMake(-CGRectGetMidX(self.view.frame), CGRectGetMinY(self.view.frame) + 20 + 44 + 35/2.0);
+    [UIView commitAnimations];
     */
     [UIView animateWithDuration:0.1f animations:^{
         bottomView.center = CGPointMake(-CGRectGetMidX(self.view.frame), CGRectGetMinY(self.view.frame) + 20 + 44 + 35/2.0);

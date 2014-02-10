@@ -36,6 +36,7 @@
     [tabBarViewController hiddenTabBar];
 }
 
+// 已弃用
 - (void)customTitleViewWithText:(NSString *)text
 {
 #pragma mark TIPS 设置UINavigationItem的titleView时，设置视图宽度小于文本宽度会被文字自动撑大且文字自动居中，故不用设置宽度。设置宽度的话需要设置文字居中，且文字过长还是会撑过边界 。个人推荐设置宽度为0
