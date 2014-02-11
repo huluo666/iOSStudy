@@ -1,0 +1,960 @@
+TAudioPlayer
+v7
+r0
+t332301869.134577
+cCheck dependencies
+cProcessInfoPlistFile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist Info.plist
+cCompileXIB /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/MainWindow.xib
+cCpResource build/Debug-iphonesimulator/AudioPlayer.app/Default.png images/Default.png
+cCpResource build/Debug-iphonesimulator/AudioPlayer.app/Pause.png images/Pause.png
+cCpResource build/Debug-iphonesimulator/AudioPlayer.app/Play.png images/Play.png
+cProcessPCH /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch.gch AudioPlayer_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer normal i386
+cGenerateDSYMFile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+cTouch /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/AudioPlayer_Prefix.pch
+c0000000049807E7100000000000000BF
+t1233157745
+s191
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.h
+c000000004997222300000000000009E5
+t1234641443
+s2533
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m
+c00000000499721170000000000001C95
+t1234641175
+s7317
+i"AudioFileStream.h"
+i"AudioPlayerUtil.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.h
+c0000000049972438000000000000046F
+t1234641976
+s1135
+i<Foundation/Foundation.h>
+i"AudioRequest.h"
+i"AudioFileStream.h"
+i"AudioQueue.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m
+c000000004997213E0000000000000AAA
+t1234641214
+s2730
+i"AudioPlayer.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.h
+c0000000049971BDF00000000000002B8
+t1234639839
+s696
+i<UIKit/UIKit.h>
+i"AudioPlayer.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m
+c00000000499726150000000000000D29
+t1234642453
+s3369
+i"AudioPlayerAppDelegate.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.h
+c0000000049807EE200000000000000DC
+t1233157858
+s220
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m
+c0000000049807EDC000000000000025F
+t1233157852
+s607
+i<Foundation/Foundation.h>
+i"AudioPlayerUtil.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.h
+c000000004997249A0000000000000A1E
+t1234642074
+s2590
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m
+c00000000499723370000000000000C79
+t1234641719
+s3193
+i"AudioQueue.h"
+i"AudioPlayerUtil.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.h
+c000000004997242D0000000000000316
+t1234641965
+s790
+i<Foundation/Foundation.h>
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m
+c000000004997210200000000000006DA
+t1234641154
+s1754
+i"AudioRequest.h"
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/MainWindow.xib
+c00000000499725EB0000000000004D9F
+t1234642411
+s19871
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o
+t1310371335
+s20156
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.LinkFileList
+c000000004E1AAE060000000000000488
+t1310371334
+s1160
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o
+t1310371335
+s23744
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o
+t1310371335
+s68300
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o
+t1310371335
+s5560
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o
+t1310371335
+s19992
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o
+t1310371335
+s15884
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o
+t1310371335
+s6400
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app
+t1310374471
+s306
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM
+t1310371335
+s102
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+t1310371335
+s46236
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Default.png
+t1238030120
+s8676
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist
+t1310374471
+s609
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/MainWindow.nib
+t1238030121
+s5949
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Pause.png
+t1238030120
+s4104
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/PkgInfo
+t1310374471
+s8
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Play.png
+t1238030120
+s4331
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/images/Default.png
+c00000000497B77BE00000000000021E4
+t1232828350
+s8676
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/images/Pause.png
+c00000000497B6F5D0000000000001008
+t1232826205
+s4104
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/images/Play.png
+c00000000497B6F7D00000000000010EB
+t1232826237
+s4331
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/main.m
+c0000000049807E900000000000000168
+t1233157776
+s360
+i<UIKit/UIKit.h>
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/AudioPlayer_Prefix.pch
+c0000000049807E7100000000000000BF
+t1233157745
+s191
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.h
+c000000004997222300000000000009E5
+t1234641443
+s2533
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m
+c00000000499721170000000000001C95
+t1234641175
+s7317
+i"AudioFileStream.h"
+i"AudioPlayerUtil.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.h
+c0000000049972438000000000000046F
+t1234641976
+s1135
+i<Foundation/Foundation.h>
+i"AudioRequest.h"
+i"AudioFileStream.h"
+i"AudioQueue.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m
+c000000004997213E0000000000000AAA
+t1234641214
+s2730
+i"AudioPlayer.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.h
+c0000000049971BDF00000000000002B8
+t1234639839
+s696
+i<UIKit/UIKit.h>
+i"AudioPlayer.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m
+c00000000499726150000000000000D29
+t1234642453
+s3369
+i"AudioPlayerAppDelegate.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.h
+c0000000049807EE200000000000000DC
+t1233157858
+s220
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m
+c0000000049807EDC000000000000025F
+t1233157852
+s607
+i<Foundation/Foundation.h>
+i"AudioPlayerUtil.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.h
+c000000004997249A0000000000000A1E
+t1234642074
+s2590
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m
+c00000000499723370000000000000C79
+t1234641719
+s3193
+i"AudioQueue.h"
+i"AudioPlayerUtil.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.h
+c000000004997242D0000000000000316
+t1234641965
+s790
+i<Foundation/Foundation.h>
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m
+c000000004997210200000000000006DA
+t1234641154
+s1754
+i"AudioRequest.h"
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/MainWindow.xib
+c00000000499725EB0000000000004D9F
+t1234642411
+s19871
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o
+t1310609068
+s20228
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.LinkFileList
+c000000004E1E4EAB0000000000000530
+t1310609067
+s1328
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o
+t1310609068
+s23792
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o
+t1310609068
+s68348
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o
+t1310609068
+s5608
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o
+t1310609068
+s20064
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o
+t1310609068
+s15932
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o
+t1310609068
+s6448
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app
+t1310609069
+s306
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM
+t1310609069
+s102
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+t1310609069
+s46572
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Default.png
+t1238030120
+s8676
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist
+t1310374471
+s609
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/MainWindow.nib
+t1238030121
+s5949
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Pause.png
+t1238030120
+s4104
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/PkgInfo
+t1310374471
+s8
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Play.png
+t1238030120
+s4331
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/images/Default.png
+c00000000497B77BE00000000000021E4
+t1232828350
+s8676
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/images/Pause.png
+c00000000497B6F5D0000000000001008
+t1232826205
+s4104
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/images/Play.png
+c00000000497B6F7D00000000000010EB
+t1232826237
+s4331
+
+N/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/main.m
+c0000000049807E900000000000000168
+t1233157776
+s360
+i<UIKit/UIKit.h>
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk
+c000000004CC128950000000000000110
+t1287727253
+s272
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AudioToolbox.framework/AudioToolbox
+c000000004CC1224600000000001EA9C0
+t1287725638
+s2009536
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers/AudioToolbox.h
+c000000004CC1222F0000000000000A23
+t1287725615
+s2595
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004CC12246000000000029B310
+t1287725638
+s2732816
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004CC1226D000000000029D5D0
+t1287725677
+s2741712
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004CC1225F0000000000001466
+t1287725663
+s5222
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004CC1281F0000000000000AA1
+t1287727135
+s2721
+
+N/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004CC12883000000000074D7B0
+t1287727235
+s7657392
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/AudioPlayer_Prefix.pch
+c0000000049807E7100000000000000BF
+t1233157745
+s191
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioFileStream.h
+c000000004997222300000000000009E5
+t1234641443
+s2533
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioFileStream.m
+c00000000499721170000000000001C95
+t1234641175
+s7317
+i"AudioFileStream.h"
+i"AudioPlayerUtil.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayer.h
+c0000000049972438000000000000046F
+t1234641976
+s1135
+i<Foundation/Foundation.h>
+i"AudioRequest.h"
+i"AudioFileStream.h"
+i"AudioQueue.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayer.m
+c000000004997213E0000000000000AAA
+t1234641214
+s2730
+i"AudioPlayer.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayerAppDelegate.h
+c0000000049971BDF00000000000002B8
+t1234639839
+s696
+i<UIKit/UIKit.h>
+i"AudioPlayer.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayerAppDelegate.m
+c00000000499726150000000000000D29
+t1234642453
+s3369
+i"AudioPlayerAppDelegate.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayerUtil.h
+c0000000049807EE200000000000000DC
+t1233157858
+s220
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayerUtil.m
+c0000000049807EDC000000000000025F
+t1233157852
+s607
+i<Foundation/Foundation.h>
+i"AudioPlayerUtil.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioQueue.h
+c000000004997249A0000000000000A1E
+t1234642074
+s2590
+i<Foundation/Foundation.h>
+i<AudioToolbox/AudioToolbox.h>
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioQueue.m
+c00000000499723370000000000000C79
+t1234641719
+s3193
+i"AudioQueue.h"
+i"AudioPlayerUtil.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioRequest.h
+c000000004997242D0000000000000316
+t1234641965
+s790
+i<Foundation/Foundation.h>
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioRequest.m
+c000000004997210200000000000006DA
+t1234641154
+s1754
+i"AudioRequest.h"
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/MainWindow.xib
+c00000000499725EB0000000000004D9F
+t1234642411
+s19871
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o
+t1310609068
+s20228
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.LinkFileList
+c000000004E1E4EAB0000000000000530
+t1310609067
+s1328
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o
+t1310609068
+s23792
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o
+t1310609068
+s68348
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o
+t1310609068
+s5608
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o
+t1310609068
+s20064
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o
+t1310609068
+s15932
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o
+t1310609068
+s6448
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app
+t1310609069
+s306
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app.dSYM
+t1310609069
+s102
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+t1310609069
+s46572
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/Default.png
+t1238030120
+s8676
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist
+t1310374471
+s609
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/MainWindow.nib
+t1238030121
+s5949
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/Pause.png
+t1238030120
+s4104
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/PkgInfo
+t1310374471
+s8
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/Play.png
+t1238030120
+s4331
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/images/Default.png
+c00000000497B77BE00000000000021E4
+t1232828350
+s8676
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/images/Pause.png
+c00000000497B6F5D0000000000001008
+t1232826205
+s4104
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/images/Play.png
+c00000000497B6F7D00000000000010EB
+t1232826237
+s4331
+
+N/Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/main.m
+c0000000049807E900000000000000168
+t1233157776
+s360
+i<UIKit/UIKit.h>
+
+N/var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch.gch
+t1310371335
+s15457488
+
+N/var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch.gch
+t1310609068
+s15457488
+
+N/var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-fukxputqstatmwgobnbbgmtpzorg/AudioPlayer_Prefix.pch.gch
+t2
+s0
+
+NInfo.plist
+c000000004E1AB8D90000000000000379
+t1310374105
+s889
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies332301867#332301867#0(0"0(0#1#0"32651522506817640#0"0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064135.402115
+e332064135.519462
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@99"Compile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m332064135#332064135#0(0"0(0#0#91"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m8722792448#2365"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301868.590054
+e332301868.719078
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@123"Compile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m332301868#332301868#0(0"0(0#0#115"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m8619813888#2629"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioFileStream.m -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioFileStream.o /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioFileStream.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064135.519584
+e332064135.612423
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@95"Compile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m332064135#332064135#0(0"0(0#0#87"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m8714570144#2357"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301868.722142
+e332301868.828762
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@119"Compile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m332301868#332301868#0(0"0(0#0#111"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m8619797504#2621"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayer.m -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.o /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayer.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064135.400118
+e332064135.546650
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@106"Compile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m332064135#332064135#0(0"0(0#0#98"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m8731462912#2379"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301868.588897
+e332301868.743879
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@130"Compile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m332301868#332301868#0(0"0(0#0#122"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m8611375168#2643"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerAppDelegate.m -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerAppDelegate.o /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayerAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064135.450392
+e332064135.543224
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@99"Compile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m332064135#332064135#0(0"0(0#0#91"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m8668356064#2365"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301868.719413
+e332301868.803453
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@123"Compile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m332301868#332301868#0(0"0(0#0#115"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m8619707680#2629"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioPlayerUtil.m -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayerUtil.o /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioPlayerUtil.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064135.403803
+e332064135.517183
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@94"Compile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m332064135#332064135#0(0"0(0#0#86"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m8713822464#2355"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301868.591571
+e332301868.720937
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@118"Compile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m332301868#332301868#0(0"0(0#0#110"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m8618075584#2619"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioQueue.m -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioQueue.o /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioQueue.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064135.517315
+e332064135.573417
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@96"Compile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m332064135#332064135#0(0"0(0#0#88"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m8727824416#2359"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301868.721049
+e332301868.799921
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@120"Compile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m332301868#332301868#0(0"0(0#0#112"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m8618841280#2623"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/Classes/AudioRequest.m -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioRequest.o /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/Classes/AudioRequest.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064135.371740
+e332064135.450254
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@80"Compile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/main.m332064135#332064135#0(0"0(0#0#72"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/main.m8624002208#2335"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/main.m -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301868.587296
+e332301868.720730
+r1
+xCompileC
+xbuild/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@104"Compile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/main.m332301868#332301868#0(0"0(0#0#96"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/main.m8594219584#2599"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -include /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/main.m -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o0#
+
+CCompileC build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/main.o /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CCompileXIB /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/MainWindow.xib
+r0
+
+CCompileXIB /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/MainWindow.xib
+r0
+
+CCompileXIB /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/MainWindow.xib
+r0
+
+CCpResource build/Debug-iphonesimulator/AudioPlayer.app/Default.png images/Default.png
+r0
+
+CCpResource build/Debug-iphonesimulator/AudioPlayer.app/Pause.png images/Pause.png
+r0
+
+CCpResource build/Debug-iphonesimulator/AudioPlayer.app/Play.png images/Play.png
+r0
+
+CGenerateDSYMFile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+s332064135.682946
+e332064135.762290
+r1
+xGenerateDSYMFile
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+lSLF07#2@121"GenerateDSYMFile build/Debug-iphonesimulator/AudioPlayer.app.dSYM build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer332064135#332064135#0(0"0(0#0#121"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer8605999936#509"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/usr/bin/dsymutil /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM0#
+
+CGenerateDSYMFile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+s332301869.115653
+e332301869.132716
+r1
+xGenerateDSYMFile
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+lSLF07#2@121"GenerateDSYMFile build/Debug-iphonesimulator/AudioPlayer.app.dSYM build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer332301869#332301869#0(0"0(0#0#145"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer8620045088#581"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/usr/bin/dsymutil /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app.dSYM0#
+
+CGenerateDSYMFile /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app.dSYM /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+r0
+
+CLd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer normal i386
+s332064135.612499
+e332064135.682826
+r1
+xLd
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+xnormal
+xi386
+lSLF07#2@126"Link /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer332064135#332064135#0(0"0(0#0#0"8637876704#1123"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -filelist /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework UIKit -framework Foundation -framework CoreGraphics -framework AudioToolbox -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer0#
+
+CLd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer normal i386
+s332301868.828876
+e332301869.115512
+r1
+xLd
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer
+xnormal
+xi386
+lSLF07#2@150"Link /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer332301868#332301869#0(0"0(0#0#0"8619338560#1243"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -L/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -filelist /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/Objects-normal/i386/AudioPlayer.LinkFileList -mmacosx-version-min=10.6 -Xlinker -objc_abi_version -Xlinker 2 -framework UIKit -framework Foundation -framework CoreGraphics -framework AudioToolbox -o /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer0#
+
+CLd /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/AudioPlayer normal i386
+r0
+
+CProcessInfoPlistFile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist Info.plist
+s332067271.648512
+e332067271.651651
+r1
+xProcessInfoPlistFile
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist
+xInfo.plist
+lSLF07#2@18"Process Info.plist332067271#332067271#0(0"0(0#0#76"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/Info.plist8669905696#582"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility Info.plist -genpkginfo /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist0#
+
+CProcessInfoPlistFile /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist Info.plist
+r0
+
+CProcessInfoPlistFile /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app/Info.plist Info.plist
+r0
+
+CProcessPCH /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch.gch AudioPlayer_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s332064134.717071
+e332064135.371559
+r1
+xProcessPCH
+x/var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch.gch
+xAudioPlayer_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@33"Precompile AudioPlayer_Prefix.pch332064134#332064135#0(0"0(0#0#88"/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/AudioPlayer_Prefix.pch8735146144#2196"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/AudioPlayer_Prefix.pch -o /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-bmvrejscjoiwpqgcvegjeaqegubb/AudioPlayer_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch.gch AudioPlayer_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s332301867.749153
+e332301868.587106
+r1
+xProcessPCH
+x/var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch.gch
+xAudioPlayer_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@33"Precompile AudioPlayer_Prefix.pch332301867#332301868#0(0"0(0#0#112"/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/AudioPlayer_Prefix.pch8029483229049676800#2436"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv LANG en_US.US-ASCII    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.6 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=40200 -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-generated-files.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-own-target-headers.hmap -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-all-target-headers.hmap -iquote /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/AudioPlayer-project-headers.hmap -F/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/include -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources/i386 -I/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/AudioPlayer.build/Debug-iphonesimulator/AudioPlayer.build/DerivedSources -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/AudioPlayer_Prefix.pch -o /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-evmttnorlhozuyaanyjtyhyhbwox/AudioPlayer_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/Zr/ZruEgR4cGKSrygDM+7KicE+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/AudioPlayer_Prefix-fukxputqstatmwgobnbbgmtpzorg/AudioPlayer_Prefix.pch.gch AudioPlayer_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+r0
+
+CTouch /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app
+s332067271.653033
+e332067271.656544
+r1
+xTouch
+x/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app
+lSLF07#2@115"Touch /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app332067271#332067271#0(0"0(0#0#0"8728040352#358"    cd /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app0#
+
+CTouch /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app
+s332301869.132789
+e332301869.134542
+r1
+xTouch
+x/Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app
+lSLF07#2@139"Touch /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app332301869#332301869#0(0"0(0#0#0"8619849280#406"    cd /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer    setenv PATH "/Users/apple/Xcode3.2/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Users/apple/Xcode3.2/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/apple/Desktop/演示代码/iphone炫酷开发源码/iPhoneCoolProjects/AudioPlayer/build/Debug-iphonesimulator/AudioPlayer.app0#
+
+CTouch /Users/apple/iphone/开源类库/流媒体播放/AudioPlayer_潘多拉/build/Debug-iphonesimulator/AudioPlayer.app
+r0
+

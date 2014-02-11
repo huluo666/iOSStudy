@@ -1,0 +1,334 @@
+TPushMeBaby
+v7
+r0
+t352117525.277693
+cCheck dependencies
+cProcessInfoPlistFile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Info.plist Info.plist
+cCopyStringsFile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+cCompileXIB /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/MainMenu.xib
+cProcessPCH /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-eqghsenvbxkycnhbioecpwlegfha/PushMeBaby_Prefix.pch.gch PushMeBaby_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cProcessPCH /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-ghwvrewmuotbfeezdxmtloecmlpu/PushMeBaby_Prefix.pch.gch PushMeBaby_Prefix.pch normal i386 c com.apple.compilers.gcc.4_2
+cCompileC build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/main.o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ApplicationDelegate.o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ioSock.o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c normal i386 c com.apple.compilers.gcc.4_2
+cLd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/MacOS/PushMeBaby normal i386
+
+N/Developer/SDKs/MacOSX10.5.sdk
+c000000004C238B9B00000000000000EE
+t1277397915
+s238
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers/MacErrors.h
+c0000000048649BE60000000000029AD4
+t1214553062
+s170708
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/Headers/MacTypes.h
+c0000000048649BE60000000000007652
+t1214553062
+s30290
+
+N/Developer/SDKs/MacOSX10.5.sdk/System/Library/Frameworks/Security.framework/Headers/SecureTransport.h
+c00000000490261C600000000000079BA
+t1224892870
+s31162
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/arpa/inet.h
+c00000000464386D70000000000001533
+t1178830551
+s5427
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/errno.h
+c0000000047BA993000000000000003EB
+t1203411248
+s1003
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/fcntl.h
+c0000000047BA993000000000000003EA
+t1203411248
+s1002
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/netdb.h
+c00000000464386E20000000000002F2B
+t1178830562
+s12075
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/netinet/in.h
+c0000000047E883C30000000000005346
+t1206420419
+s21318
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/stdio.h
+c0000000047BA99310000000000003D1D
+t1203411249
+s15645
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/strings.h
+c0000000047BA99300000000000000DA4
+t1203411248
+s3492
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/socket.h
+c0000000047E883D1000000000000559B
+t1206420433
+s21915
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/sys/types.h
+c0000000047E883D2000000000000290F
+t1206420434
+s10511
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/time.h
+c0000000047BA9932000000000000178E
+t1203411250
+s6030
+
+N/Developer/SDKs/MacOSX10.5.sdk/usr/include/unistd.h
+c0000000047BA993200000000000053FF
+t1203411250
+s21503
+
+N/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004CDC9FC7000000000000A5E0
+t1289527239
+s42464
+
+N/System/Library/Frameworks/Security.framework/Security
+c000000004D938B610000000000A1E440
+t1301515105
+s10609728
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.h
+c0000000049DB757100000000000001DF
+t1239119217
+s479
+i<Cocoa/Cocoa.h>
+i"ioSock.h"
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m
+c0000000049DB7AAD0000000000001468
+t1239120557
+s5224
+i"ApplicationDelegate.h"
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c
+c000000003DC6F5950000000000002CF0
+t1036449173
+s11504
+i"ioSock.h"
+i<errno.h>
+i<stdio.h>
+i<unistd.h>
+i<sys/types.h>
+i<netinet/in.h>
+i<sys/socket.h>
+i<netdb.h>
+i<arpa/inet.h>
+i<fcntl.h>
+i<CoreServices/../Frameworks/CarbonCore.framework/Headers/MacErrors.h>
+i<time.h>
+i<strings.h>
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.h
+c000000003DC6F5840000000000001337
+t1036449156
+s4919
+i<CoreServices/../Frameworks/CarbonCore.framework/Headers/MacTypes.h>
+i<Security/SecureTransport.h>
+i<sys/types.h>
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/InfoPlist.strings
+c0000000049DB7699000000000000010A
+t1239119513
+s266
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/MainMenu.xib
+c0000000049DB76580000000000018601
+t1239119448
+s99841
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/PushMeBaby_Prefix.pch
+c0000000049DB6DCA0000000000000097
+t1239117258
+s151
+i<Cocoa/Cocoa.h>
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app
+t2
+s0
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Info.plist
+t1330424715
+s937
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/MacOS/PushMeBaby
+t2
+s0
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/PkgInfo
+t1330424715
+s8
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Resources/English.lproj/InfoPlist.strings
+t1330424717
+s266
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Resources/English.lproj/MainMenu.nib
+t1330424718
+s22373
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ApplicationDelegate.o
+t1330424724
+s30112
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/PushMeBaby.LinkFileList
+c000000004F4CAB8B00000000000001A0
+t1330424715
+s416
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ioSock.o
+t1330424724
+s12320
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/main.o
+t1330424724
+s4896
+
+N/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/main.m
+c0000000049DB6DCA0000000000000105
+t1239117258
+s261
+i<Cocoa/Cocoa.h>
+
+N/var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-eqghsenvbxkycnhbioecpwlegfha/PushMeBaby_Prefix.pch.gch
+t1330424724
+s54043056
+
+N/var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-ghwvrewmuotbfeezdxmtloecmlpu/PushMeBaby_Prefix.pch.gch
+t1330424718
+s2138480
+
+NInfo.plist
+c0000000049DB770600000000000003F6
+t1239119622
+s1014
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies352117515#352117515#0(153"[WARN]Mac OS X deployment target '10.6' for architecture 'i386' and variant 'normal' is greater than the maximum value '10.5' for the Mac OS X 10.5 SDK.1(22@146"Mac OS X deployment target '10.6' for architecture 'i386' and variant 'normal' is greater than the maximum value '10.5' for the Mac OS X 10.5 SDK.352117515#18446744073709551615#0#0(1@0"0(0#1#0"8651704448#0"0#
+
+CCompileC build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ApplicationDelegate.o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s352117524.411297
+e352117524.709039
+r1
+xCompileC
+xbuild/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ApplicationDelegate.o
+x/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m: In function '-[ApplicationDelegate push:]':
+o/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m:196: warning: unused variable 'result'
+lSLF07#2@97"Compile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m352117524#352117524#0(264"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m: In function '-[ApplicationDelegate push:]':/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m:196: warning: unused variable 'result'1(22@24"Unused variable 'result'352117524#127#121#0(6@89"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m260813357#196#0#196#0#19"unused variable '*'0(0#0#89"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m8609534336#1771"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-generated-files.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-own-target-headers.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-all-target-headers.hmap -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-project-headers.hmap -F/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/include -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources/i386 -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources -include /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-eqghsenvbxkycnhbioecpwlegfha/PushMeBaby_Prefix.pch -c /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ApplicationDelegate.m -o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ApplicationDelegate.o0#
+
+CCompileC build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ioSock.o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c normal i386 c com.apple.compilers.gcc.4_2
+s352117524.642046
+e352117524.935782
+r1
+xCompileC
+xbuild/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ioSock.o
+x/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c
+xnormal
+xi386
+xc
+xcom.apple.compilers.gcc.4_2
+o/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c: In function 'AcceptClientConnection':
+o/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c:294: warning: pointer targets in passing argument 3 of 'accept' differ in signedness
+lSLF07#2@84"Compile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c352117524#352117524#0(278"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c: In function 'AcceptClientConnection':/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c:294: warning: pointer targets in passing argument 3 of 'accept' differ in signedness1(22@70"Pointer targets in passing argument 3 of 'accept' differ in signedness352117524#108#154#0(6@76"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c58141973#294#0#294#0#65"pointer targets in passing argument * of '*' differ in signedness0(0#0#76"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c8602504864#1735"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-generated-files.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-own-target-headers.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-all-target-headers.hmap -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-project-headers.hmap -F/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/include -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources/i386 -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources -include /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-ghwvrewmuotbfeezdxmtloecmlpu/PushMeBaby_Prefix.pch -c /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Classes/ioSock.c -o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/ioSock.o0#
+
+CCompileC build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/main.o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s352117524.410269
+e352117524.641942
+r1
+xCompileC
+xbuild/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/main.o
+x/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@74"Compile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/main.m352117524#352117524#0(0"0(0#0#66"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/main.m8609729504#1733"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-generated-files.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-own-target-headers.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-all-target-headers.hmap -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-project-headers.hmap -F/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/include -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources/i386 -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources -include /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-eqghsenvbxkycnhbioecpwlegfha/PushMeBaby_Prefix.pch -c /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/main.m -o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/MainMenu.xib
+s352117515.668981
+e352117518.212597
+r1
+xCompileXIB
+x/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/MainMenu.xib
+lSLF07#2@37"CompileXIB English.lproj/MainMenu.xib352117515#352117518#0(0"0(0#0#86"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/MainMenu.xib8608376288#430"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Resources/English.lproj/MainMenu.nib /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/MainMenu.xib --sdk /Developer/SDKs/MacOSX10.5.sdk0#
+
+CCopyStringsFile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Resources/English.lproj/InfoPlist.strings English.lproj/InfoPlist.strings
+s352117515.668090
+e352117517.223700
+r1
+xCopyStringsFile
+x/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Resources/English.lproj/InfoPlist.strings
+xEnglish.lproj/InfoPlist.strings
+lSLF07#2@36"Copy English.lproj/InfoPlist.strings352117515#352117517#0(0"0(0#0#91"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/English.lproj/InfoPlist.strings8609791776#411"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-16 --outputencoding UTF-16 English.lproj/InfoPlist.strings --outdir /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Resources/English.lproj0#
+
+CLd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/MacOS/PushMeBaby normal i386
+s352117524.935874
+e352117525.277589
+r0
+xLd
+x/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/MacOS/PushMeBaby
+xnormal
+xi386
+old: library not found for -lcrt1.10.6.o
+ocollect2: ld returned 1 exit status
+lSLF07#2@117"Link /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/MacOS/PushMeBaby352117524#352117525#0(135"ld: library not found for -lcrt1.10.6.ocollect2: ld returned 1 exit statusCommand /Developer/usr/bin/gcc-4.2 failed with exit code 12(13@35"Library not found for -lcrt1.10.6.o352117525#0#40#0(6@0"352117525#0#0#0#0#0"0(4@58"Command /Developer/usr/bin/gcc-4.2 failed with exit code 1352117525#18446744073709551615#0#0(1@0"0(0#0#0"8649133248#678"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/SDKs/MacOSX10.5.sdk -L/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug -F/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug -filelist /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/Objects-normal/i386/PushMeBaby.LinkFileList -mmacosx-version-min=10.6 -framework Cocoa -framework Security -o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/MacOS/PushMeBaby1#
+
+CProcessInfoPlistFile /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Info.plist Info.plist
+s352117515.559342
+e352117515.667986
+r1
+xProcessInfoPlistFile
+x/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Info.plist
+xInfo.plist
+lSLF07#2@18"Process Info.plist352117515#352117515#0(0"0(0#0#70"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/Info.plist29555375072215088#371"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    builtin-infoPlistUtility Info.plist -genpkginfo /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app/Contents/Info.plist0#
+
+CProcessPCH /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-eqghsenvbxkycnhbioecpwlegfha/PushMeBaby_Prefix.pch.gch PushMeBaby_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s352117518.212728
+e352117524.410071
+r1
+xProcessPCH
+x/var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-eqghsenvbxkycnhbioecpwlegfha/PushMeBaby_Prefix.pch.gch
+xPushMeBaby_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@32"Precompile PushMeBaby_Prefix.pch352117518#352117524#0(0"0(0#0#81"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/PushMeBaby_Prefix.pch8618187072#1617"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-generated-files.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-own-target-headers.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-all-target-headers.hmap -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-project-headers.hmap -F/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/include -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources/i386 -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources -c /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/PushMeBaby_Prefix.pch -o /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-eqghsenvbxkycnhbioecpwlegfha/PushMeBaby_Prefix.pch.gch0#
+
+CProcessPCH /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-ghwvrewmuotbfeezdxmtloecmlpu/PushMeBaby_Prefix.pch.gch PushMeBaby_Prefix.pch normal i386 c com.apple.compilers.gcc.4_2
+s352117518.213996
+e352117519.096741
+r1
+xProcessPCH
+x/var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-ghwvrewmuotbfeezdxmtloecmlpu/PushMeBaby_Prefix.pch.gch
+xPushMeBaby_Prefix.pch
+xnormal
+xi386
+xc
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@32"Precompile PushMeBaby_Prefix.pch352117518#352117519#0(0"0(0#0#81"/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/PushMeBaby_Prefix.pch8616784960#1607"    cd /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby    setenv LANG en_US.US-ASCII    /Developer/usr/bin/gcc-4.2 -x c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -isysroot /Developer/SDKs/MacOSX10.5.sdk -mfix-and-continue -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-generated-files.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-own-target-headers.hmap -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-all-target-headers.hmap -iquote /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/PushMeBaby-project-headers.hmap -F/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/include -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources/i386 -I/Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/PushMeBaby.build/Debug/PushMeBaby.build/DerivedSources -c /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/PushMeBaby_Prefix.pch -o /var/folders/xW/xWzUs3DdEbSk4El65A4u3k+++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/PushMeBaby_Prefix-ghwvrewmuotbfeezdxmtloecmlpu/PushMeBaby_Prefix.pch.gch0#
+
+CTouch /Users/elite_quan/Desktop/技术研究/apns/code/PushMeBaby/build/Debug/PushMeBaby.app
+r0
+

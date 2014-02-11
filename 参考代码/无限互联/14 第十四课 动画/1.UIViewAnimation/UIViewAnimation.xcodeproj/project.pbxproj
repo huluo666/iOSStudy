@@ -1,0 +1,289 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		18705795169BB8DD00C3A528 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18705794169BB8DD00C3A528 /* UIKit.framework */; };
+		18705797169BB8DD00C3A528 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18705796169BB8DD00C3A528 /* Foundation.framework */; };
+		18705799169BB8DD00C3A528 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18705798169BB8DD00C3A528 /* CoreGraphics.framework */; };
+		1870579F169BB8DD00C3A528 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1870579D169BB8DD00C3A528 /* InfoPlist.strings */; };
+		187057A1169BB8DD00C3A528 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 187057A0169BB8DD00C3A528 /* main.m */; };
+		187057A5169BB8DD00C3A528 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 187057A4169BB8DD00C3A528 /* AppDelegate.m */; };
+		187057A7169BB8DD00C3A528 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 187057A6169BB8DD00C3A528 /* Default.png */; };
+		187057A9169BB8DD00C3A528 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187057A8169BB8DD00C3A528 /* Default@2x.png */; };
+		187057AB169BB8DD00C3A528 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 187057AA169BB8DD00C3A528 /* Default-568h@2x.png */; };
+		187057B4169BB90200C3A528 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187057B2169BB90200C3A528 /* MainViewController.m */; };
+		187057B5169BB90200C3A528 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187057B3169BB90200C3A528 /* MainViewController.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		18705790169BB8DD00C3A528 /* UIViewAnimation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIViewAnimation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		18705794169BB8DD00C3A528 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		18705796169BB8DD00C3A528 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		18705798169BB8DD00C3A528 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1870579C169BB8DD00C3A528 /* UIViewAnimation-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UIViewAnimation-Info.plist"; sourceTree = "<group>"; };
+		1870579E169BB8DD00C3A528 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		187057A0169BB8DD00C3A528 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		187057A2169BB8DD00C3A528 /* UIViewAnimation-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewAnimation-Prefix.pch"; sourceTree = "<group>"; };
+		187057A3169BB8DD00C3A528 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		187057A4169BB8DD00C3A528 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		187057A6169BB8DD00C3A528 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		187057A8169BB8DD00C3A528 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		187057AA169BB8DD00C3A528 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		187057B1169BB90200C3A528 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		187057B2169BB90200C3A528 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		187057B3169BB90200C3A528 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1870578D169BB8DD00C3A528 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18705795169BB8DD00C3A528 /* UIKit.framework in Frameworks */,
+				18705797169BB8DD00C3A528 /* Foundation.framework in Frameworks */,
+				18705799169BB8DD00C3A528 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		18705785169BB8DD00C3A528 = {
+			isa = PBXGroup;
+			children = (
+				1870579A169BB8DD00C3A528 /* UIViewAnimation */,
+				18705793169BB8DD00C3A528 /* Frameworks */,
+				18705791169BB8DD00C3A528 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		18705791169BB8DD00C3A528 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				18705790169BB8DD00C3A528 /* UIViewAnimation.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		18705793169BB8DD00C3A528 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				18705794169BB8DD00C3A528 /* UIKit.framework */,
+				18705796169BB8DD00C3A528 /* Foundation.framework */,
+				18705798169BB8DD00C3A528 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1870579A169BB8DD00C3A528 /* UIViewAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				187057A3169BB8DD00C3A528 /* AppDelegate.h */,
+				187057A4169BB8DD00C3A528 /* AppDelegate.m */,
+				187057B1169BB90200C3A528 /* MainViewController.h */,
+				187057B2169BB90200C3A528 /* MainViewController.m */,
+				187057B3169BB90200C3A528 /* MainViewController.xib */,
+				1870579B169BB8DD00C3A528 /* Supporting Files */,
+			);
+			path = UIViewAnimation;
+			sourceTree = "<group>";
+		};
+		1870579B169BB8DD00C3A528 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1870579C169BB8DD00C3A528 /* UIViewAnimation-Info.plist */,
+				1870579D169BB8DD00C3A528 /* InfoPlist.strings */,
+				187057A0169BB8DD00C3A528 /* main.m */,
+				187057A2169BB8DD00C3A528 /* UIViewAnimation-Prefix.pch */,
+				187057A6169BB8DD00C3A528 /* Default.png */,
+				187057A8169BB8DD00C3A528 /* Default@2x.png */,
+				187057AA169BB8DD00C3A528 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1870578F169BB8DD00C3A528 /* UIViewAnimation */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 187057AE169BB8DD00C3A528 /* Build configuration list for PBXNativeTarget "UIViewAnimation" */;
+			buildPhases = (
+				1870578C169BB8DD00C3A528 /* Sources */,
+				1870578D169BB8DD00C3A528 /* Frameworks */,
+				1870578E169BB8DD00C3A528 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UIViewAnimation;
+			productName = UIViewAnimation;
+			productReference = 18705790169BB8DD00C3A528 /* UIViewAnimation.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		18705787169BB8DD00C3A528 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "www.iphonetrain.com 无限互联3G学院";
+			};
+			buildConfigurationList = 1870578A169BB8DD00C3A528 /* Build configuration list for PBXProject "UIViewAnimation" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 18705785169BB8DD00C3A528;
+			productRefGroup = 18705791169BB8DD00C3A528 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1870578F169BB8DD00C3A528 /* UIViewAnimation */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1870578E169BB8DD00C3A528 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1870579F169BB8DD00C3A528 /* InfoPlist.strings in Resources */,
+				187057A7169BB8DD00C3A528 /* Default.png in Resources */,
+				187057A9169BB8DD00C3A528 /* Default@2x.png in Resources */,
+				187057AB169BB8DD00C3A528 /* Default-568h@2x.png in Resources */,
+				187057B5169BB90200C3A528 /* MainViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1870578C169BB8DD00C3A528 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				187057A1169BB8DD00C3A528 /* main.m in Sources */,
+				187057A5169BB8DD00C3A528 /* AppDelegate.m in Sources */,
+				187057B4169BB90200C3A528 /* MainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1870579D169BB8DD00C3A528 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1870579E169BB8DD00C3A528 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		187057AC169BB8DD00C3A528 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		187057AD169BB8DD00C3A528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		187057AF169BB8DD00C3A528 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UIViewAnimation/UIViewAnimation-Prefix.pch";
+				INFOPLIST_FILE = "UIViewAnimation/UIViewAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		187057B0169BB8DD00C3A528 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "UIViewAnimation/UIViewAnimation-Prefix.pch";
+				INFOPLIST_FILE = "UIViewAnimation/UIViewAnimation-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1870578A169BB8DD00C3A528 /* Build configuration list for PBXProject "UIViewAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				187057AC169BB8DD00C3A528 /* Debug */,
+				187057AD169BB8DD00C3A528 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		187057AE169BB8DD00C3A528 /* Build configuration list for PBXNativeTarget "UIViewAnimation" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				187057AF169BB8DD00C3A528 /* Debug */,
+				187057B0169BB8DD00C3A528 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 18705787169BB8DD00C3A528 /* Project object */;
+}

@@ -1,0 +1,299 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		189CDC4C169D0C6600EFEF84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC4B169D0C6600EFEF84 /* UIKit.framework */; };
+		189CDC4E169D0C6600EFEF84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC4D169D0C6600EFEF84 /* Foundation.framework */; };
+		189CDC50169D0C6600EFEF84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC4F169D0C6600EFEF84 /* CoreGraphics.framework */; };
+		189CDC56169D0C6600EFEF84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC54169D0C6600EFEF84 /* InfoPlist.strings */; };
+		189CDC58169D0C6600EFEF84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CDC57169D0C6600EFEF84 /* main.m */; };
+		189CDC5C169D0C6600EFEF84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CDC5B169D0C6600EFEF84 /* AppDelegate.m */; };
+		189CDC5E169D0C6600EFEF84 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC5D169D0C6600EFEF84 /* Default.png */; };
+		189CDC60169D0C6600EFEF84 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC5F169D0C6600EFEF84 /* Default@2x.png */; };
+		189CDC62169D0C6600EFEF84 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC61169D0C6600EFEF84 /* Default-568h@2x.png */; };
+		189CDC6B169D0C8500EFEF84 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CDC69169D0C8500EFEF84 /* MainViewController.m */; };
+		189CDC6C169D0C8500EFEF84 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC6A169D0C8500EFEF84 /* MainViewController.xib */; };
+		189CDC6E169D0CC000EFEF84 /* 44th Street Medium.caf in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC6D169D0CC000EFEF84 /* 44th Street Medium.caf */; };
+		189CDC72169D0FD800EFEF84 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC71169D0FD800EFEF84 /* AudioToolbox.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		189CDC47169D0C6600EFEF84 /* SystemSoundDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SystemSoundDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		189CDC4B169D0C6600EFEF84 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		189CDC4D169D0C6600EFEF84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		189CDC4F169D0C6600EFEF84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		189CDC53169D0C6600EFEF84 /* SystemSoundDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SystemSoundDemo-Info.plist"; sourceTree = "<group>"; };
+		189CDC55169D0C6600EFEF84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		189CDC57169D0C6600EFEF84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		189CDC59169D0C6600EFEF84 /* SystemSoundDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SystemSoundDemo-Prefix.pch"; sourceTree = "<group>"; };
+		189CDC5A169D0C6600EFEF84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		189CDC5B169D0C6600EFEF84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		189CDC5D169D0C6600EFEF84 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		189CDC5F169D0C6600EFEF84 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		189CDC61169D0C6600EFEF84 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		189CDC68169D0C8500EFEF84 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		189CDC69169D0C8500EFEF84 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		189CDC6A169D0C8500EFEF84 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		189CDC6D169D0CC000EFEF84 /* 44th Street Medium.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "44th Street Medium.caf"; sourceTree = "<group>"; };
+		189CDC71169D0FD800EFEF84 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		189CDC44169D0C6600EFEF84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189CDC72169D0FD800EFEF84 /* AudioToolbox.framework in Frameworks */,
+				189CDC4C169D0C6600EFEF84 /* UIKit.framework in Frameworks */,
+				189CDC4E169D0C6600EFEF84 /* Foundation.framework in Frameworks */,
+				189CDC50169D0C6600EFEF84 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		189CDC3C169D0C6600EFEF84 = {
+			isa = PBXGroup;
+			children = (
+				189CDC71169D0FD800EFEF84 /* AudioToolbox.framework */,
+				189CDC51169D0C6600EFEF84 /* SystemSoundDemo */,
+				189CDC4A169D0C6600EFEF84 /* Frameworks */,
+				189CDC48169D0C6600EFEF84 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		189CDC48169D0C6600EFEF84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC47169D0C6600EFEF84 /* SystemSoundDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		189CDC4A169D0C6600EFEF84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC4B169D0C6600EFEF84 /* UIKit.framework */,
+				189CDC4D169D0C6600EFEF84 /* Foundation.framework */,
+				189CDC4F169D0C6600EFEF84 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		189CDC51169D0C6600EFEF84 /* SystemSoundDemo */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC5A169D0C6600EFEF84 /* AppDelegate.h */,
+				189CDC5B169D0C6600EFEF84 /* AppDelegate.m */,
+				189CDC68169D0C8500EFEF84 /* MainViewController.h */,
+				189CDC69169D0C8500EFEF84 /* MainViewController.m */,
+				189CDC6A169D0C8500EFEF84 /* MainViewController.xib */,
+				189CDC6D169D0CC000EFEF84 /* 44th Street Medium.caf */,
+				189CDC52169D0C6600EFEF84 /* Supporting Files */,
+			);
+			path = SystemSoundDemo;
+			sourceTree = "<group>";
+		};
+		189CDC52169D0C6600EFEF84 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC53169D0C6600EFEF84 /* SystemSoundDemo-Info.plist */,
+				189CDC54169D0C6600EFEF84 /* InfoPlist.strings */,
+				189CDC57169D0C6600EFEF84 /* main.m */,
+				189CDC59169D0C6600EFEF84 /* SystemSoundDemo-Prefix.pch */,
+				189CDC5D169D0C6600EFEF84 /* Default.png */,
+				189CDC5F169D0C6600EFEF84 /* Default@2x.png */,
+				189CDC61169D0C6600EFEF84 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		189CDC46169D0C6600EFEF84 /* SystemSoundDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 189CDC65169D0C6600EFEF84 /* Build configuration list for PBXNativeTarget "SystemSoundDemo" */;
+			buildPhases = (
+				189CDC43169D0C6600EFEF84 /* Sources */,
+				189CDC44169D0C6600EFEF84 /* Frameworks */,
+				189CDC45169D0C6600EFEF84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SystemSoundDemo;
+			productName = SystemSoundDemo;
+			productReference = 189CDC47169D0C6600EFEF84 /* SystemSoundDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		189CDC3E169D0C6600EFEF84 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "www.iphonetrain.com 无限互联3G学院";
+			};
+			buildConfigurationList = 189CDC41169D0C6600EFEF84 /* Build configuration list for PBXProject "SystemSoundDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 189CDC3C169D0C6600EFEF84;
+			productRefGroup = 189CDC48169D0C6600EFEF84 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				189CDC46169D0C6600EFEF84 /* SystemSoundDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		189CDC45169D0C6600EFEF84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189CDC56169D0C6600EFEF84 /* InfoPlist.strings in Resources */,
+				189CDC5E169D0C6600EFEF84 /* Default.png in Resources */,
+				189CDC60169D0C6600EFEF84 /* Default@2x.png in Resources */,
+				189CDC62169D0C6600EFEF84 /* Default-568h@2x.png in Resources */,
+				189CDC6C169D0C8500EFEF84 /* MainViewController.xib in Resources */,
+				189CDC6E169D0CC000EFEF84 /* 44th Street Medium.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		189CDC43169D0C6600EFEF84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189CDC58169D0C6600EFEF84 /* main.m in Sources */,
+				189CDC5C169D0C6600EFEF84 /* AppDelegate.m in Sources */,
+				189CDC6B169D0C8500EFEF84 /* MainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		189CDC54169D0C6600EFEF84 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				189CDC55169D0C6600EFEF84 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		189CDC63169D0C6600EFEF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		189CDC64169D0C6600EFEF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		189CDC66169D0C6600EFEF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SystemSoundDemo/SystemSoundDemo-Prefix.pch";
+				INFOPLIST_FILE = "SystemSoundDemo/SystemSoundDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		189CDC67169D0C6600EFEF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SystemSoundDemo/SystemSoundDemo-Prefix.pch";
+				INFOPLIST_FILE = "SystemSoundDemo/SystemSoundDemo-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		189CDC41169D0C6600EFEF84 /* Build configuration list for PBXProject "SystemSoundDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189CDC63169D0C6600EFEF84 /* Debug */,
+				189CDC64169D0C6600EFEF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		189CDC65169D0C6600EFEF84 /* Build configuration list for PBXNativeTarget "SystemSoundDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189CDC66169D0C6600EFEF84 /* Debug */,
+				189CDC67169D0C6600EFEF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 189CDC3E169D0C6600EFEF84 /* Project object */;
+}

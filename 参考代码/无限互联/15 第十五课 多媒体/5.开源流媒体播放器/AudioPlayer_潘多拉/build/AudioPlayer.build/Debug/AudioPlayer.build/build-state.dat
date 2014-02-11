@@ -1,0 +1,75 @@
+TAudioPlayer
+v7
+r1
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/MainWindow.xib
+c00000000499725EB0000000000004D9F
+t1234642411
+s19871
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app
+t2
+s0
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app/Contents/Info.plist
+t2
+s0
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app/Contents/PkgInfo
+t2
+s0
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app/Contents/Resources/Default.png
+t2
+s0
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app/Contents/Resources/MainWindow.nib
+t2
+s0
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app/Contents/Resources/Pause.png
+t2
+s0
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app/Contents/Resources/Play.png
+t2
+s0
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/images/Default.png
+c00000000497B77BE00000000000021E4
+t1232828350
+s8676
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/images/Pause.png
+c00000000497B6F5D0000000000001008
+t1232826205
+s4104
+
+N/Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/images/Play.png
+c00000000497B6F7D00000000000010EB
+t1232826237
+s4331
+
+NInfo.plist
+c00000000499726990000000000000386
+t1234642585
+s902
+
+CCompileXIB /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/MainWindow.xib
+r0
+
+CCpResource build/Debug/AudioPlayer.app/Contents/Resources/Default.png images/Default.png
+r0
+
+CCpResource build/Debug/AudioPlayer.app/Contents/Resources/Pause.png images/Pause.png
+r0
+
+CCpResource build/Debug/AudioPlayer.app/Contents/Resources/Play.png images/Play.png
+r0
+
+CProcessInfoPlistFile /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app/Contents/Info.plist Info.plist
+r0
+
+CTouch /Users/apple/Desktop/9781430223573/iPhoneCoolProjects/AudioPlayer/build/Debug/AudioPlayer.app
+r0
+

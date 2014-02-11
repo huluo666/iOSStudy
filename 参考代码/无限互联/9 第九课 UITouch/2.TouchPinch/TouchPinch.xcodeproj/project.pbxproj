@@ -1,0 +1,291 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		184C0B8116DFA0A4008AB207 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184C0B8016DFA0A4008AB207 /* UIKit.framework */; };
+		184C0B8316DFA0A4008AB207 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184C0B8216DFA0A4008AB207 /* Foundation.framework */; };
+		184C0B8516DFA0A4008AB207 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184C0B8416DFA0A4008AB207 /* CoreGraphics.framework */; };
+		184C0B8B16DFA0A4008AB207 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184C0B8916DFA0A4008AB207 /* InfoPlist.strings */; };
+		184C0B8D16DFA0A4008AB207 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184C0B8C16DFA0A4008AB207 /* main.m */; };
+		184C0B9116DFA0A4008AB207 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 184C0B9016DFA0A4008AB207 /* AppDelegate.m */; };
+		184C0B9316DFA0A4008AB207 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C0B9216DFA0A4008AB207 /* Default.png */; };
+		184C0B9516DFA0A4008AB207 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C0B9416DFA0A4008AB207 /* Default@2x.png */; };
+		184C0B9716DFA0A4008AB207 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 184C0B9616DFA0A4008AB207 /* Default-568h@2x.png */; };
+		184C0B9F16DFA0BD008AB207 /* TouchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 184C0B9E16DFA0BD008AB207 /* TouchView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		184C0B7D16DFA0A4008AB207 /* TouchPinch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TouchPinch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		184C0B8016DFA0A4008AB207 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		184C0B8216DFA0A4008AB207 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		184C0B8416DFA0A4008AB207 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		184C0B8816DFA0A4008AB207 /* TouchPinch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TouchPinch-Info.plist"; sourceTree = "<group>"; };
+		184C0B8A16DFA0A4008AB207 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		184C0B8C16DFA0A4008AB207 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		184C0B8E16DFA0A4008AB207 /* TouchPinch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TouchPinch-Prefix.pch"; sourceTree = "<group>"; };
+		184C0B8F16DFA0A4008AB207 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		184C0B9016DFA0A4008AB207 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		184C0B9216DFA0A4008AB207 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		184C0B9416DFA0A4008AB207 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		184C0B9616DFA0A4008AB207 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		184C0B9D16DFA0BD008AB207 /* TouchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchView.h; sourceTree = "<group>"; };
+		184C0B9E16DFA0BD008AB207 /* TouchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TouchView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		184C0B7A16DFA0A4008AB207 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184C0B8116DFA0A4008AB207 /* UIKit.framework in Frameworks */,
+				184C0B8316DFA0A4008AB207 /* Foundation.framework in Frameworks */,
+				184C0B8516DFA0A4008AB207 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		184C0B7416DFA0A4008AB207 = {
+			isa = PBXGroup;
+			children = (
+				184C0B8616DFA0A4008AB207 /* TouchPinch */,
+				184C0B7F16DFA0A4008AB207 /* Frameworks */,
+				184C0B7E16DFA0A4008AB207 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		184C0B7E16DFA0A4008AB207 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				184C0B7D16DFA0A4008AB207 /* TouchPinch.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		184C0B7F16DFA0A4008AB207 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				184C0B8016DFA0A4008AB207 /* UIKit.framework */,
+				184C0B8216DFA0A4008AB207 /* Foundation.framework */,
+				184C0B8416DFA0A4008AB207 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		184C0B8616DFA0A4008AB207 /* TouchPinch */ = {
+			isa = PBXGroup;
+			children = (
+				184C0B8F16DFA0A4008AB207 /* AppDelegate.h */,
+				184C0B9016DFA0A4008AB207 /* AppDelegate.m */,
+				184C0B9D16DFA0BD008AB207 /* TouchView.h */,
+				184C0B9E16DFA0BD008AB207 /* TouchView.m */,
+				184C0B8716DFA0A4008AB207 /* Supporting Files */,
+			);
+			path = TouchPinch;
+			sourceTree = "<group>";
+		};
+		184C0B8716DFA0A4008AB207 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				184C0B8816DFA0A4008AB207 /* TouchPinch-Info.plist */,
+				184C0B8916DFA0A4008AB207 /* InfoPlist.strings */,
+				184C0B8C16DFA0A4008AB207 /* main.m */,
+				184C0B8E16DFA0A4008AB207 /* TouchPinch-Prefix.pch */,
+				184C0B9216DFA0A4008AB207 /* Default.png */,
+				184C0B9416DFA0A4008AB207 /* Default@2x.png */,
+				184C0B9616DFA0A4008AB207 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		184C0B7C16DFA0A4008AB207 /* TouchPinch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 184C0B9A16DFA0A4008AB207 /* Build configuration list for PBXNativeTarget "TouchPinch" */;
+			buildPhases = (
+				184C0B7916DFA0A4008AB207 /* Sources */,
+				184C0B7A16DFA0A4008AB207 /* Frameworks */,
+				184C0B7B16DFA0A4008AB207 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TouchPinch;
+			productName = TouchPinch;
+			productReference = 184C0B7D16DFA0A4008AB207 /* TouchPinch.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		184C0B7516DFA0A4008AB207 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "www.iphonetrain.com 无限互联3G学院";
+			};
+			buildConfigurationList = 184C0B7816DFA0A4008AB207 /* Build configuration list for PBXProject "TouchPinch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 184C0B7416DFA0A4008AB207;
+			productRefGroup = 184C0B7E16DFA0A4008AB207 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				184C0B7C16DFA0A4008AB207 /* TouchPinch */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		184C0B7B16DFA0A4008AB207 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184C0B8B16DFA0A4008AB207 /* InfoPlist.strings in Resources */,
+				184C0B9316DFA0A4008AB207 /* Default.png in Resources */,
+				184C0B9516DFA0A4008AB207 /* Default@2x.png in Resources */,
+				184C0B9716DFA0A4008AB207 /* Default-568h@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		184C0B7916DFA0A4008AB207 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184C0B8D16DFA0A4008AB207 /* main.m in Sources */,
+				184C0B9116DFA0A4008AB207 /* AppDelegate.m in Sources */,
+				184C0B9F16DFA0BD008AB207 /* TouchView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		184C0B8916DFA0A4008AB207 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				184C0B8A16DFA0A4008AB207 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		184C0B9816DFA0A4008AB207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		184C0B9916DFA0A4008AB207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		184C0B9B16DFA0A4008AB207 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TouchPinch/TouchPinch-Prefix.pch";
+				INFOPLIST_FILE = "TouchPinch/TouchPinch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		184C0B9C16DFA0A4008AB207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TouchPinch/TouchPinch-Prefix.pch";
+				INFOPLIST_FILE = "TouchPinch/TouchPinch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		184C0B7816DFA0A4008AB207 /* Build configuration list for PBXProject "TouchPinch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184C0B9816DFA0A4008AB207 /* Debug */,
+				184C0B9916DFA0A4008AB207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		184C0B9A16DFA0A4008AB207 /* Build configuration list for PBXNativeTarget "TouchPinch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184C0B9B16DFA0A4008AB207 /* Debug */,
+				184C0B9C16DFA0A4008AB207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 184C0B7516DFA0A4008AB207 /* Project object */;
+}

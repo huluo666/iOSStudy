@@ -1,0 +1,297 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		189CDC0F169CFFDC00EFEF84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC0E169CFFDC00EFEF84 /* UIKit.framework */; };
+		189CDC11169CFFDC00EFEF84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC10169CFFDC00EFEF84 /* Foundation.framework */; };
+		189CDC13169CFFDC00EFEF84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC12169CFFDC00EFEF84 /* CoreGraphics.framework */; };
+		189CDC19169CFFDC00EFEF84 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC17169CFFDC00EFEF84 /* InfoPlist.strings */; };
+		189CDC1B169CFFDC00EFEF84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CDC1A169CFFDC00EFEF84 /* main.m */; };
+		189CDC1F169CFFDC00EFEF84 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CDC1E169CFFDC00EFEF84 /* AppDelegate.m */; };
+		189CDC21169CFFDC00EFEF84 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC20169CFFDC00EFEF84 /* Default.png */; };
+		189CDC23169CFFDC00EFEF84 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC22169CFFDC00EFEF84 /* Default@2x.png */; };
+		189CDC25169CFFDC00EFEF84 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC24169CFFDC00EFEF84 /* Default-568h@2x.png */; };
+		189CDC2E169CFFF400EFEF84 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189CDC2C169CFFF400EFEF84 /* MainViewController.m */; };
+		189CDC2F169CFFF400EFEF84 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC2D169CFFF400EFEF84 /* MainViewController.xib */; };
+		189CDC31169D002E00EFEF84 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 189CDC30169D002E00EFEF84 /* AVFoundation.framework */; };
+		189CDC33169D007800EFEF84 /* 第一夫人.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 189CDC32169D007800EFEF84 /* 第一夫人.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		189CDC0A169CFFDC00EFEF84 /* AVAudioPlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AVAudioPlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		189CDC0E169CFFDC00EFEF84 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		189CDC10169CFFDC00EFEF84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		189CDC12169CFFDC00EFEF84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		189CDC16169CFFDC00EFEF84 /* AVAudioPlayerDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AVAudioPlayerDemo-Info.plist"; sourceTree = "<group>"; };
+		189CDC18169CFFDC00EFEF84 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		189CDC1A169CFFDC00EFEF84 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		189CDC1C169CFFDC00EFEF84 /* AVAudioPlayerDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVAudioPlayerDemo-Prefix.pch"; sourceTree = "<group>"; };
+		189CDC1D169CFFDC00EFEF84 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		189CDC1E169CFFDC00EFEF84 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		189CDC20169CFFDC00EFEF84 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		189CDC22169CFFDC00EFEF84 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		189CDC24169CFFDC00EFEF84 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		189CDC2B169CFFF400EFEF84 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		189CDC2C169CFFF400EFEF84 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		189CDC2D169CFFF400EFEF84 /* MainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		189CDC30169D002E00EFEF84 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		189CDC32169D007800EFEF84 /* 第一夫人.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "第一夫人.mp3"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		189CDC07169CFFDB00EFEF84 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189CDC31169D002E00EFEF84 /* AVFoundation.framework in Frameworks */,
+				189CDC0F169CFFDC00EFEF84 /* UIKit.framework in Frameworks */,
+				189CDC11169CFFDC00EFEF84 /* Foundation.framework in Frameworks */,
+				189CDC13169CFFDC00EFEF84 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		189CDBFF169CFFDB00EFEF84 = {
+			isa = PBXGroup;
+			children = (
+				189CDC30169D002E00EFEF84 /* AVFoundation.framework */,
+				189CDC14169CFFDC00EFEF84 /* AVAudioPlayerDemo */,
+				189CDC0D169CFFDC00EFEF84 /* Frameworks */,
+				189CDC0B169CFFDC00EFEF84 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		189CDC0B169CFFDC00EFEF84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC0A169CFFDC00EFEF84 /* AVAudioPlayerDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		189CDC0D169CFFDC00EFEF84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC0E169CFFDC00EFEF84 /* UIKit.framework */,
+				189CDC10169CFFDC00EFEF84 /* Foundation.framework */,
+				189CDC12169CFFDC00EFEF84 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		189CDC14169CFFDC00EFEF84 /* AVAudioPlayerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC1D169CFFDC00EFEF84 /* AppDelegate.h */,
+				189CDC1E169CFFDC00EFEF84 /* AppDelegate.m */,
+				189CDC2B169CFFF400EFEF84 /* MainViewController.h */,
+				189CDC2C169CFFF400EFEF84 /* MainViewController.m */,
+				189CDC2D169CFFF400EFEF84 /* MainViewController.xib */,
+				189CDC32169D007800EFEF84 /* 第一夫人.mp3 */,
+				189CDC15169CFFDC00EFEF84 /* Supporting Files */,
+			);
+			path = AVAudioPlayerDemo;
+			sourceTree = "<group>";
+		};
+		189CDC15169CFFDC00EFEF84 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				189CDC16169CFFDC00EFEF84 /* AVAudioPlayerDemo-Info.plist */,
+				189CDC17169CFFDC00EFEF84 /* InfoPlist.strings */,
+				189CDC1A169CFFDC00EFEF84 /* main.m */,
+				189CDC1C169CFFDC00EFEF84 /* AVAudioPlayerDemo-Prefix.pch */,
+				189CDC20169CFFDC00EFEF84 /* Default.png */,
+				189CDC22169CFFDC00EFEF84 /* Default@2x.png */,
+				189CDC24169CFFDC00EFEF84 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		189CDC09169CFFDB00EFEF84 /* AVAudioPlayerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 189CDC28169CFFDC00EFEF84 /* Build configuration list for PBXNativeTarget "AVAudioPlayerDemo" */;
+			buildPhases = (
+				189CDC06169CFFDB00EFEF84 /* Sources */,
+				189CDC07169CFFDB00EFEF84 /* Frameworks */,
+				189CDC08169CFFDB00EFEF84 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AVAudioPlayerDemo;
+			productName = AVAudioPlayerDemo;
+			productReference = 189CDC0A169CFFDC00EFEF84 /* AVAudioPlayerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		189CDC01169CFFDB00EFEF84 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "www.iphonetrain.com 无限互联3G学院";
+			};
+			buildConfigurationList = 189CDC04169CFFDB00EFEF84 /* Build configuration list for PBXProject "AVAudioPlayerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 189CDBFF169CFFDB00EFEF84;
+			productRefGroup = 189CDC0B169CFFDC00EFEF84 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				189CDC09169CFFDB00EFEF84 /* AVAudioPlayerDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		189CDC08169CFFDB00EFEF84 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189CDC19169CFFDC00EFEF84 /* InfoPlist.strings in Resources */,
+				189CDC21169CFFDC00EFEF84 /* Default.png in Resources */,
+				189CDC23169CFFDC00EFEF84 /* Default@2x.png in Resources */,
+				189CDC25169CFFDC00EFEF84 /* Default-568h@2x.png in Resources */,
+				189CDC2F169CFFF400EFEF84 /* MainViewController.xib in Resources */,
+				189CDC33169D007800EFEF84 /* 第一夫人.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		189CDC06169CFFDB00EFEF84 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				189CDC1B169CFFDC00EFEF84 /* main.m in Sources */,
+				189CDC1F169CFFDC00EFEF84 /* AppDelegate.m in Sources */,
+				189CDC2E169CFFF400EFEF84 /* MainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		189CDC17169CFFDC00EFEF84 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				189CDC18169CFFDC00EFEF84 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		189CDC26169CFFDC00EFEF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		189CDC27169CFFDC00EFEF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		189CDC29169CFFDC00EFEF84 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AVAudioPlayerDemo/AVAudioPlayerDemo-Prefix.pch";
+				INFOPLIST_FILE = "AVAudioPlayerDemo/AVAudioPlayerDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		189CDC2A169CFFDC00EFEF84 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "AVAudioPlayerDemo/AVAudioPlayerDemo-Prefix.pch";
+				INFOPLIST_FILE = "AVAudioPlayerDemo/AVAudioPlayerDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		189CDC04169CFFDB00EFEF84 /* Build configuration list for PBXProject "AVAudioPlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189CDC26169CFFDC00EFEF84 /* Debug */,
+				189CDC27169CFFDC00EFEF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		189CDC28169CFFDC00EFEF84 /* Build configuration list for PBXNativeTarget "AVAudioPlayerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				189CDC29169CFFDC00EFEF84 /* Debug */,
+				189CDC2A169CFFDC00EFEF84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 189CDC01169CFFDB00EFEF84 /* Project object */;
+}
