@@ -122,11 +122,18 @@
 - (void)loadToolBarItems
 {
     NSMutableArray *items = [[NSMutableArray alloc] init];
-    UIBarButtonItem *space = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:NULL];
+    UIBarButtonItem *space = [[UIBarButtonItem alloc]
+                              initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                              target:nil
+                              action:NULL];
     [items addObject:space];
     for (int i = 0; i < 4; i++)
     {
-        UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithTitle:[NSString stringWithFormat:@"VC%d", i] style:UIBarButtonItemStylePlain target:self action:@selector(itemPressed:)];
+        UIBarButtonItem *item = [[UIBarButtonItem alloc]
+                                 initWithTitle:[NSString stringWithFormat:@"VC%d", i]
+                                 style:UIBarButtonItemStylePlain
+                                 target:self
+                                 action:@selector(itemPressed:)];
         item.tag = TOOL_BAT_ITEM_TAG + i;
         [items addObject:item];
         [items addObject:space];
@@ -145,7 +152,8 @@
 - (void)itemPressed:(UIBarButtonItem *)item
 {
     RandomViewController *randVC = [[RandomViewController alloc] init];
-    randVC.title = [NSString stringWithFormat:@"ViewController%ld", item.tag - TOOL_BAT_ITEM_TAG];
+    randVC.title = [NSString stringWithFormat:@"ViewController%ld",
+                    item.tag - TOOL_BAT_ITEM_TAG];
     [self.navigationController pushViewController:randVC animated:YES];
     [randVC release];
 }
@@ -155,12 +163,16 @@
  */
 - (void)loadGestureRecognizer
 {
-    UISwipeGestureRecognizer *swipLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(processGesture:)];
+    UISwipeGestureRecognizer *swipLeft = [[UISwipeGestureRecognizer alloc]
+                                          initWithTarget:self
+                                          action:@selector(processGesture:)];
     swipLeft.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipLeft];
     [swipLeft release];
     
-    UISwipeGestureRecognizer *swipRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(processGesture:)];
+    UISwipeGestureRecognizer *swipRight = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(processGesture:)];
     swipRight.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipRight];
     [swipRight release];
@@ -176,18 +188,30 @@
     if (swip.direction == UISwipeGestureRecognizerDirectionLeft) // 向左滑动
     {
         [UIView animateWithDuration:0.5f animations:^{
-            _leftView.center = CGPointMake(-(_leftView.bounds.size.width/2), CGRectGetMidY(self.view.frame));
-            _rightView.center = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame));
-            self.navigationController.toolbar.center = CGPointMake(CGRectGetMidX(self.view.frame), self.view.frame.size.height - self.navigationController.toolbar.frame.size.height/2);
+            _leftView.center = CGPointMake(-(_leftView.bounds.size.width/2),
+                                           CGRectGetMidY(self.view.frame));
+            _rightView.center = CGPointMake(CGRectGetMidX(self.view.frame),
+                                            CGRectGetMidY(self.view.frame));
+            self.navigationController.toolbar.center =
+                CGPointMake(CGRectGetMidX(self.view.frame),
+                            self.view.frame.size.height -
+                            self.navigationController.toolbar.frame.size.height/2);
         }];
     }
     
     if (swip.direction == UISwipeGestureRecognizerDirectionRight)
     {
         [UIView animateWithDuration:0.5f animations:^{
-            _leftView.center = CGPointMake(_leftView.bounds.size.width/2, CGRectGetMidY(self.view.frame));
-            _rightView.center = CGPointMake(CGRectGetMidX(self.view.frame) + _leftView.bounds.size.width, CGRectGetMidY(self.view.frame));
-            self.navigationController.toolbar.center = CGPointMake(CGRectGetMidX(self.view.frame) + _leftView.bounds.size.width, self.view.frame.size.height - self.navigationController.toolbar.frame.size.height/2);
+            _leftView.center = CGPointMake(_leftView.bounds.size.width/2,
+                                           CGRectGetMidY(self.view.frame));
+            _rightView.center = CGPointMake(CGRectGetMidX(self.view.frame) +
+                                            _leftView.bounds.size.width,
+                                            CGRectGetMidY(self.view.frame));
+            self.navigationController.toolbar.center =
+                CGPointMake(CGRectGetMidX(self.view.frame) +
+                            _leftView.bounds.size.width,
+                            self.view.frame.size.height -
+                            self.navigationController.toolbar.frame.size.height/2);
         }];
     }
     
