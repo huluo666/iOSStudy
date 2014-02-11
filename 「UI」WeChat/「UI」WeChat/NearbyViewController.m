@@ -27,7 +27,6 @@
 {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor grayColor];
-    [self customTitleViewWithText:self.title];
 }
 
 - (void)didReceiveMemoryWarning

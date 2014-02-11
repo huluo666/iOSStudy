@@ -46,11 +46,11 @@
 - (void)initNavigationBar
 {
     /*
-//    // 设置导航条样式风格
-//    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-//    // 只有barStyle为黑色半透明时背景颜色才有效果，
-//    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0.065 green:0.052 blue:0.035 alpha:1.000];
-//    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"tabBar_bg"]; // invalid
+    // 设置导航条样式风格
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    // 只有barStyle为黑色半透明时背景颜色才有效果，
+    self.navigationController.navigationBar.backgroundColor = [UIColor colorWithRed:0.065 green:0.052 blue:0.035 alpha:1.000];
+    self.navigationController.navigationBar.backIndicatorImage = [UIImage imageNamed:@"tabBar_bg"]; // invalid
     */
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"tabBar_bg"] forBarMetrics:UIBarMetricsDefault];
 }

@@ -27,8 +27,6 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
-    [self customTitleViewWithText:self.title]; // 自定义titleView
-
 }
 
 @end

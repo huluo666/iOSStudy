@@ -32,7 +32,6 @@
 		062E28C0189DE17B004DD114 /* taBbar_search_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E28B8189DE17B004DD114 /* taBbar_search_icon@2x.png */; };
 		062E28C1189DE17B004DD114 /* taBbar_setting_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 062E28B9189DE17B004DD114 /* taBbar_setting_icon@2x.png */; };
 		0641B62B189DE4B100CA5A96 /* tabBar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 0641B62A189DE4B100CA5A96 /* tabBar_bg.png */; };
-		0641B635189E19D400CA5A96 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0641B634189E19D400CA5A96 /* BaseNavigationController.m */; };
 		0689E24218A12A8900934E38 /* ParticularViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0689E24118A12A8900934E38 /* ParticularViewController.m */; };
 		0689E24518A12AAE00934E38 /* DetailInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0689E24418A12AAE00934E38 /* DetailInformationViewController.m */; };
 		06958C0518A2609A00B8C530 /* ic_sex_female@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06958C0318A2609A00B8C530 /* ic_sex_female@2x.png */; };
@@ -120,8 +119,6 @@
 		062E28B8189DE17B004DD114 /* taBbar_search_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "taBbar_search_icon@2x.png"; sourceTree = "<group>"; };
 		062E28B9189DE17B004DD114 /* taBbar_setting_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "taBbar_setting_icon@2x.png"; sourceTree = "<group>"; };
 		0641B62A189DE4B100CA5A96 /* tabBar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabBar_bg.png; sourceTree = "<group>"; };
-		0641B633189E19D400CA5A96 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
-		0641B634189E19D400CA5A96 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
 		0689E24018A12A8900934E38 /* ParticularViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticularViewController.h; sourceTree = "<group>"; };
 		0689E24118A12A8900934E38 /* ParticularViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParticularViewController.m; sourceTree = "<group>"; };
 		0689E24318A12AAE00934E38 /* DetailInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailInformationViewController.h; sourceTree = "<group>"; };
@@ -252,15 +249,6 @@
 			path = images;
 			sourceTree = "<group>";
 		};
-		0641B632189E197F00CA5A96 /* BaseNavigationController */ = {
-			isa = PBXGroup;
-			children = (
-				0641B633189E19D400CA5A96 /* BaseNavigationController.h */,
-				0641B634189E19D400CA5A96 /* BaseNavigationController.m */,
-			);
-			name = BaseNavigationController;
-			sourceTree = "<group>";
-		};
 		0641B636189E1C3D00CA5A96 /* ContactsListSubViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -336,7 +324,6 @@
 				062AB70A189F5E7000025E46 /* Datas */,
 				062AB706189F5CFA00025E46 /* Model */,
 				06E168E4189D35B700163128 /* WeChatTabBarController */,
-				0641B632189E197F00CA5A96 /* BaseNavigationController */,
 				06E168F7189D373200163128 /* ChatListSubViewControllers */,
 				06E168FB189D50F800163128 /* FindListSubViewsControllers */,
 				0641B636189E1C3D00CA5A96 /* ContactsListSubViewControllers */,
@@ -558,7 +545,6 @@
 				06293E8918A0DFE50019D451 /* EmotionStoreViewController.m in Sources */,
 				06293E8018A0DF720019D451 /* ShakeViewController.m in Sources */,
 				06293E7D18A0DF460019D451 /* ScanViewController.m in Sources */,
-				0641B635189E19D400CA5A96 /* BaseNavigationController.m in Sources */,
 				06E168C6189D357800163128 /* AppDelegate.m in Sources */,
 				06293E7718A0D3D10019D451 /* FriendsCricleViewController.m in Sources */,
 				0689E24518A12AAE00934E38 /* DetailInformationViewController.m in Sources */,

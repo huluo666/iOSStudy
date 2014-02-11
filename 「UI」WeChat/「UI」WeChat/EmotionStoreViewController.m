@@ -27,7 +27,6 @@
 {
     [super viewDidLoad];
 	self.view.backgroundColor = [UIColor redColor];
-    [self customTitleViewWithText:self.title];
 }
 
 @end

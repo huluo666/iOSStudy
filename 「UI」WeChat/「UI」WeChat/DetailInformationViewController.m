@@ -42,7 +42,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
     _packedInfos = [[self packPersonInformations] retain];
-    [self customTitleViewWithText:DETAIL_INFOMATIONS];
+    self.title = DETAIL_INFOMATIONS;
     [self showDetails];
     [self loadRightBarButtonItem];
 }
