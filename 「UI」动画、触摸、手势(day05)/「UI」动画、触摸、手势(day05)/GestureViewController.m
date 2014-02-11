@@ -25,6 +25,16 @@
     return self;
 }
 
+- (id)init
+{
+    if (self = [super init])
+    {
+        self.title =  @"UIView Gesture";
+    }
+    
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -35,15 +45,15 @@
 {
     self.view.backgroundColor = [UIColor whiteColor];
     
-    self.title = @"UIView Gesture";
-    
-    UIView *view = [[UIView alloc] init];
-    view.bounds = CGRectMake(0, 0, 200, 200);
-    view.center = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame));
-    view.backgroundColor = [UIColor blackColor];
-    [self.view addSubview:view];
-    [view release];
+    UISwipeGestureRecognizer *swip = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(processGesture:)];
+    swip.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swip];
+    [swip release];
 }
 
+- (void)processGesture:(UISwipeGestureRecognizer *)swip
+{
+    NSLog(@"swip");
+}
 
 @end

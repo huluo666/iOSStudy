@@ -17,7 +17,7 @@
 
 #ifndef _LOGIN_VIEW_CONTROLLER_
 #define _LOGIN_VIEW_CONTROLLER_
-#define SHOW_RED_VIEW @"Tap show red view"
+#define SHOW_RED_VIEW @"Tap show red view" 
 #define SHOW_BLUE_VIEW @"Tap show blue view"
 #endif
 
