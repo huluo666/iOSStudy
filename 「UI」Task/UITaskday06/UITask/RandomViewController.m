@@ -28,6 +28,8 @@
 {
     [super viewWillAppear:animated];
     self.navigationController.toolbarHidden = YES;
+    
+
 }
 
 - (void)viewDidLoad
@@ -43,6 +45,12 @@
     [self.view addSubview:label];
     [label release];
     
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
