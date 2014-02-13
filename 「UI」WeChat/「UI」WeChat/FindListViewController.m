@@ -75,7 +75,12 @@
 // 每一行的内容
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil] autorelease];
+    static NSString *cellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:cellIdentifier] autorelease];
+    }
     cell.textLabel.text = [_allTables[indexPath.row] name];
     cell.imageView.image = [_allTables[indexPath.row] leftImage];
     cell.accessoryView = [[[UIImageView alloc] initWithImage:[_allTables[indexPath.row] rightImage]] autorelease];
