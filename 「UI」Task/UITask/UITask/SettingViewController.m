@@ -108,11 +108,11 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc]
+        cell = [[[UITableViewCell alloc]
                 initWithStyle:UITableViewCellStyleValue1
-                reuseIdentifier:CellIdentifier];
+                reuseIdentifier:CellIdentifier] autorelease];
     }
-    
+
     cell.imageView.image = [UIImage imageNamed:[_dataSource[indexPath.row] imageName]];
     cell.textLabel.text = [_dataSource[indexPath.row] text];
     cell.textLabel.textColor = [UIColor whiteColor];
