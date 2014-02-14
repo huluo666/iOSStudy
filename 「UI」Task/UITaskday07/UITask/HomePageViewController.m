@@ -11,8 +11,6 @@
 @interface HomePageViewController () <UITableViewDataSource,UITableViewDelegate>
 
 @property (retain, nonatomic) NSMutableArray *timeArray;
-@property (retain, nonatomic) UIRefreshControl *control;
-@property (retain, nonatomic) UITableView *myTableView;
 
 - (void)initUserInterface;
 - (void)refreshTableviewAction:(UIRefreshControl *)refresh;
@@ -29,10 +27,6 @@
     self = [super init];
     if (self) {
         _timeArray = [[NSMutableArray alloc]init];
-        _control = [[UIRefreshControl alloc] init];
-        _myTableView = [[UITableView alloc] init];
-        self.refreshControl = _control;
-        self.tableView = _myTableView;
     }
     return self;
 }
@@ -40,8 +34,6 @@
 - (void)dealloc
 {
     [_timeArray release];
-    [_control release];
-    [_myTableView release];
     [super dealloc];
 }
 
@@ -68,22 +60,24 @@
 - (void)clearTableViewData:(UIBarButtonItem *)clearItem
 {
     _timeArray = [@[] mutableCopy];
-    [_myTableView reloadData];
+    [self.tableView reloadData];
 }
 
 
 - (void)initUserInterface
 {
     self.view.backgroundColor = [UIColor whiteColor];
-    _myTableView.delegate = self;
-    _myTableView.dataSource = self;
     
-    _control.tintColor = [UIColor lightGrayColor];
+    UIRefreshControl *refreshController = [[UIRefreshControl alloc] init];
+    self.refreshControl = refreshController;
+    [refreshController release];
+    
+    self.refreshControl.tintColor = [UIColor lightGrayColor];
     NSAttributedString *attributedTitle = [[NSAttributedString alloc]
                                            initWithString:@"下拉刷新"];
-    _control.attributedTitle = attributedTitle;
+    self.refreshControl.attributedTitle = attributedTitle;
     [attributedTitle release];
-    [_control addTarget:self
+    [self.refreshControl addTarget:self
                  action:@selector(refreshTableviewAction:)
        forControlEvents:UIControlEventValueChanged];
 }
@@ -114,12 +108,12 @@
     
     NSAttributedString *attributedTitle = [[NSAttributedString alloc]
                                            initWithString:lastUpdated];
-    _control.attributedTitle = attributedTitle;
+    self.refreshControl.attributedTitle = attributedTitle;
     [attributedTitle release];
     
     [_timeArray addObject:syseTime];
-    [_control endRefreshing];
-    [_myTableView reloadData];
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

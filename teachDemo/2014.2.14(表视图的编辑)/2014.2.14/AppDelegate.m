@@ -1,32 +1,29 @@
 //
 //  AppDelegate.m
-//  UITask
+//  2014.2.14
 //
-//  Created by cuan on 14-1-22.
-//  Copyright (c) 2014年 cuan. All rights reserved.
+//  Created by 张鹏 on 14-2-14.
+//  Copyright (c) 2014年 rimi. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "RootViewController.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    
+    ViewController *vc = [[ViewController alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    nav.navigationBar.tintColor = [UIColor redColor];
+    [vc release];
+    self.window.rootViewController = nav;
+    [nav release];
+    
     self.window.backgroundColor = [UIColor whiteColor];
-
-    RootViewController *rootVC =[[RootViewController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
-    [navi.navigationBar setBarTintColor:[UIColor colorWithWhite:0.349 alpha:1.000]];
-//    [navi.navigationBar setBackgroundImage:[UIImage imageNamed:@"nav_bg_ios7"] forBarMetrics:UIBarMetricsDefault];
-    application.statusBarStyle = UIStatusBarStyleLightContent;
-    navi.navigationBar.tintColor = [UIColor whiteColor];
-    [navi.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont systemFontOfSize:20]}];
-    [rootVC release];
-    self.window.rootViewController = navi;
-    [navi release];
-
     [self.window makeKeyAndVisible];
     return YES;
 }
