@@ -64,6 +64,8 @@
 {
     UITableView *tableView = [[UITableView alloc] init];
     tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backS"]];
+    tableView.separatorColor = [UIColor blackColor];
+    tableView.rowHeight = 50;
     self.tableView = tableView;
     [tableView release];
     
