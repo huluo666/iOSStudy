@@ -8,6 +8,7 @@
 
 #import "SettingViewController.h"
 #import "CellContent.h"
+#import "DeatilInfoViewController.h"
 
 @interface SettingViewController ()
 
@@ -96,7 +97,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return _displayCount;
 }
 
@@ -119,6 +119,18 @@
     cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backS"]];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     return cell;
+}
+
+#pragma mark - delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    DeatilInfoViewController *detailInfoVC = [[DeatilInfoViewController alloc] init];
+    detailInfoVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+    [self presentViewController:detailInfoVC animated:YES completion:nil];
+    [detailInfoVC release];
 }
 
 

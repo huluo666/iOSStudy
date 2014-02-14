@@ -50,6 +50,7 @@
 		95F5674018ADF90D0019E196 /* appmodule_messageCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F5673318ADF90D0019E196 /* appmodule_messageCenter@2x.png */; };
 		95F5674318AE02B20019E196 /* CellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F5674218AE02B20019E196 /* CellContent.m */; };
 		95F5674618AE02BC0019E196 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F5674518AE02BC0019E196 /* SettingViewController.m */; };
+		95F5674918AE08310019E196 /* DeatilInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F5674818AE08310019E196 /* DeatilInfoViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,8 @@
 		95F5674218AE02B20019E196 /* CellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CellContent.m; path = UITask/CellContent.m; sourceTree = "<group>"; };
 		95F5674418AE02BC0019E196 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingViewController.h; path = UITask/SettingViewController.h; sourceTree = "<group>"; };
 		95F5674518AE02BC0019E196 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingViewController.m; path = UITask/SettingViewController.m; sourceTree = "<group>"; };
+		95F5674718AE08310019E196 /* DeatilInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeatilInfoViewController.h; sourceTree = "<group>"; };
+		95F5674818AE08310019E196 /* DeatilInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeatilInfoViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 				95ECB0B1188FA35600DC43D9 /* RootViewController.m */,
 				95CB5A3A1890FABF000CEEA6 /* LoginViewController.h */,
 				95CB5A3B1890FABF000CEEA6 /* LoginViewController.m */,
+				95F5674718AE08310019E196 /* DeatilInfoViewController.h */,
+				95F5674818AE08310019E196 /* DeatilInfoViewController.m */,
 				95ECB093188FA34100DC43D9 /* Images.xcassets */,
 				95ECB088188FA34100DC43D9 /* Supporting Files */,
 			);
@@ -410,6 +415,7 @@
 				95ECB0B2188FA35600DC43D9 /* RootViewController.m in Sources */,
 				95ECB092188FA34100DC43D9 /* AppDelegate.m in Sources */,
 				95ECB08E188FA34100DC43D9 /* main.m in Sources */,
+				95F5674918AE08310019E196 /* DeatilInfoViewController.m in Sources */,
 				95F5674318AE02B20019E196 /* CellContent.m in Sources */,
 				95F5674618AE02BC0019E196 /* SettingViewController.m in Sources */,
 			);
