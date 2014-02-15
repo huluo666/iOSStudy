@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		062B9DA818AF9934005F0ABA /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 062B9DA718AF9934005F0ABA /* CustomCell.m */; };
 		9589EC4418AB695300808BE6 /* PhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9589EC4318AB695300808BE6 /* PhotosViewController.m */; };
 		95B122D718ACB11B001C29E1 /* HomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B122D618ACB11B001C29E1 /* HomePageViewController.m */; };
 		95CB5A3C1890FABF000CEEA6 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CB5A3B1890FABF000CEEA6 /* LoginViewController.m */; };
@@ -64,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		062B9DA618AF9934005F0ABA /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CustomCell.h; path = UITask/CustomCell.h; sourceTree = "<group>"; };
+		062B9DA718AF9934005F0ABA /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CustomCell.m; path = UITask/CustomCell.m; sourceTree = "<group>"; };
 		9589EC4218AB695300808BE6 /* PhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotosViewController.h; path = UITask/PhotosViewController.h; sourceTree = "<group>"; };
 		9589EC4318AB695300808BE6 /* PhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotosViewController.m; path = UITask/PhotosViewController.m; sourceTree = "<group>"; };
 		95B122D518ACB11B001C29E1 /* HomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomePageViewController.h; path = UITask/HomePageViewController.h; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 		9589EC3E18AB574D00808BE6 /* navi */ = {
 			isa = PBXGroup;
 			children = (
+				062B9DA618AF9934005F0ABA /* CustomCell.h */,
+				062B9DA718AF9934005F0ABA /* CustomCell.m */,
 				9589EC4218AB695300808BE6 /* PhotosViewController.h */,
 				9589EC4318AB695300808BE6 /* PhotosViewController.m */,
 				95B122D518ACB11B001C29E1 /* HomePageViewController.h */,
@@ -409,6 +414,7 @@
 			files = (
 				95B122D718ACB11B001C29E1 /* HomePageViewController.m in Sources */,
 				95CB5A3C1890FABF000CEEA6 /* LoginViewController.m in Sources */,
+				062B9DA818AF9934005F0ABA /* CustomCell.m in Sources */,
 				95CB701718A8CCBF00A71904 /* UIColor+Expand.m in Sources */,
 				9589EC4418AB695300808BE6 /* PhotosViewController.m in Sources */,
 				95ECB0B2188FA35600DC43D9 /* RootViewController.m in Sources */,
