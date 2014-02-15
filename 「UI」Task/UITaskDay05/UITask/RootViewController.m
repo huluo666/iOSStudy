@@ -152,7 +152,7 @@
 - (void)itemPressed:(UIBarButtonItem *)item
 {
     RandomViewController *randVC = [[RandomViewController alloc] init];
-    randVC.title = [NSString stringWithFormat:@"ViewController%ld",
+    randVC.title = [NSString stringWithFormat:@"ViewController%d",
                     item.tag - TOOL_BAT_ITEM_TAG];
     [self.navigationController pushViewController:randVC animated:YES];
     [randVC release];
