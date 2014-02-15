@@ -157,22 +157,17 @@
 
 - (void)processController:(UIControl *)sender
 {
-    if ([sender isKindOfClass:[UISwitch class]])
-    {
+    if ([sender isKindOfClass:[UISwitch class]]) {
         UITextField *passwordField = (UITextField *)[self.view viewWithTag:PasswordFiledTag];
         passwordField.secureTextEntry =  passwordField.isSecureTextEntry == NO ? YES : NO;
-    }
-    else if ([sender isKindOfClass:[UISlider class]])
-    {
+    } else if ([sender isKindOfClass:[UISlider class]]) {
         UISlider *slider = (UISlider *)sender;
         float value = slider.value;
         self.view.backgroundColor = [UIColor colorWithRed:(0.131 + value)
                                                     green:(0.100 + value)
                                                      blue:(0.107 + value) alpha:1.000];
         NSLog(@"slider value = % .2f", value);
-    }
-    else if ([sender isKindOfClass:[UIButton class]])
-    {
+    } else if ([sender isKindOfClass:[UIButton class]]) {
         // 显示菊花
         UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView *)[self.view viewWithTag:15];
         [activityIndicatorView startAnimating];
@@ -190,15 +185,12 @@
     // 获取用户名和密码
     UITextField *userNameField = (UITextField *)[self.view viewWithTag:UserNameFiledTag];
     UITextField *passwordField = (UITextField *)[self.view viewWithTag:PasswordFiledTag];
-    if ([userNameField.text isEqualToString:USER_NAME] && [passwordField.text isEqualToString:PASS_WORD])
-    {
+    if ([userNameField.text isEqualToString:USER_NAME] && [passwordField.text isEqualToString:PASS_WORD]) {
         // 登录成功
         [self.navigationController popToRootViewControllerAnimated:YES];
         RootViewController *rootVC = (RootViewController *)[(AppDelegate *)[[UIApplication sharedApplication] delegate] window].rootViewController.childViewControllers[0];
         [rootVC setLogined:YES];
-    }
-    else
-    {
+    } else {
         UIAlertView *alertView = [[UIAlertView alloc]
                                   initWithTitle:@"提示"
                                   message:@"用户名或者密码错误"
@@ -225,52 +217,35 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
     return YES;
 }
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
     return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    
     // 判断用户名
-    if (textField.tag == 11)
-    {
-        if (!textField.text || textField.text.length < 5 || textField.text.length > 24)
-        {
+    if (textField.tag == 11) {
+        if (!textField.text || textField.text.length < 5 || textField.text.length > 24) {
             ;// alert
         }
         
-        if (textField.text )
-        {
+        if (textField.text ) {
             ;
         }
     }
     
     //判断密码
-    if (textField.tag == 12)
-    {
-        if (!textField.text || textField.text.length < 6)
-        {
+    if (textField.tag == 12) {
+        if (!textField.text || textField.text.length < 6) {
             ;//alert
         }
-        
     }
 
     
 }
-
-
 
 @end
