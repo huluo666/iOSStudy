@@ -37,3 +37,8 @@
 #define _ROOT_VIEW_CONTROLLER_
 #define TOOL_BAT_ITEM_TAG 200
 #endif
+
+#ifndef _SETTING_VIEW_CONTROLLER_
+#define _SETTING_VIEW_CONTROLLER_
+#define CELL_ROW_HEIGHT 55
+#endif

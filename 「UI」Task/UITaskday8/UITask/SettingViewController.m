@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "CellContent.h"
 #import "DeatilInfoViewController.h"
+#import "CustomCell.h"
 
 @interface SettingViewController ()
 
@@ -65,7 +66,7 @@
     UITableView *tableView = [[UITableView alloc] init];
     tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backS"]];
     tableView.separatorColor = [UIColor blackColor];
-    tableView.rowHeight = 50;
+    tableView.rowHeight = CELL_ROW_HEIGHT;
     self.tableView = tableView;
     [tableView release];
     
@@ -106,20 +107,16 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CustomCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc]
-                initWithStyle:UITableViewCellStyleValue1
-                reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[CustomCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
-
-    cell.imageView.image = [UIImage imageNamed:[_dataSource[indexPath.row] imageName]];
+    
+    cell.customImage = [UIImage imageNamed:[_dataSource[indexPath.row] imageName]];
+//    cell.customText = [_dataSource[indexPath.row] text];
     cell.textLabel.text = [_dataSource[indexPath.row] text];
-    cell.textLabel.textColor = [UIColor whiteColor];
     cell.detailTextLabel.text = [_dataSource[indexPath.row] detailText];
-    cell.detailTextLabel.textColor = [UIColor whiteColor];
-    cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"backS"]];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    
     return cell;
 }
 
@@ -129,12 +126,10 @@
 {
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    DeatilInfoViewController *detailInfoVC = [[DeatilInfoViewController alloc] init];
+    DeatilInfoViewController *detailInfoVC = [[DeatilInfoViewController alloc] initWithExplain:[_dataSource[indexPath.row] text]];
     detailInfoVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     [self presentViewController:detailInfoVC animated:YES completion:nil];
     [detailInfoVC release];
 }
-
-
 
 @end

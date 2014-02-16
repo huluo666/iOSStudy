@@ -215,6 +215,9 @@
                 CGPointMake(CGRectGetMidX(self.view.frame),
                             self.view.frame.size.height -
                             self.navigationController.toolbar.frame.size.height/2);
+
+            _rightView.userInteractionEnabled = YES;
+            self.navigationController.toolbar.userInteractionEnabled = YES;
         }];
     }
     
@@ -230,6 +233,9 @@
                             _leftView.bounds.size.width,
                             self.view.frame.size.height -
                             self.navigationController.toolbar.frame.size.height/2);
+
+            _rightView.userInteractionEnabled = NO;
+            self.navigationController.toolbar.userInteractionEnabled = NO;
         }];
     }
     

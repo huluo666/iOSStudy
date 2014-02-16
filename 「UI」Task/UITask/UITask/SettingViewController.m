@@ -113,7 +113,8 @@
     }
     
     cell.customImage = [UIImage imageNamed:[_dataSource[indexPath.row] imageName]];
-    cell.customText = [_dataSource[indexPath.row] text];
+//    cell.customText = [_dataSource[indexPath.row] text];
+    cell.textLabel.text = [_dataSource[indexPath.row] text];
     cell.detailTextLabel.text = [_dataSource[indexPath.row] detailText];
     
     return cell;
