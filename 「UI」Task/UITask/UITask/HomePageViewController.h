@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MainViewController.h"
 
 @interface HomePageViewController : UITableViewController
+
+@property (assign, nonatomic, getter = isLogined) BOOL logined;
 
 @end

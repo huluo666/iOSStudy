@@ -34,6 +34,8 @@
         UITabBarItem *tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemHistory tag:100];
         self.tabBarItem = tabBarItem;
         [tabBarItem release];
+        
+        self.tabBarItem.badgeValue = nil;
     }
     return self;
 }

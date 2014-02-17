@@ -44,6 +44,18 @@
     return self;
 }
 
+- (void)setValue:(NSString *)value
+{
+    if (_value != value) {
+        [_value release];
+        _value = [value copy];
+        
+        UILabel *label = (UILabel *)[self.view viewWithTag:401];
+        NSLog(@"vc4.value");
+        label.text = _value;
+    }
+}
+
 - (void)initUserInterface
 {
     self.view.backgroundColor = [UIColor specialRandomColor];
@@ -55,6 +67,17 @@
     label.text = self.title;
     [self.view addSubview:label];
     [label release];
+    
+    UILabel *transValueLabel = [[UILabel alloc] init];
+    transValueLabel.bounds = CGRectMake(0, 0, 220, 30);
+    transValueLabel.center = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMidY(self.view.frame) - 60);
+    transValueLabel.font = [UIFont systemFontOfSize:24.0f];
+    transValueLabel.textColor = [UIColor whiteColor];
+    transValueLabel.textAlignment = NSTextAlignmentCenter;
+    transValueLabel.tag = 401;
+    transValueLabel.text = _value;
+    [self.view addSubview:transValueLabel];
+    [transValueLabel release];
 }
 
 @end

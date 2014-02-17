@@ -10,4 +10,6 @@
 
 @interface ViewController4 : UIViewController
 
+@property (nonatomic, copy) NSString *value;
+
 @end

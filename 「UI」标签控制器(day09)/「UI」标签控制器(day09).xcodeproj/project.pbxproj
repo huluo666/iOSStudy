@@ -14,6 +14,7 @@
 		9565775B18B1A00D0087082B /* nav_bg_ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9565775618B1A00D0087082B /* nav_bg_ios7@2x.png */; };
 		9565775F18B1A02E0087082B /* UIColor+Expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 9565775E18B1A02E0087082B /* UIColor+Expand.m */; };
 		9565776218B1A6240087082B /* ViewController6.m in Sources */ = {isa = PBXBuildFile; fileRef = 9565776118B1A6240087082B /* ViewController6.m */; };
+		9565776518B1B14E0087082B /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9565776418B1B14E0087082B /* DetailViewController.m */; };
 		95FD29AF18B19AE4002F7139 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FD29AE18B19AE4002F7139 /* Foundation.framework */; };
 		95FD29B118B19AE4002F7139 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FD29B018B19AE4002F7139 /* CoreGraphics.framework */; };
 		95FD29B318B19AE4002F7139 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95FD29B218B19AE4002F7139 /* UIKit.framework */; };
@@ -52,6 +53,8 @@
 		9565775E18B1A02E0087082B /* UIColor+Expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Expand.m"; sourceTree = "<group>"; };
 		9565776018B1A6240087082B /* ViewController6.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController6.h; sourceTree = "<group>"; };
 		9565776118B1A6240087082B /* ViewController6.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController6.m; sourceTree = "<group>"; };
+		9565776318B1B14E0087082B /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		9565776418B1B14E0087082B /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		95FD29AB18B19AE4002F7139 /* 「UI」标签控制器(day09).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「UI」标签控制器(day09).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FD29AE18B19AE4002F7139 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95FD29B018B19AE4002F7139 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -170,6 +173,8 @@
 				95FD29EA18B19D39002F7139 /* ViewController5.m */,
 				9565776018B1A6240087082B /* ViewController6.h */,
 				9565776118B1A6240087082B /* ViewController6.m */,
+				9565776318B1B14E0087082B /* DetailViewController.h */,
+				9565776418B1B14E0087082B /* DetailViewController.m */,
 				95FD29C018B19AE4002F7139 /* Images.xcassets */,
 				95FD29B518B19AE4002F7139 /* Supporting Files */,
 			);
@@ -301,6 +306,7 @@
 				9565776218B1A6240087082B /* ViewController6.m in Sources */,
 				95FD29BB18B19AE4002F7139 /* main.m in Sources */,
 				9565775F18B1A02E0087082B /* UIColor+Expand.m in Sources */,
+				9565776518B1B14E0087082B /* DetailViewController.m in Sources */,
 				95FD29DF18B19D24002F7139 /* ViewController1.m in Sources */,
 				95FD29EB18B19D39002F7139 /* ViewController5.m in Sources */,
 				95FD29E518B19D2D002F7139 /* ViewController3.m in Sources */,

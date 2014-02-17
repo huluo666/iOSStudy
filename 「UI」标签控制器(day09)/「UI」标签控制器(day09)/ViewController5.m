@@ -56,6 +56,8 @@
     label.text = self.title;
     [self.view addSubview:label];
     [label release];
+    
+
 }
 
 @end
