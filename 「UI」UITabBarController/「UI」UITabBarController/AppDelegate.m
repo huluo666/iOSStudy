@@ -81,7 +81,7 @@
     ViewController6 *vc6 = [[ViewController6 alloc] init];
     vc6.title = @"界面六";
     vc6.tabBarItem.image = [UIImage imageNamed:nil];
-    
+
 #pragma mark 将各个ViewController加载到UITabBarController中管理
     
     NSArray *controllers = @[navigationController, vc2, vc3, vc4, vc5, vc6];
