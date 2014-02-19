@@ -10,20 +10,30 @@
 #import "HomePageViewController.h"
 #import "AppDelegate.h"
 
-@interface LoginViewController ()
+@interface LoginViewController () <
+    NSURLConnectionDataDelegate,
+    NSURLConnectionDelegate,
+    UIAlertViewDelegate>
+
+@property (nonatomic, retain) NSMutableData *responseData;
 
 - (void)initializeUserInteface;
 - (void)processController:(UIControl *)sender;
+- (void)checkingLogin;
+- (void)checkedLogin;
+- (void)showAlertWithMessage:(NSString *)message;
 
 @end
 
 @implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.hidesBottomBarWhenPushed = YES;
+        _responseData = [[NSMutableData alloc] init];
     }
     return self;
 }
@@ -45,6 +55,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    [_responseData release];
+    [super dealloc];
+}
+
 #pragma mark - 事件处理方法
 
 - (void)initializeUserInteface
@@ -55,14 +71,14 @@
     UITextField *userNameField = [[UITextField alloc]
                                   initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 60,
                                                 CGRectGetMinY(self.view.frame) + 40, 200, 30)];
-    userNameField.tag                    = UserNameFiledTag;
-    userNameField.borderStyle            = UITextBorderStyleRoundedRect;
-    userNameField.layer.borderWidth      = 1.0f;
-    userNameField.layer.borderColor      = [[UIColor greenColor] CGColor];
-    userNameField.delegate               = self;
-    userNameField.clearButtonMode        = UITextFieldViewModeWhileEditing;
+    userNameField.tag = UserNameFiledTag;
+    userNameField.borderStyle = UITextBorderStyleRoundedRect;
+    userNameField.layer.borderWidth = 1.0f;
+    userNameField.layer.borderColor = [[UIColor greenColor] CGColor];
+    userNameField.delegate = self;
+    userNameField.clearButtonMode = UITextFieldViewModeWhileEditing;
     userNameField.autocapitalizationType = UITextAutocapitalizationTypeNone;
-    
+    userNameField.text = @"admin";
     [self.view addSubview:userNameField];
     [userNameField release];
     
@@ -87,6 +103,7 @@
     passwordField.delegate               = self;
     passwordField.clearButtonMode        = UITextFieldViewModeWhileEditing;
     passwordField.autocapitalizationType = UITextAutocapitalizationTypeNone;
+    passwordField.text                   = @"123456";
     [self.view addSubview:passwordField];
     [passwordField release];
     
@@ -179,26 +196,48 @@
 
 - (void)checkingLogin
 {
-    UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView *)[self.view viewWithTag:15];
-    [activityIndicatorView stopAnimating];
-    
     // 获取用户名和密码
     UITextField *userNameField = (UITextField *)[self.view viewWithTag:UserNameFiledTag];
     UITextField *passwordField = (UITextField *)[self.view viewWithTag:PasswordFiledTag];
-    if ([userNameField.text isEqualToString:USER_NAME] && [passwordField.text isEqualToString:PASS_WORD]) {
-        // 登录成功
-        [self.navigationController popViewControllerAnimated:YES];
-        HomePageViewController *homePageVC = [(UINavigationController *)self.tabBarController.viewControllers[1] viewControllers][0];
-        [homePageVC setLogined:YES];
-    } else {
-        UIAlertView *alertView = [[UIAlertView alloc]
-                                  initWithTitle:@"提示"
-                                  message:@"用户名或者密码错误"
-                                  delegate:nil
-                                  cancelButtonTitle:@"返回重试"
-                                  otherButtonTitles:nil];
-        [alertView show];
-        [alertView release];
+    if (!userNameField.text || userNameField.text.length == 0) {
+        [self showAlertWithMessage:@"用户名格式错误"];
+        return;
+    }
+    if (!passwordField.text || passwordField.text.length == 0) {
+        [self showAlertWithMessage:@"密码格式错误"];
+        return;
+    }
+    
+    NSString *bodyString = [NSString stringWithFormat:@"g=ApiGGC&m=Public&c=login&user_name=%@&password=%@",
+                            userNameField.text, passwordField.text];
+    NSURL *url = [NSURL URLWithString:@"http://125.70.10.34:8119/ggc/api.php"];
+    NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [(NSMutableURLRequest *)request setHTTPMethod:@"POST"];
+    [(NSMutableURLRequest *)request setTimeoutInterval:10.0];
+    [(NSMutableURLRequest *)request
+     setHTTPBody:[bodyString dataUsingEncoding:NSUTF8StringEncoding]];
+ 
+    // 发起异步请求
+    [NSURLConnection connectionWithRequest:request delegate:self];
+}
+
+- (void)checkedLogin
+{
+    NSError *error = nil;
+    id object = [NSJSONSerialization JSONObjectWithData:_responseData
+                                                options:NSJSONReadingMutableLeaves
+                                                  error:&error];
+    if ([object isKindOfClass:[NSDictionary class]]) {
+        if ([object[@"status"] integerValue]) { // 登录成功
+            
+            [self.navigationController popViewControllerAnimated:YES];
+            HomePageViewController *homePageVC = [(UINavigationController *)
+                                                  self.tabBarController.viewControllers[1]
+                                                  viewControllers][0];
+            [homePageVC setLogined:YES];
+        } else {
+            [self showAlertWithMessage:object[@"content"]];
+        }
     }
 }
 
@@ -207,11 +246,24 @@
     [self.view endEditing:YES];
 }
 
+- (void)showAlertWithMessage:(NSString *)message
+{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"温馨提示"
+                              message:message
+                              delegate:self
+                              cancelButtonTitle:@"返回重试"
+                              otherButtonTitles:nil];
+    [alertView show];
+    [alertView release];
+}
+
 #pragma mark - <UITextFieldDelegate>
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.view endEditing:YES];
+    [self checkingLogin];
     return YES;
 }
 
@@ -229,7 +281,9 @@
 {
     // 判断用户名
     if (textField.tag == 11) {
-        if (!textField.text || textField.text.length < 5 || textField.text.length > 24) {
+        if (!textField.text ||
+            textField.text.length < 5 ||
+            textField.text.length > 24) {
             ;// alert
         }
         
@@ -244,8 +298,40 @@
             ;//alert
         }
     }
+}
 
-    
+#pragma mark - NSURLConnectionDataDelegate、NSURLConnectionDelegate
+
+// 请求完成
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    [self checkedLogin];
+}
+
+// 获取到数据或者部分数据
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    _responseData = [[NSMutableData data] mutableCopy];
+    [_responseData appendData:data];
+}
+
+// 请求失败
+- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    NSLog(@"Request failed with eror message %@", [error localizedDescription]);
+}
+
+
+#pragma mark - UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView *)[self.view viewWithTag:15];
+        [activityIndicatorView stopAnimating];
+    }
 }
 
 @end

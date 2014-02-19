@@ -70,7 +70,8 @@
     _leftView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_leftView];
     
-    _rightView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    _rightView.frame = CGRectMake(0, 0, self.view.frame.size.width,
+                                  self.view.frame.size.height);
     _rightView.backgroundColor = [UIColor blueColor];
     _rightView.layer.shadowColor = [UIColor blackColor].CGColor;
     _rightView.layer.shadowOffset = CGSizeMake(-3, -3);

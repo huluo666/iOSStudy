@@ -1,0 +1,20 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+//#define GET_REQUEST_URL [NSString stringWithFormat:@"http://api.jiepang.com/v1/locations/search?lat=%f&lon=%f&source=100000&count=50",30.575413,104.064359]
+#define GET_REQUEST_URL [NSString stringWithFormat:@"http://api.jiepang.com/v1/locations/search?lat=%f&lon=%f&source=100000&count=50",30.575413,104.164329]
+#define POST_REQUEST_URL [NSString stringWithFormat:@"http://125.70.10.34:8119/ggc/api.php"]

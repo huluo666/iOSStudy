@@ -7,13 +7,37 @@
 //
 
 #import "AppDelegate.h"
-#import "RootViewController.h"
+#import "RequestViewController.h"
+#import "WebViewController.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    RequestViewController *reauestVC = [[RequestViewController alloc] init];
+    UINavigationController *requestNavi = [[UINavigationController alloc] initWithRootViewController:reauestVC];
+    [reauestVC release];
+    application.statusBarStyle = UIStatusBarStyleLightContent;
+    WebViewController *webVC = [[WebViewController alloc] init];
+    UINavigationController *webNai = [[UINavigationController alloc] initWithRootViewController:webVC];
+    [webVC release];
+    
+    NSArray *navis = @[requestNavi, webNai];
+    [requestNavi release];
+    [webNai release];
+    
+    for (UINavigationController *navi in navis) {
+        navi.navigationBar.tintColor = [UIColor whiteColor];
+        navi.navigationBar.barTintColor = [UIColor colorWithRed:0.267 green:0.633 blue:1.000 alpha:1.000];
+        navi.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                   NSFontAttributeName:[UIFont systemFontOfSize:14.0f]};
+    }
+    
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = navis;
+    self.window.rootViewController = tabBarController;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
