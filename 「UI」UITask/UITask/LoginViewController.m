@@ -320,7 +320,7 @@
 // 获取到数据或者部分数据
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    _responseData = [[NSMutableData data] mutableCopy];
+    _responseData.length = 0;
     [_responseData appendData:data];
 }
 
