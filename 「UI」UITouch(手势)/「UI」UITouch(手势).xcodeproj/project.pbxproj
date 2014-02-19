@@ -19,6 +19,10 @@
 		062EC01318B0E2EA0019B88A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062EBFFB18B0E2EA0019B88A /* UIKit.framework */; };
 		062EC01B18B0E2EA0019B88A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 062EC01918B0E2EA0019B88A /* InfoPlist.strings */; };
 		062EC01D18B0E2EA0019B88A /* _UI_UITouch____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EC01C18B0E2EA0019B88A /* _UI_UITouch____Tests.m */; };
+<<<<<<< HEAD
+=======
+		062EC02818B0E3EA0019B88A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062EC02718B0E3EA0019B88A /* RootViewController.m */; };
+>>>>>>> origin/feature
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +52,11 @@
 		062EC01818B0E2EA0019B88A /* 「UI」UITouch(手势)Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「UI」UITouch(手势)Tests-Info.plist"; sourceTree = "<group>"; };
 		062EC01A18B0E2EA0019B88A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		062EC01C18B0E2EA0019B88A /* _UI_UITouch____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_UI_UITouch____Tests.m"; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
+		062EC02618B0E3EA0019B88A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		062EC02718B0E3EA0019B88A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+>>>>>>> origin/feature
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +118,11 @@
 			children = (
 				062EC00618B0E2EA0019B88A /* AppDelegate.h */,
 				062EC00718B0E2EA0019B88A /* AppDelegate.m */,
+<<<<<<< HEAD
+=======
+				062EC02618B0E3EA0019B88A /* RootViewController.h */,
+				062EC02718B0E3EA0019B88A /* RootViewController.m */,
+>>>>>>> origin/feature
 				062EC00918B0E2EA0019B88A /* Images.xcassets */,
 				062EBFFE18B0E2EA0019B88A /* Supporting Files */,
 			);
@@ -241,6 +255,10 @@
 			files = (
 				062EC00818B0E2EA0019B88A /* AppDelegate.m in Sources */,
 				062EC00418B0E2EA0019B88A /* main.m in Sources */,
+<<<<<<< HEAD
+=======
+				062EC02818B0E3EA0019B88A /* RootViewController.m in Sources */,
+>>>>>>> origin/feature
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
