@@ -137,6 +137,7 @@
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     NSLog(@"Request failed: %@", [error localizedDescription]);
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 // 加载开始
