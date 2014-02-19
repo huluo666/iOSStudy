@@ -238,7 +238,7 @@
                                                   error:&error];
     if ([object isKindOfClass:[NSDictionary class]]) {
         if ([object[@"status"] integerValue]) { // 登录成功
-            
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             [self.navigationController popViewControllerAnimated:YES];
             HomePageViewController *homePageVC = [(UINavigationController *)
                                                   self.tabBarController.viewControllers[1]
