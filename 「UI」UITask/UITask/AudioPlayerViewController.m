@@ -198,9 +198,11 @@
     }
     
     NSError *error = nil;
+
     self.audioPlayer = [[AVAudioPlayer alloc]
                         initWithContentsOfURL:audioURL
                         error:&error];
+
     _audioPlayer.numberOfLoops = -1;
     [_audioPlayer prepareToPlay];
     if (autoPlay) {
