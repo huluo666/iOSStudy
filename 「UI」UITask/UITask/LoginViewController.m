@@ -188,6 +188,7 @@
         // 显示菊花
         UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView *)[self.view viewWithTag:15];
         [activityIndicatorView startAnimating];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
         [self performSelector:@selector(checkingLogin)
                    withObject:activityIndicatorView
                    afterDelay:0.5f];
@@ -199,17 +200,25 @@
     // 获取用户名和密码
     UITextField *userNameField = (UITextField *)[self.view viewWithTag:UserNameFiledTag];
     UITextField *passwordField = (UITextField *)[self.view viewWithTag:PasswordFiledTag];
-    if (!userNameField.text || userNameField.text.length == 0) {
+    
+    // 去掉前后空格
+    NSString *userName = [userNameField.text stringByTrimmingCharactersInSet:
+                          [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *password = [passwordField.text stringByTrimmingCharactersInSet:
+                          [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    if (!userName || userName.length == 0) {
         [self showAlertWithMessage:@"用户名格式错误"];
         return;
     }
-    if (!passwordField.text || passwordField.text.length == 0) {
+    if (!password || password.length == 0) {
         [self showAlertWithMessage:@"密码格式错误"];
         return;
     }
-    
+
     NSString *bodyString = [NSString stringWithFormat:@"g=ApiGGC&m=Public&c=login&user_name=%@&password=%@",
-                            userNameField.text, passwordField.text];
+                            userName, password];
+    
     NSURL *url = [NSURL URLWithString:@"http://125.70.10.34:8119/ggc/api.php"];
     NSURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [(NSMutableURLRequest *)request setHTTPMethod:@"POST"];
@@ -305,7 +314,6 @@
 // 请求完成
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     [self checkedLogin];
 }
 
@@ -319,6 +327,8 @@
 // 请求失败
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView *)[self.view viewWithTag:15];
+    [activityIndicatorView stopAnimating];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     NSLog(@"Request failed with eror message %@", [error localizedDescription]);
 }
@@ -331,6 +341,7 @@
     if (buttonIndex == 0) {
         UIActivityIndicatorView *activityIndicatorView = (UIActivityIndicatorView *)[self.view viewWithTag:15];
         [activityIndicatorView stopAnimating];
+        [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     }
 }
 
