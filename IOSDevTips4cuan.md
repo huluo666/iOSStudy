@@ -11,25 +11,25 @@
 - [cocoa内存管理规则](#cocoa)
 - [property总结](#propertySummary)
 - [@class](#@class)
-- [category](#category)
-- [protocol](#protocol) 
-- [block](#block)
+- [Category(类别)](#category)
+- [Protocol(协议)](#protocol) 
+- [block(代码块)](#block)
 - [OC数据类型](#OCDataType)
-- [NSString](#NSString)
-- [NSArray](#NSArray)
-- [NSDictionary](#NSDictionary)
-- [NSSet](#NSSet)
-- [单例写法](#singleton)
-- [NSFileManger](#NSFileManager)
-- [NSFileHandle](#NSFileHandle)
-- [归档与解档](#archiver)
-- [沙盒机制](#sandbox)
-- [UIView](#UIView)
-- [UIViewController](#UIViewController)
+- [NSString(字符串)](#NSString)
+- [NSArray(数组)](#NSArray)
+- [NSDictionary(字典)](#NSDictionary)
+- [NSSet(集)](#NSSet)
+- [Singleton(单例)](#singleton)
+- [文件管理器(NSFileManger)](#NSFileManager)
+- [文件句柄(NSFileHandle)](#NSFileHandle)
+- [archiver(归档与解档)](#archiver)
+- [Sandbox(沙盒机制)](#sandbox)
+- [UIView(视图)](#UIView)
+- [UIViewController(视图控制器)](#UIViewController)
 - [UIButton(按钮)](#UIButton)
 - [UILabel(标签)](#UILabel)
 - [UITextField(文本域)）](#UITextField)
-- [UITextView](#UITextView)
+- [UITextView(文本视图)](#UITextView)
 - [UIPageControl(分页控件)](#UIPageControl)
 - [UISwitch(开关)](#UISwitch)
 - [UISlider(滑条)](#UISlider)
@@ -38,10 +38,10 @@
 - [UIActivityIndicatorView(进度指示器/菊花)](#UIActivityIndicatorView)
 - [UINavigationController(导航控制器)](#UINavigationController)
 - [UINavigationBar(导航条)](#UINavigationBar)
-- [UINavigationItem](#UINavigationItem)
-- [UIToolBar](#UIToolBar)
+- [UINavigationItem(导航栏按钮)](#UINavigationItem)
+- [UIToolBar(工具栏)](#UIToolBar)
 - [UITabBarController(标签栏控制器)](#UITabBarController)
-- [codeSnippets](#codeSnippets)
+- [codeSnippets(代码片段)](#codeSnippets)
 
 
 <h3 id="oneWord"> 一句话知识点 </h3>
@@ -318,8 +318,7 @@
 	typedef int (^mySum)(int, int);
 	void test()
 	{
-		mySum sum = ^(int a, int b)
-		{
+		mySum sum = ^(int a, int b) {
 			return a + b;
 		}
 		NSLog(@"%i"， sum(10, 2));
@@ -591,8 +590,7 @@
 		static id sharedMyManager;
 		+ (id)sharedThemeManager
 		{
-			if (sharedMyManager == nil)
-			{
+			if (sharedMyManager == nil) {
 				sharedMyMamager = [[self alloc] init];
 			}
 			return sharedMyManager;
@@ -602,10 +600,8 @@
 
 		+ (id)sharedThemeManager
 		{
-			@synchronized(self)
-			{
-				if (sharedMyManager == nil)
-				{
+			@synchronized(self) {
+				if (sharedMyManager == nil) {
 					sharedMyMamager = [[self alloc] init];
 				}
 			}
@@ -617,8 +613,7 @@
 		+ (voidq)initialize
 		{
 			static BOOL initialized = NO;
-			if (initialized == NO)
-			{
+			if (initialized == NO) {
 				initialized = YES;
 				sharedMyManager = [[self alloc] init];
 			}
@@ -729,8 +724,7 @@
 			
 			- (id)initWithCoder:(NSCoder *)aDecoder
 			{
-			    if (self = [super init])
-			    {
+			    if (self = [super init]) {
 			        self.name  = [aDecoder decodeObjectForKey:@"name"];
 			        self.age   = [aDecoder decodeIntegerForKey:@"age"];
 			        self.child = [aDecoder decodeObjectForKey:@"child"];
@@ -1449,13 +1443,11 @@
 	#define NUMBER_SET @"0123456789"
 	- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 	{
-	    if (range.location >= 11)
-	    {
+	    if (range.location >= 11) {
 	        return NO;
 	    }
 	    
-	    if ([NUMBER_SET rangeOfString:string].location == NSNotFound)
-	    {
+	    if ([NUMBER_SET rangeOfString:string].location == NSNotFound) {
 	        return NO;
 	    }
 	    
@@ -1518,24 +1510,20 @@
 		static UIImage *backgroundImage = nil;
 		- (void)setNavigationBarWithImage:(UIImage *)bgImage
 		{
-			if (backgroundImage != bgImage)
-			{
+			if (backgroundImage != bgImage) {
 				[backgroundImage release];
 				[backgroundImage = bgImag retain];
 				
 			}
 			
 			// IOS 5.x
-			if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)])
-			{
+			if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
 				[self setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
-				if ([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0)
-				{
+				if ([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0) {
 					[UIApplication sharedApplication].statusBarStyle = UIBarStyleBlackOpaque;
 				}
 			}
-			else // IOS 4.x
-			{
+			else { // IOS 4.x
 				[self drawRect:self.bounds];
 			}
 		}
@@ -1547,33 +1535,3 @@
 		}
 		
 	@end
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
