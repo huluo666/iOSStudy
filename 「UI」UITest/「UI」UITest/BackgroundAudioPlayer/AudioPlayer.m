@@ -94,6 +94,7 @@ static AudioPlayer *audioPlayer = nil;
     self.audioNameList = nameList;
 }
 
+// 播放指定音乐
 - (void)playAudioName:(NSString *)audioName type:(NSString *)type
 {
     
@@ -105,9 +106,9 @@ static AudioPlayer *audioPlayer = nil;
     
     NSError *error = nil;
     
-    self.audioPlayer = [[AVAudioPlayer alloc]
+    self.audioPlayer = [[[AVAudioPlayer alloc]
                         initWithContentsOfURL:audioURL
-                        error:&error];
+                        error:&error] autorelease];
     
     _audioPlayer.numberOfLoops = -1;
     [_audioPlayer prepareToPlay];

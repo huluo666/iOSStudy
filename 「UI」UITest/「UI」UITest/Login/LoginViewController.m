@@ -14,7 +14,8 @@
 @interface LoginViewController () <
     NSURLConnectionDataDelegate,
     NSURLConnectionDelegate,
-    UIAlertViewDelegate>
+    UIAlertViewDelegate,
+    UITextFieldDelegate>
 
 // 初始化用户界面
 - (void)initUserInterface;
@@ -24,6 +25,9 @@
 - (void)playBackgroundMusic;
 // 提示用户错误信息
 - (void)showAlertWithMessage:(NSString *)message;
+
+// 检查登录
+- (void)checkLogin;
 
 @end
 
@@ -51,10 +55,21 @@
     [self.view addSubview:bgView];
     [bgView release];
     
+    // 进度指示器
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc] init];
+    indicator.bounds = CGRectMake(0, 0, 40, 40);
+    indicator.center = self.view.center;
+    indicator.tag = INDICATOR_TAG;
+    [self.view addSubview:indicator];
+    [indicator release];
+    
     // 用户名输入框
     UITextField *userNameField = [[UITextField alloc]
-                                  initWithFrame:CGRectMake(CGRectGetMidX(self.view.frame) - 60,
-                                                           CGRectGetMinY(self.view.frame) + 40, 200, 30)];
+                                  initWithFrame:CGRectMake(
+                                    CGRectGetMidX(self.view.frame) - 60,
+                                    CGRectGetMinY(self.view.frame) + 140,
+                                    200,
+                                    30)];
     userNameField.tag = UserNameFiledTag;
     userNameField.borderStyle = UITextBorderStyleRoundedRect;
     userNameField.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -63,14 +78,15 @@
     [self.view addSubview:userNameField];
     [userNameField release];
     
-    // 用户名
+    // 用户名显示标签
     UILabel *userNameLabel = [[UILabel alloc]
                               initWithFrame:CGRectMake(
                                 CGRectGetMinX(userNameField.frame) - 100,
-                                CGRectGetMinY(self.view.frame) + 40,
+                                CGRectGetMinY(self.view.frame) + 140,
                                 100,
                                 30)];
     userNameLabel.textAlignment = NSTextAlignmentRight;
+    userNameField.delegate = self;
     userNameLabel.text = @"用户名：";
     userNameLabel.textColor = [UIColor whiteColor];
     [self.view addSubview:userNameLabel];
@@ -84,6 +100,7 @@
                                     200,
                                     30)];
     passwordField.tag  = PasswordFiledTag;
+    passwordField.delegate = self;
     passwordField.borderStyle   = UITextBorderStyleRoundedRect;
     passwordField.secureTextEntry  = YES;
     passwordField.clearButtonMode   = UITextFieldViewModeWhileEditing;
@@ -92,7 +109,7 @@
     [self.view addSubview:passwordField];
     [passwordField release];
     
-    // 密码
+    // 密码显示标签
     UILabel *passwordLabel  = [[UILabel alloc]
                                    initWithFrame:CGRectMake(
                                      CGRectGetMinX(userNameField.frame) - 100,
@@ -117,12 +134,19 @@
                       action:@selector(processController:)
             forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:loginInButton];
-
-    
-   
 }
 
 - (void)processController:(UIButton *)sender
+{
+    // 开启进度条
+    UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[self.view viewWithTag:INDICATOR_TAG];
+    [indicator startAnimating];
+
+    // 延迟检查登录
+    [self performSelector:@selector(checkLogin) withObject:nil afterDelay:0.5f];
+}
+
+- (void)checkLogin
 {
     // 获取用户名和密码
     UITextField *userNameField = (UITextField *)[self.view viewWithTag:UserNameFiledTag];
@@ -133,7 +157,7 @@
                           [NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSString *password = [passwordField.text stringByTrimmingCharactersInSet:
                           [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    
+    // 排除不合格输入
     if (!userName || userName.length == 0) {
         [self showAlertWithMessage:@"用户名格式错误"];
         return;
@@ -143,9 +167,10 @@
         return;
     }
     
+    // 验证登录
     if ([userName isEqualToString:USER_NAME] && [password isEqualToString:PASSWORD]) {
         HomePageViewController *homePageVC =
-            [[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController].childViewControllers[0];
+        [[(AppDelegate *)[[UIApplication sharedApplication] delegate] window] rootViewController].childViewControllers[0];
         [homePageVC setLogined:YES];
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
         AudioPlayer *audioPlayer = [AudioPlayer sharedSingleton];
@@ -160,6 +185,8 @@
         [audioPlayer playAudioName:@"music_fail" type:@"mp3"];
     }
 
+    UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[self.view viewWithTag:INDICATOR_TAG];
+    [indicator stopAnimating];
 }
 
 - (void)playBackgroundMusic
@@ -178,21 +205,28 @@
                               otherButtonTitles:nil];
     [alertView show];
     [alertView release];
+    
+    UIActivityIndicatorView *indicator = (UIActivityIndicatorView *)[self.view viewWithTag:INDICATOR_TAG];
+    [indicator stopAnimating];
 }
 
+// 点击空白处收起键盘
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [self.view endEditing:YES];
 }
 
+#pragma mark - UITextFieldDelegate
+// 按回车自动登录
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.view endEditing:YES];
+    [self checkLogin];
     return YES;
 }
 
 #pragma mark - UIAlertViewDelegate
-
+// 返回重试
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
@@ -203,7 +237,6 @@
     }
     
     [[AudioPlayer sharedSingleton] stop];
-
 }
 
 @end

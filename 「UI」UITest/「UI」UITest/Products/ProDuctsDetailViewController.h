@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ProDuctsDetailViewController : UIViewController
+@interface ProductsDetailViewController : UIViewController
+
+@property (copy, nonatomic) NSString *text;
+
+- (id)initWithText:(NSString *)text;
 
 @end

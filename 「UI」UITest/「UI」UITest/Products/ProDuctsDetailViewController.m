@@ -6,13 +6,15 @@
 //  Copyright (c) 2014年 cuan. All rights reserved.
 //
 
-#import "ProDuctsDetailViewController.h"
+#import "ProductsDetailViewController.h"
 
-@interface ProDuctsDetailViewController ()
+@interface ProductsDetailViewController ()
+
+- (void)initUserInterface;
 
 @end
 
-@implementation ProDuctsDetailViewController
+@implementation ProductsDetailViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -23,11 +25,44 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_text release];
+    [super dealloc];
+}
+
+- (id)initWithText:(NSString *)text
+{
+    if (self = [super init]) {
+        self.text = text;
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    [self initUserInterface];
 	[self loadGestureRecognizer];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
+}
+
+- (void)initUserInterface
+{
+    UILabel *label = [[UILabel alloc] initWithFrame:self.view.frame];
+    label.font = [UIFont systemFontOfSize:22.0f];
+    label.textColor = [UIColor grayColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.numberOfLines = 0;
+    label.text = _text;
+    [self.view addSubview:label];
+    [label release];
 }
 
 - (void)loadGestureRecognizer

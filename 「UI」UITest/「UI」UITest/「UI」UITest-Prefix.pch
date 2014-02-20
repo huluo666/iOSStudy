@@ -27,6 +27,7 @@
 #define PasswordFiledTag 112
 #define LoginInButtonTag 113
 #define SwitchControlTag 114
-#define ActivityIndicatorViewTag 115
+#define INDICATOR_TAG 115
+#define VIEW_TAG 222
 #define USER_NAME @"admin"
 #define PASSWORD @"admin"

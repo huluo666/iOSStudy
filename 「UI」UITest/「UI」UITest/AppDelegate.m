@@ -74,8 +74,6 @@
     self.window.rootViewController = tabBarController;
     tabBarController.tabBar.barTintColor = [UIColor blackColor];
     [tabBarController release];
-    
-    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

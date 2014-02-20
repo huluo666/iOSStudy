@@ -8,7 +8,7 @@
 
 #import "TrainViewController.h"
 
-@interface TrainViewController ()
+@interface TrainViewController () <UIScrollViewDelegate>
 
 @property(nonatomic, retain) NSArray *titles;
 @property (nonatomic, retain) NSMutableDictionary *dataSource;
@@ -26,6 +26,9 @@
 - (void)loadTeacherTrainView;
 // 企业培训
 - (void)loadEnterpriseTrainView;
+
+// 清除所有子视图
+- (void)clearViews;
 
 
 @end
@@ -87,7 +90,7 @@
     // 创建分段控件
     UISegmentedControl *segmentedControl  = [[UISegmentedControl alloc]
                                              initWithItems:_titles];
-    segmentedControl.bounds               = CGRectMake(0, 0, 320, 44);
+    segmentedControl.bounds               = CGRectMake(0, 0, 320, 30);
     segmentedControl.selectedSegmentIndex = 0;
     segmentedControl.tintColor            = [UIColor whiteColor];
     [segmentedControl addTarget:self
@@ -121,23 +124,18 @@
     }
 }
 
+// 纵向滑动方式
 - (void)loadNormalTrainView
 {
-    NSArray *views = self.view.subviews;
-    for (UIView *view in views) {
-        [view removeFromSuperview];
-    }
+    [self clearViews];
     
-    UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:view];
-    
-    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(view.frame),
-                              CGRectGetHeight(view.frame));
+    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame),
+                              CGRectGetHeight(self.view.frame));
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
     scrollView.contentSize = CGSizeMake(320, 366 * 3);
     scrollView.contentMode = UIViewContentModeScaleAspectFit;
-    [view addSubview:scrollView];
-
+    [self.view addSubview:scrollView];
+    
     NSArray *images = _dataSource[_titles[0]];
     for (int i = 0; i < images.count; i++) {
         NSString *path = [[NSBundle mainBundle] pathForAuxiliaryExecutable:images[i]];
@@ -147,82 +145,71 @@
         imageView.image = image;
         
         [scrollView addSubview:imageView];
+        [imageView release];
         
     }
     
     [scrollView release];
 }
 
+// 横向、纵向均可滑动、捏合缩放
 - (void)loadExecutivesTrainView
 {
-    NSArray *views = self.view.subviews;
-    for (UIView *view in views) {
-        [view removeFromSuperview];
-    }
+    [self clearViews];
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.frame = self.view.frame;
+    [self.view addSubview:scrollView];
+    [scrollView release];
     
     NSString *path = [[NSBundle mainBundle]
                       pathForAuxiliaryExecutable:_dataSource[_titles[1]][0]];
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    
-    UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:view];
-    
-    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(view.frame),
-                              CGRectGetHeight(view.frame));
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
-    scrollView.contentSize = CGSizeMake(960, 610);
-    scrollView.contentMode = UIViewContentModeScaleAspectFit;
-    [view addSubview:scrollView];
-    [view release];
-    
+    imageView.tag = VIEW_TAG;
     [scrollView addSubview:imageView];
+    scrollView.contentSize = image.size;
     [imageView release];
+    
+    scrollView.delegate = self;
+    scrollView.maximumZoomScale = 2.0;
+    scrollView.minimumZoomScale = 0.2;
 }
 
+// 横向滑动
 - (void)loadTeacherTrainView
 {
-    NSArray *views = self.view.subviews;
-    for (UIView *view in views) {
-        [view removeFromSuperview];
-    }
+    [self clearViews];
     
     NSString *path = [[NSBundle mainBundle]
                       pathForAuxiliaryExecutable:_dataSource[_titles[2]][0]];
     UIImage *image = [UIImage imageWithContentsOfFile:path];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    
-    UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:view];
-    
-    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(view.frame),
-                              CGRectGetHeight(view.frame));
+
+    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame),
+                              CGRectGetHeight(self.view.frame));
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
     scrollView.contentSize = CGSizeMake(1156, 372);
     scrollView.contentMode = UIViewContentModeScaleAspectFit;
-    [view addSubview:scrollView];
-    [view release];
+    [self.view addSubview:scrollView];
+    [scrollView release];
     
     [scrollView addSubview:imageView];
     [imageView release];
 }
 
+// 横向翻页滑动
 - (void)loadEnterpriseTrainView
 {
-    NSArray *views = self.view.subviews;
-    for (UIView *view in views) {
-        [view removeFromSuperview];
-    }
+    [self clearViews];
     
-    UIView *view = [[UIView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:view];
-    
-    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(view.frame),
-                              CGRectGetHeight(view.frame));
+    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame),
+                              CGRectGetHeight(self.view.frame));
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:frame];
-    scrollView.contentSize = CGSizeMake(320, 138 * 3);
+    scrollView.pagingEnabled = YES;
+    scrollView.contentSize = CGSizeMake(320 * 3, 138);
     scrollView.contentMode = UIViewContentModeScaleAspectFit;
-    [view addSubview:scrollView];
+    [self.view addSubview:scrollView];
     
     NSArray *images = _dataSource[_titles[3]];
     for (int i = 0; i < images.count; i++) {
@@ -230,13 +217,29 @@
                           pathForAuxiliaryExecutable:images[i]];
         UIImage *image = [UIImage imageWithContentsOfFile:path];
         UIImageView *imageView = [[UIImageView alloc]
-                                  initWithFrame:CGRectMake(0, 138 * i, 320, 138)];
+                                  initWithFrame:CGRectMake(320 * i, 138, 320, 138)];
         imageView.image = image;
         
         [scrollView addSubview:imageView];
+        [imageView release];
     }
     
     [scrollView release];
+}
+
+- (void)clearViews
+{
+    NSArray *views = self.view.subviews;
+    for (UIView *view in views) {
+        [view removeFromSuperview];
+    }
+}
+
+#pragma mark - UIScrollView 的 代理方法
+// 实现捏合手势放大缩小图片
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return (UIImageView *)[self.view viewWithTag:VIEW_TAG];
 }
 
 @end

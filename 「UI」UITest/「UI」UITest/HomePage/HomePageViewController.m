@@ -93,6 +93,7 @@
 {
     [super viewDidAppear:animated];
 //    _logined = YES;
+    // 未登录弹出登录
     if (!_logined) {
         LoginViewController *loginVC = [[LoginViewController alloc] init];
         [self presentViewController:loginVC animated:YES completion:nil];
@@ -234,6 +235,7 @@
                               initWithImage:[UIImage imageNamed:picName]];
     imageView.frame = CGRectMake(0, yCoor, 320, imageView.frame.size.height);
     [_introduceScrollView addSubview:imageView];
+    [imageView release];
     return imageView.frame.origin.y + imageView.frame.size.height;
 }
 
@@ -251,6 +253,7 @@
     label.numberOfLines   = 0; //文本显示行数，0表示不限制
     label.lineBreakMode   = NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail;
     [_introduceScrollView addSubview:label];
+    [label release];
     
     return label.frame.origin.y + size.height;
 }
