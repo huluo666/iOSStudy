@@ -27,5 +27,7 @@
 - (void)playAudioName:(NSString *)audioName type:(NSString *)type;
 // 停止播放
 - (void)stop;
+// 是否在播放
+- (BOOL)isPlaying;
 
 @end

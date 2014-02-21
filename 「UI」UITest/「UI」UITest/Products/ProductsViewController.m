@@ -144,7 +144,9 @@
     self.view.backgroundColor = [UIColor whiteColor];
     CGRect frame = CGRectMake(0, 0, 320, 560);
     NSLog(@"%@", self.view);
-    UITableView *tableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc]
+                              initWithFrame:frame
+                              style:UITableViewStylePlain];
     tableView.backgroundColor = [UIColor redColor];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -187,7 +189,8 @@
     return 12;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -210,7 +213,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductsDetailViewController *detailVC = [[ProductsDetailViewController alloc]
-                                              initWithText:[NSString stringWithFormat:@"产品列表%ld\n向右滑动返回", indexPath.row]];
+                                              initWithText:[NSString stringWithFormat:
+                                                            @"产品列表%ld\n向右滑动返回",
+                                                            indexPath.row]];
     [self.navigationController pushViewController:detailVC animated:YES];
     [detailVC release];
 }
@@ -221,7 +226,9 @@
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ProductsDetailViewController *detailVC =
-        [[ProductsDetailViewController alloc] initWithText:[NSString stringWithFormat:@"产品列表%ld\n向右滑动返回", indexPath.row]];
+        [[ProductsDetailViewController alloc] initWithText:[NSString stringWithFormat:
+                                                            @"产品列表%ld\n向右滑动返回",
+                                                            indexPath.row]];
     [self.navigationController pushViewController:detailVC animated:YES];
     [detailVC release];
 }

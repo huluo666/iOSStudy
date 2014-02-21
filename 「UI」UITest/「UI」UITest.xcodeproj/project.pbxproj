@@ -85,7 +85,29 @@
 		951CB45018B5E41F00D7FCA4 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951CB44F18B5E41F00D7FCA4 /* LoginViewController.m */; };
 		951CB45718B5EBA100D7FCA4 /* PullRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951CB45618B5EBA100D7FCA4 /* PullRefreshViewController.m */; };
 		951CB45A18B5F6F200D7FCA4 /* ProductsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951CB45918B5F6F200D7FCA4 /* ProductsDetailViewController.m */; };
-		951CB46418B60B8200D7FCA4 /* AudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 951CB46318B60B8200D7FCA4 /* AudioPlayerViewController.m */; };
+		95A6166D18B6D86A00609DAA /* Deemo Title Song - Website Version.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 95A6166818B6D86A00609DAA /* Deemo Title Song - Website Version.mp3 */; };
+		95A6166E18B6D86A00609DAA /* Release My Soul.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 95A6166918B6D86A00609DAA /* Release My Soul.mp3 */; };
+		95A6166F18B6D86A00609DAA /* Rё.L.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 95A6166A18B6D86A00609DAA /* Rё.L.mp3 */; };
+		95A6167018B6D86A00609DAA /* SystemSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 95A6166B18B6D86A00609DAA /* SystemSound.wav */; };
+		95A6167118B6D86A00609DAA /* Wings of piano.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 95A6166C18B6D86A00609DAA /* Wings of piano.mp3 */; };
+		95A6168918B6D88900609DAA /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167318B6D88900609DAA /* 1.png */; };
+		95A6168A18B6D88900609DAA /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167418B6D88900609DAA /* 2.png */; };
+		95A6168B18B6D88900609DAA /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167518B6D88900609DAA /* 3.png */; };
+		95A6168C18B6D88900609DAA /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167618B6D88900609DAA /* 4.png */; };
+		95A6168D18B6D88900609DAA /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167718B6D88900609DAA /* 5.png */; };
+		95A6168E18B6D88900609DAA /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167818B6D88900609DAA /* 6.png */; };
+		95A6168F18B6D88900609DAA /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167918B6D88900609DAA /* 7.png */; };
+		95A6169018B6D88900609DAA /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167A18B6D88900609DAA /* 8.png */; };
+		95A6169118B6D88900609DAA /* aboutNavi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167B18B6D88900609DAA /* aboutNavi@2x.png */; };
+		95A6169318B6D88900609DAA /* backS.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167D18B6D88900609DAA /* backS.png */; };
+		95A6169418B6D88900609DAA /* homePageNavi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167E18B6D88900609DAA /* homePageNavi@2x.png */; };
+		95A6169518B6D88900609DAA /* indicator.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6167F18B6D88900609DAA /* indicator.png */; };
+		95A6169618B6D88900609DAA /* item.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6168018B6D88900609DAA /* item.png */; };
+		95A6169718B6D88900609DAA /* nav_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6168118B6D88900609DAA /* nav_bg.png */; };
+		95A6169818B6D88900609DAA /* nav_bg_ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6168218B6D88900609DAA /* nav_bg_ios7.png */; };
+		95A6169B18B6D88900609DAA /* photoNavi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6168518B6D88900609DAA /* photoNavi@2x.png */; };
+		95A6169D18B6D88900609DAA /* settingNavi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A6168718B6D88900609DAA /* settingNavi@2x.png */; };
+		95A616A218B6DDB100609DAA /* AudioPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A616A118B6DDB100609DAA /* AudioPlayerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,8 +212,30 @@
 		951CB45618B5EBA100D7FCA4 /* PullRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullRefreshViewController.m; sourceTree = "<group>"; };
 		951CB45818B5F6F200D7FCA4 /* ProductsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductsDetailViewController.h; sourceTree = "<group>"; };
 		951CB45918B5F6F200D7FCA4 /* ProductsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductsDetailViewController.m; sourceTree = "<group>"; };
-		951CB46218B60B8200D7FCA4 /* AudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerViewController.h; sourceTree = "<group>"; };
-		951CB46318B60B8200D7FCA4 /* AudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerViewController.m; sourceTree = "<group>"; };
+		95A6166818B6D86A00609DAA /* Deemo Title Song - Website Version.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Deemo Title Song - Website Version.mp3"; sourceTree = "<group>"; };
+		95A6166918B6D86A00609DAA /* Release My Soul.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Release My Soul.mp3"; sourceTree = "<group>"; };
+		95A6166A18B6D86A00609DAA /* Rё.L.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Rё.L.mp3"; sourceTree = "<group>"; };
+		95A6166B18B6D86A00609DAA /* SystemSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SystemSound.wav; sourceTree = "<group>"; };
+		95A6166C18B6D86A00609DAA /* Wings of piano.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Wings of piano.mp3"; sourceTree = "<group>"; };
+		95A6167318B6D88900609DAA /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		95A6167418B6D88900609DAA /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		95A6167518B6D88900609DAA /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		95A6167618B6D88900609DAA /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		95A6167718B6D88900609DAA /* 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 5.png; sourceTree = "<group>"; };
+		95A6167818B6D88900609DAA /* 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 6.png; sourceTree = "<group>"; };
+		95A6167918B6D88900609DAA /* 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7.png; sourceTree = "<group>"; };
+		95A6167A18B6D88900609DAA /* 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8.png; sourceTree = "<group>"; };
+		95A6167B18B6D88900609DAA /* aboutNavi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aboutNavi@2x.png"; sourceTree = "<group>"; };
+		95A6167D18B6D88900609DAA /* backS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backS.png; sourceTree = "<group>"; };
+		95A6167E18B6D88900609DAA /* homePageNavi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "homePageNavi@2x.png"; sourceTree = "<group>"; };
+		95A6167F18B6D88900609DAA /* indicator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = indicator.png; sourceTree = "<group>"; };
+		95A6168018B6D88900609DAA /* item.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = item.png; sourceTree = "<group>"; };
+		95A6168118B6D88900609DAA /* nav_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg.png; sourceTree = "<group>"; };
+		95A6168218B6D88900609DAA /* nav_bg_ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nav_bg_ios7.png; sourceTree = "<group>"; };
+		95A6168518B6D88900609DAA /* photoNavi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "photoNavi@2x.png"; sourceTree = "<group>"; };
+		95A6168718B6D88900609DAA /* settingNavi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settingNavi@2x.png"; sourceTree = "<group>"; };
+		95A616A018B6DDB100609DAA /* AudioPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioPlayerViewController.h; sourceTree = "<group>"; };
+		95A616A118B6DDB100609DAA /* AudioPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioPlayerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +274,8 @@
 		06CE756418B647B30083E2B8 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				95A6167218B6D88900609DAA /* images */,
+				95A6166718B6D86A00609DAA /* musics */,
 				06CE756518B647B30083E2B8 /* adv1.png */,
 				06CE756618B647B30083E2B8 /* adv2.png */,
 				06CE756718B647B30083E2B8 /* adv3.png */,
@@ -381,7 +427,7 @@
 		951CB3C118B5B5C100D7FCA4 /* Casus */ = {
 			isa = PBXGroup;
 			children = (
-				951CB46118B60B8200D7FCA4 /* 音乐播放器 */,
+				95A6169F18B6DDB100609DAA /* 音乐播放器 */,
 				951CB45118B5EAE100D7FCA4 /* 下拉刷新 */,
 				951CB3CB18B5B6BD00D7FCA4 /* CasusViewController.h */,
 				951CB3CC18B5B6BD00D7FCA4 /* CasusViewController.m */,
@@ -436,11 +482,47 @@
 			path = "下拉刷新";
 			sourceTree = "<group>";
 		};
-		951CB46118B60B8200D7FCA4 /* 音乐播放器 */ = {
+		95A6166718B6D86A00609DAA /* musics */ = {
 			isa = PBXGroup;
 			children = (
-				951CB46218B60B8200D7FCA4 /* AudioPlayerViewController.h */,
-				951CB46318B60B8200D7FCA4 /* AudioPlayerViewController.m */,
+				95A6166818B6D86A00609DAA /* Deemo Title Song - Website Version.mp3 */,
+				95A6166918B6D86A00609DAA /* Release My Soul.mp3 */,
+				95A6166A18B6D86A00609DAA /* Rё.L.mp3 */,
+				95A6166B18B6D86A00609DAA /* SystemSound.wav */,
+				95A6166C18B6D86A00609DAA /* Wings of piano.mp3 */,
+			);
+			path = musics;
+			sourceTree = "<group>";
+		};
+		95A6167218B6D88900609DAA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				95A6167318B6D88900609DAA /* 1.png */,
+				95A6167418B6D88900609DAA /* 2.png */,
+				95A6167518B6D88900609DAA /* 3.png */,
+				95A6167618B6D88900609DAA /* 4.png */,
+				95A6167718B6D88900609DAA /* 5.png */,
+				95A6167818B6D88900609DAA /* 6.png */,
+				95A6167918B6D88900609DAA /* 7.png */,
+				95A6167A18B6D88900609DAA /* 8.png */,
+				95A6167B18B6D88900609DAA /* aboutNavi@2x.png */,
+				95A6167D18B6D88900609DAA /* backS.png */,
+				95A6167E18B6D88900609DAA /* homePageNavi@2x.png */,
+				95A6167F18B6D88900609DAA /* indicator.png */,
+				95A6168018B6D88900609DAA /* item.png */,
+				95A6168118B6D88900609DAA /* nav_bg.png */,
+				95A6168218B6D88900609DAA /* nav_bg_ios7.png */,
+				95A6168518B6D88900609DAA /* photoNavi@2x.png */,
+				95A6168718B6D88900609DAA /* settingNavi@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		95A6169F18B6DDB100609DAA /* 音乐播放器 */ = {
+			isa = PBXGroup;
+			children = (
+				95A616A018B6DDB100609DAA /* AudioPlayerViewController.h */,
+				95A616A118B6DDB100609DAA /* AudioPlayerViewController.m */,
 			);
 			path = "音乐播放器";
 			sourceTree = "<group>";
@@ -520,50 +602,72 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A6169D18B6D88900609DAA /* settingNavi@2x.png in Resources */,
+				95A6168A18B6D88900609DAA /* 2.png in Resources */,
 				06CE75AC18B647B40083E2B8 /* detail4.png in Resources */,
 				06CE75BE18B647B40083E2B8 /* item2.png in Resources */,
+				95A6169318B6D88900609DAA /* backS.png in Resources */,
 				06CE75BC18B647B40083E2B8 /* iicon9.png in Resources */,
+				95A6168F18B6D88900609DAA /* 7.png in Resources */,
+				95A6168C18B6D88900609DAA /* 4.png in Resources */,
 				06CE75AA18B647B40083E2B8 /* detail2.png in Resources */,
+				95A6167118B6D86A00609DAA /* Wings of piano.mp3 in Resources */,
 				06CE75AF18B647B40083E2B8 /* icon_40.png in Resources */,
 				06CE75AD18B647B40083E2B8 /* icon.png in Resources */,
 				06CE75D318B647B40083E2B8 /* 全科培训3.png in Resources */,
+				95A6167018B6D86A00609DAA /* SystemSound.wav in Resources */,
+				95A6169518B6D88900609DAA /* indicator.png in Resources */,
 				06CE75B018B647B40083E2B8 /* icon_60.png in Resources */,
 				06CE75A518B647B40083E2B8 /* bg.png in Resources */,
 				06CE75CE18B647B40083E2B8 /* 企业内训1.png in Resources */,
+				95A6168E18B6D88900609DAA /* 6.png in Resources */,
 				06CE759F18B647B40083E2B8 /* adv2.png in Resources */,
 				06CE75CD18B647B40083E2B8 /* volume.png in Resources */,
 				06CE75BB18B647B40083E2B8 /* iicon8.png in Resources */,
+				95A6169718B6D88900609DAA /* nav_bg.png in Resources */,
 				06CE75B918B647B40083E2B8 /* iicon6.png in Resources */,
 				06CE75C918B647B40083E2B8 /* text_pic1.png in Resources */,
 				06CE75C818B647B40083E2B8 /* play.png in Resources */,
 				06CE75B218B647B40083E2B8 /* iicon10.png in Resources */,
 				06CE75CA18B647B40083E2B8 /* text_pic2.png in Resources */,
+				95A6169618B6D88900609DAA /* item.png in Resources */,
+				95A6169018B6D88900609DAA /* 8.png in Resources */,
 				06CE75A018B647B40083E2B8 /* adv3.png in Resources */,
 				06CE75B118B647B40083E2B8 /* iicon1.png in Resources */,
 				06CE75C618B647B40083E2B8 /* next.png in Resources */,
 				06CE75B818B647B40083E2B8 /* iicon5.png in Resources */,
 				06CE75CB18B647B40083E2B8 /* text_pic3.png in Resources */,
 				06CE75BA18B647B40083E2B8 /* iicon7.png in Resources */,
+				95A6169418B6D88900609DAA /* homePageNavi@2x.png in Resources */,
 				06CE75AB18B647B40083E2B8 /* detail3.png in Resources */,
+				95A6166D18B6D86A00609DAA /* Deemo Title Song - Website Version.mp3 in Resources */,
 				06CE75A418B647B40083E2B8 /* back.png in Resources */,
+				95A6169118B6D88900609DAA /* aboutNavi@2x.png in Resources */,
 				06CE75C418B647B40083E2B8 /* music_success.caf in Resources */,
 				06CE75AE18B647B40083E2B8 /* icon_29.png in Resources */,
+				95A6169B18B6D88900609DAA /* photoNavi@2x.png in Resources */,
 				06CE75CF18B647B40083E2B8 /* 企业内训2.png in Resources */,
 				06CE75BD18B647B40083E2B8 /* item1.png in Resources */,
 				06CE75A118B647B40083E2B8 /* adv4.png in Resources */,
 				06CE75B418B647B40083E2B8 /* iicon12.png in Resources */,
+				95A6168B18B6D88900609DAA /* 3.png in Resources */,
 				06CE75B718B647B40083E2B8 /* iicon4.png in Resources */,
+				95A6166E18B6D86A00609DAA /* Release My Soul.mp3 in Resources */,
 				06CE75A818B647B40083E2B8 /* default@2x.png in Resources */,
+				95A6166F18B6D86A00609DAA /* Rё.L.mp3 in Resources */,
 				06CE75C718B647B40083E2B8 /* pause.png in Resources */,
 				06CE75B618B647B40083E2B8 /* iicon3.png in Resources */,
 				06CE75A218B647B40083E2B8 /* adv5.png in Resources */,
 				06CE75D118B647B40083E2B8 /* 全科培训1.png in Resources */,
 				06CE75BF18B647B40083E2B8 /* item3.png in Resources */,
+				95A6168918B6D88900609DAA /* 1.png in Resources */,
+				95A6168D18B6D88900609DAA /* 5.png in Resources */,
 				06CE75A318B647B40083E2B8 /* adv6.png in Resources */,
 				06CE75A918B647B40083E2B8 /* detail1.png in Resources */,
 				06CE75B518B647B40083E2B8 /* iicon2.png in Resources */,
 				06CE75B318B647B40083E2B8 /* iicon11.png in Resources */,
 				06CE75A618B647B40083E2B8 /* cell.png in Resources */,
+				95A6169818B6D88900609DAA /* nav_bg_ios7.png in Resources */,
 				06CE75C318B647B40083E2B8 /* music_fail.mp3 in Resources */,
 				06CE75D218B647B40083E2B8 /* 全科培训2.png in Resources */,
 				06CE75C118B647B40083E2B8 /* item5.png in Resources */,
@@ -597,7 +701,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				951CB46418B60B8200D7FCA4 /* AudioPlayerViewController.m in Sources */,
 				951CB45018B5E41F00D7FCA4 /* LoginViewController.m in Sources */,
 				951CB3CD18B5B6BD00D7FCA4 /* CasusViewController.m in Sources */,
 				951CB3D018B5B6CB00D7FCA4 /* TrainViewController.m in Sources */,
@@ -606,6 +709,7 @@
 				951CB3D318B5B6D200D7FCA4 /* AboutViewController.m in Sources */,
 				06CE756318B6467F0083E2B8 /* AudioPlayer.m in Sources */,
 				951CB39B18B5B47200D7FCA4 /* main.m in Sources */,
+				95A616A218B6DDB100609DAA /* AudioPlayerViewController.m in Sources */,
 				951CB45A18B5F6F200D7FCA4 /* ProductsDetailViewController.m in Sources */,
 				951CB3CA18B5B6B500D7FCA4 /* ProductsViewController.m in Sources */,
 				951CB3C718B5B5C100D7FCA4 /* HomePageViewController.m in Sources */,

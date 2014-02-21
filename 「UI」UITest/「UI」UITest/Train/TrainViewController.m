@@ -146,7 +146,6 @@
         
         [scrollView addSubview:imageView];
         [imageView release];
-        
     }
     
     [scrollView release];
@@ -158,7 +157,9 @@
     [self clearViews];
     
     UIScrollView *scrollView = [[UIScrollView alloc] init];
-    scrollView.frame = self.view.frame;
+    CGRect frame = CGRectMake(0, 64, CGRectGetWidth(self.view.frame),
+                              CGRectGetHeight(self.view.frame));
+    scrollView.frame = frame;
     [self.view addSubview:scrollView];
     [scrollView release];
     
@@ -230,6 +231,9 @@
 - (void)clearViews
 {
     NSArray *views = self.view.subviews;
+    if (!views) {
+        return;
+    }
     for (UIView *view in views) {
         [view removeFromSuperview];
     }

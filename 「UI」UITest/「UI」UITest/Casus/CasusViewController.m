@@ -118,10 +118,15 @@
         [pullRefresh release];
     }
     if (indexPath.row == 1) {
-        AudioPlayerViewController *audioPlayer =
-            [[AudioPlayerViewController alloc] init];
-        [self.navigationController pushViewController:audioPlayer animated:YES];
-        [audioPlayer release];
+        NSArray *nameLists = [@[@"Deemo Title Song - Website Version",
+                         @"Release My Soul",
+                         @"Rё.L",
+                         @"Wings of piano"] retain];
+        AudioPlayerViewController *audioPlayerVC = [[AudioPlayerViewController alloc]
+                                                    initWithDataSource:nameLists
+                                                    currentAudioIndex:indexPath.row];
+        [self.navigationController pushViewController:audioPlayerVC animated:YES];
+        [audioPlayerVC release];
     }
     if (indexPath.row == 2) {
 

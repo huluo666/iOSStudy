@@ -8,6 +8,7 @@
 
 #import "AudioPlayerViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "AudioPlayer.h"
 
 @interface AudioPlayerViewController ()
 
@@ -91,13 +92,19 @@
 {
     [super viewDidLoad];
     [self initUserInterface];
-    [self initPlayerWithAudioName:_audioNameList[_currentAudioIndex] shouldAutoPlay:_playing];
+    [self initPlayerWithAudioName:_audioNameList[_currentAudioIndex]
+                   shouldAutoPlay:_playing];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [_audioPlayer stop];
+    
+    AudioPlayer *player = [AudioPlayer sharedSingleton];
+    if ([player isPlaying]) {
+        [player stop];
+    }
 }
 
 - (void)initUserInterface
@@ -199,9 +206,9 @@
     
     NSError *error = nil;
 
-    self.audioPlayer = [[[AVAudioPlayer alloc]
+    self.audioPlayer = [[AVAudioPlayer alloc]
                         initWithContentsOfURL:audioURL
-                        error:&error] autorelease];
+                        error:&error];
 
     _audioPlayer.numberOfLoops = -1;
     [_audioPlayer prepareToPlay];

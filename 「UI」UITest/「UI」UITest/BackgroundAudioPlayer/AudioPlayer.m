@@ -120,4 +120,10 @@ static AudioPlayer *audioPlayer = nil;
 {
     [_audioPlayer stop];
 }
+
+- (BOOL)isPlaying
+{
+   return [_audioPlayer isPlaying];
+}
+
 @end
