@@ -29,7 +29,7 @@
     button.bounds = CGRectMake(0, 0, 150, 150);
     button.center = self.view.center;
     // 修改锚点的值
-    button.layer.anchorPoint = CGPointMake(0.5, -1);
+    button.layer.anchorPoint = CGPointMake(0.5, 0.5);
     button.backgroundColor = [UIColor grayColor];
     [button addTarget:self
                action:@selector(buttonPressed:)
@@ -43,9 +43,10 @@
 - (void)buttonPressed:(UIButton *)sender
 {
     [UIView animateWithDuration:0.5f animations:^{
-        sender.transform = CGAffineTransformRotate(sender.transform, M_PI_2);
+//        sender.transform = CGAffineTransformRotate(sender.transform, M_PI_2);
+        sender.transform = CGAffineTransformScale(sender.transform, 2, 2);
     } completion:^(BOOL finished) {
-        [self performSelector:_cmd withObject:sender afterDelay:0.5];
+//        [self performSelector:_cmd withObject:sender afterDelay:0.5];
     }];
 }
 
