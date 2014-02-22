@@ -35,12 +35,12 @@
 {
     self = [super init];
     if (self) {
-        _imageNameList = [@[] mutableCopy];
+        _imageNameList = [[NSMutableArray alloc] init];
         for (int i = 0; i < 4; i++) {
             [_imageNameList addObject:[NSString stringWithFormat:@"i%d.png", i + 1]];
         }
         
-        _imageViews = [@[] mutableCopy];
+        _imageViews = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -56,35 +56,71 @@
 {
     [super viewDidLoad];
     [self initUserInterface];
-    [self performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0f];
+    [self startAnimation];
 }
 
 - (void)updateImages
 {
-    UIImageView *obj = _imageViews[0];
-    NSLog(@"obj0 remove = %@", obj);
-    [_imageViews removeObjectAtIndex:0];
-    [_imageViews addObject:obj];
+    // 更新图片名字列表顺序
+    NSString *firstImageName = _imageNameList[0];
+    [_imageNameList removeObjectAtIndex:0];
+    [_imageNameList addObject:firstImageName];
     
-    [self performSelector:@selector(startAnimation) withObject:nil afterDelay:1.0f];
+    // 将更新后的图片顺序放上去
+    for (int i = 0; i < 4; i++) {
+        UIImage *image = [UIImage imageNamed:_imageNameList[i]];
+        ((UIImageView *)_imageViews[i]).image = image;
+    }
+    
+    // 循环调用动画
+    [self performSelector:@selector(startAnimation) withObject:nil afterDelay:2.0f];
+}
+
+- (void)translationImageView
+{
+    [UIView animateWithDuration:1.0f animations:^{
+        // 所有坐标向右移动一格
+        for (UIImageView *imageView in _imageViews) {
+            CGPoint center = imageView.center;
+            imageView.center = CGPointMake(center.x + 320, center.y);
+        }
+    } completion:^(BOOL finished) {
+        // 所有坐标向左移动回来
+        for (UIImageView *imageView in _imageViews) {
+            CGPoint center = imageView.center;
+            imageView.center = CGPointMake(center.x - 320, center.y);
+        }
+        
+        // 更新图片显示
+        [self updateImages];
+    }];
+}
+
+- (void)transformIdentity
+{
+    UIImageView *imageView = (UIImageView *)_imageViews[0];
+    [UIView animateWithDuration:1.0f animations:^{
+        imageView.transform = CGAffineTransformIdentity;
+    }];
+}
+
+- (void)scaleImageView
+{
+    UIImageView *imageView = (UIImageView *)_imageViews[0];
+    [UIView animateWithDuration:1.0f animations:^{
+        imageView.transform = CGAffineTransformScale(imageView.transform, 2, 2);
+    } completion:^(BOOL finished) {
+        [self performSelector:@selector(transformIdentity) withObject:nil afterDelay:1.5f];
+    }];
 }
 
 - (void)startAnimation
 {
-    for (int i = 0; i < _imageViews.count; i++) {
-        CGPoint center = ((UIImageView *)_imageViews[i]).center;
-        [UIView animateWithDuration:1.0f animations:^{
-            NSLog(@"obj0 add = %@", _imageViews[0]);
-            // 向右移动动画
-            ((UIImageView *)_imageViews[i]).center = CGPointMake(center.x + 320, center.y);
-        } completion:^(BOOL finished) {
-            // 移动完成后，坐标还原
-            ((UIImageView *)_imageViews[i]).center = center;
-            // 更行图片显示
-            [self updateImages];
-        }];
-    }
+    // 放大显示图片
+    [self scaleImageView];
     
+    // 移动图片
+    [self performSelector:@selector(translationImageView) withObject:nil afterDelay:3.5f];
 }
 
 - (void)initUserInterface
@@ -102,9 +138,10 @@
     CGFloat width = self.view.frame.size.width;
     
     for (int i = 0; i < 4; i++) {
-        UIImage *imageName = [UIImage imageNamed:_imageNameList[i]];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:imageName];
-        imageView.frame = CGRectMake(width - 320 * i, 400, 140, 160);
+        UIImage *image = [UIImage imageNamed:_imageNameList[i]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake(width - 320 * i, 470, 140, 160);
+        imageView.layer.anchorPoint = CGPointMake(0.5, 1);
         [self.view addSubview:imageView];
         [_imageViews addObject:imageView];
         [imageView release];
