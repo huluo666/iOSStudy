@@ -16,6 +16,9 @@
 @property (retain, nonatomic) NSMutableArray *hintImageNameList;
 @property (retain, nonatomic) UIImageView *hintImageView;
 
+@property (retain, nonatomic) NSTimer *timer;
+@property (assign, nonatomic, getter = isMoveLeft) BOOL moveLeft;
+
 - (void)initUserInterface;
 // 开始动画
 - (void)startAnimation;
@@ -29,6 +32,9 @@
 
 // 展示图片向右移动
 - (void)translationImageViewToLeft;
+
+// 手势处理
+- (void)processSwipRecognizer:(UISwipeGestureRecognizer *)sender;
 
 
 @end
@@ -56,6 +62,8 @@
 
         _imageViews = [[NSMutableArray alloc] init];
         _hintImageView = [[UIImageView alloc] init];
+        
+        _timer = [[NSTimer alloc] init];
     }
     return self;
 }
@@ -66,6 +74,7 @@
     [_imageViews release];
     [_hintImageNameList release];
     [_hintImageView release];
+    [_timer release];
     [super dealloc];
 }
 
@@ -73,25 +82,60 @@
 {
     [super viewDidLoad];
     [self initUserInterface];
-    [self startAnimation];
-    
-    NSLog(@"%@", self.view.subviews);
+    // 循环调用动画效果
+    _timer = [[NSTimer scheduledTimerWithTimeInterval:7.5f
+                                              target:self
+                                            selector:@selector(startAnimation)
+                                            userInfo:nil
+                                             repeats:YES] retain];
+    [_timer setFireDate:[NSDate date]];
+}
+
+- (void)processSwipRecognizer:(UISwipeGestureRecognizer *)sender
+{
+    if (sender.direction == UISwipeGestureRecognizerDirectionLeft) {
+        [_timer setFireDate:[NSDate distantFuture]];
+        
+        // 重新设置_imageViews坐标以及顺序
+        for (int i = 0; i < _imageViews.count; i++) {
+            [_imageViews[i] removeFromSuperview];
+        }
+        [_imageNameList exchangeObjectAtIndex:0 withObjectAtIndex:2];
+//        [_imageNameList exchangeObjectAtIndex:3 withObjectAtIndex:_imageNameList.count - 1];
+        for (int i = 0; i < 4 ; i++) {
+            // 设置图片
+            UIImage *image = [UIImage imageNamed:_imageNameList[i]];
+            UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+            imageView.bounds = CGRectMake(0, 0, 140, 160);
+//            imageView.center = CGPointMake(170 + i * 340, 540);
+            imageView.center = CGPointMake(170 + i * 240, 540);
+            imageView.layer.anchorPoint = CGPointMake(0.5, 1);
+            [self.view addSubview:imageView];
+            [_imageViews addObject:imageView];
+            [imageView release];
+        }
+        _moveLeft = YES;
+        _timer = [[NSTimer scheduledTimerWithTimeInterval:7.5f
+                                                   target:self
+                                                 selector:@selector(startAnimation)
+                                                 userInfo:nil
+                                                  repeats:YES] retain];
+    }
 }
 
 - (void)translationImageViewToLeft
 {
-    
     [UIView animateWithDuration:1.0f animations:^{
-        // 所有坐标向右移动一格
+        // 所有坐标向左移动一格
         for (UIImageView *imageView in _imageViews) {
             CGPoint center = imageView.center;
-            imageView.center = CGPointMake(center.x + 320, center.y);
+            imageView.center = CGPointMake(center.x - 340, center.y);
         }
     } completion:^(BOOL finished) {
-        // 所有坐标向左移动回来
+        // 所有坐标向右移动回来
         for (UIImageView *imageView in _imageViews) {
             CGPoint center = imageView.center;
-            imageView.center = CGPointMake(center.x - 320, center.y);
+            imageView.center = CGPointMake(center.x + 340, center.y);
         }
         
         // 更新图片显示
@@ -114,6 +158,9 @@
         // 将更新后的提示图片按顺序放上去
         UIImage *image = [UIImage imageNamed:_hintImageNameList[0]];
         _hintImageView.image = image;
+        
+        // 位置还原
+        _hintImageView.center = CGPointMake(460, -250);
     }];
 }
 
@@ -131,8 +178,6 @@
 
 - (void)startHintImageViewAnition
 {
-    // 位置还原
-    _hintImageView.center = CGPointMake(460, -250);
     _hintImageView.transform = CGAffineTransformRotate(_hintImageView.transform, M_PI_4);
     [UIView animateWithDuration:1.0f animations:^{
         // 掉下来
@@ -155,11 +200,10 @@
         UIImage *image = [UIImage imageNamed:_imageNameList[i]];
         ((UIImageView *)_imageViews[i]).image = image;
     }
-    
-    // 循环调用动画
-    [self performSelector:@selector(startAnimation) withObject:nil afterDelay:2.0f];
-}
 
+    // 循环调用动画
+//    [self performSelector:@selector(startAnimation) withObject:nil afterDelay:2.0f];
+}
 
 - (void)translationImageView
 {
@@ -205,9 +249,14 @@
 {
     // 放大显示图片
     [self scaleImageView];
+    // 掉下来提示图片
     [self startHintImageViewAnition];
     // 移动图片
-    [self performSelector:@selector(translationImageView)
+    SEL sel = @selector(translationImageView);
+    if ([self isMoveLeft]) {
+        sel = @selector(translationImageViewToLeft);
+    }
+    [self performSelector:sel
                withObject:nil
                afterDelay:4.5f];
 }
@@ -247,6 +296,14 @@
     
     // 提示图片切换到第二个展示图片的后面
     [self.view exchangeSubviewAtIndex:2 withSubviewAtIndex:5];
+    
+    // 添加手势识别
+    UISwipeGestureRecognizer *rightSwip = [[UISwipeGestureRecognizer alloc]
+                                           initWithTarget:self
+                                           action:@selector(processSwipRecognizer:)];
+    rightSwip.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:rightSwip];
+    [rightSwip release];
 }
 
 
