@@ -1,0 +1,471 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95A29C8C18BAD1E9007FB5C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A29C8B18BAD1E9007FB5C5 /* Foundation.framework */; };
+		95A29C8E18BAD1E9007FB5C5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A29C8D18BAD1E9007FB5C5 /* CoreGraphics.framework */; };
+		95A29C9018BAD1E9007FB5C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A29C8F18BAD1E9007FB5C5 /* UIKit.framework */; };
+		95A29C9618BAD1E9007FB5C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95A29C9418BAD1E9007FB5C5 /* InfoPlist.strings */; };
+		95A29C9818BAD1E9007FB5C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A29C9718BAD1E9007FB5C5 /* main.m */; };
+		95A29C9C18BAD1E9007FB5C5 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A29C9B18BAD1E9007FB5C5 /* DDAppDelegate.m */; };
+		95A29C9E18BAD1E9007FB5C5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95A29C9D18BAD1E9007FB5C5 /* Images.xcassets */; };
+		95A29CA518BAD1E9007FB5C5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A29CA418BAD1E9007FB5C5 /* XCTest.framework */; };
+		95A29CA618BAD1E9007FB5C5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A29C8B18BAD1E9007FB5C5 /* Foundation.framework */; };
+		95A29CA718BAD1E9007FB5C5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95A29C8F18BAD1E9007FB5C5 /* UIKit.framework */; };
+		95A29CAF18BAD1E9007FB5C5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95A29CAD18BAD1E9007FB5C5 /* InfoPlist.strings */; };
+		95A29CB118BAD1E9007FB5C5 /* _UI__________day13_Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A29CB018BAD1E9007FB5C5 /* _UI__________day13_Tests.m */; };
+		95A29CD618BAF58E007FB5C5 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A29CD518BAF58E007FB5C5 /* DDRootViewController.m */; };
+		95A29CD918BB196D007FB5C5 /* CustomOpreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A29CD818BB196D007FB5C5 /* CustomOpreation.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95A29CA818BAD1E9007FB5C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95A29C8018BAD1E9007FB5C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95A29C8718BAD1E9007FB5C5;
+			remoteInfo = "「UI」多线程与消息通知(day13)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		95A29C8818BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「UI」多线程与消息通知(day13).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95A29C8B18BAD1E9007FB5C5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		95A29C8D18BAD1E9007FB5C5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		95A29C8F18BAD1E9007FB5C5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		95A29C9318BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「UI」多线程与消息通知(day13)-Info.plist"; sourceTree = "<group>"; };
+		95A29C9518BAD1E9007FB5C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95A29C9718BAD1E9007FB5C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		95A29C9918BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "「UI」多线程与消息通知(day13)-Prefix.pch"; sourceTree = "<group>"; };
+		95A29C9A18BAD1E9007FB5C5 /* DDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
+		95A29C9B18BAD1E9007FB5C5 /* DDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
+		95A29C9D18BAD1E9007FB5C5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		95A29CA318BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "「UI」多线程与消息通知(day13)Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95A29CA418BAD1E9007FB5C5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		95A29CAC18BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「UI」多线程与消息通知(day13)Tests-Info.plist"; sourceTree = "<group>"; };
+		95A29CAE18BAD1E9007FB5C5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95A29CB018BAD1E9007FB5C5 /* _UI__________day13_Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_UI__________day13_Tests.m"; sourceTree = "<group>"; };
+		95A29CD418BAF58E007FB5C5 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
+		95A29CD518BAF58E007FB5C5 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		95A29CD718BB196D007FB5C5 /* CustomOpreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomOpreation.h; sourceTree = "<group>"; };
+		95A29CD818BB196D007FB5C5 /* CustomOpreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomOpreation.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95A29C8518BAD1E9007FB5C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95A29C8E18BAD1E9007FB5C5 /* CoreGraphics.framework in Frameworks */,
+				95A29C9018BAD1E9007FB5C5 /* UIKit.framework in Frameworks */,
+				95A29C8C18BAD1E9007FB5C5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95A29CA018BAD1E9007FB5C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95A29CA518BAD1E9007FB5C5 /* XCTest.framework in Frameworks */,
+				95A29CA718BAD1E9007FB5C5 /* UIKit.framework in Frameworks */,
+				95A29CA618BAD1E9007FB5C5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95A29C7F18BAD1E9007FB5C5 = {
+			isa = PBXGroup;
+			children = (
+				95A29C9118BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13) */,
+				95A29CAA18BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests */,
+				95A29C8A18BAD1E9007FB5C5 /* Frameworks */,
+				95A29C8918BAD1E9007FB5C5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		95A29C8918BAD1E9007FB5C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95A29C8818BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13).app */,
+				95A29CA318BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95A29C8A18BAD1E9007FB5C5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95A29C8B18BAD1E9007FB5C5 /* Foundation.framework */,
+				95A29C8D18BAD1E9007FB5C5 /* CoreGraphics.framework */,
+				95A29C8F18BAD1E9007FB5C5 /* UIKit.framework */,
+				95A29CA418BAD1E9007FB5C5 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95A29C9118BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13) */ = {
+			isa = PBXGroup;
+			children = (
+				95A29C9A18BAD1E9007FB5C5 /* DDAppDelegate.h */,
+				95A29C9B18BAD1E9007FB5C5 /* DDAppDelegate.m */,
+				95A29CD418BAF58E007FB5C5 /* DDRootViewController.h */,
+				95A29CD518BAF58E007FB5C5 /* DDRootViewController.m */,
+				95A29CD718BB196D007FB5C5 /* CustomOpreation.h */,
+				95A29CD818BB196D007FB5C5 /* CustomOpreation.m */,
+				95A29C9D18BAD1E9007FB5C5 /* Images.xcassets */,
+				95A29C9218BAD1E9007FB5C5 /* Supporting Files */,
+			);
+			path = "「UI」多线程与消息通知(day13)";
+			sourceTree = "<group>";
+		};
+		95A29C9218BAD1E9007FB5C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95A29C9318BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)-Info.plist */,
+				95A29C9418BAD1E9007FB5C5 /* InfoPlist.strings */,
+				95A29C9718BAD1E9007FB5C5 /* main.m */,
+				95A29C9918BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95A29CAA18BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests */ = {
+			isa = PBXGroup;
+			children = (
+				95A29CB018BAD1E9007FB5C5 /* _UI__________day13_Tests.m */,
+				95A29CAB18BAD1E9007FB5C5 /* Supporting Files */,
+			);
+			path = "「UI」多线程与消息通知(day13)Tests";
+			sourceTree = "<group>";
+		};
+		95A29CAB18BAD1E9007FB5C5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95A29CAC18BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests-Info.plist */,
+				95A29CAD18BAD1E9007FB5C5 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		95A29C8718BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95A29CB418BAD1E9007FB5C5 /* Build configuration list for PBXNativeTarget "「UI」多线程与消息通知(day13)" */;
+			buildPhases = (
+				95A29C8418BAD1E9007FB5C5 /* Sources */,
+				95A29C8518BAD1E9007FB5C5 /* Frameworks */,
+				95A29C8618BAD1E9007FB5C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "「UI」多线程与消息通知(day13)";
+			productName = "「UI」多线程与消息通知(day13)";
+			productReference = 95A29C8818BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13).app */;
+			productType = "com.apple.product-type.application";
+		};
+		95A29CA218BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95A29CB718BAD1E9007FB5C5 /* Build configuration list for PBXNativeTarget "「UI」多线程与消息通知(day13)Tests" */;
+			buildPhases = (
+				95A29C9F18BAD1E9007FB5C5 /* Sources */,
+				95A29CA018BAD1E9007FB5C5 /* Frameworks */,
+				95A29CA118BAD1E9007FB5C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95A29CA918BAD1E9007FB5C5 /* PBXTargetDependency */,
+			);
+			name = "「UI」多线程与消息通知(day13)Tests";
+			productName = "「UI」多线程与消息通知(day13)Tests";
+			productReference = 95A29CA318BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95A29C8018BAD1E9007FB5C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = cuan;
+				TargetAttributes = {
+					95A29CA218BAD1E9007FB5C5 = {
+						TestTargetID = 95A29C8718BAD1E9007FB5C5;
+					};
+				};
+			};
+			buildConfigurationList = 95A29C8318BAD1E9007FB5C5 /* Build configuration list for PBXProject "「UI」多线程与消息通知(day13)" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 95A29C7F18BAD1E9007FB5C5;
+			productRefGroup = 95A29C8918BAD1E9007FB5C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95A29C8718BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13) */,
+				95A29CA218BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13)Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95A29C8618BAD1E9007FB5C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95A29C9618BAD1E9007FB5C5 /* InfoPlist.strings in Resources */,
+				95A29C9E18BAD1E9007FB5C5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95A29CA118BAD1E9007FB5C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95A29CAF18BAD1E9007FB5C5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95A29C8418BAD1E9007FB5C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95A29CD918BB196D007FB5C5 /* CustomOpreation.m in Sources */,
+				95A29CD618BAF58E007FB5C5 /* DDRootViewController.m in Sources */,
+				95A29C9C18BAD1E9007FB5C5 /* DDAppDelegate.m in Sources */,
+				95A29C9818BAD1E9007FB5C5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95A29C9F18BAD1E9007FB5C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95A29CB118BAD1E9007FB5C5 /* _UI__________day13_Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95A29CA918BAD1E9007FB5C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95A29C8718BAD1E9007FB5C5 /* 「UI」多线程与消息通知(day13) */;
+			targetProxy = 95A29CA818BAD1E9007FB5C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		95A29C9418BAD1E9007FB5C5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95A29C9518BAD1E9007FB5C5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		95A29CAD18BAD1E9007FB5C5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95A29CAE18BAD1E9007FB5C5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		95A29CB218BAD1E9007FB5C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		95A29CB318BAD1E9007FB5C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95A29CB518BAD1E9007FB5C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「UI」多线程与消息通知(day13)/「UI」多线程与消息通知(day13)-Prefix.pch";
+				INFOPLIST_FILE = "「UI」多线程与消息通知(day13)/「UI」多线程与消息通知(day13)-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		95A29CB618BAD1E9007FB5C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「UI」多线程与消息通知(day13)/「UI」多线程与消息通知(day13)-Prefix.pch";
+				INFOPLIST_FILE = "「UI」多线程与消息通知(day13)/「UI」多线程与消息通知(day13)-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		95A29CB818BAD1E9007FB5C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「UI」多线程与消息通知(day13).app/「UI」多线程与消息通知(day13)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「UI」多线程与消息通知(day13)/「UI」多线程与消息通知(day13)-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "「UI」多线程与消息通知(day13)Tests/「UI」多线程与消息通知(day13)Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		95A29CB918BAD1E9007FB5C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「UI」多线程与消息通知(day13).app/「UI」多线程与消息通知(day13)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「UI」多线程与消息通知(day13)/「UI」多线程与消息通知(day13)-Prefix.pch";
+				INFOPLIST_FILE = "「UI」多线程与消息通知(day13)Tests/「UI」多线程与消息通知(day13)Tests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95A29C8318BAD1E9007FB5C5 /* Build configuration list for PBXProject "「UI」多线程与消息通知(day13)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95A29CB218BAD1E9007FB5C5 /* Debug */,
+				95A29CB318BAD1E9007FB5C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95A29CB418BAD1E9007FB5C5 /* Build configuration list for PBXNativeTarget "「UI」多线程与消息通知(day13)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95A29CB518BAD1E9007FB5C5 /* Debug */,
+				95A29CB618BAD1E9007FB5C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95A29CB718BAD1E9007FB5C5 /* Build configuration list for PBXNativeTarget "「UI」多线程与消息通知(day13)Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95A29CB818BAD1E9007FB5C5 /* Debug */,
+				95A29CB918BAD1E9007FB5C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95A29C8018BAD1E9007FB5C5 /* Project object */;
+}
