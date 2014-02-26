@@ -29,15 +29,18 @@ typedef enum {
 @class DDRefreshBaseView;
 @protocol DDRefreshBaseDelegate <NSObject>
 // 开始进入刷新状态调用
-- (void)RefreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView;
+- (void)refreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView;
 // 刷新完成调用
-- (void)RefreshBaseViewDidRefreshing:(DDRefreshBaseView *)refreshBaseView;
+- (void)refreshBaseViewDidRefreshing:(DDRefreshBaseView *)refreshBaseView;
 // 刷新状态发生变化调用
-- (void)RefreshBaseView:(DDRefreshBaseView *)refreshBaseView stateChange:(DDRefreshState)state;
+- (void)refreshBaseView:(DDRefreshBaseView *)refreshBaseView stateChange:(DDRefreshState)state;
 
 @end
 
 @interface DDRefreshBaseView : UIView
+
+@property (assign, nonatomic) DDRefreshType viewType;           // 控件视图类型(Footer或者Header)
+@property (assign, nonatomic) CGFloat minScrollCoordinateY;     // 最少滚动多少Y坐标
 
 @property (retain, nonatomic) UIScrollView *scrollView;          // 滑动控件
 - (instancetype)initWihtScrollView:(UIScrollView *)scrollView;
@@ -54,6 +57,10 @@ typedef enum {
 @property (nonatomic, copy) void (^endRefreshBaseView)(DDRefreshBaseView *endRefreshBaseView);
 // 刷新状态发生变化调用
 @property (nonatomic, copy) void (^refreshStateChange)(DDRefreshBaseView *refreshBaseView, DDRefreshState state);
+
+// 最少滚动的Y做标值
+- (CGFloat)minScrollCoordinateY;
+
 
 // 开始刷新
 - (void)beginRefreshing;

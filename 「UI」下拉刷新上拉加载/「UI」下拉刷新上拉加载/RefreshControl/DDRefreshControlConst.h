@@ -10,7 +10,7 @@
  *  记录常量
  */
 
-extern const CGFloat DDRefreshViewHeight
+extern const CGFloat DDRefreshViewHeight;
 extern const CGFloat DDRefreshAnimationDuration;
 
 extern NSString * const DDPullToRefresh;

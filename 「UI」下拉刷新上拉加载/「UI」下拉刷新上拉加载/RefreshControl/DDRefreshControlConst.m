@@ -17,5 +17,5 @@ NSString * const DDPullReleaseToLoadData = @"松开加载数据";
 NSString * const DDDropToRefresh         = @"下拉加载数据";
 NSString * const DDDropReleaseToLoadData = @"松开加载更多数据";
 
-NSString * const DDRefreshContentOffSet  = @"contentOffSet";
+NSString * const DDRefreshContentOffSet  = @"contentOffset";
 NSString * const DDRefreshContentSize    = @"contentSize";

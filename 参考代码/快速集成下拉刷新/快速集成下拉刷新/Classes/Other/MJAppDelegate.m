@@ -1,34 +1,37 @@
 //
-//  DDAppDelegate.m
-//  「UI」下拉刷新下拉加载
+//  MJAppDelegate.m
+//  快速集成下拉刷新
 //
-//  Created by 萧川 on 14-2-25.
-//  Copyright (c) 2014年 CUAN. All rights reserved.
+//  Created by mj on 14-1-3.
+//  Copyright (c) 2014年 itcast. All rights reserved.
 //
 
-#import "DDAppDelegate.h"
-#import "DDRootViewController.h"
-#import "DDTestViewController.h"
+/*
+具体用法：查看MJRefresh.h
+ */
 
-@implementation DDAppDelegate
+#import "MJAppDelegate.h"
+#import "MJNavigationController.h"
+#import "MJSampleIndexViewController.h"
+#import "MJTableViewController.h"
+#import "MJCollectionViewController.h"
+#import "MJTestViewController.h"
+
+@implementation MJAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-//    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-//    self.window.rootViewController = rootVC;
-//    [rootVC release];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    MJNavigationController *nav = [[MJNavigationController alloc] initWithRootViewController:[[MJSampleIndexViewController alloc] init]];
+    self.window.rootViewController = nav;
     
-//    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
-//    [rootVC release];
-//    self.window.rootViewController = navi;
-//    [navi release];
-//    self.window.backgroundColor = [UIColor whiteColor];
+//    self.window.rootViewController = [[MJTestViewController alloc] init];
     
-    DDTestViewController *test = [[DDTestViewController alloc] init];
-    self.window.rootViewController = test;
-    [test release];
+//    UITabBarController *tab = [[UITabBarController alloc] init];
+//    tab.viewControllers = @[nav];
+//    self.window.rootViewController = tab;
+//    self.window.rootViewController = [[MJTableViewController alloc] init];
+//    self.window.rootViewController = [[MJCollectionViewController alloc] init];
     [self.window makeKeyAndVisible];
     return YES;
 }

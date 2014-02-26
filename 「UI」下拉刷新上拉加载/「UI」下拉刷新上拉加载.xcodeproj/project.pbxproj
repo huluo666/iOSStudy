@@ -22,6 +22,8 @@
 		062DC65B18BD051600F724E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65218BD051600F724E1 /* main.m */; };
 		062DC65C18BD051600F724E1 /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65618BD051600F724E1 /* DDRefreshBaseView.m */; };
 		062DC65D18BD051600F724E1 /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65818BD051600F724E1 /* DDRefreshControlConst.m */; };
+		95FDB71318BDC53000EA4641 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FDB71218BDC53000EA4641 /* arrow@2x.png */; };
+		95FDB71818BDCABA00EA4641 /* DDTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FDB71718BDCABA00EA4641 /* DDTestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,9 @@
 		062DC65618BD051600F724E1 /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
 		062DC65718BD051600F724E1 /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
 		062DC65818BD051600F724E1 /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
+		95FDB71218BDC53000EA4641 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		95FDB71618BDCABA00EA4641 /* DDTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTestViewController.h; sourceTree = "<group>"; };
+		95FDB71718BDCABA00EA4641 /* DDTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +121,7 @@
 		062DC62218BD04D200F724E1 /* 「UI」下拉刷新上拉加载 */ = {
 			isa = PBXGroup;
 			children = (
+				95FDB71518BDCAAC00EA4641 /* Test */,
 				062DC64B18BD051600F724E1 /* Classes */,
 				062DC65418BD051600F724E1 /* RefreshControl */,
 				062DC62E18BD04D200F724E1 /* Images.xcassets */,
@@ -191,12 +197,22 @@
 		062DC65418BD051600F724E1 /* RefreshControl */ = {
 			isa = PBXGroup;
 			children = (
+				95FDB71218BDC53000EA4641 /* arrow@2x.png */,
 				062DC65518BD051600F724E1 /* DDRefreshBaseView.h */,
 				062DC65618BD051600F724E1 /* DDRefreshBaseView.m */,
 				062DC65718BD051600F724E1 /* DDRefreshControlConst.h */,
 				062DC65818BD051600F724E1 /* DDRefreshControlConst.m */,
 			);
 			path = RefreshControl;
+			sourceTree = "<group>";
+		};
+		95FDB71518BDCAAC00EA4641 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				95FDB71618BDCABA00EA4641 /* DDTestViewController.h */,
+				95FDB71718BDCABA00EA4641 /* DDTestViewController.m */,
+			);
+			path = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +293,7 @@
 			files = (
 				062DC62718BD04D200F724E1 /* InfoPlist.strings in Resources */,
 				062DC62F18BD04D200F724E1 /* Images.xcassets in Resources */,
+				95FDB71318BDC53000EA4641 /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +314,7 @@
 			files = (
 				062DC65918BD051600F724E1 /* DDRootViewController.m in Sources */,
 				062DC65B18BD051600F724E1 /* main.m in Sources */,
+				95FDB71818BDCABA00EA4641 /* DDTestViewController.m in Sources */,
 				062DC65D18BD051600F724E1 /* DDRefreshControlConst.m in Sources */,
 				062DC65A18BD051600F724E1 /* DDAppDelegate.m in Sources */,
 				062DC65C18BD051600F724E1 /* DDRefreshBaseView.m in Sources */,
@@ -500,6 +518,7 @@
 				062DC64718BD04D200F724E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		062DC64818BD04D200F724E1 /* Build configuration list for PBXNativeTarget "「UI」下拉刷新上拉加载Tests" */ = {
 			isa = XCConfigurationList;
@@ -508,6 +527,7 @@
 				062DC64A18BD04D200F724E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
