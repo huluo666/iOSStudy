@@ -11,7 +11,7 @@ static NSString *CellIdentifier = @"Cell";
 #import "DDRootViewController.h"
 #import "DDPullDown.h"
 
-@interface DDRootViewController ()
+@interface DDRootViewController () <DDRefreshBaseDelegate>
 {
     NSMutableArray *_dataSource; // 数据源
     DDPullDown *_pullDown;
@@ -49,9 +49,6 @@ static NSString *CellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
     [self initDataSource];
     [self initUserInterface];
 }
@@ -61,7 +58,7 @@ static NSString *CellIdentifier = @"Cell";
 - (void)initDataSource
 {
     _dataSource = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < 5; i++) {
         [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
     }
 }
@@ -83,33 +80,38 @@ static NSString *CellIdentifier = @"Cell";
 - (void)loadHeaderView
 {
     DDPullDown *pullDown = [DDPullDown pullDown];
+    UITableView *table = [[UITableView alloc] init];
+    self.tableView = table;
+    [table release];
     pullDown.scrollView = self.tableView;
-    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        // 添加数据
-        for (int i = 0; i < 12; i++) {
-            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
-        }
-        
-        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:2.0];
-        
-        NSLog(@"%@ 开始刷新", refreshBaseView.class);
-    };
+    pullDown.delegate = self;
+    [pullDown beginRefreshBaseView];
+//    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//        // 添加数据
+//        for (int i = 0; i < 5; i++) {
+//            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
+//        }
+//        
+//        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:1.0];
+//        
+//        NSLog(@"%@ 开始刷新", refreshBaseView.class);
+//    };
     
-    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        NSLog(@"%@ 刷新完成", refreshBaseView.class);
-    };
-    
-    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView, DDRefreshState state) {
-        if (state == DDRefreshStateNormal) {
-            NSLog(@"%@当前状态: 普通", refreshBaseView.class);
-        }
-        if (state == DDRefreshStatePulling) {
-            NSLog(@"%@当前状态: 松开即可刷新", refreshBaseView.class);
-        }
-        if (state == DDRefreshStateRefreshing) {
-            NSLog(@"%@当前状态: 正在刷新", refreshBaseView.class);
-        }
-    };
+//    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//        NSLog(@"%@ 刷新完成", refreshBaseView.class);
+//    };
+//    
+//    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView, DDRefreshState state) {
+//        if (state == DDRefreshStateNormal) {
+//            NSLog(@"%@当前状态: 普通", refreshBaseView.class);
+//        }
+//        if (state == DDRefreshStatePulling) {
+//            NSLog(@"%@当前状态: 松开即可刷新", refreshBaseView.class);
+//        }
+//        if (state == DDRefreshStateRefreshing) {
+//            NSLog(@"%@当前状态: 正在刷新", refreshBaseView.class);
+//        }
+//    };
     
     _pullDown = [pullDown retain];
     
@@ -136,11 +138,32 @@ static NSString *CellIdentifier = @"Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier]; 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    
+    if (!cell) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
     cell.textLabel.text = _dataSource[indexPath.row];
     
     return cell;
+}
+
+#pragma mark ---
+
+- (void)refreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView
+{
+    NSLog(@"======");
+}
+
+- (void)refreshBaseView:(DDRefreshBaseView *)refreshBaseView stateChange:(DDRefreshState)state
+{
+    NSLog(@"-----");
+}
+
+- (void)refreshBaseViewDidRefreshing:(DDRefreshBaseView *)refreshBaseView
+{
+    NSLog(@"22222");
 }
 
 @end

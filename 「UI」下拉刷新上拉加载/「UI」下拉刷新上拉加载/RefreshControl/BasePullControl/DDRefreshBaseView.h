@@ -68,8 +68,6 @@ typedef enum {
 - (void)endRefreshing;
 // 不静止地刷新
 - (void)endRefreshingWithoutIdle;
-// 释放资源
-- (void)free;
 // 设置刷新状态
 - (void)setState:(DDRefreshState)state;
 

@@ -57,7 +57,7 @@
 
 - (void)setLastUpdateTime:(NSDate *)lastUpdateTime
 {
-    if (![_lastUpdateTime isEqual:DDLastUpdateTime]) {
+    if (_lastUpdateTime != lastUpdateTime) {
         [_lastUpdateTime release];
         _lastUpdateTime = [lastUpdateTime retain];
 

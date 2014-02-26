@@ -69,13 +69,13 @@
         indicator.bounds = arrowView.bounds; // arrowView 和 indicator处于同一位置
         arrowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         _indicator = [indicator retain];
-        [indicator release];
         [self addSubview:_indicator];
+        [indicator release];
         
         // 默认控件的刷新状态
         [self setState:DDRefreshStateNormal];
     }
-    
+    self.backgroundColor = [UIColor redColor];
     return self;
 }
 
@@ -143,8 +143,8 @@
     // 上次更新时间标签
     _lastUpdate.frame = CGRectMake(0, 10 + CGRectGetHeight(_status.bounds), width, 20);
     
-    // 剪头图标
-    _arrow.center = CGPointMake(CGRectGetMidX(self.frame) - 100, CGRectGetMidY(self.frame));
+    // 箭头图标
+    _arrow.center = CGPointMake(frame.size.width / 2 - 100, frame.size.height / 2);
     
     // 进度指示器
     _indicator.center = _arrow.center;
@@ -162,15 +162,13 @@
 // scrollView setter
 - (void)setScrollView:(UIScrollView *)scrollView
 {
-   
     // 移除之前的监听
-    [_scrollView removeObserver:self forKeyPath:DDRefreshContentOffSet];
+    [_scrollView removeObserver:self forKeyPath:DDRefreshContentOffSet context:nil];
     
     // 注册监听
     [_scrollView addObserver:self
                   forKeyPath:DDRefreshContentOffSet
-                     options:NSKeyValueObservingOptionNew |
-                                NSKeyValueObservingOptionOld
+                     options:NSKeyValueObservingOptionNew
                      context:nil];
     
     if (_scrollView != scrollView) {
@@ -243,6 +241,7 @@
     
     // 开始进度指示器动画
     [_indicator startAnimating];
+    _arrow.transform = CGAffineTransformIdentity;
     
     // 回调
     [self callbackBeginRefreshing];
@@ -258,13 +257,18 @@
 // context是私有变量
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
+#pragma mark - error
+#pragma mark - error
+#pragma mark - error
     // 只监听contentOffSet
-    if (![DDRefreshContentOffSet isEqualToString:keyPath]) {
-        return;
-    }
+//    if (![DDRefreshContentOffSet isEqualToString:keyPath]) {
+//        
+//        return;
+//    }
+
     // 排除不适合监听的情况
 #pragma mark - maybe error
-    if (!self.isUserInteractionEnabled ||
+    if (!self.userInteractionEnabled ||
         self.alpha == 0 ||
         self.hidden ||
         _state == DDRefreshStateRefreshing
@@ -279,27 +283,28 @@
     }
     CGFloat offSetY = _scrollView.contentOffset.y * number;
 #pragma maybe error
-    if (offSetY <= self.properScrollCoordinateY) {
-        return;
-    }
-    
+//    if (offSetY <= self.properScrollCoordinateY) {
+//        return;
+//    }
+
     // 拖动滚动视图控件开始监听
-    if (_scrollView.isDragging) {
+    if (!_scrollView.isDragging) {
+        NSLog(@"state:%d", _state);
         CGFloat validOffSetY = self.properScrollCoordinateY + DDRefreshViewHeight;
         if (_state == DDRefreshStatePulling && offSetY <= validOffSetY) { // 正在拖动但是拖动距离不够
             // 转为普通状态
             [self setState:DDRefreshStateNormal];
             [self calbackWithStateChange:DDRefreshStateNormal];
-        } else if (_state == DDRefreshStatePulling && offSetY > validOffSetY){ // 满足刷新条件,即将刷新
+        } else if (_state == DDRefreshStateNormal && offSetY > validOffSetY){ // 满足刷新条件,即将刷新
             // 设置为即将刷新状态
-            [self setState:DDRefreshStateWillRefreshing];
-            [self calbackWithStateChange:DDRefreshStateWillRefreshing];
-        } else { // 松开，开始刷新
-            if (_state == DDRefreshStatePulling) {
-                // 设置为正在刷新状态
-                [self setState:DDRefreshStateRefreshing];
-                [self calbackWithStateChange:DDRefreshStateRefreshing];
-            }
+            [self setState:DDRefreshStatePulling];
+            [self calbackWithStateChange:DDRefreshStatePulling];
+        }
+    } else { // 松开，开始刷新
+        if (_state == DDRefreshStatePulling) {
+            // 设置为正在刷新状态
+            [self setState:DDRefreshStateRefreshing];
+            [self calbackWithStateChange:DDRefreshStateRefreshing];
         }
     }
 }
@@ -364,19 +369,18 @@
 - (void)endRefreshing
 {
 #pragma mark - may be error
-    [self setState:DDRefreshStateNormal];
+//    [self setState:DDRefreshStateNormal];
+    double delayInSeconds = self.viewType == DDRefreshTypePullDown ? 0.3 : 0.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [self setState:DDRefreshStateNormal];
+    });
 }
 
 // 不静止地刷新
 - (void)endRefreshingWithoutIdle
 {
     [self endRefreshing];
-}
-
-// 释放资源
-- (void)free
-{
-
 }
 
 - (CGFloat)properScrollCoordinateY
