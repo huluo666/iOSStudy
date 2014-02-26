@@ -20,10 +20,11 @@
 		062DC65918BD051600F724E1 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC64E18BD051600F724E1 /* DDRootViewController.m */; };
 		062DC65A18BD051600F724E1 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65118BD051600F724E1 /* DDAppDelegate.m */; };
 		062DC65B18BD051600F724E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65218BD051600F724E1 /* main.m */; };
-		062DC65C18BD051600F724E1 /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65618BD051600F724E1 /* DDRefreshBaseView.m */; };
-		062DC65D18BD051600F724E1 /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65818BD051600F724E1 /* DDRefreshControlConst.m */; };
-		95FDB71318BDC53000EA4641 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95FDB71218BDC53000EA4641 /* arrow@2x.png */; };
-		95FDB71818BDCABA00EA4641 /* DDTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FDB71718BDCABA00EA4641 /* DDTestViewController.m */; };
+		06552BAE18BE1F9900398C21 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06552BA918BE1F9900398C21 /* arrow@2x.png */; };
+		06552BAF18BE1F9900398C21 /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BAB18BE1F9900398C21 /* DDRefreshBaseView.m */; };
+		06552BB018BE1F9900398C21 /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BAD18BE1F9900398C21 /* DDRefreshControlConst.m */; };
+		06552BB318BE202800398C21 /* DDPullDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BB218BE202800398C21 /* DDPullDown.m */; };
+		06552BB618BE204100398C21 /* DDPullUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BB518BE204100398C21 /* DDPullUp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,13 +56,15 @@
 		062DC65018BD051600F724E1 /* DDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
 		062DC65118BD051600F724E1 /* DDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
 		062DC65218BD051600F724E1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		062DC65518BD051600F724E1 /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
-		062DC65618BD051600F724E1 /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
-		062DC65718BD051600F724E1 /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
-		062DC65818BD051600F724E1 /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
-		95FDB71218BDC53000EA4641 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
-		95FDB71618BDCABA00EA4641 /* DDTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTestViewController.h; sourceTree = "<group>"; };
-		95FDB71718BDCABA00EA4641 /* DDTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTestViewController.m; sourceTree = "<group>"; };
+		06552BA918BE1F9900398C21 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		06552BAA18BE1F9900398C21 /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
+		06552BAB18BE1F9900398C21 /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
+		06552BAC18BE1F9900398C21 /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
+		06552BAD18BE1F9900398C21 /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
+		06552BB118BE202800398C21 /* DDPullDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDown.h; sourceTree = "<group>"; };
+		06552BB218BE202800398C21 /* DDPullDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDown.m; sourceTree = "<group>"; };
+		06552BB418BE204100398C21 /* DDPullUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUp.h; sourceTree = "<group>"; };
+		06552BB518BE204100398C21 /* DDPullUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUp.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,7 +124,6 @@
 		062DC62218BD04D200F724E1 /* 「UI」下拉刷新上拉加载 */ = {
 			isa = PBXGroup;
 			children = (
-				95FDB71518BDCAAC00EA4641 /* Test */,
 				062DC64B18BD051600F724E1 /* Classes */,
 				062DC65418BD051600F724E1 /* RefreshControl */,
 				062DC62E18BD04D200F724E1 /* Images.xcassets */,
@@ -197,22 +199,41 @@
 		062DC65418BD051600F724E1 /* RefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				95FDB71218BDC53000EA4641 /* arrow@2x.png */,
-				062DC65518BD051600F724E1 /* DDRefreshBaseView.h */,
-				062DC65618BD051600F724E1 /* DDRefreshBaseView.m */,
-				062DC65718BD051600F724E1 /* DDRefreshControlConst.h */,
-				062DC65818BD051600F724E1 /* DDRefreshControlConst.m */,
+				06552BA818BE1F9900398C21 /* BasePullControl */,
+				06552BA618BE1F4300398C21 /* PullDownRefresh */,
+				06552BA718BE1F4300398C21 /* PullUpLoad */,
 			);
 			path = RefreshControl;
 			sourceTree = "<group>";
 		};
-		95FDB71518BDCAAC00EA4641 /* Test */ = {
+		06552BA618BE1F4300398C21 /* PullDownRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				95FDB71618BDCABA00EA4641 /* DDTestViewController.h */,
-				95FDB71718BDCABA00EA4641 /* DDTestViewController.m */,
+				06552BB118BE202800398C21 /* DDPullDown.h */,
+				06552BB218BE202800398C21 /* DDPullDown.m */,
 			);
-			path = Test;
+			path = PullDownRefresh;
+			sourceTree = "<group>";
+		};
+		06552BA718BE1F4300398C21 /* PullUpLoad */ = {
+			isa = PBXGroup;
+			children = (
+				06552BB418BE204100398C21 /* DDPullUp.h */,
+				06552BB518BE204100398C21 /* DDPullUp.m */,
+			);
+			path = PullUpLoad;
+			sourceTree = "<group>";
+		};
+		06552BA818BE1F9900398C21 /* BasePullControl */ = {
+			isa = PBXGroup;
+			children = (
+				06552BA918BE1F9900398C21 /* arrow@2x.png */,
+				06552BAA18BE1F9900398C21 /* DDRefreshBaseView.h */,
+				06552BAB18BE1F9900398C21 /* DDRefreshBaseView.m */,
+				06552BAC18BE1F9900398C21 /* DDRefreshControlConst.h */,
+				06552BAD18BE1F9900398C21 /* DDRefreshControlConst.m */,
+			);
+			path = BasePullControl;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -293,7 +314,7 @@
 			files = (
 				062DC62718BD04D200F724E1 /* InfoPlist.strings in Resources */,
 				062DC62F18BD04D200F724E1 /* Images.xcassets in Resources */,
-				95FDB71318BDC53000EA4641 /* arrow@2x.png in Resources */,
+				06552BAE18BE1F9900398C21 /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,10 +335,11 @@
 			files = (
 				062DC65918BD051600F724E1 /* DDRootViewController.m in Sources */,
 				062DC65B18BD051600F724E1 /* main.m in Sources */,
-				95FDB71818BDCABA00EA4641 /* DDTestViewController.m in Sources */,
-				062DC65D18BD051600F724E1 /* DDRefreshControlConst.m in Sources */,
+				06552BB318BE202800398C21 /* DDPullDown.m in Sources */,
+				06552BB018BE1F9900398C21 /* DDRefreshControlConst.m in Sources */,
 				062DC65A18BD051600F724E1 /* DDAppDelegate.m in Sources */,
-				062DC65C18BD051600F724E1 /* DDRefreshBaseView.m in Sources */,
+				06552BAF18BE1F9900398C21 /* DDRefreshBaseView.m in Sources */,
+				06552BB618BE204100398C21 /* DDPullUp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

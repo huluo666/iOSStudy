@@ -8,7 +8,7 @@
 
 #import "DDAppDelegate.h"
 #import "DDRootViewController.h"
-#import "DDTestViewController.h"
+
 
 @implementation DDAppDelegate
 
@@ -19,16 +19,13 @@
 //    self.window.rootViewController = rootVC;
 //    [rootVC release];
     
-//    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
-//    [rootVC release];
-//    self.window.rootViewController = navi;
-//    [navi release];
-//    self.window.backgroundColor = [UIColor whiteColor];
+    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    [rootVC release];
+    self.window.rootViewController = navi;
+    [navi release];
+    self.window.backgroundColor = [UIColor whiteColor];
     
-    DDTestViewController *test = [[DDTestViewController alloc] init];
-    self.window.rootViewController = test;
-    [test release];
     [self.window makeKeyAndVisible];
     return YES;
 }

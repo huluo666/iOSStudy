@@ -9,10 +9,12 @@
 static NSString *CellIdentifier = @"Cell";
 
 #import "DDRootViewController.h"
+#import "DDPullDown.h"
 
 @interface DDRootViewController ()
 {
     NSMutableArray *_dataSource; // 数据源
+    DDPullDown *_pullDown;
 }
 
 // 初始化数据
@@ -40,6 +42,7 @@ static NSString *CellIdentifier = @"Cell";
 - (void)dealloc
 {
     [_dataSource release];
+    [_pullDown release];
     [super dealloc];
 }
 
@@ -74,12 +77,48 @@ static NSString *CellIdentifier = @"Cell";
     [self loadHeaderView];
     
     // 载入尾部视图
-    [self loadFooterView];
+//    [self loadFooterView];
 }
 
 - (void)loadHeaderView
 {
+    DDPullDown *pullDown = [DDPullDown pullDown];
+    pullDown.scrollView = self.tableView;
+    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+        // 添加数据
+        for (int i = 0; i < 12; i++) {
+            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
+        }
+        
+        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:2.0];
+        
+        NSLog(@"%@ 开始刷新", refreshBaseView.class);
+    };
+    
+    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+        NSLog(@"%@ 刷新完成", refreshBaseView.class);
+    };
+    
+    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView, DDRefreshState state) {
+        if (state == DDRefreshStateNormal) {
+            NSLog(@"%@当前状态: 普通", refreshBaseView.class);
+        }
+        if (state == DDRefreshStatePulling) {
+            NSLog(@"%@当前状态: 松开即可刷新", refreshBaseView.class);
+        }
+        if (state == DDRefreshStateRefreshing) {
+            NSLog(@"%@当前状态: 正在刷新", refreshBaseView.class);
+        }
+    };
+    
+    _pullDown = [pullDown retain];
+    
+}
 
+- (void)doneWithView:(DDRefreshBaseView *)refreshBaseView
+{
+    [self.tableView reloadData];
+    [refreshBaseView endRefreshing];
 }
 
 - (void)loadFooterView
@@ -89,76 +128,19 @@ static NSString *CellIdentifier = @"Cell";
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 0;
-}
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return 0;
+
+    return _dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // Configure the cell...
+    cell.textLabel.text = _dataSource[indexPath.row];
     
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
 
 @end

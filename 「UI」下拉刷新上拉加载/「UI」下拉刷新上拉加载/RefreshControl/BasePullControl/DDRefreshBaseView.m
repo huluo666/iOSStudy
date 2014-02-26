@@ -11,15 +11,14 @@
 
 @interface DDRefreshBaseView ()
 {
-    UIEdgeInsets _scrollViewInset;     // 扩展视图大小
-    
-    UILabel *_lastUpdate;               // 上次更新时间
-    UILabel *_status;                   // 状态显示
-    UIImageView *_arrow;                // 箭头图标
+    BOOL _hasInsetInit;
     UIActivityIndicatorView *_indicator; // 进度指示器
-    
-    DDRefreshState _state;              // 刷新状态
 }
+
+// 合适的滚动的Y坐标值
+- (CGFloat)properScrollCoordinateY;
+// 控件视图类型(Footer或者Header)
+- (DDRefreshType)viewType;
 
 // 创建Label
 - (UILabel *)labelWithFont:(UIFont *)font;
@@ -30,13 +29,14 @@
 - (void)setStateRefreshing;
 
 
-// 监听事件回应方法
-// 刷新状态改变
-- (void)responseMonitorWithStateChange:(DDRefreshState)state;
-// 结束刷新
-- (void)responseMonitorDidRefreshing;
+// 回调方法打包
 // 开始刷新
-- (void)responseMonitorBegainRefreshing;
+- (void)callbackBeginRefreshing;
+// 刷新完成
+- (void)callbackDidRefreshing;
+// 刷新状态改变
+- (void)calbackWithStateChange:(DDRefreshState)state;
+
 
 @end
 
@@ -72,11 +72,8 @@
         [indicator release];
         [self addSubview:_indicator];
         
-        // 默认控件的状态
+        // 默认控件的刷新状态
         [self setState:DDRefreshStateNormal];
-        
-        _viewType = DDRefreshTypeHeader;
-        _minScrollCoordinateY = 0;
     }
     
     return self;
@@ -99,6 +96,26 @@
     [_arrow release];
     [_indicator release];
     [super dealloc];
+}
+
+- (void)removeFromSuperview
+{
+    [_scrollView removeObserver:self forKeyPath:DDRefreshContentOffSet];
+    [super removeFromSuperview];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    if (!_hasInsetInit) {
+        _scrollViewInsetInit = _scrollView.contentInset;
+        [self observeValueForKeyPath:DDRefreshContentSize ofObject:nil change:nil context:nil];
+        _hasInsetInit = YES;
+        
+        if (_state == DDRefreshStateWillRefreshing) {
+            [self setState:DDRefreshStateRefreshing];
+        }
+    }
 }
 
 #pragma mark - 复写setter
@@ -145,7 +162,16 @@
 // scrollView setter
 - (void)setScrollView:(UIScrollView *)scrollView
 {
-#pragma mark - TODO
+   
+    // 移除之前的监听
+    [_scrollView removeObserver:self forKeyPath:DDRefreshContentOffSet];
+    
+    // 注册监听
+    [_scrollView addObserver:self
+                  forKeyPath:DDRefreshContentOffSet
+                     options:NSKeyValueObservingOptionNew |
+                                NSKeyValueObservingOptionOld
+                     context:nil];
     
     if (_scrollView != scrollView) {
         [_scrollView release];
@@ -158,15 +184,13 @@
 - (void)setState:(DDRefreshState)state
 {
     // 记录当前contentInSet
-//    if (_state != DDRefreshStateRefreshing) {
-//         _scrollViewInitInset = _scrollView.contentInset;
-//    }
+    if (_state != DDRefreshStateRefreshing) {
+        _scrollViewInsetInit= _scrollView.contentInset;
+    }
     
     if (_state == state) {
         return;
     }
-#pragma mark - TODO
-#pragma mark - TODO
 
     switch (state) {
         // 普通状态
@@ -180,13 +204,10 @@
         default:
             break;
     }
+    
+    // 记录刷新状态
+    _state = state;
 }
-
-
-//- (void)layoutSubviews
-//{
-//#pragma mark - TODO
-//}
 
 #pragma mark - 私有方法
 
@@ -206,11 +227,25 @@
 {
     // 停止进度指示器动画
     [_indicator stopAnimating];
+    
     // 显示箭头
     _arrow.hidden = NO;
-    if (DDRefreshStateRefreshing == _state) { // 刷新完成，回到普通状态
-        
+    
+    if (DDRefreshStateRefreshing == _state) { // 刚好刷新完成，回到普通状态
+        [self callbackDidRefreshing];
     }
+}
+
+- (void)setStateRefreshing
+{
+    // 隐藏箭头
+    _arrow.hidden = YES;
+    
+    // 开始进度指示器动画
+    [_indicator startAnimating];
+    
+    // 回调
+    [self callbackBeginRefreshing];
 }
 
 #pragma mark - 监听_scrollView的contentOffSet属性值的变化来做出响应的的反应
@@ -239,37 +274,40 @@
     
     // scrollView所滚动的Y值大于多少才调用
     CGFloat number = 1;
-    if (_viewType == DDRefreshTypeFooter) {
+    if (self.viewType == DDRefreshTypePullDown) {
         number = -1;
     }
     CGFloat offSetY = _scrollView.contentOffset.y * number;
 #pragma maybe error
-    if (offSetY <= _minScrollCoordinateY) {
+    if (offSetY <= self.properScrollCoordinateY) {
         return;
     }
     
     // 拖动滚动视图控件开始监听
     if (_scrollView.isDragging) {
-        CGFloat validOffSetY = _minScrollCoordinateY + DDRefreshViewHeight;
-        if (_state == DDRefreshStatePullOrDrop && offSetY <= validOffSetY) { // 正在拖动但是拖动距离不够
+        CGFloat validOffSetY = self.properScrollCoordinateY + DDRefreshViewHeight;
+        if (_state == DDRefreshStatePulling && offSetY <= validOffSetY) { // 正在拖动但是拖动距离不够
             // 转为普通状态
-            [self responseMonitorWithStateChange:DDRefreshStateNormal];
-        } else if (_state == DDRefreshStatePullOrDrop && offSetY > validOffSetY){ // 满足刷新条件,即将刷新
+            [self setState:DDRefreshStateNormal];
+            [self calbackWithStateChange:DDRefreshStateNormal];
+        } else if (_state == DDRefreshStatePulling && offSetY > validOffSetY){ // 满足刷新条件,即将刷新
             // 设置为即将刷新状态
-            [self responseMonitorWithStateChange:DDRefreshStateWillRefreshing];
+            [self setState:DDRefreshStateWillRefreshing];
+            [self calbackWithStateChange:DDRefreshStateWillRefreshing];
         } else { // 松开，开始刷新
-            // 设置为正在刷新状态
-            [self responseMonitorWithStateChange:DDRefreshStateRefreshing];
+            if (_state == DDRefreshStatePulling) {
+                // 设置为正在刷新状态
+                [self setState:DDRefreshStateRefreshing];
+                [self calbackWithStateChange:DDRefreshStateRefreshing];
+            }
         }
     }
 }
 
-#pragma mark 监听事件处理函数打包
+#pragma mark 回调函数打包
 
-- (void)responseMonitorWithStateChange:(DDRefreshState)state
+- (void)calbackWithStateChange:(DDRefreshState)state
 {
-    // 转为state状态
-    [self setState:state];
     // 回调方式一，委托
     if (_delegate && [_delegate respondsToSelector:@selector(refreshBaseView:stateChange:)]) {
         [_delegate refreshBaseView:self stateChange:state];
@@ -280,19 +318,42 @@
     }
 }
 
+- (void)callbackBeginRefreshing
+{
+    if (_delegate && [_delegate respondsToSelector:@selector(refreshBaseViewbeginRefreshing:)]) {
+        [_delegate refreshBaseViewbeginRefreshing:self];
+    }
+    
+    if (_beginRefreshBaseView) {
+        _beginRefreshBaseView(self);
+    }
+}
+
+- (void)callbackDidRefreshing
+{
+    // 回调方式一，委托
+    if (_delegate && [_delegate respondsToSelector:@selector(refreshBaseViewDidRefreshing:)]) {
+        [_delegate refreshBaseViewDidRefreshing:self];
+    }
+    // 回调方式二，block
+    if (_didRefreshBaseView) {
+        _didRefreshBaseView(self);
+    }
+}
+
 #pragma mark - 刷新状态
 
 // 是否正在刷新
 - (BOOL)isRefreshing
 {
-    return _state == DDRefreshStateRefreshing;
+    return _state == DDRefreshStateRefreshing  ? YES : NO;
 }
 
 // 开始刷新
 - (void)beginRefreshing
 {
 #pragma mark - may be error
-    if (self) {
+    if (self.window) {
         [self setState:DDRefreshStateRefreshing];
     } else {
         _state = DDRefreshStateWillRefreshing;
@@ -316,6 +377,16 @@
 - (void)free
 {
 
+}
+
+- (CGFloat)properScrollCoordinateY
+{
+    return 0;
+}
+
+- (DDRefreshType)viewType
+{
+    return DDRefreshTypePullDown;
 }
 
 @end
