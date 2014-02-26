@@ -80,10 +80,9 @@ static NSString *CellIdentifier = @"Cell";
 - (void)loadHeaderView
 {
     DDPullDown *pullDown = [DDPullDown pullDown];
-    UITableView *table = [[UITableView alloc] init];
-    self.tableView = table;
-    [table release];
+    
     pullDown.scrollView = self.tableView;
+    NSLog(@"self.tableView:%@", self.tableView);
     pullDown.delegate = self;
     [pullDown beginRefreshBaseView];
 //    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
@@ -128,6 +127,12 @@ static NSString *CellIdentifier = @"Cell";
 
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+    
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -147,6 +152,14 @@ static NSString *CellIdentifier = @"Cell";
     cell.textLabel.text = _dataSource[indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"didselected");
+    if ([self.tableView isDragging]) {
+        NSLog(@"dragging");
+    }
 }
 
 #pragma mark ---

@@ -260,6 +260,7 @@
 #pragma mark - error
 #pragma mark - error
 #pragma mark - error
+    NSLog(@"_scrollViwe:%@", _scrollView);
     // 只监听contentOffSet
 //    if (![DDRefreshContentOffSet isEqualToString:keyPath]) {
 //        

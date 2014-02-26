@@ -153,7 +153,7 @@
     CGFloat offsetY = _scrollView.contentOffset.y * self.viewType;
     CGFloat validY = self.validY;
     if (offsetY <= validY) return;
-    
+    NSLog(@"scrollView: %@", _scrollView);
     if (_scrollView.isDragging) {
         CGFloat validOffsetY = validY + MJRefreshViewHeight;
         if (_state == MJRefreshStatePulling && offsetY <= validOffsetY) {

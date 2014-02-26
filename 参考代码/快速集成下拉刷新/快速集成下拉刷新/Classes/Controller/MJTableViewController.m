@@ -73,6 +73,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     
     MJRefreshHeaderView *header = [MJRefreshHeaderView header];
     header.scrollView = self.tableView;
+    NSLog(@"self.tableview:%@", self.tableView);
     header.beginRefreshingBlock = ^(MJRefreshBaseView *refreshView) {
         // 进入刷新状态就会回调这个Block
         
