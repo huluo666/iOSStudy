@@ -10,21 +10,21 @@ static NSString *CellIdentifier = @"Cell";
 
 #import "DDRootViewController.h"
 #import "DDPullDown.h"
+#import "DDPullUp.h"
 
-@interface DDRootViewController () <DDRefreshBaseDelegate>
+@interface DDRootViewController ()
 {
     NSMutableArray *_dataSource; // 数据源
-    DDPullDown *_pullDown;
 }
 
 // 初始化数据
 - (void)initDataSource;
 // 初始化用户界面
 - (void)initUserInterface;
-// 加载头部视图
-- (void)loadHeaderView;
-// 加载尾部视图
-- (void)loadFooterView;
+// 加载下拉刷新视图
+- (void)loadPullDownView;
+// 加载上拉加载更多视图
+- (void)loadPullUpView;
 
 @end
 
@@ -34,7 +34,7 @@ static NSString *CellIdentifier = @"Cell";
 {
     self = [super initWithStyle:style];
     if (self) {
-        self.title = @"表视图展示";
+        self.title = @"列表视图展示";
     }
     return self;
 }
@@ -42,7 +42,6 @@ static NSString *CellIdentifier = @"Cell";
 - (void)dealloc
 {
     [_dataSource release];
-    [_pullDown release];
     [super dealloc];
 }
 
@@ -60,7 +59,7 @@ static NSString *CellIdentifier = @"Cell";
 {
     _dataSource = [[NSMutableArray alloc] init];
     for (int i = 0; i < 5; i++) {
-        [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
+        [_dataSource addObject:[NSString stringWithFormat:@"初始测试数据编号：%d", arc4random() % 99999]];
     }
 }
 
@@ -68,65 +67,84 @@ static NSString *CellIdentifier = @"Cell";
 {
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
-//    self.automaticallyAdjustsScrollViewInsets = NO;
     
-    // 注册重用cell
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
+    // 载入下拉刷新视图
+    [self loadPullDownView];
     
-    // 载入头部视图
-    [self loadHeaderView];
-    
-    // 载入尾部视图
-//    [self loadFooterView];
+    // 载入上拉加载更多视图
+    [self loadPullUpView];
 }
 
-- (void)loadHeaderView
+- (void)loadPullDownView
 {
     DDPullDown *pullDown = [DDPullDown pullDown];
-
     pullDown.scrollView = self.tableView;
-//    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-//        // 添加数据
-//        for (int i = 0; i < 5; i++) {
-//            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
-//        }
-//        
-//        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:1.0];
-//        
-//        NSLog(@"%@ 开始刷新", refreshBaseView.class);
-//    };
     
-//    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-//        NSLog(@"%@ 刷新完成", refreshBaseView.class);
-//    };
-//    
-//    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView, DDRefreshState state) {
-//        if (state == DDRefreshStateNormal) {
-//            NSLog(@"%@当前状态: 普通", refreshBaseView.class);
-//        }
-//        if (state == DDRefreshStatePulling) {
-//            NSLog(@"%@当前状态: 松开即可刷新", refreshBaseView.class);
-//        }
-//        if (state == DDRefreshStateRefreshing) {
-//            NSLog(@"%@当前状态: 正在刷新", refreshBaseView.class);
-//        }
-//    };
+    // 打开页面自动刷新
+//    [pullDown beginRefreshing];
     
-    _pullDown = [pullDown retain];
+    // 回调方法实现
+    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView, DDRefreshState state) {
+        switch (state){
+            case DDRefreshStatePulling:
+                NSLog(@"!!!!!!!!%@当前状态：松开即将刷新数据", [refreshBaseView class]);
+                break;
+            case DDRefreshStateNormal:
+                NSLog(@"!!!!!!!!%@当前状态：普通状态", [refreshBaseView class]);
+                break;
+            case DDRefreshStateRefreshing:
+                NSLog(@"!!!!!!!!%@当前状态：正在刷新中...", [refreshBaseView class]);
+                break;
+            default:
+                break;
+        }
+    };
+    
+    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+        // 添加数据
+        for (int i = 0; i < 5; i++) {
+            [_dataSource insertObject:[NSString stringWithFormat:@"下拉测试数据编号：%d",
+                                       arc4random() % 99999] atIndex:0];
+        }
+        // 模拟加载数据等待过程
+        [self performSelector:@selector(loadData:)
+                   withObject:refreshBaseView
+                   afterDelay:1.0];
+    };
+    
+    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+        NSLog(@"!!!!!!!!%@当前状态：数据刷新完成", [refreshBaseView class]);
+    };
     
 }
 
-- (void)doneWithView:(DDRefreshBaseView *)refreshBaseView
+- (void)loadData:(DDRefreshBaseView *)refreshBaseView
 {
     [self.tableView reloadData];
     [refreshBaseView endRefreshing];
+}
+
+- (void)loadPullUpView
+{
+    DDPullUp *pullUp = [DDPullUp pullUp];
+    pullUp.scrollView = self.tableView;
+    pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+        // 添加数据
+        for (int i = 0; i < 5; i++) {
+            [_dataSource addObject:[NSString stringWithFormat:@"上拉测试数据编号：%d",
+                                       arc4random() % 99999]];
+        }
+        // 模拟加载数据等待过程
+        [self performSelector:@selector(loadData:)
+                   withObject:refreshBaseView
+                   afterDelay:1.0];
+    };
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     return _dataSource.count;
 }
 
@@ -135,30 +153,13 @@ static NSString *CellIdentifier = @"Cell";
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier]; 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
 
     cell.textLabel.text = _dataSource[indexPath.row];
     
     return cell;
-}
-
-#pragma mark ---
-
-- (void)refreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView
-{
-    NSLog(@"refreshBaseViewbeginRefreshing");
-}
-
-- (void)refreshBaseView:(DDRefreshBaseView *)refreshBaseView stateChange:(DDRefreshState)state
-{
-    NSLog(@"refreshBaseView");
-}
-
-- (void)refreshBaseViewDidRefreshing:(DDRefreshBaseView *)refreshBaseView
-{
-    NSLog(@"refreshBaseViewDidRefreshing");
 }
 
 @end

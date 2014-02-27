@@ -33,7 +33,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     
     // 2.初始化假数据
     _fakeData = [NSMutableArray array];
-    for (int i = 0; i<12; i++) {
+    for (int i = 0; i<5; i++) {
         int random = arc4random_uniform(1000000);
         [_fakeData addObject:[NSString stringWithFormat:@"随机数据---%d", random]];
     }
@@ -43,7 +43,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     [self addHeader];
     
     // 3.2.上拉加载更多
-//    [self addFooter];
+    [self addFooter];
 }
 
 - (void)addFooter

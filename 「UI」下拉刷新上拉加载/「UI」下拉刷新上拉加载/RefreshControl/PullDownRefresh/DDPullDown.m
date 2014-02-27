@@ -7,7 +7,6 @@
 //
 
 #import "DDPullDown.h"
-#import "DDRefreshControlConst.h"
 
 @interface DDPullDown ()
 {
@@ -41,7 +40,7 @@
     [super dealloc];
 }
 
-#pragma mark - 设置scrollView
+#pragma mark - setter
 
 - (void)setScrollView:(UIScrollView *)scrollView
 {
@@ -56,8 +55,6 @@
     }
     self.lastUpdateTime = date;
 }
-
-#pragma mark - 重写setter
 
 - (void)setLastUpdateTime:(NSDate *)lastUpdateTime
 {
@@ -76,7 +73,7 @@
 
 - (void)setState:(DDRefreshState)state
 {
-    // 排错
+    // 排出不必要的调用
     if (state == self.state) {
         return;
     }
@@ -84,16 +81,18 @@
     _lastState = self.state;
     
     [super setState:state];
-    
+
     // 根据不同状态做出不同反应
     switch (state) {
-        case DDRefreshStateNormal: // 普通状态
+        case DDRefreshStateNormal: // 普通状态, 下拉刷新
             [self responseStateNormal];
             break;
-        case DDRefreshStatePulling: // 拉住状态，松手就更新
+        case DDRefreshStatePulling: // 拉住状态, 松手就更新
             [self responseStatePulling];
+            break;
         case DDRefreshStateRefreshing: // 正在刷新
             [self responseStateRefreshing];
+            break;
         default:
             break;
     }
@@ -140,7 +139,8 @@
         self.scrollView.contentInset = inset;
     }];
     
-    if (_lastState == DDRefreshStateRefreshing) { // 刚刚刷新完成
+    // 刚刚刷新完成
+    if (_lastState == DDRefreshStateRefreshing) {
         self.lastUpdateTime = [NSDate date];
     }
 }
@@ -168,12 +168,8 @@
         UIEdgeInsets inset = self.scrollView.contentInset;
         inset.top = self.scrollViewInsetRecord.top + DDRefreshViewHeight;
         self.scrollView.contentInset = inset;
-         
+         // 设置滚动停留的位置
         self.scrollView.contentOffset = CGPointMake(0, -self.scrollViewInsetRecord.top - DDRefreshViewHeight);
     }];
 }
-
-
-
-
 @end

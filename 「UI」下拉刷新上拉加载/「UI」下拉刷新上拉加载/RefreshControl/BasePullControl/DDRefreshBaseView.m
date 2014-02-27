@@ -7,7 +7,6 @@
 //
 
 #import "DDRefreshBaseView.h"
-#import "DDRefreshControlConst.h"
 
 @interface DDRefreshBaseView ()
 {
@@ -55,7 +54,7 @@
         // 状态显示标签
         [self addSubview:_status = [[self labelWithFont:[UIFont systemFontOfSize:14]] retain]];
         // 箭头头提示图片
-        UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow@2x"]];
+        UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
         arrowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         _arrow = [arrowView retain];
         [arrowView release];
@@ -101,15 +100,28 @@
     [super removeFromSuperview];
 }
 
+// 刷新加载数据后滚动视图的内容尺寸大小发生改变，需要重新布局，会调用该方法
+/* 
+ * layoutSubviews在以下情况下会被调用：
+ *
+ * 1、init初始化不会触发layoutSubviews
+ * 2、addSubview会触发layoutSubviews
+ * 3、设置view的Frame会触发layoutSubviews，当然前提是frame的值设置前后发生了变化
+ * 4、滚动一个UIScrollView会触发layoutSubviews
+ * 5、旋转Screen会触发父UIView上的layoutSubviews事件
+ * 6、改变一个UIView大小的时候也会触发父UIView上的layoutSubviews事件
+ */
 - (void)layoutSubviews
 {
     [super layoutSubviews];
     if (!_hasInsetInit) {
         _scrollViewInsetRecord = _scrollView.contentInset;
 
-        [self observeValueForKeyPath:DDRefreshContentSize ofObject:nil change:nil context:nil];
+        [self observeValueForKeyPath:DDRefreshContentSize
+                            ofObject:nil
+                              change:nil
+                             context:nil];
         _hasInsetInit = YES;
-        
         if (_state == DDRefreshStateWillRefreshing) {
             [self setState:DDRefreshStateRefreshing];
         }
@@ -224,19 +236,22 @@
 
 - (void)setStateNormal
 {
+    NSLog(@"setStateNormal");
     // 停止进度指示器动画
     [_indicator stopAnimating];
     
     // 显示箭头
     _arrow.hidden = NO;
     
-    if (DDRefreshStateRefreshing == _state) { // 刚好刷新完成，回到普通状态
+    // 刚好刷新完成，回到普通状态
+    if (DDRefreshStateRefreshing == _state) {
         [self callbackDidRefreshing];
     }
 }
 
 - (void)setStateRefreshing
 {
+    NSLog(@"setStateRefreshing");
     // 隐藏箭头
     _arrow.hidden = YES;
     
@@ -274,6 +289,7 @@
         return;
     }
     
+    // 下拉contentOffSetVerticalValue为负数，上拉为正
     CGFloat contentOffSetVerticalValue = _scrollView.contentOffset.y * [self viewType];
     NSLog(@"contentOffSetVerticalValue = %f", contentOffSetVerticalValue);
     CGFloat properVerticalPullValue = [self properVerticalPullValue];
@@ -303,11 +319,13 @@
         }
         
     } else {
-        
+        // 手松开了，将要刷新
+        if (_state == DDRefreshStatePulling) {
+            // 如果现在状态是DDRefreshStatePulling就刷新
+            [self setState:DDRefreshStateRefreshing];
+            [self callbackWithStateChange:DDRefreshStateRefreshing];
+        }
     }
-    
-    
-    
 }
 
 #pragma mark 回调函数打包
@@ -358,7 +376,6 @@
 // 开始刷新
 - (void)beginRefreshing
 {
-#pragma mark - may be error
     if (self.window) {
         [self setState:DDRefreshStateRefreshing];
     } else {
@@ -370,12 +387,12 @@
 - (void)endRefreshing
 {
 #pragma mark - may be error
-//    [self setState:DDRefreshStateNormal];
-    double delayInSeconds = self.viewType == DDRefreshTypePullDown ? 0.3 : 0.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [self setState:DDRefreshStateNormal];
-    });
+    [self setState:DDRefreshStateNormal];
+//    double delayInSeconds = self.viewType == DDRefreshTypePullDown ? 0.3 : 0.0;
+//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//        [self setState:DDRefreshStateNormal];
+//    });
 }
 
 @end

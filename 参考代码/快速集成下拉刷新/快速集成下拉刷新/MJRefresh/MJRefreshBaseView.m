@@ -146,8 +146,8 @@
 #pragma mark 监听UIScrollView的contentOffset属性
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    NSLog(@"----");
-    
+
+    NSLog(@"keyPath = %@", keyPath);
     if (![MJRefreshContentOffset isEqualToString:keyPath]) return;
     
     if (!self.userInteractionEnabled || self.alpha <= 0.01 || self.hidden
@@ -155,13 +155,18 @@
     
     // scrollView所滚动的Y值 * 控件的类型（头部控件是-1，尾部控件是1）
     CGFloat offsetY = _scrollView.contentOffset.y * self.viewType;
+    NSLog(@"contentOffSetVerticalValue = %f", offsetY);
     CGFloat validY = self.validY;
+    NSLog(@"properVerticalPullValue = %f", validY);
     if (offsetY <= validY) return;
     
     
 
     if (_scrollView.isDragging) {
         CGFloat validOffsetY = validY + MJRefreshViewHeight;
+        NSLog(@"properContentOffSetVerticalValue = %f", validOffsetY);
+        NSLog(@"_state : %d", _state);
+        
         if (_state == MJRefreshStatePulling && offsetY <= validOffsetY) {
             // 转为普通状态
             [self setState:MJRefreshStateNormal];
@@ -219,6 +224,7 @@
     // 2.根据状态执行不同的操作
     switch (state) {
 		case MJRefreshStateNormal: // 普通状态
+            NSLog(@"MJRefreshStateNormal");
             // 显示箭头
             _arrowImage.hidden = NO;
             // 停止转圈圈
@@ -243,6 +249,7 @@
             break;
             
 		case MJRefreshStateRefreshing:
+            NSLog(@"MJRefreshStateRefreshing");
             // 开始转圈圈
 			[_activityView startAnimating];
             // 隐藏箭头
@@ -260,6 +267,7 @@
             }
 			break;
         default:
+            NSLog(@"default");
             break;
 	}
     

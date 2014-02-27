@@ -87,7 +87,9 @@
 #pragma mark 设置状态
 - (void)setState:(MJRefreshState)state
 {
-    if (_state == state) return;
+    if (_state == state)
+        return;
+    
     MJRefreshState oldState = _state;
     
     [super setState:state];

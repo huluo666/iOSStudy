@@ -8,7 +8,6 @@
 
 #import "DDAppDelegate.h"
 #import "DDRootViewController.h"
-#import "DDTestViewController.h"
 
 @implementation DDAppDelegate
 

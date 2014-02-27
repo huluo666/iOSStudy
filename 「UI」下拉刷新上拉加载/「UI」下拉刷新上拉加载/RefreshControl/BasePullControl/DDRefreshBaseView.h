@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDRefreshControlConst.h"
 
 #pragma mark - 控件的类型
 

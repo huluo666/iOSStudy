@@ -25,7 +25,6 @@
 		06552BB018BE1F9900398C21 /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BAD18BE1F9900398C21 /* DDRefreshControlConst.m */; };
 		06552BB318BE202800398C21 /* DDPullDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BB218BE202800398C21 /* DDPullDown.m */; };
 		06552BB618BE204100398C21 /* DDPullUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BB518BE204100398C21 /* DDPullUp.m */; };
-		9536401A18BF2DE100EF7652 /* DDTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9536401918BF2DE100EF7652 /* DDTestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +65,6 @@
 		06552BB218BE202800398C21 /* DDPullDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDown.m; sourceTree = "<group>"; };
 		06552BB418BE204100398C21 /* DDPullUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUp.h; sourceTree = "<group>"; };
 		06552BB518BE204100398C21 /* DDPullUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUp.m; sourceTree = "<group>"; };
-		9536401818BF2DE100EF7652 /* DDTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTestViewController.h; sourceTree = "<group>"; };
-		9536401918BF2DE100EF7652 /* DDTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,8 +175,6 @@
 			children = (
 				062DC64D18BD051600F724E1 /* DDRootViewController.h */,
 				062DC64E18BD051600F724E1 /* DDRootViewController.m */,
-				9536401818BF2DE100EF7652 /* DDTestViewController.h */,
-				9536401918BF2DE100EF7652 /* DDTestViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,7 +333,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9536401A18BF2DE100EF7652 /* DDTestViewController.m in Sources */,
 				062DC65918BD051600F724E1 /* DDRootViewController.m in Sources */,
 				062DC65B18BD051600F724E1 /* main.m in Sources */,
 				06552BB318BE202800398C21 /* DDPullDown.m in Sources */,

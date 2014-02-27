@@ -10,4 +10,6 @@
 
 @interface DDPullUp : DDRefreshBaseView
 
++ (instancetype)pullUp;
+
 @end
