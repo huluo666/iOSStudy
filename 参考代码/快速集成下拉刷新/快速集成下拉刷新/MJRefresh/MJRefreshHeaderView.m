@@ -31,6 +31,7 @@
     self.frame = CGRectMake(0, - MJRefreshViewHeight, scrollView.frame.size.width, MJRefreshViewHeight);
     
     // 2.加载时间
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:MJRefreshHeaderTimeKey]);
     self.lastUpdateTime = [[NSUserDefaults standardUserDefaults] objectForKey:MJRefreshHeaderTimeKey];
 }
 
@@ -148,6 +149,7 @@
 // 合理的Y值(刚好看到下拉刷新控件时的contentOffset.y，取相反数)
 - (CGFloat)validY
 {
+//    NSLog(@"_scrollViewInitInset.top : %f", _scrollViewInitInset.top);
     return _scrollViewInitInset.top;
 }
 

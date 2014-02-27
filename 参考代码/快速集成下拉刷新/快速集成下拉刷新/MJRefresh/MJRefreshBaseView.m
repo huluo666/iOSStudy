@@ -51,9 +51,9 @@
     
     if (!_hasInitInset) {
         _scrollViewInitInset = _scrollView.contentInset;
-    
+
         [self observeValueForKeyPath:MJRefreshContentSize ofObject:nil change:nil context:nil];
-        
+
         _hasInitInset = YES;
         
         if (_state == MJRefreshStateWillRefreshing) {
@@ -145,7 +145,8 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {    
     if (![MJRefreshContentOffset isEqualToString:keyPath]) return;
-    
+    NSLog(@"DDRefreshContentOffSet: %@", MJRefreshContentOffset);
+    NSLog(@"keyPath: %@", keyPath);
     if (!self.userInteractionEnabled || self.alpha <= 0.01 || self.hidden
         || _state == MJRefreshStateRefreshing) return;
     
@@ -153,9 +154,11 @@
     CGFloat offsetY = _scrollView.contentOffset.y * self.viewType;
     CGFloat validY = self.validY;
     if (offsetY <= validY) return;
-    NSLog(@"scrollView: %@", _scrollView);
+    
     if (_scrollView.isDragging) {
+
         CGFloat validOffsetY = validY + MJRefreshViewHeight;
+        NSLog(@"offsetY = %f, validOffsetY = %f",offsetY, validOffsetY);
         if (_state == MJRefreshStatePulling && offsetY <= validOffsetY) {
             // 转为普通状态
             [self setState:MJRefreshStateNormal];
@@ -182,6 +185,7 @@
             }
         }
     } else { // 即将刷新 && 手松开
+        NSLog(@"now state = %d", _state);
         if (_state == MJRefreshStatePulling) {
             // 开始刷新
             [self setState:MJRefreshStateRefreshing];

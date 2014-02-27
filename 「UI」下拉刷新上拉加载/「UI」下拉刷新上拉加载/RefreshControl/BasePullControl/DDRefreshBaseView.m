@@ -107,8 +107,10 @@
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    NSLog(@"触发了");
     if (!_hasInsetInit) {
         _scrollViewInsetInit = _scrollView.contentInset;
+
         [self observeValueForKeyPath:DDRefreshContentSize ofObject:nil change:nil context:nil];
         _hasInsetInit = YES;
         
@@ -166,7 +168,7 @@
     [_scrollView removeObserver:self forKeyPath:DDRefreshContentOffSet context:nil];
     
     // 注册监听
-    [_scrollView addObserver:self
+    [scrollView addObserver:self
                   forKeyPath:DDRefreshContentOffSet
                      options:NSKeyValueObservingOptionNew
                      context:nil];
@@ -257,15 +259,10 @@
 // context是私有变量
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-#pragma mark - error
-#pragma mark - error
-#pragma mark - error
-    NSLog(@"_scrollViwe:%@", _scrollView);
     // 只监听contentOffSet
-//    if (![DDRefreshContentOffSet isEqualToString:keyPath]) {
-//        
-//        return;
-//    }
+    if (![DDRefreshContentOffSet isEqualToString:keyPath]) {
+        return;
+    }
 
     // 排除不适合监听的情况
 #pragma mark - maybe error
@@ -282,16 +279,24 @@
     if (self.viewType == DDRefreshTypePullDown) {
         number = -1;
     }
-    CGFloat offSetY = _scrollView.contentOffset.y * number;
-#pragma maybe error
+    CGFloat offSetY = (_scrollView.contentOffset.y + 64) * number;
+//    CGFloat offSetY = 0.0f;
+
 //    if (offSetY <= self.properScrollCoordinateY) {
 //        return;
 //    }
-
+    
+    CGFloat properScrollCoordinateY = [self properScrollCoordinateY];
+//    CGFloat properScrollCoordinateY = 0.0f;
     // 拖动滚动视图控件开始监听
-    if (!_scrollView.isDragging) {
-        NSLog(@"state:%d", _state);
-        CGFloat validOffSetY = self.properScrollCoordinateY + DDRefreshViewHeight;
+    if (_scrollView.isDragging) {
+//        NSLog(@"state = %d", _state);
+//        NSLog(@"DDRefreshStatePulling = %d", DDRefreshStatePulling);
+//        NSLog(@"DDRefreshStateNormal = %d", DDRefreshStateNormal);
+        
+        
+        CGFloat validOffSetY = properScrollCoordinateY + DDRefreshViewHeight;
+        NSLog(@"offSetY = %f, validOffSetY = %f", offSetY, validOffSetY);
         if (_state == DDRefreshStatePulling && offSetY <= validOffSetY) { // 正在拖动但是拖动距离不够
             // 转为普通状态
             [self setState:DDRefreshStateNormal];
@@ -308,6 +313,7 @@
             [self calbackWithStateChange:DDRefreshStateRefreshing];
         }
     }
+    
 }
 
 #pragma mark 回调函数打包
@@ -386,7 +392,7 @@
 
 - (CGFloat)properScrollCoordinateY
 {
-    return 0;
+    return 0.0f;
 }
 
 - (DDRefreshType)viewType

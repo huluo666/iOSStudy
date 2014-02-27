@@ -51,6 +51,7 @@ static NSString *CellIdentifier = @"Cell";
     [super viewDidLoad];
     [self initDataSource];
     [self initUserInterface];
+
 }
 
 #pragma mark - 私有方法
@@ -82,19 +83,19 @@ static NSString *CellIdentifier = @"Cell";
     DDPullDown *pullDown = [DDPullDown pullDown];
     
     pullDown.scrollView = self.tableView;
-    NSLog(@"self.tableView:%@", self.tableView);
+
     pullDown.delegate = self;
     [pullDown beginRefreshBaseView];
-//    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-//        // 添加数据
-//        for (int i = 0; i < 5; i++) {
-//            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
-//        }
-//        
-//        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:1.0];
-//        
-//        NSLog(@"%@ 开始刷新", refreshBaseView.class);
-//    };
+    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+        // 添加数据
+        for (int i = 0; i < 5; i++) {
+            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
+        }
+        
+        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:1.0];
+        
+        NSLog(@"%@ 开始刷新", refreshBaseView.class);
+    };
     
 //    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
 //        NSLog(@"%@ 刷新完成", refreshBaseView.class);
@@ -127,11 +128,6 @@ static NSString *CellIdentifier = @"Cell";
 
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-
-    
-}
 
 #pragma mark - Table view data source
 

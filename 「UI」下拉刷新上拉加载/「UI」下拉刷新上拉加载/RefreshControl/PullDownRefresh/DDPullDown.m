@@ -46,11 +46,13 @@
 - (void)setScrollView:(UIScrollView *)scrollView
 {
     [super setScrollView:scrollView];
-    
+
     // 设置尺寸
     self.frame = CGRectMake(0, -DDRefreshViewHeight, CGRectGetWidth(scrollView.bounds), DDRefreshViewHeight);
     // 上次更新时间
-    self.lastUpdateTime = [[NSUserDefaults standardUserDefaults] objectForKey:DDLastUpdateTime];
+    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:DDLastUpdateTime]);
+    NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:DDLastUpdateTime];
+    self.lastUpdateTime = date;
 }
 
 #pragma mark - 重写setter
@@ -152,7 +154,7 @@
         UIEdgeInsets inset = self.scrollView.contentInset;
         inset.top = self.scrollViewInsetInit.top + DDRefreshViewHeight;
         self.scrollView.contentInset = inset;
-        
+         
         self.scrollView.contentOffset = CGPointMake(0, -self.scrollViewInsetInit.top - DDRefreshViewHeight);
     }];
 }
@@ -160,7 +162,8 @@
 
 - (CGFloat)properScrollCoordinateY
 {
-    return self.scrollViewInsetInit.top;
+    return self.scrollViewInsetInit.top - 64;
+//    return 0;
 }
 
 - (DDRefreshType)viewType

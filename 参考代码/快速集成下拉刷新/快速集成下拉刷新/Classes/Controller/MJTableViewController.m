@@ -43,7 +43,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     [self addHeader];
     
     // 3.2.上拉加载更多
-    [self addFooter];
+//    [self addFooter];
 }
 
 - (void)addFooter
@@ -111,7 +111,7 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
                 break;
         }
     };
-    [header beginRefreshing];
+//    [header beginRefreshing];
     _header = header;
 }
 
