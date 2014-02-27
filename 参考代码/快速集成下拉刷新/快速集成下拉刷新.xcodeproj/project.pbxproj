@@ -29,7 +29,6 @@
 		1824465118765D7B00689389 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824464A18765D7B00689389 /* main.m */; };
 		1824465218765D7B00689389 /* MJAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824464C18765D7B00689389 /* MJAppDelegate.m */; };
 		1824465518765FA500689389 /* MJNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824465418765FA500689389 /* MJNavigationController.m */; };
-		95FDB72218BDD08900EA4641 /* MJTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95FDB72118BDD08900EA4641 /* MJTestViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +78,6 @@
 		1824464C18765D7B00689389 /* MJAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJAppDelegate.m; sourceTree = "<group>"; };
 		1824465318765FA500689389 /* MJNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJNavigationController.h; sourceTree = "<group>"; };
 		1824465418765FA500689389 /* MJNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJNavigationController.m; sourceTree = "<group>"; };
-		95FDB72018BDD08900EA4641 /* MJTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJTestViewController.h; sourceTree = "<group>"; };
-		95FDB72118BDD08900EA4641 /* MJTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJTestViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,7 +180,6 @@
 				1824461F18765C0F00689389 /* MJRefresh.h */,
 				1824462018765C0F00689389 /* MJRefreshBaseView.h */,
 				1824462118765C0F00689389 /* MJRefreshBaseView.m */,
-				95FDB71F18BDD07800EA4641 /* Test */,
 				1824462218765C0F00689389 /* MJRefreshConst.h */,
 				1824462318765C0F00689389 /* MJRefreshConst.m */,
 				1824462418765C0F00689389 /* MJRefreshFooterView.h */,
@@ -236,15 +232,6 @@
 				1824464C18765D7B00689389 /* MJAppDelegate.m */,
 			);
 			path = Other;
-			sourceTree = "<group>";
-		};
-		95FDB71F18BDD07800EA4641 /* Test */ = {
-			isa = PBXGroup;
-			children = (
-				95FDB72018BDD08900EA4641 /* MJTestViewController.h */,
-				95FDB72118BDD08900EA4641 /* MJTestViewController.m */,
-			);
-			name = Test;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,7 +338,6 @@
 				1824465218765D7B00689389 /* MJAppDelegate.m in Sources */,
 				1824465018765D7B00689389 /* MJSampleIndex.m in Sources */,
 				1824462918765C0F00689389 /* MJRefreshBaseView.m in Sources */,
-				95FDB72218BDD08900EA4641 /* MJTestViewController.m in Sources */,
 				1824464E18765D7B00689389 /* MJSampleIndexViewController.m in Sources */,
 				1824464F18765D7B00689389 /* MJTableViewController.m in Sources */,
 				1824465118765D7B00689389 /* main.m in Sources */,
@@ -558,7 +544,6 @@
 				1824461918765BFF00689389 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 		1824461A18765BFF00689389 /* Build configuration list for PBXNativeTarget "快速集成下拉刷新Tests" */ = {
 			isa = XCConfigurationList;
@@ -567,7 +552,6 @@
 				1824461C18765BFF00689389 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

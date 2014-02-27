@@ -15,7 +15,6 @@
 #import "MJSampleIndexViewController.h"
 #import "MJTableViewController.h"
 #import "MJCollectionViewController.h"
-#import "MJTestViewController.h"
 
 @implementation MJAppDelegate
 
@@ -24,8 +23,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     MJNavigationController *nav = [[MJNavigationController alloc] initWithRootViewController:[[MJSampleIndexViewController alloc] init]];
     self.window.rootViewController = nav;
-    
-//    self.window.rootViewController = [[MJTestViewController alloc] init];
     
 //    UITabBarController *tab = [[UITabBarController alloc] init];
 //    tab.viewControllers = @[nav];

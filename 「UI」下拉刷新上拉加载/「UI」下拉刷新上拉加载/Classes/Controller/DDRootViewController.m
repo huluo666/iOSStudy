@@ -67,6 +67,8 @@ static NSString *CellIdentifier = @"Cell";
 - (void)initUserInterface
 {
     self.view.backgroundColor = [UIColor whiteColor];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 注册重用cell
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
@@ -81,21 +83,18 @@ static NSString *CellIdentifier = @"Cell";
 - (void)loadHeaderView
 {
     DDPullDown *pullDown = [DDPullDown pullDown];
-    
-    pullDown.scrollView = self.tableView;
 
-    pullDown.delegate = self;
-    [pullDown beginRefreshBaseView];
-    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        // 添加数据
-        for (int i = 0; i < 5; i++) {
-            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
-        }
-        
-        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:1.0];
-        
-        NSLog(@"%@ 开始刷新", refreshBaseView.class);
-    };
+    pullDown.scrollView = self.tableView;
+//    pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//        // 添加数据
+//        for (int i = 0; i < 5; i++) {
+//            [_dataSource addObject:[NSString stringWithFormat:@"测试数据编号：%d", arc4random() % 99999]];
+//        }
+//        
+//        [self performSelector:@selector(doneWithView:) withObject:refreshBaseView afterDelay:1.0];
+//        
+//        NSLog(@"%@ 开始刷新", refreshBaseView.class);
+//    };
     
 //    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
 //        NSLog(@"%@ 刷新完成", refreshBaseView.class);
@@ -123,12 +122,6 @@ static NSString *CellIdentifier = @"Cell";
     [refreshBaseView endRefreshing];
 }
 
-- (void)loadFooterView
-{
-
-}
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -143,6 +136,7 @@ static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (!cell) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
 
     cell.textLabel.text = _dataSource[indexPath.row];
@@ -150,29 +144,21 @@ static NSString *CellIdentifier = @"Cell";
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"didselected");
-    if ([self.tableView isDragging]) {
-        NSLog(@"dragging");
-    }
-}
-
 #pragma mark ---
 
 - (void)refreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView
 {
-    NSLog(@"======");
+    NSLog(@"refreshBaseViewbeginRefreshing");
 }
 
 - (void)refreshBaseView:(DDRefreshBaseView *)refreshBaseView stateChange:(DDRefreshState)state
 {
-    NSLog(@"-----");
+    NSLog(@"refreshBaseView");
 }
 
 - (void)refreshBaseViewDidRefreshing:(DDRefreshBaseView *)refreshBaseView
 {
-    NSLog(@"22222");
+    NSLog(@"refreshBaseViewDidRefreshing");
 }
 
 @end

@@ -50,8 +50,10 @@
     // 设置尺寸
     self.frame = CGRectMake(0, -DDRefreshViewHeight, CGRectGetWidth(scrollView.bounds), DDRefreshViewHeight);
     // 上次更新时间
-    NSLog(@"%@", [[NSUserDefaults standardUserDefaults] objectForKey:DDLastUpdateTime]);
     NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:DDLastUpdateTime];
+    if (!date) {
+        date = [NSDate date];
+    }
     self.lastUpdateTime = date;
 }
 
@@ -97,6 +99,18 @@
     }
 }
 
+#pragma mark - 重写getter
+
+- (CGFloat)properVerticalPullValue
+{
+    return self.scrollViewInsetRecord.top;
+}
+
+- (DDRefreshType)viewType
+{
+    return DDRefreshTypePullDown;
+}
+
 #pragma mark - 私有方法
 
 - (void)updateTimeLabel
@@ -106,11 +120,11 @@
     }
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [formatter setDateFormat:@"MM-dd HH:mm"];
     NSString *timeString = [formatter stringFromDate:_lastUpdateTime];
     [formatter release];
     
-    self.lastUpdate.text = [NSString stringWithFormat:@"最近更新时间：%@", timeString];
+    self.lastUpdate.text = [NSString stringWithFormat:@"上次更新时间：%@", timeString];
 }
 
 - (void)responseStateNormal
@@ -122,7 +136,7 @@
     [UIView animateWithDuration:DDRefreshAnimationDuration animations:^{
         self.arrow.transform = CGAffineTransformIdentity;
         UIEdgeInsets inset = self.scrollView.contentInset;
-        inset.top = self.scrollViewInsetInit.top;
+        inset.top = self.scrollViewInsetRecord.top;
         self.scrollView.contentInset = inset;
     }];
     
@@ -139,7 +153,7 @@
     [UIView animateWithDuration:DDRefreshAnimationDuration animations:^{
         self.arrow.transform = CGAffineTransformMakeRotation(M_PI);
         UIEdgeInsets inset = self.scrollView.contentInset;
-        inset.top = self.scrollViewInsetInit.top;
+        inset.top = self.scrollViewInsetRecord.top;
         self.scrollView.contentInset = inset;
     }];
 }
@@ -152,24 +166,14 @@
     [UIView animateWithDuration:DDRefreshAnimationDuration animations:^{
         self.arrow.transform = CGAffineTransformIdentity;
         UIEdgeInsets inset = self.scrollView.contentInset;
-        inset.top = self.scrollViewInsetInit.top + DDRefreshViewHeight;
+        inset.top = self.scrollViewInsetRecord.top + DDRefreshViewHeight;
         self.scrollView.contentInset = inset;
          
-        self.scrollView.contentOffset = CGPointMake(0, -self.scrollViewInsetInit.top - DDRefreshViewHeight);
+        self.scrollView.contentOffset = CGPointMake(0, -self.scrollViewInsetRecord.top - DDRefreshViewHeight);
     }];
 }
 
 
-- (CGFloat)properScrollCoordinateY
-{
-    return self.scrollViewInsetInit.top - 64;
-//    return 0;
-}
-
-- (DDRefreshType)viewType
-{   
-    return DDRefreshTypePullDown;
-}
 
 
 @end

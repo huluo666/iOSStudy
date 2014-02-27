@@ -69,6 +69,8 @@ typedef void (^RefreshStateChangeBlock)(MJRefreshBaseView *refreshView, MJRefres
     MJRefreshState _state;
 }
 
+@property (assign, nonatomic) CGFloat validY;
+
 // 构造方法
 - (instancetype)initWithScrollView:(UIScrollView *)scrollView;
 // 设置要显示的父控件

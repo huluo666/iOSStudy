@@ -17,7 +17,7 @@
  交给子类去实现
  */
 // 合理的Y值
-- (CGFloat)validY;
+//- (CGFloat)validY;
 // view的类型
 - (MJRefreshViewType)viewType;
 @end
@@ -51,9 +51,9 @@
     
     if (!_hasInitInset) {
         _scrollViewInitInset = _scrollView.contentInset;
-
+    
         [self observeValueForKeyPath:MJRefreshContentSize ofObject:nil change:nil context:nil];
-
+        
         _hasInitInset = YES;
         
         if (_state == MJRefreshStateWillRefreshing) {
@@ -100,6 +100,8 @@
     
     CGFloat w = frame.size.width;
     CGFloat h = frame.size.height;
+    NSLog(@"_arrowImage.center.y = %f", _arrowImage.center.y);
+    NSLog(@"h * 0.5 = %f, w = %f", h * 0.5, w);
     if (w == 0 || _arrowImage.center.y == h * 0.5) return;
     
     CGFloat statusX = 0;
@@ -143,10 +145,11 @@
 
 #pragma mark 监听UIScrollView的contentOffset属性
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{    
+{
+    NSLog(@"----");
+    
     if (![MJRefreshContentOffset isEqualToString:keyPath]) return;
-    NSLog(@"DDRefreshContentOffSet: %@", MJRefreshContentOffset);
-    NSLog(@"keyPath: %@", keyPath);
+    
     if (!self.userInteractionEnabled || self.alpha <= 0.01 || self.hidden
         || _state == MJRefreshStateRefreshing) return;
     
@@ -155,10 +158,10 @@
     CGFloat validY = self.validY;
     if (offsetY <= validY) return;
     
-    if (_scrollView.isDragging) {
+    
 
+    if (_scrollView.isDragging) {
         CGFloat validOffsetY = validY + MJRefreshViewHeight;
-        NSLog(@"offsetY = %f, validOffsetY = %f",offsetY, validOffsetY);
         if (_state == MJRefreshStatePulling && offsetY <= validOffsetY) {
             // 转为普通状态
             [self setState:MJRefreshStateNormal];
@@ -185,7 +188,6 @@
             }
         }
     } else { // 即将刷新 && 手松开
-        NSLog(@"now state = %d", _state);
         if (_state == MJRefreshStatePulling) {
             // 开始刷新
             [self setState:MJRefreshStateRefreshing];
@@ -200,6 +202,7 @@
             }
         }
     }
+     
 }
 
 #pragma mark 设置状态
@@ -290,7 +293,7 @@
 }
 
 #pragma mark - 随便实现
-- (CGFloat)validY { return 0;}
+//- (CGFloat)validY { return 0;}
 - (MJRefreshViewType)viewType {return MJRefreshViewTypeHeader;}
 - (void)free
 {

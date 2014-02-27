@@ -8,7 +8,7 @@
 
 #import "DDAppDelegate.h"
 #import "DDRootViewController.h"
-
+#import "DDTestViewController.h"
 
 @implementation DDAppDelegate
 
@@ -24,6 +24,13 @@
     [rootVC release];
     self.window.rootViewController = navi;
     [navi release];
+    
+//    DDTestViewController *test = [[DDTestViewController alloc] init];
+//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:test];
+//    [test release];
+//    self.window.rootViewController = navi;
+//    [navi release];
+    
     self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];

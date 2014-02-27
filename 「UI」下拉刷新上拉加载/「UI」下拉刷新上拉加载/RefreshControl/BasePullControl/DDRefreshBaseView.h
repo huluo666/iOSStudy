@@ -11,8 +11,8 @@
 #pragma mark - 控件的类型
 
 typedef enum {
-    DDRefreshTypePullUp   = 1 << 0,
-    DDRefreshTypePullDown = 1 << 1
+    DDRefreshTypePullDown = -1,
+    DDRefreshTypePullUp   = 1
 } DDRefreshType;
 
 #pragma mark - 控件的状态
@@ -39,13 +39,15 @@ typedef enum {
 
 @interface DDRefreshBaseView : UIView
 
-@property (retain, nonatomic) UILabel *lastUpdate;              // 上次更新时间
-@property (assign, nonatomic) DDRefreshState state;             // 刷新状态
-@property (retain, nonatomic) UILabel *status;                  // 状态显示
-@property (retain, nonatomic) UIImageView *arrow;               // 箭头图标
-@property (assign, nonatomic) UIEdgeInsets scrollViewInsetInit; // 第一次的视图扩展范围
+@property (retain, nonatomic) UILabel *lastUpdate;                  // 上次更新时间
+@property (assign, nonatomic) DDRefreshState state;                 // 刷新状态
+@property (retain, nonatomic) UILabel *status;                      // 状态显示
+@property (retain, nonatomic) UIImageView *arrow;                   // 箭头图标
+@property (assign, nonatomic) UIEdgeInsets scrollViewInsetRecord;   // 记录滚动视图滚动后的contentInSet
+@property (assign, nonatomic) CGFloat properVerticalPullValue;      // 合理的纵向滑动值
+@property (assign, nonatomic) DDRefreshType viewType;               // 控件类型
 
-@property (retain, nonatomic) UIScrollView *scrollView;         // 滑动控件
+@property (retain, nonatomic) UIScrollView *scrollView;             // 滑动控件
 - (instancetype)initWihtScrollView:(UIScrollView *)scrollView;
 
 // 委托
@@ -66,8 +68,6 @@ typedef enum {
 - (void)beginRefreshing;
 // 刷新完成
 - (void)endRefreshing;
-// 不静止地刷新
-- (void)endRefreshingWithoutIdle;
 // 设置刷新状态
 - (void)setState:(DDRefreshState)state;
 
