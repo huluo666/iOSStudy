@@ -14,3 +14,8 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#define kRandomColor [UIColor colorWithRed:arc4random() % 255 / 256.0f \
+                                     green:arc4random() % 128 / 256.0f + 0.5 \
+                                      blue:arc4random() % 128 / 256.0f + 0.5 \
+                                     alpha:0.7]

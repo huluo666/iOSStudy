@@ -54,10 +54,7 @@
     // 控件高度至少容下状态提示文本的高度
     if (CGRectGetHeight(frame) / 2 !=
         CGRectGetHeight(self.status.bounds)) {
-        self.status.center = CGPointMake(CGRectGetMidX(frame),
-                                         CGRectGetMidY(frame));
-        NSLog(@"status frame = %@", self.status);
-        self.status.backgroundColor = [UIColor orangeColor];
+        self.status.center = CGPointMake(CGRectGetMidX(frame), DDRefreshViewHeight / 2);
     }
 }
 
@@ -113,7 +110,7 @@
 - (void)adjustFrame
 {
     // 表格的高度
-    CGFloat scrollViewHeight = CGRectGetHeight(self.frame) -
+    CGFloat scrollViewHeight = CGRectGetHeight(self.scrollView.frame) -
         (self.scrollViewInsetRecord.top + self.scrollViewInsetRecord.bottom);
     // 显示内容的高度
     CGFloat contentHeight = self.scrollView.contentSize.height;
@@ -193,7 +190,7 @@
 {
     self.status.text = DDPullUpReleaseToLoadData;
     [UIView animateWithDuration:DDRefreshAnimationDuration animations:^{
-        self.arrow.transform = CGAffineTransformMakeRotation(M_PI);
+        self.arrow.transform = CGAffineTransformIdentity;
         UIEdgeInsets inset = self.scrollView.contentInset;
         inset.top = self.scrollViewInsetRecord.bottom;
         self.scrollView.contentInset = inset;

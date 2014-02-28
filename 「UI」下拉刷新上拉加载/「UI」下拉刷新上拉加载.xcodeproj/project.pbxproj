@@ -17,14 +17,14 @@
 		062DC63818BD04D200F724E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062DC62018BD04D200F724E1 /* UIKit.framework */; };
 		062DC64018BD04D200F724E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 062DC63E18BD04D200F724E1 /* InfoPlist.strings */; };
 		062DC64218BD04D200F724E1 /* _UI_________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC64118BD04D200F724E1 /* _UI_________Tests.m */; };
-		062DC65918BD051600F724E1 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC64E18BD051600F724E1 /* DDRootViewController.m */; };
-		062DC65A18BD051600F724E1 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65118BD051600F724E1 /* DDAppDelegate.m */; };
-		062DC65B18BD051600F724E1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC65218BD051600F724E1 /* main.m */; };
-		06552BAE18BE1F9900398C21 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06552BA918BE1F9900398C21 /* arrow@2x.png */; };
-		06552BAF18BE1F9900398C21 /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BAB18BE1F9900398C21 /* DDRefreshBaseView.m */; };
-		06552BB018BE1F9900398C21 /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BAD18BE1F9900398C21 /* DDRefreshControlConst.m */; };
-		06552BB318BE202800398C21 /* DDPullDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BB218BE202800398C21 /* DDPullDown.m */; };
-		06552BB618BE204100398C21 /* DDPullUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 06552BB518BE204100398C21 /* DDPullUp.m */; };
+		9541295C18C08319009D8F7F /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541294C18C08319009D8F7F /* DDRootViewController.m */; };
+		9541295D18C08319009D8F7F /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9541294F18C08319009D8F7F /* arrow@2x.png */; };
+		9541295E18C08319009D8F7F /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541295118C08319009D8F7F /* DDRefreshBaseView.m */; };
+		9541295F18C08319009D8F7F /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541295318C08319009D8F7F /* DDRefreshControlConst.m */; };
+		9541296018C08319009D8F7F /* DDPullDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541295618C08319009D8F7F /* DDPullDown.m */; };
+		9541296118C08319009D8F7F /* DDPullUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541295918C08319009D8F7F /* DDPullUp.m */; };
+		9541296618C08362009D8F7F /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541296418C08362009D8F7F /* DDAppDelegate.m */; };
+		9541296718C08362009D8F7F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541296518C08362009D8F7F /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,20 +51,20 @@
 		062DC63D18BD04D200F724E1 /* 「UI」下拉刷新上拉加载Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「UI」下拉刷新上拉加载Tests-Info.plist"; sourceTree = "<group>"; };
 		062DC63F18BD04D200F724E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		062DC64118BD04D200F724E1 /* _UI_________Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_UI_________Tests.m"; sourceTree = "<group>"; };
-		062DC64D18BD051600F724E1 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
-		062DC64E18BD051600F724E1 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
-		062DC65018BD051600F724E1 /* DDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
-		062DC65118BD051600F724E1 /* DDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
-		062DC65218BD051600F724E1 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		06552BA918BE1F9900398C21 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
-		06552BAA18BE1F9900398C21 /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
-		06552BAB18BE1F9900398C21 /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
-		06552BAC18BE1F9900398C21 /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
-		06552BAD18BE1F9900398C21 /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
-		06552BB118BE202800398C21 /* DDPullDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDown.h; sourceTree = "<group>"; };
-		06552BB218BE202800398C21 /* DDPullDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDown.m; sourceTree = "<group>"; };
-		06552BB418BE204100398C21 /* DDPullUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUp.h; sourceTree = "<group>"; };
-		06552BB518BE204100398C21 /* DDPullUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUp.m; sourceTree = "<group>"; };
+		9541294B18C08319009D8F7F /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
+		9541294C18C08319009D8F7F /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		9541294F18C08319009D8F7F /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		9541295018C08319009D8F7F /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
+		9541295118C08319009D8F7F /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
+		9541295218C08319009D8F7F /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
+		9541295318C08319009D8F7F /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
+		9541295518C08319009D8F7F /* DDPullDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDown.h; sourceTree = "<group>"; };
+		9541295618C08319009D8F7F /* DDPullDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDown.m; sourceTree = "<group>"; };
+		9541295818C08319009D8F7F /* DDPullUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUp.h; sourceTree = "<group>"; };
+		9541295918C08319009D8F7F /* DDPullUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUp.m; sourceTree = "<group>"; };
+		9541296318C08362009D8F7F /* DDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
+		9541296418C08362009D8F7F /* DDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
+		9541296518C08362009D8F7F /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +124,9 @@
 		062DC62218BD04D200F724E1 /* 「UI」下拉刷新上拉加载 */ = {
 			isa = PBXGroup;
 			children = (
-				062DC64B18BD051600F724E1 /* Classes */,
-				062DC65418BD051600F724E1 /* RefreshControl */,
+				9541296218C08362009D8F7F /* Classes */,
+				9541294D18C08319009D8F7F /* View */,
+				9541294A18C08319009D8F7F /* Controller */,
 				062DC62E18BD04D200F724E1 /* Images.xcassets */,
 				062DC62318BD04D200F724E1 /* Supporting Files */,
 			);
@@ -160,80 +161,63 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		062DC64B18BD051600F724E1 /* Classes */ = {
+		9541294A18C08319009D8F7F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				062DC64C18BD051600F724E1 /* Controller */,
-				062DC64F18BD051600F724E1 /* Default */,
-				062DC65318BD051600F724E1 /* Model */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		062DC64C18BD051600F724E1 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				062DC64D18BD051600F724E1 /* DDRootViewController.h */,
-				062DC64E18BD051600F724E1 /* DDRootViewController.m */,
+				9541294B18C08319009D8F7F /* DDRootViewController.h */,
+				9541294C18C08319009D8F7F /* DDRootViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		062DC64F18BD051600F724E1 /* Default */ = {
+		9541294D18C08319009D8F7F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				062DC65018BD051600F724E1 /* DDAppDelegate.h */,
-				062DC65118BD051600F724E1 /* DDAppDelegate.m */,
-				062DC65218BD051600F724E1 /* main.m */,
+				9541294E18C08319009D8F7F /* BasePullControl */,
+				9541295418C08319009D8F7F /* PullDownRefresh */,
+				9541295718C08319009D8F7F /* PullUpLoad */,
 			);
-			path = Default;
+			path = View;
 			sourceTree = "<group>";
 		};
-		062DC65318BD051600F724E1 /* Model */ = {
+		9541294E18C08319009D8F7F /* BasePullControl */ = {
 			isa = PBXGroup;
 			children = (
+				9541294F18C08319009D8F7F /* arrow@2x.png */,
+				9541295018C08319009D8F7F /* DDRefreshBaseView.h */,
+				9541295118C08319009D8F7F /* DDRefreshBaseView.m */,
+				9541295218C08319009D8F7F /* DDRefreshControlConst.h */,
+				9541295318C08319009D8F7F /* DDRefreshControlConst.m */,
 			);
-			path = Model;
+			path = BasePullControl;
 			sourceTree = "<group>";
 		};
-		062DC65418BD051600F724E1 /* RefreshControl */ = {
+		9541295418C08319009D8F7F /* PullDownRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				06552BA818BE1F9900398C21 /* BasePullControl */,
-				06552BA618BE1F4300398C21 /* PullDownRefresh */,
-				06552BA718BE1F4300398C21 /* PullUpLoad */,
-			);
-			path = RefreshControl;
-			sourceTree = "<group>";
-		};
-		06552BA618BE1F4300398C21 /* PullDownRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				06552BB118BE202800398C21 /* DDPullDown.h */,
-				06552BB218BE202800398C21 /* DDPullDown.m */,
+				9541295518C08319009D8F7F /* DDPullDown.h */,
+				9541295618C08319009D8F7F /* DDPullDown.m */,
 			);
 			path = PullDownRefresh;
 			sourceTree = "<group>";
 		};
-		06552BA718BE1F4300398C21 /* PullUpLoad */ = {
+		9541295718C08319009D8F7F /* PullUpLoad */ = {
 			isa = PBXGroup;
 			children = (
-				06552BB418BE204100398C21 /* DDPullUp.h */,
-				06552BB518BE204100398C21 /* DDPullUp.m */,
+				9541295818C08319009D8F7F /* DDPullUp.h */,
+				9541295918C08319009D8F7F /* DDPullUp.m */,
 			);
 			path = PullUpLoad;
 			sourceTree = "<group>";
 		};
-		06552BA818BE1F9900398C21 /* BasePullControl */ = {
+		9541296218C08362009D8F7F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				06552BA918BE1F9900398C21 /* arrow@2x.png */,
-				06552BAA18BE1F9900398C21 /* DDRefreshBaseView.h */,
-				06552BAB18BE1F9900398C21 /* DDRefreshBaseView.m */,
-				06552BAC18BE1F9900398C21 /* DDRefreshControlConst.h */,
-				06552BAD18BE1F9900398C21 /* DDRefreshControlConst.m */,
+				9541296318C08362009D8F7F /* DDAppDelegate.h */,
+				9541296418C08362009D8F7F /* DDAppDelegate.m */,
+				9541296518C08362009D8F7F /* main.m */,
 			);
-			path = BasePullControl;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,7 +298,7 @@
 			files = (
 				062DC62718BD04D200F724E1 /* InfoPlist.strings in Resources */,
 				062DC62F18BD04D200F724E1 /* Images.xcassets in Resources */,
-				06552BAE18BE1F9900398C21 /* arrow@2x.png in Resources */,
+				9541295D18C08319009D8F7F /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,13 +317,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				062DC65918BD051600F724E1 /* DDRootViewController.m in Sources */,
-				062DC65B18BD051600F724E1 /* main.m in Sources */,
-				06552BB318BE202800398C21 /* DDPullDown.m in Sources */,
-				06552BB018BE1F9900398C21 /* DDRefreshControlConst.m in Sources */,
-				062DC65A18BD051600F724E1 /* DDAppDelegate.m in Sources */,
-				06552BAF18BE1F9900398C21 /* DDRefreshBaseView.m in Sources */,
-				06552BB618BE204100398C21 /* DDPullUp.m in Sources */,
+				9541295C18C08319009D8F7F /* DDRootViewController.m in Sources */,
+				9541296018C08319009D8F7F /* DDPullDown.m in Sources */,
+				9541296618C08362009D8F7F /* DDAppDelegate.m in Sources */,
+				9541295F18C08319009D8F7F /* DDRefreshControlConst.m in Sources */,
+				9541295E18C08319009D8F7F /* DDRefreshBaseView.m in Sources */,
+				9541296718C08362009D8F7F /* main.m in Sources */,
+				9541296118C08319009D8F7F /* DDPullUp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

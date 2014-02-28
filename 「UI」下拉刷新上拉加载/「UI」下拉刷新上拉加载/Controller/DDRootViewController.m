@@ -6,8 +6,6 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-static NSString *CellIdentifier = @"Cell";
-
 #import "DDRootViewController.h"
 #import "DDPullDown.h"
 #import "DDPullUp.h"
@@ -50,7 +48,6 @@ static NSString *CellIdentifier = @"Cell";
     [super viewDidLoad];
     [self initDataSource];
     [self initUserInterface];
-
 }
 
 #pragma mark - 私有方法
@@ -128,6 +125,8 @@ static NSString *CellIdentifier = @"Cell";
 {
     DDPullUp *pullUp = [DDPullUp pullUp];
     pullUp.scrollView = self.tableView;
+    NSLog(@"self.tableView.height = %f", self.view.frame.size.height);
+    NSLog(@"self.scrollView.height = %f", pullUp.scrollView.frame.size.height);
     pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
         // 添加数据
         for (int i = 0; i < 5; i++) {
@@ -150,15 +149,19 @@ static NSString *CellIdentifier = @"Cell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier]; 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
     }
-
+    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = _dataSource[indexPath.row];
     
+    UIView *cellBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    cellBackgroundView.backgroundColor = kRandomColor;
+    cell.backgroundView = cellBackgroundView;
+    [cellBackgroundView release];
+
     return cell;
 }
 
