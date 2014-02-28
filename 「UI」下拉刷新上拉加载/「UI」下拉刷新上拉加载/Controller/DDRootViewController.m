@@ -13,6 +13,7 @@
 @interface DDRootViewController ()
 {
     NSMutableArray *_dataSource; // 数据源
+    UIAlertView *_alertView;
 }
 
 // 初始化数据
@@ -23,7 +24,9 @@
 - (void)loadPullDownView;
 // 加载上拉加载更多视图
 - (void)loadPullUpView;
-
+// 响应网络请求
+- (void)responseRequestWithDDRefreshBaseView:(DDRefreshBaseView*)refreshBaseView
+                               DDRefreshType:(DDRefreshType)type;
 @end
 
 @implementation DDRootViewController
@@ -40,6 +43,7 @@
 - (void)dealloc
 {
     [_dataSource release];
+    [_alertView release];
     [super dealloc];
 }
 
@@ -56,7 +60,8 @@
 {
     _dataSource = [[NSMutableArray alloc] init];
     for (int i = 0; i < 5; i++) {
-        [_dataSource addObject:[NSString stringWithFormat:@"初始测试数据编号：%d", arc4random() % 99999]];
+        [_dataSource addObject:[NSString stringWithFormat:@"初始测试数据编号：%d",
+                                arc4random() % 99999]];
     }
 }
 
@@ -81,7 +86,8 @@
 //    [pullDown beginRefreshing];
     
     // 回调方法实现
-    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView, DDRefreshState state) {
+    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView,
+                                    DDRefreshState state) {
         switch (state){
             case DDRefreshStatePulling:
                 NSLog(@"!!!!!!!!%@当前状态：松开即将刷新数据", [refreshBaseView class]);
@@ -98,21 +104,55 @@
     };
     
     pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        // 添加数据
-        for (int i = 0; i < 5; i++) {
-            [_dataSource insertObject:[NSString stringWithFormat:@"下拉测试数据编号：%d",
-                                       arc4random() % 99999] atIndex:0];
-        }
-        // 模拟加载数据等待过程
-        [self performSelector:@selector(loadData:)
-                   withObject:refreshBaseView
-                   afterDelay:1.0];
+        [self responseRequestWithDDRefreshBaseView:refreshBaseView
+                                     DDRefreshType:DDRefreshTypePullDown];
     };
     
     pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
         NSLog(@"!!!!!!!!%@当前状态：数据刷新完成", [refreshBaseView class]);
     };
     
+}
+
+- (void)responseRequestWithDDRefreshBaseView:(DDRefreshBaseView*)refreshBaseView
+                               DDRefreshType:(DDRefreshType)type
+{
+    // 模拟网络请求过程，返回请求成功或者失败和一个数组对象(这里为了简单，数组已经添加到数据源了)
+    for (int i = 0; i < 5; i++) {
+        if (type == DDRefreshTypePullDown) {
+            [_dataSource insertObject:[NSString stringWithFormat:@"下拉测试数据编号：%d",
+                                  arc4random() % 99999] atIndex:0];
+        } else {
+            [_dataSource addObject:[NSString stringWithFormat:@"上拉测试数据编号：%d",
+                               arc4random() % 99999]];
+        }
+        
+    }
+    
+    BOOL success = YES;
+//    BOOL success = NO;
+    if (success) {
+        // 模拟加载数据等待过程, 加载完成更新数据
+        [self performSelector:@selector(loadData:)
+                   withObject:refreshBaseView
+                   afterDelay:1.0];
+    } else {
+        _alertView = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                message:@"刷新数据失败，或者没有更新的数据，或者网络连接不正常，请稍候重试"
+                                               delegate:nil
+                                      cancelButtonTitle:nil
+                                      otherButtonTitles:nil];
+        [_alertView show];
+        [self performSelector:@selector(dissmissAlertView:)
+                   withObject:refreshBaseView
+                   afterDelay:1.5];
+    }
+}
+
+- (void)dissmissAlertView:(DDRefreshBaseView *)refreshBaseView
+{
+    [_alertView dismissWithClickedButtonIndex:0 animated:YES];
+    [refreshBaseView endRefreshing];
 }
 
 - (void)loadData:(DDRefreshBaseView *)refreshBaseView
@@ -125,43 +165,37 @@
 {
     DDPullUp *pullUp = [DDPullUp pullUp];
     pullUp.scrollView = self.tableView;
-    NSLog(@"self.tableView.height = %f", self.view.frame.size.height);
-    NSLog(@"self.scrollView.height = %f", pullUp.scrollView.frame.size.height);
     pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        // 添加数据
-        for (int i = 0; i < 5; i++) {
-            [_dataSource addObject:[NSString stringWithFormat:@"上拉测试数据编号：%d",
-                                       arc4random() % 99999]];
-        }
-        // 模拟加载数据等待过程
-        [self performSelector:@selector(loadData:)
-                   withObject:refreshBaseView
-                   afterDelay:1.0];
+        [self responseRequestWithDDRefreshBaseView:refreshBaseView
+                                     DDRefreshType:DDRefreshTypePullUp];
     };
 }
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     return _dataSource.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1
+                                       reuseIdentifier:CellIdentifier] autorelease];
+        cell.textLabel.textAlignment = NSTextAlignmentCenter;
+
+        UIView *cellBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+        cellBackgroundView.backgroundColor = kRandomColor;
+        cell.backgroundView = cellBackgroundView;
+        [cellBackgroundView release];
     }
-    cell.textLabel.textAlignment = NSTextAlignmentCenter;
     cell.textLabel.text = _dataSource[indexPath.row];
     
-    UIView *cellBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-    cellBackgroundView.backgroundColor = kRandomColor;
-    cell.backgroundView = cellBackgroundView;
-    [cellBackgroundView release];
-
     return cell;
 }
 

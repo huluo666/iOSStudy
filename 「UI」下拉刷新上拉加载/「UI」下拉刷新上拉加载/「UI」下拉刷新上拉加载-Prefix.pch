@@ -19,3 +19,4 @@
                                      green:arc4random() % 128 / 256.0f + 0.5 \
                                       blue:arc4random() % 128 / 256.0f + 0.5 \
                                      alpha:0.7]
+#define kAlertViewTag 222
