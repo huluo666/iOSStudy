@@ -17,7 +17,8 @@
 		062DC63818BD04D200F724E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062DC62018BD04D200F724E1 /* UIKit.framework */; };
 		062DC64018BD04D200F724E1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 062DC63E18BD04D200F724E1 /* InfoPlist.strings */; };
 		062DC64218BD04D200F724E1 /* _UI_________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 062DC64118BD04D200F724E1 /* _UI_________Tests.m */; };
-		9541295C18C08319009D8F7F /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541294C18C08319009D8F7F /* DDRootViewController.m */; };
+		06AF8C8C18C0F17400F2B19B /* DDCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 06AF8C8B18C0F17400F2B19B /* DDCollectionViewController.m */; };
+		9541295C18C08319009D8F7F /* DDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541294C18C08319009D8F7F /* DDTableViewController.m */; };
 		9541295D18C08319009D8F7F /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9541294F18C08319009D8F7F /* arrow@2x.png */; };
 		9541295E18C08319009D8F7F /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541295118C08319009D8F7F /* DDRefreshBaseView.m */; };
 		9541295F18C08319009D8F7F /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 9541295318C08319009D8F7F /* DDRefreshControlConst.m */; };
@@ -51,8 +52,10 @@
 		062DC63D18BD04D200F724E1 /* 「UI」下拉刷新上拉加载Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「UI」下拉刷新上拉加载Tests-Info.plist"; sourceTree = "<group>"; };
 		062DC63F18BD04D200F724E1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		062DC64118BD04D200F724E1 /* _UI_________Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_UI_________Tests.m"; sourceTree = "<group>"; };
-		9541294B18C08319009D8F7F /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
-		9541294C18C08319009D8F7F /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		06AF8C8A18C0F17400F2B19B /* DDCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionViewController.h; sourceTree = "<group>"; };
+		06AF8C8B18C0F17400F2B19B /* DDCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionViewController.m; sourceTree = "<group>"; };
+		9541294B18C08319009D8F7F /* DDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTableViewController.h; sourceTree = "<group>"; };
+		9541294C18C08319009D8F7F /* DDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTableViewController.m; sourceTree = "<group>"; };
 		9541294F18C08319009D8F7F /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		9541295018C08319009D8F7F /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
 		9541295118C08319009D8F7F /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
@@ -164,8 +167,10 @@
 		9541294A18C08319009D8F7F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9541294B18C08319009D8F7F /* DDRootViewController.h */,
-				9541294C18C08319009D8F7F /* DDRootViewController.m */,
+				9541294B18C08319009D8F7F /* DDTableViewController.h */,
+				9541294C18C08319009D8F7F /* DDTableViewController.m */,
+				06AF8C8A18C0F17400F2B19B /* DDCollectionViewController.h */,
+				06AF8C8B18C0F17400F2B19B /* DDCollectionViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -317,8 +322,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9541295C18C08319009D8F7F /* DDRootViewController.m in Sources */,
+				9541295C18C08319009D8F7F /* DDTableViewController.m in Sources */,
 				9541296018C08319009D8F7F /* DDPullDown.m in Sources */,
+				06AF8C8C18C0F17400F2B19B /* DDCollectionViewController.m in Sources */,
 				9541296618C08362009D8F7F /* DDAppDelegate.m in Sources */,
 				9541295F18C08319009D8F7F /* DDRefreshControlConst.m in Sources */,
 				9541295E18C08319009D8F7F /* DDRefreshBaseView.m in Sources */,

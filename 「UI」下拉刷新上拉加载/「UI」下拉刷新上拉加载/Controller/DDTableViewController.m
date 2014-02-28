@@ -6,11 +6,11 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "DDRootViewController.h"
+#import "DDTableViewController.h"
 #import "DDPullDown.h"
 #import "DDPullUp.h"
 
-@interface DDRootViewController ()
+@interface DDTableViewController ()
 {
     NSMutableArray *_dataSource; // 数据源
     UIAlertView *_alertView;
@@ -27,9 +27,13 @@
 // 响应网络请求
 - (void)responseRequestWithDDRefreshBaseView:(DDRefreshBaseView*)refreshBaseView
                                DDRefreshType:(DDRefreshType)type;
+// 清除提示
+- (void)dissmissAlertView:(DDRefreshBaseView *)refreshBaseView;
+// 加载数据
+- (void)loadData:(DDRefreshBaseView *)refreshBaseView;
 @end
 
-@implementation DDRootViewController
+@implementation DDTableViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

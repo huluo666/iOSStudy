@@ -23,6 +23,12 @@
 // 正在刷新
 - (void)responseStateRefreshing;
 
+// 父类中需要调用的方法
+// 控件类型
+- (DDRefreshType)viewType;
+// 合适的拖动值
+- (CGFloat)properVerticalPullValue;
+
 // 滚动视图内容超过view的高度
 - (CGFloat)scrollViewOverViewHeight;
 
@@ -120,8 +126,6 @@
 }
 
 #pragma mark - 设置不同状态对应的动画效果
-#pragma mark -
-#pragma mark - 此方法可以优化，两个子类调用的方法实现代码完全一致
 
 - (void)setState:(DDRefreshState)state
 {    

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DDRootViewController : UITableViewController
+@interface DDTableViewController : UITableViewController
 
 @end

@@ -7,28 +7,35 @@
 //
 
 #import "DDAppDelegate.h"
-#import "DDRootViewController.h"
+#import "DDTableViewController.h"
+#import "DDCollectionViewController.h"
 
 @implementation DDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-//    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-//    self.window.rootViewController = rootVC;
-//    [rootVC release];
+
+    DDTableViewController *tableVC = [[DDTableViewController alloc] init];
+    UINavigationController *tableNavi = [[UINavigationController alloc]
+                                    initWithRootViewController:tableVC];
+    [tableVC release];
     
-    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
-    [rootVC release];
-    self.window.rootViewController = navi;
-    [navi release];
+    DDCollectionViewController *collectionVC = [[DDCollectionViewController alloc] init];
+    UINavigationController *collectionNavi = [[UINavigationController alloc] initWithRootViewController:collectionVC];
+    [collectionVC release];
     
-//    DDTestViewController *test = [[DDTestViewController alloc] init];
-//    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:test];
-//    [test release];
-//    self.window.rootViewController = navi;
-//    [navi release];
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    tabBarController.viewControllers = @[tableNavi, collectionNavi];
+    [tableNavi release];
+    [collectionNavi release];
+    
+    self.window.rootViewController = tabBarController;
+    [tabBarController release];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor magentaColor]}];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor magentaColor]} forState:UIControlStateSelected];
     
     self.window.backgroundColor = [UIColor whiteColor];
     

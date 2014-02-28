@@ -34,6 +34,13 @@
 // 刷新状态改变
 - (void)callbackWithStateChange:(DDRefreshState)state;
 
+// 刷新状态相关
+// 是否正在刷新
+- (BOOL)isRefreshing;
+// 开始刷新
+- (void)beginRefreshing;
+// 刷新完成
+- (void)endRefreshing;
 
 @end
 
@@ -50,11 +57,14 @@
         self.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         self.backgroundColor = [UIColor clearColor];
         // 时间显示标签
-        [self addSubview:_lastUpdate = [[self labelWithFont:[UIFont systemFontOfSize:12]] retain]];
+        [self addSubview:_lastUpdate = [[self labelWithFont:
+                                         [UIFont systemFontOfSize:12]] retain]];
         // 状态显示标签
-        [self addSubview:_status = [[self labelWithFont:[UIFont systemFontOfSize:14]] retain]];
+        [self addSubview:_status = [[self labelWithFont:
+                                     [UIFont systemFontOfSize:14]] retain]];
         // 箭头头提示图片
-        UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow"]];
+        UIImageView *arrowView = [[UIImageView alloc]
+                                  initWithImage:[UIImage imageNamed:@"arrow"]];
         arrowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
         _arrow = [arrowView retain];
         [arrowView release];
@@ -150,10 +160,14 @@
     // 状态标签
     _status.frame = CGRectMake(10, 5, width, 20);
     // 上次更新时间标签
-    _lastUpdate.frame = CGRectMake(15, 10 + CGRectGetHeight(_status.bounds), width, 20);
+    _lastUpdate.frame = CGRectMake(15,
+                                   10 + CGRectGetHeight(_status.bounds),
+                                   width,
+                                   20);
     
     // 箭头图标
-    _arrow.center = CGPointMake(frame.size.width / 2 - 100, frame.size.height / 2);
+    _arrow.center = CGPointMake(frame.size.width / 2 - 100,
+                                frame.size.height / 2);
     
     // 进度指示器
     _indicator.center = _arrow.center;
@@ -178,7 +192,9 @@
 {
     if (_scrollView != scrollView) {
         // 移除之前的监听
-        [_scrollView removeObserver:self forKeyPath:DDRefreshContentOffSet context:nil];
+        [_scrollView removeObserver:self
+                         forKeyPath:DDRefreshContentOffSet
+                            context:nil];
         [_scrollView release];
         
         // 注册监听
@@ -300,7 +316,8 @@
     }
     
     if (_scrollView.isDragging) {
-        CGFloat properContentOffSetVerticalValue = properVerticalPullValue + DDRefreshViewHeight;
+        CGFloat properContentOffSetVerticalValue =
+            properVerticalPullValue + DDRefreshViewHeight;
         NSLog(@"properContentOffSetVerticalValue = %f", properContentOffSetVerticalValue);
         NSLog(@"_state : %d", _state);
         
@@ -333,7 +350,8 @@
 - (void)callbackWithStateChange:(DDRefreshState)state
 {
     // 回调方式一，委托
-    if (_delegate && [_delegate respondsToSelector:@selector(refreshBaseView:stateChange:)]) {
+    if (_delegate &&
+        [_delegate respondsToSelector:@selector(refreshBaseView:stateChange:)]) {
         [_delegate refreshBaseView:self stateChange:state];
     }
     // 回调方式二，block
@@ -344,7 +362,8 @@
 
 - (void)callbackBeginRefreshing
 {
-    if (_delegate && [_delegate respondsToSelector:@selector(refreshBaseViewbeginRefreshing:)]) {
+    if (_delegate &&
+        [_delegate respondsToSelector:@selector(refreshBaseViewbeginRefreshing:)]) {
         [_delegate refreshBaseViewbeginRefreshing:self];
     }
     
@@ -356,7 +375,8 @@
 - (void)callbackDidRefreshing
 {
     // 回调方式一，委托
-    if (_delegate && [_delegate respondsToSelector:@selector(refreshBaseViewDidRefreshing:)]) {
+    if (_delegate &&
+        [_delegate respondsToSelector:@selector(refreshBaseViewDidRefreshing:)]) {
         [_delegate refreshBaseViewDidRefreshing:self];
     }
     // 回调方式二，block
@@ -365,7 +385,7 @@
     }
 }
 
-#pragma mark - 刷新状态
+#pragma mark - 刷新状态相关
 
 // 是否正在刷新
 - (BOOL)isRefreshing
@@ -386,42 +406,7 @@
 // 刷新完成
 - (void)endRefreshing
 {
-#pragma mark - may be error
     [self setState:DDRefreshStateNormal];
-//    double delayInSeconds = self.viewType == DDRefreshTypePullDown ? 0.3 : 0.0;
-//    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-//    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//        [self setState:DDRefreshStateNormal];
-//    });
 }
 
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
