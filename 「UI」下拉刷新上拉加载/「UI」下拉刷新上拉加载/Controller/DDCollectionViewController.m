@@ -51,13 +51,14 @@
 
 - (void)dealloc
 {
+    [_alertView release];
     [super dealloc];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    _dataSource = 13;
+    _dataSource = 3;
     [self initUserInterface];
 }
 
@@ -81,31 +82,25 @@
 - (void)dissmissAlertView:(DDRefreshBaseView *)refreshBaseView
 {
     [_alertView dismissWithClickedButtonIndex:0 animated:YES];
-    [refreshBaseView endRefreshing];
+    [refreshBaseView endRefreshingWithSuccess:NO];
 }
 
 - (void)loadData:(DDRefreshBaseView *)refreshBaseView
 {
     [self.collectionView reloadData];
-    [refreshBaseView endRefreshing];
+    [refreshBaseView endRefreshingWithSuccess:YES];
 }
 
 #pragma mark - <DDRefreshBaseDelegate>
 
-- (void)refreshBaseView:(DDRefreshBaseView *)refreshBaseView stateChange:(DDRefreshState)state
-{
-    
-}
-
 - (void)refreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView
 {
     // 模拟网络请求过程，返回请求成功或者失败和一个数组对象
-    
     BOOL success = YES;
-    //    BOOL success = NO;
+//    BOOL success = NO;
     if (success) {
         // 模拟加载数据等待过程, 加载完成更新数据
-        _dataSource += 5;
+        _dataSource += 6;
         [self performSelector:@selector(loadData:)
                    withObject:refreshBaseView
                    afterDelay:1.0];
@@ -122,23 +117,22 @@
     }
 }
 
-- (void)refreshBaseViewDidRefreshing:(DDRefreshBaseView *)refreshBaseView
-{
+#pragma mark - collection数据源委托方法
 
-}
-
-
-#pragma mark - collection数据源代理
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
 {
     return _dataSource;
 }
 
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdenitfer = @"Cell";
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:cellIdenitfer];
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdenitfer forIndexPath:indexPath];
+    [self.collectionView registerClass:[UICollectionViewCell class]
+            forCellWithReuseIdentifier:cellIdenitfer];
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdenitfer
+                                                                           forIndexPath:indexPath];
     cell.backgroundColor = kRandomColor;
 
     return cell;

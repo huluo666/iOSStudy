@@ -29,6 +29,7 @@ typedef enum {
 
 @class DDRefreshBaseView;
 @protocol DDRefreshBaseDelegate <NSObject>
+@optional
 // 开始进入刷新状态调用
 - (void)refreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView;
 // 刷新完成调用
@@ -68,8 +69,10 @@ typedef enum {
 // 开始刷新
 - (void)beginRefreshing;
 // 刷新完成
-- (void)endRefreshing;
+- (void)endRefreshingWithSuccess:(BOOL)success;
 // 设置刷新状态
 - (void)setState:(DDRefreshState)state;
+// 刷新完成播放背景音乐
+- (void)playSounds;
 
 @end

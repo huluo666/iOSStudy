@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0613AD6518C2E5E3009213EA /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0613AD6418C2E5E3009213EA /* AudioToolbox.framework */; };
+		0613AD6818C2E77F009213EA /* refresh.caf in Resources */ = {isa = PBXBuildFile; fileRef = 0613AD6718C2E77F009213EA /* refresh.caf */; };
 		062DC61D18BD04D200F724E1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062DC61C18BD04D200F724E1 /* Foundation.framework */; };
 		062DC61F18BD04D200F724E1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062DC61E18BD04D200F724E1 /* CoreGraphics.framework */; };
 		062DC62118BD04D200F724E1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 062DC62018BD04D200F724E1 /* UIKit.framework */; };
@@ -39,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0613AD6418C2E5E3009213EA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		0613AD6718C2E77F009213EA /* refresh.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = refresh.caf; sourceTree = "<group>"; };
 		062DC61918BD04D200F724E1 /* 「UI」下拉刷新上拉加载.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「UI」下拉刷新上拉加载.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		062DC61C18BD04D200F724E1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		062DC61E18BD04D200F724E1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,6 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0613AD6518C2E5E3009213EA /* AudioToolbox.framework in Frameworks */,
 				062DC61F18BD04D200F724E1 /* CoreGraphics.framework in Frameworks */,
 				062DC62118BD04D200F724E1 /* UIKit.framework in Frameworks */,
 				062DC61D18BD04D200F724E1 /* Foundation.framework in Frameworks */,
@@ -94,6 +99,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0613AD6618C2E77E009213EA /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				0613AD6718C2E77F009213EA /* refresh.caf */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		062DC61018BD04D200F724E1 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +129,7 @@
 		062DC61B18BD04D200F724E1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0613AD6418C2E5E3009213EA /* AudioToolbox.framework */,
 				062DC61C18BD04D200F724E1 /* Foundation.framework */,
 				062DC61E18BD04D200F724E1 /* CoreGraphics.framework */,
 				062DC62018BD04D200F724E1 /* UIKit.framework */,
@@ -127,6 +141,7 @@
 		062DC62218BD04D200F724E1 /* 「UI」下拉刷新上拉加载 */ = {
 			isa = PBXGroup;
 			children = (
+				0613AD6618C2E77E009213EA /* Resource */,
 				9541296218C08362009D8F7F /* Classes */,
 				9541294D18C08319009D8F7F /* View */,
 				9541294A18C08319009D8F7F /* Controller */,
@@ -303,6 +318,7 @@
 			files = (
 				062DC62718BD04D200F724E1 /* InfoPlist.strings in Resources */,
 				062DC62F18BD04D200F724E1 /* Images.xcassets in Resources */,
+				0613AD6818C2E77F009213EA /* refresh.caf in Resources */,
 				9541295D18C08319009D8F7F /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

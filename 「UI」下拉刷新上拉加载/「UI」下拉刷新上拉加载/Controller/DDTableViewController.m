@@ -9,11 +9,12 @@
 #import "DDTableViewController.h"
 #import "DDPullDown.h"
 #import "DDPullUp.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface DDTableViewController ()
 {
     NSMutableArray *_dataSource; // 数据源
-    UIAlertView *_alertView;
+    UIAlertView *_alertView;     // 温馨提示
 }
 
 // 初始化数据
@@ -130,7 +131,6 @@
             [_dataSource addObject:[NSString stringWithFormat:@"上拉测试数据编号：%d",
                                arc4random() % 99999]];
         }
-        
     }
     
     BOOL success = YES;
@@ -156,13 +156,13 @@
 - (void)dissmissAlertView:(DDRefreshBaseView *)refreshBaseView
 {
     [_alertView dismissWithClickedButtonIndex:0 animated:YES];
-    [refreshBaseView endRefreshing];
+    [refreshBaseView endRefreshingWithSuccess:NO];
 }
 
 - (void)loadData:(DDRefreshBaseView *)refreshBaseView
 {
     [self.tableView reloadData];
-    [refreshBaseView endRefreshing];
+    [refreshBaseView endRefreshingWithSuccess:YES];
 }
 
 - (void)loadPullUpView
@@ -194,12 +194,19 @@
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
 
         UIView *cellBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-        cellBackgroundView.backgroundColor = kRandomColor;
+        if (indexPath.row % 2) {
+            cellBackgroundView.backgroundColor = [UIColor colorWithWhite:0.822
+                                                                   alpha:1.000];
+        } else {
+            cellBackgroundView.backgroundColor = [UIColor colorWithRed:0.921
+                                                                 green:0.812
+                                                                  blue:0.686
+                                                                 alpha:1.000];
+        }
         cell.backgroundView = cellBackgroundView;
         [cellBackgroundView release];
     }
     cell.textLabel.text = _dataSource[indexPath.row];
-    
     return cell;
 }
 

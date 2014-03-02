@@ -140,7 +140,7 @@
 
     // 根据不同状态做出不同反应
     switch (state) {
-        case DDRefreshStateNormal: // 普通状态, 下拉刷新
+        case DDRefreshStateNormal: // 普通状态, 上拉刷新
             [self responseStateNormal];
             break;
         case DDRefreshStatePulling: // 拉住状态, 松手就更新
@@ -217,7 +217,6 @@
     }];
 }
 
-
 #pragma mark 父类方法中需要调用的实现
 
 - (DDRefreshType)viewType
@@ -230,9 +229,10 @@
     CGFloat overHeight = [self scrollViewOverViewHeight];
     CGFloat result = self.scrollViewInsetRecord.top;
     if (overHeight > 0) {
-        result = overHeight - result;
+        return overHeight - result;
+    } else {
+        return -result;
     }
-    return result;
 }
 
 @end

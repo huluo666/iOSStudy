@@ -7,11 +7,13 @@
 //
 
 #import "DDRefreshBaseView.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface DDRefreshBaseView ()
 {
     BOOL _hasInsetInit;
     UIActivityIndicatorView *_indicator; // 进度指示器
+    SystemSoundID _soundsID;      // 音效ID
 }
 
 // 控件视图类型(Footer或者Header)
@@ -37,10 +39,6 @@
 // 刷新状态相关
 // 是否正在刷新
 - (BOOL)isRefreshing;
-// 开始刷新
-- (void)beginRefreshing;
-// 刷新完成
-- (void)endRefreshing;
 
 @end
 
@@ -307,9 +305,9 @@
     
     // 下拉contentOffSetVerticalValue为负数，上拉为正
     CGFloat contentOffSetVerticalValue = _scrollView.contentOffset.y * [self viewType];
-    NSLog(@"contentOffSetVerticalValue = %f", contentOffSetVerticalValue);
+    NSLog(@"1: contentOffSetVerticalValue = %f", contentOffSetVerticalValue);
     CGFloat properVerticalPullValue = [self properVerticalPullValue];
-    NSLog(@"properVerticalPullValue = %f", properVerticalPullValue);
+    NSLog(@"2: properVerticalPullValue = %f", properVerticalPullValue);
 
     if (contentOffSetVerticalValue <= properVerticalPullValue) {
         return;
@@ -318,7 +316,7 @@
     if (_scrollView.isDragging) {
         CGFloat properContentOffSetVerticalValue =
             properVerticalPullValue + DDRefreshViewHeight;
-        NSLog(@"properContentOffSetVerticalValue = %f", properContentOffSetVerticalValue);
+        NSLog(@"3: properContentOffSetVerticalValue = %f", properContentOffSetVerticalValue);
         NSLog(@"_state : %d", _state);
         
         if (_state == DDRefreshStatePulling &&
@@ -404,9 +402,21 @@
 }
 
 // 刷新完成
-- (void)endRefreshing
+- (void)endRefreshingWithSuccess:(BOOL)success
 {
     [self setState:DDRefreshStateNormal];
+    if (success) {
+        [self playSounds];
+    }
+}
+
+- (void)playSounds
+{
+    NSURL *soundsURL = [[NSBundle mainBundle] URLForAuxiliaryExecutable:@"refresh.caf"];
+    // 初始化音频资源
+    AudioServicesCreateSystemSoundID((CFURLRef)soundsURL, &_soundsID);
+    // 播放音乐
+    AudioServicesPlaySystemSound(_soundsID);
 }
 
 @end
