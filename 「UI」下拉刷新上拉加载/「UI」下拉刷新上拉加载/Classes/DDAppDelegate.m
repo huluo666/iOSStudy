@@ -16,15 +16,18 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
+    // 表视图控制器
     DDTableViewController *tableVC = [[DDTableViewController alloc] init];
     UINavigationController *tableNavi = [[UINavigationController alloc]
                                     initWithRootViewController:tableVC];
     [tableVC release];
-    
+    // 集合视图控制器
     DDCollectionViewController *collectionVC = [[DDCollectionViewController alloc] init];
-    UINavigationController *collectionNavi = [[UINavigationController alloc] initWithRootViewController:collectionVC];
+    UINavigationController *collectionNavi = [[UINavigationController alloc]
+                                              initWithRootViewController:collectionVC];
     [collectionVC release];
     
+    // 标签栏控制器
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     tabBarController.viewControllers = @[tableNavi, collectionNavi];
     [tableNavi release];
@@ -33,10 +36,14 @@
     self.window.rootViewController = tabBarController;
     [tabBarController release];
     
+    // 导航栏显示效果配置
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor magentaColor]}];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]} forState:UIControlStateNormal];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor magentaColor]} forState:UIControlStateSelected];
-    
+    // 标签栏显示效果配置
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor grayColor]}
+                                             forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor magentaColor]}
+                                             forState:UIControlStateSelected];
+
     self.window.backgroundColor = [UIColor whiteColor];
     
     [self.window makeKeyAndVisible];

@@ -13,10 +13,10 @@
 {
     BOOL _hasInsetInit;
     UIActivityIndicatorView *_indicator; // 进度指示器
-    SystemSoundID _soundsID;      // 音效ID
+    SystemSoundID _soundsID;             // 音效ID
 }
 
-// 控件视图类型(Footer或者Header)
+// 控件视图类型(PullDown或者PullUp)
 - (DDRefreshType)viewType;
 
 // 创建Label
@@ -63,7 +63,8 @@
         // 箭头头提示图片
         UIImageView *arrowView = [[UIImageView alloc]
                                   initWithImage:[UIImage imageNamed:@"arrow"]];
-        arrowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        arrowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
+                                        UIViewAutoresizingFlexibleRightMargin;
         _arrow = [arrowView retain];
         [arrowView release];
         [self addSubview:_arrow];
@@ -72,7 +73,8 @@
         UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]
                                               initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         indicator.bounds = arrowView.bounds; // arrowView 和 indicator处于同一位置
-        arrowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        arrowView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin |
+                                        UIViewAutoresizingFlexibleRightMargin;
         _indicator = [indicator retain];
         [self addSubview:_indicator];
         [indicator release];
@@ -157,6 +159,7 @@
     // 设置各个控件的位置
     // 状态标签
     _status.frame = CGRectMake(10, 5, width, 20);
+    
     // 上次更新时间标签
     _lastUpdate.frame = CGRectMake(15,
                                    10 + CGRectGetHeight(_status.bounds),
@@ -247,7 +250,6 @@
     return label;
 }
 
-
 - (void)setStateNormal
 {
     NSLog(@"setStateNormal");
@@ -282,9 +284,9 @@
 // 监听回掉函数
 // _scrollView的contentOffSet有变化就调用下面的方法
 // keyPath:表示监听的key
-// object表示contentOffSet的值
+// object这里表示contentOffSet的值
 // change是一个字典，包含了新旧值
-// context是私有变量
+// context是上下文
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change

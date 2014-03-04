@@ -48,7 +48,7 @@
 
 + (instancetype)pullUp
 {
-    return [[[DDPullUp alloc] init] autorelease];
+    return [[[self alloc] init] autorelease];
 }
 
 #pragma mark - 调整控件位置
@@ -60,7 +60,8 @@
     // 控件高度至少容下状态提示文本的高度
     if (CGRectGetHeight(frame) / 2 !=
         CGRectGetHeight(self.status.bounds)) {
-        self.status.center = CGPointMake(CGRectGetMidX(frame), DDRefreshViewHeight / 2);
+        self.status.center = CGPointMake(CGRectGetMidX(frame),
+                                         DDRefreshViewHeight / 2);
     }
 }
 
@@ -95,7 +96,10 @@
 {
 
     // 调用父类实现方法
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    [super observeValueForKeyPath:keyPath
+                         ofObject:object
+                           change:change
+                          context:context];
     // 排除不必要的调用
 
     if (!self.userInteractionEnabled) {
@@ -122,7 +126,10 @@
     CGFloat contentHeight = self.scrollView.contentSize.height;
     // 重设控件的视图位置以及大小
     CGFloat height = scrollViewHeight > contentHeight ? scrollViewHeight : contentHeight;
-    self.frame = CGRectMake(0, height, CGRectGetWidth(self.scrollView.bounds), DDRefreshViewHeight);
+    self.frame = CGRectMake(0,
+                            height,
+                            CGRectGetWidth(self.scrollView.bounds),
+                            DDRefreshViewHeight);
 }
 
 #pragma mark - 设置不同状态对应的动画效果

@@ -31,7 +31,7 @@
 
 + (instancetype)pullDown
 {
-    return [[[DDPullDown alloc] init] autorelease];
+    return [[[self alloc] init] autorelease];
 }
 
 - (void)dealloc
@@ -47,9 +47,13 @@
     [super setScrollView:scrollView];
 
     // 设置尺寸
-    self.frame = CGRectMake(0, -DDRefreshViewHeight, CGRectGetWidth(scrollView.bounds), DDRefreshViewHeight);
+    self.frame = CGRectMake(0,
+                            -DDRefreshViewHeight,
+                            CGRectGetWidth(scrollView.bounds),
+                            DDRefreshViewHeight);
     // 上次更新时间
-    NSDate *date = [[NSUserDefaults standardUserDefaults] objectForKey:DDLastUpdateTime];
+    NSDate *date = [[NSUserDefaults standardUserDefaults]
+                    objectForKey:DDLastUpdateTime];
     if (!date) {
         date = [NSDate date];
     }
@@ -63,7 +67,8 @@
         _lastUpdateTime = [lastUpdateTime retain];
 
         // 记录上次更新时间
-        [[NSUserDefaults standardUserDefaults] setObject:_lastUpdateTime forKey:DDLastUpdateTime];
+        [[NSUserDefaults standardUserDefaults] setObject:_lastUpdateTime
+                                                  forKey:DDLastUpdateTime];
         [[NSUserDefaults standardUserDefaults] synchronize];
         
         // 更新显示

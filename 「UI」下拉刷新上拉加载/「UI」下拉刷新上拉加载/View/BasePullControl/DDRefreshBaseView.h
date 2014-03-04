@@ -35,7 +35,8 @@ typedef enum {
 // 刷新完成调用
 - (void)refreshBaseViewDidRefreshing:(DDRefreshBaseView *)refreshBaseView;
 // 刷新状态发生变化调用
-- (void)refreshBaseView:(DDRefreshBaseView *)refreshBaseView stateChange:(DDRefreshState)state;
+- (void)refreshBaseView:(DDRefreshBaseView *)refreshBaseView
+            stateChange:(DDRefreshState)state;
 
 @end
 
