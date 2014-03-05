@@ -57,6 +57,7 @@
     DDBlockButton *button = [[DDBlockButton alloc] initWithFrame:CGRectMake(100, 30, 100, 30)];
     [button setTitle:@"上一页" forState:UIControlStateNormal];
     button.backgroundColor = [UIColor cyanColor];
+
     __block UIViewController *vc = self;
     button.clickBlock = ^(DDBlockButton *button) {
         [vc.presentingViewController dismissViewControllerAnimated:YES completion:nil];

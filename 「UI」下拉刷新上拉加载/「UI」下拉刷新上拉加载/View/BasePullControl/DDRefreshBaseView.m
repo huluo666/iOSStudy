@@ -169,7 +169,7 @@
     // 箭头图标
     _arrow.center = CGPointMake(frame.size.width / 2 - 100,
                                 frame.size.height / 2);
-    
+
     // 进度指示器
     _indicator.center = _arrow.center;
 }
