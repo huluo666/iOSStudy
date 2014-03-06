@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Steve Jobs</key>
+	<dict>
+		<key>name</key>
+		<string>史蒂夫·乔布斯</string>
+		<key>year</key>
+		<string>1955-2011</string>
+		<key>image</key>
+		<string>Steve Jobs.png</string>
+		<key>content</key>
+		<string>史蒂夫·乔布斯（1955.2.24-2011.10.5），美国著名发明家、企业家、美国苹果公司联合创办人、前行政总裁。他陪伴了苹果公司数十年的起落与复兴，先后领导和推出了麦金塔计算机（Macintosh）、iMac、iPod、iPhone、iPad等风靡全球亿万人的电子产品，深刻地改变了现代通讯、娱乐乃至生活的方式。2011年10月5日因胰腺癌逝世，享年56岁。</string>
+	</dict>
+	<key>Tim Cook</key>
+	<dict>
+		<key>name</key>
+		<string>蒂姆·库克</string>
+		<key>year</key>
+		<string>1960.11.1-Now</string>
+		<key>image</key>
+		<string>Tim Cook.png</string>
+		<key>content</key>
+		<string>蒂姆·库克，苹果首席执行官。1960年出生于美国阿拉巴马州，1982年毕业于奥本大学工业工程专业，1988年获得杜克大学企业管理硕士学位。曾在IBM供职12 年，负责PC部门在北美和拉美的制造和分销运作。1998 年年初，库克进入苹果，任副总裁，主管苹果的电脑制造业务。2011年接替乔布斯担任苹果公司CEO。</string>
+	</dict>
+</dict>
+</plist>

@@ -171,7 +171,7 @@
     pullUp.scrollView = self.tableView;
     pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
         [self responseRequestWithDDRefreshBaseView:refreshBaseView
-                                     DDRefreshType:DDRefreshTypePullUp];
+                          DDRefreshType:DDRefreshTypePullUp];
     };
 }
 
