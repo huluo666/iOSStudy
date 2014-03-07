@@ -25,6 +25,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.backgroundColor = [UIColor orangeColor];
         // 登录背景
         UIImage *backgroundImage = [UIImage imageNamed:@"Default-Landscape"];
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];

@@ -11,6 +11,8 @@
 
 @interface DDRootViewController ()
 
+@property (nonatomic, retain) DDLogin *login;
+
 // 初始化登录界面
 - (void)initializeLoginView;
 // 初始化用户界面
@@ -31,6 +33,12 @@
     return self;
 }
 
+- (void)dealloc
+{
+    [_login release];
+    [super dealloc];
+}
+
 - (void)viewDidLoad
 {
     
@@ -39,15 +47,15 @@
     _logined = NO;
     if (!_logined) {
         [self initializeLoginView];
-    } 
+    }
 }
 
 - (void)initializeLoginView
 {
-    DDLogin *login = [[DDLogin alloc] init];
-    login.frame = self.view.frame;
-    [self.view addSubview:login];
-    [login release];
+    _login = [[DDLogin alloc] init];
+    _login.frame = self.view.frame;
+    [self.view addSubview:_login];
+    [_login release];
 }
 
 - (void)initializeUserInterface
