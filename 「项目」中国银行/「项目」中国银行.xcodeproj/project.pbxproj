@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06D388CB18C9F6D700113372 /* DDIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CA18C9F6D700113372 /* DDIndex.m */; };
+		06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CD18C9FD5000113372 /* DDAbroad.m */; };
+		06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388D018C9FD6F00113372 /* DDFinancing.m */; };
+		06D388D418C9FD8D00113372 /* DDChoose.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388D318C9FD8D00113372 /* DDChoose.m */; };
+		06D388D718C9FDBD00113372 /* DDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388D618C9FDBD00113372 /* DDSchedule.m */; };
+		06D388DA18C9FDD600113372 /* DDShopcart.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388D918C9FDD600113372 /* DDShopcart.m */; };
 		952BB33218C970B2002F4928 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33118C970B2002F4928 /* Foundation.framework */; };
 		952BB33418C970B2002F4928 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33318C970B2002F4928 /* CoreGraphics.framework */; };
 		952BB33618C970B2002F4928 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33518C970B2002F4928 /* UIKit.framework */; };
@@ -232,6 +238,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06D388C918C9F6D700113372 /* DDIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDIndex.h; sourceTree = "<group>"; };
+		06D388CA18C9F6D700113372 /* DDIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDIndex.m; sourceTree = "<group>"; };
+		06D388CC18C9FD5000113372 /* DDAbroad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbroad.h; sourceTree = "<group>"; };
+		06D388CD18C9FD5000113372 /* DDAbroad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAbroad.m; sourceTree = "<group>"; };
+		06D388CF18C9FD6F00113372 /* DDFinancing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFinancing.h; sourceTree = "<group>"; };
+		06D388D018C9FD6F00113372 /* DDFinancing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFinancing.m; sourceTree = "<group>"; };
+		06D388D218C9FD8D00113372 /* DDChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDChoose.h; sourceTree = "<group>"; };
+		06D388D318C9FD8D00113372 /* DDChoose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDChoose.m; sourceTree = "<group>"; };
+		06D388D518C9FDBD00113372 /* DDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSchedule.h; sourceTree = "<group>"; };
+		06D388D618C9FDBD00113372 /* DDSchedule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSchedule.m; sourceTree = "<group>"; };
+		06D388D818C9FDD600113372 /* DDShopcart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDShopcart.h; sourceTree = "<group>"; };
+		06D388D918C9FDD600113372 /* DDShopcart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDShopcart.m; sourceTree = "<group>"; };
 		952BB32E18C970B2002F4928 /* 「项目」中国银行.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「项目」中国银行.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		952BB33118C970B2002F4928 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		952BB33318C970B2002F4928 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -476,6 +494,60 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06D388C318C9F48F00113372 /* 出国服务 */ = {
+			isa = PBXGroup;
+			children = (
+				06D388CC18C9FD5000113372 /* DDAbroad.h */,
+				06D388CD18C9FD5000113372 /* DDAbroad.m */,
+			);
+			path = "出国服务";
+			sourceTree = "<group>";
+		};
+		06D388C418C9F48F00113372 /* 服务进度 */ = {
+			isa = PBXGroup;
+			children = (
+				06D388D518C9FDBD00113372 /* DDSchedule.h */,
+				06D388D618C9FDBD00113372 /* DDSchedule.m */,
+			);
+			path = "服务进度";
+			sourceTree = "<group>";
+		};
+		06D388C518C9F48F00113372 /* 理财产品 */ = {
+			isa = PBXGroup;
+			children = (
+				06D388CF18C9FD6F00113372 /* DDFinancing.h */,
+				06D388D018C9FD6F00113372 /* DDFinancing.m */,
+			);
+			path = "理财产品";
+			sourceTree = "<group>";
+		};
+		06D388C618C9F48F00113372 /* 选购清单 */ = {
+			isa = PBXGroup;
+			children = (
+				06D388D218C9FD8D00113372 /* DDChoose.h */,
+				06D388D318C9FD8D00113372 /* DDChoose.m */,
+			);
+			path = "选购清单";
+			sourceTree = "<group>";
+		};
+		06D388C718C9F48F00113372 /* 首页 */ = {
+			isa = PBXGroup;
+			children = (
+				06D388C918C9F6D700113372 /* DDIndex.h */,
+				06D388CA18C9F6D700113372 /* DDIndex.m */,
+			);
+			path = "首页";
+			sourceTree = "<group>";
+		};
+		06D388C818C9F50800113372 /* 购物车 */ = {
+			isa = PBXGroup;
+			children = (
+				06D388D818C9FDD600113372 /* DDShopcart.h */,
+				06D388D918C9FDD600113372 /* DDShopcart.m */,
+			);
+			path = "购物车";
+			sourceTree = "<group>";
+		};
 		952BB32518C970B2002F4928 = {
 			isa = PBXGroup;
 			children = (
@@ -509,6 +581,12 @@
 		952BB33718C970B2002F4928 /* 「项目」中国银行 */ = {
 			isa = PBXGroup;
 			children = (
+				06D388C818C9F50800113372 /* 购物车 */,
+				06D388C418C9F48F00113372 /* 服务进度 */,
+				06D388C618C9F48F00113372 /* 选购清单 */,
+				06D388C518C9F48F00113372 /* 理财产品 */,
+				06D388C318C9F48F00113372 /* 出国服务 */,
+				06D388C718C9F48F00113372 /* 首页 */,
 				95F5B38318C9B20300C81D68 /* 登录 */,
 				952BB57318C98D99002F4928 /* 主界面 */,
 				952BB3E518C98C4C002F4928 /* 资源 */,
@@ -1066,9 +1144,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06D388CB18C9F6D700113372 /* DDIndex.m in Sources */,
+				06D388D718C9FDBD00113372 /* DDSchedule.m in Sources */,
 				952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */,
+				06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */,
+				06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */,
+				06D388DA18C9FDD600113372 /* DDShopcart.m in Sources */,
 				95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */,
 				952BB34218C970B2002F4928 /* DDAppDelegate.m in Sources */,
+				06D388D418C9FD8D00113372 /* DDChoose.m in Sources */,
 				952BB33E18C970B2002F4928 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

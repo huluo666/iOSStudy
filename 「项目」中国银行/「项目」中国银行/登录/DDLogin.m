@@ -30,7 +30,7 @@
         UIImage *backgroundImage = [UIImage imageNamed:@"Default-Landscape"];
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
         backgroundImageView.tag = kBackgroundImageViewTag;
-        backgroundImageView.frame = CGRectMake(0, 0, kViewWidth, kViewHeight);
+        backgroundImageView.frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
         backgroundImageView.userInteractionEnabled = YES;
         [self addSubview:backgroundImageView];
         [backgroundImageView release];
@@ -42,8 +42,8 @@
         [backgroundView release];
         
         // 等一秒后背景变灰，出现登录框
-        [UIView animateWithDuration:0.5f
-                              delay:1.0f
+        [UIView animateWithDuration:kAnimateDuration / 2
+                              delay:0.5f
                             options:UIViewAnimationOptionCurveEaseInOut
                          animations:^{
                              backgroundView.alpha = 0.5f;
@@ -56,7 +56,7 @@
                                                             initWithImage:loginBackgroundImage];
                              loginImageView.bounds = CGRectMake(0, 0, 400, 500);
                              loginImageView.center = CGPointMake(1024 / 2,
-                                                                 kViewHeight + CGRectGetHeight(loginImageView.bounds));
+                                                                 kRootViewHeight + CGRectGetHeight(loginImageView.bounds));
                              loginImageView.userInteractionEnabled = YES;
                              loginImageView.contentMode = UIViewContentModeScaleAspectFit;
                              [backgroundImageView addSubview:loginImageView];
@@ -104,7 +104,7 @@
                              [loginImageView addSubview:remember];
                              
                              // 推出登录框
-                             [UIView animateWithDuration:1.0f animations:^{
+                             [UIView animateWithDuration:kAnimateDuration animations:^{
                                  loginImageView.center = CGPointMake(backgroundImageView.center.x,
                                                                      backgroundImageView.center.y - 40);
                              }];
@@ -131,11 +131,10 @@
 
 - (void)processLogin:(UIButton *)sender
 {
-    UIImageView *backgroundImageView = (UIImageView *)[self viewWithTag:kBackgroundImageViewTag];
     [UIView animateWithDuration:1.0f animations:^{
-        backgroundImageView.center = CGPointMake(kViewWidth / 2, kViewHeight * 2);
+        self.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight * 2);
     } completion:^(BOOL finished) {
-        [backgroundImageView removeFromSuperview];
+        [self removeFromSuperview];
     }];
 }
 

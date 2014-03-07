@@ -15,25 +15,28 @@
     #import <Foundation/Foundation.h>
 #endif
 
-#define kViewWidth           1024 // 视图宽度
-#define kViewHeight          768  // 视图高度
+#define kAnimateDuration 1.0f
 
+#define kRootViewWidth           1024 // 根视图宽度
+#define kRootViewHeight          768  // 根视图高度
 
 #ifndef _ROOT_VIEW_CONTROLLER_
-
 #define _ROOT_VIEW_CONTROLLER_
-#define kHeaderViewHeight    80   // 头部视图高度
-#define kNaviBarViewWidth    88   // 左侧导航栏宽度
-
-#define kNaviBarButtonHeight 107  // 导航栏按钮高度
-
-#define kButtonTag           100  // 导航栏按钮tag基准值
-
+#define kHeaderViewHeight    80  // 头部视图高度
+#define kNaviBarViewWidth    88  // 左侧导航栏宽度
+#define kNaviBarButtonHeight 107 // 导航栏按钮高度
+#define kButtonTag           100 // 导航栏按钮tag基准值
 #endif
+
+#define kMainViewWidth (kRootViewWidth -   kNaviBarViewWidth) // 主界面宽度
+#define kMainViewHeight (kRootViewHeight - kHeaderViewHeight) // 主界面高度
+#define kMainViewFrame (CGRectMake(kNaviBarViewWidth, kHeaderViewHeight, kMainViewWidth, kMainViewHeight))          // 主界面frame
+#define kMainViewBounds (CGRectMake(0, 0, kMainViewWidth, kMainViewHeight))                                         // 主界面bounds
+#define kMainViewCenter (CGPointMake(CGRectGetMidX((kMainViewFrame)), CGRectGetMidY((kMainViewFrame))))             // 主界面center
+#define kMainViewCenterUp (CGPointMake(CGRectGetMidX((kMainViewFrame)), -CGRectGetMidY((kMainViewFrame))))          // 主界面center
+#define kMainViewCenterDown (CGPointMake(CGRectGetMidX((kMainViewFrame)), 3 * (CGRectGetMidY((kMainViewFrame)))))   // 主界面center
 
 #ifndef _DDLOGIN_
 #define _DDLOGIN_
-
 #define kBackgroundImageViewTag 200
-
 #endif
