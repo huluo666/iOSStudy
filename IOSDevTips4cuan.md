@@ -1,4 +1,4 @@
-	Date:	February 23, 2014 at 5:59 PM
+	Date:	2014年2月23日 下午5:59
 	Tags:	OC, UIKit
 	Location:	中国四川省成都市武侯区桂溪街道交子南二路, 成都市, 四川省, 中国
 	Weather:	14° Hazy
@@ -1574,7 +1574,7 @@ static float scale = 0;- (void)pinch:(UIPinchGestureRecognizer *)_pinch{    i
 
 - - -
 
-<h3 id="￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼UIPickerView"> ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼UIPickerView </h3>
+<h3 id="UIPickerView"> UIPickerView(选择器视图) </h3>
 
 ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼**UIPickerView的使用**- UIPickerView控件生成的表格可以提供滚动的轮盘,如下图,它有两个或多个轮盘 (Component)。- 这些表格表面上类似于标准的UITableView控件,但是它们使用的数据和委托协议有 细微的差别。- UIPickerView的宽度和高度是固定的,纵向是320x216,横向480x162
 
@@ -1631,7 +1631,7 @@ UIImagePickerController的 sourceType属性设置为 UIImagePickerControllerSour
 
 - - - 
 
-<h3 id="￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼AV"> ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼AV </h3>
+<h3 id="AV"> AV(多媒体) </h3>
 
 **iOS系统中的音频播放方式**
 
@@ -1727,7 +1727,7 @@ MPMoviePlayerController的使用￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼�
 
 - - -
 
-<h3 id="￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼net"> ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼网络与多线程 </h3>
+<h3 id="net">网络与多线程</h3>
 
 **进程的基本概念**
 - 每一个进程都是一个应用程序,都有独立的内存空间,一般来说一个应用程序存在- 一个进程,但也多个进程的情况- ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼视图的操作一定 · 要主线程来完- 同一个进程中的线程共享内存中内存和资源成
