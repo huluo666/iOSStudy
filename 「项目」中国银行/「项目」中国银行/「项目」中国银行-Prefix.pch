@@ -40,3 +40,11 @@
 #define _DDLOGIN_
 #define kBackgroundImageViewTag 200
 #endif
+
+#ifndef _INDEX_
+#define _INDEX_
+#define kLoopImagesKey @"loopImagesKey"
+#endif
+
+
+

@@ -98,9 +98,18 @@
     _naviBar = [[UIView alloc] init];
     _naviBar.bounds = CGRectMake(0, 0, kNaviBarViewWidth, kRootViewHeight);
     _naviBar.center = CGPointMake(CGRectGetMidX(_naviBar.bounds), self.view.center.y);
-    _naviBar.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"导航-底_03"]];
+    _naviBar.backgroundColor = [UIColor grayColor];
     [self.view addSubview:_naviBar];
     [_naviBar release];
+    
+    // 设置左侧导航栏底图
+    UIView *naviBaseView = [[UIView alloc] init];
+    naviBaseView.bounds = CGRectMake(0, 0, kNaviBarViewWidth - 8, kRootViewHeight);
+    naviBaseView.center = CGPointMake(CGRectGetMidX(_naviBar.bounds) - 4,
+                                      self.view.center.y);
+    naviBaseView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"导航-底_03"]];
+    [_naviBar addSubview:naviBaseView];
+    [naviBaseView release];
     
     // 加载导航按钮
     NSArray *naviBarImageNormalNames = @[@"首页_03.png", @"出国服务_05.png", @"出国服务_05.png", @"选购清单_09", @"服务进度_11.png"];
