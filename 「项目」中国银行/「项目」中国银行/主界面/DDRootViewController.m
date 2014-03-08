@@ -20,6 +20,9 @@
     UIView *_naviBar;                 // 左侧导航栏视图
     NSInteger _currentSelectedButton; // 当前选中的是第几个导航button
     NSArray *_views;                  // 导航视图数组
+    BOOL isAnimating;                 // 是否正在动画中
+    
+    UIImageView *_contentMainView;    // 主要内容背景视图
 }
 
 // 初始化导航视图数组
@@ -60,6 +63,7 @@
 {
     [_naviBar release];
     [_views release];
+    [_contentMainView release];
     [super dealloc];
 }
 
@@ -92,13 +96,18 @@
 - (void)initializeUserInterface
 {
     self.view.frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    // 大背景
+    UIImage *bigImage = [UIImage imageNamed:@"大背景"];
+    _contentMainView = [[UIImageView alloc] initWithImage:bigImage];
+    _contentMainView.userInteractionEnabled = YES;
+    _contentMainView.frame = self.view.frame;
+    [self.view addSubview:_contentMainView];
     
     // 设置左侧导航条
     _naviBar = [[UIView alloc] init];
     _naviBar.bounds = CGRectMake(0, 0, kNaviBarViewWidth, kRootViewHeight);
     _naviBar.center = CGPointMake(CGRectGetMidX(_naviBar.bounds), self.view.center.y);
-    _naviBar.backgroundColor = [UIColor grayColor];
     [self.view addSubview:_naviBar];
     [_naviBar release];
     
@@ -112,8 +121,8 @@
     [naviBaseView release];
     
     // 加载导航按钮
-    NSArray *naviBarImageNormalNames = @[@"首页_03.png", @"出国服务_05.png", @"出国服务_05.png", @"选购清单_09", @"服务进度_11.png"];
-    NSArray *naviBarImageSelectedNames = @[@"首页_03_h.png", @"出国服务_05_h.png", @"出国服务_05_h.png", @"选购清单_09_h.png", @"服务进度_11_h.png"];
+    NSArray *naviBarImageNormalNames = @[@"首页_03.png", @"出国服务_05.png", @"理财产品_07.png", @"选购清单_09", @"服务进度_11.png"];
+    NSArray *naviBarImageSelectedNames = @[@"首页_03_h.png", @"出国服务_05_h.png", @"理财产品_07_h.png", @"选购清单_09_h.png", @"服务进度_11_h.png"];
 
     for (int i = 0; i < 5; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -134,7 +143,8 @@
         // 默认选中第一个
         if (!i) {
             button.selected = YES;
-            [self.view addSubview:_views[0]];;
+            [_contentMainView addSubview:_views[0]];
+            [self.view sendSubviewToBack:_views[0]];
         }
     }
 
@@ -142,9 +152,23 @@
     UIImage *headerImage = [UIImage imageNamed:@"眉头_01"];
     UIImageView *headerView =[[UIImageView alloc] initWithImage:headerImage];
     headerView.frame = CGRectMake(0, 0, kRootViewWidth, kHeaderViewHeight);
-    headerView.backgroundColor = [UIColor redColor];
     [self.view addSubview:headerView];
     [headerView release];
+    
+    // 设置眉头阴影
+    UIImage *shadowImage = [UIImage imageNamed:@"眉头阴影_04"];
+    UIImageView *shadowView = [[UIImageView alloc] initWithImage:shadowImage];
+    shadowView.frame = CGRectMake(0, CGRectGetMaxY(headerView.frame), kRootViewWidth, 30);
+    [self.view addSubview:shadowView];
+    [shadowView release];
+    
+    // 设置眉头登录头像信息
+    UIImage *avatar = [UIImage imageNamed:@"头像_11"];
+    UIImageView *userAvatar = [[UIImageView alloc] initWithImage:avatar];
+    userAvatar.contentMode = UIViewContentModeScaleAspectFit;
+    userAvatar.frame = CGRectMake(5, 20, 60, 60);
+    [headerView addSubview:userAvatar];
+    [userAvatar release];
 }
 
 #pragma mark - 导航栏按钮点击事件、切换视图
@@ -158,19 +182,27 @@
         return;
     }
     
+    // 避免重复动画发生冲突
+    if (isAnimating) {
+        return;
+    }
+    
     // 当前出现的视图
     UIView *appearedView = _views[_currentSelectedButton];
     // 将要出现的视图
     UIView *willAppearView = _views[index];
-    [self.view addSubview:willAppearView];
+    [_contentMainView addSubview:willAppearView];
     [self.view sendSubviewToBack:willAppearView];
+
     // 当前选中的导航按钮
     UIButton *selectedButton = (UIButton *)[_naviBar viewWithTag:_currentSelectedButton + kButtonTag];
     // 将要选中的导航按钮
     UIButton *willSelectedButton = (UIButton *)[_naviBar viewWithTag:sender.tag];
     
+    // 开始动画
+    isAnimating = YES;
     if (_currentSelectedButton < index) {
-        // 当前在上，将要选中的在下面，像下推动动画
+        // 当前在上，将要选中的在下面，向下推动动画
         willAppearView.center = kMainViewCenterDown;
         [UIView animateWithDuration:kAnimateDuration / 2
                          animations:^{
@@ -182,6 +214,7 @@
                          completion:^(BOOL finished) {
                              [appearedView removeFromSuperview];
                              _currentSelectedButton = index;
+                             isAnimating = NO;
                          }];
     } else {
         // 当前在下，将要选中的视图在上面，向下推动动画
@@ -196,6 +229,7 @@
                          completion:^(BOOL finished) {
                              [appearedView removeFromSuperview];
                              _currentSelectedButton = index;
+                             isAnimating = NO;
                          }];
     }
 }

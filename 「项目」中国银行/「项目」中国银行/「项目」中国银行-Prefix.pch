@@ -16,6 +16,7 @@
 #endif
 
 #define kAnimateDuration 1.0f
+#define kDataUpdateTimeInterval 600   // 更新数据事件间隔
 
 #define kRootViewWidth           1024 // 根视图宽度
 #define kRootViewHeight          768  // 根视图高度
@@ -44,6 +45,10 @@
 #ifndef _INDEX_
 #define _INDEX_
 #define kLoopImagesKey @"loopImagesKey"
+#define kLatestNewsKey @"latestNewsKey"
+#define kHotNewsKey @"hotNewsKey"
+#define kHotCollectionViewTag 300
+#define kCustomProjectCollectionViewTag 301
 #endif
 
 
