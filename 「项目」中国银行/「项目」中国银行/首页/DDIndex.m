@@ -386,6 +386,7 @@ typedef enum {
     // 集合视图
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:imageView.bounds
                                                           collectionViewLayout:layout];
+    [layout release];
     collectionView.tag = kHotCollectionViewTag;
     collectionView.contentSize = CGSizeMake(imageView.bounds.size.width * 3, 0);
     collectionView.pagingEnabled = YES;
@@ -395,7 +396,7 @@ typedef enum {
     [collectionView setDataSource:self];
     [imageView addSubview:collectionView];
     [collectionView release];
-    [layout release];
+    
 }
 
 #pragma mark - 产品定制实现相关方法
@@ -439,6 +440,7 @@ typedef enum {
     // 集合视图
     UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:backgroundView.bounds
                                                           collectionViewLayout:layout];
+    [layout release];
     collectionView.tag = kCustomProjectCollectionViewTag;
     collectionView.contentSize = CGSizeMake(backgroundView.bounds.size.width * 3, 0);
     collectionView.pagingEnabled = YES;
@@ -449,7 +451,6 @@ typedef enum {
     [backgroundView addSubview:collectionView];
 //    collectionView.backgroundColor = [UIColor orangeColor];
     [collectionView release];
-    [layout release];
 }
 
 #pragma mark - <UITableViewDataSource>
