@@ -169,6 +169,14 @@
     userAvatar.frame = CGRectMake(5, 20, 60, 60);
     [headerView addSubview:userAvatar];
     [userAvatar release];
+    
+    // 设置底部视图
+    UIImage *bottomImage = [UIImage imageNamed:@"down_27"];
+    UIImageView *bottomView = [[UIImageView alloc] initWithImage:bottomImage];
+    bottomView.bounds = CGRectMake(0, 0, kRootViewWidth, 20);
+    bottomView.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight - 10);
+    [self.view addSubview:bottomView];
+    [bottomView release];
 }
 
 #pragma mark - 导航栏按钮点击事件、切换视图

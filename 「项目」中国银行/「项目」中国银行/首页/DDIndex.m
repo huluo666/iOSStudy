@@ -364,7 +364,16 @@ typedef enum {
     [imageView release];
     
     // 分页控件
-#pragma mark - TODO
+    UIPageControl *pageController = [[UIPageControl alloc] init];
+    pageController.bounds = CGRectMake(0, 0, bounds.size.width - 20, 30);
+    pageController.center = CGPointMake(CGRectGetMidX(imageView.bounds),
+                                        CGRectGetMaxY(imageView.bounds) - CGRectGetMaxY(pageController.bounds));
+    pageController.numberOfPages = 6;
+    pageController.currentPage = 0;
+    pageController.currentPageIndicatorTintColor = [UIColor redColor];
+    pageController.pageIndicatorTintColor = [UIColor grayColor];
+    [imageView addSubview:pageController];
+    [pageController release];
     
     // cell布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -409,7 +418,16 @@ typedef enum {
     [backgroundView release];
     
     // 分页控件
-#pragma mark - TODO
+    UIPageControl *pageController = [[UIPageControl alloc] init];
+    pageController.bounds = CGRectMake(0, 0, backgroundView.bounds.size.width - 20, 30);
+    pageController.center = CGPointMake(CGRectGetMidX(backgroundView.bounds),
+                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMaxY(pageController.bounds));
+    pageController.numberOfPages = 7;
+    pageController.currentPage = 0;
+    pageController.currentPageIndicatorTintColor = [UIColor redColor];
+    pageController.pageIndicatorTintColor = [UIColor grayColor];
+    [backgroundView addSubview:pageController];
+    [pageController release];
     
     // cell布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
