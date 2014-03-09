@@ -64,6 +64,7 @@
                              
                              // 用户名输入框
                              UITextField *userName = [self textField];
+                             [userName becomeFirstResponder];
                              userName.center = CGPointMake(CGRectGetMidX(loginImageView.bounds),
                                                            CGRectGetMidY(loginImageView.bounds) - 111);
                              userName.text = @"khjl001";
@@ -141,6 +142,11 @@
 - (void)processRemember:(UIButton *)sender
 {
     sender.selected = sender.isSelected ? NO : YES;
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self endEditing:YES];
 }
 
 @end

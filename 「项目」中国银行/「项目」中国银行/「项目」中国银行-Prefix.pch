@@ -19,6 +19,7 @@
 #define kDataUpdateTimeInterval 600   // 更新数据事件间隔
 #define kImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] \
                                 pathForAuxiliaryExecutable:NAME]] // 获取图片
+#define kRandomColor [UIColor colorWithRed:arc4random() % 128 / 255.0f green:arc4random() % 64 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.000]
 
 
 #define kRootViewWidth           1024 // 根视图宽度
