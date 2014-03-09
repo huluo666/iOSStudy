@@ -247,9 +247,6 @@ typedef enum {
 
 - (void)initializePlayImagesRunLoopView
 {
-    
-    
-    
     CGRect frame = CGRectMake(10, 15, 600, 320);
     
     // 下面的图片展示视图
