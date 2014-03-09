@@ -41,7 +41,7 @@
     
     DDShowCollectionViewProject *showCollectionView = [[DDShowCollectionViewProject alloc] initWithFrame:self.view.frame layOut:layout];
     showCollectionView.viewController = self;
-
+    [showCollectionView.collectionView registerClass:[UICollectionViewCell class]forCellWithReuseIdentifier:@"CustomProjectCollcetionCell"];
 }
 
 #pragma mark - collectionView ---

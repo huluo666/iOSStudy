@@ -23,13 +23,17 @@
     if (self) {
         UICollectionView *collection = [[UICollectionView alloc] initWithFrame:frame collectionViewLayout:layout];
         collection.backgroundColor = [UIColor yellowColor];
-            [collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CustomProjectCollcetionCell"];
         _collectionView = collection;
         [self addSubview:collection];
         
     }
     return self;
 }
+
+//- (id)initWithFrame:(CGRect)frame
+//{
+//    
+//}
 
 
 - (void)setViewController:(UIViewController<UICollectionViewDelegate, UICollectionViewDataSource> *)viewController
