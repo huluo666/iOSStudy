@@ -36,7 +36,6 @@ typedef enum {
         // 背景图片效果
         UIImage *backgroundImage = [UIImage imageNamed:@"底_14"];
         UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        backgroundView.userInteractionEnabled = YES;
         backgroundView.frame = frame;
         [self addSubview:backgroundView];
         [backgroundView release];
@@ -49,8 +48,7 @@ typedef enum {
                                                bounds.size.width,
                                                bounds.size.height * 0.8);
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewFrame];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
+            imageView.contentMode = UIViewContentModeScaleToFill;
             _imageView = [imageView retain];
             [imageView release];
             [self addSubview:_imageView];
@@ -84,9 +82,7 @@ typedef enum {
             imageView.bounds = imageViewBounds;
             imageView.center = CGPointMake(CGRectGetMidX(imageViewBounds) + 5,
                                            bounds.size.height / 2);
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            imageView.userInteractionEnabled = YES;
+            imageView.contentMode = UIViewContentModeScaleToFill;
             _imageView = [imageView retain];
             [imageView release];
             [self addSubview:_imageView];
@@ -124,6 +120,7 @@ typedef enum {
              forControlEvents:UIControlEventTouchUpInside];
             _button = [button retain];
             [self addSubview:_button];
+            
         }
     }
     return self;
@@ -141,7 +138,7 @@ typedef enum {
 
 - (void)processTap:(UIView *)view
 {
-    NSLog(@"点击回调方法");
+    NSLog(@"-----");
     if (_processTap) {
         _processTap(view);
     }
@@ -149,96 +146,9 @@ typedef enum {
 
 @end
 
-#pragma mark - 集合视图视图封装
-
-@interface DDCollectionViewPackage : UIView
-
-@property (nonatomic, retain) UIView<UICollectionViewDelegate, UICollectionViewDataSource> *view; // 父控件
-@property (nonatomic, retain, readonly) UIImageView *backgroundImageView;   // 背景图片
-@property (nonatomic, retain, readonly) UICollectionView *collectionView;   // 集合视图
-@property (nonatomic, retain, readonly) UICollectionViewFlowLayout *layout; // cell布局
-@property (nonatomic, retain, readonly) UIPageControl *pageControl;         // 分页控件
-
-+ (instancetype)collectionViewPackageWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout;
-
-@end
-
-@implementation DDCollectionViewPackage
-
-- (void)dealloc
-{
-
-    [_view release];
-    [_backgroundImageView release];
-    [_collectionView release];
-    [_layout release];
-    [_pageControl release];
-    [super dealloc];
-}
-
-+ (instancetype)collectionViewPackageWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
-{
-    return [[[self alloc] initWithFrame:frame collectionViewLayout:layout] autorelease];
-}
-
-- (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
-{
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor clearColor];
-        CGRect bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
-        
-        // 添加背景图片视图
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
-        backgroundImageView.clipsToBounds = YES;
-        backgroundImageView.userInteractionEnabled = YES;
-        _backgroundImageView = [backgroundImageView retain];
-        [backgroundImageView release];
-        [self addSubview:_backgroundImageView];
-        
-        // 添加集合视图
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:bounds collectionViewLayout:layout];
-        collectionView.contentSize = CGSizeMake(CGRectGetWidth(self.bounds) * 3, 0);
-        collectionView.pagingEnabled = YES;
-        collectionView.backgroundColor = [UIColor clearColor];
-        _collectionView = [collectionView retain];
-        [collectionView release];
-        [self addSubview:_collectionView];
-        
-        // 添加分页控件
-        UIPageControl *pageControl = [[UIPageControl alloc] init];
-        pageControl.bounds = CGRectMake(0, 0, bounds.size.width - 20, 30);
-        pageControl.center = CGPointMake(CGRectGetMidX(bounds),
-                                            CGRectGetMaxY(bounds) - CGRectGetMaxY(pageControl.bounds));
-        pageControl.numberOfPages = 2;
-        pageControl.currentPage = 0;
-        pageControl.currentPageIndicatorTintColor = [UIColor redColor];
-        pageControl.pageIndicatorTintColor = [UIColor grayColor];
-        _pageControl = [pageControl retain];
-        [pageControl release];
-        [self addSubview:_pageControl];
-    }
-    
-    return self;
-}
-
-- (void)setView:(UIView<UICollectionViewDelegate, UICollectionViewDataSource> *)view
-{
-    _view = [view retain];
-    [_view addSubview:self];
-    _collectionView.delegate = _view;
-    _collectionView.dataSource = _view;
-}
-
-@end
-
 #import "DDIndex.h"
 
-@interface DDIndex () <
-    UITableViewDataSource,
-    UITableViewDelegate,
-    UICollectionViewDelegate,
-    UICollectionViewDataSource>
+@interface DDIndex () <UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 {
     NSMutableDictionary *_dataSource;  // 数据源，存储网络获取的数据
     UIImageView *_downImageView;       // 下面的图片展示视图
@@ -438,27 +348,52 @@ typedef enum {
 
 - (void)initializeHotNewsView
 {
-    // 集合视图
+    CGRect bounds = CGRectMake(0, 0, 600, 300);
+
+    // 背景
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"最热-底_12"]];
+    imageView.bounds = bounds;
+    imageView.center = CGPointMake(CGRectGetMidX(_downImageView.frame),
+                                   CGRectGetMaxY(_downImageView.frame) + CGRectGetMidY(imageView.bounds) + 10);
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.userInteractionEnabled = YES;
+    [self addSubview:imageView];
+    [imageView release];
+    
+    // 分页控件
+    UIPageControl *pageController = [[UIPageControl alloc] init];
+    pageController.bounds = CGRectMake(0, 0, bounds.size.width - 20, 30);
+    pageController.center = CGPointMake(CGRectGetMidX(imageView.bounds),
+                                        CGRectGetMaxY(imageView.bounds) - CGRectGetMaxY(pageController.bounds));
+    pageController.numberOfPages = 6;
+    pageController.currentPage = 0;
+    pageController.currentPageIndicatorTintColor = [UIColor redColor];
+    pageController.pageIndicatorTintColor = [UIColor grayColor];
+    [imageView addSubview:pageController];
+    [pageController release];
+    
+    // cell布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [layout setItemSize:CGSizeMake(kHotNewsShowComponentFrame.size.width,
-                                   kHotNewsShowComponentFrame.size.height)];
+    [layout setItemSize:CGSizeMake(220, 100)];
     [layout setSectionInset:UIEdgeInsetsMake(20, 30, 60, 10)];
     [layout setMinimumInteritemSpacing:20];
-    [layout setMinimumLineSpacing:60];
-    CGRect frame = CGRectMake(CGRectGetMinX(_downImageView.frame),
-                              CGRectGetMaxY(_downImageView.frame),
-                              600,
-                              300);
-    DDCollectionViewPackage *viewPackage = [DDCollectionViewPackage collectionViewPackageWithFrame:frame
-                                                                              collectionViewLayout:layout];
+    [layout setMinimumLineSpacing:80];
+    
+    // 集合视图
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:imageView.bounds
+                                                          collectionViewLayout:layout];
     [layout release];
-    viewPackage.view = self;
-    viewPackage.backgroundImageView.image = [UIImage imageNamed:@"最热-底_12"];
-    viewPackage.collectionView.tag = kHotCollectionViewTag;
-    viewPackage.pageControl.numberOfPages = 6;
-    [viewPackage.collectionView registerClass:[UICollectionViewCell class]
-                   forCellWithReuseIdentifier:@"CollectionViewCellIdenitfer"];
+    collectionView.tag = kHotCollectionViewTag;
+    collectionView.contentSize = CGSizeMake(imageView.bounds.size.width * 3, 0);
+    collectionView.pagingEnabled = YES;
+    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CollcetionCell"];
+    collectionView.backgroundColor = [UIColor clearColor];
+    [collectionView setDelegate:self];
+    [collectionView setDataSource:self];
+    [imageView addSubview:collectionView];
+    [collectionView release];
+    
 }
 
 #pragma mark - 产品定制实现相关方法
@@ -470,27 +405,49 @@ typedef enum {
 
 - (void)initializeProjectCustomView
 {
-    // 集合视图
+    // 背景
+    UIImage *backgroundImage = [UIImage imageNamed:@"产品定制-底_14"];
+    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+    backgroundView.bounds = CGRectMake(0, 0, 280, 300);
+    backgroundView.center = CGPointMake(CGRectGetMaxX(self.bounds) - CGRectGetMidX(backgroundView.bounds) - 20,
+                                        CGRectGetMaxY(_downImageView.frame) + CGRectGetMidY(backgroundView.bounds) + 10);
+    backgroundView.userInteractionEnabled = YES;
+    [self addSubview:backgroundView];
+    [backgroundView release];
+    
+    // 分页控件
+    UIPageControl *pageController = [[UIPageControl alloc] init];
+    pageController.bounds = CGRectMake(0, 0, backgroundView.bounds.size.width - 20, 30);
+    pageController.center = CGPointMake(CGRectGetMidX(backgroundView.bounds),
+                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMaxY(pageController.bounds));
+    pageController.numberOfPages = 7;
+    pageController.currentPage = 0;
+    pageController.currentPageIndicatorTintColor = [UIColor redColor];
+    pageController.pageIndicatorTintColor = [UIColor grayColor];
+    [backgroundView addSubview:pageController];
+    [pageController release];
+    
+    // cell布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [layout setItemSize:CGSizeMake(kCustomProjectComponentFrame.size.width,
-                                   kCustomProjectComponentFrame.size.height)];
+    [layout setItemSize:CGSizeMake(120, 100)];
     [layout setSectionInset:UIEdgeInsetsMake(20, 10, 60, 10)];
     [layout setMinimumLineSpacing:20];
-    CGRect frame = CGRectMake(CGRectGetMaxX(_downImageView.frame) + 25,
-                              CGRectGetMaxY(_downImageView.frame),
-                              280,
-                              300);
-    DDCollectionViewPackage *viewPackage = [DDCollectionViewPackage
-                                            collectionViewPackageWithFrame:frame
-                                            collectionViewLayout:layout];
-    viewPackage.view = self;
-    viewPackage.pageControl.numberOfPages = 7;
-    viewPackage.backgroundImageView.image = [UIImage imageNamed:@"产品定制-底_14"];
-    viewPackage.collectionView.tag = kCustomProjectCollectionViewTag;
-    [viewPackage.collectionView registerClass:[UICollectionViewCell class]
-                   forCellWithReuseIdentifier:@"CustomProjectCollcetionCell"];
-
+    
+    // 集合视图
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:backgroundView.bounds
+                                                          collectionViewLayout:layout];
+    [layout release];
+    collectionView.tag = kCustomProjectCollectionViewTag;
+    collectionView.contentSize = CGSizeMake(backgroundView.bounds.size.width * 3, 0);
+    collectionView.pagingEnabled = YES;
+    [collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CustomProjectCollcetionCell"];
+    collectionView.backgroundColor = [UIColor clearColor];
+    [collectionView setDelegate:self];
+    [collectionView setDataSource:self];
+    [backgroundView addSubview:collectionView];
+//    collectionView.backgroundColor = [UIColor orangeColor];
+    [collectionView release];
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -546,9 +503,9 @@ typedef enum {
     UICollectionViewCell *resultCell = nil;
     if (kHotCollectionViewTag == collectionView.tag) {
         // 热门信息
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCellIdenitfer"
+        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollcetionCell"
                                                                                forIndexPath:indexPath];
-        CGRect frame = kHotNewsShowComponentFrame;
+        CGRect frame = CGRectMake(0, 0, 240, 100);
         DDProjectShowView *hotNews = [[DDProjectShowView alloc] initWithFrame:frame
                                                           projectShowViewType:DDProjectShowViewTypeSubTitle];
         hotNews.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
@@ -561,13 +518,15 @@ typedef enum {
         // 产品定制
         UICollectionViewCell *customProjectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CustomProjectCollcetionCell"
                                                                                             forIndexPath:indexPath];
-        CGRect customProjectFrame = kCustomProjectComponentFrame;
+        CGRect customProjectFrame = CGRectMake(0, 0, 120, 100);
         DDProjectShowView *customProject = [[DDProjectShowView alloc] initWithFrame:customProjectFrame
                                                                 projectShowViewType:DDProjectShowViewTypeDefault];
         customProject.textLabel.text = @"ddddddd";
         customProject.imageView.image = [UIImage imageNamed:@"网上银行BOCNET1"];
         [customProjectCell.contentView addSubview:customProject];
         [customProject release];
+        
+//        [customProjectCell setBackgroundColor:[UIColor greenColor]];
         resultCell = customProjectCell;
     }
 
@@ -583,3 +542,10 @@ typedef enum {
 }
 
 @end
+
+
+
+
+
+
+

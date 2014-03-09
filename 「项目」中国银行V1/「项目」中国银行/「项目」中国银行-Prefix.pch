@@ -49,8 +49,6 @@
 #define kHotNewsKey @"hotNewsKey"
 #define kHotCollectionViewTag 300
 #define kCustomProjectCollectionViewTag 301
-#define kHotNewsShowComponentFrame (CGRectMake(0, 0, 240, 100))
-#define kCustomProjectComponentFrame (CGRectMake(0, 0, 120, 100))
 #endif
 
 
