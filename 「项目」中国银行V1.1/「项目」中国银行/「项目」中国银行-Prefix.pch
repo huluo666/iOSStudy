@@ -17,9 +17,6 @@
 
 #define kAnimateDuration 1.0f
 #define kDataUpdateTimeInterval 600   // 更新数据事件间隔
-#define kImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] \
-                                pathForAuxiliaryExecutable:NAME]] // 获取图片
-
 
 #define kRootViewWidth           1024 // 根视图宽度
 #define kRootViewHeight          768  // 根视图高度
@@ -52,8 +49,8 @@
 #define kHotNewsKey @"hotNewsKey"
 #define kHotCollectionViewTag 300
 #define kCustomProjectCollectionViewTag 301
-#define kHotNewsShowComponentBounds (CGRectMake(0, 0, 240, 100))
-#define kCustomProjectComponentBounds (CGRectMake(0, 0, 120, 100))
+#define kHotNewsShowComponentFrame (CGRectMake(0, 0, 240, 100))
+#define kCustomProjectComponentFrame (CGRectMake(0, 0, 120, 100))
 #endif
 
 

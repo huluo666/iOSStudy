@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06C976BC18CC7895006D8A5D /* DDCollectionViewPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C976BB18CC7895006D8A5D /* DDCollectionViewPackage.m */; };
-		06C976BF18CC7D56006D8A5D /* DDCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C976BE18CC7D56006D8A5D /* DDCollectionCellView.m */; };
 		06D388CB18C9F6D700113372 /* DDIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CA18C9F6D700113372 /* DDIndex.m */; };
 		06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CD18C9FD5000113372 /* DDAbroad.m */; };
 		06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388D018C9FD6F00113372 /* DDFinancing.m */; };
@@ -240,10 +238,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06C976BA18CC7895006D8A5D /* DDCollectionViewPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionViewPackage.h; sourceTree = "<group>"; };
-		06C976BB18CC7895006D8A5D /* DDCollectionViewPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionViewPackage.m; sourceTree = "<group>"; };
-		06C976BD18CC7D56006D8A5D /* DDCollectionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionCellView.h; sourceTree = "<group>"; };
-		06C976BE18CC7D56006D8A5D /* DDCollectionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionCellView.m; sourceTree = "<group>"; };
 		06D388C918C9F6D700113372 /* DDIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDIndex.h; sourceTree = "<group>"; };
 		06D388CA18C9F6D700113372 /* DDIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDIndex.m; sourceTree = "<group>"; };
 		06D388CC18C9FD5000113372 /* DDAbroad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbroad.h; sourceTree = "<group>"; };
@@ -500,17 +494,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06C976B918CC786F006D8A5D /* 展示视图控件 */ = {
-			isa = PBXGroup;
-			children = (
-				06C976BD18CC7D56006D8A5D /* DDCollectionCellView.h */,
-				06C976BE18CC7D56006D8A5D /* DDCollectionCellView.m */,
-				06C976BA18CC7895006D8A5D /* DDCollectionViewPackage.h */,
-				06C976BB18CC7895006D8A5D /* DDCollectionViewPackage.m */,
-			);
-			path = "展示视图控件";
-			sourceTree = "<group>";
-		};
 		06D388C318C9F48F00113372 /* 出国服务 */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,7 +533,6 @@
 		06D388C718C9F48F00113372 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
-				06C976B918CC786F006D8A5D /* 展示视图控件 */,
 				06D388C918C9F6D700113372 /* DDIndex.h */,
 				06D388CA18C9F6D700113372 /* DDIndex.m */,
 			);
@@ -1170,8 +1152,6 @@
 				06D388DA18C9FDD600113372 /* DDShopcart.m in Sources */,
 				95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */,
 				952BB34218C970B2002F4928 /* DDAppDelegate.m in Sources */,
-				06C976BF18CC7D56006D8A5D /* DDCollectionCellView.m in Sources */,
-				06C976BC18CC7895006D8A5D /* DDCollectionViewPackage.m in Sources */,
 				06D388D418C9FD8D00113372 /* DDChoose.m in Sources */,
 				952BB33E18C970B2002F4928 /* main.m in Sources */,
 			);

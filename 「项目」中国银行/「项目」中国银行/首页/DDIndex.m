@@ -6,239 +6,14 @@
 //  Copyright (c) 2014 CUAN. All rights reserved.
 //
 
-#pragma mark - 显示视图封装
 
-typedef enum {
-    DDProjectShowViewTypeDefault  = 0 << 1,
-    DDProjectShowViewTypeSubTitle = 1 << 1
-} DDProjectShowViewType;
-
-
-@interface DDProjectShowView : UIView
-
-@property (retain, nonatomic, readonly) UIImageView *imageView;       // 热门产怕图片视图
-@property (retain, nonatomic, readonly) UILabel     *textLabel;       // 热门产品介绍信息
-@property (retain, nonatomic, readonly) UILabel     *detailTextLabel; // 热门产品详细信息介绍
-@property (retain, nonatomic, readonly) UIButton    *button;          // 点击按钮
-@property (copy, nonatomic) void(^processTap)(UIView *view);
-
-- (instancetype)initWithFrame:(CGRect)frame projectShowViewType:(DDProjectShowViewType)type;
-
-@end
-
-@implementation DDProjectShowView
-
-- (instancetype)initWithFrame:(CGRect)frame projectShowViewType:(DDProjectShowViewType)type
-{
-    if (self = [super initWithFrame:frame]) {
-        CGRect bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
-        
-        // 背景图片效果
-        UIImage *backgroundImage = [UIImage imageNamed:@"底_14"];
-        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        backgroundView.userInteractionEnabled = YES;
-        backgroundView.frame = frame;
-        [self addSubview:backgroundView];
-        [backgroundView release];
-        
-        if (DDProjectShowViewTypeDefault == type) {
-            // 默认布局
-            // 图片
-            CGRect imageViewFrame = CGRectMake(0,
-                                               0,
-                                               bounds.size.width,
-                                               bounds.size.height * 0.8);
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewFrame];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            _imageView = [imageView retain];
-            [imageView release];
-            [self addSubview:_imageView];
-            
-            // 显示文本
-            CGRect textLabelFrame = CGRectMake(0,
-                                               bounds.size.height * 0.8,
-                                               bounds.size.width,
-                                               bounds.size.height * 0.2);
-            UILabel *textLabel = [[UILabel alloc] initWithFrame:textLabelFrame];
-            textLabel.textAlignment = NSTextAlignmentCenter;
-            _textLabel = [textLabel retain];
-            [textLabel release];
-            [self addSubview:_textLabel];
-            
-            // 添加单击手势
-            UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
-                                                  initWithTarget:self
-                                                  action:@selector(processTap:)];
-            [self addGestureRecognizer:tapGesture];
-            [tapGesture release];
-            
-        } else {
-            // 详细信息布局
-            // 图片
-            CGRect imageViewBounds = CGRectMake(0,
-                                                0,
-                                                bounds.size.width / 3,
-                                                bounds.size.height * 0.9);
-            UIImageView *imageView = [[UIImageView alloc] init];
-            imageView.bounds = imageViewBounds;
-            imageView.center = CGPointMake(CGRectGetMidX(imageViewBounds) + 5,
-                                           bounds.size.height / 2);
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            imageView.userInteractionEnabled = YES;
-            _imageView = [imageView retain];
-            [imageView release];
-            [self addSubview:_imageView];
-            
-            // 显示信息文本
-            CGRect textLabelBounds = CGRectMake(0,
-                                                0,
-                                                bounds.size.width / 3 * 2 - 15,
-                                                bounds.size.height / 3);
-            UILabel *textLabel = [[UILabel alloc] init];
-            textLabel.bounds = textLabelBounds;
-            textLabel.center = CGPointMake(CGRectGetMidX(textLabel.bounds) + CGRectGetWidth(imageViewBounds) + 10,
-                                           CGRectGetMidY(textLabel.bounds));
-            _textLabel = [textLabel retain];
-            [textLabel release];
-            [self addSubview:_textLabel];
-            
-            // 显示详细信息文本
-            UILabel *detailTextLabel = [[UILabel alloc] init];
-            detailTextLabel.bounds = textLabelBounds;
-            detailTextLabel.center = CGPointMake(textLabel.center.x,
-                                                 textLabel.center.y + CGRectGetHeight(textLabel.bounds));
-            _detailTextLabel = [detailTextLabel retain];
-            [detailTextLabel release];
-            [self addSubview:_detailTextLabel];
-            
-            // 详情button
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            button.bounds = CGRectMake(0, 0, 60, 30);
-            button.center = CGPointMake(CGRectGetWidth(bounds) / 6 * 5,
-                                        CGRectGetMaxY(bounds) - CGRectGetMidY(button.bounds) - 5);
-            [button setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal];
-            [button addTarget:self
-                       action:@selector(processTap:)
-             forControlEvents:UIControlEventTouchUpInside];
-            _button = [button retain];
-            [self addSubview:_button];
-        }
-    }
-    return self;
-}
-
-- (void)dealloc
-{
-    [_imageView release];
-    [_textLabel release];
-    [_detailTextLabel release];
-    [_button release];
-    [_processTap release];
-    [super dealloc];
-}
-
-- (void)processTap:(UIView *)view
-{
-    NSLog(@"点击回调方法");
-    if (_processTap) {
-        _processTap(view);
-    }
-}
-
-@end
-
-#pragma mark - 集合视图视图封装
-
-@interface DDCollectionViewPackage : UIView
-
-@property (nonatomic, retain) UIView<UICollectionViewDelegate, UICollectionViewDataSource> *view; // 父控件
-@property (nonatomic, retain, readonly) UIImageView *backgroundImageView;   // 背景图片
-@property (nonatomic, retain, readonly) UICollectionView *collectionView;   // 集合视图
-@property (nonatomic, retain, readonly) UICollectionViewFlowLayout *layout; // cell布局
-@property (nonatomic, retain, readonly) UIPageControl *pageControl;         // 分页控件
-
-+ (instancetype)collectionViewPackageWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout;
-
-@end
-
-@implementation DDCollectionViewPackage
-
-- (void)dealloc
-{
-
-    [_view release];
-    [_backgroundImageView release];
-    [_collectionView release];
-    [_layout release];
-    [_pageControl release];
-    [super dealloc];
-}
-
-+ (instancetype)collectionViewPackageWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
-{
-    return [[[self alloc] initWithFrame:frame collectionViewLayout:layout] autorelease];
-}
-
-- (id)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout
-{
-    if (self = [super initWithFrame:frame]) {
-        self.backgroundColor = [UIColor clearColor];
-        CGRect bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
-        
-        // 添加背景图片视图
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
-        backgroundImageView.clipsToBounds = YES;
-        backgroundImageView.userInteractionEnabled = YES;
-        _backgroundImageView = [backgroundImageView retain];
-        [backgroundImageView release];
-        [self addSubview:_backgroundImageView];
-        
-        // 添加集合视图
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:bounds collectionViewLayout:layout];
-        collectionView.contentSize = CGSizeMake(CGRectGetWidth(self.bounds) * 3, 0);
-        collectionView.pagingEnabled = YES;
-        collectionView.backgroundColor = [UIColor clearColor];
-        _collectionView = [collectionView retain];
-        [collectionView release];
-        [self addSubview:_collectionView];
-        
-        // 添加分页控件
-        UIPageControl *pageControl = [[UIPageControl alloc] init];
-        pageControl.bounds = CGRectMake(0, 0, bounds.size.width - 20, 30);
-        pageControl.center = CGPointMake(CGRectGetMidX(bounds),
-                                            CGRectGetMaxY(bounds) - CGRectGetMaxY(pageControl.bounds));
-        pageControl.numberOfPages = 2;
-        pageControl.currentPage = 0;
-        pageControl.currentPageIndicatorTintColor = [UIColor redColor];
-        pageControl.pageIndicatorTintColor = [UIColor grayColor];
-        _pageControl = [pageControl retain];
-        [pageControl release];
-        [self addSubview:_pageControl];
-    }
-    
-    return self;
-}
-
-- (void)setView:(UIView<UICollectionViewDelegate, UICollectionViewDataSource> *)view
-{
-    _view = [view retain];
-    [_view addSubview:self];
-    _collectionView.delegate = _view;
-    _collectionView.dataSource = _view;
-}
-
-@end
 
 #import "DDIndex.h"
+#import "DDCollectionViewPackage.h"
 
 @interface DDIndex () <
     UITableViewDataSource,
-    UITableViewDelegate,
-    UICollectionViewDelegate,
-    UICollectionViewDataSource>
+    UITableViewDelegate>
 {
     NSMutableDictionary *_dataSource;  // 数据源，存储网络获取的数据
     UIImageView *_downImageView;       // 下面的图片展示视图
@@ -441,24 +216,28 @@ typedef enum {
     // 集合视图
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [layout setItemSize:CGSizeMake(kHotNewsShowComponentFrame.size.width,
-                                   kHotNewsShowComponentFrame.size.height)];
-    [layout setSectionInset:UIEdgeInsetsMake(20, 30, 60, 10)];
+    [layout setItemSize:CGSizeMake(kHotNewsShowComponentBounds.size.width,
+                                   kHotNewsShowComponentBounds.size.height)];
+    [layout setSectionInset:UIEdgeInsetsMake(20, 30, 60, 30)];
     [layout setMinimumInteritemSpacing:20];
     [layout setMinimumLineSpacing:60];
     CGRect frame = CGRectMake(CGRectGetMinX(_downImageView.frame),
                               CGRectGetMaxY(_downImageView.frame),
                               600,
                               300);
-    DDCollectionViewPackage *viewPackage = [DDCollectionViewPackage collectionViewPackageWithFrame:frame
-                                                                              collectionViewLayout:layout];
+    
+    DDCollectionViewPackage *viewPackage =
+        [[DDCollectionViewPackage alloc] initWithFrame:frame
+                                  collectionViewLayout:layout
+                                       reuseIdentifier:@"HotNewsViewCellIdenitfier"
+                                collectionCellViewType:DDCollectionCellViewSubTitle
+                              collectionCellViewBounds:kHotNewsShowComponentBounds
+                                                  dataSource:nil];
     [layout release];
-    viewPackage.view = self;
     viewPackage.backgroundImageView.image = [UIImage imageNamed:@"最热-底_12"];
     viewPackage.collectionView.tag = kHotCollectionViewTag;
-    viewPackage.pageControl.numberOfPages = 6;
-    [viewPackage.collectionView registerClass:[UICollectionViewCell class]
-                   forCellWithReuseIdentifier:@"CollectionViewCellIdenitfer"];
+    [self addSubview:viewPackage];
+    [viewPackage release];
 }
 
 #pragma mark - 产品定制实现相关方法
@@ -473,24 +252,26 @@ typedef enum {
     // 集合视图
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     [layout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
-    [layout setItemSize:CGSizeMake(kCustomProjectComponentFrame.size.width,
-                                   kCustomProjectComponentFrame.size.height)];
+    [layout setItemSize:CGSizeMake(kCustomProjectComponentBounds.size.width,
+                                   kCustomProjectComponentBounds.size.height)];
     [layout setSectionInset:UIEdgeInsetsMake(20, 10, 60, 10)];
     [layout setMinimumLineSpacing:20];
     CGRect frame = CGRectMake(CGRectGetMaxX(_downImageView.frame) + 25,
                               CGRectGetMaxY(_downImageView.frame),
                               280,
                               300);
-    DDCollectionViewPackage *viewPackage = [DDCollectionViewPackage
-                                            collectionViewPackageWithFrame:frame
-                                            collectionViewLayout:layout];
-    viewPackage.view = self;
-    viewPackage.pageControl.numberOfPages = 7;
+    DDCollectionViewPackage *viewPackage =
+        [[DDCollectionViewPackage alloc] initWithFrame:frame
+                                  collectionViewLayout:layout
+                                       reuseIdentifier:@"customProjectViewCellIdenitfier"
+                                collectionCellViewType:DDCollectionCellViewDefault
+                              collectionCellViewBounds:kCustomProjectComponentBounds
+                                                  dataSource:nil];
+    [layout release];
     viewPackage.backgroundImageView.image = [UIImage imageNamed:@"产品定制-底_14"];
     viewPackage.collectionView.tag = kCustomProjectCollectionViewTag;
-    [viewPackage.collectionView registerClass:[UICollectionViewCell class]
-                   forCellWithReuseIdentifier:@"CustomProjectCollcetionCell"];
-
+    [self addSubview:viewPackage];
+    [viewPackage release];
 }
 
 #pragma mark - <UITableViewDataSource>
@@ -524,62 +305,6 @@ typedef enum {
 {
     NSLog(@"didSelectRowAtIndexPath");
 #pragma mark - TODO 弹出动画
-}
-
-
-#pragma mark - <UICollectionViewDatasource>
-
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-{
-    return 1;
-}
-
-- (NSInteger)collectionView:(UICollectionView *)collectionView
-     numberOfItemsInSection:(NSInteger)section
-{
-    return 11;
-}
-
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
-                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *resultCell = nil;
-    if (kHotCollectionViewTag == collectionView.tag) {
-        // 热门信息
-        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CollectionViewCellIdenitfer"
-                                                                               forIndexPath:indexPath];
-        CGRect frame = kHotNewsShowComponentFrame;
-        DDProjectShowView *hotNews = [[DDProjectShowView alloc] initWithFrame:frame
-                                                          projectShowViewType:DDProjectShowViewTypeSubTitle];
-        hotNews.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-        hotNews.detailTextLabel.text = @"detail text";
-        hotNews.imageView.image = [UIImage imageNamed:@"网上银行BOCNET1"];
-        [cell.contentView addSubview:hotNews];
-        [hotNews release];
-        resultCell = cell;
-    } else {
-        // 产品定制
-        UICollectionViewCell *customProjectCell = [collectionView dequeueReusableCellWithReuseIdentifier:@"CustomProjectCollcetionCell"
-                                                                                            forIndexPath:indexPath];
-        CGRect customProjectFrame = kCustomProjectComponentFrame;
-        DDProjectShowView *customProject = [[DDProjectShowView alloc] initWithFrame:customProjectFrame
-                                                                projectShowViewType:DDProjectShowViewTypeDefault];
-        customProject.textLabel.text = @"ddddddd";
-        customProject.imageView.image = [UIImage imageNamed:@"网上银行BOCNET1"];
-        [customProjectCell.contentView addSubview:customProject];
-        [customProject release];
-        resultCell = customProjectCell;
-    }
-
-    return resultCell;
-}
-
-#pragma mark - <UICollectionViewDelegate>
-
-- (void)collectionView:(UICollectionView *)collectionView
-    didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"section:%ld row:%ld",indexPath.section, indexPath.row);
 }
 
 @end
