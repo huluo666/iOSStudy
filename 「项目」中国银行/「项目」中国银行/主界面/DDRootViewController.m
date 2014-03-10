@@ -34,6 +34,9 @@
 // 切换视图
 - (void)toggleVC:(UIButton *)sender;
 
+// 登出
+- (void)logout;
+
 @end
 
 @implementation DDRootViewController
@@ -78,11 +81,11 @@
 - (void)initializeViews
 {
     // 分别创建各导航器的视图
-    DDIndex *index = [[DDIndex alloc] initWithFrame:kMainViewFrame];
-    DDAbroad *abroad = [[DDAbroad alloc] initWithFrame:kMainViewFrame];
-    DDFinancing *financing = [[DDFinancing alloc] initWithFrame:kMainViewFrame];
-    DDChoose *choose = [[DDChoose alloc] initWithFrame:kMainViewFrame];
-    DDSchedule *schedule = [[DDSchedule alloc] initWithFrame:kMainViewFrame];
+    DDIndex *index = [[DDIndex alloc] initWithFrame:kMainViewBounds];
+    DDAbroad *abroad = [[DDAbroad alloc] initWithFrame:kMainViewBounds];
+    DDFinancing *financing = [[DDFinancing alloc] initWithFrame:kMainViewBounds];
+    DDChoose *choose = [[DDChoose alloc] initWithFrame:kMainViewBounds];
+    DDSchedule *schedule = [[DDSchedule alloc] initWithFrame:kMainViewBounds];
     
     _views = [@[index, abroad, financing, choose, schedule] retain];
 
@@ -96,12 +99,12 @@
 - (void)initializeUserInterface
 {
     self.view.frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
-    
+    self.view.userInteractionEnabled = YES;
     // 大背景
-    UIImage *bigImage = [UIImage imageNamed:@"大背景"];
+    UIImage *bigImage = nil;
     _contentMainView = [[UIImageView alloc] initWithImage:bigImage];
     _contentMainView.userInteractionEnabled = YES;
-    _contentMainView.frame = self.view.frame;
+    _contentMainView.frame = kMainViewFrame;
     [self.view addSubview:_contentMainView];
     
     // 设置左侧导航条
@@ -113,7 +116,7 @@
     
     // 设置左侧导航栏底图
     UIView *naviBaseView = [[UIView alloc] init];
-    naviBaseView.bounds = CGRectMake(0, 0, kNaviBarViewWidth - 8, kRootViewHeight);
+    naviBaseView.bounds = CGRectMake(0, 0, kNaviBarBaseViewWidth, kRootViewHeight);
     naviBaseView.center = CGPointMake(CGRectGetMidX(_naviBar.bounds) - 4,
                                       self.view.center.y);
     naviBaseView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"导航-底_03"]];
@@ -152,6 +155,7 @@
     UIImage *headerImage = [UIImage imageNamed:@"眉头_01"];
     UIImageView *headerView =[[UIImageView alloc] initWithImage:headerImage];
     headerView.frame = CGRectMake(0, 0, kRootViewWidth, kHeaderViewHeight);
+    headerView.userInteractionEnabled = YES;
     [self.view addSubview:headerView];
     [headerView release];
     
@@ -159,6 +163,7 @@
     UIImage *shadowImage = [UIImage imageNamed:@"眉头阴影_04"];
     UIImageView *shadowView = [[UIImageView alloc] initWithImage:shadowImage];
     shadowView.frame = CGRectMake(0, CGRectGetMaxY(headerView.frame), kRootViewWidth, 30);
+    shadowView.userInteractionEnabled = YES;
     [self.view addSubview:shadowView];
     [shadowView release];
     
@@ -167,9 +172,22 @@
     UIImageView *userAvatar = [[UIImageView alloc] initWithImage:avatar];
     userAvatar.contentMode = UIViewContentModeScaleAspectFit;
     userAvatar.frame = CGRectMake(5, 20, 60, 60);
+    headerView.userInteractionEnabled = YES;
     [headerView addSubview:userAvatar];
     [userAvatar release];
     
+    // 设置退出登录按钮
+    UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    logoutButton.bounds = CGRectMake(0, 0, 20, 20);
+    [logoutButton setBackgroundImage:[UIImage imageNamed:@"关闭_05"]
+                            forState:UIControlStateNormal];
+    logoutButton.center = CGPointMake(CGRectGetMaxX(userAvatar.bounds) - 5,
+                                      CGRectGetMinY(userAvatar.bounds) + 5);
+    [logoutButton addTarget:self
+                     action:@selector(logout)
+           forControlEvents:UIControlEventTouchUpInside];
+    [userAvatar addSubview:logoutButton];
+    NSLog(@"%@", headerView.subviews);
     // 设置底部视图
     UIImage *bottomImage = [UIImage imageNamed:@"down_27"];
     UIImageView *bottomView = [[UIImageView alloc] initWithImage:bottomImage];
@@ -240,6 +258,12 @@
                              isAnimating = NO;
                          }];
     }
+}
+
+- (void)logout
+{
+    NSLog(@"登出");
+    _logined = NO;
 }
 
 @end

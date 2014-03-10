@@ -57,6 +57,13 @@
     if (self) {        
         _dataSource = [[NSMutableDictionary alloc] init];
         
+//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"大背景"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"index_background"]];
+        imageView.frame = kMainViewBounds;
+        [self addSubview:imageView];
+        [imageView release];
+        
+        
         // 发起请求
         [self sendHttpRequest];
         
@@ -117,11 +124,13 @@
     // 下面的图片展示视图
     _downImageView = [[UIImageView alloc] initWithFrame:frame];
     _downImageView.contentMode = UIViewContentModeScaleToFill;
+    _downImageView.layer.cornerRadius = 1280;
     [self addSubview:_downImageView];
     
     // 上面的图片展示视图
     _upImageView = [[UIImageView alloc] initWithFrame:frame];
     _upImageView.contentMode = UIViewContentModeScaleToFill;
+    _upImageView.layer.cornerRadius = 1280;
     [self addSubview:_upImageView];
 
     [self startRunLoop];
@@ -256,7 +265,7 @@
                                    kCustomProjectComponentBounds.size.height)];
     [layout setSectionInset:UIEdgeInsetsMake(20, 10, 60, 10)];
     [layout setMinimumLineSpacing:20];
-    CGRect frame = CGRectMake(CGRectGetMaxX(_downImageView.frame) + 25,
+    CGRect frame = CGRectMake(CGRectGetMaxX(_downImageView.frame) + 35,
                               CGRectGetMaxY(_downImageView.frame),
                               280,
                               300);

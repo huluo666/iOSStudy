@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06C976BC18CC7895006D8A5D /* DDCollectionViewPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C976BB18CC7895006D8A5D /* DDCollectionViewPackage.m */; };
-		06C976BF18CC7D56006D8A5D /* DDCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06C976BE18CC7D56006D8A5D /* DDCollectionCellView.m */; };
 		06D388CB18C9F6D700113372 /* DDIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CA18C9F6D700113372 /* DDIndex.m */; };
 		06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CD18C9FD5000113372 /* DDAbroad.m */; };
 		06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388D018C9FD6F00113372 /* DDFinancing.m */; };
@@ -224,6 +222,12 @@
 		952BB57018C98CEE002F4928 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56918C98CEE002F4928 /* Icon@2x.png */; };
 		952BB57118C98CEE002F4928 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56A18C98CEE002F4928 /* iTunesArtwork.png */; };
 		952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952BB57518C98DA4002F4928 /* DDRootViewController.m */; };
+		95682ABE18CD4B9400C2CFAD /* DDCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682ABB18CD4B9400C2CFAD /* DDCollectionCellView.m */; };
+		95682ABF18CD4B9400C2CFAD /* DDCollectionViewPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682ABD18CD4B9400C2CFAD /* DDCollectionViewPackage.m */; };
+		95682AC318CD4BCF00C2CFAD /* DDShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */; };
+		95A4E17C18CDB3DB00618B79 /* DDCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A4E17B18CDB3DB00618B79 /* DDCombo.m */; };
+		95A4E17F18CDB41A00618B79 /* DDOptional.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A4E17E18CDB41A00618B79 /* DDOptional.m */; };
+		95A4E18918CDBE6E00618B79 /* index_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A4E18818CDBE6E00618B79 /* index_background.png */; };
 		95F5B37E18C9A13100C81D68 /* 眉头_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F5B37C18C9A13100C81D68 /* 眉头_01@2x.png */; };
 		95F5B37F18C9A13100C81D68 /* 眉头阴影_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F5B37D18C9A13100C81D68 /* 眉头阴影_04@2x.png */; };
 		95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F5B38518C9B20B00C81D68 /* DDLogin.m */; };
@@ -240,10 +244,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		06C976BA18CC7895006D8A5D /* DDCollectionViewPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionViewPackage.h; sourceTree = "<group>"; };
-		06C976BB18CC7895006D8A5D /* DDCollectionViewPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionViewPackage.m; sourceTree = "<group>"; };
-		06C976BD18CC7D56006D8A5D /* DDCollectionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionCellView.h; sourceTree = "<group>"; };
-		06C976BE18CC7D56006D8A5D /* DDCollectionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionCellView.m; sourceTree = "<group>"; };
 		06D388C918C9F6D700113372 /* DDIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDIndex.h; sourceTree = "<group>"; };
 		06D388CA18C9F6D700113372 /* DDIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDIndex.m; sourceTree = "<group>"; };
 		06D388CC18C9FD5000113372 /* DDAbroad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbroad.h; sourceTree = "<group>"; };
@@ -470,6 +470,18 @@
 		952BB56A18C98CEE002F4928 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		952BB57418C98DA4002F4928 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		952BB57518C98DA4002F4928 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		95682ABA18CD4B9400C2CFAD /* DDCollectionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionCellView.h; sourceTree = "<group>"; };
+		95682ABB18CD4B9400C2CFAD /* DDCollectionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionCellView.m; sourceTree = "<group>"; };
+		95682ABC18CD4B9400C2CFAD /* DDCollectionViewPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionViewPackage.h; sourceTree = "<group>"; };
+		95682ABD18CD4B9400C2CFAD /* DDCollectionViewPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionViewPackage.m; sourceTree = "<group>"; };
+		95682AC118CD4BCF00C2CFAD /* DDShowDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDShowDetail.h; sourceTree = "<group>"; };
+		95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDShowDetail.m; sourceTree = "<group>"; };
+		95A4E17718CDB2E800618B79 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		95A4E17A18CDB3DB00618B79 /* DDCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCombo.h; sourceTree = "<group>"; };
+		95A4E17B18CDB3DB00618B79 /* DDCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCombo.m; sourceTree = "<group>"; };
+		95A4E17D18CDB41A00618B79 /* DDOptional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOptional.h; sourceTree = "<group>"; };
+		95A4E17E18CDB41A00618B79 /* DDOptional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOptional.m; sourceTree = "<group>"; };
+		95A4E18818CDBE6E00618B79 /* index_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index_background.png; sourceTree = "<group>"; };
 		95F5B37C18C9A13100C81D68 /* 眉头_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "眉头_01@2x.png"; sourceTree = "<group>"; };
 		95F5B37D18C9A13100C81D68 /* 眉头阴影_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "眉头阴影_04@2x.png"; sourceTree = "<group>"; };
 		95F5B38418C9B20B00C81D68 /* DDLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogin.h; sourceTree = "<group>"; };
@@ -500,17 +512,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06C976B918CC786F006D8A5D /* 展示视图控件 */ = {
-			isa = PBXGroup;
-			children = (
-				06C976BD18CC7D56006D8A5D /* DDCollectionCellView.h */,
-				06C976BE18CC7D56006D8A5D /* DDCollectionCellView.m */,
-				06C976BA18CC7895006D8A5D /* DDCollectionViewPackage.h */,
-				06C976BB18CC7895006D8A5D /* DDCollectionViewPackage.m */,
-			);
-			path = "展示视图控件";
-			sourceTree = "<group>";
-		};
 		06D388C318C9F48F00113372 /* 出国服务 */ = {
 			isa = PBXGroup;
 			children = (
@@ -550,7 +551,6 @@
 		06D388C718C9F48F00113372 /* 首页 */ = {
 			isa = PBXGroup;
 			children = (
-				06C976B918CC786F006D8A5D /* 展示视图控件 */,
 				06D388C918C9F6D700113372 /* DDIndex.h */,
 				06D388CA18C9F6D700113372 /* DDIndex.m */,
 			);
@@ -588,6 +588,7 @@
 		952BB33018C970B2002F4928 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				95A4E17718CDB2E800618B79 /* QuartzCore.framework */,
 				952BB33118C970B2002F4928 /* Foundation.framework */,
 				952BB33318C970B2002F4928 /* CoreGraphics.framework */,
 				952BB33518C970B2002F4928 /* UIKit.framework */,
@@ -599,6 +600,7 @@
 		952BB33718C970B2002F4928 /* 「项目」中国银行 */ = {
 			isa = PBXGroup;
 			children = (
+				95682AB118CD4B6D00C2CFAD /* 控件封装 */,
 				06D388C818C9F50800113372 /* 购物车 */,
 				06D388C418C9F48F00113372 /* 服务进度 */,
 				06D388C618C9F48F00113372 /* 选购清单 */,
@@ -648,6 +650,7 @@
 		952BB3E518C98C4C002F4928 /* 资源 */ = {
 			isa = PBXGroup;
 			children = (
+				95A4E18818CDBE6E00618B79 /* index_background.png */,
 				95F5B37C18C9A13100C81D68 /* 眉头_01@2x.png */,
 				95F5B37D18C9A13100C81D68 /* 眉头阴影_04@2x.png */,
 				952BB56418C98CEE002F4928 /* Default-Landscape.png */,
@@ -859,6 +862,47 @@
 			path = "主界面";
 			sourceTree = "<group>";
 		};
+		95682AB118CD4B6D00C2CFAD /* 控件封装 */ = {
+			isa = PBXGroup;
+			children = (
+				95A4E17918CDB3DB00618B79 /* 出国服务展示控件 */,
+				95682AC018CD4BC400C2CFAD /* 查看详情控件 */,
+				95682AB918CD4B9400C2CFAD /* 首页展示视图控件 */,
+			);
+			path = "控件封装";
+			sourceTree = "<group>";
+		};
+		95682AB918CD4B9400C2CFAD /* 首页展示视图控件 */ = {
+			isa = PBXGroup;
+			children = (
+				95682ABA18CD4B9400C2CFAD /* DDCollectionCellView.h */,
+				95682ABB18CD4B9400C2CFAD /* DDCollectionCellView.m */,
+				95682ABC18CD4B9400C2CFAD /* DDCollectionViewPackage.h */,
+				95682ABD18CD4B9400C2CFAD /* DDCollectionViewPackage.m */,
+			);
+			path = "首页展示视图控件";
+			sourceTree = "<group>";
+		};
+		95682AC018CD4BC400C2CFAD /* 查看详情控件 */ = {
+			isa = PBXGroup;
+			children = (
+				95682AC118CD4BCF00C2CFAD /* DDShowDetail.h */,
+				95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */,
+			);
+			path = "查看详情控件";
+			sourceTree = "<group>";
+		};
+		95A4E17918CDB3DB00618B79 /* 出国服务展示控件 */ = {
+			isa = PBXGroup;
+			children = (
+				95A4E17A18CDB3DB00618B79 /* DDCombo.h */,
+				95A4E17B18CDB3DB00618B79 /* DDCombo.m */,
+				95A4E17D18CDB41A00618B79 /* DDOptional.h */,
+				95A4E17E18CDB41A00618B79 /* DDOptional.m */,
+			);
+			path = "出国服务展示控件";
+			sourceTree = "<group>";
+		};
 		95F5B38318C9B20300C81D68 /* 登录 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1033,6 +1077,7 @@
 				952BB50618C98CE1002F4928 /* 中银保险1.png in Resources */,
 				952BB51218C98CE1002F4928 /* 最新-底_07.png in Resources */,
 				952BB4AF18C98CE1002F4928 /* 保存订单成功.png in Resources */,
+				95A4E18918CDBE6E00618B79 /* index_background.png in Resources */,
 				952BB4CB18C98CE1002F4928 /* 关闭_05.png in Resources */,
 				952BB4C718C98CE1002F4928 /* 购买_22.png in Resources */,
 				952BB54018C98CE1002F4928 /* prepare1_01.png in Resources */,
@@ -1162,16 +1207,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95682AC318CD4BCF00C2CFAD /* DDShowDetail.m in Sources */,
 				06D388CB18C9F6D700113372 /* DDIndex.m in Sources */,
 				06D388D718C9FDBD00113372 /* DDSchedule.m in Sources */,
 				952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */,
 				06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */,
+				95A4E17F18CDB41A00618B79 /* DDOptional.m in Sources */,
 				06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */,
+				95A4E17C18CDB3DB00618B79 /* DDCombo.m in Sources */,
 				06D388DA18C9FDD600113372 /* DDShopcart.m in Sources */,
+				95682ABE18CD4B9400C2CFAD /* DDCollectionCellView.m in Sources */,
+				95682ABF18CD4B9400C2CFAD /* DDCollectionViewPackage.m in Sources */,
 				95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */,
 				952BB34218C970B2002F4928 /* DDAppDelegate.m in Sources */,
-				06C976BF18CC7D56006D8A5D /* DDCollectionCellView.m in Sources */,
-				06C976BC18CC7895006D8A5D /* DDCollectionViewPackage.m in Sources */,
 				06D388D418C9FD8D00113372 /* DDChoose.m in Sources */,
 				952BB33E18C970B2002F4928 /* main.m in Sources */,
 			);

@@ -126,8 +126,8 @@
 
 - (void)processTap:(UIView *)view
 {
-    NSLog(@"点击回调方法");
     if (_processTap) {
+        NSLog(@"点击回调方法");
         _processTap(view);
     }
 }

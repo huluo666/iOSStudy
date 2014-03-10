@@ -7,6 +7,8 @@
 //
 
 #import "DDCollectionViewPackage.h"
+#import "DDShowDetail.h"
+#import "DDAppDelegate.h"
 
 @interface DDCollectionViewPackage () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -111,7 +113,7 @@
      numberOfItemsInSection:(NSInteger)section
 {
     // 数据个数小余12的时候补齐12
-    return 13;
+    return 12;
 //    return _dataSource.count;
 }
 
@@ -127,6 +129,18 @@
     }
     cellView.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
     cellView.imageView.image = kImageWithName(@"网上银行BOCNET1.png");
+    cellView.processTap = ^(UIView *view) {
+        if ([view isKindOfClass:[UIButton class]]) {
+            // 点击详情按钮回调(热点消息)
+            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
+            // 添加到根视图上
+            UIView *rootView = kRootView;
+            [rootView addSubview:detail];
+            [detail release];
+        } else {
+            // 点击cell回调(产品定制)
+        };
+    };
     [cell.contentView addSubview:cellView];
     [cellView release];
     
@@ -186,7 +200,7 @@
     // 重载数据
     [_collectionView reloadData];
 //    _pageControl.numberOfPages = ceil(_dataSource.count / 4.0);
-    _pageControl.numberOfPages = ceil(13 / 4.0);
+    _pageControl.numberOfPages = ceil(12 / 4.0);
 }
 
 @end
