@@ -15,9 +15,16 @@
     UIView *_currentSelectedView;
     NSArray *_imageViewLocationList; // 用于存储5个坐标点
     NSMutableArray *_imageViewList;  // 视图重用集合
+    UISegmentedControl *_segmentedControl; // 分段控件
+    
+    NSArray *_images; // 未选中状态标题图片
+    NSArray *_imgaesSelected; // 选中状态标题图片
 }
 
-- (void)processControl:(UISegmentedControl *)sender;
+// 选中事件
+- (void)segmentAction:(UISegmentedControl *)sender;
+// 选中segment
+- (void)selectedIndex:(NSInteger)index;
 
 // 加载政策咨询视图
 - (void)loadConsultView;
@@ -35,6 +42,9 @@
     [_currentSelectedView release];
     [_imageViewLocationList release];
     [_imageViewList release];
+    [_segmentedControl release];
+    [_images release];
+    [_imgaesSelected release];
     [super dealloc];
 }
 
@@ -42,35 +52,47 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor whiteColor];
+
         // 标题
-        UIImage *consult = kImageWithName(@"aa_07.png");
-        UIImage *combo = kImageWithName(@"bb_08.png");
-        UIImage *optional = kImageWithName(@"cc_09.png");
-        NSArray *images = @[consult, combo, optional];
+        UIImage *consult = [UIImage imageNamed:@"a_07@2x"];
+        UIImage *combo = [UIImage imageNamed:@"b_08@2x"];
+        UIImage *optional = [UIImage imageNamed:@"c_09@2x"];
+        if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
+            consult = [consult imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            combo = [combo imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            optional = [optional imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        }
+        _images = [@[consult, combo, optional] retain];
+        
+        
+        // 标题
+        UIImage *consultSelected = [UIImage imageNamed:@"aa_07@2x"];
+        UIImage *comboSelected = [UIImage imageNamed:@"bb_08@2x"];
+        UIImage *optionalSelected = [UIImage imageNamed:@"cc_09@2x"];
+        if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
+            consultSelected = [consultSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            comboSelected = [comboSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            optionalSelected = [optionalSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        }
+        _imgaesSelected = [@[consultSelected, comboSelected, optionalSelected] retain];
         
         // 分段控件
-        UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"1", @"2", @"3"]];
-       
-        for (int i = 0; i < 3; i++) {
-             [segmentedControl setImage:[UIImage imageNamed:@"cc_09"] forSegmentAtIndex:i];//设置指定索引的图片
-        }
+        UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:_images];
+        segmentedControl.tintColor = [UIColor clearColor];
         segmentedControl.selectedSegmentIndex = 0;
-        segmentedControl.apportionsSegmentWidthsByContent = YES;
-        [self loadConsultView];
         segmentedControl.bounds = CGRectMake(0, 0, 400, 50);
         segmentedControl.center = CGPointMake(self.center.x, 50);
-        segmentedControl.backgroundColor = [UIColor whiteColor];
-        [segmentedControl addTarget:self action:@selector(processControl:) forControlEvents:UIControlEventValueChanged];
-        [self addSubview:segmentedControl];
+        [segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
+        _segmentedControl = [segmentedControl retain];
         [segmentedControl release];
-
-
+        [self addSubview:_segmentedControl];
+        
+        [self loadConsultView];
     }
     return self;
 }
 
-- (void)processControl:(UISegmentedControl *)sender
+- (void)segmentAction:(UISegmentedControl *)sender
 {
     NSUInteger index = sender.selectedSegmentIndex;
     switch (index) {
@@ -91,6 +113,10 @@
 - (void)loadConsultView
 {
     [_currentSelectedView removeFromSuperview];
+    
+    _segmentedControl.selectedSegmentIndex = 0;
+    [self selectedIndex:0];
+    
     // tableView
     UITableView *tableView = [[UITableView alloc] init];
     tableView.bounds = CGRectMake(0, 0, 600, 400);
@@ -106,7 +132,8 @@
 - (void)loadComboView
 {
     [_currentSelectedView removeFromSuperview];
-    _currentSelectedView = nil;
+    _segmentedControl.selectedSegmentIndex = 1;
+    [self selectedIndex:1];
     
     // 初始化三个视图的center坐标点
     _imageViewLocationList = [@[[NSValue valueWithCGPoint:CGPointMake(-100, 550)],
@@ -116,15 +143,16 @@
                                 [NSValue valueWithCGPoint:CGPointMake(1200, 550)]] retain];
     
     // 初始化图片
-
-
  
 }
-
 
 - (void)loadOptionalView
 {
     [_currentSelectedView removeFromSuperview];
+    
+    [self selectedIndex:2];
+    _segmentedControl.selectedSegmentIndex = 2;
+    
     DDOptional *optionalView = [[DDOptional alloc] initWithFrame:CGRectZero];
     optionalView.bounds = CGRectMake(0, 0, 300, 300);
     optionalView.center = self.center;
@@ -135,6 +163,31 @@
     [self addSubview:optionalView];
     [optionalView release];
 }
+
+- (void)selectedIndex:(NSInteger)index
+{
+    if (0 == index) {
+        [_segmentedControl setImage:_imgaesSelected[0] forSegmentAtIndex:0];
+        [_segmentedControl setImage:_images[1] forSegmentAtIndex:1];
+        [_segmentedControl setImage:_images[2] forSegmentAtIndex:2];
+    }
+    if (1 == index) {
+        [_segmentedControl setImage:_imgaesSelected[1] forSegmentAtIndex:1];
+        [_segmentedControl setImage:_images[0] forSegmentAtIndex:0];
+        [_segmentedControl setImage:_images[2] forSegmentAtIndex:2];
+    }
+    if (2 == index) {
+        [_segmentedControl setImage:_imgaesSelected[2] forSegmentAtIndex:2];
+        [_segmentedControl setImage:_images[0] forSegmentAtIndex:0];
+        [_segmentedControl setImage:_images[1] forSegmentAtIndex:1];
+    }
+}
+
+
+
+
+
+
 
 #pragma mark - <UITableViewDataSource>
 
