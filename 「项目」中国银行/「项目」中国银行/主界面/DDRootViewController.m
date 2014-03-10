@@ -25,15 +25,15 @@
     UIImageView *_contentMainView;    // 主要内容背景视图
 }
 
-// 初始化导航视图数组
-- (void)initializeViews;
-// 初始化登录界面
-- (void)initializeLoginView;
+
 // 初始化用户界面
 - (void)initializeUserInterface;
 // 切换视图
 - (void)toggleVC:(UIButton *)sender;
-
+// 初始化导航视图数组
+- (void)initializeViews;
+// 初始化登录界面
+- (void)initializeLoginView;
 // 登出
 - (void)logout;
 
@@ -53,10 +53,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     [self initializeViews];
     [self initializeUserInterface];
-    _logined = YES;
-//    _logined = NO;
+    
     if (!_logined) {
         [self initializeLoginView];
     }
@@ -99,7 +99,7 @@
 - (void)initializeUserInterface
 {
     self.view.frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
-    self.view.userInteractionEnabled = YES;
+    
     // 大背景
     UIImage *bigImage = nil;
     _contentMainView = [[UIImageView alloc] initWithImage:bigImage];
@@ -163,7 +163,6 @@
     UIImage *shadowImage = [UIImage imageNamed:@"眉头阴影_04"];
     UIImageView *shadowView = [[UIImageView alloc] initWithImage:shadowImage];
     shadowView.frame = CGRectMake(0, CGRectGetMaxY(headerView.frame), kRootViewWidth, 30);
-    shadowView.userInteractionEnabled = YES;
     [self.view addSubview:shadowView];
     [shadowView release];
     
@@ -172,7 +171,7 @@
     UIImageView *userAvatar = [[UIImageView alloc] initWithImage:avatar];
     userAvatar.contentMode = UIViewContentModeScaleAspectFit;
     userAvatar.frame = CGRectMake(5, 20, 60, 60);
-    headerView.userInteractionEnabled = YES;
+    userAvatar.userInteractionEnabled = YES;
     [headerView addSubview:userAvatar];
     [userAvatar release];
     
@@ -188,6 +187,7 @@
            forControlEvents:UIControlEventTouchUpInside];
     [userAvatar addSubview:logoutButton];
     NSLog(@"%@", headerView.subviews);
+    
     // 设置底部视图
     UIImage *bottomImage = [UIImage imageNamed:@"down_27"];
     UIImageView *bottomView = [[UIImageView alloc] initWithImage:bottomImage];
@@ -262,8 +262,8 @@
 
 - (void)logout
 {
-    NSLog(@"登出");
     _logined = NO;
+    [self initializeLoginView];
 }
 
 @end

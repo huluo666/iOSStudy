@@ -7,6 +7,8 @@
 //
 
 #import "DDLogin.h"
+#import "DDAppDelegate.h"
+#import "DDRootViewController.h"
 
 @interface DDLogin ()
 
@@ -38,6 +40,7 @@
         // 灰色背景视图
         UIView *backgroundView = [[UIView alloc] initWithFrame:backgroundImageView.frame];
         backgroundView.alpha = 0.0f;
+        backgroundView.userInteractionEnabled = NO;
         [backgroundImageView addSubview:backgroundView];
         [backgroundView release];
         
@@ -132,9 +135,13 @@
 
 - (void)processLogin:(UIButton *)sender
 {
-    [UIView animateWithDuration:1.0f animations:^{
-        self.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight * 2);
+    // 登录成功
+    [UIView animateWithDuration:kAnimateDuration animations:^{
+        CGPoint center = self.center;
+        self.center = CGPointMake(center.x, center.y * 3);
     } completion:^(BOOL finished) {
+//        DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
+//        rootVC.logined = YES;
         [self removeFromSuperview];
     }];
 }

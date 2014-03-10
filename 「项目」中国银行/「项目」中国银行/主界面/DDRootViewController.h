@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign, getter = isLogined) BOOL logined;
 
+
+
 @end
