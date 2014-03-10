@@ -40,7 +40,6 @@
         // 灰色背景视图
         UIView *backgroundView = [[UIView alloc] initWithFrame:backgroundImageView.frame];
         backgroundView.alpha = 0.0f;
-        backgroundView.userInteractionEnabled = NO;
         [backgroundImageView addSubview:backgroundView];
         [backgroundView release];
         
