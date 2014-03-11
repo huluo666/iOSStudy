@@ -21,8 +21,6 @@
     NSInteger _currentSelectedButton; // 当前选中的是第几个导航button
     NSArray *_views;                  // 导航视图数组
     BOOL isAnimating;                 // 是否正在动画中
-    
-    UIImageView *_contentMainView;    // 主要内容背景视图
 }
 
 
@@ -56,7 +54,7 @@
 
     [self initializeViews];
     [self initializeUserInterface];
-//    _logined = YES;
+    _logined = YES;
     if (!_logined) {
         [self initializeLoginView];
     }
@@ -66,7 +64,6 @@
 {
     [_naviBar release];
     [_views release];
-    [_contentMainView release];
     [super dealloc];
 }
 
@@ -81,11 +78,11 @@
 - (void)initializeViews
 {
     // 分别创建各导航器的视图
-    DDIndex *index = [[DDIndex alloc] initWithFrame:kMainViewBounds];
-    DDAbroad *abroad = [[DDAbroad alloc] initWithFrame:kMainViewBounds];
-    DDFinancing *financing = [[DDFinancing alloc] initWithFrame:kMainViewBounds];
-    DDChoose *choose = [[DDChoose alloc] initWithFrame:kMainViewBounds];
-    DDSchedule *schedule = [[DDSchedule alloc] initWithFrame:kMainViewBounds];
+    DDIndex *index = [[DDIndex alloc] initWithFrame:kMainViewFrame];
+    DDAbroad *abroad = [[DDAbroad alloc] initWithFrame:kMainViewFrame];
+    DDFinancing *financing = [[DDFinancing alloc] initWithFrame:kMainViewFrame];
+    DDChoose *choose = [[DDChoose alloc] initWithFrame:kMainViewFrame];
+    DDSchedule *schedule = [[DDSchedule alloc] initWithFrame:kMainViewFrame];
     
     _views = [@[index, abroad, financing, choose, schedule] retain];
 
@@ -99,13 +96,6 @@
 - (void)initializeUserInterface
 {
     self.view.frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
-    
-    // 大背景
-    UIImage *bigImage = nil;
-    _contentMainView = [[UIImageView alloc] initWithImage:bigImage];
-    _contentMainView.userInteractionEnabled = YES;
-    _contentMainView.frame = kMainViewFrame;
-    [self.view addSubview:_contentMainView];
     
     // 设置左侧导航条
     _naviBar = [[UIView alloc] init];
@@ -146,7 +136,7 @@
         // 默认选中第一个
         if (!i) {
             button.selected = YES;
-            [_contentMainView addSubview:_views[0]];
+            [self.view addSubview:_views[0]];
             [self.view sendSubviewToBack:_views[0]];
         }
     }
@@ -217,7 +207,7 @@
     UIView *appearedView = _views[_currentSelectedButton];
     // 将要出现的视图
     UIView *willAppearView = _views[index];
-    [_contentMainView addSubview:willAppearView];
+    [self.view addSubview:willAppearView];
     [self.view sendSubviewToBack:willAppearView];
 
     // 当前选中的导航按钮

@@ -19,7 +19,6 @@
 		06E848B118CDF26D000AD215 /* c_09@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06E848AB18CDF26D000AD215 /* c_09@2x.png */; };
 		06E848B318CDF26D000AD215 /* b_08@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06E848AD18CDF26D000AD215 /* b_08@2x.png */; };
 		06E848B918CDF380000AD215 /* aa_07@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06E848B818CDF380000AD215 /* aa_07@2x.png */; };
-		06E848BB18CDF6F7000AD215 /* ddddd.png in Resources */ = {isa = PBXBuildFile; fileRef = 06E848BA18CDF6F7000AD215 /* ddddd.png */; };
 		952BB33218C970B2002F4928 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33118C970B2002F4928 /* Foundation.framework */; };
 		952BB33418C970B2002F4928 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33318C970B2002F4928 /* CoreGraphics.framework */; };
 		952BB33618C970B2002F4928 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33518C970B2002F4928 /* UIKit.framework */; };
@@ -263,7 +262,6 @@
 		06E848AB18CDF26D000AD215 /* c_09@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "c_09@2x.png"; sourceTree = "<group>"; };
 		06E848AD18CDF26D000AD215 /* b_08@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "b_08@2x.png"; sourceTree = "<group>"; };
 		06E848B818CDF380000AD215 /* aa_07@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "aa_07@2x.png"; sourceTree = "<group>"; };
-		06E848BA18CDF6F7000AD215 /* ddddd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ddddd.png; sourceTree = "<group>"; };
 		952BB32E18C970B2002F4928 /* 「项目」中国银行.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「项目」中国银行.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		952BB33118C970B2002F4928 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		952BB33318C970B2002F4928 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -519,7 +517,6 @@
 			children = (
 				06D388CC18C9FD5000113372 /* DDAbroad.h */,
 				06D388CD18C9FD5000113372 /* DDAbroad.m */,
-				06E848BA18CDF6F7000AD215 /* ddddd.png */,
 			);
 			path = "出国服务";
 			sourceTree = "<group>";
@@ -1009,7 +1006,6 @@
 				06E848B918CDF380000AD215 /* aa_07@2x.png in Resources */,
 				952BB52D18C98CE1002F4928 /* excel_23.png in Resources */,
 				952BB56E18C98CEE002F4928 /* Icon-Small.png in Resources */,
-				06E848BB18CDF6F7000AD215 /* ddddd.png in Resources */,
 				952BB50B18C98CE1002F4928 /* 中银信用卡.png in Resources */,
 				952BB52A18C98CE1002F4928 /* down_05.png in Resources */,
 				952BB53618C98CE1002F4928 /* line_12.png in Resources */,

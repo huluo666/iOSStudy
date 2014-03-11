@@ -81,7 +81,7 @@
         segmentedControl.tintColor = [UIColor clearColor];
         segmentedControl.selectedSegmentIndex = 0;
         segmentedControl.bounds = CGRectMake(0, 0, 400, 50);
-        segmentedControl.center = CGPointMake(self.center.x, 50);
+        segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 50);
         [segmentedControl addTarget:self action:@selector(segmentAction:) forControlEvents:UIControlEventValueChanged];
         _segmentedControl = [segmentedControl retain];
         [segmentedControl release];
@@ -120,7 +120,7 @@
     // tableView
     UITableView *tableView = [[UITableView alloc] init];
     tableView.bounds = CGRectMake(0, 0, 600, 400);
-    tableView.center = self.center;
+    tableView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 60;
@@ -155,7 +155,7 @@
     
     DDOptional *optionalView = [[DDOptional alloc] initWithFrame:CGRectZero];
     optionalView.bounds = CGRectMake(0, 0, 300, 300);
-    optionalView.center = self.center;
+    optionalView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     optionalView.processTap = ^(UIButton *sender){
         NSLog(@"选购点击按钮回调");
     };

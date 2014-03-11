@@ -37,11 +37,11 @@
 
 #define kMainViewWidth (kRootViewWidth - kNaviBarBaseViewWidth) // 主界面宽度
 #define kMainViewHeight (kRootViewHeight - kHeaderViewHeight)   // 主界面高度
-#define kMainViewFrame (CGRectMake(kNaviBarBaseViewWidth, kHeaderViewHeight, kMainViewWidth, kMainViewHeight))      // 主界面frame
-#define kMainViewBounds (CGRectMake(0, 0, kMainViewWidth, kMainViewHeight))                                         // 主界面bounds
-#define kMainViewCenter (CGPointMake(CGRectGetMidX((kMainViewBounds)), CGRectGetMidY((kMainViewBounds))))           // 主界面center
-#define kMainViewCenterUp (CGPointMake(CGRectGetMidX((kMainViewBounds)), -CGRectGetMidY((kMainViewBounds))))        // 主界面center
-#define kMainViewCenterDown (CGPointMake(CGRectGetMidX((kMainViewBounds)), 3 * (CGRectGetMidY((kMainViewBounds))))) // 主界面center
+#define kMainViewFrame (CGRectMake(kNaviBarBaseViewWidth, kHeaderViewHeight, kMainViewWidth, kMainViewHeight))                              // 主界面frame
+#define kMainViewBounds (CGRectMake(0, 0, kMainViewWidth, kMainViewHeight))                                                                 // 主界面bounds
+#define kMainViewCenter (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), (kHeaderViewHeight) + (kMainViewHeight / 2)))          // 主界面center
+#define kMainViewCenterUp (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), (-2) * (kMainViewHeight)))                           // 主界面center
+#define kMainViewCenterDown (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), 2 * (kMainViewHeight)))                            // 主界面center
 
 #ifndef _DDLOGIN_
 #define _DDLOGIN_
