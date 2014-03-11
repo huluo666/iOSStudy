@@ -198,7 +198,7 @@
     // 清空上次装的数据
     if (_combos) {
         [_combos release];
-        _combos  = nil;
+        _combos = nil;
         _combos = [@[] mutableCopy];
     }
     
