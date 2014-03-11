@@ -68,13 +68,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
-        
-        if (indexPath == _lastIndexPath) {
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
-        } else {
-            cell.accessoryType = UITableViewCellAccessoryNone;
-        }
     }
+    
+    if (indexPath == _lastIndexPath) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
     cell.textLabel.text = _dataSource[indexPath.row];
     cell.textLabel.font = [UIFont fontWithName:_dataSource[indexPath.row] size:14.0f];
     

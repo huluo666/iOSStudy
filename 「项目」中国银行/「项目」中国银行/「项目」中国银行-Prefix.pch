@@ -1,0 +1,63 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#define kAnimateDuration 1.0f
+#define kDataUpdateTimeInterval 600   // 更新数据事件间隔
+#define kImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] \
+                                pathForAuxiliaryExecutable:NAME]] // 获取图片
+#define kRandomColor [UIColor colorWithRed:arc4random() % 128 / 255.0f green:arc4random() % 64 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.000]
+#define kRootView [[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController] view]
+#define kRootViewController [[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController]
+
+#define kRootViewWidth           1024 // 根视图宽度
+#define kRootViewHeight          768  // 根视图高度
+
+#ifndef _ROOT_VIEW_CONTROLLER_
+#define _ROOT_VIEW_CONTROLLER_
+#define kHeaderViewHeight    80  // 头部视图高度
+#define kNaviBarViewWidth    88  // 左侧导航栏宽度
+#define kNaviBarBaseViewWidth 80 // 左侧导航栏底图宽度
+#define kNaviBarButtonHeight 107 // 导航栏按钮高度
+#define kButtonTag           100 // 导航栏按钮tag基准值
+#endif
+
+#define kMainViewWidth (kRootViewWidth - kNaviBarBaseViewWidth) // 主界面宽度
+#define kMainViewHeight (kRootViewHeight - kHeaderViewHeight)   // 主界面高度
+#define kMainViewFrame (CGRectMake(kNaviBarBaseViewWidth, kHeaderViewHeight, kMainViewWidth, kMainViewHeight))      // 主界面frame
+#define kMainViewBounds (CGRectMake(0, 0, kMainViewWidth, kMainViewHeight))                                         // 主界面bounds
+#define kMainViewCenter (CGPointMake(CGRectGetMidX((kMainViewBounds)), CGRectGetMidY((kMainViewBounds))))           // 主界面center
+#define kMainViewCenterUp (CGPointMake(CGRectGetMidX((kMainViewBounds)), -CGRectGetMidY((kMainViewBounds))))        // 主界面center
+#define kMainViewCenterDown (CGPointMake(CGRectGetMidX((kMainViewBounds)), 3 * (CGRectGetMidY((kMainViewBounds))))) // 主界面center
+
+#ifndef _DDLOGIN_
+#define _DDLOGIN_
+#define kBackgroundImageViewTag 200
+#endif
+
+#ifndef _INDEX_
+#define _INDEX_
+#define kLoopImagesKey @"loopImagesKey"
+#define kLatestNewsKey @"latestNewsKey"
+#define kHotNewsKey @"hotNewsKey"
+#define kHotCollectionViewTag 300
+#define kCustomProjectCollectionViewTag 301
+#define kHotNewsShowComponentBounds (CGRectMake(0, 0, 240, 100))
+#define kCustomProjectComponentBounds (CGRectMake(0, 0, 120, 100))
+#endif
+
+
+

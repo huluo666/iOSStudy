@@ -1,3 +1,9 @@
+	Date:	2014年2月23日 下午5:59
+	Tags:	OC, UIKit
+	Location:	中国四川省成都市武侯区桂溪街道交子南二路, 成都市, 四川省, 中国
+	Weather:	14° Hazy
+	Starred
+
 # IOSDevtips4cuan
 
 **此内容未经过验证，纯属个人总结**
@@ -41,8 +47,14 @@
 - [UINavigationItem(导航栏按钮)](#UINavigationItem)
 - [UIToolBar(工具栏)](#UIToolBar)
 - [UITabBarController(标签栏控制器)](#UITabBarController)
+- [UIScrollView(滚动视图)](#UIScrollView)
+- [UITableView(表视图)](#UITableView)
+- [UITableViewController(表视图控制器)](#UITableViewController)
+- [UITouch(触摸)](#UITouch)
+- [UIPickerView(选择器视图)](#UIPickerView)
+- [AV(多媒体)](#AV)
+- [网络与多线程](#net)
 - [codeSnippets(代码片段)](#codeSnippets)
-
 
 <h3 id="oneWord"> 一句话知识点 </h3>
 
@@ -190,7 +202,7 @@
 		    Book *book = [[Book alloc] initWithPrice:3.5];
 		
 		    stu.book = book; // 如果没有retain.等效于_book = book;
-		
+	
 		    [book release];
 		}
 		
@@ -1336,202 +1348,509 @@
 
 ---
 
-<h3 id="codeSnippets"> codeSnippets </h3>
+<h3 id="UIScrollView"> UIScrollView(滚动视图) </h3>
 
-**appDelegate.m文件各消息作用说明**
+**创建一个UIScrollView实例**```￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼// 创建⼀一个UIScrollView实例CGRect frame = CGRectMake( 0, 0, 200, 200);UIScrollView *scrollView= [[UIScrollView alloc] initWithFrame:frame];// 添加子视图(框架可以超过scrollview的边界)frame= CGRectMake( 0, 0, 500, 500);UIImageView *myImageView= [[UIImageView alloc] initWithFrame:frame]; [scrollView addSubview:myImageView];// 设置内容尺寸scrollView.contentSize = CGSize(500,500);
+```
 
-	#pragma mark 程序加载完成,自定义界面加载，数据导入，初始化等
-	- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
-	
-	#pragma mark 程序将要失活，保存用户数据，断开网络连接,游戏暂停
-	- (void)applicationWillResignActive:(UIApplication *)application;
-	#pragma mark 程序进入后台,释放界面元素，视频，音频媒体，降低程序的驻留内存开销
-	- (void)applicationDidEnterBackground:(UIApplication *)application;
-	
-	#pragma mark 程序进入前台，恢复界面，数据等
-	- (void)applicationWillEnterForeground:(UIApplication *)application;
-	
-	#pragma mark 程序激活，恢复用户数据，恢复网络连接
-	- (void)applicationDidBecomeActive:(UIApplication *)application;
-	
-	#pragma mark 程序结束
-	- (void)applicationWillTerminate:(UIApplication *)application;
-	
+**UIScrollView常用属性**
+
+```
+contentSize// 里面内容的大小,也就是可以滚动的大小,默认是0,没有滚动效果。 tracking// 当 touch 后还没有拖动的时候值是YES,否则NOzoomBouncing// 当内容放大到最大或者最小的时候值是 YES,否则 NO zooming// 当正在缩放的时候值是 YES,否则 NO decelerating// 当滚动后,手指放开但是还在继续滚动中。这个时候是 YES,其它时候是 NO decelerationRate// 设置手指放开后的减速率maximumZoomScale// ⼀一个浮点数,表示能放最大的倍数 minimumZoomScale// ⼀一个浮点数,表示能缩最小的倍数 pagingEnabled// 当值是 YES 会自动滚动到 subview 的边界。默认是NO scrollEnabled// 决定是否可以滚动
+showsHorizontalScrollIndicator// 滚动时是否显示水平滚动条 showsVerticalScrollIndicator// 滚动时是否显示垂直滚动条 bounces// 默认是 yes,就是滚动超过边界会反弹有反弹回来的效果。假如是 NO,那么滚动到达边界会立刻停止。bouncesZoom// 和 bounces 类似,区别在于:这个效果反映在缩放上面,假如缩放超过最大缩放,那么会 反弹效果;假如是 NO,则到达最大或者最小的时候立即停止。directionalLockEnabled// 默认是 NO,可以在垂直和水平方向同时运动。当值是 YES 时,假如⼀一开始是垂直或者是 水平运动,那么接下来会锁定另外⼀一个方向的滚动。 假如⼀一开始是对角方向滚动,则不会禁止 某个方向indicatorStyle// 滚动条的样式,基本只是设置颜色。总共3个颜色:默认、黑、白 scrollIndicatorInsets// 设置滚动条的位置
+```
+
+**UIScrollView常用代理方法**
+
+```￼￼// scrollView已经滑动- (void)scrollViewDidScroll:(UIScrollView *)scrollView;// 视图已经放大或缩小- (void)scrollViewDidZoom:(UIScrollView *)scrollView;// scrollView开始拖动- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;// scrollView结束拖动- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;// scrollView开始减速(以下两个方法注意与以上两个方法加以区别)- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView; // scrollview减速停止- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;
+```
+
+**UIScrollView的捏合手势**
+
+UIScrollView能很简单的使用捏手势来进行缩放,可以缩小或者放大,只需要 实现一个委托方法就可以,简单的几个步骤就可以让滚动视图的子视图支持缩放功能
+
+```
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView{    return view; // view可以进行缩放
+}
+- (void)loadView{  self.scrollView.minimumZoomScale = 0.5;  self.scrollView.maximumZoomScale = 6.0;  self.scrollView.contentSize = CGSizeMake(1280, 960);  self.scrollView.delegate = self;} // 适合单张图片
+```
 ---
 
-**UIViewController重要消息作用说明**
+<h3 id="UITableView"> UITableView(表视图) </h3>
 
-	// 自定义初始化方法，用于XIB加载控制器界面的时候
-	- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNi
-	
-	// 控制器的视图加载完成
-	- (void)viewDidLoad
-	
-	// 是否支持自动旋转
-	- (NSUInteger)supportedInterfaceOrientations
-	{
-	    return UIInterfaceOrientationMaskAllButUpsideDown;
-	}
-	
-	// 控制器支持设备朝向
-	- (BOOL)shouldAutorotate
-	{
-	    return NO;
-	}
-	
-	// 控制器试图将要旋转到某个朝向，在方法中处理新的界面布局
-	- (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration;
+**表视图常用属性**
 
----
+	// 表视图分割线风格
+	@property (nonatomic) UITableViewCellSeparatorStyle separatorStyle;
+	// 表视图分割线颜色、默认标准灰色
+	@property (nonatomic, retain) UIColor *separatorColor;
+	// 表视图头部视图
+	@property (nonatomic, retain) UIView *tableHeaderView;
+	// 表视图尾部视图
+	@property (nonatomic, retain) UIView *tableFooterView;
+	// 表视图单元格行高
+	@property (nonatomic) CGFloat rowHeight;
+	// 表视图section头部行高
+	@property (nonatomic) CGFloat sectionHeaderHeight;
+	// 表视图section尾部行高
+	@property (nonatomic) CGFloat sectionFooterHeight;
+	// 表视图背景
+	@property (nonatomic, readwrite, retain) UIView *backgroundView;
+	// 默认为NO,不可以编辑,设置时,不存在动画效果
+	@property(nonatomic,getter=isEditing) BOOL editing;
+	// 覆盖此方法,存在动画效果
+	- (void)setEditing:(BOOL)editing animated:(BOOL)animated;
+	// 默认为YES,当表视图不在编辑时,单元格是否可以选中
+	@property(nonatomic) BOOL allowsSelection NS_AVAILABLE_IOS(3_0);
+	// 默认为NO,当表视图在编辑时,单元格是否可以选中
+	@property(nonatomic) BOOL allowsSelectionDuringEditing;
+	// 默认为NO,是否可以同时选中多个单元格,注意版本问题
+	@property(nonatomic) BOOL allowsMultipleSelection NS_AVAILABLE_IOS(5_0);
+	// 默认为NO,在编辑状态下时,是否可以同时选中多个单元格,注意版本问题
+	@property(nonatomic) BOOL allowsMultipleSelectionDuringEditing NS_AVAILABLE_IOS(5_0);
 
-**切换到下一视图**
-	
-	- (void)showDetail:(UIButton *)sender
-	{
-		DetailViewController *detailViewControl = [[[DetailViewController alloc] init] autorelease];
-		
-		// 设置切换动画效果
-	    detailViewControl.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-	    
-	    // 控制器模态切换
-	    [self presentViewController:detailViewControl animated:YES completion:^{
-	        NSLog(@"Detail View Controller is show. ");
-	    }];
-	}
-	
-	// 导航视图控制器
-	DetailViewController *detailViewController = [[DetailViewController alloc] init];
-	[self.navigationController pushViewController:detailViewController animated:YES];
-    [detailViewController release];
+**常用方法**
 
----
+	￼// 指定⼀一个cell,返回⼀一个NSIndexPath实例,如果cell没有显示,返回nil	- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell;	// 指定⼀一个范围,返回⼀一个数组,内容是NSIndexPath实例,指定rect无效,返回nil	- (NSArray *)indexPathsForRowsInRect:(CGRect)rect;	// 指定⼀一个NSIndexPath,返回⼀一个cell实例,如果cell没有显示,返回为nil	- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath;	// 根据显示的cell,返回⼀一组cell实例的数组,如果没有显示,返回nil	- (NSArray *)visibleCells;	// 根据显示的cell,返回⼀一组NSIndexPath实例的数组,如果没有显示,返回nil	- (NSArray *)indexPathsForVisibleRows;	// 滑动到指定的位置,可以配置动画	- (void)scrollToRowAtIndexPath:(NSIndexPath *)indexPath atScrollPosition: (UITableViewScrollPosition)scrollPosition animated:(BOOL)animated;
+	// 插入⼀一行cell,指定⼀一个实现动画效果	- (void)insertRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation: (UITableViewRowAnimation)animation;	// 删除⼀一行cell, 指定⼀一个实现动画效果	- (void)deleteRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation: (UITableViewRowAnimation)animation;	// 刷新⼀一个行cell,指定⼀一个实现动画效果	- (void)reloadRowsAtIndexPaths:(NSArray *)indexPaths withRowAnimation: (UITableViewRowAnimation)animationNS_AVAILABLE_IOS(3_0);	// 移动cell的位置,指定⼀一个实现动画效果	- (void)moveRowAtIndexPath:(NSIndexPath *)indexPath toIndexPath:(NSIndexPath *)newIndexPath NS_AVAILABLE_IOS(5_0);
+	// 指定特定的行和列	  + (NSIndexPath *)indexPathForRow:(NSInteger)row inSection:(NSInteger)section;	  @property(nonatomic,readonly) NSInteger section; // 指定分区 @property(nonatomic,readonly) NSInteger row; // 指定行
 
-**返回上一个视图**
+￼**常用数据源方法**
 
-	- (void)back:(UIButton *)sender
-	{
-	    [self.presentingViewController dismissViewControllerAnimated:YES completion:^{
-	        NSLog(@"返回deatail");
-	    }];
-	}
-	
-	// 导航视图控制器
-	[self.navigationController popViewControllerAnimated:YES];	
-	
----	
-	
-**关闭键盘**
+	// 配置section中含有行数	- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection: (NSInteger)section;	// 创建单元格实例	- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;	@optional	// 配置表视图section个数,默认为1	- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView;	// section中的头部视图的标题	- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection: (NSInteger)section;	// section中的尾部视图的标题	- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection: (NSInteger)section;
+	// 指定单元格是否支持编辑	- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;	// 指定单元格是否支持移动	- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath;	// 用户编辑了哪⼀一个单元格,在这里执行删除操作	- (void)tableView:(UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;	// 实现此方法,移动单元格	- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath;
 
-	#pragma mark - <UITextFieldDelegate>
+**常用委托方法**
 
-	- (BOOL)textFieldShouldReturn:(UITextField *)textField
-	{
-	    // 关闭键盘
-	    // solution 1
-		//    [textField resignFirstResponder];
-	    
-	    //solution 2
-	    [self.view endEditing:YES];
-	    return YES;
-	}	
-	
----
+	￼// 配置行高	- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath: (NSIndexPath *)indexPath;	// 设置section 头部、尾部视图的高度	- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection: (NSInteger)section;	- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection: (NSInteger)section;	// 自定义section头部、尾部视图,注意:需要指定高度	- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection: (NSInteger)section;	- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection: (NSInteger)section;
+	￼￼// 用户单击单元格中辅助按钮时,调用该方法	- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath;	// 用户单击单元格,调用该方法	- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath;	// 取消单元格时,调用该方法	- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath: (NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0);	// 设置单元格编辑样式	- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath;
 
-**限制长度，过滤输入**
+**单元格的重用**
 
-	#pragma mark - <UITextFieldDelegate>
-	#define NUMBER_SET @"0123456789"
-	- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-	{
-	    if (range.location >= 11) {
-	        return NO;
-	    }
-	    
-	    if ([NUMBER_SET rangeOfString:string].location == NSNotFound) {
-	        return NO;
-	    }
-	    
-	    return YES;
-	}
+	// 静态标识符	static NSString *identifier = @"Cell";	// 检测查询是否有闲置的单元格	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];	    if (cell == nil) {	        cell = [[[UITableViewCell alloc]	                     initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier] ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼autorelease];
+	    }	// 设置cell的内容	return cell;
 
----
+- - -
 
-**根据文本内容多少获取Rect的size(label大小自适应效果)**
+<h3 id="UITableViewController"> UITableViewController(表视图控制器) </h3>
 
-	// Before IOS 7
-	CGSize size = [string sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(150, 568) lineBreakMode:NSLineBreakByWordWrapping];
+**常用属性**
+	￼￼// 通过这个属性,访问和设置表视图	@property(nonatomic,retain) UITableView *tableView;	// 默认YES,当视图出现时,是否取消选中状态	@property(nonatomic) BOOL clearsSelectionOnViewWillAppear;	￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼// 默认为nil,如你需要它将会被创建	@property(nonatomic,readonly,retain) UIImageView *imageView NS_AVAILABLE_IOS(3_0);	// 默认为nil,如果你需要它将会被创建	@property(nonatomic,readonly,retain) UILabel *textLabel NS_AVAILABLE_IOS(3_0);	// 默认为nil,如果你需要它将会被创建,注意需要选择表视图的风格 @property(nonatomic,readonly,retain) UILabel *detailTextLabel NS_AVAILABLE_IOS(3_0);	// 添加自定义视图,需要添加在contentView中,如果你直接添加在cell中,那么当编辑模式时,它 的位置不会发生改变,因此我们添加自定义视图时,需要添加到contentView中	@property(nonatomic,readonly,retain) UIView // 通过这个属性定制单元格背景	@property(nonatomic,retain) UIView // 通过这个属性定制单元格选中背景 @property(nonatomic,retain) UIView
+	￼// 多选时选中的背景视图	@property(nonatomic,retain) UIView *multipleSelectionBackgroundView NS_AVAILABLE_IOS(5_0);	// 获取单元格标识符	@property(nonatomic,readonly,copy) NSString *reuseIdentifier;	// 设置单元格选中风格	@property(nonatomic) UITableViewCellSelectionStyle selectionStyle;	// 获取单元格编辑风格	@property(nonatomic,readonly) UITableViewCellEditingStyle editingStyle; // 设置单元格辅助图标类型	@property(nonatomic) UITableViewCellAccessoryType	// 自定义辅助图标	@property(nonatomic,retain) UIView	// 自定义编辑图标	@property(nonatomic,retain) UIView	
 
-	// After IOS 7
-	- (CGSize)sizeWithString:(NSString *)string font:(UIFont *)font constraintSize:(CGSize)constraintSize
-	{
-	    CGRect rect = [string boundingRectWithSize:constraintSize
-	                                       options:NSStringDrawingTruncatesLastVisibleLine |
-	                                                NSStringDrawingUsesFontLeading |
-	                                                NSStringDrawingUsesLineFragmentOrigin
-	                                    attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
-	                                       context:nil];
-	    return rect.size;
-	}
+**改变系统样式位置**
+	- (void)layoutSubviews {      		[super layoutSubviews];	      self.textLabel.frame = CGRectMake(10, 5, 200, 20);	      self.detailLabel.frame = CGRectMake(10, 30, 100, 10);	      self.imageView.frame = CGRectMake(260, 30, 50, 10);	  }
 
----
+**定制单元格第一种方式:向contentView添加子视图**
 
-**键盘弹出和收起的通知**
+```
+if (cell == nil) {    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                   reuseIdentifier:identifier] autorelease];    UILabel *titleLab = [[UILabel alloc] initWithFrame:CGRectMake(10, 5, 200, 20)];    titleLab.tag = 100;    titleLab.font = [UIFont boldSystemFontOfSize:14.0f];
+    titleLab.backgroundColor = [UIColor clearColor];
+    [cell.contentView addSubview:titleLab];    [titleLab release];    // 添加其他子视图.....}UILabel *titleLab = (UILabel *)[cell.contentView viewWithTag:100]; titleLab.text = @"label内容";
+```
 
-	// 注册键盘弹出的系统通知
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@(keyboardWillShow) name:UIKeyboardWillShowNotification Object:nil];
-	
-	- (void)keyboardWillShow
-	{
-		[UIView animateWithDuration:0.25 animations:^{
-			_btn.fram = CGRectMake(10, 220, 300, 30);
-		} completion:^(BOOL finished){
-		
-		}];
-	}
-	
-	// 注册键盘收起的系统通知
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@(keyboardWillhide) name:UIKeyboardWillHideNotification Object:nil];
-	
-	- (void)keyboardWillhide
-	{
-		[UIView animateWithDuration:0.25 animations:^{
-			_btn.fram = CGRectMake(10, 400, 300, 30);
-		} completion:^(BOOL finished){
-		
-		}];
-	}
-	
----
-	
-**在不同IOS版本中更改UINavigationBar背景图片**	
+**定义单元格第二种方式:xib定义单元格**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+```￼￼if (cell == nil) {    NSBundle *bundle = [NSBundle mainBundle];    // 加载xib    NSArray *array = [bundle loadNibNamed:@"newsCell" owner:self                                  options:nil];    cell = [array objectAtIndex:0];}UILabel *titleLab = (UILabel *)[cell.contentView viewWithTag:100]; titleLab.text = @"label内容";
+```
 
-	@implementation UINavigationBar (custom)
-		
-		static UIImage *backgroundImage = nil;
-		- (void)setNavigationBarWithImage:(UIImage *)bgImage
-		{
-			if (backgroundImage != bgImage) {
-				[backgroundImage release];
-				[backgroundImage = bgImag retain];
-				
-			}
-			
-			// IOS 5.x
-			if ([self respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) {
-				[self setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];
-				if ([[[UIDevice currentDevice] systemVersion] floatValue] > 6.0) {
-					[UIApplication sharedApplication].statusBarStyle = UIBarStyleBlackOpaque;
-				}
-			}
-			else { // IOS 4.x
-				[self drawRect:self.bounds];
-			}
-		}
-		
-		// 重写drawRect方法，在5.x中该方法被废弃
-		- (void)drawRect:(CGRect)rect
-		{
-			[backgroundImage drawInRect:rect];
-		}
-		
-	@end
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼定制单元格第三种方式:子类化定制**
+
+```
+- (void)_initViews {    _titleLab = [[UILabel alloc] initWithFrame:CGRectZero];    _titleLab.font = [UIFont boldSystemFontOfSize:14.0f];    _titleLab.backgroundColor = [UIColor clearColor];    [self.contentView addSubview:_titleLab];    // .....初始化其他UI控件
+}
+- (void)setNews:(News *)news {    _titleLab.text = news.title;    _commentLab.text = [NSString stringWithFormat:@"%d条评论", news.commentCount];    _timeLab.text = [NSString stringWithFormat:@"%d小时前",news.timeVal];}
+    - (void)layoutSubviews {    [super layoutSubviews];    _titleLab.frame = CGRectMake(10, 5, 200, 20);    _commentLab.frame = CGRectMake(10, 30, 100, 10);    _timeLab.frame = CGRectMake(260, 30, 50, 10);}
+```
+
+**表视图的编辑**
+
+```
+- (void)tableView:(UITableView *)tableView
+    commitEditingStyle: (UITableViewCellEditingStyle)editingStyle    forRowAtIndexPath:(NSIndexPath *)indexPath{    //删除    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [_data removeObjectAtIndex:indexPath.row];        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+        //新增        NSString *obj = [NSString stringWithFormat:@"我是新添加的"];        [_data insertObject:obj atIndex:indexPath.row];        [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];    }
+}
+```
+
+**编辑模式数据源方法**
+
+```￼// 定义可编辑的单元格- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath;// 定义编辑模式下,按钮的显示样式,有新增、删除 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableVieweditingStyleForRowAtIndexPath:(NSIndexPath *)indexPath; // 新增、删除按钮事件- (void)tableView:(UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;// 实现此方法,单元格即可移动- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath; // 指定可移动的单元格- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath;
+```
+
+**过滤表格内容**
+
+```
+￼￼￼￼- (void)textChange:(UITextField *)textfield {    NSString *text = textfield.text;    if ([text length] == 0) {        self.filterData = _data;        [self.tableView reloadData];        return;    }
+    // 过滤条件
+    NSString *p = [NSString stringWithFormat:@"SELF LIKE[c]'%@*'",text];    //使用谓词过滤    NSPredicate *predicate = [NSPredicate predicateWithFormat:p];    self.filterData = [_data filteredArrayUsingPredicate:predicate];    [self.tableView reloadData];}
+```
+
+- - -
+
+<h3 id="UITouch"> UITouch </h3>
+
+```
+响应者类通过复写以下方法,可以监听触摸事件￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼// 当⼀一个或多个⼿手指触碰屏幕时- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event;// 当⼀一个或多个⼿手指在屏幕上移动时- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event;// 当⼀一个或多个⼿手指离开屏幕时- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event;// 当触摸序列被诸如电话呼⼊入这样的系统事件所取消时- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+```
+
+**UITouch类中常用属性**
+```window: 触摸产⽣生时所处的窗⼝口。view: 触摸产⽣生时所处的视图。tapCount: 轻击(Tap)操作和⿏鼠标的单击操作类似,tapCount表⽰示短时间内轻击屏幕的次数。因此可以根据tapCount判 断单击、双击或更多的轻击。timestamp: 时间戳记录了触摸事件产⽣生或变化时的时间。单位是秒。phase: 触摸事件在屏幕上有⼀一个周期,即触摸开始、触摸点移动、触摸结束,还有中途取消。⽽而通过phase可以查看当前 触摸事件在⼀一个周期中所处的状态。phase是UITouchPhase类型的,这是⼀一个枚举配型,包含了
+UITouchPhaseBegan(触摸开始)UITouchPhaseMoved(接触点移动)UITouchPhaseStationary(接触点⽆无移动)UITouchPhaseEnded(触摸结束)UITouchPhaseCancelled(触摸取消)
+```
+
+**UITouch类中常用方法**
+
+```
+//  函数返回⼀一个CGPoint类型的值,表⽰示触摸在view这个视图上的位置,这⾥里返回的位 置是针对view的坐标系的。￼￼- (CGPoint)locationInView:(UIView *)view;
+//  该⽅方法记录了前⼀一个坐标值,函数返回也是⼀一个CGPoint类型的值, 表⽰示触摸在 view这个视图上的位置,这⾥里返回的位置是针对view的坐标系的- (CGPoint)previousLocationInView:(UIView *)view;
+```
+
+**事件的传递**
+
+- 从事件发生到其处理的对象,传递要经过特殊的一段过程。
+- 当用户点击设备屏 幕时,iOS捕捉到一系列的触摸,将其打包到UIEvent对象中并放置到应用程序 活动事件队列中。
+- UIApplication对象从事件队列中取出最前面的事件并将其分发
+- 通常,其发送事件给应用程序的主窗口——UIWindow实例,再由窗口对 象发送事件给”第一响应者 (触摸的视图)”处理
+
+**事件响应者链的基本概念**
+- 响应者对象是一个能接收并处理事件的对象。- UIResponser是所有响应者对 象的基类。- 该基类定义了一系列编程接口,不但为事件处理进行服务而且还提 供了通用的响应行为处理。- UIApplication, UIView(包括UIWindow),UIViewController都直接或间接的继承自UIResponser,所有的这些类的实例都是响应者对象。
+
+**事件响应者链**
+
+- 当用户与视图交互时,将会 消息传递给视图控制器,如果 不存在控制器,传递给父视图- 如果不处理该消息,则继续 将消息向上传递- 最上层的视图如果也不处 理,将事件交予Window对象- 最后交由UIApplication实 例,如果不处理,丢弃事件
+
+**手势识别器UIGestureRecognizer*
+
+- UIGestureRecognizer类,用于检测、识别用户使用设备时所用的手势。
+- 它是一 个抽象类,定义了所有手势的基本行为。
+- 以下是UIGestureRecognizer子类,用于处理具体的用户手势行为
+	- UITapGestureRecognizer(轻击)
+	- UIPinchGestureRecognizer(捏合)
+	- UIPanGestureRecognizer(平移)
+	- UISwipeGestureRecognizer(轻扫)
+	- UIRotationGestureRecognizer(旋转)
+	- UILongPressGestureRecognizer(长按)
+
+**Demo**
+
+```
+// 一只手单击￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼UITapGestureRecognizer *singleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(singleGesture:)];[self.view addGestureRecognizer:singleTap];[singleTap release];
+// 一只手双击￼￼UITapGestureRecognizer *doubleTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(doubleGesture:)];doubleTap.numberOfTapsRequired = 2;[self.view addGestureRecognizer:doubleTap];[doubleTap release];
+// 区别两种手势(一只手单击、双击)[singleTap requireGestureRecognizerToFail:doubleTap];
+```
+
+￼￼**平移⼿手势(滑动)**
+
+```UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];[self.view addGestureRecognizer:panGesture];[panGesture release];￼￼- (void)pan:(UIPanGestureRecognizer *)_pan{    CGPoint point = [_pan locationInView:self.view];    tempView.center = point;}
+```
+
+**⻓长按⼿手势**
+
+```UILongPressGestureRecognizer *longPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+longPressGesture.minimumPressDuration = 3;[self.view addGestureRecognizer:longPressGesture]; [longPressGesture release];￼￼- (void)longPress:(UILongPressGestureRecognizer *)_longPress{    NSLog(@"long press : %u", [_longPress state]);}
+```
+
+**旋转⼿手势**
+
+```UIRotationGestureRecognizer *rotationGesture = [[UIRotationGestureRecognizer alloc]
+                                                initWithTarget:self
+                                                action:@selector(rotation:)];[self.view addGestureRecognizer:rotationGesture]; [rotationGesture release];￼￼- (void)rotation:(UIRotationGestureRecognizer *)_rotation{    float degress = _rotation.rotation*(180/M_PI);    tempView.transform = CGAffineTransformRotate(tempView.transform, degress/1000);}
+```
+
+**捏合手势**
+
+```
+static float scale = 0;- (void)pinch:(UIPinchGestureRecognizer *)_pinch{    if (_pinch.state == UIGestureRecognizerStateEnded) {
+        return;    }
+        if (scale == 0) {        if (_pinch.scale > 0) {
+            NSLog(@"放⼤大1");        } else {
+            NSLog(@"缩⼩小1");        }
+    } else {        if (scale - _pinch.scale < 0) {
+            NSLog(@"放⼤大2");        } else {
+            NSLog(@"缩⼩小2");        }
+    }    scale = _pinch.scale;}
+```
+
+- - -
+
+<h3 id="UIPickerView"> UIPickerView(选择器视图) </h3>
+
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼**UIPickerView的使用**- UIPickerView控件生成的表格可以提供滚动的轮盘,如下图,它有两个或多个轮盘 (Component)。- 这些表格表面上类似于标准的UITableView控件,但是它们使用的数据和委托协议有 细微的差别。- UIPickerView的宽度和高度是固定的,纵向是320x216,横向480x162
+
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼UIPickerView常用方法**
+
+```￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼//是否启⽤用选择启⽰示器,就是⼀一个蓝⾊色的条 @property(nonatomic)BOOL showsSelectionIndicator;//获取指定列的⾏行数- (NSInteger)numberOfRowsInComponent:(NSInteger)component;//刷新所有列- (void)reloadAllComponents;//刷新指定的列- (void)reloadComponent:(NSInteger)component;//选择⼀一⾏行- (void)selectRow:(NSInteger)row    inComponent:(NSInteger)component       animated:(BOOL)animated;//获取某列选择的⾏行数- (NSInteger)selectedRowInComponent:(NSInteger)component;
+```￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼**UIPickerView委托方法**
+
+```￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼//返回列数- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView//返回每⼀一列对应的⾏行数- (NSInteger)pickerView:(UIPickerView *)pickerView  numberOfRowsInComponent:(NSInteger)component//返回显⽰示的⽂文本- (NSString *)pickerView:(UIPickerView *)pickerView           titleForRow:(NSInteger)row          forComponent:(NSInteger)component//选中某⼀一⾏行的事件- (void)pickerView:(UIPickerView *)pickerView    didSelectRow:(NSInteger)row     inComponent:(NSInteger)component```
+
+**UIDatePicker常用属性**```￼￼//设置初始化显⽰示的date⽇日期。@property(nonatomic,retain) NSDate *date; //设置最⼩小⽇日期@property(nonatomic,retain) NSDate *minimumDate; //设置最⼤大⽇日期@property(nonatomic,retain) NSDate *maximumDate; //设置⽇日期的显⽰示样式@property(nonatomic) UIDatePickerMode datePickerMode; //分钟间隔值@property(nonatomic)NSInteger minuteInterval;
+```
+
+**datePickerMode 四种显示模式**
+
+- UIDatePickerModeTime 显示时间
+- UIDatePickerModeDate 显示日期
+- UIDatePickerModeDateAndTime 显示日期和时间
+- UIDatePickerModeCountDownTimer 显示时间
+
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼图像加载**
+
+- 本地加载,程序包和沙盒中的图像读取的方式是一样的,都是通过文件路径读取,不同 是路径不一样
+
+```￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼1.获取项⺫⽬目包路径//程序包根路径NSString *resourcePath = [[NSBundle mainBundle] resourcePath];//图像路径NSString *path = [resourcePath stringByAppendingPathComponent:@"icon.png"];￼￼2.获取沙盒路径//沙盒下的Documents⺫⽬目录NSString *path = [NSHomeDirectory()                   stringByAppendingPathComponent:@"Documents/icon.png"];￼￼//通过路径对应的图⽚片⽂文件UIImage *image = [UIImage imageWithContentsOfFile:path];
+```
+
+- ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼网络加载
+
+```
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼NSURL *url = [NSURL URLWithString:@"http://www.baidu.com/img/520.gif"]; //⺴⽹网络获取数据NSData *data = [NSData dataWithContentsOfURL:url];//将NSData转成UIImageUIImage *image = [UIImage imageWithData:data];￼￼￼// UIImage转成NSData //compressionQuality图像的范围为0.0(最低品质)到1.0(最⾼高品质)的压缩系数 NSData *data = UIImageJPEGRepresentation(UIImage *image, CGFloat compressionQuality);//将NSData写⼊入⽂文件⺫⽬目录[data writeToFile:path atomically:YES];
+```
+
+- ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼相册访问	- 相册资源访问通过UIImagePickerController类来读取。UIImagePickerController类继承自UINavigationController,是个独立的导航控制 器,一般使用模态窗口的方式弹出
+	- ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼sourceType属性可指定选取器要选取的资源类型,有如下3种类型:
+	- 所有同步到iPhone的图像以及包括⽤用户拍摄的图⽚片在内的任何相册 UIImagePickerControllerSourceTypePhotoLibrary //仅含相册 		`UIImagePickerControllerSourceTypeSavedPhotosAlbum //允许⽤用户使⽤用iPhone内置的摄像头的拍照 `
+	- UIImagePickerControllerSourceTypeCamera	  ￼￼	`设置图像编辑,允许选取器框定和拉伸图像。默认为NO。 @property(nonatomic)BOOL allowsEditing`
+
+```
+// ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼UIImagePickerController委托, 图像选取必须实现UIImagePickerControllerDelegate协议,以监听选择的资源。￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼// 选取完成后调⽤用,3.x系统以后调⽤用此⽅方法,上⾯面的委托⽅方法会忽略掉。 
+// info包含了许多数据,通过UIImagePickerControllerEditedImage读取编辑后的图像通过UIImagePickerControllerOriginalImage 读取源图像- (void)imagePickerController:(UIImagePickerController *)picker  didFinishPickingMediaWithInfo:(NSDictionary *)info;// 取消选取- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker;
+```
+
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼**调用摄像头**
+
+UIImagePickerController的 sourceType属性设置为 UIImagePickerControllerSourceTypeCamera 即可调用摄像头拍照。拍完后通过UIImageWriteToSavedPhotosAlbum将照片保存至相册
+
+```
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼- (void)imagePickerController:(UIImagePickerController *)pickerdidFinishPickingMediaWithInfo:(NSDictionary *)info {    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage]; //将图⽚片保存⾄至相册    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFninishSavingWithError:contextInfo:), nil);    [picker dismissModalViewControllerAnimated:YES];}
+- (void)image:(UIImage *)image didFninishSavingWithError:(NSError *)error                                           contextInfo:(void *)contextInfo {                                               if (!error) {
+                                                   NSLog(@"保存成功");                                               }
+}
+```
+
+- - - 
+
+<h3 id="AV"> AV(多媒体) </h3>
+
+**iOS系统中的音频播放方式**
+
+- AVAudioPlayer、AVPlayer、系统声音、音频队列 ·AVAudioPlayer- 使用简单方便,但只能播放本地音频,不支持流媒体播放 ·AVPlayer- iOS4.0以后,可以使用AVPlayer播放本地音频和支持流媒体播放,但提供接口较 少,处理音频不够灵活- 音频队列- 音频队列主要处理流媒体播放,提供了强大且灵活的API接口(C函数的接口),但 处理起来也较为复杂
+
+**AVAUDIOPLAYER的使用**
+
+- 引用框架
+- 使用AVAudioPlayer或AVPlayer需要引用AVFoundation类库
+
+```
+NSBundle *bundle = [NSBundle mainBundle];// ⾳音频⽂文件路径NSString *urlString = [bundle pathForResource:@"tell me why" ofType:@"mp3"];// 初始化本地的urlNSURL *url = [[NSURL alloc] initFileURLWithPath:urlString]; // 初始化⾳音频对象AVAudioPlayer *player = [[AVAudioPlayer alloc] initWithContentsOfURL:url error:nil];// 分配播放所需的资源,并将其加⼊入内部播放队列 [player prepareToPlay];// 播放if ([player play]){    NSLog(@"正在播放");
+}
+```
+
+**AVAudioPlayer代理方法**
+
+```￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer*)player successfully:(BOOL)flag {    // 播放结束时执⾏行的动作
+}
+- (void)audioPlayerDecodeErrorDidOccur:(AVAudioPlayer*)player error: (NSError *)error {    // 解码错误执⾏行的动作
+}
+- (void)audioPlayerBeginInterruption:(AVAudioPlayer*)player {
+    // 处理中断的代码}
+    - (void)audioPlayerEndInterruption:(AVAudioPlayer*)player {    // 处理中断结束的代码
+}
+```
+
+**AVPLAYER的使用**
+
+```
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼NSString *urlString = @"http://zhangmenshiting2.baidu.com/data2/music/ 1736524/1736524.mp3? xcode=4c984fdae3c1bad69e17a9d95288ce1e&mid=0.33322142677174";// 初始化远程urlNSURL *url = [NSURL URLWithString:urlString]; // 初始化播放器AVPlayer *player = [[AVPlayer alloc] initWithURL:url]; // 播放[player play];
+```
+
+**播放系统声音**
+
+格式为:caf/wav/aiff格式,且时长小于30s
+
+```
+NSBundle *bundle = [NSBundle mainBundle];NSString *path = [bundle pathForResource:@"44th Street Medium" ofType:@"caf"];// 初始化本地⽂文件urlNSURL *url = [NSURL fileURLWithPath:path];UInt32 soundID;// 将URL所在的⾳音频⽂文件注册为系统声⾳音,soundID⾳音频ID标⽰示该⾳音频
+AudioServicesCreateSystemSoundID((CFURLRef)url, &soundID);// 播放⾳音频AudioServicesPlaySystemSound(soundID);￼￼// 播放系统震动
+AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+```
+
+**后台播放任务**
+
+- 当你的应用程序在后台时(被挂起), 在iOS系统(4.0之后)允许你做三件事:播放音频(audio),位置信息以及voip(网络电话),播放音频
+- 在plist文件中添加“UIBackgroundMode”属性,值为“audio” , 设置AVAudioSession模式,播放音频时,通常将属性设置为AVAudioSessionCategoryPlayback(音频播放之前设置)
+
+```
+NSError *error;AVAudioSession *audionSession = [AVAudioSession sharedInstance];[audionSession setCategory:AVAudioSessionCategoryPlaybackerror:&error];
+```
+
+**自定义后台任务**
+
+- demo1 
+
+```￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼- (void)applicationDidEnterBackground:(UIApplication *)application{    UIApplication *application = [UIApplication sharedApplication];
+    //启动⼀一个后台任务    bgTask = [application beginBackgroundTaskWithExpirationHandler:^(void) {        //当该任务超时回调该block块        //结束该任务        [application endBackgroundTask:bgTask];
+        bgTask = UIBackgroundTaskInvalid;
+    }];
+}
+```
+
+- demo2
+
+```
+// 程序进⼊入后台调⽤用- (void)applicationDidEnterBackground:(UIApplication *)application {    // 开启⼀一个后台任务,避免程序被挂起    bgTask = [application beginBackgroundTaskWithExpirationHandler:^ {                [application endBackgroundTask:bgTask];                bgTask = UIBackgroundTaskInvalid;            }];    // 开启新的线程    [[[NSOperationQueue alloc] init] addOperationWithBlock:^ {        // 开启定时器监听后台运⾏行时间        [NSTimer scheduledTimerWithTimeInterval:1 target:self repeats:YES];  }];}selector:@selector(timerAction) userInfo:self[[NSRunLoop currentRunLoop] run];
+
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼- (void)timerAction {    _count++;    NSLog(@"%d",__count);    //因为⼀一个任务只能保持600秒,所以当500秒的时,新开⼀一个新的任务 if (__count % 500 == 0) {      UIApplication *application = [UIApplication sharedApplication];      bgTask = [application beginBackgroundTaskWithExpirationHandler:^(void) {          [application endBackgroundTask:bgTask];          bgTask = UIBackgroundTaskInvalid;      }];}
+```
+
+**iOS视频播放**
+
+- iOS内置了视频播放器,我们可以通过使用MPMoviePlayerController或者 MPMoviePlayerViewController类(视图控制器)来播放视频(含流媒体视频播 放),两者使用也较为简单
+- 需引入“MediaPlayer.framewrok”库- MPMoviePlayerController播放器可以任意修改播放页面尺寸- MPMoviePlayerViewController类是一个特殊的视图控制器类,它包含了一个播 放器(MPMoviePlayerController)
+
+- demo1
+ 
+```
+MPMoviePlayerController的使用￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼// 初始化urlNSURL *url = [NSURL URLWithString:@"http://tv.flytv.com.cn/seg/ 17.m3u8"];// 初始化视频播放MPMoviePlayerController *moviePlayer = [[MPMoviePlayerController alloc] initWithContentURL:url];// 将视频播放视图加⼊入[self.view addSubview:moviePlayer.view];moviePlayer.view.frame = self.view.bounds;// 开始播放[moviePlayer play];
+```
+
+- demo2
+
+```
+// 初始化urlNSURL *url = [NSURL URLWithString:@"http://tv.flytv.com.cn/seg/ 17.m3u8"];// 初始化播放器控制器MPMoviePlayerViewController *moviePlayer = [[MPMoviePlayerViewController alloc]initWithContentURL:url];// 模态窗⼝口弹出播放器[self presentModalViewController:moviePlayer animated:YES]; [moviePlayer release];
+```
+
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼视频播放常用的通知**
+
+- 视频播放结束的通知 MPMoviePlayerPlaybackDidFinishNotification- 视频播放状态改变的通知 MPMoviePlayerPlaybackStateDidChangeNotification
+- 视频加载状态改变的通知 MPMoviePlayerLoadStateDidChangeNotification
+
+- - -
+
+<h3 id="net">网络与多线程</h3>
+
+**进程的基本概念**
+- 每一个进程都是一个应用程序,都有独立的内存空间,一般来说一个应用程序存在- 一个进程,但也多个进程的情况- ￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼视图的操作一定 · 要主线程来完- 同一个进程中的线程共享内存中内存和资源成
+
+**多线程的基本概念**
+- 每一个程序都有一个主线程,程序启动时创建(调用main来启动)- 主线程的生命周期是和应用程序绑定的,程序退出(结束)时,主线程也就停止了- 多线程技术表示,一个应用程序有多个线程,使用多线程能提供CPU的使用率,防 止主线程堵塞- 任何有可能堵塞主线程的任务不要在主线程执行(访问网络)
+
+**线程的创建与启动**
+
+```￼￼// 1. 第一种开启新的线程调⽤mutableThreadNSThread *t = [[NSThread alloc] initWithTarget:selfobject:nil];[t start]; // 需要⼿手动开启selector:@selector(mutableThread)￼￼// 2. 第二种开启新的线程调⽤用 mutableThread[NSThread detachNewThreadSelector:@selector(mutableThread)                           toTarget:self withObject:nil];￼￼// 3. 第三种开启新的线程调⽤用 mutableThread[self performSelectorInBackground:@selector(mutableThread)                         withObject:nil];
+￼￼// 4.block语法启动⼀一个线程NSOperationQueue *threadQueue = [[NSOperationQueue alloc] init];
+    [threadQueue addOperationWithBlock:^(void) {}];NSThread *t = [NSThread currentThread];
+if (![t isMainThread]) {    NSLog(@"是多线程");
+}￼￼// 5.NSOperation开启⼀一个线程NSOperationQueue *threadQueue = [[NSOperationQueue alloc] init];
+NSInvocationOperation *op = [[NSInvocationOperation alloc] initWithTarget:self
+                                                                 selector:@selector(mutableThread)
+                                                                   object:nil];
+[threadQueue addOperation:op];￼￼// 在主线程上调⽤用 reloadData ⽅方法[self performSelectorOnMainThread:@selector(reloadData)                      withObject:nil waitUntilDone:NO];
+```
+
+**NSThread的常用方法**
+
+```￼￼// 判断当前线程是否是多线程+ (BOOL)isMultiThreaded;// 获取当前线程对象+ (NSThread *)currentThread;// 使当前线程睡眠指定的时间,单位为秒+ (void)sleepForTimeInterval:(NSTimeInterval)ti;
+// 退出当前线程+ (void)exit;// 判断当前线程是否为主线程+ (BOOL)isMainThread// 启动该线程- (void)start
+```
+
+**GCD(Grand Central Dispatch)**
+
+```
+//创建⼀一个队列dispatch_queue_t queue = dispatch_queue_create("test", NULL); //创建异步线程dispatch_async(queue, ^{    //多线程    //回到主线程执⾏行
+    dispatch_sync(dispatch_get_main_queue(), ^{    //主线程
+    });});
+```
+
+**子线程的内存管理**
+
+```
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼// 创建⼦子线程[self performSelectorInBackground:@selector(mutableThread)                         withObject:nil];
+- (void)mutableThread {
+    // 创建⾃自动释放池    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];    for (int i=0; i<10; i++) {        NSLog(@"%d",i);        [NSThread sleepForTimeInterval:1];  }  [self performSelectorOnMainThread:@selector(reloadData)
+                          withObject:nil
+                      waitUntilDone:NO];  [pool release];}
+```
+
+**NSRunloop的基本概念**
+- Run loops 是线程相关的的基础框架的一部分- 一个 run loop 就是一个事件处理 的循环,用来不停的调度工作以及处理输入事件
+- 线程的生命周期存在五个状态:新建、就绪、运行、阻塞、死亡 
+- NSRunLoop可以保持一个线程一直为活动状态,不会马上销毁掉
+
+**定时器在多线程的使用**
+
+在多线程中使用定时器必须开启Runloop,因为只有开启Runloop保持线程为活动 状态,才能保持定时器能不断执行
+
+```
+￼￼- (void)runThread {    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];    [NSTimer scheduledTimerWithTimeInterval:1
+                                     target:self
+                                   selector:@selector(timeAction)
+                                   userInfo:nil
+                                    repeats:YES];
+     // 开启Runloop来使线程保持存活状态
+     [[NSRunLoop currentRunLoop] run];
+     [pool release];}
+```
+
+**￼￼￼￼￼￼￼￼HTTP请求**
+
+```
+Http请求主要由两部分组成:http请求头、http请求体 ·POST请求才有请求体 ·请求的参数有两种形式:1.放在URL后面,2.放在请求体中
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼URL: http://weibo.com/mechenwei?page=1&pagesize=20HTTP请求头:Accept: text/html,application/xhtml+xml,application/ xml;q=0.9,*/*;q=0.8Accept-Charset: GBK,utf-8;Accept-Encoding: gzip,deflate,sdchAccept-Language: zh-CN,zh;Connection: keep-alive........HTTP请求体: userName=wxhl&password=wxhl2805
+```
+
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼HTTP响应**
+
+HTTP响应主要由两部分组成:响应头、响应内容 ·HTTP响应有个状态码,标示响应的结果,例如200表示成功,404未找到页面
+
+```
+HTTP响应头:Cache-Control:no-cache, must-revalidate Connection:closeContent-Encoding:gzip Content-Type:text/html; charset=utf-8 Date:Thu, 10 Jan 2013 02:41:29 GMT DPOOL_HEADER:alice82........HTTP响应体: {username:”wxhl”,success:true};
+```
+
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼访问网络的基本流程**- 构造NSURL实例(地址)
+- 生成NSURLRequest请求
+- 通过NSURLConnection发送请求
+- 通过返回NSURLRespond实例和NSError实例分析结果
+- 接受返回数据
+**NSURLRequest的使用**
+
+```NSURLRequest 包装了网络请求的信息。￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼NSURL *url = [NSURL URLWithString:@"http://www.baidu.com:8080/search?id=1"];cachePolicy 缓存策略 
+timeoutInterval 超时时间 
+NSURLRequest *request = [NSURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60];
+```
+
+```
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];[request setURL:url];// 设置请求⽅方式[request setHTTPMethod:@"POST"];// 设置超时时间[request setTimeoutInterval:60];// 设置请求参数[request setHTTPBody:_data];// 设置请求头[request setValue:@"tttt" forHTTPHeaderField:@"cookes"];
+```
+
+**  同步请求用法**
+
+```
+// 构造urlNSURL *url = [NSURL URLWithString:@"http://www.iphonetrain.com"];// 创建⼀一个请求对象NSURLRequest *request = [NSURLRequest requestWithURL:url]; NSURLResponse *response;// 发送同步请求,请求成功后返回数据NSData *resultData = [NSURLConnection sendSynchronousRequest:request                                    returningResponse:&response                                                error:nil];NSString *dataString = [[NSString alloc] initWithData:resultData                                     encoding:NSUTF8StringEncoding];self.resultText.text = dataString;
+```
+
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼异步请求用法**
+```
+第一种方式￼￼NSURL *url = [NSURL URLWithString:request_url];NSURLRequest *request = [NSURLRequest requestWithURL:url];// 发送异步请求[NSURLConnection connectionWithRequest:request delegate:self];￼￼- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    [_data appendData:data];
+} 
+
+// 接受加载的数据- (void)connectionDidFinishLoading:(NSURLConnection *)connection {    NSString *dataString = [[NSString alloc] initWithData:_data encoding:NSUTF8StringEncoding];    self.resultText.text = dataString; 
+} 
+// 数据加载完以后调⽤用
+```
+
+```
+// 开一个子线程
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼- (IBAction)asychroRequest:(id)sender {      [self performSelectorInBackground:@selector(loadData) withObject:nil];  } 
+// 启动⼀一个新的线程加载数据￼￼- (void)loadData {    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init]; NSURL *url = [NSURL URLWithString:request_url];    NSURLRequest *request = [NSURLRequest requestWithURL:url]; NSURLResponse *response = nil;    // 发送同步请求   NSData *data = [NSURLConnection sendSynchronousRequest:request                                       returningResponse:&response                                                   error:nil];   NSString *stringData = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];   [self performSelectorOnMainThread:@selector(afterLoadData:) withObject:stringData waitUntilDone:NO];   [pool release];}
+```
+
+**xml和json的基本概念**
+- xml:可扩展标记语言,是一种数据交换格式,解析方式一般分为两种Dom和Sax 解析。- Dom解析:把整个数据看做是一个Dom对象,将他们一次性读入内存,功耗大, 解析难度低- Sax解析:Sax采用逐步解析的方式,占用内存小,特点是方便、灵活,解析相对 麻烦- json:一种轻量级的数据交换格式,“{”表示一个字典的开始,“}”表示一个字典 的结束,“[”表示一个数组的开始,“]”表示一个数组的结束。  ￼￼￼￼
+**￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼解析的开源框架**
+- XML Dom解析,GDataXMLNode,XMLDictionary等
+- XML Sax解析,NSXMLParser等- JSON 解析,JSONKit,iOS5之后系统自带解析库等
+
+- - -
+
