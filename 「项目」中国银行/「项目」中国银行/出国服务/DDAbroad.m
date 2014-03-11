@@ -9,6 +9,7 @@
 #import "DDAbroad.h"
 #import "DDCombo.h"
 #import "DDOptional.h"
+#import "DDShowDetail.h"
 
 @interface DDAbroad () <UITableViewDelegate, UITableViewDataSource>
 {
@@ -50,10 +51,10 @@
 
 - (void)dealloc
 {
-    [_currentSelectedView release];
+    _currentSelectedView = nil;
     [_comboLocationList release];
-    [_segmentedControl release];
-    [_images release];
+    _segmentedControl = nil;
+    [_images  release];
     [_imgaesSelected release];
     [_combos release];
     [super dealloc];
@@ -92,9 +93,10 @@
         segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 50);
         [segmentedControl addTarget:self action:@selector(segmentAction:)
                    forControlEvents:UIControlEventValueChanged];
-        _segmentedControl = [segmentedControl retain];
+        [self addSubview:segmentedControl];
+        _segmentedControl = segmentedControl;
         [segmentedControl release];
-        [self addSubview:_segmentedControl];
+
         
         // 初始化展示视图
         _combos = [[NSMutableArray alloc] init];
@@ -153,7 +155,7 @@
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 60;
-    _currentSelectedView = [tableView retain];
+    _currentSelectedView = tableView;
     [self addSubview:tableView];
     [tableView release];
 }
@@ -173,7 +175,7 @@
     bottomView.center = CGPointMake(CGRectGetMidX(self.bounds),
                                     CGRectGetMidY(bottomView.bounds) + CGRectGetMaxY(_segmentedControl.frame));
     bottomView.backgroundColor = [UIColor clearColor];
-    _currentSelectedView = [bottomView retain];
+    _currentSelectedView = bottomView;
     [self addSubview:bottomView];
     [bottomView release];
     
@@ -192,6 +194,13 @@
     rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
     [bottomView addGestureRecognizer:rightSwipe];
     [rightSwipe release];
+    
+    // 清空上次装的数据
+    if (_combos) {
+        [_combos release];
+        _combos  = nil;
+        _combos = [@[] mutableCopy];
+    }
     
     for (int i = 0; i < 5; i++) {
         DDCombo *combo = [[DDCombo alloc] initWithFrame:CGRectZero];
@@ -222,9 +231,15 @@
     optionalView.bounds = CGRectMake(0, 0, 300, 300);
     optionalView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
     optionalView.processTap = ^(UIButton *sender){
-        NSLog(@"选购点击按钮回调");
+        if (sender.tag == kDetailButtonTag) {
+            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
+            [self addSubview:detail];
+            [detail release];
+        } else {
+#pragma mark - TODO
+        }
     };
-    _currentSelectedView = [optionalView retain];
+    _currentSelectedView = optionalView;
     [self addSubview:optionalView];
     [optionalView release];
 }

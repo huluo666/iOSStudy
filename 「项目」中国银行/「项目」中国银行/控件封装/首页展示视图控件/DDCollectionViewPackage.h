@@ -13,7 +13,6 @@
 
 @property (nonatomic, retain, readonly) UIImageView *backgroundImageView;           // 背景图片
 @property (nonatomic, retain, readonly) UICollectionView *collectionView;           // 集合视图
-@property (nonatomic, retain, readonly) UICollectionViewFlowLayout *layout;         // cell布局
 @property (nonatomic, copy) NSString *identifier;                                   // 重用标志
 @property (nonatomic, assign) DDCollectionCellViewType collectionCellViewType;      // 显示样式
 @property (nonatomic, retain, readonly) UIPageControl *pageControl;                 // 分页控件

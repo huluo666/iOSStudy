@@ -35,6 +35,7 @@
         // 详情按钮
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         detailButton.bounds = CGRectMake(0, 0, 60, 30);
+        detailButton.tag = kDetailButtonTag;
         detailButton.center = CGPointMake(CGRectGetMidX(titleLabel.bounds) - CGRectGetMidX(detailButton.bounds) - 10,
                                     CGRectGetMaxY(imageView.bounds) - CGRectGetHeight(detailButton.bounds));
         [detailButton setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal];
@@ -46,6 +47,7 @@
         // 选购按钮
         UIButton *chooseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         chooseButton.bounds = detailButton.bounds;
+        detailButton.tag = kChooseButtonTag;
         chooseButton.center = CGPointMake( CGRectGetWidth(imageView.bounds) - CGRectGetMidX(detailButton.frame),
                                     detailButton.center.y);
         [chooseButton setBackgroundImage:[UIImage imageNamed:@"选购_03"] forState:UIControlStateNormal];

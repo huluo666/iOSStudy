@@ -36,10 +36,10 @@
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewFrame];
             imageView.contentMode = UIViewContentModeScaleAspectFill;
             imageView.clipsToBounds = YES;
-            _imageView = [imageView retain];
+            [self addSubview:imageView];
             [imageView release];
-            [self addSubview:_imageView];
-            
+            _imageView = imageView;
+
             // 显示文本
             CGRect textLabelFrame = CGRectMake(0,
                                                bounds.size.height * 0.8,
@@ -47,10 +47,10 @@
                                                bounds.size.height * 0.2);
             UILabel *textLabel = [[UILabel alloc] initWithFrame:textLabelFrame];
             textLabel.textAlignment = NSTextAlignmentCenter;
-            _textLabel = [textLabel retain];
+            [self addSubview:textLabel];
             [textLabel release];
-            [self addSubview:_textLabel];
-            
+            _textLabel = textLabel;
+
             // 添加单击手势
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
                                                   initWithTarget:self
@@ -72,9 +72,10 @@
             imageView.contentMode = UIViewContentModeScaleAspectFill;
             imageView.clipsToBounds = YES;
             imageView.userInteractionEnabled = YES;
-            _imageView = [imageView retain];
+            [self addSubview:imageView];
             [imageView release];
-            [self addSubview:_imageView];
+            _imageView = imageView;
+            
             
             // 显示信息文本
             CGRect textLabelBounds = CGRectMake(0,
@@ -85,19 +86,19 @@
             textLabel.bounds = textLabelBounds;
             textLabel.center = CGPointMake(CGRectGetMidX(textLabel.bounds) + CGRectGetWidth(imageViewBounds) + 10,
                                            CGRectGetMidY(textLabel.bounds));
-            _textLabel = [textLabel retain];
+            [self addSubview:textLabel];
             [textLabel release];
-            [self addSubview:_textLabel];
+            _textLabel = textLabel;
             
             // 显示详细信息文本
             UILabel *detailTextLabel = [[UILabel alloc] init];
             detailTextLabel.bounds = textLabelBounds;
             detailTextLabel.center = CGPointMake(textLabel.center.x,
                                                  textLabel.center.y + CGRectGetHeight(textLabel.bounds));
-            _detailTextLabel = [detailTextLabel retain];
+            [self addSubview:detailTextLabel];
             [detailTextLabel release];
-            [self addSubview:_detailTextLabel];
-            
+            _detailTextLabel = detailTextLabel;
+
             // 详情button
             UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             button.bounds = CGRectMake(0, 0, 60, 30);
@@ -107,8 +108,8 @@
             [button addTarget:self
                        action:@selector(processTap:)
              forControlEvents:UIControlEventTouchUpInside];
-            _button = [button retain];
-            [self addSubview:_button];
+            [self addSubview:button];
+            _button = button;
         }
     }
     return self;
@@ -116,10 +117,10 @@
 
 - (void)dealloc
 {
-    [_imageView release];
-    [_textLabel release];
-    [_detailTextLabel release];
-    [_button release];
+    _imageView = nil;
+    _textLabel = nil;
+    _detailTextLabel = nil;
+    _button = nil;
     [_processTap release];
     [super dealloc];
 }

@@ -23,10 +23,9 @@
 
 - (void)dealloc
 {
-    [_backgroundImageView release];
-    [_collectionView release];
-    [_layout release];
-    [_pageControl release];
+    _backgroundImageView = nil;
+    _collectionView = nil;
+    _pageControl = nil;
     [_dataSource release];
     [_identifier release];
     [super dealloc];
@@ -48,9 +47,9 @@
         backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
         backgroundImageView.clipsToBounds = YES;
         backgroundImageView.userInteractionEnabled = YES;
-        _backgroundImageView = [backgroundImageView retain];
+        [self addSubview:backgroundImageView];
         [backgroundImageView release];
-        [self addSubview:_backgroundImageView];
+        _backgroundImageView = backgroundImageView;
         
         // 添加集合视图
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:bounds
@@ -62,10 +61,9 @@
         collectionView.backgroundColor = [UIColor clearColor];
         [collectionView registerClass:[UICollectionViewCell class]
                        forCellWithReuseIdentifier:identifier];
-
-        _collectionView = [collectionView retain];
+        [self addSubview:collectionView];
         [collectionView release];
-        [self addSubview:_collectionView];
+        _collectionView = collectionView;
         
         // 添加分页控件
         UIPageControl *pageControl = [[UIPageControl alloc] init];
@@ -77,9 +75,11 @@
         pageControl.currentPage = 0;
         pageControl.currentPageIndicatorTintColor = [UIColor redColor];
         pageControl.pageIndicatorTintColor = [UIColor grayColor];
-        _pageControl = [pageControl retain];
+        [self addSubview:pageControl];
         [pageControl release];
-        [self addSubview:_pageControl];
+        _pageControl = pageControl;
+
+
         
         // 设置代理和数据源
         _collectionView.delegate = self;

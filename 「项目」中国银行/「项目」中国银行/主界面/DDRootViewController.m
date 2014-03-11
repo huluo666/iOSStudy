@@ -63,7 +63,7 @@
 - (void)dealloc
 {
     [_naviBar release];
-    [_views release];
+    _views = nil;
     [super dealloc];
 }
 

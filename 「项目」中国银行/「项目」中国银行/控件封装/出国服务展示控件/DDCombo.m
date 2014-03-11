@@ -31,17 +31,16 @@
         titleLabel.font = [UIFont systemFontOfSize:18];
         titleLabel.textAlignment = NSTextAlignmentCenter;
         titleLabel.text = @"测试标题";
-        _titleLabel = [titleLabel retain];
+        _titleLabel = titleLabel;
         [backgroundImageView addSubview:titleLabel];
         [titleLabel release];
     }
     return self;
 }
 
-
 - (void)dealloc
 {
-    [_titleLabel release];
+    _titleLabel = nil;
     [super dealloc];
 }
 
