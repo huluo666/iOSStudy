@@ -28,11 +28,12 @@
 
 #ifndef _ROOT_VIEW_CONTROLLER_
 #define _ROOT_VIEW_CONTROLLER_
-#define kHeaderViewHeight    80  // 头部视图高度
-#define kNaviBarViewWidth    88  // 左侧导航栏宽度
-#define kNaviBarBaseViewWidth 80 // 左侧导航栏底图宽度
-#define kNaviBarButtonHeight 107 // 导航栏按钮高度
-#define kButtonTag           100 // 导航栏按钮tag基准值
+#define kHeaderViewHeight    80     // 头部视图高度
+#define kNaviBarViewWidth    88     // 左侧导航栏宽度
+#define kNaviBarBaseViewWidth 80    // 左侧导航栏底图宽度
+#define kNaviBarButtonHeight 107    // 导航栏按钮高度
+#define kButtonTag           100    // 导航栏按钮tag基准值
+#define kBottomImageViewHeight 20   // 下面图片视图高度
 #endif
 
 #define kMainViewWidth (kRootViewWidth - kNaviBarBaseViewWidth) // 主界面宽度
@@ -40,8 +41,8 @@
 #define kMainViewFrame (CGRectMake(kNaviBarBaseViewWidth, kHeaderViewHeight, kMainViewWidth, kMainViewHeight))                              // 主界面frame
 #define kMainViewBounds (CGRectMake(0, 0, kMainViewWidth, kMainViewHeight))                                                                 // 主界面bounds
 #define kMainViewCenter (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), (kHeaderViewHeight) + (kMainViewHeight / 2)))          // 主界面center
-#define kMainViewCenterUp (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), (-2) * (kMainViewHeight)))                           // 主界面center
-#define kMainViewCenterDown (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), 2 * (kMainViewHeight)))                            // 主界面center
+#define kMainViewCenterUp (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), - kMainViewHeight / 2 + kHeaderViewHeight))          // 主界面center
+#define kMainViewCenterDown (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), kRootViewHeight + kMainViewHeight / 2))            // 主界面center
 
 #ifndef _DDLOGIN_
 #define _DDLOGIN_

@@ -10,4 +10,6 @@
 
 @interface DDCombo : UIView
 
+@property (nonatomic, retain, readonly) UILabel *titleLabel;
+
 @end

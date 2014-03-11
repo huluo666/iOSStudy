@@ -179,9 +179,9 @@
     NSLog(@"%@", headerView.subviews);
     
     // 设置底部视图
-    UIImage *bottomImage = [UIImage imageNamed:@"down_27"];
+    UIImage *bottomImage = [UIImage imageNamed:@"写入框_08"];
     UIImageView *bottomView = [[UIImageView alloc] initWithImage:bottomImage];
-    bottomView.bounds = CGRectMake(0, 0, kRootViewWidth, 20);
+    bottomView.bounds = CGRectMake(0, 0, kRootViewWidth, kBottomImageViewHeight);
     bottomView.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight - 10);
     [self.view addSubview:bottomView];
     [bottomView release];
