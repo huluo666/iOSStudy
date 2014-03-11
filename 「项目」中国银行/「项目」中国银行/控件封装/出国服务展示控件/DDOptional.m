@@ -47,7 +47,6 @@
         // 选购按钮
         UIButton *chooseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         chooseButton.bounds = detailButton.bounds;
-        detailButton.tag = kChooseButtonTag;
         chooseButton.center = CGPointMake( CGRectGetWidth(imageView.bounds) - CGRectGetMidX(detailButton.frame),
                                     detailButton.center.y);
         [chooseButton setBackgroundImage:[UIImage imageNamed:@"选购_03"] forState:UIControlStateNormal];
@@ -61,8 +60,8 @@
 
 - (void)processTap:(UIButton *)sender
 {
-    if (_processTap) {
-        _processTap(sender);
+    if (_tapAction) {
+        _tapAction(sender);
     }
 }
 

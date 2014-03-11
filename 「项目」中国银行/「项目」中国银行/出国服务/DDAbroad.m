@@ -230,15 +230,17 @@
     DDOptional *optionalView = [[DDOptional alloc] initWithFrame:CGRectZero];
     optionalView.bounds = CGRectMake(0, 0, 300, 300);
     optionalView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-    optionalView.processTap = ^(UIButton *sender){
+    optionalView.tapAction = ^(UIButton *sender) {
         if (sender.tag == kDetailButtonTag) {
             DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
             [self addSubview:detail];
             [detail release];
         } else {
 #pragma mark - TODO
+            NSLog(@"选购");
         }
     };
+    
     _currentSelectedView = optionalView;
     [self addSubview:optionalView];
     [optionalView release];

@@ -10,6 +10,6 @@
 
 @interface DDOptional : UIView
 
-@property (copy, nonatomic) void(^processTap)(UIButton *sender);
+@property (copy, nonatomic) void(^tapAction)(UIButton *sender);
 
 @end
