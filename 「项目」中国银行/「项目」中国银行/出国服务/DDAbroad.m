@@ -10,8 +10,13 @@
 #import "DDCombo.h"
 #import "DDOptional.h"
 #import "DDShowDetail.h"
+#import "DDPopView.h"
 
-@interface DDAbroad () <UITableViewDelegate, UITableViewDataSource>
+@interface DDAbroad () <
+    UITableViewDelegate,
+    UITableViewDataSource,
+    UICollectionViewDelegate,
+    UICollectionViewDataSource>
 {
     UIView *_currentSelectedView;               // 当前选中视图
     NSMutableArray *_comboLocationList;         // 用于存储5个坐标点
@@ -22,7 +27,12 @@
     
     NSMutableArray *_combos;                    // 套餐模式控件数组
     BOOL _isAnimating;                          // 是否正在动画中
+    
+    BOOL isSearchBarVisiable;                   // 搜索框是否可见
 }
+
+// 加载内容背景视图
+- (UIView *)loadBottomViewWithSelectedIndex:(NSInteger)index;
 
 // 选中事件
 - (void)segmentAction:(UISegmentedControl *)sender;
@@ -31,6 +41,11 @@
 
 // 加载政策咨询视图
 - (void)loadConsultView;
+// 搜索
+- (void)searchAction:(UIButton *)sender;
+// 播放视频
+- (void)playVideo:(UIButton *)sender;
+
 // 加载套餐模式视图
 - (void)loadComboView;
 // 加载自选模式视图
@@ -63,6 +78,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
+    self.frame = CGRectMake(0, 0, kMainViewWidth, kMainViewHeight);
     if (self) {
         // 标题
         UIImage *consult = [UIImage imageNamed:@"a_07@2x"];
@@ -96,7 +112,15 @@
         [self addSubview:segmentedControl];
         _segmentedControl = segmentedControl;
         [segmentedControl release];
-
+        
+        // 分段控件下面的阴影
+        UIImageView *shadowView = [[UIImageView alloc] init];
+        shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(segmentedControl.bounds), 10);
+        shadowView.center = CGPointMake(CGRectGetMidX(segmentedControl.frame),
+                                        CGRectGetMaxY(segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
+        shadowView.image = [UIImage imageNamed:@"pshadow_08"];
+        [self addSubview:shadowView];
+        [shadowView release];
         
         // 初始化展示视图
         _combos = [[NSMutableArray alloc] init];
@@ -105,7 +129,7 @@
        CGRect bottomViewBounds = CGRectMake(0,
                                             0,
                                             kMainViewWidth,
-                                            CGRectGetMaxY(self.bounds) - CGRectGetMaxY(_segmentedControl.frame) - kBottomImageViewHeight);
+                                            kMainViewHeight + 50);
         
         CGPoint bottomViewCenter = CGPointMake(CGRectGetMidX(bottomViewBounds),
                                                CGRectGetMidY(bottomViewBounds));
@@ -119,7 +143,8 @@
     }
     
 //        [self loadConsultView];
-        [self loadComboView];
+//        [self loadComboView];
+    [self loadOptionalView];
     return self;
 }
 
@@ -141,23 +166,150 @@
     }
 }
 
+- (UIView *)loadBottomViewWithSelectedIndex:(NSInteger)index
+{
+     // 初始化底图
+    UIImageView *bottomView = [[[UIImageView alloc] init] autorelease];
+    bottomView.frame = kMainViewBounds;
+    bottomView.image = [UIImage imageNamed:@"背景"];
+    bottomView.userInteractionEnabled = YES;
+    _currentSelectedView = bottomView;
+    [self addSubview:bottomView];
+    [self sendSubviewToBack:bottomView];
+    
+    if (index) {
+        // video
+        UIButton *videoButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        videoButton.bounds = CGRectMake(0, 0, 50, 50);
+        videoButton.center = CGPointMake(CGRectGetMaxX(bottomView.bounds) * 0.85,
+                                         CGRectGetMinY(bottomView.bounds) + 50);
+        [videoButton setBackgroundImage:[UIImage imageNamed:@"视频图标_05"]
+                               forState:UIControlStateNormal];
+        [videoButton addTarget:self
+                        action:@selector(playVideo:)
+              forControlEvents:UIControlEventTouchUpInside];
+        [bottomView addSubview:videoButton];
+        
+    } else {
+        // search bar background
+        UIImage *searchImageBackground = [UIImage imageNamed:@"搜索框_11"];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:searchImageBackground];
+        imageView.bounds = CGRectMake(0, 0, 230, 50);
+        imageView.center = CGPointMake(CGRectGetMaxX(bottomView.bounds) * 0.85,
+                                       CGRectGetMinY(bottomView.bounds) + 50);
+        imageView.userInteractionEnabled = YES;
+        [bottomView addSubview:imageView];
+        [imageView release];
+        
+        // left button view
+        UIButton *leftViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [leftViewButton setBackgroundImage:[UIImage imageNamed:@"choose_01"]
+                                  forState:UIControlStateNormal];
+        [leftViewButton addTarget:self action:@selector(searchAction:)
+                 forControlEvents:UIControlEventTouchUpInside];
+        leftViewButton.bounds = CGRectMake(0, 0, 50, 50);
+        
+        // search bar textfield
+        CGRect searchBarFrame = imageView.bounds;
+        UITextField *searchTextField = [[UITextField alloc] initWithFrame:searchBarFrame];
+        searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        searchTextField.textAlignment = NSTextAlignmentLeft;
+        searchTextField.leftView = leftViewButton;
+        searchTextField.leftViewMode = UITextFieldViewModeAlways;
+        searchTextField.backgroundColor = [UIColor clearColor];
+        [imageView addSubview:searchTextField];
+        [searchTextField release];
+    }
+    return bottomView;
+}
+
+- (void)playVideo:(UIButton *)sender
+{
+    //TODO: 播放视频
+#pragma mark - 播放视频
+}
+
+- (void)searchAction:(UIButton *)sender
+{
+    // pop view
+    if (!isSearchBarVisiable) {
+        CGRect frame = CGRectMake(690, 70, 200, 150);
+        DDPopVIew *popView = [[DDPopVIew alloc] initWithFrame:frame];
+        [_currentSelectedView addSubview:popView];
+        [popView release];
+        isSearchBarVisiable = YES;
+    } else {
+        [[_currentSelectedView.subviews lastObject] removeFromSuperview];
+        isSearchBarVisiable = NO;
+    }
+}
+
 - (void)loadConsultView
 {
     [_currentSelectedView removeFromSuperview];
     
     _segmentedControl.selectedSegmentIndex = 0;
     [self selectedIndex:0];
+
+    UIView *bottomView = [self loadBottomViewWithSelectedIndex:0];
+    
+    // tableView baackground
+    UIImageView *tableViewBackgorundView = [[UIImageView alloc] init];
+    tableViewBackgorundView.frame = kMainViewBounds;
+    tableViewBackgorundView.image = [UIImage imageNamed:@"背景"];
     
     // tableView
     UITableView *tableView = [[UITableView alloc] init];
-    tableView.bounds = CGRectMake(0, 0, 600, 400);
-    tableView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+    tableView.bounds = CGRectMake(0, 0, 800, 450);
+    tableView.center = CGPointMake(CGRectGetMidX(bottomView.bounds),
+                                   CGRectGetMidY(bottomView.bounds) * 1.1);
     tableView.dataSource = self;
     tableView.delegate = self;
     tableView.rowHeight = 60;
-    _currentSelectedView = tableView;
-    [self addSubview:tableView];
+    tableView.backgroundView = tableViewBackgorundView;
+    [tableViewBackgorundView release];
+    [bottomView addSubview:tableView];
     [tableView release];
+    
+    // 上下两条阴影
+    UIImageView *upShadowView = [[UIImageView alloc] init];
+    upShadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds) * 1.1, 5);
+    upShadowView.center = CGPointMake(CGRectGetMidX(tableView.frame),
+                                      CGRectGetMinY(tableView.frame) + CGRectGetMidY(upShadowView.bounds));
+    upShadowView.image = [UIImage imageNamed:@"up_19"];
+    [bottomView addSubview:upShadowView];
+    [upShadowView release];
+    
+    UIImageView *downShadowView = [[UIImageView alloc] init];
+    downShadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds) * 1.1, 5);
+    downShadowView.center = CGPointMake(CGRectGetMidX(tableView.frame),
+                                      CGRectGetMaxY(tableView.frame) + CGRectGetMidY(downShadowView.bounds));
+    downShadowView.image = [UIImage imageNamed:@"down_27"];
+    [bottomView addSubview:downShadowView];
+    [downShadowView release];
+    
+    // 两个Label
+    UILabel *serialNumberLabel = [[UILabel alloc] init];
+    serialNumberLabel.bounds = CGRectMake(0, 0, 125, 40);
+    serialNumberLabel.center = CGPointMake(CGRectGetMinX(tableView.frame) + CGRectGetMidX(serialNumberLabel.bounds),
+                                           upShadowView.center.y - CGRectGetMidY(serialNumberLabel.bounds));
+    serialNumberLabel.font = [UIFont systemFontOfSize:20];
+    serialNumberLabel.textColor = [UIColor whiteColor];
+    serialNumberLabel.textAlignment = NSTextAlignmentCenter;
+    serialNumberLabel.text = @"编号";
+    [bottomView addSubview:serialNumberLabel];
+    [serialNumberLabel release];
+    
+    UILabel *titleLabel = [[UILabel alloc] init];
+    titleLabel.bounds = CGRectMake(0, 0, 675, 40);
+    titleLabel.center = CGPointMake(CGRectGetMaxX(serialNumberLabel.frame) + CGRectGetMidX(titleLabel.bounds),
+                                           upShadowView.center.y - CGRectGetMidY(serialNumberLabel.bounds));
+    titleLabel.font = [UIFont systemFontOfSize:20];
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = @"标题";
+    [bottomView addSubview:titleLabel];
+    [titleLabel release];
 }
 
 - (void)loadComboView
@@ -166,18 +318,7 @@
     _segmentedControl.selectedSegmentIndex = 1;
     [self selectedIndex:1];
     
-    // 初始化底图
-    UIView *bottomView = [[UIView alloc] init];
-    bottomView.bounds = CGRectMake(0,
-                                   0,
-                                   kMainViewWidth,
-                                   CGRectGetMaxY(self.bounds) - CGRectGetMaxY(_segmentedControl.frame) - kBottomImageViewHeight);
-    bottomView.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                    CGRectGetMidY(bottomView.bounds) + CGRectGetMaxY(_segmentedControl.frame));
-    bottomView.backgroundColor = [UIColor clearColor];
-    _currentSelectedView = bottomView;
-    [self addSubview:bottomView];
-    [bottomView release];
+    UIView *bottomView = [self loadBottomViewWithSelectedIndex:1];
     
     // 左滑
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]
@@ -227,23 +368,58 @@
     [self selectedIndex:2];
     _segmentedControl.selectedSegmentIndex = 2;
     
-    DDOptional *optionalView = [[DDOptional alloc] initWithFrame:CGRectZero];
-    optionalView.bounds = CGRectMake(0, 0, 300, 300);
-    optionalView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
-    optionalView.tapAction = ^(UIButton *sender) {
-        if (sender.tag == kDetailButtonTag) {
-            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            [self addSubview:detail];
-            [detail release];
-        } else {
-#pragma mark - TODO
-            NSLog(@"选购");
-        }
-    };
+    UIView *bottomView = [self loadBottomViewWithSelectedIndex:2];
     
-    _currentSelectedView = optionalView;
-    [self addSubview:optionalView];
-    [optionalView release];
+    // 集合视图
+    UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+//    [layout setScrollDirection:UICollectionViewScrollDirectionVertical];
+    [layout setItemSize:CGSizeMake(290, 290)];
+    [layout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 0)];
+    [layout setMinimumInteritemSpacing:10];
+    [layout setMinimumLineSpacing:10];
+    CGRect frame = CGRectMake(CGRectGetMidX(_segmentedControl.frame) - 900 / 2,
+                              CGRectGetMaxY(_segmentedControl.frame) * 1.8,
+                              900,
+                              320);
+    // Collection view
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:frame
+                                                          collectionViewLayout:layout];
+    
+//    collectionView.backgroundColor = [UIColor clearColor];
+    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    [collectionView registerClass:[UICollectionViewCell class]
+       forCellWithReuseIdentifier:@"自选模式"];
+    collectionView.pagingEnabled = YES;
+    collectionView.contentSize = CGSizeMake(CGRectGetWidth(collectionView.bounds),
+                                            2 * CGRectGetHeight(collectionView.bounds));
+    [bottomView addSubview:collectionView];
+    [collectionView release];
+
+    // 菜单
+    UIScrollView *menuView = [[UIScrollView alloc] init];
+    menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 2 / 3 , 30);
+    menuView.center = CGPointMake(CGRectGetMidX(collectionView.frame),
+                                  CGRectGetMinY(collectionView.frame) - CGRectGetHeight(menuView.bounds) * 0.8);
+    menuView.backgroundColor = [UIColor greenColor];
+    [bottomView addSubview:menuView];
+    [menuView release];
+    
+    // 菜单两侧按钮
+    UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [leftButton setBackgroundImage:[UIImage imageNamed:@"箭头左"] forState:UIControlStateNormal];
+    leftButton.bounds = CGRectMake(0, 0, 30, 30);
+    leftButton.center = CGPointMake(CGRectGetMinX(menuView.frame) - CGRectGetMidX(leftButton.bounds) * 1.5,
+                                    CGRectGetMidY(menuView.frame));
+    [bottomView addSubview:leftButton];
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [rightButton setBackgroundImage:[UIImage imageNamed:@"箭头右"] forState:UIControlStateNormal];
+    rightButton.bounds = CGRectMake(0, 0, 30, 30);
+    rightButton.center = CGPointMake(CGRectGetMaxX(menuView.frame) + CGRectGetMidX(rightButton.bounds) * 1.5,
+                                    CGRectGetMidY(menuView.frame));
+    [bottomView addSubview:rightButton];
 }
 
 - (void)selectedIndex:(NSInteger)index
@@ -349,12 +525,14 @@
 
 #pragma mark - <UITableViewDataSource>
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     return 12;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier  = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
@@ -366,17 +544,65 @@
         cell.backgroundView = backgroundView;
         [backgroundView release];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
+        cell.textLabel.textColor = [UIColor grayColor];
         cell.textLabel.numberOfLines = 1;
         cell.detailTextLabel.textAlignment = NSTextAlignmentCenter;
         cell.detailTextLabel.textColor = [UIColor redColor];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld------------", indexPath.row];
-
+    
+    // title view
+    UILabel *titleViewLabel = [[UILabel alloc] init];
+    titleViewLabel.bounds = CGRectMake(0, 0, 675, tableView.rowHeight);
+    titleViewLabel.center = CGPointMake(125 + CGRectGetMidX(titleViewLabel.bounds),
+                                        CGRectGetMidY(titleViewLabel.bounds));
+    titleViewLabel.text = [NSString stringWithFormat:@"测试标题 %ld", indexPath.row];
+    titleViewLabel.textAlignment = NSTextAlignmentCenter;
+    titleViewLabel.textColor = [UIColor grayColor];
+    [cell.contentView addSubview:titleViewLabel];
+    [titleViewLabel release];
     return cell;
 }
 
-#pragma mark - <UITableViewDelegate>
+#pragma mark - <UICollectionViewDataSource>
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView
+     numberOfItemsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
+                  cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"自选模式"
+                                                                           forIndexPath:indexPath];
+    DDOptional *optionalView = [[DDOptional alloc] initWithFrame:CGRectZero];
+    optionalView.bounds = CGRectMake(0, 0, 300, 300);
+    optionalView.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
+    optionalView.tapAction = ^(UIButton *sender) {
+        if (sender.tag == kDetailButtonTag) {
+            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
+            [self.superview addSubview:detail];
+            [detail release];
+        } else {
+#pragma mark - TODO
+            NSLog(@"选购");
+        }
+    };
+//    cell.backgroundColor = [UIColor grayColor];
+    [cell.contentView addSubview:optionalView];
+    [optionalView release];
+    return cell;
+}
+
+#pragma mark - <UICollectionViewDelegate>
+
+- (void)collectionView:(UICollectionView *)collectionView
+    didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"section:%ld row:%ld",indexPath.section, indexPath.row);
+}
+
 
 @end

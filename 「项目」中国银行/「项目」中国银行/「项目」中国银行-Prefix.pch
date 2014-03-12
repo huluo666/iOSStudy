@@ -24,6 +24,7 @@
 #define kRootViewController [[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController]
 
 #define kDetailButtonTag 777
+#define kSearchTextFieldTag 121
 
 #define kRootViewWidth           1024 // 根视图宽度
 #define kRootViewHeight          768  // 根视图高度

@@ -79,8 +79,6 @@
 		952BB4D218C98CE1002F4928 /* 计算_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41318C98CE0002F4928 /* 计算_01.png */; };
 		952BB4D318C98CE1002F4928 /* 记住密码点击_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41418C98CE0002F4928 /* 记住密码点击_03.png */; };
 		952BB4D418C98CE1002F4928 /* 记住密码未点击_03.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41518C98CE0002F4928 /* 记住密码未点击_03.png */; };
-		952BB4D518C98CE1002F4928 /* 箭头右.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41618C98CE0002F4928 /* 箭头右.png */; };
-		952BB4D618C98CE1002F4928 /* 箭头左.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41718C98CE0002F4928 /* 箭头左.png */; };
 		952BB4D718C98CE1002F4928 /* 借记卡产品_04_h.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41818C98CE0002F4928 /* 借记卡产品_04_h.png */; };
 		952BB4D818C98CE1002F4928 /* 借记卡产品_04.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41918C98CE0002F4928 /* 借记卡产品_04.png */; };
 		952BB4D918C98CE1002F4928 /* 借记卡产品.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB41A18C98CE0002F4928 /* 借记卡产品.png */; };
@@ -222,6 +220,9 @@
 		952BB57018C98CEE002F4928 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56918C98CEE002F4928 /* Icon@2x.png */; };
 		952BB57118C98CEE002F4928 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56A18C98CEE002F4928 /* iTunesArtwork.png */; };
 		952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952BB57518C98DA4002F4928 /* DDRootViewController.m */; };
+		95636E2E18D010FE00C29D9B /* DDPopVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 95636E2D18D010FE00C29D9B /* DDPopVIew.m */; };
+		95636E3118D04F3300C29D9B /* 箭头右@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E2F18D04F3300C29D9B /* 箭头右@2x.png */; };
+		95636E3218D04F3300C29D9B /* 箭头左@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E3018D04F3300C29D9B /* 箭头左@2x.png */; };
 		95682ABE18CD4B9400C2CFAD /* DDCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682ABB18CD4B9400C2CFAD /* DDCollectionCellView.m */; };
 		95682ABF18CD4B9400C2CFAD /* DDCollectionViewPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682ABD18CD4B9400C2CFAD /* DDCollectionViewPackage.m */; };
 		95682AC318CD4BCF00C2CFAD /* DDShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */; };
@@ -326,8 +327,6 @@
 		952BB41318C98CE0002F4928 /* 计算_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "计算_01.png"; sourceTree = "<group>"; };
 		952BB41418C98CE0002F4928 /* 记住密码点击_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "记住密码点击_03.png"; sourceTree = "<group>"; };
 		952BB41518C98CE0002F4928 /* 记住密码未点击_03.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "记住密码未点击_03.png"; sourceTree = "<group>"; };
-		952BB41618C98CE0002F4928 /* 箭头右.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右.png"; sourceTree = "<group>"; };
-		952BB41718C98CE0002F4928 /* 箭头左.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头左.png"; sourceTree = "<group>"; };
 		952BB41818C98CE0002F4928 /* 借记卡产品_04_h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "借记卡产品_04_h.png"; sourceTree = "<group>"; };
 		952BB41918C98CE0002F4928 /* 借记卡产品_04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "借记卡产品_04.png"; sourceTree = "<group>"; };
 		952BB41A18C98CE0002F4928 /* 借记卡产品.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "借记卡产品.png"; sourceTree = "<group>"; };
@@ -470,6 +469,10 @@
 		952BB56A18C98CEE002F4928 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		952BB57418C98DA4002F4928 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		952BB57518C98DA4002F4928 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		95636E2C18D010FE00C29D9B /* DDPopVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopVIew.h; sourceTree = "<group>"; };
+		95636E2D18D010FE00C29D9B /* DDPopVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopVIew.m; sourceTree = "<group>"; };
+		95636E2F18D04F3300C29D9B /* 箭头右@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右@2x.png"; sourceTree = "<group>"; };
+		95636E3018D04F3300C29D9B /* 箭头左@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头左@2x.png"; sourceTree = "<group>"; };
 		95682ABA18CD4B9400C2CFAD /* DDCollectionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionCellView.h; sourceTree = "<group>"; };
 		95682ABB18CD4B9400C2CFAD /* DDCollectionCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionCellView.m; sourceTree = "<group>"; };
 		95682ABC18CD4B9400C2CFAD /* DDCollectionViewPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionViewPackage.h; sourceTree = "<group>"; };
@@ -698,6 +701,8 @@
 				952BB40918C98CE0002F4928 /* 购买.png */,
 				952BB40A18C98CE0002F4928 /* 购买量_05.png */,
 				952BB40B18C98CE0002F4928 /* 购物车_01.png */,
+				95636E2F18D04F3300C29D9B /* 箭头右@2x.png */,
+				95636E3018D04F3300C29D9B /* 箭头左@2x.png */,
 				952BB40C18C98CE0002F4928 /* 关闭_05.png */,
 				952BB40D18C98CE0002F4928 /* 贵金属_10.png */,
 				952BB40E18C98CE0002F4928 /* 贵金属.png */,
@@ -708,8 +713,6 @@
 				952BB41318C98CE0002F4928 /* 计算_01.png */,
 				952BB41418C98CE0002F4928 /* 记住密码点击_03.png */,
 				952BB41518C98CE0002F4928 /* 记住密码未点击_03.png */,
-				952BB41618C98CE0002F4928 /* 箭头右.png */,
-				952BB41718C98CE0002F4928 /* 箭头左.png */,
 				952BB41818C98CE0002F4928 /* 借记卡产品_04_h.png */,
 				952BB41918C98CE0002F4928 /* 借记卡产品_04.png */,
 				952BB41A18C98CE0002F4928 /* 借记卡产品.png */,
@@ -899,6 +902,8 @@
 				95A4E17B18CDB3DB00618B79 /* DDCombo.m */,
 				95A4E17D18CDB41A00618B79 /* DDOptional.h */,
 				95A4E17E18CDB41A00618B79 /* DDOptional.m */,
+				95636E2C18D010FE00C29D9B /* DDPopVIew.h */,
+				95636E2D18D010FE00C29D9B /* DDPopVIew.m */,
 			);
 			path = "出国服务展示控件";
 			sourceTree = "<group>";
@@ -1011,6 +1016,7 @@
 				952BB53618C98CE1002F4928 /* line_12.png in Resources */,
 				952BB4D418C98CE1002F4928 /* 记住密码未点击_03.png in Resources */,
 				952BB4BE18C98CE1002F4928 /* 登录框_03.png in Resources */,
+				95636E3218D04F3300C29D9B /* 箭头左@2x.png in Resources */,
 				952BB4B718C98CE1002F4928 /* 产品定制-底_14.png in Resources */,
 				952BB4F318C98CE1002F4928 /* 头像_11.png in Resources */,
 				952BB4D918C98CE1002F4928 /* 借记卡产品.png in Resources */,
@@ -1071,6 +1077,7 @@
 				952BB4D218C98CE1002F4928 /* 计算_01.png in Resources */,
 				952BB54B18C98CE1002F4928 /* text_14.png in Resources */,
 				952BB4B118C98CE1002F4928 /* 保险_11.png in Resources */,
+				95636E3118D04F3300C29D9B /* 箭头右@2x.png in Resources */,
 				06E848B018CDF26D000AD215 /* a_07@2x.png in Resources */,
 				952BB51118C98CE1002F4928 /* 最热图片_17.png in Resources */,
 				952BB4BC18C98CE1002F4928 /* 导航-底_03.png in Resources */,
@@ -1091,7 +1098,6 @@
 				952BB50D18C98CE1002F4928 /* 最热-产品底_23.png in Resources */,
 				952BB54618C98CE1002F4928 /* search_02.png in Resources */,
 				952BB4BB18C98CE1002F4928 /* 大背景.png in Resources */,
-				952BB4D518C98CE1002F4928 /* 箭头右.png in Resources */,
 				952BB55D18C98CE1002F4928 /* UIStepperRightPressed.png in Resources */,
 				952BB57018C98CEE002F4928 /* Icon@2x.png in Resources */,
 				952BB4EE18C98CE1002F4928 /* 首页_03.png in Resources */,
@@ -1106,7 +1112,6 @@
 				952BB55018C98CE1002F4928 /* title1_03.png in Resources */,
 				952BB53D18C98CE1002F4928 /* photo_20.png in Resources */,
 				952BB56B18C98CEE002F4928 /* Default-Landscape.png in Resources */,
-				952BB4D618C98CE1002F4928 /* 箭头左.png in Resources */,
 				952BB4C818C98CE1002F4928 /* 购买.png in Resources */,
 				952BB4C218C98CE1002F4928 /* 底_14.png in Resources */,
 				952BB50F18C98CE1002F4928 /* 最热-底_12.png in Resources */,
@@ -1215,6 +1220,7 @@
 				95A4E17F18CDB41A00618B79 /* DDOptional.m in Sources */,
 				06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */,
 				95A4E17C18CDB3DB00618B79 /* DDCombo.m in Sources */,
+				95636E2E18D010FE00C29D9B /* DDPopVIew.m in Sources */,
 				06D388DA18C9FDD600113372 /* DDShopcart.m in Sources */,
 				95682ABE18CD4B9400C2CFAD /* DDCollectionCellView.m in Sources */,
 				95682ABF18CD4B9400C2CFAD /* DDCollectionViewPackage.m in Sources */,

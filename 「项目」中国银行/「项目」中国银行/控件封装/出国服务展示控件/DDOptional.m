@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.frame = CGRectMake(0, 0, 300, 300);
+        self.frame = CGRectMake(0, 0, 290, 290);
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.frame];
         imageView.image = [UIImage imageNamed:@"未标题-1_01"];
         [self addSubview:imageView];

@@ -136,8 +136,8 @@
         // 默认选中第一个
         if (!i) {
             button.selected = YES;
-            [self.view addSubview:_views[0]];
-            [self.view sendSubviewToBack:_views[0]];
+            [self.view addSubview:_views[i]];
+            [self.view sendSubviewToBack:_views[i]];
         }
     }
 
