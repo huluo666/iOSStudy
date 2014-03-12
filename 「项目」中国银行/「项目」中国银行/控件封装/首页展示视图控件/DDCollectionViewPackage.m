@@ -37,6 +37,7 @@
     collectionCellViewType:(DDCollectionCellViewType) collectionCellViewType
     collectionCellViewBounds:(CGRect)collectionCellViewBounds
     dataSource:(NSMutableArray *)dataSource
+    refreshButtonImage:(UIImage *)refreshButtonImage
 {
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor clearColor];
@@ -44,20 +45,12 @@
         
         // 添加背景图片视图
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
+        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
         backgroundImageView.clipsToBounds = YES;
         backgroundImageView.userInteractionEnabled = YES;
         [self addSubview:backgroundImageView];
         [backgroundImageView release];
         _backgroundImageView = backgroundImageView;
-
-        // 添加右上角button
-        UIImage *refreshButtonImage = [UIImage imageNamed:@"最新动态_38"];
-        UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        refreshButton.bounds = CGRectMake(0, 0, 60, 60);
-        refreshButton.center = CGPointMake(CGRectGetMaxY(bounds), CGRectGetMinY(bounds));
-        [refreshButton setBackgroundImage:refreshButtonImage forState:UIControlStateNormal];
-        [backgroundImageView addSubview:refreshButton];
         
         // 添加集合视图
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:bounds
@@ -69,7 +62,7 @@
         collectionView.backgroundColor = [UIColor clearColor];
         [collectionView registerClass:[UICollectionViewCell class]
                        forCellWithReuseIdentifier:identifier];
-        [self addSubview:collectionView];
+        [backgroundImageView addSubview:collectionView];
         [collectionView release];
         _collectionView = collectionView;
         
@@ -83,11 +76,17 @@
         pageControl.currentPage = 0;
         pageControl.currentPageIndicatorTintColor = [UIColor redColor];
         pageControl.pageIndicatorTintColor = [UIColor grayColor];
-        [self addSubview:pageControl];
+        [backgroundImageView addSubview:pageControl];
         [pageControl release];
         _pageControl = pageControl;
-
-
+        
+        // 添加右上角button
+        UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        refreshButton.bounds = CGRectMake(0, 0, 50, 50);
+        refreshButton.center = CGPointMake(CGRectGetWidth(backgroundImageView.bounds) - CGRectGetMidX(refreshButton.bounds),
+                                           CGRectGetMidY(refreshButton.bounds) * 1.2);
+        [refreshButton setBackgroundImage:refreshButtonImage forState:UIControlStateNormal];
+        [backgroundImageView addSubview:refreshButton];
         
         // 设置代理和数据源
         _collectionView.delegate = self;

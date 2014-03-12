@@ -235,13 +235,15 @@
                               600,
                               300);
     
+    UIImage *refreshButtonImage = [UIImage imageNamed:@"hot_36"];
     DDCollectionViewPackage *viewPackage =
         [[DDCollectionViewPackage alloc] initWithFrame:frame
                                   collectionViewLayout:layout
                                        reuseIdentifier:@"HotNewsViewCellIdenitfier"
                                 collectionCellViewType:DDCollectionCellViewSubTitle
                               collectionCellViewBounds:kHotNewsShowComponentBounds
-                                                  dataSource:nil];
+                                            dataSource:nil
+                                    refreshButtonImage:refreshButtonImage];
     [layout release];
     viewPackage.backgroundImageView.image = [UIImage imageNamed:@"最热-底_12"];
     viewPackage.collectionView.tag = kHotCollectionViewTag;
@@ -269,13 +271,15 @@
                               CGRectGetMaxY(_downImageView.frame),
                               280,
                               300);
+    UIImage *refreshButtonImage = [UIImage imageNamed:@"最新动态_38"];
     DDCollectionViewPackage *viewPackage =
         [[DDCollectionViewPackage alloc] initWithFrame:frame
                                   collectionViewLayout:layout
                                        reuseIdentifier:@"customProjectViewCellIdenitfier"
                                 collectionCellViewType:DDCollectionCellViewDefault
                               collectionCellViewBounds:kCustomProjectComponentBounds
-                                                  dataSource:nil];
+                                            dataSource:nil
+                                    refreshButtonImage:refreshButtonImage];
     [layout release];
     viewPackage.backgroundImageView.image = [UIImage imageNamed:@"产品定制-底_14"];
     viewPackage.collectionView.tag = kCustomProjectCollectionViewTag;
