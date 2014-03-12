@@ -44,12 +44,20 @@
         
         // 添加背景图片视图
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+        backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
         backgroundImageView.clipsToBounds = YES;
         backgroundImageView.userInteractionEnabled = YES;
         [self addSubview:backgroundImageView];
         [backgroundImageView release];
         _backgroundImageView = backgroundImageView;
+
+        // 添加右上角button
+        UIImage *refreshButtonImage = [UIImage imageNamed:@"最新动态_38"];
+        UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        refreshButton.bounds = CGRectMake(0, 0, 60, 60);
+        refreshButton.center = CGPointMake(CGRectGetMaxY(bounds), CGRectGetMinY(bounds));
+        [refreshButton setBackgroundImage:refreshButtonImage forState:UIControlStateNormal];
+        [backgroundImageView addSubview:refreshButton];
         
         // 添加集合视图
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:bounds

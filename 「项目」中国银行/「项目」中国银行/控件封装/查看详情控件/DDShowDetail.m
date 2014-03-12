@@ -38,7 +38,7 @@
         self.frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
         
         // 背景视图
-        _backgroundView = [[UIView alloc] initWithFrame:self.frame];
+        _backgroundView= [[UIView alloc] initWithFrame:self.frame];
         _backgroundView.backgroundColor = [UIColor blackColor];
         _backgroundView.alpha = 0.5;
         _backgroundView.userInteractionEnabled = NO;

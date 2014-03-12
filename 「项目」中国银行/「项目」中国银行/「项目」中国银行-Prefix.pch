@@ -63,5 +63,11 @@
 #define kCustomProjectComponentBounds (CGRectMake(0, 0, 120, 100))
 #endif
 
+#ifndef _ABROAD_
+#define _ABROAD_
+#define kTitleButtonTag 400
+#define kLeftButtonTag 420
+#endif
+
 
 

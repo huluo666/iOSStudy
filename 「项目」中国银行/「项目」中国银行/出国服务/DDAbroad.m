@@ -28,7 +28,10 @@
     NSMutableArray *_combos;                    // 套餐模式控件数组
     BOOL _isAnimating;                          // 是否正在动画中
     
-    BOOL isSearchBarVisiable;                   // 搜索框是否可见
+    UIScrollView *_menuView;                          // 菜单视图
+    
+    BOOL _isSearchBarVisiable;                   // 搜索框是否可见
+    UIButton *_currentSelectedButton;            // 记录当前选中标题按钮
 }
 
 // 加载内容背景视图
@@ -60,6 +63,14 @@
                                   ForView:(UIView *)view
                     withAnimationDuration:(NSTimeInterval)duration;
 
+// 文本尺寸大小自动适应
+- (CGRect)rectWithString:(NSString *)string font:(UIFont *)font constraintSize:(CGSize)constraintSize;
+
+// 切换标题对应的视图
+- (void)toggleTitle:(UIButton *)sender;
+// 移动标题位置
+- (void)moveTitle:(UIButton *)sender;
+
 @end
 
 @implementation DDAbroad
@@ -72,6 +83,8 @@
     [_images  release];
     [_imgaesSelected release];
     [_combos release];
+    _menuView = nil;
+    _currentSelectedButton = nil;
     [super dealloc];
 }
 
@@ -125,16 +138,16 @@
         // 初始化展示视图
         _combos = [[NSMutableArray alloc] init];
         
-        // 初始化三个视图的center坐标点
+        // 初始化五个视图的center坐标点
        CGRect bottomViewBounds = CGRectMake(0,
                                             0,
                                             kMainViewWidth,
-                                            kMainViewHeight + 50);
+                                            kMainViewHeight);
         
         CGPoint bottomViewCenter = CGPointMake(CGRectGetMidX(bottomViewBounds),
-                                               CGRectGetMidY(bottomViewBounds));
+                                               CGRectGetMidY(bottomViewBounds) + 100);
         CGFloat bottomViewCenterX = CGRectGetMidX(bottomViewBounds);
-        CGFloat bottomViewCenterY = CGRectGetMidY(bottomViewBounds);
+        CGFloat bottomViewCenterY = CGRectGetMidY(bottomViewBounds) + 100;
         _comboLocationList = [@[[NSValue valueWithCGPoint:CGPointMake(bottomViewCenterX - 700, bottomViewCenterY)],
                                 [NSValue valueWithCGPoint:CGPointMake(bottomViewCenterX - 400, bottomViewCenterY)],
                                 [NSValue valueWithCGPoint:bottomViewCenter],
@@ -143,8 +156,8 @@
     }
     
 //        [self loadConsultView];
-//        [self loadComboView];
-    [self loadOptionalView];
+        [self loadComboView];
+//    [self loadOptionalView];
     return self;
 }
 
@@ -232,15 +245,15 @@
 - (void)searchAction:(UIButton *)sender
 {
     // pop view
-    if (!isSearchBarVisiable) {
+    if (!_isSearchBarVisiable) {
         CGRect frame = CGRectMake(690, 70, 200, 150);
         DDPopVIew *popView = [[DDPopVIew alloc] initWithFrame:frame];
         [_currentSelectedView addSubview:popView];
         [popView release];
-        isSearchBarVisiable = YES;
+        _isSearchBarVisiable = YES;
     } else {
         [[_currentSelectedView.subviews lastObject] removeFromSuperview];
-        isSearchBarVisiable = NO;
+        _isSearchBarVisiable = NO;
     }
 }
 
@@ -319,6 +332,7 @@
     [self selectedIndex:1];
     
     UIView *bottomView = [self loadBottomViewWithSelectedIndex:1];
+    bottomView.userInteractionEnabled = YES;
     
     // 左滑
     UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]
@@ -346,6 +360,7 @@
     for (int i = 0; i < 5; i++) {
         DDCombo *combo = [[DDCombo alloc] initWithFrame:CGRectZero];
         combo.center =  [_comboLocationList[i] CGPointValue];
+        combo.userInteractionEnabled = NO;
         combo.titleLabel.text = [NSString stringWithFormat:@"测试标题%d", i];
         [bottomView addSubview:combo];
         [_combos addObject:combo];
@@ -353,10 +368,12 @@
         
         // 默认放大第三个
         if (2 == i) {
+            
             [self startBasicScaleAnimationFromValue:@1.2
                                             toValue:@1.2
                                             ForView:combo
                               withAnimationDuration:0];
+            combo.userInteractionEnabled = YES;
         }
     }
 }
@@ -402,8 +419,9 @@
     menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 2 / 3 , 30);
     menuView.center = CGPointMake(CGRectGetMidX(collectionView.frame),
                                   CGRectGetMinY(collectionView.frame) - CGRectGetHeight(menuView.bounds) * 0.8);
-    menuView.backgroundColor = [UIColor greenColor];
+    menuView.showsHorizontalScrollIndicator = NO;
     [bottomView addSubview:menuView];
+    _menuView = menuView;
     [menuView release];
     
     // 菜单两侧按钮
@@ -412,6 +430,10 @@
     leftButton.bounds = CGRectMake(0, 0, 30, 30);
     leftButton.center = CGPointMake(CGRectGetMinX(menuView.frame) - CGRectGetMidX(leftButton.bounds) * 1.5,
                                     CGRectGetMidY(menuView.frame));
+    leftButton.tag = kLeftButtonTag;
+    [leftButton addTarget:self
+                   action:@selector(moveTitle:)
+         forControlEvents:UIControlEventTouchUpInside];
     [bottomView addSubview:leftButton];
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -419,7 +441,80 @@
     rightButton.bounds = CGRectMake(0, 0, 30, 30);
     rightButton.center = CGPointMake(CGRectGetMaxX(menuView.frame) + CGRectGetMidX(rightButton.bounds) * 1.5,
                                     CGRectGetMidY(menuView.frame));
+    [rightButton addTarget:self
+                   action:@selector(moveTitle:)
+         forControlEvents:UIControlEventTouchUpInside];
+
     [bottomView addSubview:rightButton];
+    
+    NSArray *titles = @[@"中银汇兑", @"境内代理海外开户见证业务", @"借记卡产品",
+                        @"信用卡服务", @"理想之家.留学贷款", @"网上银行BOCNET",
+                        @"中银保险", @"中银理财产品"];
+    
+    // 计算每个按钮的尺寸大小
+    CGFloat lastButtonMaxX = 0;
+    CGSize size = CGSizeMake(menuView.bounds.size.width, menuView.bounds.size.height);
+    for (int i = 0; i < titles.count; i++ ) {
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setTitle:titles[i] forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
+        [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:18];
+        CGRect rect = [self rectWithString:titles[i] font:[UIFont systemFontOfSize:18] constraintSize:size];
+        button.bounds = rect;
+        button.center = CGPointMake(lastButtonMaxX + CGRectGetMidX(button.bounds) + 20,
+                                    CGRectGetMidY(menuView.bounds));
+        lastButtonMaxX = CGRectGetMaxX(button.frame);
+        [button addTarget:self
+                   action:@selector(toggleTitle:)
+         forControlEvents:UIControlEventTouchUpInside];
+        button.tag = kTitleButtonTag + i;
+        [menuView addSubview:button];
+        
+        // 默认选中第一个
+        if (0 == i) {
+            button.selected = YES;
+            _currentSelectedButton = button;
+        }
+    }
+    lastButtonMaxX += 20;
+    menuView.contentSize = CGSizeMake(lastButtonMaxX, CGRectGetHeight(menuView.bounds));
+}
+
+- (void)toggleTitle:(UIButton *)sender
+{
+    if (_currentSelectedButton == sender) {
+        return;
+    }
+    
+    _currentSelectedButton.selected = NO;
+    sender.selected = YES;
+    _currentSelectedButton = sender;
+    
+//    NSInteger index = sender.tag;
+#pragma mark - TODO更新数据
+}
+
+- (void)moveTitle:(UIButton *)sender
+{
+    NSInteger index = sender.tag;
+    if (index == kLeftButtonTag) {
+        // 左移
+        if (_menuView.contentOffset.x + 100 < 600) {
+            [UIView animateWithDuration:kAnimateDuration / 2 animations:^{
+                _menuView.contentOffset = CGPointMake(_menuView.contentOffset.x + 100,
+                                                      _menuView.contentOffset.y);
+            }];
+        }
+    } else {
+        // 右移
+        [UIView animateWithDuration:kAnimateDuration / 2 animations:^{
+            if (_menuView.contentOffset.x > 100) {
+                _menuView.contentOffset = CGPointMake(_menuView.contentOffset.x - 100,
+                                                      _menuView.contentOffset.y);
+            }
+        }];
+    }
 }
 
 - (void)selectedIndex:(NSInteger)index
@@ -516,11 +611,31 @@
     animation.delegate = self;
     animation.fillMode = kCAFillModeForwards;
     [view.layer addAnimation:animation forKey:@"transform.scale"];
+
+    // 切换用户交互
+    if (fromeValue < toValue) {
+        view.userInteractionEnabled = NO;
+    } else {
+        view.userInteractionEnabled = YES;
+    }
 }
 
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     _isAnimating = NO;
+}
+
+#pragma mark - 文本大小自动适应
+
+- (CGRect)rectWithString:(NSString *)string font:(UIFont *)font constraintSize:(CGSize)constraintSize
+{
+    CGRect rect = [string boundingRectWithSize:constraintSize
+                                       options:NSStringDrawingTruncatesLastVisibleLine |
+                                                NSStringDrawingUsesFontLeading |
+                                                NSStringDrawingUsesLineFragmentOrigin
+                                    attributes:@{NSFontAttributeName:font}
+                                       context:nil];
+    return rect;
 }
 
 #pragma mark - <UITableViewDataSource>
