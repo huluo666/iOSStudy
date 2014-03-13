@@ -88,7 +88,7 @@
     pullDown.scrollView = self.tableView;
     
     // 打开页面自动刷新
-//    [pullDown beginRefreshing];
+    [pullDown beginRefreshing];
     
     // 回调方法实现
     pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView,

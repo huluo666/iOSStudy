@@ -96,8 +96,8 @@
 - (void)refreshBaseViewbeginRefreshing:(DDRefreshBaseView *)refreshBaseView
 {
     // 模拟网络请求过程，返回请求成功或者失败和一个数组对象
-//    BOOL success = YES;
-    BOOL success = NO;
+    BOOL success = YES;
+//    BOOL success = NO;
     if (success) {
         // 模拟加载数据等待过程, 加载完成更新数据
         _dataSource += 6;

@@ -11,6 +11,7 @@
 #import "DDOptional.h"
 #import "DDShowDetail.h"
 #import "DDPopView.h"
+#import "DDPullDown.h"
 
 @interface DDAbroad () <
     UITableViewDelegate,
@@ -20,18 +21,19 @@
 {
     UIView *_currentSelectedView;               // 当前选中视图
     NSMutableArray *_comboLocationList;         // 用于存储5个坐标点
-    UISegmentedControl *_segmentedControl;      // 分段控件
     
+    UISegmentedControl *_segmentedControl;      // 分段控件
     NSArray *_images;                           // 未选中状态标题图片
     NSArray *_imgaesSelected;                   // 选中状态标题图片
+    NSInteger _currentSelectedSegmentIndex;     // 当前选中分段索引
     
     NSMutableArray *_combos;                    // 套餐模式控件数组
     BOOL _isAnimating;                          // 是否正在动画中
     
-    UIScrollView *_menuView;                          // 菜单视图
+    UIScrollView *_menuView;                    // 菜单视图
     
-    BOOL _isSearchBarVisiable;                   // 搜索框是否可见
-    UIButton *_currentSelectedButton;            // 记录当前选中标题按钮
+    BOOL _isSearchBarVisiable;                  // 搜索框是否可见
+    UIButton *_currentSelectedButton;           // 记录当前选中标题按钮
 }
 
 // 加载内容背景视图
@@ -93,10 +95,10 @@
     self = [super initWithFrame:frame];
     self.frame = CGRectMake(0, 0, kMainViewWidth, kMainViewHeight);
     if (self) {
-        // 标题
-        UIImage *consult = [UIImage imageNamed:@"a_07@2x"];
-        UIImage *combo = [UIImage imageNamed:@"b_08@2x"];
-        UIImage *optional = [UIImage imageNamed:@"c_09@2x"];
+        // 分段控件标题
+        UIImage *consult = [UIImage imageNamed:@"a_07"];
+        UIImage *combo = [UIImage imageNamed:@"b_08"];
+        UIImage *optional = [UIImage imageNamed:@"c_09"];
         if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
             consult = [consult imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             combo = [combo imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -105,9 +107,9 @@
         _images = [@[consult, combo, optional] retain];
 
         // 标题选中状态
-        UIImage *consultSelected = [UIImage imageNamed:@"aa_07@2x"];
-        UIImage *comboSelected = [UIImage imageNamed:@"bb_08@2x"];
-        UIImage *optionalSelected = [UIImage imageNamed:@"cc_09@2x"];
+        UIImage *consultSelected = [UIImage imageNamed:@"aa_07"];
+        UIImage *comboSelected = [UIImage imageNamed:@"bb_08"];
+        UIImage *optionalSelected = [UIImage imageNamed:@"cc_09"];
         if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
             consultSelected = [consultSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             comboSelected = [comboSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -118,8 +120,8 @@
         // 分段控件
         UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:_images];
         segmentedControl.tintColor = [UIColor clearColor];
-        segmentedControl.bounds = CGRectMake(0, 0, 400, 50);
-        segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 50);
+        segmentedControl.bounds = CGRectMake(0, 0, 355, 40);
+        segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 40);
         [segmentedControl addTarget:self action:@selector(segmentAction:)
                    forControlEvents:UIControlEventValueChanged];
         [self addSubview:segmentedControl];
@@ -155,6 +157,8 @@
                                 [NSValue valueWithCGPoint:CGPointMake(bottomViewCenterX + 700, bottomViewCenterY)]] mutableCopy];
     }
     
+    // 默认选中第一个
+    _currentSelectedSegmentIndex = 2;
 //        [self loadConsultView];
         [self loadComboView];
 //    [self loadOptionalView];
@@ -181,7 +185,7 @@
 
 - (UIView *)loadBottomViewWithSelectedIndex:(NSInteger)index
 {
-     // 初始化底图
+    // 初始化底图
     UIImageView *bottomView = [[[UIImageView alloc] init] autorelease];
     bottomView.frame = kMainViewBounds;
     bottomView.image = [UIImage imageNamed:@"背景"];
@@ -193,9 +197,9 @@
     if (index) {
         // video
         UIButton *videoButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        videoButton.bounds = CGRectMake(0, 0, 50, 50);
-        videoButton.center = CGPointMake(CGRectGetMaxX(bottomView.bounds) * 0.85,
-                                         CGRectGetMinY(bottomView.bounds) + 50);
+        videoButton.bounds = CGRectMake(0, 0, 40, 40);
+        videoButton.center = CGPointMake(CGRectGetMaxX(bottomView.bounds) * 0.87,
+                                         CGRectGetMinY(bottomView.bounds) + 40);
         [videoButton setBackgroundImage:[UIImage imageNamed:@"视频图标_05"]
                                forState:UIControlStateNormal];
         [videoButton addTarget:self
@@ -207,9 +211,9 @@
         // search bar background
         UIImage *searchImageBackground = [UIImage imageNamed:@"搜索框_11"];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:searchImageBackground];
-        imageView.bounds = CGRectMake(0, 0, 230, 50);
+        imageView.bounds = CGRectMake(0, 0, 230, 40);
         imageView.center = CGPointMake(CGRectGetMaxX(bottomView.bounds) * 0.85,
-                                       CGRectGetMinY(bottomView.bounds) + 50);
+                                       CGRectGetMinY(bottomView.bounds) + 42);
         imageView.userInteractionEnabled = YES;
         [bottomView addSubview:imageView];
         [imageView release];
@@ -220,7 +224,7 @@
                                   forState:UIControlStateNormal];
         [leftViewButton addTarget:self action:@selector(searchAction:)
                  forControlEvents:UIControlEventTouchUpInside];
-        leftViewButton.bounds = CGRectMake(0, 0, 50, 50);
+        leftViewButton.bounds = CGRectMake(0, 0, 50, 40);
         
         // search bar textfield
         CGRect searchBarFrame = imageView.bounds;
@@ -259,8 +263,6 @@
 
 - (void)loadConsultView
 {
-    [_currentSelectedView removeFromSuperview];
-    
     _segmentedControl.selectedSegmentIndex = 0;
     [self selectedIndex:0];
 
@@ -283,6 +285,15 @@
     [tableViewBackgorundView release];
     [bottomView addSubview:tableView];
     [tableView release];
+    
+    // 下拉刷新
+    DDPullDown *pullDown = [DDPullDown pullDown];
+    pullDown.scrollView = tableView;
+    pullDown.lastUpdate.textColor = [UIColor whiteColor];
+    pullDown.status.textColor = [UIColor whiteColor];
+    pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+    pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+#pragma mark - TODO 刷新数据TableView
     
     // 上下两条阴影
     UIImageView *upShadowView = [[UIImageView alloc] init];
@@ -327,7 +338,6 @@
 
 - (void)loadComboView
 {
-    [_currentSelectedView removeFromSuperview];
     _segmentedControl.selectedSegmentIndex = 1;
     [self selectedIndex:1];
     
@@ -380,8 +390,6 @@
 
 - (void)loadOptionalView
 {
-    [_currentSelectedView removeFromSuperview];
-    
     [self selectedIndex:2];
     _segmentedControl.selectedSegmentIndex = 2;
     
@@ -397,26 +405,35 @@
     CGRect frame = CGRectMake(CGRectGetMidX(_segmentedControl.frame) - 900 / 2,
                               CGRectGetMaxY(_segmentedControl.frame) * 1.8,
                               900,
-                              320);
+                              640);
     // Collection view
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:frame
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                                           collectionViewLayout:layout];
+    collectionView.bounds = CGRectMake(0, 0, 900, 640);
+    collectionView.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame));
     
-//    collectionView.backgroundColor = [UIColor clearColor];
-    collectionView.backgroundColor = [UIColor whiteColor];
+    collectionView.backgroundColor = [UIColor clearColor];
     collectionView.delegate = self;
     collectionView.dataSource = self;
     [collectionView registerClass:[UICollectionViewCell class]
        forCellWithReuseIdentifier:@"自选模式"];
-    collectionView.pagingEnabled = YES;
-    collectionView.contentSize = CGSizeMake(CGRectGetWidth(collectionView.bounds),
-                                            2 * CGRectGetHeight(collectionView.bounds));
+    collectionView.alwaysBounceVertical = YES;
+    collectionView.showsVerticalScrollIndicator = YES;
     [bottomView addSubview:collectionView];
     [collectionView release];
+    
+    // 下拉刷新
+    DDPullDown *pullDown = [DDPullDown pullDown];
+    pullDown.scrollView = collectionView;
+    pullDown.lastUpdate.textColor = [UIColor whiteColor];
+    pullDown.status.textColor = [UIColor whiteColor];
+    pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+    pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+#pragma mark - TODO 刷新数据CollectionView
 
     // 菜单
     UIScrollView *menuView = [[UIScrollView alloc] init];
-    menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 2 / 3 , 30);
+    menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 0.62 , 30);
     menuView.center = CGPointMake(CGRectGetMidX(collectionView.frame),
                                   CGRectGetMinY(collectionView.frame) - CGRectGetHeight(menuView.bounds) * 0.8);
     menuView.showsHorizontalScrollIndicator = NO;
@@ -459,7 +476,7 @@
         [button setTitle:titles[i] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor redColor] forState:UIControlStateSelected];
         [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        button.titleLabel.font = [UIFont systemFontOfSize:18];
+        button.titleLabel.font = [UIFont systemFontOfSize:16];
         CGRect rect = [self rectWithString:titles[i] font:[UIFont systemFontOfSize:18] constraintSize:size];
         button.bounds = rect;
         button.center = CGPointMake(lastButtonMaxX + CGRectGetMidX(button.bounds) + 20,
@@ -519,20 +536,22 @@
 
 - (void)selectedIndex:(NSInteger)index
 {
-    if (0 == index) {
-        [_segmentedControl setImage:_imgaesSelected[0] forSegmentAtIndex:0];
-        [_segmentedControl setImage:_images[1] forSegmentAtIndex:1];
-        [_segmentedControl setImage:_images[2] forSegmentAtIndex:2];
+    // 重复点击无效
+    if (_currentSelectedSegmentIndex == index) {
+        return;
     }
-    if (1 == index) {
-        [_segmentedControl setImage:_imgaesSelected[1] forSegmentAtIndex:1];
-        [_segmentedControl setImage:_images[0] forSegmentAtIndex:0];
-        [_segmentedControl setImage:_images[2] forSegmentAtIndex:2];
-    }
-    if (2 == index) {
-        [_segmentedControl setImage:_imgaesSelected[2] forSegmentAtIndex:2];
-        [_segmentedControl setImage:_images[0] forSegmentAtIndex:0];
-        [_segmentedControl setImage:_images[1] forSegmentAtIndex:1];
+    
+    // 设置当前选中分段图片为取消状态
+    [_segmentedControl setImage:_images[_currentSelectedSegmentIndex]
+              forSegmentAtIndex:_currentSelectedSegmentIndex];
+    // 设置将要选中分段图片为选中状态
+    [_segmentedControl setImage:_imgaesSelected[index] forSegmentAtIndex:index];
+    // 记录当前选中状态
+    _currentSelectedSegmentIndex = index;
+    
+    // 移除上次选中视图
+    if (_currentSelectedView) {
+        [_currentSelectedView  removeFromSuperview];
     }
 }
 
