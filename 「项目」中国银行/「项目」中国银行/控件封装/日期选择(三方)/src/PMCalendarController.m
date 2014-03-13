@@ -125,10 +125,12 @@ NSString *kPMCalendarRedrawNotification = @"kPMCalendarRedrawNotification";
                          }];
     }
 }
+
 - (void)dealloc
 {
     self.delegate = nil;
 }
+
 #pragma mark - controller presenting methods -
 
 - (void) adjustCalendarPositionForPermittedArrowDirections:(PMCalendarArrowDirection) arrowDirections 

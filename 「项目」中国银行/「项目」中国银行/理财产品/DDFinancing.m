@@ -326,6 +326,102 @@
     [backgroundView addSubview:tableView];
     [tableView release];
     
+    // tableView下面部分
+    
+    // 申请按钮
+    UIButton *applicationButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    applicationButton.bounds = CGRectMake(0, 0, 159, 50);
+    applicationButton.center = CGPointMake(CGRectGetMidX(tableView.frame),
+                                           CGRectGetMaxY(tableView.frame) + CGRectGetMidY(applicationButton.bounds) + 50);
+    [applicationButton setBackgroundImage:[UIImage imageNamed:@"详情_01"]
+                                 forState:UIControlStateNormal];
+    [backgroundView addSubview:applicationButton];
+    
+    UILabel *predictLabel = [[UILabel alloc] init];
+    predictLabel.bounds = CGRectMake(0, 0, 115, 50);
+    predictLabel.center = CGPointMake(80 + CGRectGetMidX(predictLabel.bounds),
+                                      CGRectGetMaxY(tableView.frame) + CGRectGetMidY(predictLabel.bounds));
+    predictLabel.text = @"预计收益计算：";
+    predictLabel.textColor = [UIColor grayColor];
+    predictLabel.font = [UIFont boldSystemFontOfSize:16];
+    predictLabel.font = [UIFont systemFontOfSize:16];
+    [backgroundView addSubview:predictLabel];
+    [predictLabel release];
+    
+    UILabel *prfigureLabel = [[UILabel alloc] init];
+    prfigureLabel.bounds = CGRectMake(0, 0, 70, 50);
+    prfigureLabel.center = CGPointMake(CGRectGetMaxX(predictLabel.frame) + CGRectGetMidX(prfigureLabel.bounds),
+                                      CGRectGetMaxY(tableView.frame) + CGRectGetMidY(prfigureLabel.bounds));
+    prfigureLabel.text = @"投资金额";
+    prfigureLabel.textColor = [UIColor grayColor];
+    prfigureLabel.font = [UIFont systemFontOfSize:15];
+    prfigureLabel.textAlignment = NSTextAlignmentRight;
+    prfigureLabel.backgroundColor = [UIColor redColor];
+    [backgroundView addSubview:prfigureLabel];
+    [prfigureLabel release];
+    
+    UITextField *prfigureField = [[UITextField alloc] init];
+    prfigureField.bounds = CGRectMake(0, 0, 150, 40);
+    prfigureField.center = CGPointMake(CGRectGetMaxX(prfigureLabel.frame) + CGRectGetMidX(prfigureField.bounds) + 5,
+                                       CGRectGetMidY(prfigureLabel.frame));
+    prfigureField.layer.cornerRadius = 5;
+    prfigureField.backgroundColor = [UIColor whiteColor];
+    [backgroundView addSubview:prfigureField];
+    [prfigureField release];
+
+    // 单位
+    UILabel *unit = [[UILabel alloc] init];
+    unit.bounds = CGRectMake(0, 0, 30, 50);
+    unit.center = CGPointMake(CGRectGetMaxX(prfigureField.frame) + CGRectGetMidX(unit.bounds) + 5,
+                                       CGRectGetMaxY(tableView.frame) + CGRectGetMidY(unit.bounds));
+    unit.text = @"万元";
+    unit.textColor = [UIColor grayColor];
+    unit.font = [UIFont systemFontOfSize:15];
+    unit.textAlignment = NSTextAlignmentLeft;
+    unit.backgroundColor = [UIColor yellowColor];
+    [backgroundView addSubview:unit];
+    [unit release];
+  
+    // 预期投资收入
+    UILabel *incomeLabel = [[UILabel alloc] init];
+    incomeLabel.bounds = CGRectMake(0, 0, 110, 50);
+    incomeLabel.center = CGPointMake(CGRectGetMaxX(unit.frame) + CGRectGetMidX(incomeLabel.bounds) + 15,
+                              CGRectGetMaxY(tableView.frame) + CGRectGetMidY(incomeLabel.bounds));
+    incomeLabel.text = @"预期投资收益：";
+    incomeLabel.textColor = [UIColor grayColor];
+    incomeLabel.font = [UIFont systemFontOfSize:15];
+    incomeLabel.textAlignment = NSTextAlignmentLeft;
+    incomeLabel.backgroundColor = [UIColor yellowColor];
+    [backgroundView addSubview:incomeLabel];
+    [incomeLabel release];
+
+    
+    UITextField *incomeField = [[UITextField alloc] init];
+    incomeField.bounds = CGRectMake(0, 0, 150, 40);
+    incomeField.center = CGPointMake(CGRectGetMaxX(incomeLabel.frame) + CGRectGetMidX(incomeField.bounds) + 5,
+                                       CGRectGetMidY(prfigureField.frame));
+    incomeField.layer.cornerRadius = 5;
+    incomeField.backgroundColor = [UIColor whiteColor];
+    [backgroundView addSubview:incomeField];
+    [incomeField release];
+    
+    // 单位
+    UILabel *unitIncome = [[UILabel alloc] init];
+    unitIncome.bounds = CGRectMake(0, 0, 30, 50);
+    unitIncome.center = CGPointMake(CGRectGetMaxX(incomeField.frame) + CGRectGetMidX(unitIncome.bounds) + 5,
+                              CGRectGetMaxY(tableView.frame) + CGRectGetMidY(unitIncome.bounds));
+    unitIncome.text = @"万元";
+    unitIncome.textColor = [UIColor grayColor];
+    unitIncome.font = [UIFont systemFontOfSize:15];
+    unitIncome.textAlignment = NSTextAlignmentLeft;
+    unitIncome.backgroundColor = [UIColor yellowColor];
+    [backgroundView addSubview:unitIncome];
+    [unitIncome release];
+#pragma mark - TODO
+#pragma mark - TODO
+    // 计算
+//    UIButton *calculateButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//    calculateButton.bounds = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
     
 }
 

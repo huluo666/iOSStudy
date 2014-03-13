@@ -20,7 +20,7 @@
     UIView *_naviBar;                 // 左侧导航栏视图
     NSInteger _currentSelectedButton; // 当前选中的是第几个导航button
     NSArray *_views;                  // 导航视图数组
-    BOOL isAnimating;                 // 是否正在动画中
+    BOOL _isAnimating;                 // 是否正在动画中
 }
 
 
@@ -54,7 +54,7 @@
 
     [self initializeViews];
     [self initializeUserInterface];
-    _logined = YES;
+//    _logined = YES;
     if (!_logined) {
         [self initializeLoginView];
     }
@@ -69,8 +69,7 @@
 
 - (void)initializeLoginView
 {
-    DDLogin *login = [[DDLogin alloc] init];
-    login.frame = self.view.frame;
+    DDLogin *login = [[DDLogin alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:login];
     [login release];
 }
@@ -199,7 +198,7 @@
     }
     
     // 避免重复动画发生冲突
-    if (isAnimating) {
+    if (_isAnimating) {
         return;
     }
     
@@ -216,7 +215,7 @@
     UIButton *willSelectedButton = (UIButton *)[_naviBar viewWithTag:sender.tag];
     
     // 开始动画
-    isAnimating = YES;
+    _isAnimating = YES;
     if (_currentSelectedButton < index) {
         // 当前在上，将要选中的在下面，向下推动动画
         willAppearView.center = kMainViewCenterDown;
@@ -230,7 +229,7 @@
                          completion:^(BOOL finished) {
                              [appearedView removeFromSuperview];
                              _currentSelectedButton = index;
-                             isAnimating = NO;
+                             _isAnimating = NO;
                          }];
     } else {
         // 当前在下，将要选中的视图在上面，向下推动动画
@@ -245,7 +244,7 @@
                          completion:^(BOOL finished) {
                              [appearedView removeFromSuperview];
                              _currentSelectedButton = index;
-                             isAnimating = NO;
+                             _isAnimating = NO;
                          }];
     }
 }
