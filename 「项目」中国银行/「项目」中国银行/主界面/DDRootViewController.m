@@ -54,7 +54,7 @@
 
     [self initializeViews];
     [self initializeUserInterface];
-//    _logined = YES;
+    _logined = YES;
     if (!_logined) {
         [self initializeLoginView];
     }

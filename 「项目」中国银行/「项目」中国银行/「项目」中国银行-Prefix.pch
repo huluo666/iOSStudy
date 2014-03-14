@@ -15,20 +15,31 @@
     #import <Foundation/Foundation.h>
 #endif
 
+// 动画时长
 #define kAnimateDuration 1.0f
-#define kDataUpdateTimeInterval 600   // 更新数据事件间隔
+// 更新数据事件间隔
+#define kDataUpdateTimeInterval 600
+// 获取图片
 #define kImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] \
                                 pathForAuxiliaryExecutable:NAME]] // 获取图片
+// 随机颜色
 #define kRandomColor [UIColor colorWithRed:arc4random() % 128 / 255.0f green:arc4random() % 64 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.000]
+// 根视图
 #define kRootView [[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController] view]
+// 根控制器
 #define kRootViewController [[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController]
 
+// 详情按钮tag
 #define kDetailButtonTag 777
+// 搜索按钮tag
 #define kSearchTextFieldTag 121
 
-#define kRootViewWidth           1024 // 根视图宽度
-#define kRootViewHeight          768  // 根视图高度
+// 根视图宽度
+#define kRootViewWidth           1024
+// 根视图高度
+#define kRootViewHeight          768
 
+// 根控制器
 #ifndef _ROOT_VIEW_CONTROLLER_
 #define _ROOT_VIEW_CONTROLLER_
 #define kHeaderViewHeight    80     // 头部视图高度
@@ -39,35 +50,62 @@
 #define kBottomImageViewHeight 20   // 下面图片视图高度
 #endif
 
-#define kMainViewWidth (kRootViewWidth - kNaviBarBaseViewWidth) // 主界面宽度
-#define kMainViewHeight (kRootViewHeight - kHeaderViewHeight)   // 主界面高度
-#define kMainViewFrame (CGRectMake(kNaviBarBaseViewWidth, kHeaderViewHeight, kMainViewWidth, kMainViewHeight))                              // 主界面frame
-#define kMainViewBounds (CGRectMake(0, 0, kMainViewWidth, kMainViewHeight))                                                                 // 主界面bounds
-#define kMainViewCenter (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), (kHeaderViewHeight) + (kMainViewHeight / 2)))          // 主界面center
-#define kMainViewCenterUp (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), - kMainViewHeight / 2 + kHeaderViewHeight))          // 主界面center
-#define kMainViewCenterDown (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), kRootViewHeight + kMainViewHeight / 2))            // 主界面center
+// 主界面
+// 主界面宽度
+#define kMainViewWidth (kRootViewWidth - kNaviBarBaseViewWidth)
+// 主界面高度
+#define kMainViewHeight (kRootViewHeight - kHeaderViewHeight)
+// 主界面frame
+#define kMainViewFrame (CGRectMake(kNaviBarBaseViewWidth, kHeaderViewHeight, kMainViewWidth, kMainViewHeight))
+// 主界面bounds
+#define kMainViewBounds (CGRectMake(0, 0, kMainViewWidth, kMainViewHeight))
+// 主界面center
+#define kMainViewCenter (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), (kHeaderViewHeight) + (kMainViewHeight / 2)))
+// 主界面center
+#define kMainViewCenterUp (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), - kMainViewHeight / 2 + kHeaderViewHeight))
+// 主界面center
+#define kMainViewCenterDown (CGPointMake((kNaviBarBaseViewWidth) + (kMainViewWidth / 2), kRootViewHeight + kMainViewHeight / 2))
 
+// 登录界面
 #ifndef _DDLOGIN_
 #define _DDLOGIN_
+// 背景图片视图tag
 #define kBackgroundImageViewTag 200
 #endif
 
+// 首页
 #ifndef _INDEX_
 #define _INDEX_
+// 循环图片键
 #define kLoopImagesKey @"loopImagesKey"
+// 最新消息键
 #define kLatestNewsKey @"latestNewsKey"
+// 最热消息键
 #define kHotNewsKey @"hotNewsKey"
+// 最热视图键
 #define kHotCollectionViewTag 300
+// 自定义产品视图键
 #define kCustomProjectCollectionViewTag 301
+// 最新消息原件bounds
 #define kHotNewsShowComponentBounds (CGRectMake(0, 0, 240, 100))
+// 自定义产品原件bounds
 #define kCustomProjectComponentBounds (CGRectMake(0, 0, 120, 100))
 #endif
 
+// 出国
 #ifndef _ABROAD_
 #define _ABROAD_
+// title tag
 #define kTitleButtonTag 400
+// 按钮tag
 #define kLeftButtonTag 420
 #endif
 
+#ifndef _FINANCE_PRODUCTS_
+#define _FINANCE_PRODUCTS_
 
+// 理财产品页tag
+#define kFinanceButtonTag 500
+
+#endif
 
