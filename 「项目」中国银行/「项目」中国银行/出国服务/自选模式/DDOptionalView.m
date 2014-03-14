@@ -33,7 +33,8 @@
 
 - (void)dealloc
 {
-    _menuView = nil;
+    NSLog(@"%@ dealloc", [self class]);
+    [_menuView release];
     _currentSelectedButton = nil;
     [super dealloc];
 }
@@ -48,11 +49,13 @@
         [layout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 0)];
         [layout setMinimumInteritemSpacing:10];
         [layout setMinimumLineSpacing:10];
-        
+       
         // Collection view
         CGRect frame = self.bounds;
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                                               collectionViewLayout:layout];
+        [layout release];
+        
         collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.98, 640);
         collectionView.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame) + 60);
         
@@ -65,32 +68,30 @@
         collectionView.showsVerticalScrollIndicator = YES;
         [self addSubview:collectionView];
         [collectionView release];
-        
+         /*
         // 下拉刷新
-        DDPullDown *pullDown = [DDPullDown pullDown];
-        pullDown.scrollView = collectionView;
-        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-        pullDown.status.textColor = [UIColor whiteColor];
-        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+//        DDPullDown *pullDown = [DDPullDown pullDown];
+//        pullDown.scrollView = collectionView;
+//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+//        pullDown.status.textColor = [UIColor whiteColor];
+//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
 #pragma mark - TODO 刷新数据CollectionView
         
         // 菜单
-        UIScrollView *menuView = [[UIScrollView alloc] init];
-        menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 0.62 , 30);
-        menuView.center = CGPointMake(CGRectGetMidX(collectionView.frame),
-                                      CGRectGetMinY(collectionView.frame) - CGRectGetHeight(menuView.bounds) * 0.8);
-        menuView.showsHorizontalScrollIndicator = NO;
-        [self addSubview:menuView];
-        _menuView = menuView;
-        [menuView release];
+        _menuView = [[UIScrollView alloc] init];
+        _menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 0.62 , 30);
+        _menuView.center = CGPointMake(CGRectGetMidX(collectionView.frame),
+                                      CGRectGetMinY(collectionView.frame) - CGRectGetHeight(_menuView.bounds) * 0.8);
+        _menuView.showsHorizontalScrollIndicator = NO;
+        [self addSubview:_menuView];
         
         // 菜单两侧按钮
         UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [leftButton setBackgroundImage:[UIImage imageNamed:@"箭头左"] forState:UIControlStateNormal];
         leftButton.bounds = CGRectMake(0, 0, 30, 30);
-        leftButton.center = CGPointMake(CGRectGetMinX(menuView.frame) - CGRectGetMidX(leftButton.bounds) * 1.5,
-                                        CGRectGetMidY(menuView.frame));
+        leftButton.center = CGPointMake(CGRectGetMinX(_menuView.frame) - CGRectGetMidX(leftButton.bounds) * 1.5,
+                                        CGRectGetMidY(_menuView.frame));
         leftButton.tag = kLeftButtonTag;
         [leftButton addTarget:self
                        action:@selector(moveTitle:)
@@ -100,8 +101,8 @@
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [rightButton setBackgroundImage:[UIImage imageNamed:@"箭头右"] forState:UIControlStateNormal];
         rightButton.bounds = CGRectMake(0, 0, 30, 30);
-        rightButton.center = CGPointMake(CGRectGetMaxX(menuView.frame) + CGRectGetMidX(rightButton.bounds) * 1.5,
-                                         CGRectGetMidY(menuView.frame));
+        rightButton.center = CGPointMake(CGRectGetMaxX(_menuView.frame) + CGRectGetMidX(rightButton.bounds) * 1.5,
+                                         CGRectGetMidY(_menuView.frame));
         [rightButton addTarget:self
                         action:@selector(moveTitle:)
               forControlEvents:UIControlEventTouchUpInside];
@@ -114,7 +115,7 @@
         
         // 计算每个按钮的尺寸大小
         CGFloat lastButtonMaxX = 0;
-        CGSize size = CGSizeMake(menuView.bounds.size.width, menuView.bounds.size.height);
+        CGSize size = CGSizeMake(_menuView.bounds.size.width, _menuView.bounds.size.height);
         for (int i = 0; i < titles.count; i++ ) {
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setTitle:titles[i] forState:UIControlStateNormal];
@@ -124,13 +125,13 @@
             CGRect rect = [self rectWithString:titles[i] font:[UIFont systemFontOfSize:18] constraintSize:size];
             button.bounds = rect;
             button.center = CGPointMake(lastButtonMaxX + CGRectGetMidX(button.bounds) + 20,
-                                        CGRectGetMidY(menuView.bounds));
+                                        CGRectGetMidY(_menuView.bounds));
             lastButtonMaxX = CGRectGetMaxX(button.frame);
             [button addTarget:self
                        action:@selector(toggleTitle:)
              forControlEvents:UIControlEventTouchUpInside];
             button.tag = kTitleButtonTag + i;
-            [menuView addSubview:button];
+            [_menuView addSubview:button];
             
             // 默认选中第一个
             if (0 == i) {
@@ -139,17 +140,21 @@
             }
         }
         lastButtonMaxX += 20;
-        menuView.contentSize = CGSizeMake(lastButtonMaxX, CGRectGetHeight(menuView.bounds));
+        _menuView.contentSize = CGSizeMake(lastButtonMaxX, CGRectGetHeight(_menuView.bounds));
+        
+        */
     }
+
     return self;
 }
+
+/*
 
 - (void)toggleTitle:(UIButton *)sender
 {
     if (_currentSelectedButton == sender) {
         return;
     }
-    
     _currentSelectedButton.selected = NO;
     sender.selected = YES;
     _currentSelectedButton = sender;
@@ -192,6 +197,7 @@
                                        context:nil];
     return rect;
 }
+*/
 
 #pragma mark - <UICollectionViewDataSource>
 

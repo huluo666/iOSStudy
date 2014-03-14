@@ -49,8 +49,7 @@
 
 - (void)dealloc
 {
-    _currentSelectedView = nil;
-    _segmentedControl = nil;
+    [_currentSelectedView release];
     [_images  release];
     [_imgaesSelected release];
     [super dealloc];
@@ -84,21 +83,19 @@
         _imgaesSelected = [@[consultSelected, comboSelected, optionalSelected] retain];
         
         // 分段控件
-        UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:_images];
-        segmentedControl.tintColor = [UIColor clearColor];
-        segmentedControl.bounds = CGRectMake(0, 0, 355, 40);
-        segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 40);
-        [segmentedControl addTarget:self action:@selector(abroadSegmentAction:)
+        _segmentedControl = [[UISegmentedControl alloc] initWithItems:_images];
+        _segmentedControl.tintColor = [UIColor clearColor];
+        _segmentedControl.bounds = CGRectMake(0, 0, 355, 40);
+        _segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 40);
+        [_segmentedControl addTarget:self action:@selector(abroadSegmentAction:)
                    forControlEvents:UIControlEventValueChanged];
-        [self addSubview:segmentedControl];
-        _segmentedControl = segmentedControl;
-        [segmentedControl release];
+        [self addSubview:_segmentedControl];
         
         // 分段控件下面的阴影
         UIImageView *shadowView = [[UIImageView alloc] init];
-        shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(segmentedControl.bounds), 10);
-        shadowView.center = CGPointMake(CGRectGetMidX(segmentedControl.frame),
-                                        CGRectGetMaxY(segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
+        shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(_segmentedControl.bounds), 10);
+        shadowView.center = CGPointMake(CGRectGetMidX(_segmentedControl.frame),
+                                        CGRectGetMaxY(_segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
         shadowView.image = [UIImage imageNamed:@"pshadow_08"];
         [self addSubview:shadowView];
         [shadowView release];
@@ -137,10 +134,6 @@
     bottomView.frame = kMainViewBounds;
     bottomView.image = [UIImage imageNamed:@"背景"];
     bottomView.userInteractionEnabled = YES;
-    _currentSelectedView = nil;
-    _currentSelectedView = bottomView;
-    [self addSubview:bottomView];
-    [self sendSubviewToBack:bottomView];
     
     if (index) {
         // video
@@ -215,11 +208,14 @@
     _segmentedControl.selectedSegmentIndex = 0;
     [self selectedIndex:0];
     
-    UIView *bottomView = [self loadBottomViewWithSelectedIndex:0];
+    _currentSelectedView = [self loadBottomViewWithSelectedIndex:0];
+    [self addSubview:_currentSelectedView];
+    [self sendSubviewToBack:_currentSelectedView];
+    
     CGFloat verticalValue = CGRectGetMaxY(_segmentedControl.frame) + 10;
     CGRect frame = CGRectMake(0, verticalValue, kMainViewWidth, kMainViewHeight - verticalValue);
     DDConsultView *consultView = [[DDConsultView alloc] initWithFrame:frame];
-    [bottomView addSubview:consultView];
+    [_currentSelectedView addSubview:consultView];
     [consultView release];
 }
 
@@ -228,11 +224,14 @@
     _segmentedControl.selectedSegmentIndex = 1;
     [self selectedIndex:1];
     
-    UIView *bottomView = [self loadBottomViewWithSelectedIndex:1];
+    _currentSelectedView = [self loadBottomViewWithSelectedIndex:1];
+    [self addSubview:_currentSelectedView];
+    [self sendSubviewToBack:_currentSelectedView];
+    
     CGFloat verticalValue = CGRectGetMaxY(_segmentedControl.frame) + 10;
     CGRect frame = CGRectMake(0, verticalValue, kMainViewWidth, kMainViewHeight - verticalValue);
     DDComboView *comboView = [[DDComboView alloc] initWithFrame:frame];
-    [bottomView addSubview:comboView];
+    [_currentSelectedView addSubview:comboView];
     [comboView release];
 }
 
@@ -240,12 +239,15 @@
 {
     [self selectedIndex:2];
     _segmentedControl.selectedSegmentIndex = 2;
-    
-    UIView *bottomView = [self loadBottomViewWithSelectedIndex:2];
+
+    _currentSelectedView = [self loadBottomViewWithSelectedIndex:2];
+    [self addSubview:_currentSelectedView];
+    [self sendSubviewToBack:_currentSelectedView];
+
     CGFloat verticalValue = CGRectGetMaxY(_segmentedControl.frame) + 10;
     CGRect frame = CGRectMake(0, verticalValue, kMainViewWidth, kMainViewHeight - verticalValue);
     DDOptionalView *optionView = [[DDOptionalView alloc] initWithFrame:frame];
-    [bottomView addSubview:optionView];
+    [_currentSelectedView addSubview:optionView];
     [optionView release];
 }
 
@@ -266,7 +268,9 @@
     
     // 移除上次选中视图
     if (_currentSelectedView) {
+        NSLog(@"_currentSelectedView = %@", _currentSelectedView);
         [_currentSelectedView  removeFromSuperview];
+        _currentSelectedView = nil;
     }
 }
 

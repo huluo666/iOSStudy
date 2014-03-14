@@ -31,6 +31,7 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ dealloc", [self class]);
     [_combos release];
     [_comboLocationList release];
     [super dealloc];
@@ -40,6 +41,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        
         // 左滑
         UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]
                                                initWithTarget:self
@@ -55,13 +57,6 @@
         rightSwipe.direction = UISwipeGestureRecognizerDirectionRight;
         [self addGestureRecognizer:rightSwipe];
         [rightSwipe release];
-        
-        // 清空上次装的数据
-        if (_combos) {
-            [_combos release];
-            _combos = nil;
-            _combos = [@[] mutableCopy];
-        }
 
         // 初始化展示视图
         _combos = [[NSMutableArray alloc] init];
@@ -75,7 +70,7 @@
                                 [NSValue valueWithCGPoint:comboCenter],
                                 [NSValue valueWithCGPoint:CGPointMake(comboCenterX + 400, comboCenterY)],
                                 [NSValue valueWithCGPoint:CGPointMake(comboCenterX + 700, comboCenterY)]] mutableCopy];
-        
+  
         for (int i = 0; i < 5; i++) {
             DDCombo *combo = [[DDCombo alloc] initWithFrame:CGRectZero];
             combo.center =  [_comboLocationList[i] CGPointValue];
@@ -84,16 +79,6 @@
             [self addSubview:combo];
             [_combos addObject:combo];
             [combo release];
-            
-            // 默认放大第三个
-            if (2 == i) {
-                
-                [self startBasicScaleAnimationFromValue:@1.2
-                                                toValue:@1.2
-                                                ForView:combo
-                                  withAnimationDuration:0];
-                combo.userInteractionEnabled = YES;
-            }
         }
     }
     return self;
@@ -170,7 +155,7 @@
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.fromValue = fromeValue;
     animation.toValue = toValue;
-    animation.removedOnCompletion = NO;
+    animation.removedOnCompletion = YES;
     animation.delegate = self;
     animation.fillMode = kCAFillModeForwards;
     [view.layer addAnimation:animation forKey:@"transform.scale"];

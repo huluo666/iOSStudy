@@ -340,10 +340,11 @@
             // 投资期限
             DDDeadlineViewController *deadlineVC = [[DDDeadlineViewController alloc] init];
             UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:deadlineVC];
-            CGRect rect = CGRectMake(0, 0, 200, 400);
+            CGRect rect = CGRectMake(200, -160, 0, 0);
             [popover presentPopoverFromRect:rect
                                      inView:self
                    permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+            
         }
             break;
         case 1:

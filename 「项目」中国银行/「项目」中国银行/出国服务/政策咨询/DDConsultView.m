@@ -13,10 +13,15 @@
     UITableViewDelegate,
     UITableViewDataSource>
 
-
 @end
 
 @implementation DDConsultView
+
+- (void)dealloc
+{
+    NSLog(@"%@ dealloc", [self class]);
+    [super dealloc];
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -41,12 +46,12 @@
         [tableView release];
         
         // 下拉刷新
-        DDPullDown *pullDown = [DDPullDown pullDown];
-        pullDown.scrollView = tableView;
-        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-        pullDown.status.textColor = [UIColor whiteColor];
-        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+//        DDPullDown *pullDown = [DDPullDown pullDown];
+//        pullDown.scrollView = tableView;
+//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+//        pullDown.status.textColor = [UIColor whiteColor];
+//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
 #pragma mark - TODO 刷新数据TableView
         
         // 上下两条阴影
@@ -89,6 +94,7 @@
         [self addSubview:titleLabel];
         [titleLabel release];
     }
+
     return self;
 }
 
