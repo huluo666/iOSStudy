@@ -49,26 +49,29 @@
         [layout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 0)];
         [layout setMinimumInteritemSpacing:10];
         [layout setMinimumLineSpacing:10];
-       
+#pragma mark -
+#pragma mark - MEMORY ERROR START
         // Collection view
         CGRect frame = self.bounds;
+
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                                               collectionViewLayout:layout];
         [layout release];
         
-        collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.98, 640);
+        collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(frame) * 0.98, 640);
         collectionView.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame) + 60);
         
         collectionView.backgroundColor = [UIColor clearColor];
         collectionView.delegate = self;
         collectionView.dataSource = self;
         [collectionView registerClass:[UICollectionViewCell class]
-           forCellWithReuseIdentifier:@"自选模式"];
+           forCellWithReuseIdentifier:@"OptionalCell"];
         collectionView.alwaysBounceVertical = YES;
         collectionView.showsVerticalScrollIndicator = YES;
         [self addSubview:collectionView];
         [collectionView release];
-         /*
+#pragma mark - MEMORY ERROR END
+
         // 下拉刷新
 //        DDPullDown *pullDown = [DDPullDown pullDown];
 //        pullDown.scrollView = collectionView;
@@ -141,14 +144,11 @@
         }
         lastButtonMaxX += 20;
         _menuView.contentSize = CGSizeMake(lastButtonMaxX, CGRectGetHeight(_menuView.bounds));
-        
-        */
+
     }
 
     return self;
 }
-
-/*
 
 - (void)toggleTitle:(UIButton *)sender
 {
@@ -197,7 +197,6 @@
                                        context:nil];
     return rect;
 }
-*/
 
 #pragma mark - <UICollectionViewDataSource>
 
@@ -210,7 +209,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"自选模式"
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OptionalCell"
                                                                            forIndexPath:indexPath];
     DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
     optional.bounds = CGRectMake(0, 0, 300, 300);
@@ -234,7 +233,7 @@
 #pragma mark - <UICollectionViewDelegate>
 
 - (void)collectionView:(UICollectionView *)collectionView
-didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+    didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"section:%ld row:%ld",indexPath.section, indexPath.row);
 }

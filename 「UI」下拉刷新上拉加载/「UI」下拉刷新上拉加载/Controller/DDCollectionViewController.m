@@ -87,8 +87,8 @@
 
 - (void)loadData:(DDRefreshBaseView *)refreshBaseView
 {
-    [self.collectionView reloadData];
-    [refreshBaseView endRefreshingWithSuccess:YES];
+//    [self.collectionView reloadData];
+//    [refreshBaseView endRefreshingWithSuccess:YES];
 }
 
 #pragma mark - <DDRefreshBaseDelegate>

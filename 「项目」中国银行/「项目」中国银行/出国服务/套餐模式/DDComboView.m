@@ -41,7 +41,6 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
         // 左滑
         UISwipeGestureRecognizer *leftSwipe = [[UISwipeGestureRecognizer alloc]
                                                initWithTarget:self
@@ -79,6 +78,14 @@
             [self addSubview:combo];
             [_combos addObject:combo];
             [combo release];
+
+            // 默认放大第三个
+            if (i == 2) {
+                [self startBasicScaleAnimationFromValue:@1.2
+                                                toValue:@1.2
+                                                ForView:_combos[i]
+                                  withAnimationDuration:0];
+            }
         }
     }
     return self;
@@ -109,10 +116,10 @@
         [self startBasicScaleAnimationFromValue:@1.2
                                         toValue:@1
                                         ForView:_combos[1]
-                          withAnimationDuration:kAnimateDuration / 2];
+                          withAnimationDuration:kAnimateDuration];
         [self startBasicScaleAnimationFromValue:@1
                                         toValue:@1.2 ForView:_combos[2]
-                          withAnimationDuration:kAnimateDuration / 2];
+                          withAnimationDuration:kAnimateDuration];
     } else {
         // 向右移动
         // 调整坐标顺序
@@ -125,15 +132,15 @@
         [self startBasicScaleAnimationFromValue:@1.2
                                         toValue:@1
                                         ForView:_combos[3]
-                          withAnimationDuration:kAnimateDuration / 2];
+                          withAnimationDuration:kAnimateDuration];
         [self startBasicScaleAnimationFromValue:@1
                                         toValue:@1.2
                                         ForView:_combos[2]
-                          withAnimationDuration:kAnimateDuration / 2];
+                          withAnimationDuration:kAnimateDuration];
     }
     
     // 移动一格
-    [UIView animateWithDuration:kAnimateDuration / 2 animations:^{
+    [UIView animateWithDuration:kAnimateDuration animations:^{
         for (int i = 0; i < 5; i++) {
             UIView *combo = _combos[i];
             combo.center = [_comboLocationList[i] CGPointValue];
@@ -155,7 +162,7 @@
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
     animation.fromValue = fromeValue;
     animation.toValue = toValue;
-    animation.removedOnCompletion = YES;
+    animation.removedOnCompletion = NO;
     animation.delegate = self;
     animation.fillMode = kCAFillModeForwards;
     [view.layer addAnimation:animation forKey:@"transform.scale"];

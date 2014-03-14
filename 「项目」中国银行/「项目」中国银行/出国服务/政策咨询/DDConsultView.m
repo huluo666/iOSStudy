@@ -23,6 +23,12 @@
     [super dealloc];
 }
 
+
+- (void)stop:(DDRefreshBaseView *)refreshBaseView
+{
+    [refreshBaseView endRefreshingWithSuccess:YES];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -46,12 +52,16 @@
         [tableView release];
         
         // 下拉刷新
-//        DDPullDown *pullDown = [DDPullDown pullDown];
-//        pullDown.scrollView = tableView;
-//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-//        pullDown.status.textColor = [UIColor whiteColor];
-//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+        DDPullDown *pullDown = [DDPullDown pullDown];
+        pullDown.scrollView = tableView;
+        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+        pullDown.status.textColor = [UIColor whiteColor];
+        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+            NSLog(@"开始刷新");
+            [self performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+        };
 #pragma mark - TODO 刷新数据TableView
         
         // 上下两条阴影

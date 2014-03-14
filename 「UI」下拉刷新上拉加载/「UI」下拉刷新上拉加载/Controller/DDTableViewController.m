@@ -79,7 +79,7 @@
     [self loadPullDownView];
     
     // 载入上拉加载更多视图
-    [self loadPullUpView];
+//    [self loadPullUpView];
 }
 
 - (void)loadPullDownView
@@ -91,31 +91,31 @@
     [pullDown beginRefreshing];
     
     // 回调方法实现
-    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView,
-                                    DDRefreshState state) {
-        switch (state){
-            case DDRefreshStatePulling:
-                NSLog(@"!!!!!!!!%@当前状态：松开即将刷新数据", [refreshBaseView class]);
-                break;
-            case DDRefreshStateNormal:
-                NSLog(@"!!!!!!!!%@当前状态：普通状态", [refreshBaseView class]);
-                break;
-            case DDRefreshStateRefreshing:
-                NSLog(@"!!!!!!!!%@当前状态：正在刷新中...", [refreshBaseView class]);
-                break;
-            default:
-                break;
-        }
-    };
+//    pullDown.refreshStateChange = ^(DDRefreshBaseView *refreshBaseView,
+//                                    DDRefreshState state) {
+//        switch (state){
+//            case DDRefreshStatePulling:
+//                NSLog(@"!!!!!!!!%@当前状态：松开即将刷新数据", [refreshBaseView class]);
+//                break;
+//            case DDRefreshStateNormal:
+//                NSLog(@"!!!!!!!!%@当前状态：普通状态", [refreshBaseView class]);
+//                break;
+//            case DDRefreshStateRefreshing:
+//                NSLog(@"!!!!!!!!%@当前状态：正在刷新中...", [refreshBaseView class]);
+//                break;
+//            default:
+//                break;
+//        }
+//    };
     
     pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
         [self responseRequestWithDDRefreshBaseView:refreshBaseView
                                      DDRefreshType:DDRefreshTypePullDown];
     };
     
-    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        NSLog(@"!!!!!!!!%@当前状态：数据刷新完成", [refreshBaseView class]);
-    };
+//    pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//        NSLog(@"!!!!!!!!%@当前状态：数据刷新完成", [refreshBaseView class]);
+//    };
     
 }
 
@@ -123,15 +123,15 @@
                                DDRefreshType:(DDRefreshType)type
 {
     // 模拟网络请求过程，返回请求成功或者失败和一个数组对象(这里为了简单，数组已经添加到数据源了)
-    for (int i = 0; i < 5; i++) {
-        if (type == DDRefreshTypePullDown) {
-            [_dataSource insertObject:[NSString stringWithFormat:@"下拉测试数据编号：%d",
-                                  arc4random() % 99999] atIndex:0];
-        } else {
-            [_dataSource addObject:[NSString stringWithFormat:@"上拉测试数据编号：%d",
-                               arc4random() % 99999]];
-        }
-    }
+//    for (int i = 0; i < 5; i++) {
+//        if (type == DDRefreshTypePullDown) {
+//            [_dataSource insertObject:[NSString stringWithFormat:@"下拉测试数据编号：%d",
+//                                  arc4random() % 99999] atIndex:0];
+//        } else {
+//            [_dataSource addObject:[NSString stringWithFormat:@"上拉测试数据编号：%d",
+//                               arc4random() % 99999]];
+//        }
+//    }
     
     BOOL success = YES;
 //    BOOL success = NO;
@@ -161,7 +161,7 @@
 
 - (void)loadData:(DDRefreshBaseView *)refreshBaseView
 {
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
     [refreshBaseView endRefreshingWithSuccess:YES];
 }
 

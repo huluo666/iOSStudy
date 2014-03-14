@@ -36,6 +36,7 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);
     [_lastUpdateTime release];
     [super dealloc];
 }

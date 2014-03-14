@@ -44,10 +44,10 @@
 
 - (void)dealloc
 {
-    _segmentedControl = nil;
+    [_segmentedControl release];
     [_images release];
     [_imgaesSelected release];
-    _currentSelectedView = nil;
+    [_currentSelectedView release];
     [super dealloc];
 }
 
@@ -90,21 +90,19 @@
         _imgaesSelected = [@[financeProductsSelected, fundsSelected, preciousMetalSelected, insuranceSelected] retain];
         
         // 分段控件
-        UISegmentedControl *segmentedControl = [[UISegmentedControl alloc] initWithItems:_images];
-        segmentedControl.tintColor = [UIColor clearColor];
-        segmentedControl.bounds = CGRectMake(0, 0, 472, 40);
-        segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 40);
-        [segmentedControl addTarget:self action:@selector(segmentAction:)
+        _segmentedControl = [[UISegmentedControl alloc] initWithItems:_images];
+        _segmentedControl.tintColor = [UIColor clearColor];
+        _segmentedControl.bounds = CGRectMake(0, 0, 472, 40);
+        _segmentedControl.center = CGPointMake(CGRectGetMidX(self.bounds), 40);
+        [_segmentedControl addTarget:self action:@selector(segmentAction:)
                    forControlEvents:UIControlEventValueChanged];
-        [self addSubview:segmentedControl];
-        _segmentedControl = segmentedControl;
-        [segmentedControl release];
+        [self addSubview:_segmentedControl];
         
         // 分段控件下面的阴影
         UIImageView *shadowView = [[UIImageView alloc] init];
-        shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(segmentedControl.bounds), 10);
-        shadowView.center = CGPointMake(CGRectGetMidX(segmentedControl.frame),
-                                        CGRectGetMaxY(segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
+        shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(_segmentedControl.bounds), 10);
+        shadowView.center = CGPointMake(CGRectGetMidX(_segmentedControl.frame),
+                                        CGRectGetMaxY(_segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
         shadowView.image = [UIImage imageNamed:@"pshadow_08"];
         [self addSubview:shadowView];
         [shadowView release];
@@ -147,11 +145,8 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDFinanceProductsView *financeProductsView = [[DDFinanceProductsView alloc] initWithFrame:frame];
-    [self addSubview:financeProductsView];
-    [financeProductsView release];
-
-    _currentSelectedView = financeProductsView;
+    _currentSelectedView = [[DDFinanceProductsView alloc] initWithFrame:frame];
+    [self addSubview:_currentSelectedView];
 }
 
 
@@ -163,11 +158,8 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDFundsView *fundsView = [[DDFundsView alloc] initWithFrame:frame];
-    [self addSubview:fundsView];
-    [fundsView release];
-    
-    _currentSelectedView = fundsView;
+    _currentSelectedView = [[DDFundsView alloc] initWithFrame:frame];
+    [self addSubview:_currentSelectedView];
 }
 
 - (void)loadPreciousMetalView
@@ -178,11 +170,8 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDPreciousMetal *preciousMetalView = [[DDPreciousMetal alloc] initWithFrame:frame];
-    [self addSubview:preciousMetalView];
-    [preciousMetalView release];
-    
-    _currentSelectedView = preciousMetalView;
+    _currentSelectedView = [[DDPreciousMetal alloc] initWithFrame:frame];
+    [self addSubview:_currentSelectedView];
 }
 
 - (void)loadInsuranceView
@@ -193,11 +182,8 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDInsurance *insuranceView = [[DDInsurance alloc] initWithFrame:frame];
-    [self addSubview:insuranceView];
-    [DDInsurance release];
-    
-    _currentSelectedView = insuranceView;
+    _currentSelectedView = [[DDInsurance alloc] initWithFrame:frame];
+    [self addSubview:_currentSelectedView];
 }
 
 - (void)selectedIndex:(NSInteger)index
@@ -218,6 +204,7 @@
     // 移除上次选中视图
     if (_currentSelectedView) {
         [_currentSelectedView  removeFromSuperview];
+        _currentSelectedView = nil;
     }
 }
 

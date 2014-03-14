@@ -237,9 +237,9 @@
 
 - (void)loadOptionalView
 {
-    [self selectedIndex:2];
     _segmentedControl.selectedSegmentIndex = 2;
-
+    [self selectedIndex:2];
+    
     _currentSelectedView = [self loadBottomViewWithSelectedIndex:2];
     [self addSubview:_currentSelectedView];
     [self sendSubviewToBack:_currentSelectedView];
@@ -268,7 +268,6 @@
     
     // 移除上次选中视图
     if (_currentSelectedView) {
-        NSLog(@"_currentSelectedView = %@", _currentSelectedView);
         [_currentSelectedView  removeFromSuperview];
         _currentSelectedView = nil;
     }

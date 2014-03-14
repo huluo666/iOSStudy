@@ -41,8 +41,9 @@
 
 - (void)dealloc
 {
-    _startDataLabel = nil;
-    _endDataLabel = nil;
+    NSLog(@"%@ is dealloced", [self class]);
+    [_startDataLabel release];
+    [_endDataLabel release];
     [super dealloc];
 }
 
@@ -70,30 +71,28 @@
         [backgroundView addSubview:fromTimeLabel];
 
         // 起售日期选择标签
-        UILabel *startDataLabel = [self labelHasTapGesture];
-        startDataLabel.center = CGPointMake(CGRectGetMaxX(fromTimeLabel.frame) + CGRectGetMidX(startDataLabel.bounds) + 6,
+        _startDataLabel = [self labelHasTapGesture];
+        _startDataLabel.center = CGPointMake(CGRectGetMaxX(fromTimeLabel.frame) + CGRectGetMidX(_startDataLabel.bounds) + 6,
                                             backgroundViewHeight * 0.05);
-        _startDataLabel = startDataLabel;
-        [backgroundView addSubview:startDataLabel];
+        [backgroundView addSubview:_startDataLabel];
 
         // UILabel
         UILabel *toTimeLabel = [self labelWithTitle:@"到"];
         toTimeLabel.bounds = CGRectMake(0, 0, 20, 40);
-        toTimeLabel.center = CGPointMake(CGRectGetMaxX(startDataLabel.frame) + CGRectGetMidX(toTimeLabel.bounds) + 6,
+        toTimeLabel.center = CGPointMake(CGRectGetMaxX(_startDataLabel.frame) + CGRectGetMidX(toTimeLabel.bounds) + 6,
                                          backgroundViewHeight * 0.05);
         [backgroundView addSubview:toTimeLabel];
         
         // 停售日期选择标签
-        UILabel *endDataLabel = [self labelHasTapGesture];
-        endDataLabel.center = CGPointMake(CGRectGetMaxX(toTimeLabel.frame) + CGRectGetMidX(endDataLabel.bounds) + 6,
+        _endDataLabel = [self labelHasTapGesture];
+        _endDataLabel.center = CGPointMake(CGRectGetMaxX(toTimeLabel.frame) + CGRectGetMidX(_endDataLabel.bounds) + 6,
                                           backgroundViewHeight * 0.05);
-        _endDataLabel = endDataLabel;
-        [backgroundView addSubview:endDataLabel];
+        [backgroundView addSubview:_endDataLabel];
 
         // 投资期限
         UIButton *deadlineButton = [self buttonWitStateNormalTitle:@"投资期限"];
         [deadlineButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        deadlineButton.center = CGPointMake(CGRectGetMaxX(endDataLabel.frame) + CGRectGetMidX(deadlineButton.bounds) + 6,
+        deadlineButton.center = CGPointMake(CGRectGetMaxX(_endDataLabel.frame) + CGRectGetMidX(deadlineButton.bounds) + 6,
                                             backgroundViewHeight * 0.05);
         deadlineButton.tag = kFinanceButtonTag;
         [backgroundView addSubview:deadlineButton];
@@ -150,12 +149,12 @@
         [tableView release];
         
         // 下拉刷新
-        DDPullDown *pullDown = [DDPullDown pullDown];
-        pullDown.scrollView = tableView;
-        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-        pullDown.status.textColor = [UIColor whiteColor];
-        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+//        DDPullDown *pullDown = [DDPullDown pullDown];
+//        pullDown.scrollView = tableView;
+//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+//        pullDown.status.textColor = [UIColor whiteColor];
+//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
         
         // 申请按钮
         UIButton *applicationButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -340,11 +339,13 @@
             // 投资期限
             DDDeadlineViewController *deadlineVC = [[DDDeadlineViewController alloc] init];
             UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:deadlineVC];
-            CGRect rect = CGRectMake(200, -160, 0, 0);
+            [deadlineVC release];
+            popover.popoverContentSize = CGSizeMake(150, 200);
+            CGRect rect = CGRectMake(0, 0, 740, 50);
             [popover presentPopoverFromRect:rect
                                      inView:self
                    permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-            
+#pragma mark - 不能释放？？？
         }
             break;
         case 1:

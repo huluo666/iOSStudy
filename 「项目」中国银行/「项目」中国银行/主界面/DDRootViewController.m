@@ -63,7 +63,7 @@
 - (void)dealloc
 {
     [_naviBar release];
-    _views = nil;
+    [_views release];
     [super dealloc];
 }
 
@@ -175,7 +175,6 @@
                      action:@selector(logout)
            forControlEvents:UIControlEventTouchUpInside];
     [userAvatar addSubview:logoutButton];
-    NSLog(@"%@", headerView.subviews);
     
     // 设置底部视图
     UIImage *bottomImage = [UIImage imageNamed:@"写入框_08"];

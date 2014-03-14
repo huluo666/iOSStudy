@@ -19,6 +19,12 @@
 
 @implementation DDInsurance
 
+- (void)dealloc
+{
+    NSLog(@"%@ is dealloced", [self class]);
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -48,12 +54,12 @@
         [collectionView release];
         
         // 下拉刷新
-        DDPullDown *pullDown = [DDPullDown pullDown];
-        pullDown.scrollView = collectionView;
-        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-        pullDown.status.textColor = [UIColor whiteColor];
-        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+//        DDPullDown *pullDown = [DDPullDown pullDown];
+//        pullDown.scrollView = collectionView;
+//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+//        pullDown.status.textColor = [UIColor whiteColor];
+//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
 #pragma mark - TODO 刷新数据CollectionView
     }
     return self;

@@ -14,6 +14,12 @@
 
 @implementation DDDeadlineViewController
 
+- (void)dealloc
+{
+    self.tableView = nil;
+    [super dealloc];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -27,8 +33,10 @@
 {
     [super viewDidLoad];
 
-    UITableView *tableview = [[UITableView alloc] init];
-    tableview.backgroundColor = [UIColor redColor];
+    UITableView *tableView = [[UITableView alloc] init];
+    tableView.backgroundColor = [UIColor greenColor];
+    self.tableView = tableView;
+    [tableView release];
 }
 
 - (void)didReceiveMemoryWarning
