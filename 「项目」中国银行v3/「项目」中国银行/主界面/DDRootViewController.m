@@ -19,7 +19,7 @@
 {
     UIView *_naviBar;                 // 左侧导航栏视图
     NSInteger _currentSelectedButton; // 当前选中的是第几个导航button
-    __block UIView *_appearedView;    // 当前出现的导航视图
+    NSArray *_views;                  // 导航视图数组
     BOOL _isAnimating;                // 是否正在动画中
     BOOL _isCartVisiable;             // 购物车是否可见
 }
@@ -27,13 +27,10 @@
 
 // 初始化用户界面
 - (void)initializeUserInterface;
-
-// 创建导航视图
-- (UIView *)createNaviViewWithIndex:(NSInteger)index;
-
 // 切换视图
 - (void)toggleVC:(UIButton *)sender;
-
+// 初始化导航视图数组
+- (void)initializeViews;
 // 初始化登录界面
 - (void)initializeLoginView;
 // 登出
@@ -58,6 +55,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self initializeViews];
     [self initializeUserInterface];
     _logined = YES;
     if (!_logined) {
@@ -69,8 +68,7 @@
 {
     NSLog(@"%@ is dealloced", [self class]);
     [_naviBar release];
-    [_appearedView release];
-    _appearedView = nil;
+    [_views release];
     [super dealloc];
 }
 
@@ -79,6 +77,24 @@
     DDLogin *login = [[DDLogin alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:login];
     [login release];
+}
+
+- (void)initializeViews
+{
+    // 分别创建各导航器的视图
+    DDIndex *index = [[DDIndex alloc] initWithFrame:kMainViewFrame];
+    DDAbroad *abroad = [[DDAbroad alloc] initWithFrame:kMainViewFrame];
+    DDFinancing *financing = [[DDFinancing alloc] initWithFrame:kMainViewFrame];
+    DDChoose *choose = [[DDChoose alloc] initWithFrame:kMainViewFrame];
+    DDSchedule *schedule = [[DDSchedule alloc] initWithFrame:kMainViewFrame];
+    
+    _views = [@[index, abroad, financing, choose, schedule] retain];
+
+    [index release];
+    [abroad release];
+    [financing release];
+    [choose release];
+    [schedule release];
 }
 
 - (void)initializeUserInterface
@@ -110,6 +126,7 @@
         button.bounds = CGRectMake(0, 0, kNaviBarViewWidth, kNaviBarButtonHeight);
         button.center = CGPointMake(CGRectGetMidX(_naviBar.frame),
                                     kHeaderViewHeight + CGRectGetMidY(button.bounds) + CGRectGetHeight(button.bounds) * i);
+
         [button setBackgroundImage:[UIImage imageNamed:naviBarImageNormalNames[i]]
                           forState:UIControlStateNormal];
         [button setBackgroundImage:[UIImage imageNamed:naviBarImageSelectedNames[i]]
@@ -123,14 +140,13 @@
         // 默认选中第一个
         if (!i) {
             button.selected = YES;
-            UIView *view = [self createNaviViewWithIndex:0];
-            _appearedView = view;
-            [self.view addSubview:view];
-            [self.view sendSubviewToBack:view];
+            [self.view addSubview:_views[i]];
+            [self.view sendSubviewToBack:_views[i]];
         }
     }
     
     // 加载购物车
+    
     UIButton *cartButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cartButton.bounds = CGRectMake(0, 0, 60, 50);
     cartButton.center = CGPointMake(CGRectGetMidX(_naviBar.bounds),
@@ -236,8 +252,10 @@
         }
     }
     
+    // 当前出现的视图
+    UIView *appearedView = _views[_currentSelectedButton];
     // 将要出现的视图
-    UIView *willAppearView = [self createNaviViewWithIndex:index];
+    UIView *willAppearView = _views[index];
     [self.view addSubview:willAppearView];
     [self.view sendSubviewToBack:willAppearView];
 
@@ -253,15 +271,13 @@
         willAppearView.center = kMainViewCenterDown;
         [UIView animateWithDuration:kAnimateDuration / 2
                          animations:^{
-                             _appearedView.center = kMainViewCenterUp;
+                             appearedView.center = kMainViewCenterUp;
                              willAppearView.center = kMainViewCenter;
                              selectedButton.selected = NO;
                              willSelectedButton.selected = YES;
                          }
                          completion:^(BOOL finished) {
-                             [_appearedView removeFromSuperview];
-                             _appearedView = nil;
-                             _appearedView = willAppearView;
+                             [appearedView removeFromSuperview];
                              _currentSelectedButton = index;
                              _isAnimating = NO;
                          }];
@@ -270,15 +286,13 @@
         willAppearView.center = kMainViewCenterUp;
         [UIView animateWithDuration:kAnimateDuration / 2
                          animations:^{
-                             _appearedView.center = kMainViewCenterDown;
+                             appearedView.center = kMainViewCenterDown;
                              willAppearView.center = kMainViewCenter;
                              selectedButton.selected = NO;
                              willSelectedButton.selected = YES;
                          }
                          completion:^(BOOL finished) {
-                             [_appearedView removeFromSuperview];
-                             _appearedView = nil;
-                             _appearedView = willAppearView;
+                             [appearedView removeFromSuperview];
                              _currentSelectedButton = index;
                              _isAnimating = NO;
                          }];
@@ -289,23 +303,6 @@
 {
     _logined = NO;
     [self initializeLoginView];
-}
-
-- (UIView *)createNaviViewWithIndex:(NSInteger)index
-{
-    NSArray *viewClassNames = @[
-                                @"DDIndex",
-                                @"DDAbroad",
-                                @"DDFinancing",
-                                @"DDChoose",
-                                @"DDSchedule"];
-    // 获取类字节码
-    Class clazz = NSClassFromString(viewClassNames[index]);
-   
-    // 创建类对应的实例
-    UIView *view = [[[clazz alloc] initWithFrame:kMainViewFrame] autorelease];
-    
-    return view;
 }
 
 @end
