@@ -26,6 +26,7 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);
     [_backgroundView release];
     [_bottomView release];
     [super dealloc];

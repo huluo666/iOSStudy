@@ -61,6 +61,7 @@
 //        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 //        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
 #pragma mark - TODO 刷新数据CollectionView
+
     }
     return self;
 }
@@ -81,10 +82,11 @@
     DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
     optional.bounds = CGRectMake(0, 0, 300, 300);
     optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
+    __block DDInsurance *view = self;
     optional.tapAction = ^(UIButton *sender) {
         if (sender.tag == kDetailButtonTag) {
             DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            [self.superview addSubview:detail];
+            [view.superview addSubview:detail];
             [detail release];
         } else {
 #pragma mark - TODO

@@ -128,6 +128,7 @@ NSString *kPMCalendarRedrawNotification = @"kPMCalendarRedrawNotification";
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);    
     self.delegate = nil;
 }
 

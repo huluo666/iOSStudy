@@ -10,6 +10,13 @@
 
 @implementation DDCombo
 
+- (void)dealloc
+{
+    NSLog(@"%@ is dealloced", [self class]);    
+    [_titleLabel release];
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,16 +35,14 @@
         [backgroundImageView release];
         
         // 标题
-        UILabel *titleLabel = [[UILabel alloc] init];
-        titleLabel.bounds = CGRectMake(0, 0, CGRectGetWidth(backgroundImageView.bounds),
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.bounds = CGRectMake(0, 0, CGRectGetWidth(backgroundImageView.bounds),
                                        CGRectGetHeight(backgroundImageView.bounds) * 0.2);
-        titleLabel.center = CGPointMake(CGRectGetMidX(titleLabel.bounds), CGRectGetMidY(titleLabel.bounds));
-        titleLabel.font = [UIFont systemFontOfSize:18];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.text = @"测试标题";
-        _titleLabel = titleLabel;
-        [backgroundImageView addSubview:titleLabel];
-        [titleLabel release];
+        _titleLabel.center = CGPointMake(CGRectGetMidX(_titleLabel.bounds), CGRectGetMidY(_titleLabel.bounds));
+        _titleLabel.font = [UIFont systemFontOfSize:18];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.text = @"测试标题";
+        [backgroundImageView addSubview:_titleLabel];
         
         // 详情
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -52,12 +57,6 @@
         [backgroundImageView addSubview:detailButton];
     }
     return self;
-}
-
-- (void)dealloc
-{
-    _titleLabel = nil;
-    [super dealloc];
 }
 
 - (void)showDetail:(UIButton *)sender

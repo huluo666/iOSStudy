@@ -39,7 +39,7 @@
     self = [super initWithFrame:frame];
     if (self) {
 //        self.backgroundColor = [UIColor brownColor];
-        
+
         // 类别
         UILabel *categorylabel = [self label];
         categorylabel.center = CGPointMake(CGRectGetMidX(categorylabel.bounds),
@@ -141,8 +141,7 @@
 //        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 //        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
 #pragma mark - TODO 刷新数据CollectionView
-        
-        
+
     }
     return self;
 }
@@ -197,10 +196,11 @@
     DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
     optional.bounds = CGRectMake(0, 0, 300, 300);
     optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
+    __block DDPreciousMetal *view = self;
     optional.tapAction = ^(UIButton *sender) {
         if (sender.tag == kDetailButtonTag) {
             DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            [self.superview addSubview:detail];
+            [view.superview addSubview:detail];
             [detail release];
         } else {
 #pragma mark - TODO

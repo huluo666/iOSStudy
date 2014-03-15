@@ -10,6 +10,12 @@
 
 @implementation DDFinancingProductsCell
 
+- (void)dealloc
+{
+    NSLog(@"%@ is dealloced", [self class]);
+    [super dealloc];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];

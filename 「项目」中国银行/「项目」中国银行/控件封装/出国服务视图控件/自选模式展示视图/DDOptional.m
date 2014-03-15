@@ -10,6 +10,12 @@
 
 @implementation DDOptional
 
+- (void)dealloc
+{
+    NSLog(@"%@ is dealloced", [self class]);
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

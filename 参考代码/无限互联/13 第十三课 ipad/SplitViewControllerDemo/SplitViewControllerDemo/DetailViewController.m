@@ -35,9 +35,11 @@
     
     PopViewController *popViewController = [[PopViewController alloc] init];
     UINavigationController *popNav = [[UINavigationController alloc] initWithRootViewController:popViewController];
+    [popViewController release];
     
     //创建气泡窗口
     self.popCtrl = [[UIPopoverController alloc] initWithContentViewController:popNav];
+    [popNav release];
     _popCtrl.popoverContentSize = CGSizeMake(320, 600);
     
     

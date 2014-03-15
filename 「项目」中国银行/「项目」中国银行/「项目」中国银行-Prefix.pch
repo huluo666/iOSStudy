@@ -101,12 +101,18 @@
 #define kLeftButtonTag 420
 #endif
 
+// 理财产品
 #ifndef _FINANCE_PRODUCTS_
 #define _FINANCE_PRODUCTS_
-
 // 理财产品页tag
 #define kFinanceButtonTag 500
 
+#endif
+
+// 购物车
+#ifndef _SHOPCART_
+#define _SHOPCART_
+#define kCartButtonTag 600
 #endif
 
 //A better version of NSLog

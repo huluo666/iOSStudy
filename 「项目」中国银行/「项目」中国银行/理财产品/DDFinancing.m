@@ -44,10 +44,12 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);
     [_segmentedControl release];
     [_images release];
     [_imgaesSelected release];
     [_currentSelectedView release];
+    _currentSelectedView = nil;
     [super dealloc];
 }
 
@@ -57,11 +59,12 @@
     if (self) {
         self.frame = CGRectMake(0, 0, kMainViewWidth, kMainViewHeight);
         // 初始化背景
-        UIImageView *bottomView = [[[UIImageView alloc] init] autorelease];
+        UIImageView *bottomView = [[UIImageView alloc] init];
         bottomView.frame = kMainViewBounds;
         bottomView.image = [UIImage imageNamed:@"背景"];
         bottomView.userInteractionEnabled = YES;
         [self addSubview:bottomView];
+        [bottomView release];
         
         // 分段控件标题
         UIImage *financeProducts = [UIImage imageNamed:@"1_08"];
@@ -145,8 +148,10 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    _currentSelectedView = [[DDFinanceProductsView alloc] initWithFrame:frame];
-    [self addSubview:_currentSelectedView];
+    DDFinanceProductsView *financeProductsView = [[DDFinanceProductsView alloc] initWithFrame:frame];
+    [self addSubview:financeProductsView];
+    [financeProductsView release];
+    _currentSelectedView = financeProductsView;
 }
 
 
@@ -158,8 +163,10 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    _currentSelectedView = [[DDFundsView alloc] initWithFrame:frame];
-    [self addSubview:_currentSelectedView];
+    DDFundsView *fundsView = [[DDFundsView alloc] initWithFrame:frame];
+    [self addSubview:fundsView];
+    [fundsView release];
+    _currentSelectedView = fundsView;
 }
 
 - (void)loadPreciousMetalView
@@ -170,8 +177,10 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    _currentSelectedView = [[DDPreciousMetal alloc] initWithFrame:frame];
-    [self addSubview:_currentSelectedView];
+    DDPreciousMetal *preciousMetal = [[DDPreciousMetal alloc] initWithFrame:frame];
+    [self addSubview:preciousMetal];
+    [preciousMetal release];
+    _currentSelectedView = preciousMetal;
 }
 
 - (void)loadInsuranceView
@@ -182,8 +191,10 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    _currentSelectedView = [[DDInsurance alloc] initWithFrame:frame];
-    [self addSubview:_currentSelectedView];
+    DDInsurance *insurance = [[DDInsurance alloc] initWithFrame:frame];
+    [self addSubview:insurance];
+    [insurance release];
+    _currentSelectedView = insurance;
 }
 
 - (void)selectedIndex:(NSInteger)index

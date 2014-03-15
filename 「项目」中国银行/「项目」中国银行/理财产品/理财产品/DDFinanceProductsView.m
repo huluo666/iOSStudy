@@ -10,14 +10,19 @@
 #import "DDFinancingProductsCell.h"
 #import "DDPullDown.h"
 #import "DDDeadlineViewController.h"
+#import "DDProfitTypeViewController.h"
+#import "DDCoinTypeViewController.h"
 
 @interface DDFinanceProductsView () <
     UITableViewDataSource,
     UITableViewDelegate,
-    PMCalendarControllerDelegate>
+    PMCalendarControllerDelegate,
+    UITextFieldDelegate>
 {
-    UILabel *_startDataLabel; // 开始时间标签
-    UILabel *_endDataLabel;   // 结束时间标签
+    UIImageView *_backgroundView;   // 背景图片
+    UILabel *_startDataLabel;       // 开始时间标签
+    UILabel *_endDataLabel;         // 结束时间标签
+    UIPopoverController *_popover;  // 气泡窗口
 }
 
 // 创建label
@@ -42,12 +47,11 @@
 - (void)dealloc
 {
     NSLog(@"%@ is dealloced", [self class]);
-    [_startDataLabel release];
-    [_endDataLabel release];
+    _startDataLabel = nil;
+    _popover = nil;
+    [_backgroundView release];
     [super dealloc];
 }
-
-
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -55,39 +59,38 @@
     if (self) {
         // 背景
         UIImage *backgroundImage = [UIImage imageNamed:@"down_05"];
-        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        backgroundView.frame = self.bounds;
-        backgroundView.userInteractionEnabled = YES;
-        [self addSubview:backgroundView];
-        [backgroundView release];
+        _backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        _backgroundView.frame = self.bounds;
+        _backgroundView.userInteractionEnabled = YES;
+        [self addSubview:_backgroundView];
 
-        CGFloat backgroundViewHeight = CGRectGetHeight(backgroundView.bounds);
+        CGFloat backgroundViewHeight = CGRectGetHeight(_backgroundView.bounds);
         
         // 查询栏
         // 起售日期
         UILabel *fromTimeLabel = [self labelWithTitle:@"起售起始日"];
         fromTimeLabel.center = CGPointMake(CGRectGetMidX(fromTimeLabel.bounds) * 2,
                                            backgroundViewHeight * 0.05);
-        [backgroundView addSubview:fromTimeLabel];
+        [_backgroundView addSubview:fromTimeLabel];
 
         // 起售日期选择标签
         _startDataLabel = [self labelHasTapGesture];
         _startDataLabel.center = CGPointMake(CGRectGetMaxX(fromTimeLabel.frame) + CGRectGetMidX(_startDataLabel.bounds) + 6,
                                             backgroundViewHeight * 0.05);
-        [backgroundView addSubview:_startDataLabel];
+        [_backgroundView addSubview:_startDataLabel];
 
         // UILabel
         UILabel *toTimeLabel = [self labelWithTitle:@"到"];
         toTimeLabel.bounds = CGRectMake(0, 0, 20, 40);
         toTimeLabel.center = CGPointMake(CGRectGetMaxX(_startDataLabel.frame) + CGRectGetMidX(toTimeLabel.bounds) + 6,
                                          backgroundViewHeight * 0.05);
-        [backgroundView addSubview:toTimeLabel];
+        [_backgroundView addSubview:toTimeLabel];
         
         // 停售日期选择标签
         _endDataLabel = [self labelHasTapGesture];
         _endDataLabel.center = CGPointMake(CGRectGetMaxX(toTimeLabel.frame) + CGRectGetMidX(_endDataLabel.bounds) + 6,
                                           backgroundViewHeight * 0.05);
-        [backgroundView addSubview:_endDataLabel];
+        [_backgroundView addSubview:_endDataLabel];
 
         // 投资期限
         UIButton *deadlineButton = [self buttonWitStateNormalTitle:@"投资期限"];
@@ -95,21 +98,21 @@
         deadlineButton.center = CGPointMake(CGRectGetMaxX(_endDataLabel.frame) + CGRectGetMidX(deadlineButton.bounds) + 6,
                                             backgroundViewHeight * 0.05);
         deadlineButton.tag = kFinanceButtonTag;
-        [backgroundView addSubview:deadlineButton];
+        [_backgroundView addSubview:deadlineButton];
         
         // 收益类型
         UIButton *profitTypeButton = [self buttonWitStateNormalTitle:@"收益类型"];
         profitTypeButton.center = CGPointMake(CGRectGetMaxX(deadlineButton.frame) + CGRectGetMidX(profitTypeButton.bounds) + 6,
                                               backgroundViewHeight * 0.05);
         profitTypeButton.tag = kFinanceButtonTag + 1;
-        [backgroundView addSubview:profitTypeButton];
-      
+        [_backgroundView addSubview:profitTypeButton];
+
         // 币种
         UIButton *coinTypeButton = [self buttonWitStateNormalTitle:@"币种"];
         coinTypeButton.center =  CGPointMake(CGRectGetMaxX(profitTypeButton.frame) + CGRectGetMidX(coinTypeButton.bounds) + 6,
                                              backgroundViewHeight * 0.05);
         coinTypeButton.tag = kFinanceButtonTag + 2;
-        [backgroundView addSubview:coinTypeButton];
+        [_backgroundView addSubview:coinTypeButton];
        
         // 搜索框
         UIImage *searchBackgroundImage = [UIImage imageNamed:@"搜索框_11"];
@@ -118,7 +121,7 @@
         imageView.center = CGPointMake(CGRectGetMaxX(coinTypeButton.frame) + CGRectGetMidX(imageView.bounds) + 16,
                                        backgroundViewHeight * 0.05);
         imageView.userInteractionEnabled = YES;
-        [backgroundView addSubview:imageView];
+        [_backgroundView addSubview:imageView];
         [imageView release];
         
         // search bar textfield
@@ -138,14 +141,14 @@
         
         // tableView
         UITableView *tableView = [[UITableView alloc] init];
-        tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(backgroundView.bounds) * 0.95, 368);
-        tableView.center = CGPointMake(CGRectGetMidX(backgroundView.bounds),
-                                       CGRectGetMidY(backgroundView.bounds));
+        tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(_backgroundView.bounds) * 0.95, 368);
+        tableView.center = CGPointMake(CGRectGetMidX(_backgroundView.bounds),
+                                       CGRectGetMidY(_backgroundView.bounds));
         tableView.dataSource = self;
         tableView.delegate = self;
         tableView.rowHeight = 46;
         tableView.backgroundColor = [UIColor clearColor];
-        [backgroundView addSubview:tableView];
+        [_backgroundView addSubview:tableView];
         [tableView release];
         
         // 下拉刷新
@@ -167,7 +170,7 @@
                               action:@selector(financeButtonAction:)
                     forControlEvents:UIControlEventTouchUpInside];
         applicationButton.tag = kFinanceButtonTag + 3;
-        [backgroundView addSubview:applicationButton];
+        [_backgroundView addSubview:applicationButton];
         
         UILabel *predictLabel = [[UILabel alloc] init];
         predictLabel.bounds = CGRectMake(0, 0, 115, 50);
@@ -177,9 +180,10 @@
         predictLabel.textColor = [UIColor grayColor];
         predictLabel.font = [UIFont boldSystemFontOfSize:16];
         predictLabel.font = [UIFont systemFontOfSize:16];
-        [backgroundView addSubview:predictLabel];
+        [_backgroundView addSubview:predictLabel];
         [predictLabel release];
         
+        // 收益
         UILabel *prfigureLabel = [[UILabel alloc] init];
         prfigureLabel.bounds = CGRectMake(0, 0, 70, 50);
         prfigureLabel.center = CGPointMake(CGRectGetMaxX(predictLabel.frame) + CGRectGetMidX(prfigureLabel.bounds),
@@ -188,7 +192,7 @@
         prfigureLabel.textColor = [UIColor grayColor];
         prfigureLabel.font = [UIFont systemFontOfSize:15];
         prfigureLabel.textAlignment = NSTextAlignmentRight;
-        [backgroundView addSubview:prfigureLabel];
+        [_backgroundView addSubview:prfigureLabel];
         [prfigureLabel release];
         
         UITextField *prfigureField = [[UITextField alloc] init];
@@ -197,7 +201,8 @@
                                            CGRectGetMidY(prfigureLabel.frame));
         prfigureField.layer.cornerRadius = 5;
         prfigureField.backgroundColor = [UIColor whiteColor];
-        [backgroundView addSubview:prfigureField];
+        prfigureField.delegate = self;
+        [_backgroundView addSubview:prfigureField];
         [prfigureField release];
         
         // 单位
@@ -209,7 +214,7 @@
         unit.textColor = [UIColor grayColor];
         unit.font = [UIFont systemFontOfSize:15];
         unit.textAlignment = NSTextAlignmentLeft;
-        [backgroundView addSubview:unit];
+        [_backgroundView addSubview:unit];
         [unit release];
         
         // 预期投资收入
@@ -221,7 +226,7 @@
         incomeLabel.textColor = [UIColor grayColor];
         incomeLabel.font = [UIFont systemFontOfSize:15];
         incomeLabel.textAlignment = NSTextAlignmentLeft;
-        [backgroundView addSubview:incomeLabel];
+        [_backgroundView addSubview:incomeLabel];
         [incomeLabel release];
         
         
@@ -230,8 +235,9 @@
         incomeField.center = CGPointMake(CGRectGetMaxX(incomeLabel.frame) + CGRectGetMidX(incomeField.bounds) + 5,
                                          CGRectGetMidY(prfigureField.frame));
         incomeField.layer.cornerRadius = 5;
+        incomeField.enabled = NO;
         incomeField.backgroundColor = [UIColor whiteColor];
-        [backgroundView addSubview:incomeField];
+        [_backgroundView addSubview:incomeField];
         [incomeField release];
         
         // 单位
@@ -243,7 +249,8 @@
         unitIncome.textColor = [UIColor grayColor];
         unitIncome.font = [UIFont systemFontOfSize:15];
         unitIncome.textAlignment = NSTextAlignmentLeft;
-        [backgroundView addSubview:unitIncome];
+        [_backgroundView addSubview:unitIncome];
+        [unitIncome release];
         
         // 计算
         UIButton *calculateButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -256,7 +263,7 @@
                             action:@selector(financeButtonAction:)
                   forControlEvents:UIControlEventTouchUpInside];
         calculateButton.tag = kFinanceButtonTag + 4;
-        [backgroundView addSubview:calculateButton];
+        [_backgroundView addSubview:calculateButton];
         
         // tableView每一项对应名称
         NSArray *labelsWidth = @[@"71", @"165", @"55", @"59", @"58", @"90", @"94", @"93", @"93", @"52", @"50"];
@@ -273,11 +280,10 @@
             label.textAlignment = NSTextAlignmentCenter;
             label.font = [UIFont systemFontOfSize:14];
             label.text = titles[i];
-            [backgroundView addSubview:label];
+            [_backgroundView addSubview:label];
             [label release];
             lastLabelMaxX = CGRectGetMaxX(label.frame);
         }
-        
     }
     return self;
 }
@@ -337,28 +343,73 @@
     switch (index) {
         case 0: {
             // 投资期限
+            if (_popover.popoverVisible) {
+                [_popover dismissPopoverAnimated:YES];
+                [_popover release];
+                _popover = nil;
+            }
+            
+            if (_popover != nil) {
+                [_popover release];
+                _popover = nil;
+            }
+            
             DDDeadlineViewController *deadlineVC = [[DDDeadlineViewController alloc] init];
-            UIPopoverController *popover = [[UIPopoverController alloc] initWithContentViewController:deadlineVC];
+            _popover = [[UIPopoverController alloc] initWithContentViewController:deadlineVC];
             [deadlineVC release];
-            popover.popoverContentSize = CGSizeMake(150, 200);
+            _popover.popoverContentSize = CGSizeMake(150, 200);
             CGRect rect = CGRectMake(0, 0, 740, 50);
-            [popover presentPopoverFromRect:rect
+            [_popover presentPopoverFromRect:rect
                                      inView:self
                    permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
-#pragma mark - 不能释放？？？
+        
+            if (_popover.popoverVisible) {
+                NSLog(@"kejian");
+            }
         }
             break;
-        case 1:
+        case 1: {
             // 收益类型
+            if (_popover.popoverVisible) {
+                [_popover dismissPopoverAnimated:YES];
+                _popover = nil;
+            }
+            DDProfitTypeViewController *profitType = [[DDProfitTypeViewController alloc] init];
+            _popover = [[UIPopoverController alloc] initWithContentViewController:profitType];
+            [profitType release];
+            _popover.popoverContentSize = CGSizeMake(150, 200);
+            CGRect rect = CGRectMake(0, 0, 960, 50);
+            [_popover presentPopoverFromRect:rect
+                                      inView:self
+                    permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+        }
             break;
-        case 2:
+        case 2: {
             // 币种
+            if (_popover.popoverVisible) {
+                [_popover dismissPopoverAnimated:YES];
+                _popover = nil;
+            }
+            DDCoinTypeViewController *coinType = [[DDCoinTypeViewController alloc] init];
+            _popover = [[UIPopoverController alloc] initWithContentViewController:coinType];
+            [coinType release];
+            _popover.popoverContentSize = CGSizeMake(150, 200);
+            CGRect rect = CGRectMake(0, 0, 1180, 50);
+            [_popover presentPopoverFromRect:rect
+                                      inView:self
+                    permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+
+        }
             break;
-        case 3:
+        case 3: {
             // 申请
+            
+        }
             break;
-        case 4:
+        case 4: {
             // 计算
+            
+        }
             break;
         default:
             break;
@@ -426,6 +477,31 @@
                                               reuseIdentifier:identifier];
     }
     return cell;
+}
+
+#pragma mark - <UITextFieldDelegate>
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    // 向上移动位置
+    CGPoint backgroundViewCenter = _backgroundView.center;
+    [UIView animateWithDuration:kAnimateDuration / 2
+                     animations:^{
+                         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
+                                                              backgroundViewCenter.y - 350);
+                     }];
+    return YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+   // 向下移动位置
+    CGPoint backgroundViewCenter = _backgroundView.center;
+    [UIView animateWithDuration:kAnimateDuration / 2
+                     animations:^{
+                         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
+                                                              backgroundViewCenter.y + 350);
+                     }];
 }
 
 @end

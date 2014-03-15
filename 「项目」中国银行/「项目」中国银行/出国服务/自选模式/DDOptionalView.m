@@ -49,8 +49,7 @@
         [layout setSectionInset:UIEdgeInsetsMake(10, 10, 10, 0)];
         [layout setMinimumInteritemSpacing:10];
         [layout setMinimumLineSpacing:10];
-#pragma mark -
-#pragma mark - MEMORY ERROR START
+
         // Collection view
         CGRect frame = self.bounds;
 
@@ -70,7 +69,6 @@
         collectionView.showsVerticalScrollIndicator = YES;
         [self addSubview:collectionView];
         [collectionView release];
-#pragma mark - MEMORY ERROR END
 
         // 下拉刷新
 //        DDPullDown *pullDown = [DDPullDown pullDown];
@@ -80,7 +78,7 @@
 //        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
 //        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
 #pragma mark - TODO 刷新数据CollectionView
-        
+
         // 菜单
         _menuView = [[UIScrollView alloc] init];
         _menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 0.62 , 30);
@@ -144,7 +142,6 @@
         }
         lastButtonMaxX += 20;
         _menuView.contentSize = CGSizeMake(lastButtonMaxX, CGRectGetHeight(_menuView.bounds));
-
     }
 
     return self;
@@ -214,10 +211,11 @@
     DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
     optional.bounds = CGRectMake(0, 0, 300, 300);
     optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
+    __block DDOptionalView *view = self;
     optional.tapAction = ^(UIButton *sender) {
         if (sender.tag == kDetailButtonTag) {
             DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            [self.superview addSubview:detail];
+            [view.superview addSubview:detail];
             [detail release];
         } else {
 #pragma mark - TODO

@@ -84,6 +84,7 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);
     [_dataSource release];
     [_downImageView release];
     [_upImageView release];

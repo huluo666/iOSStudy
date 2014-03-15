@@ -23,9 +23,10 @@
 
 - (void)dealloc
 {
-    _backgroundImageView = nil;
-    _collectionView = nil;
-    _pageControl = nil;
+    NSLog(@"%@ is dealloced", [self class]);
+    [_backgroundImageView release];
+    [_collectionView release];
+    [_pageControl release];
     [_dataSource release];
     [_identifier release];
     [super dealloc];
@@ -42,52 +43,46 @@
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor clearColor];
         CGRect bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
-        
+
         // 添加背景图片视图
-        UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-        backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
-        backgroundImageView.clipsToBounds = YES;
-        backgroundImageView.userInteractionEnabled = YES;
-        [self addSubview:backgroundImageView];
-        [backgroundImageView release];
-        _backgroundImageView = backgroundImageView;
-        
+        _backgroundImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        _backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+        _backgroundImageView.clipsToBounds = YES;
+        _backgroundImageView.userInteractionEnabled = YES;
+        [self addSubview:_backgroundImageView];
+
         // 添加集合视图
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:bounds
+        _collectionView = [[UICollectionView alloc] initWithFrame:bounds
                                                               collectionViewLayout:layout];
-        collectionView.contentSize = CGSizeMake(CGRectGetWidth(self.bounds) * 3, 0);
-        collectionView.contentOffset = CGPointMake(CGRectGetWidth(self.bounds), 0);
-        collectionView.pagingEnabled = YES;
-        collectionView.showsHorizontalScrollIndicator = NO;
-        collectionView.backgroundColor = [UIColor clearColor];
-        [collectionView registerClass:[UICollectionViewCell class]
+        _collectionView.contentSize = CGSizeMake(CGRectGetWidth(self.bounds) * 3, 0);
+        _collectionView.contentOffset = CGPointMake(CGRectGetWidth(self.bounds), 0);
+        _collectionView.pagingEnabled = YES;
+        _collectionView.showsHorizontalScrollIndicator = NO;
+        _collectionView.backgroundColor = [UIColor clearColor];
+        [_collectionView registerClass:[UICollectionViewCell class]
                        forCellWithReuseIdentifier:identifier];
-        [backgroundImageView addSubview:collectionView];
-        [collectionView release];
-        _collectionView = collectionView;
-        
+        [_backgroundImageView addSubview:_collectionView];
+
         // 添加分页控件
-        UIPageControl *pageControl = [[UIPageControl alloc] init];
-        pageControl.bounds = CGRectMake(0, 0, bounds.size.width - 20, 30);
-        pageControl.center = CGPointMake(CGRectGetMidX(bounds),
-                                         CGRectGetMaxY(bounds) - CGRectGetMaxY(pageControl.bounds));
+        _pageControl = [[UIPageControl alloc] init];
+        _pageControl.bounds = CGRectMake(0, 0, bounds.size.width - 20, 30);
+        _pageControl.center = CGPointMake(CGRectGetMidX(bounds),
+                                         CGRectGetMaxY(bounds) - CGRectGetMaxY(_pageControl.bounds));
 //        pageControl.numberOfPages = ceil(_dataSource.count / 4.0);
-        pageControl.numberOfPages = ceil(13 / 4.0);
-        pageControl.currentPage = 0;
-        pageControl.currentPageIndicatorTintColor = [UIColor redColor];
-        pageControl.pageIndicatorTintColor = [UIColor grayColor];
-        [backgroundImageView addSubview:pageControl];
-        [pageControl release];
-        _pageControl = pageControl;
+        _pageControl.numberOfPages = ceil(13 / 4.0);
+        _pageControl.currentPage = 0;
+        _pageControl.currentPageIndicatorTintColor = [UIColor redColor];
+        _pageControl.pageIndicatorTintColor = [UIColor grayColor];
+        [_backgroundImageView addSubview:_pageControl];
         
         // 添加右上角button
         UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
         refreshButton.bounds = CGRectMake(0, 0, 50, 50);
-        refreshButton.center = CGPointMake(CGRectGetWidth(backgroundImageView.bounds) - CGRectGetMidX(refreshButton.bounds),
+        refreshButton.center = CGPointMake(CGRectGetWidth(_backgroundImageView.bounds) - CGRectGetMidX(refreshButton.bounds),
                                            CGRectGetMidY(refreshButton.bounds) * 1.2);
         [refreshButton setBackgroundImage:refreshButtonImage forState:UIControlStateNormal];
-        [backgroundImageView addSubview:refreshButton];
-        
+        [_backgroundImageView addSubview:refreshButton];
+   
         // 设置代理和数据源
         _collectionView.delegate = self;
         _collectionView.dataSource = self;
@@ -96,6 +91,7 @@
         _collectionCellViewType = collectionCellViewType;
         _collectionCellViewBounds = collectionCellViewBounds;
         _dataSource = [dataSource retain];
+
     }
     
     return self;

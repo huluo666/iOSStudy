@@ -30,6 +30,7 @@ CGSize innerPadding = (CGSize){10, 10};
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

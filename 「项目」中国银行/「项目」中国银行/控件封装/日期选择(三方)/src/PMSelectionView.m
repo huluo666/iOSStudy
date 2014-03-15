@@ -20,6 +20,7 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

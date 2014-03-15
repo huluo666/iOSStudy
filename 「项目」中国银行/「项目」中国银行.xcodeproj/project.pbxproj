@@ -214,6 +214,9 @@
 		952BB57018C98CEE002F4928 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56918C98CEE002F4928 /* Icon@2x.png */; };
 		952BB57118C98CEE002F4928 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56A18C98CEE002F4928 /* iTunesArtwork.png */; };
 		952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952BB57518C98DA4002F4928 /* DDRootViewController.m */; };
+		95553A6018D3F1D8003BDF24 /* DDProfitTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95553A5F18D3F1D8003BDF24 /* DDProfitTypeViewController.m */; };
+		95553A6318D3F1E8003BDF24 /* DDCoinTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95553A6218D3F1E8003BDF24 /* DDCoinTypeViewController.m */; };
+		95553A6718D43B84003BDF24 /* DDOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95553A6618D43B84003BDF24 /* DDOrderView.m */; };
 		95636E3118D04F3300C29D9B /* 箭头右@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E2F18D04F3300C29D9B /* 箭头右@2x.png */; };
 		95636E3218D04F3300C29D9B /* 箭头左@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E3018D04F3300C29D9B /* 箭头左@2x.png */; };
 		95682AC318CD4BCF00C2CFAD /* DDShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */; };
@@ -483,6 +486,12 @@
 		952BB56A18C98CEE002F4928 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		952BB57418C98DA4002F4928 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		952BB57518C98DA4002F4928 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		95553A5E18D3F1D8003BDF24 /* DDProfitTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDProfitTypeViewController.h; sourceTree = "<group>"; };
+		95553A5F18D3F1D8003BDF24 /* DDProfitTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDProfitTypeViewController.m; sourceTree = "<group>"; };
+		95553A6118D3F1E8003BDF24 /* DDCoinTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCoinTypeViewController.h; sourceTree = "<group>"; };
+		95553A6218D3F1E8003BDF24 /* DDCoinTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCoinTypeViewController.m; sourceTree = "<group>"; };
+		95553A6518D43B84003BDF24 /* DDOrderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOrderView.h; sourceTree = "<group>"; };
+		95553A6618D43B84003BDF24 /* DDOrderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOrderView.m; sourceTree = "<group>"; };
 		95636E2F18D04F3300C29D9B /* 箭头右@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右@2x.png"; sourceTree = "<group>"; };
 		95636E3018D04F3300C29D9B /* 箭头左@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头左@2x.png"; sourceTree = "<group>"; };
 		95682AC118CD4BCF00C2CFAD /* DDShowDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDShowDetail.h; sourceTree = "<group>"; };
@@ -614,6 +623,7 @@
 		06D388C618C9F48F00113372 /* 选购清单 */ = {
 			isa = PBXGroup;
 			children = (
+				95553A6418D43B1F003BDF24 /* 订单 */,
 				06D388D218C9FD8D00113372 /* DDChoose.h */,
 				06D388D318C9FD8D00113372 /* DDChoose.m */,
 			);
@@ -934,6 +944,33 @@
 			path = "主界面";
 			sourceTree = "<group>";
 		};
+		95553A5C18D3F17F003BDF24 /* 币种 */ = {
+			isa = PBXGroup;
+			children = (
+				95553A6118D3F1E8003BDF24 /* DDCoinTypeViewController.h */,
+				95553A6218D3F1E8003BDF24 /* DDCoinTypeViewController.m */,
+			);
+			path = "币种";
+			sourceTree = "<group>";
+		};
+		95553A5D18D3F17F003BDF24 /* 收益类型 */ = {
+			isa = PBXGroup;
+			children = (
+				95553A5E18D3F1D8003BDF24 /* DDProfitTypeViewController.h */,
+				95553A5F18D3F1D8003BDF24 /* DDProfitTypeViewController.m */,
+			);
+			path = "收益类型";
+			sourceTree = "<group>";
+		};
+		95553A6418D43B1F003BDF24 /* 订单 */ = {
+			isa = PBXGroup;
+			children = (
+				95553A6518D43B84003BDF24 /* DDOrderView.h */,
+				95553A6618D43B84003BDF24 /* DDOrderView.m */,
+			);
+			path = "订单";
+			sourceTree = "<group>";
+		};
 		95682AB118CD4B6D00C2CFAD /* 控件封装 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1104,6 +1141,8 @@
 		9583CE0818D309F400399C22 /* 理财产品气泡窗口 */ = {
 			isa = PBXGroup;
 			children = (
+				95553A5C18D3F17F003BDF24 /* 币种 */,
+				95553A5D18D3F17F003BDF24 /* 收益类型 */,
 				9583CE0918D309F400399C22 /* 投资期限 */,
 			);
 			path = "理财产品气泡窗口";
@@ -1491,16 +1530,19 @@
 				06D388D718C9FDBD00113372 /* DDSchedule.m in Sources */,
 				9583CE0C18D30A1B00399C22 /* DDDeadlineViewController.m in Sources */,
 				95C1F84D18D188E4001AE45B /* PMPeriod.m in Sources */,
+				95553A6318D3F1E8003BDF24 /* DDCoinTypeViewController.m in Sources */,
 				9583CDF318D2AC6400399C22 /* DDOptionalView.m in Sources */,
 				952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */,
 				9583CDD318D29A9F00399C22 /* DDPopVIew.m in Sources */,
 				95C1F84A18D188E4001AE45B /* PMCalendarController.m in Sources */,
 				95C1F84818D188E4001AE45B /* NSDate+Helpers.m in Sources */,
 				9583CDDC18D29B8000399C22 /* DDCollectionViewPackage.m in Sources */,
+				95553A6718D43B84003BDF24 /* DDOrderView.m in Sources */,
 				06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */,
 				06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */,
 				95C1F78418D1371B001AE45B /* DDRefreshBaseView.m in Sources */,
 				95C1F78518D1371B001AE45B /* DDRefreshControlConst.m in Sources */,
+				95553A6018D3F1D8003BDF24 /* DDProfitTypeViewController.m in Sources */,
 				9583CE0618D2E36800399C22 /* DDFinancingProductsCell.m in Sources */,
 				9583CDF018D2AC5E00399C22 /* DDComboView.m in Sources */,
 				06D388DA18C9FDD600113372 /* DDShopcart.m in Sources */,

@@ -10,22 +10,67 @@
 
 @implementation DDShopcart
 
+- (void)dealloc
+{
+    NSLog(@"%@ is dealloced", [self class]);
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        UIImage *backgroundImage = [UIImage imageNamed:@"down_05"];
+        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        backgroundView.bounds = self.bounds;
+        backgroundView.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                            CGRectGetMidY(self.bounds));
+        backgroundView.userInteractionEnabled = YES;
+        [self addSubview:backgroundView];
+        
+        // 保存订单
+        UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        saveButton.bounds = CGRectMake(0, 0, 159, 50);
+        saveButton.center = CGPointMake(CGRectGetMidX(backgroundView.bounds) - CGRectGetMidX(saveButton.bounds) * 1.2,
+                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMidY(saveButton.bounds) * 2);
+        [saveButton setBackgroundImage:[UIImage imageNamed:@"save"] forState:UIControlStateNormal];
+        saveButton.tag = kCartButtonTag;
+        [saveButton addTarget:self
+                       action:@selector(cartButtonAction:)
+             forControlEvents:UIControlEventTouchUpInside];
+        [backgroundView addSubview:saveButton];
+        
+        // 提交办理
+        UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        submitButton.bounds = CGRectMake(0, 0, 159, 50);
+        submitButton.center = CGPointMake(CGRectGetMidX(backgroundView.bounds) + CGRectGetMidX(submitButton.bounds) * 1.2,
+                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMidY(submitButton.bounds) * 2);
+        [submitButton setBackgroundImage:[UIImage imageNamed:@"提交办理"] forState:UIControlStateNormal];
+        submitButton.tag = kCartButtonTag + 1;
+        [submitButton addTarget:self
+                       action:@selector(cartButtonAction:)
+             forControlEvents:UIControlEventTouchUpInside];
+        [backgroundView addSubview:submitButton];
+        
+        // 添加
+        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        addButton.bounds = CGRectMake(0, 0, 50, 50);
+        addButton.center = CGPointMake(CGRectGetMaxX(backgroundView.bounds) - 60,
+                                          CGRectGetMinY(backgroundView.bounds) + 60);
+        [addButton setBackgroundImage:[UIImage imageNamed:@"+_10"] forState:UIControlStateNormal];
+        addButton.tag = kCartButtonTag + 2;
+        [addButton addTarget:self
+                      action:@selector(cartButtonAction:)
+            forControlEvents:UIControlEventTouchUpInside];
+        [backgroundView addSubview:addButton];
+        
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)cartButtonAction:(UIButton *)sender
 {
-    // Drawing code
+    NSLog(@"%ld", sender.tag);
 }
-*/
 
 @end

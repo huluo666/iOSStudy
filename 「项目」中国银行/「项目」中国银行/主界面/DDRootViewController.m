@@ -20,7 +20,8 @@
     UIView *_naviBar;                 // 左侧导航栏视图
     NSInteger _currentSelectedButton; // 当前选中的是第几个导航button
     NSArray *_views;                  // 导航视图数组
-    BOOL _isAnimating;                 // 是否正在动画中
+    BOOL _isAnimating;                // 是否正在动画中
+    BOOL _isCartVisiable;             // 购物车是否可见
 }
 
 
@@ -34,6 +35,9 @@
 - (void)initializeLoginView;
 // 登出
 - (void)logout;
+
+// 购物车点击事件
+- (void)shopingCartAction:(UIButton *)sender;
 
 @end
 
@@ -62,6 +66,7 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);
     [_naviBar release];
     [_views release];
     [super dealloc];
@@ -139,7 +144,20 @@
             [self.view sendSubviewToBack:_views[i]];
         }
     }
-
+    
+    // 加载购物车
+    
+    UIButton *cartButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cartButton.bounds = CGRectMake(0, 0, 60, 50);
+    cartButton.center = CGPointMake(CGRectGetMidX(_naviBar.bounds),
+                                    CGRectGetMaxY(_naviBar.bounds) - CGRectGetMidX(cartButton.bounds) * 2);
+    [cartButton setBackgroundImage:[UIImage imageNamed:@"购物车_01"]
+                          forState:UIControlStateNormal];
+    [cartButton addTarget:self
+                   action:@selector(shopingCartAction:)
+         forControlEvents:UIControlEventTouchUpInside];
+    [_naviBar addSubview:cartButton];
+    
     // 设置眉头底图
     UIImage *headerImage = [UIImage imageNamed:@"眉头_01"];
     UIImageView *headerView =[[UIImageView alloc] initWithImage:headerImage];
@@ -185,6 +203,29 @@
     [bottomView release];
 }
 
+#pragma mark - 购物车点击事件
+
+- (void)shopingCartAction:(UIButton *)sender
+{
+    if (_isCartVisiable) {
+        // 购物车可见
+        id obj = [self.view.subviews lastObject];
+        if ([obj isKindOfClass:[DDShopcart class]]) {
+            [obj removeFromSuperview];
+            _isCartVisiable = NO;
+        }
+    } else {
+        CGRect frame = CGRectMake(kRootViewWidth - kMainViewWidth * 0.96,
+                                  kRootViewHeight - kMainViewHeight * 0.97,
+                                  kRootViewWidth * 0.85,
+                                  kRootViewHeight * 0.82);
+        DDShopcart *cart = [[DDShopcart alloc] initWithFrame:frame];
+        [self.view addSubview:cart];
+        [cart release];
+        _isCartVisiable = YES;
+    }
+}
+
 #pragma mark - 导航栏按钮点击事件、切换视图
 
 - (void)toggleVC:(UIButton *)sender
@@ -199,6 +240,16 @@
     // 避免重复动画发生冲突
     if (_isAnimating) {
         return;
+    }
+    
+    // 如果购物车可见，移除
+    if (_isCartVisiable) {
+        // 购物车可见
+        id obj = [self.view.subviews lastObject];
+        if ([obj isKindOfClass:[DDShopcart class]]) {
+            [obj removeFromSuperview];
+            _isCartVisiable = NO;
+        }
     }
     
     // 当前出现的视图

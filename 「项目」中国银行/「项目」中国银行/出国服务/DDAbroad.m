@@ -49,7 +49,9 @@
 
 - (void)dealloc
 {
+    NSLog(@"%@ is dealloced", [self class]);
     [_currentSelectedView release];
+    _currentSelectedView = nil;
     [_images  release];
     [_imgaesSelected release];
     [super dealloc];

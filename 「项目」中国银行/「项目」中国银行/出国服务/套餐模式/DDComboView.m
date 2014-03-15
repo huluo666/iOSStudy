@@ -80,12 +80,12 @@
             [combo release];
 
             // 默认放大第三个
-            if (i == 2) {
-                [self startBasicScaleAnimationFromValue:@1.2
-                                                toValue:@1.2
-                                                ForView:_combos[i]
-                                  withAnimationDuration:0];
-            }
+//            if (i == 2) {
+//                [self startBasicScaleAnimationFromValue:@1.2
+//                                                toValue:@1.2
+//                                                ForView:_combos[i]
+//                                  withAnimationDuration:0];
+//            }
         }
     }
     return self;
@@ -100,7 +100,7 @@
     
     // 标记开始动画
     _isAnimating = YES;
-    
+ /*
     // 判断移动方向
     if (UISwipeGestureRecognizerDirectionLeft == swipe.direction) {
         // 向左移动
@@ -116,10 +116,10 @@
         [self startBasicScaleAnimationFromValue:@1.2
                                         toValue:@1
                                         ForView:_combos[1]
-                          withAnimationDuration:kAnimateDuration];
+                          withAnimationDuration:kAnimateDuration / 2];
         [self startBasicScaleAnimationFromValue:@1
                                         toValue:@1.2 ForView:_combos[2]
-                          withAnimationDuration:kAnimateDuration];
+                          withAnimationDuration:kAnimateDuration / 2];
     } else {
         // 向右移动
         // 调整坐标顺序
@@ -132,15 +132,15 @@
         [self startBasicScaleAnimationFromValue:@1.2
                                         toValue:@1
                                         ForView:_combos[3]
-                          withAnimationDuration:kAnimateDuration];
+                          withAnimationDuration:kAnimateDuration / 2];
         [self startBasicScaleAnimationFromValue:@1
                                         toValue:@1.2
                                         ForView:_combos[2]
-                          withAnimationDuration:kAnimateDuration];
+                          withAnimationDuration:kAnimateDuration / 2];
     }
     
     // 移动一格
-    [UIView animateWithDuration:kAnimateDuration animations:^{
+    [UIView animateWithDuration:kAnimateDuration / 2 animations:^{
         for (int i = 0; i < 5; i++) {
             UIView *combo = _combos[i];
             combo.center = [_comboLocationList[i] CGPointValue];
@@ -148,6 +148,8 @@
     } completion:^(BOOL finished) {
         _isAnimating = NO;
     }];
+  
+  */
 }
 
 #pragma mark - 缩放动画

@@ -13,6 +13,17 @@
 
 @implementation DDCollectionCellView
 
+- (void)dealloc
+{
+    NSLog(@"%@ is dealloced", [self class]);
+    [_imageView release];
+    [_textLabel release];
+    [_detailTextLabel release];
+    _button = nil;
+    [_processTap release];
+    [super dealloc];
+}
+
 - (instancetype)initWithFrame:(CGRect)frame projectShowViewType:(DDCollectionCellViewType)type
 {
     if (self = [super initWithFrame:frame]) {
@@ -33,23 +44,19 @@
                                                0,
                                                bounds.size.width,
                                                bounds.size.height * 0.8);
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:imageViewFrame];
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            [self addSubview:imageView];
-            [imageView release];
-            _imageView = imageView;
+            _imageView = [[UIImageView alloc] initWithFrame:imageViewFrame];
+            _imageView.contentMode = UIViewContentModeScaleAspectFill;
+            _imageView.clipsToBounds = YES;
+            [self addSubview:_imageView];
 
             // 显示文本
             CGRect textLabelFrame = CGRectMake(0,
                                                bounds.size.height * 0.8,
                                                bounds.size.width,
                                                bounds.size.height * 0.2);
-            UILabel *textLabel = [[UILabel alloc] initWithFrame:textLabelFrame];
-            textLabel.textAlignment = NSTextAlignmentCenter;
-            [self addSubview:textLabel];
-            [textLabel release];
-            _textLabel = textLabel;
+            _textLabel = [[UILabel alloc] initWithFrame:textLabelFrame];
+            _textLabel.textAlignment = NSTextAlignmentCenter;
+            [self addSubview:_textLabel];
 
             // 添加单击手势
             UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc]
@@ -65,64 +72,45 @@
                                                 0,
                                                 bounds.size.width / 3,
                                                 bounds.size.height * 0.9);
-            UIImageView *imageView = [[UIImageView alloc] init];
-            imageView.bounds = imageViewBounds;
-            imageView.center = CGPointMake(CGRectGetMidX(imageViewBounds) + 5,
+            _imageView = [[UIImageView alloc] init];
+            _imageView.bounds = imageViewBounds;
+            _imageView.center = CGPointMake(CGRectGetMidX(imageViewBounds) + 5,
                                            bounds.size.height / 2);
-            imageView.contentMode = UIViewContentModeScaleAspectFill;
-            imageView.clipsToBounds = YES;
-            imageView.userInteractionEnabled = YES;
-            [self addSubview:imageView];
-            [imageView release];
-            _imageView = imageView;
-            
+            _imageView.contentMode = UIViewContentModeScaleAspectFill;
+            _imageView.clipsToBounds = YES;
+            _imageView.userInteractionEnabled = YES;
+            [self addSubview:_imageView];
             
             // 显示信息文本
             CGRect textLabelBounds = CGRectMake(0,
                                                 0,
                                                 bounds.size.width / 3 * 2 - 15,
                                                 bounds.size.height / 3);
-            UILabel *textLabel = [[UILabel alloc] init];
-            textLabel.bounds = textLabelBounds;
-            textLabel.center = CGPointMake(CGRectGetMidX(textLabel.bounds) + CGRectGetWidth(imageViewBounds) + 10,
-                                           CGRectGetMidY(textLabel.bounds));
-            [self addSubview:textLabel];
-            [textLabel release];
-            _textLabel = textLabel;
+            _textLabel = [[UILabel alloc] init];
+            _textLabel.bounds = textLabelBounds;
+            _textLabel.center = CGPointMake(CGRectGetMidX(_textLabel.bounds) + CGRectGetWidth(imageViewBounds) + 10,
+                                           CGRectGetMidY(_textLabel.bounds));
+            [self addSubview:_textLabel];
             
             // 显示详细信息文本
-            UILabel *detailTextLabel = [[UILabel alloc] init];
-            detailTextLabel.bounds = textLabelBounds;
-            detailTextLabel.center = CGPointMake(textLabel.center.x,
-                                                 textLabel.center.y + CGRectGetHeight(textLabel.bounds));
-            [self addSubview:detailTextLabel];
-            [detailTextLabel release];
-            _detailTextLabel = detailTextLabel;
+            _detailTextLabel = [[UILabel alloc] init];
+            _detailTextLabel.bounds = textLabelBounds;
+            _detailTextLabel.center = CGPointMake(_textLabel.center.x,
+                                                 _textLabel.center.y + CGRectGetHeight(_textLabel.bounds));
+            [self addSubview:_detailTextLabel];
 
             // 详情button
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-            button.bounds = CGRectMake(0, 0, 60, 30);
-            button.center = CGPointMake(CGRectGetWidth(bounds) / 6 * 5,
-                                        CGRectGetMaxY(bounds) - CGRectGetMidY(button.bounds) - 5);
-            [button setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal];
-            [button addTarget:self
+            _button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            _button.bounds = CGRectMake(0, 0, 60, 30);
+            _button.center = CGPointMake(CGRectGetWidth(bounds) / 6 * 5,
+                                        CGRectGetMaxY(bounds) - CGRectGetMidY(_button.bounds) - 5);
+            [_button setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal];
+            [_button addTarget:self
                        action:@selector(processTap:)
              forControlEvents:UIControlEventTouchUpInside];
-            [self addSubview:button];
-            _button = button;
         }
     }
     return self;
-}
-
-- (void)dealloc
-{
-    _imageView = nil;
-    _textLabel = nil;
-    _detailTextLabel = nil;
-    _button = nil;
-    [_processTap release];
-    [super dealloc];
 }
 
 - (void)processTap:(UIView *)view

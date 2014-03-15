@@ -1,22 +1,22 @@
 //
-//  DDDeadlineViewController.m
+//  DDCoinTypeViewController.m
 //  「项目」中国银行
 //
-//  Created by 萧川 on 14-3-14.
+//  Created by 萧川 on 14-3-15.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "DDDeadlineViewController.h"
+#import "DDCoinTypeViewController.h"
 
-@interface DDDeadlineViewController ()
+@interface DDCoinTypeViewController ()
 
 @end
 
-@implementation DDDeadlineViewController
+@implementation DDCoinTypeViewController
 
 - (void)dealloc
 {
-    NSLog(@"%@ is dealloced", [self class]);
+    NSLog(@"%@ is dealloced", [self class]);    
     self.tableView = nil;
     [super dealloc];
 }
@@ -33,9 +33,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     UITableView *tableView = [[UITableView alloc] init];
-    tableView.backgroundColor = [UIColor greenColor];
+    tableView.backgroundColor = kRandomColor;
     self.tableView = tableView;
     [tableView release];
 }

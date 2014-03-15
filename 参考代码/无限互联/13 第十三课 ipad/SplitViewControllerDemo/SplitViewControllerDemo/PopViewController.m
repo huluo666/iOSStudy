@@ -14,6 +14,12 @@
 
 @implementation PopViewController
 
+- (void)dealloc
+{
+    NSLog(@"%@ is dealloced", [self class]);
+    [super dealloc];
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
