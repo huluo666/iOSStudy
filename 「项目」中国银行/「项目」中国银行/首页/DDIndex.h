@@ -10,4 +10,7 @@
 
 @interface DDIndex : UIView
 
+@property (retain, nonatomic) NSTimer *imageSwitchIntervalTimer;
+@property (retain, nonatomic) NSTimer *updateImagesIntervalTimer;
+
 @end

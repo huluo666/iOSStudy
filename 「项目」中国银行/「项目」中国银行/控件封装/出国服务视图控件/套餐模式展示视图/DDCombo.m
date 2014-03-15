@@ -12,7 +12,7 @@
 
 - (void)dealloc
 {
-    NSLog(@"%@ is dealloced", [self class]);    
+    NSLog(@"%@ dealloc", [self class]);
     [_titleLabel release];
     [super dealloc];
 }

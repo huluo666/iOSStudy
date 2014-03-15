@@ -50,7 +50,13 @@
 - (void)dealloc
 {
     NSLog(@"%@ is dealloced", [self class]);
-    [_currentSelectedView release];
+    
+#pragma mark - NOTE
+    
+/* 这里_currentSelected不用release
+ * 因为它记录的是autorelease对象，和button
+ * 同理，直接置为nil即可
+ */
     _currentSelectedView = nil;
     [_images  release];
     [_imgaesSelected release];
@@ -105,8 +111,8 @@
     
     // 默认选中第一个
     _currentSelectedSegmentIndex = 2;
-        [self loadConsultView];
-//        [self loadComboView];
+//        [self loadConsultView];
+        [self loadComboView];
 //    [self loadOptionalView];
     return self;
 }

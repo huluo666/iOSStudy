@@ -104,6 +104,8 @@
 - (void)submit:(UIButton *)sender
 {
     NSLog(@"提交办理");
+    // 办理完后清理该视图
+    [self removeFromSuperview];
 }
 
 - (void)handleSwipRight

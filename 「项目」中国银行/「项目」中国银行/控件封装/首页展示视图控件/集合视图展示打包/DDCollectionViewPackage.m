@@ -131,7 +131,7 @@
         cellView.detailTextLabel.text = @"detail text";
     }
     cellView.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-    cellView.imageView.image = kImageWithName(@"网上银行BOCNET1.png");
+//    cellView.imageView.image = kImageWithName(@"网上银行BOCNET1.png");
     cellView.processTap = ^(UIView *view) {
         if ([view isKindOfClass:[UIButton class]]) {
             // 点击详情按钮回调(热点消息)

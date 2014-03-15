@@ -63,19 +63,19 @@
         [self addSubview:imageView];
         [imageView release];
         
-        
+#pragma mark - MEMORY ERROR
         // 发起请求
         [self sendHttpRequest];
-        
+
         // 左上角展示图册
         [self initializePlayImagesRunLoopView];
-        
+
         // 右上角最新动态
         [self initializeLatestNewsView];
-        
+
         // 左下角热门信息展示
         [self initializeHotNewsView];
-        
+
         // 右下角产品定制信息展示
         [self initializeProjectCustomView];
     }
@@ -88,12 +88,26 @@
     [_dataSource release];
     [_downImageView release];
     [_upImageView release];
+    [_imageSwitchIntervalTimer release];
+    [_updateImagesIntervalTimer release];
     [super dealloc];
 }
 
 - (void)sendHttpRequest
 {
     [self requestForImages];
+    // 每隔10分钟更新图片数据
+    NSMethodSignature *signature = [DDIndex instanceMethodSignatureForSelector:@selector(requestForImages)];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    [invocation setTarget:self];
+    [invocation setSelector:@selector(requestForImages)];
+    _updateImagesIntervalTimer = [[NSTimer timerWithTimeInterval:kDataUpdateTimeInterval
+                                                     invocation:invocation
+                                                        repeats:YES] retain];
+    
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:_updateImagesIntervalTimer forMode:NSDefaultRunLoopMode];
+    
     [self requestForLatestNews];
     [self requestForHotNews];
     [self requestForProjectCustom];
@@ -101,21 +115,18 @@
 
 #pragma mark - 相册实现相关方法
 
+
 - (void)requestForImages
 {
     // 请求网络获取图片
 #pragma mark - TODO net request
 
     // 将获取到的图片存入数据源字典中
-    UIImage *image1 = [UIImage imageNamed:@"view_05"];
-    UIImage *image2 = [UIImage imageNamed:@"中银保险"];
-    NSArray *loopImages = @[image1, image2];
+    UIImage *image1 = kImageWithName(@"view_05.png");
+    UIImage *image2 = kImageWithName(@"中银保险.png");
+    UIImage *image3 = kImageWithName(@"scrn_05.png");
+    NSArray *loopImages = @[image1, image2, image3];
     [_dataSource setObject:loopImages forKey:kLoopImagesKey];
-    
-    // 每隔10分钟更新数据
-    [self performSelector:@selector(requestForImages)
-               withObject:nil
-               afterDelay:kDataUpdateTimeInterval];
 }
 
 - (void)initializePlayImagesRunLoopView
@@ -134,7 +145,28 @@
     _upImageView.layer.cornerRadius = 1280;
     [self addSubview:_upImageView];
 
-    [self startRunLoop];
+    // 开启计时器
+    NSMethodSignature *signature = [DDIndex instanceMethodSignatureForSelector:@selector(startRunLoop)];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    [invocation setTarget:self];
+    [invocation setSelector:@selector(startRunLoop)];
+    _imageSwitchIntervalTimer = [[NSTimer timerWithTimeInterval:2 * kAnimateDuration
+                                 invocation:invocation
+                                    repeats:YES] retain];
+
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:_imageSwitchIntervalTimer forMode:NSDefaultRunLoopMode];
+
+    /*
+    _timer = [NSTimer scheduledTimerWithTimeInterval:2
+                                              target:self
+                                            selector:@selector(startRunLoop)
+                                            userInfo:nil
+                                             repeats:YES];
+    [_timer setFireDate:[NSDate date]];
+     */
+    
+//    [self startRunLoop];
 }
 
 - (void)startRunLoop
@@ -168,9 +200,14 @@
                          _downImageView.image = images[downImageIndex];
                          
                          // 循环调用
-                         [self performSelector:@selector(startRunLoop)
-                                    withObject:nil
-                                    afterDelay:kAnimateDuration * 2];
+#pragma mark - NOTE
+/*
+ * 这里block里面调用了方法自己，照成循环引用
+ * 内存无法释放，改进方式为是使用定时器
+ */
+//                         [self performSelector:@selector(startRunLoop)
+//                                    withObject:nil
+//                                    afterDelay:kAnimateDuration * 2];
                      }];
 }
 

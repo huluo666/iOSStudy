@@ -17,11 +17,11 @@
 
 @interface DDRootViewController ()
 {
-    UIView *_naviBar;                 // 左侧导航栏视图
-    NSInteger _currentSelectedButton; // 当前选中的是第几个导航button
-    __block UIView *_appearedView;    // 当前出现的导航视图
-    BOOL _isAnimating;                // 是否正在动画中
-    BOOL _isCartVisiable;             // 购物车是否可见
+    UIView *_naviBar;                       // 左侧导航栏视图
+    NSInteger _currentSelectedButtonIndex;  // 当前选中的是第几个导航button
+    __block UIView *_appearedView;          // 当前出现的导航视图
+    BOOL _isAnimating;                      // 是否正在动画中
+    BOOL _isCartVisiable;                   // 购物车是否可见
 }
 
 
@@ -32,7 +32,7 @@
 - (UIView *)createNaviViewWithIndex:(NSInteger)index;
 
 // 切换视图
-- (void)toggleVC:(UIButton *)sender;
+- (void)switchVC:(UIButton *)sender;
 
 // 初始化登录界面
 - (void)initializeLoginView;
@@ -116,7 +116,7 @@
                           forState:UIControlStateSelected];
         button.tag = kButtonTag + i;
         [button addTarget:self
-                   action:@selector(toggleVC:)
+                   action:@selector(switchVC:)
          forControlEvents:UIControlEventTouchUpInside];
         [_naviBar addSubview:button];
         
@@ -212,12 +212,12 @@
 
 #pragma mark - 导航栏按钮点击事件、切换视图
 
-- (void)toggleVC:(UIButton *)sender
+- (void)switchVC:(UIButton *)sender
 {
     NSInteger index = sender.tag - kButtonTag;
     
     // 避免重复选择第
-    if (index ==  _currentSelectedButton) {
+    if (index ==  _currentSelectedButtonIndex) {
         return;
     }
     
@@ -241,14 +241,21 @@
     [self.view addSubview:willAppearView];
     [self.view sendSubviewToBack:willAppearView];
 
+    // 显示的停止计时器
+    if (0 == _currentSelectedButtonIndex) {
+        DDIndex *view = (DDIndex *)_appearedView;
+        [view.imageSwitchIntervalTimer invalidate];
+        [view.updateImagesIntervalTimer invalidate];
+    }
+    
     // 当前选中的导航按钮
-    UIButton *selectedButton = (UIButton *)[_naviBar viewWithTag:_currentSelectedButton + kButtonTag];
+    UIButton *selectedButton = (UIButton *)[_naviBar viewWithTag:_currentSelectedButtonIndex + kButtonTag];
     // 将要选中的导航按钮
     UIButton *willSelectedButton = (UIButton *)[_naviBar viewWithTag:sender.tag];
     
     // 开始动画
     _isAnimating = YES;
-    if (_currentSelectedButton < index) {
+    if (_currentSelectedButtonIndex < index) {
         // 当前在上，将要选中的在下面，向下推动动画
         willAppearView.center = kMainViewCenterDown;
         [UIView animateWithDuration:kAnimateDuration / 2
@@ -262,7 +269,7 @@
                              [_appearedView removeFromSuperview];
                              _appearedView = nil;
                              _appearedView = willAppearView;
-                             _currentSelectedButton = index;
+                             _currentSelectedButtonIndex = index;
                              _isAnimating = NO;
                          }];
     } else {
@@ -279,7 +286,7 @@
                              [_appearedView removeFromSuperview];
                              _appearedView = nil;
                              _appearedView = willAppearView;
-                             _currentSelectedButton = index;
+                             _currentSelectedButtonIndex = index;
                              _isAnimating = NO;
                          }];
     }

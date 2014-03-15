@@ -88,10 +88,11 @@
                               CGRectGetHeight(_listBackgroundView.bounds));
     
     __block DDOrderView *orderView = [[DDOrderView alloc] initWithFrame:frame];
-    
     CGPoint center = _listBackgroundView.center;
-    
     orderView.center = CGPointMake(3 * center.x, center.y);
+    [self addSubview:orderView];
+    [orderView release];
+
     orderView.swipRight = ^{
         [UIView animateWithDuration:kAnimateDuration animations:^{
             _listBackgroundView.center = center;
@@ -100,9 +101,6 @@
             [orderView removeFromSuperview];
         }];
     };
-    
-    [self addSubview:orderView];
-    [orderView release];
     
     [UIView animateWithDuration:kAnimateDuration animations:^{
         _listBackgroundView.center = CGPointMake(-center.x, center.y);
