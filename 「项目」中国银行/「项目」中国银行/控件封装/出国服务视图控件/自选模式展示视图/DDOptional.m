@@ -23,7 +23,7 @@
     if (self) {
         self.frame = CGRectMake(0, 0, 290, 290);
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:self.frame];
-        imageView.image = [UIImage imageNamed:@"未标题-1_01"];
+        imageView.image = [UIImage imageNamed:@"未标题-1_01"]; // cache
         [self addSubview:imageView];
         [imageView release];
         
@@ -45,7 +45,7 @@
         detailButton.tag = kDetailButtonTag;
         detailButton.center = CGPointMake(CGRectGetMidX(titleLabel.bounds) - CGRectGetMidX(detailButton.bounds) - 10,
                                     CGRectGetMaxY(imageView.bounds) - CGRectGetHeight(detailButton.bounds));
-        [detailButton setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal];
+        [detailButton setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal]; // cache
         [detailButton addTarget:self
                    action:@selector(processTap:)
          forControlEvents:UIControlEventTouchUpInside];
@@ -56,7 +56,7 @@
         chooseButton.bounds = detailButton.bounds;
         chooseButton.center = CGPointMake( CGRectGetWidth(imageView.bounds) - CGRectGetMidX(detailButton.frame),
                                     detailButton.center.y);
-        [chooseButton setBackgroundImage:[UIImage imageNamed:@"选购_03"] forState:UIControlStateNormal];
+        [chooseButton setBackgroundImage:[UIImage imageNamed:@"选购_03"] forState:UIControlStateNormal]; // chche
         [chooseButton addTarget:self
                    action:@selector(processTap:)
          forControlEvents:UIControlEventTouchUpInside];

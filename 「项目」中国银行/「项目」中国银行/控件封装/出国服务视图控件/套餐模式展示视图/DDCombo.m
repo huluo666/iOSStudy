@@ -26,7 +26,7 @@
         
         // 背景图片
         UIImageView *backgroundImageView = [[UIImageView alloc]
-                                            initWithImage:kImageWithName(@"prepare1_01.png")];
+                                            initWithImage:kImageWithNameHaveSuffix(@"prepare1_01.png")];
         backgroundImageView.bounds = CGRectMake(0, 0, 300, 480);
         backgroundImageView.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
         backgroundImageView.userInteractionEnabled = YES;
@@ -46,7 +46,8 @@
         
         // 详情
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [detailButton setBackgroundImage:[UIImage imageNamed:@"未选中_23"] forState:UIControlStateNormal];
+        [detailButton setBackgroundImage:kImageWithName(@"未选中_23") // 涉及到动画，内存容易出现问题
+                                forState:UIControlStateNormal];
         detailButton.bounds = CGRectMake(0, 0, 100, 50);
         detailButton.center = CGPointMake(CGRectGetMidX(backgroundImageView.bounds),
                                           CGRectGetMaxY(backgroundImageView.bounds) - CGRectGetMaxY(detailButton.bounds) * 1.5);

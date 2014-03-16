@@ -58,7 +58,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // 背景
-        UIImage *backgroundImage = [UIImage imageNamed:@"down_05"];
+        UIImage *backgroundImage = kImageWithName(@"down_05");
         _backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
         _backgroundView.frame = self.bounds;
         _backgroundView.userInteractionEnabled = YES;
@@ -115,7 +115,7 @@
         [_backgroundView addSubview:coinTypeButton];
        
         // 搜索框
-        UIImage *searchBackgroundImage = [UIImage imageNamed:@"搜索框_11"];
+        UIImage *searchBackgroundImage = kImageWithName(@"搜索框_11");
         UIImageView *imageView = [[UIImageView alloc] initWithImage:searchBackgroundImage];
         imageView.bounds = CGRectMake(0, 0, 230, 40);
         imageView.center = CGPointMake(CGRectGetMaxX(coinTypeButton.frame) + CGRectGetMidX(imageView.bounds) + 16,
@@ -152,19 +152,24 @@
         [tableView release];
         
         // 下拉刷新
-//        DDPullDown *pullDown = [DDPullDown pullDown];
-//        pullDown.scrollView = tableView;
-//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-//        pullDown.status.textColor = [UIColor whiteColor];
-//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
-        
+        DDPullDown *pullDown = [DDPullDown pullDown];
+        pullDown.scrollView = tableView;
+        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+        pullDown.status.textColor = [UIColor whiteColor];
+        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"]; // cache
+        __block DDFinanceProductsView *view = self;
+        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+            NSLog(@"开始刷新");
+            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+        };
+
         // 申请按钮
         UIButton *applicationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         applicationButton.bounds = CGRectMake(0, 0, 159, 50);
         applicationButton.center = CGPointMake(CGRectGetMidX(tableView.frame),
                                                CGRectGetMaxY(tableView.frame) + CGRectGetMidY(applicationButton.bounds) + 50);
-        [applicationButton setBackgroundImage:[UIImage imageNamed:@"申请"]
+        [applicationButton setBackgroundImage:kImageWithName(@"申请")
                                      forState:UIControlStateNormal];
         [applicationButton addTarget:self
                               action:@selector(financeButtonAction:)
@@ -257,7 +262,7 @@
         calculateButton.bounds = CGRectMake(0, 0, 86, 42);
         calculateButton.center = CGPointMake(CGRectGetMaxX(unitIncome.frame) + CGRectGetMidX(calculateButton.bounds) + 5,
                                              CGRectGetMidY(unitIncome.frame));
-        [calculateButton setBackgroundImage:[UIImage imageNamed:@"计算_01"]
+        [calculateButton setBackgroundImage:kImageWithName(@"计算_01")
                                    forState:UIControlStateNormal];
         [calculateButton addTarget:self
                             action:@selector(financeButtonAction:)

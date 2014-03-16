@@ -74,7 +74,7 @@
         submitButton.bounds = CGRectMake(0, 0, 159, 50);
         submitButton.center = CGPointMake(CGRectGetMidX(self.bounds),
                                           CGRectGetMaxY(self.bounds) - CGRectGetMidY(submitButton.bounds) - 20);
-        [submitButton setBackgroundImage:[UIImage imageNamed:@"提交办理"]
+        [submitButton setBackgroundImage:kImageWithName(@"提交办理")
                                 forState:UIControlStateNormal];
         [submitButton addTarget:self
                          action:@selector(submit:)

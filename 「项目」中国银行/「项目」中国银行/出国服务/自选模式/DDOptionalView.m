@@ -71,12 +71,17 @@
         [collectionView release];
 
         // 下拉刷新
-//        DDPullDown *pullDown = [DDPullDown pullDown];
-//        pullDown.scrollView = collectionView;
-//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-//        pullDown.status.textColor = [UIColor whiteColor];
-//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+        DDPullDown *pullDown = [DDPullDown pullDown];
+        pullDown.scrollView = collectionView;
+        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+        pullDown.status.textColor = [UIColor whiteColor];
+        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"]; // cache
+        __block DDOptionalView *view = self;
+        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+            NSLog(@"开始刷新");
+            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+        };
 #pragma mark - TODO 刷新数据CollectionView
 
         // 菜单
@@ -89,7 +94,7 @@
         
         // 菜单两侧按钮
         UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [leftButton setBackgroundImage:[UIImage imageNamed:@"箭头左"] forState:UIControlStateNormal];
+        [leftButton setBackgroundImage:kImageWithName(@"箭头左") forState:UIControlStateNormal];
         leftButton.bounds = CGRectMake(0, 0, 30, 30);
         leftButton.center = CGPointMake(CGRectGetMinX(_menuView.frame) - CGRectGetMidX(leftButton.bounds) * 1.5,
                                         CGRectGetMidY(_menuView.frame));
@@ -100,7 +105,7 @@
         [self addSubview:leftButton];
         
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [rightButton setBackgroundImage:[UIImage imageNamed:@"箭头右"] forState:UIControlStateNormal];
+        [rightButton setBackgroundImage:kImageWithName(@"箭头右") forState:UIControlStateNormal];
         rightButton.bounds = CGRectMake(0, 0, 30, 30);
         rightButton.center = CGPointMake(CGRectGetMaxX(_menuView.frame) + CGRectGetMidX(rightButton.bounds) * 1.5,
                                          CGRectGetMidY(_menuView.frame));

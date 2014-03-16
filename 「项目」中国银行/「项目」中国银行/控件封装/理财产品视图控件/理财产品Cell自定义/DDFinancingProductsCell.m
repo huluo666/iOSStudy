@@ -20,12 +20,12 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        UIImage *backgroundImage = [UIImage imageNamed:@"line_15"];
+        UIImage *backgroundImage = kImageWithName(@"line_15");
         UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
         self.backgroundView = backgroundView;
         [backgroundView release];
 
-        UIImage *selectedBackgroundImage = [UIImage imageNamed:@"选中new"];
+        UIImage *selectedBackgroundImage = kImageWithName(@"选中new");
         UIImageView *selectedBackgroundView = [[UIImageView alloc] initWithImage:selectedBackgroundImage];
         self.selectedBackgroundView = selectedBackgroundView;
         [selectedBackgroundView release];

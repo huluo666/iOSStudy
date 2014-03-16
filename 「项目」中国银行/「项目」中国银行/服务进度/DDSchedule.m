@@ -37,7 +37,7 @@
         // 背景
         UIImageView *bottomView = [[UIImageView alloc] init];
         bottomView.frame = kMainViewBounds;
-        bottomView.image = [UIImage imageNamed:@"背景"];
+        bottomView.image = [UIImage imageNamed:@"背景"]; // cache
         bottomView.userInteractionEnabled = YES;
         [self addSubview:bottomView];
         [bottomView release];
@@ -49,7 +49,7 @@
         _backgroundView.center = CGPointMake(CGRectGetMidX(self.bounds),
                                             CGRectGetMidY(self.bounds) * 0.98);
 
-        _backgroundView.image = [UIImage imageNamed:@"di_05"];
+        _backgroundView.image = kImageWithName(@"di_05");
         _backgroundView.userInteractionEnabled = YES;
         [self addSubview:_backgroundView];
         
@@ -67,7 +67,7 @@
         [scheduleLabel release];
         
         // 查询框
-        UIImage *searchImage = [UIImage imageNamed:@"search_48"];
+        UIImage *searchImage = kImageWithName(@"search_48");
         UIImageView *searchView = [[UIImageView alloc] initWithImage:searchImage];
         searchView.bounds = CGRectMake(0, 0, 429, 40);
         searchView.center = CGPointMake(CGRectGetMidX(_backgroundView.bounds),
@@ -93,9 +93,9 @@
         submitSearchButton.bounds = CGRectMake(0, 0, 30, 30);
         submitSearchButton.center = CGPointMake(CGRectGetMaxX(searchView.bounds) - CGRectGetMidX(submitSearchButton.bounds) * 1.2,
                                                 CGRectGetMidY(searchView.bounds));
-        [submitSearchButton setBackgroundImage:[UIImage imageNamed:@"search-1_76"]
+        [submitSearchButton setBackgroundImage:kImageWithName(@"search-1_76")
                                       forState:UIControlStateNormal];
-        [submitSearchButton setBackgroundImage:[UIImage imageNamed:@"search1_23"]
+        [submitSearchButton setBackgroundImage:kImageWithName(@"search1_23")
                                       forState:UIControlStateHighlighted];
         [submitSearchButton addTarget:self
                                action:@selector(search:)

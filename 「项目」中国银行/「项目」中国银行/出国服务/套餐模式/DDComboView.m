@@ -80,12 +80,12 @@
             [combo release];
 
             // 默认放大第三个
-//            if (i == 2) {
-//                [self startBasicScaleAnimationFromValue:@1.2
-//                                                toValue:@1.2
-//                                                ForView:_combos[i]
-//                                  withAnimationDuration:0];
-//            }
+            if (i == 2) {
+                [self startBasicScaleAnimationFromValue:@1.2
+                                                toValue:@1.2
+                                                ForView:_combos[i]
+                                  withAnimationDuration:0];
+            }
         }
     }
     return self;
@@ -100,7 +100,7 @@
     
     // 标记开始动画
     _isAnimating = YES;
- /*
+
     // 判断移动方向
     if (UISwipeGestureRecognizerDirectionLeft == swipe.direction) {
         // 向左移动
@@ -148,8 +148,6 @@
     } completion:^(BOOL finished) {
         _isAnimating = NO;
     }];
-  
-  */
 }
 
 #pragma mark - 缩放动画

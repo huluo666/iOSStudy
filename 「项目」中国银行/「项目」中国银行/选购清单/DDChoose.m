@@ -36,13 +36,13 @@
         // 初始化大背景
         UIImageView *bottomView = [[UIImageView alloc] init];
         bottomView.frame = kMainViewBounds;
-        bottomView.image = [UIImage imageNamed:@"背景"];
+        bottomView.image = [UIImage imageNamed:@"背景"]; // cache
         bottomView.userInteractionEnabled = YES;
         [self addSubview:bottomView];
         [bottomView release];
         
         // 清单背景
-        UIImage *listBackgroundImage = [UIImage imageNamed:@"down_05"];
+        UIImage *listBackgroundImage = kImageWithName(@"down_05");
         _listBackgroundView = [[UIImageView alloc] initWithImage:listBackgroundImage];
         _listBackgroundView.bounds = CGRectMake(0, 0, CGRectGetWidth(bottomView.bounds) * 0.92,
                                                CGRectGetHeight(bottomView.bounds) * 0.92);

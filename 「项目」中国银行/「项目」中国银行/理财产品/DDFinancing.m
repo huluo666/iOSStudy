@@ -9,8 +9,8 @@
 #import "DDFinancing.h"
 #import "DDFinanceProductsView.h"
 #import "DDFundsView.h"
-#import "DDPreciousMetal.h"
-#import "DDInsurance.h"
+#import "DDPreciousMetalView.h"
+#import "DDInsuranceView.h"
 
 @interface DDFinancing ()
 {
@@ -61,16 +61,16 @@
         // 初始化背景
         UIImageView *bottomView = [[UIImageView alloc] init];
         bottomView.frame = kMainViewBounds;
-        bottomView.image = [UIImage imageNamed:@"背景"];
+        bottomView.image = [UIImage imageNamed:@"背景"]; // chace
         bottomView.userInteractionEnabled = YES;
         [self addSubview:bottomView];
         [bottomView release];
         
         // 分段控件标题
-        UIImage *financeProducts = [UIImage imageNamed:@"1_08"];
-        UIImage *funds = [UIImage imageNamed:@"2_09"];
-        UIImage *preciousMetal = [UIImage imageNamed:@"3_10"];
-        UIImage *insurance = [UIImage imageNamed:@"4_11"];
+        UIImage *financeProducts = kImageWithName(@"1_08");
+        UIImage *funds = kImageWithName(@"2_09");
+        UIImage *preciousMetal = kImageWithName(@"3_10");
+        UIImage *insurance = kImageWithName(@"4_11");
         if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
             financeProducts = [financeProducts imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             funds = [funds imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -80,10 +80,10 @@
         _images = [@[financeProducts, funds, preciousMetal, insurance] retain];
         
         // 分段标题选中状态
-        UIImage *financeProductsSelected = [UIImage imageNamed:@"理财产品_08"];
-        UIImage *fundsSelected = [UIImage imageNamed:@"基金_09"];
-        UIImage *preciousMetalSelected = [UIImage imageNamed:@"贵金属_10"];
-        UIImage *insuranceSelected = [UIImage imageNamed:@"保险_11"];
+        UIImage *financeProductsSelected = kImageWithName(@"理财产品_08");
+        UIImage *fundsSelected = kImageWithName(@"基金_09");
+        UIImage *preciousMetalSelected = kImageWithName(@"贵金属_10");
+        UIImage *insuranceSelected = kImageWithName(@"保险_11");
         if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
             financeProductsSelected = [financeProductsSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             fundsSelected = [fundsSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -106,7 +106,7 @@
         shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(_segmentedControl.bounds), 10);
         shadowView.center = CGPointMake(CGRectGetMidX(_segmentedControl.frame),
                                         CGRectGetMaxY(_segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
-        shadowView.image = [UIImage imageNamed:@"pshadow_08"];
+        shadowView.image = kImageWithName(@"pshadow_08");
         [self addSubview:shadowView];
         [shadowView release];
     
@@ -177,7 +177,7 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDPreciousMetal *preciousMetal = [[DDPreciousMetal alloc] initWithFrame:frame];
+    DDPreciousMetalView *preciousMetal = [[DDPreciousMetalView alloc] initWithFrame:frame];
     [self addSubview:preciousMetal];
     [preciousMetal release];
     _currentSelectedView = preciousMetal;
@@ -191,7 +191,7 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDInsurance *insurance = [[DDInsurance alloc] initWithFrame:frame];
+    DDInsuranceView *insurance = [[DDInsuranceView alloc] initWithFrame:frame];
     [self addSubview:insurance];
     [insurance release];
     _currentSelectedView = insurance;

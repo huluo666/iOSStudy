@@ -20,8 +20,9 @@
 // 更新数据事件间隔
 #define kDataUpdateTimeInterval 600
 // 获取图片
-#define kImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] \
+#define kImageWithNameHaveSuffix(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] \
                                 pathForAuxiliaryExecutable:NAME]] // 获取图片
+#define kImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NAME ofType:@"png"]]
 // 随机颜色
 #define kRandomColor [UIColor colorWithRed:arc4random() % 128 / 255.0f green:arc4random() % 64 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.000]
 // 根视图

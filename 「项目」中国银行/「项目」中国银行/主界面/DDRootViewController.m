@@ -97,12 +97,12 @@
     naviBaseView.bounds = CGRectMake(0, 0, kNaviBarBaseViewWidth, kRootViewHeight);
     naviBaseView.center = CGPointMake(CGRectGetMidX(_naviBar.bounds) - 4,
                                       self.view.center.y);
-    naviBaseView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"导航-底_03"]];
+    naviBaseView.backgroundColor = [UIColor colorWithPatternImage:kImageWithNameHaveSuffix(@"导航-底_03.png")];
     [_naviBar addSubview:naviBaseView];
     [naviBaseView release];
     
     // 加载导航按钮
-    NSArray *naviBarImageNormalNames = @[@"首页_03.png", @"出国服务_05.png", @"理财产品_07.png", @"选购清单_09", @"服务进度_11.png"];
+    NSArray *naviBarImageNormalNames = @[@"首页_03.png", @"出国服务_05.png", @"理财产品_07.png", @"选购清单_09.png", @"服务进度_11.png"];
     NSArray *naviBarImageSelectedNames = @[@"首页_03_h.png", @"出国服务_05_h.png", @"理财产品_07_h.png", @"选购清单_09_h.png", @"服务进度_11_h.png"];
 
     for (int i = 0; i < 5; i++) {
@@ -110,9 +110,9 @@
         button.bounds = CGRectMake(0, 0, kNaviBarViewWidth, kNaviBarButtonHeight);
         button.center = CGPointMake(CGRectGetMidX(_naviBar.frame),
                                     kHeaderViewHeight + CGRectGetMidY(button.bounds) + CGRectGetHeight(button.bounds) * i);
-        [button setBackgroundImage:[UIImage imageNamed:naviBarImageNormalNames[i]]
+        [button setBackgroundImage:kImageWithNameHaveSuffix(naviBarImageNormalNames[i])
                           forState:UIControlStateNormal];
-        [button setBackgroundImage:[UIImage imageNamed:naviBarImageSelectedNames[i]]
+        [button setBackgroundImage:kImageWithNameHaveSuffix(naviBarImageSelectedNames[i])
                           forState:UIControlStateSelected];
         button.tag = kButtonTag + i;
         [button addTarget:self
@@ -144,7 +144,7 @@
     cartButton.bounds = CGRectMake(0, 0, 60, 50);
     cartButton.center = CGPointMake(CGRectGetMidX(_naviBar.bounds),
                                     CGRectGetMaxY(_naviBar.bounds) - CGRectGetMidX(cartButton.bounds) * 2);
-    [cartButton setBackgroundImage:[UIImage imageNamed:@"购物车_01"]
+    [cartButton setBackgroundImage:kImageWithName(@"购物车_01")
                           forState:UIControlStateNormal];
     [cartButton addTarget:self
                    action:@selector(shopingCartAction:)
@@ -152,7 +152,7 @@
     [_naviBar addSubview:cartButton];
     
     // 设置眉头底图
-    UIImage *headerImage = [UIImage imageNamed:@"眉头_01"];
+    UIImage *headerImage = kImageWithNameHaveSuffix(@"眉头_01.png");
     UIImageView *headerView =[[UIImageView alloc] initWithImage:headerImage];
     headerView.frame = CGRectMake(0, 0, kRootViewWidth, kHeaderViewHeight);
     headerView.userInteractionEnabled = YES;
@@ -160,14 +160,14 @@
     [headerView release];
     
     // 设置眉头阴影
-    UIImage *shadowImage = [UIImage imageNamed:@"眉头阴影_04"];
+    UIImage *shadowImage = kImageWithNameHaveSuffix(@"眉头阴影_04.png");
     UIImageView *shadowView = [[UIImageView alloc] initWithImage:shadowImage];
     shadowView.frame = CGRectMake(0, CGRectGetMaxY(headerView.frame), kRootViewWidth, 30);
     [self.view addSubview:shadowView];
     [shadowView release];
     
     // 设置眉头登录头像信息
-    UIImage *avatar = [UIImage imageNamed:@"头像_11"];
+    UIImage *avatar = kImageWithNameHaveSuffix(@"头像_11.png");
     UIImageView *userAvatar = [[UIImageView alloc] initWithImage:avatar];
     userAvatar.contentMode = UIViewContentModeScaleAspectFit;
     userAvatar.frame = CGRectMake(5, 20, 60, 60);
@@ -178,7 +178,7 @@
     // 设置退出登录按钮
     UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
     logoutButton.bounds = CGRectMake(0, 0, 20, 20);
-    [logoutButton setBackgroundImage:[UIImage imageNamed:@"关闭_05"]
+    [logoutButton setBackgroundImage:kImageWithNameHaveSuffix(@"关闭_05.png")
                             forState:UIControlStateNormal];
     logoutButton.center = CGPointMake(CGRectGetMaxX(userAvatar.bounds) - 5,
                                       CGRectGetMinY(userAvatar.bounds) + 5);
@@ -188,7 +188,7 @@
     [userAvatar addSubview:logoutButton];
     
     // 设置底部视图
-    UIImage *bottomImage = [UIImage imageNamed:@"写入框_08"];
+    UIImage *bottomImage = kImageWithNameHaveSuffix(@"写入框_08.png");
     UIImageView *bottomView = [[UIImageView alloc] initWithImage:bottomImage];
     bottomView.bounds = CGRectMake(0, 0, kRootViewWidth, kBottomImageViewHeight);
     bottomView.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight - 10);

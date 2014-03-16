@@ -36,6 +36,7 @@
         // tableView baackground
         UIImageView *tableViewBackgorundView = [[UIImageView alloc] init];
         tableViewBackgorundView.frame = self.bounds;
+        // 背景图片多次利用，需要cache
         tableViewBackgorundView.image = [UIImage imageNamed:@"背景"];
         
         // tableView
@@ -52,17 +53,18 @@
         [tableView release];
         
         // 下拉刷新
-//        DDPullDown *pullDown = [DDPullDown pullDown];
-//        pullDown.scrollView = tableView;
-//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-//        pullDown.status.textColor = [UIColor whiteColor];
-//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
-//        __block DDConsultView *view = self;
-//        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-//            NSLog(@"开始刷新");
-//            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
-//        };
+        DDPullDown *pullDown = [DDPullDown pullDown];
+        pullDown.scrollView = tableView;
+        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+        pullDown.status.textColor = [UIColor whiteColor];
+        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        // 下拉箭头多次用到，cache
+        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+        __block DDConsultView *view = self;
+        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+            NSLog(@"开始刷新");
+            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+        };
 #pragma mark - TODO 刷新数据TableView
         
         // 上下两条阴影
@@ -70,7 +72,7 @@
         upShadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds) * 1.1, 5);
         upShadowView.center = CGPointMake(CGRectGetMidX(tableView.frame),
                                           CGRectGetMinY(tableView.frame) + CGRectGetMidY(upShadowView.bounds));
-        upShadowView.image = [UIImage imageNamed:@"up_19"];
+        upShadowView.image = kImageWithName(@"up_19");
         [self addSubview:upShadowView];
         [upShadowView release];
         
@@ -78,7 +80,7 @@
         downShadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds) * 1.1, 5);
         downShadowView.center = CGPointMake(CGRectGetMidX(tableView.frame),
                                             CGRectGetMaxY(tableView.frame) + CGRectGetMidY(downShadowView.bounds));
-        downShadowView.image = [UIImage imageNamed:@"down_27"];
+        downShadowView.image = kImageWithName(@"down_27");
         [self addSubview:downShadowView];
         [downShadowView release];
         

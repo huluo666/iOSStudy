@@ -35,7 +35,7 @@
     if (self) {
         self.backgroundColor = [UIColor orangeColor];
         // 登录背景
-        UIImage *backgroundImage = [UIImage imageNamed:@"Default-Landscape"];
+        UIImage *backgroundImage = kImageWithNameHaveSuffix(@"Default-Landscape.png");
         UIImageView *backgroundImageView = [[UIImageView alloc] initWithImage:backgroundImage];
         backgroundImageView.tag = kBackgroundImageViewTag;
         backgroundImageView.frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
@@ -50,7 +50,7 @@
         [backgroundView release];
         
         // 加载登录框
-        UIImage *loginBackgroundImage = [UIImage imageNamed:@"登录框_03"];
+        UIImage *loginBackgroundImage = kImageWithNameHaveSuffix(@"登录框_03.png");
         UIImageView *loginImageView = [[UIImageView alloc]
                                        initWithImage:loginBackgroundImage];
         loginImageView.bounds = CGRectMake(0, 0, 400, 500);
@@ -85,7 +85,7 @@
         loginButton.bounds = CGRectMake(0, 0, 150, 50);
         loginButton.center = CGPointMake(CGRectGetMaxX(loginImageView.bounds) - CGRectGetMidY(loginButton.bounds) - 100,
                                          CGRectGetMaxY(loginImageView.bounds) - CGRectGetMidX(loginButton.bounds) - 95);
-        [loginButton setBackgroundImage:[UIImage imageNamed:@"登录_03"]
+        [loginButton setBackgroundImage:kImageWithNameHaveSuffix(@"登录_03.png")
                                forState:UIControlStateNormal];
         [loginButton addTarget:self
                         action:@selector(processLogin:)
@@ -97,9 +97,9 @@
         remember.bounds = CGRectMake(0, 0, 30, 30);
         remember.center = CGPointMake(CGRectGetMaxX(loginButton.frame) - 296,
                                       CGRectGetMidY(loginButton.frame));
-        [remember setBackgroundImage:[UIImage imageNamed:@"记住密码未点击_03"]
+        [remember setBackgroundImage:kImageWithNameHaveSuffix(@"记住密码未点击_03.png")
                             forState:UIControlStateNormal];
-        [remember setBackgroundImage:[UIImage imageNamed:@"记住密码点击_03"]
+        [remember setBackgroundImage:kImageWithNameHaveSuffix(@"记住密码点击_03.png")
                             forState:UIControlStateSelected];
         [remember addTarget:self
                      action:@selector(processRemember:)

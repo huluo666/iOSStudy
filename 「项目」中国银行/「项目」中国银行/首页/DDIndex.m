@@ -57,8 +57,7 @@
     if (self) {        
         _dataSource = [[NSMutableDictionary alloc] init];
         
-//        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"大背景"]];
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"index_background"]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:kImageWithNameHaveSuffix(@"index_background.png")];
         imageView.frame = kMainViewBounds;
         [self addSubview:imageView];
         [imageView release];
@@ -122,11 +121,13 @@
 #pragma mark - TODO net request
 
     // 将获取到的图片存入数据源字典中
-    UIImage *image1 = kImageWithName(@"view_05.png");
-    UIImage *image2 = kImageWithName(@"中银保险.png");
-    UIImage *image3 = kImageWithName(@"scrn_05.png");
+    UIImage *image1 = kImageWithNameHaveSuffix(@"view_05.png");
+    UIImage *image2 = kImageWithNameHaveSuffix(@"中银保险.png");
+    UIImage *image3 = kImageWithNameHaveSuffix(@"scrn_05.png");
     NSArray *loopImages = @[image1, image2, image3];
     [_dataSource setObject:loopImages forKey:kLoopImagesKey];
+    
+    
 }
 
 - (void)initializePlayImagesRunLoopView
@@ -233,7 +234,7 @@
 
 - (void)initializeLatestNewsView
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"最新动态-底_09"]];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:kImageWithNameHaveSuffix(@"最新动态-底_09.png")];
     imageView.bounds = CGRectMake(0, 0, 280, 320);
     imageView.center = CGPointMake(CGRectGetMaxX(self.bounds) - CGRectGetMidX(imageView.bounds) - 20,
                          CGRectGetMidY(_downImageView.frame));
@@ -273,7 +274,7 @@
                               600,
                               300);
     
-    UIImage *refreshButtonImage = [UIImage imageNamed:@"hot_36"];
+    UIImage *refreshButtonImage = kImageWithNameHaveSuffix(@"hot_36.png");
     DDCollectionViewPackage *viewPackage =
         [[DDCollectionViewPackage alloc] initWithFrame:frame
                                   collectionViewLayout:layout
@@ -283,7 +284,7 @@
                                             dataSource:nil
                                     refreshButtonImage:refreshButtonImage];
     [layout release];
-    viewPackage.backgroundImageView.image = [UIImage imageNamed:@"最热-底_12"];
+    viewPackage.backgroundImageView.image = kImageWithNameHaveSuffix(@"最热-底_12.png");
     viewPackage.collectionView.tag = kHotCollectionViewTag;
     [self addSubview:viewPackage];
     [viewPackage release];
@@ -309,7 +310,7 @@
                               CGRectGetMaxY(_downImageView.frame),
                               280,
                               300);
-    UIImage *refreshButtonImage = [UIImage imageNamed:@"最新动态_38"];
+    UIImage *refreshButtonImage = kImageWithNameHaveSuffix(@"最新动态_38.png");
     DDCollectionViewPackage *viewPackage =
         [[DDCollectionViewPackage alloc] initWithFrame:frame
                                   collectionViewLayout:layout
@@ -319,7 +320,7 @@
                                             dataSource:nil
                                     refreshButtonImage:refreshButtonImage];
     [layout release];
-    viewPackage.backgroundImageView.image = [UIImage imageNamed:@"产品定制-底_14"];
+    viewPackage.backgroundImageView.image = kImageWithNameHaveSuffix(@"产品定制-底_14.png");
     viewPackage.collectionView.tag = kCustomProjectCollectionViewTag;
     [self addSubview:viewPackage];
     [viewPackage release];

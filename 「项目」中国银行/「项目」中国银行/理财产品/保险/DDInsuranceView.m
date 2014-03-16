@@ -6,18 +6,18 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "DDInsurance.h"
+#import "DDInsuranceView.h"
 #import "DDPullDown.h"
 #import "DDOptional.h"
 #import "DDShowDetail.h"
 
-@interface DDInsurance () <
+@interface DDInsuranceView () <
     UICollectionViewDelegate,
     UICollectionViewDataSource>
 
 @end
 
-@implementation DDInsurance
+@implementation DDInsuranceView
 
 - (void)dealloc
 {
@@ -55,12 +55,17 @@
         [collectionView release];
         
         // 下拉刷新
-//        DDPullDown *pullDown = [DDPullDown pullDown];
-//        pullDown.scrollView = collectionView;
-//        pullDown.lastUpdate.textColor = [UIColor whiteColor];
-//        pullDown.status.textColor = [UIColor whiteColor];
-//        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-//        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+        DDPullDown *pullDown = [DDPullDown pullDown];
+        pullDown.scrollView = collectionView;
+        pullDown.lastUpdate.textColor = [UIColor whiteColor];
+        pullDown.status.textColor = [UIColor whiteColor];
+        pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
+        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+        __block DDInsuranceView *view = self;
+        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+            NSLog(@"开始刷新");
+            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+        };
 #pragma mark - TODO 刷新数据CollectionView
 
     }
@@ -83,7 +88,7 @@
     DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
     optional.bounds = CGRectMake(0, 0, 300, 300);
     optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
-    __block DDInsurance *view = self;
+    __block DDInsuranceView *view = self;
     optional.tapAction = ^(UIButton *sender) {
         if (sender.tag == kDetailButtonTag) {
             DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];

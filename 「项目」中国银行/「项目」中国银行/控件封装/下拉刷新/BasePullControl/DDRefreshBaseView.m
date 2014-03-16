@@ -100,6 +100,9 @@
     [_status release];
     [_arrow release];
     [_indicator release];
+    [_beginRefreshBaseView release];
+    [_didRefreshBaseView release];
+    [_refreshStateChange release];
     [super dealloc];
 }
 

@@ -230,8 +230,8 @@
 		9583CDF018D2AC5E00399C22 /* DDComboView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDEF18D2AC5E00399C22 /* DDComboView.m */; };
 		9583CDF318D2AC6400399C22 /* DDOptionalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDF218D2AC6400399C22 /* DDOptionalView.m */; };
 		9583CDF718D2CC9F00399C22 /* DDFundsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDF618D2CC9F00399C22 /* DDFundsView.m */; };
-		9583CDFC18D2CEFB00399C22 /* DDPreciousMetal.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDFB18D2CEFB00399C22 /* DDPreciousMetal.m */; };
-		9583CDFF18D2CF0D00399C22 /* DDInsurance.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDFE18D2CF0D00399C22 /* DDInsurance.m */; };
+		9583CDFC18D2CEFB00399C22 /* DDPreciousMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDFB18D2CEFB00399C22 /* DDPreciousMetalView.m */; };
+		9583CDFF18D2CF0D00399C22 /* DDInsuranceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDFE18D2CF0D00399C22 /* DDInsuranceView.m */; };
 		9583CE0618D2E36800399C22 /* DDFinancingProductsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CE0518D2E36800399C22 /* DDFinancingProductsCell.m */; };
 		9583CE0C18D30A1B00399C22 /* DDDeadlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CE0B18D30A1B00399C22 /* DDDeadlineViewController.m */; };
 		95A4E18918CDBE6E00618B79 /* index_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A4E18818CDBE6E00618B79 /* index_background.png */; };
@@ -516,10 +516,10 @@
 		9583CDF218D2AC6400399C22 /* DDOptionalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOptionalView.m; sourceTree = "<group>"; };
 		9583CDF518D2CC9F00399C22 /* DDFundsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFundsView.h; sourceTree = "<group>"; };
 		9583CDF618D2CC9F00399C22 /* DDFundsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFundsView.m; sourceTree = "<group>"; };
-		9583CDFA18D2CEFB00399C22 /* DDPreciousMetal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPreciousMetal.h; sourceTree = "<group>"; };
-		9583CDFB18D2CEFB00399C22 /* DDPreciousMetal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPreciousMetal.m; sourceTree = "<group>"; };
-		9583CDFD18D2CF0D00399C22 /* DDInsurance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInsurance.h; sourceTree = "<group>"; };
-		9583CDFE18D2CF0D00399C22 /* DDInsurance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInsurance.m; sourceTree = "<group>"; };
+		9583CDFA18D2CEFB00399C22 /* DDPreciousMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPreciousMetalView.h; sourceTree = "<group>"; };
+		9583CDFB18D2CEFB00399C22 /* DDPreciousMetalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPreciousMetalView.m; sourceTree = "<group>"; };
+		9583CDFD18D2CF0D00399C22 /* DDInsuranceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInsuranceView.h; sourceTree = "<group>"; };
+		9583CDFE18D2CF0D00399C22 /* DDInsuranceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInsuranceView.m; sourceTree = "<group>"; };
 		9583CE0418D2E36800399C22 /* DDFinancingProductsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFinancingProductsCell.h; sourceTree = "<group>"; };
 		9583CE0518D2E36800399C22 /* DDFinancingProductsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFinancingProductsCell.m; sourceTree = "<group>"; };
 		9583CE0A18D30A1B00399C22 /* DDDeadlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDeadlineViewController.h; sourceTree = "<group>"; };
@@ -1114,8 +1114,8 @@
 		9583CDF818D2CEDA00399C22 /* 保险 */ = {
 			isa = PBXGroup;
 			children = (
-				9583CDFD18D2CF0D00399C22 /* DDInsurance.h */,
-				9583CDFE18D2CF0D00399C22 /* DDInsurance.m */,
+				9583CDFD18D2CF0D00399C22 /* DDInsuranceView.h */,
+				9583CDFE18D2CF0D00399C22 /* DDInsuranceView.m */,
 			);
 			path = "保险";
 			sourceTree = "<group>";
@@ -1123,8 +1123,8 @@
 		9583CDF918D2CEDA00399C22 /* 贵金属 */ = {
 			isa = PBXGroup;
 			children = (
-				9583CDFA18D2CEFB00399C22 /* DDPreciousMetal.h */,
-				9583CDFB18D2CEFB00399C22 /* DDPreciousMetal.m */,
+				9583CDFA18D2CEFB00399C22 /* DDPreciousMetalView.h */,
+				9583CDFB18D2CEFB00399C22 /* DDPreciousMetalView.m */,
 			);
 			path = "贵金属";
 			sourceTree = "<group>";
@@ -1546,13 +1546,13 @@
 				9583CE0618D2E36800399C22 /* DDFinancingProductsCell.m in Sources */,
 				9583CDF018D2AC5E00399C22 /* DDComboView.m in Sources */,
 				06D388DA18C9FDD600113372 /* DDShopcart.m in Sources */,
-				9583CDFC18D2CEFB00399C22 /* DDPreciousMetal.m in Sources */,
+				9583CDFC18D2CEFB00399C22 /* DDPreciousMetalView.m in Sources */,
 				9583CDF718D2CC9F00399C22 /* DDFundsView.m in Sources */,
 				95C1F84C18D188E4001AE45B /* PMDimmingView.m in Sources */,
 				9583CDD518D29A9F00399C22 /* DDOptional.m in Sources */,
 				95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */,
 				952BB34218C970B2002F4928 /* DDAppDelegate.m in Sources */,
-				9583CDFF18D2CF0D00399C22 /* DDInsurance.m in Sources */,
+				9583CDFF18D2CF0D00399C22 /* DDInsuranceView.m in Sources */,
 				95C1F84E18D188E4001AE45B /* PMSelectionView.m in Sources */,
 				9583CDDD18D29B8000399C22 /* DDCollectionCellView.m in Sources */,
 				9583CDE118D29BF000399C22 /* DDConsultView.m in Sources */,

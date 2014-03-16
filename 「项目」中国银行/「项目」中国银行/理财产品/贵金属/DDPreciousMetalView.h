@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DDPreciousMetal : UIView
+@interface DDPreciousMetalView : UIView
 
 @end

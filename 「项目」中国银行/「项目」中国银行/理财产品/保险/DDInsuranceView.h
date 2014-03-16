@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DDInsurance : UIView
+@interface DDInsuranceView : UIView
 
 @end

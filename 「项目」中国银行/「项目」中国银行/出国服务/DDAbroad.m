@@ -69,9 +69,9 @@
     self.frame = CGRectMake(0, 0, kMainViewWidth, kMainViewHeight);
     if (self) {
         // 分段控件标题
-        UIImage *consult = [UIImage imageNamed:@"a_07"];
-        UIImage *combo = [UIImage imageNamed:@"b_08"];
-        UIImage *optional = [UIImage imageNamed:@"c_09"];
+        UIImage *consult = kImageWithName(@"a_07");
+        UIImage *combo = kImageWithName(@"b_08");
+        UIImage *optional = kImageWithName(@"c_09");
         if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
             consult = [consult imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             combo = [combo imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -80,9 +80,9 @@
         _images = [@[consult, combo, optional] retain];
 
         // 标题选中状态
-        UIImage *consultSelected = [UIImage imageNamed:@"aa_07"];
-        UIImage *comboSelected = [UIImage imageNamed:@"bb_08"];
-        UIImage *optionalSelected = [UIImage imageNamed:@"cc_09"];
+        UIImage *consultSelected = kImageWithName(@"aa_07");
+        UIImage *comboSelected = kImageWithName(@"bb_08");
+        UIImage *optionalSelected = kImageWithName(@"cc_09");
         if ([UIImage instancesRespondToSelector:@selector(imageWithRenderingMode:)]) {
             consultSelected = [consultSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             comboSelected = [comboSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -104,7 +104,7 @@
         shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(_segmentedControl.bounds), 10);
         shadowView.center = CGPointMake(CGRectGetMidX(_segmentedControl.frame),
                                         CGRectGetMaxY(_segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
-        shadowView.image = [UIImage imageNamed:@"pshadow_08"];
+        shadowView.image = kImageWithName(@"pshadow_08");
         [self addSubview:shadowView];
         [shadowView release];
     }
@@ -140,7 +140,7 @@
     // 初始化底图
     UIImageView *bottomView = [[[UIImageView alloc] init] autorelease];
     bottomView.frame = kMainViewBounds;
-    bottomView.image = [UIImage imageNamed:@"背景"];
+    bottomView.image = kImageWithName(@"背景");
     bottomView.userInteractionEnabled = YES;
     
     if (index) {
@@ -149,7 +149,7 @@
         videoButton.bounds = CGRectMake(0, 0, 40, 40);
         videoButton.center = CGPointMake(CGRectGetMaxX(bottomView.bounds) * 0.87,
                                          CGRectGetMinY(bottomView.bounds) + 40);
-        [videoButton setBackgroundImage:[UIImage imageNamed:@"视频图标_05"]
+        [videoButton setBackgroundImage:kImageWithName(@"视频图标_05")
                                forState:UIControlStateNormal];
         [videoButton addTarget:self
                         action:@selector(playVideo:)
@@ -158,7 +158,7 @@
         
     } else {
         // search bar background
-        UIImage *searchImageBackground = [UIImage imageNamed:@"搜索框_11"];
+        UIImage *searchImageBackground = kImageWithName(@"搜索框_11");
         UIImageView *imageView = [[UIImageView alloc] initWithImage:searchImageBackground];
         imageView.bounds = CGRectMake(0, 0, 230, 40);
         imageView.center = CGPointMake(CGRectGetMaxX(bottomView.bounds) * 0.85,
@@ -169,7 +169,7 @@
         
         // left button view
         UIButton *leftViewButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [leftViewButton setBackgroundImage:[UIImage imageNamed:@"choose_01"]
+        [leftViewButton setBackgroundImage:kImageWithName(@"choose_01")
                                   forState:UIControlStateNormal];
         [leftViewButton addTarget:self
                            action:@selector(searchAction:)

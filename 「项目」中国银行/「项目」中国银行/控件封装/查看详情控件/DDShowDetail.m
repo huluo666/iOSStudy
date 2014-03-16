@@ -86,7 +86,7 @@
                                         CGRectGetWidth(_bottomView.bounds) * 0.05);
         closeButton.center = CGPointMake(CGRectGetMaxX(_bottomView.bounds) - CGRectGetMidX(closeButton.bounds) * 1.5,
                                          CGRectGetMidY(titleLabel.bounds));
-        [closeButton setBackgroundImage:[UIImage imageNamed:@"close_07"] forState:UIControlStateNormal];
+        [closeButton setBackgroundImage:kImageWithName(@"close_07") forState:UIControlStateNormal];
         [closeButton addTarget:self
                         action:@selector(closeSelf)
               forControlEvents:UIControlEventTouchUpInside];
