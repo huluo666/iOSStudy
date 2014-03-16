@@ -111,8 +111,8 @@
     
     // 默认选中第一个
     _currentSelectedSegmentIndex = 2;
-//        [self loadConsultView];
-        [self loadComboView];
+        [self loadConsultView];
+//        [self loadComboView];
 //    [self loadOptionalView];
     return self;
 }

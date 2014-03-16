@@ -105,7 +105,10 @@
 {
     NSLog(@"提交办理");
     // 办理完后清理该视图
-    [self removeFromSuperview];
+//    [self removeFromSuperview];
+    if (_swipRight) {
+        _swipRight();
+    }
 }
 
 - (void)handleSwipRight

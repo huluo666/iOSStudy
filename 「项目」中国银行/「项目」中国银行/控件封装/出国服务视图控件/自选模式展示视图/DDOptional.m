@@ -13,6 +13,7 @@
 - (void)dealloc
 {
     NSLog(@"%@ is dealloced", [self class]);
+    [_tapAction release];
     [super dealloc];
 }
 

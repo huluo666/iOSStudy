@@ -40,6 +40,7 @@
         CGRect frame = self.bounds;
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                                               collectionViewLayout:layout];
+        [layout release];
         collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.98, 640);
         collectionView.center = CGPointMake(CGRectGetMidX(frame), CGRectGetMidY(frame) + 10);
         
@@ -83,6 +84,10 @@
     optional.bounds = CGRectMake(0, 0, 300, 300);
     optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
     __block DDFundsView *view = self;
+
+#pragma mark -
+#pragma mark - MEMORY ERROR
+    
     optional.tapAction = ^(UIButton *sender) {
         if (sender.tag == kDetailButtonTag) {
             DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];

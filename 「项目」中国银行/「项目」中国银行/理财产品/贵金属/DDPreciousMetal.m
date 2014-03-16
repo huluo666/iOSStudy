@@ -119,6 +119,7 @@
         CGRect frame = self.bounds;
         UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
                                                               collectionViewLayout:layout];
+        [layout release];
         collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.98, 640);
         collectionView.center = CGPointMake(CGRectGetMidX(frame),
                                             CGRectGetMaxY(targetWishButton.frame) + CGRectGetMidY(collectionView.bounds));

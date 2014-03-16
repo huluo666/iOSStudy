@@ -122,6 +122,7 @@
 {
     static NSString *identifier  = @"cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    UILabel *titleViewLabel = nil;
     if (!cell) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2
                                        reuseIdentifier:identifier] autorelease];
@@ -134,19 +135,20 @@
         cell.textLabel.numberOfLines = 1;
         cell.detailTextLabel.textAlignment = NSTextAlignmentCenter;
         cell.detailTextLabel.textColor = [UIColor redColor];
+
+        titleViewLabel = [[UILabel alloc] init];
+        titleViewLabel.bounds = CGRectMake(0, 0, 675, tableView.rowHeight);
+        titleViewLabel.center = CGPointMake(125 + CGRectGetMidX(titleViewLabel.bounds),
+                                            CGRectGetMidY(titleViewLabel.bounds));
+        titleViewLabel.textAlignment = NSTextAlignmentCenter;
+        titleViewLabel.textColor = [UIColor grayColor];
+        [cell.contentView addSubview:titleViewLabel];
+        [titleViewLabel release];
     }
     cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-    
     // title view
-    UILabel *titleViewLabel = [[UILabel alloc] init];
-    titleViewLabel.bounds = CGRectMake(0, 0, 675, tableView.rowHeight);
-    titleViewLabel.center = CGPointMake(125 + CGRectGetMidX(titleViewLabel.bounds),
-                                        CGRectGetMidY(titleViewLabel.bounds));
     titleViewLabel.text = [NSString stringWithFormat:@"测试标题 %ld", indexPath.row];
-    titleViewLabel.textAlignment = NSTextAlignmentCenter;
-    titleViewLabel.textColor = [UIColor grayColor];
-    [cell.contentView addSubview:titleViewLabel];
-    [titleViewLabel release];
+    
     return cell;
 }
 

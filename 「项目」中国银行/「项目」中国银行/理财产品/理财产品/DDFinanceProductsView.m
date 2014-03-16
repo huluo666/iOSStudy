@@ -473,8 +473,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     if (!cell) {
-        cell = [[DDFinancingProductsCell alloc] initWithStyle:UITableViewCellStyleValue2
-                                              reuseIdentifier:identifier];
+        cell = [[[DDFinancingProductsCell alloc] initWithStyle:UITableViewCellStyleValue2
+                                              reuseIdentifier:identifier] autorelease];
     }
     return cell;
 }

@@ -123,11 +123,20 @@
         // 默认选中第一个
         if (!i) {
             button.selected = YES;
-            UIView *view = [self createNaviViewWithIndex:0];
+            UIView *view = [self createNaviViewWithIndex:i];
             _appearedView = view;
             [self.view addSubview:view];
             [self.view sendSubviewToBack:view];
         }
+
+//        if (4 == i) {
+//            button.selected = YES;
+//            UIView *view = [self createNaviViewWithIndex:i];
+//            _appearedView = view;
+//            _currentSelectedButtonIndex = i;
+//            [self.view addSubview:view];
+//            [self.view sendSubviewToBack:view];
+//        }
     }
     
     // 加载购物车
