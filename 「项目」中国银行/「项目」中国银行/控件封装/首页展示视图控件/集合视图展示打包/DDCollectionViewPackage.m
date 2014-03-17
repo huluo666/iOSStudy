@@ -91,7 +91,6 @@
         _collectionCellViewType = collectionCellViewType;
         _collectionCellViewBounds = collectionCellViewBounds;
         _dataSource = [dataSource retain];
-
     }
     
     return self;
@@ -128,10 +127,10 @@
     DDCollectionCellView *cellView = [[DDCollectionCellView alloc] initWithFrame:_collectionCellViewBounds
                                                       projectShowViewType:_collectionCellViewType];
     if (_collectionCellViewType == DDCollectionCellViewSubTitle) {
-        cellView.detailTextLabel.text = @"detail text";
+        cellView.detailTextLabel.text = _dataSource[indexPath.row][@"categoryName"];
     }
     cellView.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-//    cellView.imageView.image = kImageWithName(@"网上银行BOCNET1.png");
+//    cellView.imageView.image = kImageWithName(@"网上银行BOCNET1");
     cellView.processTap = ^(UIView *view) {
         if ([view isKindOfClass:[UIButton class]]) {
             // 点击详情按钮回调(热点消息)
@@ -146,7 +145,7 @@
     };
     [cell.contentView addSubview:cellView];
     [cellView release];
-    
+    NSLog(@"dataSource = %@", _dataSource);
     return cell;
 }
 

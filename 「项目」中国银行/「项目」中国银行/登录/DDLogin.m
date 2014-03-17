@@ -11,6 +11,10 @@
 #import "DDRootViewController.h"
 
 @interface DDLogin ()
+{
+    UITextField *_userName;
+    UITextField *_password;
+}
 
 // 快速创建文本域
 - (UITextField *)textField;
@@ -19,13 +23,18 @@
 // 处理记住密码
 - (void)processRemember:(UIButton *)sender;
 
+// 温馨提示
+- (void)showAlertWithMessage:(NSString *)message;
+
 @end
 
 @implementation DDLogin
 
 - (void)dealloc
 {
-    NSLog(@"%@ is dealloced", [self class]);
+    NSLog(@"%@ dealloced", [self class]);
+    _userName = nil;
+    _password = nil;
     [super dealloc];
 }
 
@@ -62,23 +71,23 @@
         [loginImageView release];
         
         // 用户名输入框
-        UITextField *userName = [self textField];
-        [userName becomeFirstResponder];
-        userName.center = CGPointMake(CGRectGetMidX(loginImageView.bounds),
+        _userName = [self textField];
+        [_userName becomeFirstResponder];
+        _userName.center = CGPointMake(CGRectGetMidX(loginImageView.bounds),
                                       CGRectGetMidY(loginImageView.bounds) - 111);
-        userName.text = @"khjl001";
-        [userName performSelector:@selector(becomeFirstResponder)
+        _userName.text = @"khjl001";
+        [_userName performSelector:@selector(becomeFirstResponder)
                        withObject:nil
                        afterDelay:kAnimateDuration / 2];
-        [loginImageView addSubview:userName];
+        [loginImageView addSubview:_userName];
         
         // 密码输入框
-        UITextField *password = [self textField];
-        password.center = CGPointMake(CGRectGetMidX(loginImageView.bounds),
+        _password = [self textField];
+        _password.center = CGPointMake(CGRectGetMidX(loginImageView.bounds),
                                       CGRectGetMidY(loginImageView.bounds) + 10);
-        password.secureTextEntry = YES;
-        password.text = @"123456";
-        [loginImageView addSubview:password];
+        _password.secureTextEntry = YES;
+        _password.text = @"123456";
+        [loginImageView addSubview:_password];
         
         // 登录按钮
         UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -135,15 +144,83 @@
 
 - (void)processLogin:(UIButton *)sender
 {
-    // 登录成功
-    [UIView animateWithDuration:kAnimateDuration animations:^{
-        CGPoint center = self.center;
-        self.center = CGPointMake(center.x, center.y * 3);
-    } completion:^(BOOL finished) {
-//        DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
-//        rootVC.logined = YES;
-        [self removeFromSuperview];
-    }];
+    // 获取用户输入用户名和密码
+    NSString *username = _userName.text;
+    NSString *password = _password.text;
+    
+    // 去掉前后空格
+    username = [username stringByTrimmingCharactersInSet:
+                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    password = [password stringByTrimmingCharactersInSet:
+                [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    // 排除不合格输入
+    if (!username || username.length == 0) {
+        [self showAlertWithMessage:@"用户名格式错误"];
+        return;
+    }
+    if (!password || password.length == 0) {
+        [self showAlertWithMessage:@"密码格式错误"];
+        return;
+    }
+    
+    
+//    [UIView animateWithDuration:kAnimateDuration animations:^{
+//        CGPoint center = self.center;
+//        self.center = CGPointMake(center.x, center.y * 3);
+//    } completion:^(BOOL finished) {
+//        //        DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
+//        //        rootVC.logined = YES;
+//        [self removeFromSuperview];
+//    }];
+    
+    // 请求登录
+    __block DDLogin *this = self;
+    [DDHTTPManager sendRequstWithUsername:username
+                                 password:password
+                        completionHandler:^(id content, NSString *resultCode) {
+                            if (![resultCode intValue]) {
+                                // 登录成功
+                                [UIView animateWithDuration:kAnimateDuration animations:^{
+                                    CGPoint center = this.center;
+                                    this.center = CGPointMake(center.x, center.y * 3);
+                                } completion:^(BOOL finished) {
+                                    // 移除当前视图
+                                    [this removeFromSuperview];
+                                    
+                                    // 保存用户数据字典
+                                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                                    [userDefaults setValuesForKeysWithDictionary:content];
+                                }];
+                            } else {
+                                // 登录失败
+                                [this showAlertWithMessage:@"用户名或者密码错误"];
+                            }
+                        }];
+}
+
+- (void)showAlertWithMessage:(NSString *)message
+{
+    UIAlertView *alertView = [[UIAlertView alloc]
+                              initWithTitle:@"温馨提示"
+                              message:message
+                              delegate:nil
+                              cancelButtonTitle:nil
+                              otherButtonTitles:nil];
+
+    [alertView show];
+    [alertView release];
+    
+    // 等一秒移除
+    NSMethodSignature *signature = [UIAlertView instanceMethodSignatureForSelector:@selector(dismissWithClickedButtonIndex:animated:)];
+    NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+    [invocation setTarget:alertView];
+    [invocation setSelector:@selector(dismissWithClickedButtonIndex:animated:)];
+    NSInteger index = 0;
+    [invocation setArgument:&index atIndex:2];
+    BOOL animated = YES;
+    [invocation setArgument:&animated atIndex:3];
+    [invocation retainArguments];
+    [invocation performSelector:@selector(invoke) withObject:nil afterDelay:2];
 }
 
 - (void)processRemember:(UIButton *)sender

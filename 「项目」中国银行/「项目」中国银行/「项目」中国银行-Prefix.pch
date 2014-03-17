@@ -13,6 +13,7 @@
 #ifdef __OBJC__
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
+    #import "DDHTTPManager.h"
 #endif
 
 // 动画时长
@@ -72,13 +73,41 @@
 #define _DDLOGIN_
 // 背景图片视图tag
 #define kBackgroundImageViewTag 200
+#define kUserInfoKey @"userInfo"
+#define kUserInfoActivationKey @"activation"
+#define kUserInfoActivationCode @"activationCode"
+#define kUserInfoBirthday @"birthday"
+#define kUserInfoDepartment @"department"
+#define kUserInfoEmail @"email"
+#define kUserInfoEmployeeId @"employeeId"
+#define kUserInfoErrorCount @"errorCount"
+#define kUserInfoErrorIp @"errorIp"
+#define kUserInfoErrorTime "errorTime"
+#define kUserInfoGender @"gender"
+#define kUserInfoId @"id"
+#define kUserInfoJob @"job"
+#define kUserInfoLastLoginIp @"lastLoginIp"
+#define kUserInfoLastLoginTime @"lastLoginTime"
+#define kUserInfoLoginCount @"loginCount"
+#define kUserInfoMsn @"msn"
+#define kUserInfoPassword @"password"
+#define kUserInfoPhone @"phone"
+#define kUserInfoQQ @"qq"
+#define kUserInfoRealname @"realname"
+#define kUserInfoRegisterIp @"registerIp"
+#define kUserInfoRegisterTime @"registerTime"
+#define kUserInfoResetKey @"resetKey"
+#define kUserInfoResetPwd @"resetPwd"
+#define kUserInfoUserImg @"userImg"
+#define kUserInfoUserSignature @"userSignature"
+#define kUserInfoUsername @"username"
 #endif
 
 // 首页
 #ifndef _INDEX_
 #define _INDEX_
 // 循环图片键
-#define kLoopImagesKey @"loopImagesKey"
+#define kLoopImagesURLKey @"loopImagesURLKey"
 // 最新消息键
 #define kLatestNewsKey @"latestNewsKey"
 // 最热消息键
@@ -91,6 +120,11 @@
 #define kHotNewsShowComponentBounds (CGRectMake(0, 0, 240, 100))
 // 自定义产品原件bounds
 #define kCustomProjectComponentBounds (CGRectMake(0, 0, 120, 100))
+
+#define kPhotoRULKey @"photo"
+#define kContentKey @"content"
+#define kNewsTitleKey @"title"
+
 #endif
 
 // 出国
@@ -124,4 +158,6 @@ __LINE__, __func__);                                                        \
 (NSLog)((format), ##__VA_ARGS__);                                           \
 fprintf(stderr, "-------\n");                                               \
 } while (0)
+
+#define echo() NSLog(@"---\n content = %@, \n --- \n resultCode = %@", content, resultCode)
 

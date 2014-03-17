@@ -10,6 +10,8 @@
 
 #import "DDIndex.h"
 #import "DDCollectionViewPackage.h"
+#import "UIImageView+WebCache.h"
+#import "DDConstant.h"
 
 @interface DDIndex () <
     UITableViewDataSource,
@@ -19,6 +21,9 @@
     UIImageView *_downImageView;       // 下面的图片展示视图
     UIImageView *_upImageView;         // 上面的图片展示视图
     NSInteger _currentShowImageIndex;  // 记录上面当前显示的是第几张图片
+    
+    UITableView *_tableView;           // 右侧新闻
+    DDCollectionViewPackage *_hotNewsviewPackage; // 最热消息视图打包
 }
 
 // 发起http请求
@@ -47,6 +52,9 @@
 // 网络请求产品定制数据
 - (void)requestForProjectCustom;
 
+#pragma mark - URL不能直接存在数组中
+- (NSURL *)urlWithString:(NSString *)urlString;
+
 @end
 
 @implementation DDIndex
@@ -57,12 +65,12 @@
     if (self) {        
         _dataSource = [[NSMutableDictionary alloc] init];
         
-        UIImageView *imageView = [[UIImageView alloc] initWithImage:kImageWithNameHaveSuffix(@"index_background.png")];
+        UIImageView *imageView = [[UIImageView alloc]
+                                  initWithImage:kImageWithNameHaveSuffix(@"index_background.png")];
         imageView.frame = kMainViewBounds;
         [self addSubview:imageView];
         [imageView release];
         
-#pragma mark - MEMORY ERROR
         // 发起请求
         [self sendHttpRequest];
 
@@ -89,12 +97,15 @@
     [_upImageView release];
     [_imageSwitchIntervalTimer release];
     [_updateImagesIntervalTimer release];
+    [_tableView release];
+    [_hotNewsviewPackage release];
     [super dealloc];
 }
 
 - (void)sendHttpRequest
 {
     [self requestForImages];
+    
     // 每隔10分钟更新图片数据
     NSMethodSignature *signature = [DDIndex instanceMethodSignatureForSelector:@selector(requestForImages)];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
@@ -118,16 +129,27 @@
 - (void)requestForImages
 {
     // 请求网络获取图片
-#pragma mark - TODO net request
-
-    // 将获取到的图片存入数据源字典中
-    UIImage *image1 = kImageWithNameHaveSuffix(@"view_05.png");
-    UIImage *image2 = kImageWithNameHaveSuffix(@"中银保险.png");
-    UIImage *image3 = kImageWithNameHaveSuffix(@"scrn_05.png");
-    NSArray *loopImages = @[image1, image2, image3];
-    [_dataSource setObject:loopImages forKey:kLoopImagesKey];
-    
-    
+    [DDHTTPManager sendRequstWithImagesTotalNumber:@"5"
+                                 completionHandler:^(id content, NSString *resultCode) {
+                                     if ([content isKindOfClass:[NSArray class]]) {
+                                         NSArray *imageUrlString = [content valueForKey:kPhotoRULKey];
+                                         if (!imageUrlString.count) {
+                                             return;
+                                         }
+                                         
+                                         // 保存图片路径,拼接路径
+                                         NSMutableArray *array = [[NSMutableArray alloc] init];
+                                         for (int i = 0; i < imageUrlString.count; i++) {
+                                             NSString *urlString = [NSString stringWithFormat:
+                                                                    @"http://192.168.10.201:8080%@",
+                                                                    imageUrlString[i]];
+                                             [array addObject:urlString];
+                                         }
+                                         
+                                         [_dataSource setObject:array forKey:kLoopImagesURLKey];
+                                         [array release];
+                                     }
+                                 }];
 }
 
 - (void)initializePlayImagesRunLoopView
@@ -136,6 +158,7 @@
     
     // 下面的图片展示视图
     _downImageView = [[UIImageView alloc] initWithFrame:frame];
+
     _downImageView.contentMode = UIViewContentModeScaleToFill;
     _downImageView.layer.cornerRadius = 1280;
     [self addSubview:_downImageView];
@@ -151,33 +174,32 @@
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setTarget:self];
     [invocation setSelector:@selector(startRunLoop)];
-    _imageSwitchIntervalTimer = [[NSTimer timerWithTimeInterval:2 * kAnimateDuration
-                                 invocation:invocation
-                                    repeats:YES] retain];
-
+    _imageSwitchIntervalTimer = [[NSTimer timerWithTimeInterval:2
+                                                    invocation:invocation
+                                                       repeats:YES] retain];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:_imageSwitchIntervalTimer forMode:NSDefaultRunLoopMode];
+}
 
-    /*
-    _timer = [NSTimer scheduledTimerWithTimeInterval:2
-                                              target:self
-                                            selector:@selector(startRunLoop)
-                                            userInfo:nil
-                                             repeats:YES];
-    [_timer setFireDate:[NSDate date]];
-     */
-    
-//    [self startRunLoop];
+- (NSURL *)urlWithString:(NSString *)urlString
+{
+    return [NSURL URLWithString:urlString];
 }
 
 - (void)startRunLoop
 {
-    // 获取所有图片
-    NSMutableArray *images = [[_dataSource[kLoopImagesKey] mutableCopy] autorelease];
+    // 获取所有图片路径
+    NSMutableArray *imagesURLString = [[[NSMutableArray alloc]
+                                        initWithArray:_dataSource[kLoopImagesURLKey]] autorelease];
+    
+    if (!imagesURLString.count) {
+        return;
+    }
+
     // 设置显示图片
-    _upImageView.image = images[_currentShowImageIndex];
+    [_upImageView setImageWithURL:[self urlWithString:imagesURLString[_currentShowImageIndex]]];
     __block NSInteger downImageIndex = [self realImageIndexWithIndex:_currentShowImageIndex + 1];
-    _downImageView.image = images[downImageIndex];
+    [_downImageView setImageWithURL:[self urlWithString:imagesURLString[downImageIndex]]];
     
     // 上面的视图向左移除并渐变
     CGPoint center = _upImageView.center;
@@ -192,14 +214,14 @@
                          _upImageView.center = center;
                          
                          // 更新显示图片
-                         _upImageView.image = images[downImageIndex];
+                         [_upImageView setImageWithURL:[self urlWithString:imagesURLString[downImageIndex]]];
                          _currentShowImageIndex = downImageIndex;
-                         UIImage *willRemoveImage = [images firstObject];
-                         [images removeObject:willRemoveImage];
-                         [images addObject:willRemoveImage];
+                         NSString *willRemoveImageURL = [imagesURLString firstObject];
+                         [imagesURLString removeObject:willRemoveImageURL];
+                         [imagesURLString addObject:willRemoveImageURL];
                          downImageIndex = [self realImageIndexWithIndex:_currentShowImageIndex + 1];
-                         _downImageView.image = images[downImageIndex];
-                         
+                         [_downImageView setImageWithURL:[self urlWithString:imagesURLString[downImageIndex]]];
+     
                          // 循环调用
 #pragma mark - NOTE
 /*
@@ -214,7 +236,7 @@
 
 - (NSInteger)realImageIndexWithIndex:(NSInteger)index
 {
-    NSArray *images = [_dataSource objectForKey:kLoopImagesKey];
+    NSArray *images = [_dataSource objectForKey:kLoopImagesURLKey];
     if (index == images.count) {
         index = 0;
     }
@@ -225,11 +247,24 @@
 
 - (void)requestForLatestNews
 {
-#pragma mark - TODO 请求最新动态
-    NSArray *latestNews = @[@"业内人士：航班失联超8小时 失事可能性很大", @"437名女市长和副市长盘点:处级到厅级平均4.8年",
-                            @"东莞市长：东莞从来没有靠黄赌毒发展经济", @"代表委员建议降低个税税率 提高起征点到六七千元",
-                            @"马来西亚航班失联 广东海事直升机待命", @"官方启动一级应急响应 成立马航失联应急小组"];
-    [_dataSource setObject:latestNews forKey:kLatestNewsKey];
+    [DDHTTPManager sendRequstWithPageNumber:@"1"
+                                   pageSize:@"20"
+                          completionHandler:^(id content, NSString *resultCode) {
+                              if (0 != [resultCode intValue]) {
+                                  return;
+                              }
+                              
+                              if ([content isKindOfClass:[NSArray class]]) {
+                                  NSArray *contents = [content valueForKey:kNewsTitleKey];
+                                  if (!contents.count) {
+                                      return;
+                                  }
+                                  [_dataSource setObject:contents forKey:kLatestNewsKey];
+                              }
+                              
+                              // 刷新数据
+                              [_tableView reloadData];
+                          }];
 }
 
 - (void)initializeLatestNewsView
@@ -243,20 +278,44 @@
     [self addSubview:imageView];
     [imageView release];
     
-    UITableView *tableView = [[UITableView alloc] init];
-    tableView.frame = CGRectMake(10, 10, 260, 300);
-    tableView.backgroundColor = [UIColor whiteColor];
-    tableView.dataSource = self;
-    tableView.delegate = self;
-    [imageView addSubview:tableView];
-    [tableView release];
+    _tableView = [[UITableView alloc] init];
+    _tableView.frame = CGRectMake(10, 10, 260, 300);
+    _tableView.backgroundColor = [UIColor whiteColor];
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    [imageView addSubview:_tableView];
+
+    // 右上角button
+    UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    refreshButton.bounds = CGRectMake(0, 0, 50, 50);
+    refreshButton.center = CGPointMake(CGRectGetWidth(imageView.bounds) - CGRectGetMidX(refreshButton.bounds),
+                                       CGRectGetMidY(refreshButton.bounds));
+    [refreshButton setBackgroundImage:kImageWithName(@"最新动态_38") forState:UIControlStateNormal];
+    [imageView addSubview:refreshButton];
 }
 
 #pragma mark - 热门信息实现相关方法
 
 - (void)requestForHotNews
 {
-#pragma mark - TODO 请求数据并在数据源代理方法中加载上界面
+    [DDHTTPManager sendRequstWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                            totalNumber:@"12"
+                      completionHandler:^(id content, NSString *resultCode) {
+                          if (0 != [resultCode intValue]) {
+                              return;
+                          }
+                          if ([content isKindOfClass:[NSArray class]]) {
+                              if (0 == [content count]) {
+                                  return;
+                              }
+                              
+                              [_dataSource setObject:content forKey:kHotNewsKey];
+                              // 刷新数据源
+                              _hotNewsviewPackage.dataSource = content;
+                              // 刷新打包视图界面数据
+                              [_hotNewsviewPackage.collectionView reloadData];
+                          }
+                      }];
 }
 
 - (void)initializeHotNewsView
@@ -275,19 +334,17 @@
                               300);
     
     UIImage *refreshButtonImage = kImageWithNameHaveSuffix(@"hot_36.png");
-    DDCollectionViewPackage *viewPackage =
-        [[DDCollectionViewPackage alloc] initWithFrame:frame
-                                  collectionViewLayout:layout
-                                       reuseIdentifier:@"HotNewsViewCellIdenitfier"
-                                collectionCellViewType:DDCollectionCellViewSubTitle
-                              collectionCellViewBounds:kHotNewsShowComponentBounds
-                                            dataSource:nil
-                                    refreshButtonImage:refreshButtonImage];
+    _hotNewsviewPackage = [[DDCollectionViewPackage alloc] initWithFrame:frame
+                                                    collectionViewLayout:layout
+                                                         reuseIdentifier:@"HotNewsViewCellIdenitfier"
+                                                  collectionCellViewType:DDCollectionCellViewSubTitle
+                                                collectionCellViewBounds:kHotNewsShowComponentBounds
+                                                              dataSource:_dataSource[kHotNewsKey]
+                                                      refreshButtonImage:refreshButtonImage];
     [layout release];
-    viewPackage.backgroundImageView.image = kImageWithNameHaveSuffix(@"最热-底_12.png");
-    viewPackage.collectionView.tag = kHotCollectionViewTag;
-    [self addSubview:viewPackage];
-    [viewPackage release];
+    _hotNewsviewPackage.backgroundImageView.image = kImageWithNameHaveSuffix(@"最热-底_12.png");
+    _hotNewsviewPackage.collectionView.tag = kHotCollectionViewTag;
+    [self addSubview:_hotNewsviewPackage];
 }
 
 #pragma mark - 产品定制实现相关方法
