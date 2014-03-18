@@ -112,6 +112,8 @@
 #define kLatestNewsKey @"latestNewsKey"
 // 最热消息键
 #define kHotNewsKey @"hotNewsKey"
+// 自定义产品
+#define kCustomKey @"customProduct"
 // 最热视图键
 #define kHotCollectionViewTag 300
 // 自定义产品视图键
@@ -141,6 +143,7 @@
 #define _FINANCE_PRODUCTS_
 // 理财产品页tag
 #define kFinanceButtonTag 500
+#define kMetalButtonTag 550
 
 #endif
 

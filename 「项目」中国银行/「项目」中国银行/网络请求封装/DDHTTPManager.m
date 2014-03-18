@@ -11,6 +11,7 @@
 #import "JSON.h"
 #import "DDConstant.h"
 #import "MyMD5.h"
+#import "ASIDownloadCache.h"
 
 @interface DDHTTPManager ()
 
@@ -25,28 +26,12 @@
                                        params:(NSDictionary *)params
                             completionHandler:(void (^)(id content, NSString *resultCode))completion;
 
-/*!
- *    data --> JSON
- *
- *    @param data 需要转换格式的数据
- *
- *    @return 转换为JSON后的数据
- */
-+ (id)JSONObjectWithData:(NSData *)data;
-
-/*!
- *    JSON --> data
- *
- *    @param object 需要装换的JSON数据
- *
- *    @return 装换为data后的数据
- */
-+ (NSData *)dataWithJSONObject:(id)object;
 
 @end
 
 @implementation DDHTTPManager
 
+// 异步请求
 + (void)startAsynchronousRequestWithURLString:(NSString *)URLString
                                        params:(NSDictionary *)params
                             completionHandler:(void (^)(id content, NSString *resultCode))completion
@@ -71,6 +56,16 @@
     NSString *string = [params JSONRepresentation];
     // 传输数据
     [request setPostValue:string forKey:kJSONParamKey];
+
+    // cache
+    NSString *cachePath = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    ASIDownloadCache *cache = [[ASIDownloadCache alloc] init];
+    [cache setStoragePath:cachePath];
+    cache.defaultCachePolicy = ASIOnlyLoadIfNotCachedCachePolicy;
+    request.cacheStoragePolicy = ASICachePermanentlyCacheStoragePolicy;
+    request.downloadCache = cache;
+    [cache release];
+    
     // 开启异步请求
     [request startAsynchronous];
     // 完成调用
@@ -98,55 +93,6 @@
     }];
 }
 
-+ (id)JSONObjectWithData:(NSData *)data
-{
-    if (!data) {
-        return nil;
-    }
-    NSError *error = nil;
-    id object = [NSJSONSerialization JSONObjectWithData:data
-                                                options:NSJSONReadingMutableLeaves
-                                                  error:&error];
-    NSAssert(error, @"Deserialized JSON string failed with error message '%@'.",
-             [error localizedDescription]);
-    
-    return object;
-}
-
-+ (NSData *)dataWithJSONObject:(id)object
-{
-    if (!object) {
-        return nil;
-    }
-    NSError *error = nil;
-    NSData *data = [NSJSONSerialization dataWithJSONObject:object
-                                                   options:NSJSONWritingPrettyPrinted
-                                                     error:&error];
-    NSAssert(error, @"Serialized JSON string failed with error message '%@'.",
-             [error localizedDescription]);
-
-    return data;
-}
-
-
-// 请求用户名密码
-+ (void)sendRequstWithUsername:(NSString *)name
-                      password:(NSString *)password
-             completionHandler:(void(^)(id content, NSString *resultCode))completion;
-{
-    NSMutableDictionary *dict = [@{} mutableCopy];
-    [dict setObject:name forKey:kUsernameKey];
-    NSString *md5Password = [MyMD5 md5:password];
-    [dict setObject:md5Password forKey:kPasswordKey];
-    
-    NSString *urlString = [NSString stringWithFormat:@"%@%@", kBaseRoot, kLogin];
-    [self startAsynchronousRequestWithURLString:urlString
-                                         params:dict
-                              completionHandler:completion];
-    
-    [dict release];
-}
-
 // 非加密传输方式
 + (void)sendRequstWithArguments:(NSArray *)arguments
                            keys:(NSArray *)keys
@@ -169,6 +115,29 @@
     [dict release];
 }
 
+#pragma mark - 登录
+
+// 请求用户名密码
++ (void)sendRequstWithUsername:(NSString *)name
+                      password:(NSString *)password
+             completionHandler:(void(^)(id content, NSString *resultCode))completion;
+{
+    NSMutableDictionary *dict = [@{} mutableCopy];
+    [dict setObject:name forKey:kUsernameKey];
+    NSString *md5Password = [MyMD5 md5:password];
+    [dict setObject:md5Password forKey:kPasswordKey];
+    
+    NSString *urlString = [NSString stringWithFormat:@"%@%@", kBaseRoot, kLogin];
+    [self startAsynchronousRequestWithURLString:urlString
+                                         params:dict
+                              completionHandler:completion];
+    
+    [dict release];
+}
+
+
+#pragma mark - 首页
+
 // 首页展示图片
 + (void)sendRequstWithImagesTotalNumber:(NSString *)number
                    completionHandler:(void (^)(id content, NSString * resultCode))completion
@@ -185,7 +154,7 @@
                completionHandler:(void (^)(id content, NSString * resultCode))completion
 {
     [self sendRequstWithArguments:@[pageNumber, pageSize]
-                             keys:@[kPageNumKey, kPageSize]
+                             keys:@[kPageNumKey, kPageSizeKey]
                   URLModuleString:kRecentNewsList
                 completionHandler:completion];
 }
@@ -196,11 +165,91 @@
            completionHandler:(void (^)(id content, NSString * resultCode))completion
 {
     [self sendRequstWithArguments:@[userId, totalNumber]
-                             keys:@[kUserID, kTotalNum]
+                             keys:@[kUserIDKey, kTotalNumberKey]
                   URLModuleString:kHotProductList
                 completionHandler:completion];
 }
 
+// 首页产品定制
++ (void)sendRequestForCustomProjectWithUserId:(NSString *)userId
+                                  totalNumber:(NSString *)totalNumber
+                            completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[userId, totalNumber]
+                             keys:@[kUserIDKey, kTotalNumberKey]
+                  URLModuleString:kCustomizationList
+                completionHandler:completion];
+}
+
+#pragma mark - 出国服务
+
+// 政策咨询
++ (void)sendRequstWithPageSize:(NSString *)pageSize
+                    pageNumber:(NSString *)pageNumber
+                       byTitle:(NSString *)byTitle
+                    byKeywords:(NSString *)byKeywords
+             completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[pageSize, pageNumber, byTitle, byKeywords]
+                             keys:@[kPageSizeKey, kPageNumKey, kByTitleKey, kByKeywordsKey]
+                  URLModuleString:kPolicyAdviceList
+                completionHandler:completion];
+}
+
+// 自选模式
++ (void)sendRequstForOptionalWithUserId:(NSString *)userId
+                                 typeId:(NSString *)typeId
+                             pageNumber:(NSString *)pageNumber
+                               pageSize:(NSString *)pageSize
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[userId, typeId, pageNumber, pageSize]
+                             keys:@[kUserIDKey, kTypeIdKey, kPageNumKey, kPageSizeKey]
+                  URLModuleString:kOptionalList
+                completionHandler:completion];
+}
+
+#pragma mark - 理财产品
+
+// 基金
++ (void)sendRequestForFundsWithUserId:(NSString *)userId
+                           pageNumber:(NSString *)pageNumber
+                             pageSize:(NSString *)pageSize
+                    completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[userId, pageNumber, pageSize]
+                             keys:@[kUserIDKey, kPageNumKey, kPageSizeKey]
+                  URLModuleString:kFundList
+                completionHandler:completion];
+}
+
+// 贵金属
++(void)sendRequestForMetalWithUserId:(NSString *)userId
+                          supplierId:(NSString *)supplierId
+                           purposeId:(NSString *)purposeId
+                               ageId:(NSString *)ageId
+                              typeId:(NSString *)typeId
+                            pageSize:(NSString *)pageSize
+                             pageNum:(NSString *)pageNum
+                   completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[userId, supplierId, purposeId, ageId, typeId, pageSize, pageNum]
+                             keys:@[kUserIDKey, kSupplierIdKey, kPurposeIdKey, kAgeIdKey ,kTypeIdKey, kPageSizeKey, kPageNumKey]
+                  URLModuleString:kMetalsList
+                completionHandler:completion];
+}
+
+// 保险
++ (void)sendRequestFortInsureWithUserId:(NSString *)userId
+                             pageNumber:(NSString *)pageNumber
+                               pageSize:(NSString *)pageSize
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[userId, pageNumber, pageSize]
+                             keys:@[kUserIDKey, kPageNumKey, kPageSizeKey]
+                  URLModuleString:kInsureList
+                completionHandler:completion];
+}
 @end
 
 

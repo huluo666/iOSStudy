@@ -37,7 +37,6 @@
     reuseIdentifier:(NSString *)identifier
     collectionCellViewType:(DDCollectionCellViewType) collectionCellViewType
     collectionCellViewBounds:(CGRect)collectionCellViewBounds
-    dataSource:(NSMutableArray *)dataSource
     refreshButtonImage:(UIImage *)refreshButtonImage
 {
     if (self = [super initWithFrame:frame]) {
@@ -68,8 +67,6 @@
         _pageControl.bounds = CGRectMake(0, 0, bounds.size.width - 20, 30);
         _pageControl.center = CGPointMake(CGRectGetMidX(bounds),
                                          CGRectGetMaxY(bounds) - CGRectGetMaxY(_pageControl.bounds));
-//        pageControl.numberOfPages = ceil(_dataSource.count / 4.0);
-        _pageControl.numberOfPages = ceil(13 / 4.0);
         _pageControl.currentPage = 0;
         _pageControl.currentPageIndicatorTintColor = [UIColor redColor];
         _pageControl.pageIndicatorTintColor = [UIColor grayColor];
@@ -90,7 +87,6 @@
         _identifier = [identifier copy];
         _collectionCellViewType = collectionCellViewType;
         _collectionCellViewBounds = collectionCellViewBounds;
-        _dataSource = [dataSource retain];
     }
     
     return self;
@@ -115,8 +111,11 @@
      numberOfItemsInSection:(NSInteger)section
 {
     // 数据个数小余12的时候补齐12
-    return 12;
-//    return _dataSource.count;
+    NSInteger result = 1;
+    if (_dataSource) {
+        result = _dataSource.count;
+    }
+    return result;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -124,28 +123,29 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_identifier
                                                                            forIndexPath:indexPath];
-    DDCollectionCellView *cellView = [[DDCollectionCellView alloc] initWithFrame:_collectionCellViewBounds
-                                                      projectShowViewType:_collectionCellViewType];
-    if (_collectionCellViewType == DDCollectionCellViewSubTitle) {
-        cellView.detailTextLabel.text = _dataSource[indexPath.row][@"categoryName"];
-    }
-    cellView.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-//    cellView.imageView.image = kImageWithName(@"网上银行BOCNET1");
-    cellView.processTap = ^(UIView *view) {
-        if ([view isKindOfClass:[UIButton class]]) {
-            // 点击详情按钮回调(热点消息)
-            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            // 添加到根视图上
-            UIView *rootView = kRootView;
-            [rootView addSubview:detail];
-            [detail release];
-        } else {
-            // 点击cell回调(产品定制)
+    if (_dataSource) {
+        DDCollectionCellView *cellView = [[DDCollectionCellView alloc] initWithFrame:_collectionCellViewBounds
+                                                                 projectShowViewType:_collectionCellViewType];
+        if (_collectionCellViewType == DDCollectionCellViewSubTitle) {
+            cellView.detailTextLabel.text = _dataSource[indexPath.row][@"published"];
+        }
+        cellView.textLabel.text = _dataSource[indexPath.row][@"name"];
+        cellView.imageView.image = kImageWithName(@"网上银行BOCNET1");
+        cellView.processTap = ^(UIView *view) {
+            if ([view isKindOfClass:[UIButton class]]) {
+                // 点击详情按钮回调(热点消息)
+                DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
+                // 添加到根视图上
+                [kRootView addSubview:detail];
+                [detail release];
+            } else {
+                // 点击cell回调(产品定制)
+            };
         };
-    };
-    [cell.contentView addSubview:cellView];
-    [cellView release];
-    NSLog(@"dataSource = %@", _dataSource);
+        [cell.contentView addSubview:cellView];
+        [cellView release];
+    }
+    
     return cell;
 }
 
@@ -162,7 +162,6 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     NSLog(@"x = %f", _collectionView.contentOffset.x);
-    
     // 判断当前contentOffSet，决定如何更新显示
     CGFloat width = CGRectGetWidth(self.bounds);
     
@@ -198,11 +197,8 @@
         // 位置还原
         _collectionView.contentOffset = CGPointMake(width, _collectionView.contentOffset.y);
     }
-    
-    // 重载数据
-    [_collectionView reloadData];
-//    _pageControl.numberOfPages = ceil(_dataSource.count / 4.0);
-    _pageControl.numberOfPages = ceil(12 / 4.0);
+
+    _pageControl.numberOfPages = ceil(_dataSource.count / 4.0);
 }
 
 @end

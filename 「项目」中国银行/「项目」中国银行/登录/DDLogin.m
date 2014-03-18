@@ -174,6 +174,7 @@
 //    }];
     
     // 请求登录
+    sender.enabled = NO;
     __block DDLogin *this = self;
     [DDHTTPManager sendRequstWithUsername:username
                                  password:password

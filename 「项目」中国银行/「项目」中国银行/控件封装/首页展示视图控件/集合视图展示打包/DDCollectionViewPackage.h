@@ -24,7 +24,6 @@
     reuseIdentifier:(NSString *)identifier
     collectionCellViewType:(DDCollectionCellViewType) collectionCellViewType
     collectionCellViewBounds:(CGRect)collectionCellViewBounds
-    dataSource:(NSMutableArray *)dataSource
     refreshButtonImage:(UIImage *)refreshButtonImage;
 @end
 

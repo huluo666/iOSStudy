@@ -8,8 +8,9 @@
 
 #import "DDOptionalView.h"
 #import "DDShowDetail.h"
-#import "DDOptional.h"
 #import "DDPullDown.h"
+#import "DDAppDelegate.h"
+#import "DDOptionalCellView.h"
 
 @interface DDOptionalView () <
     UICollectionViewDelegate,
@@ -17,6 +18,7 @@
 {
     UIScrollView *_menuView;                    // 菜单视图
     UIButton *_currentSelectedButton;           // 记录当前选中标题按钮
+    NSMutableArray *_dataSource;                 // 数据源
 }
 
 // 切换标题对应的视图
@@ -36,6 +38,7 @@
     NSLog(@"%@ dealloc", [self class]);
     [_menuView release];
     _currentSelectedButton = nil;
+    [_dataSource release];
     [super dealloc];
 }
 
@@ -77,13 +80,25 @@
         pullDown.status.textColor = [UIColor whiteColor];
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"]; // cache
-        __block DDOptionalView *view = self;
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            NSLog(@"开始刷新");
-            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+            [DDHTTPManager sendRequstForOptionalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                                    typeId:@"1"
+                                                pageNumber:@"22"
+                                                  pageSize:@"6"
+                                         completionHandler:^(id content, NSString *resultCode) {
+                                             NSMutableArray *data = content;
+                                             if (_dataSource != data) {
+                                                 [_dataSource release];
+                                                 _dataSource = nil;
+                                                 _dataSource = [data mutableCopy];
+                                                 [collectionView reloadData];
+                                             }
+                                             [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                                                   withObject:nil
+                                                                   afterDelay:1];
+                                         }];
         };
-#pragma mark - TODO 刷新数据CollectionView
-
+        
         // 菜单
         _menuView = [[UIScrollView alloc] init];
         _menuView.bounds = CGRectMake(0, 0, CGRectGetWidth(collectionView.bounds) * 0.62 , 30);
@@ -147,6 +162,30 @@
         }
         lastButtonMaxX += 20;
         _menuView.contentSize = CGSizeMake(lastButtonMaxX, CGRectGetHeight(_menuView.bounds));
+        
+        // 初始化界面的同时获取数据
+        [DDHTTPManager sendRequstForOptionalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                                typeId:@"1"
+                                            pageNumber:@"22"
+                                              pageSize:@"2"
+                                     completionHandler:^(id content, NSString *resultCode) {
+                                         if (0 != [resultCode intValue]) {
+                                             return;
+                                         }
+                                         if ([content isKindOfClass:[NSArray class]]) {
+                                             NSMutableArray *data = content;
+                                             if (0 == data.count) {
+                                                 return;
+                                             }
+                                             if (_dataSource != data) {
+                                                 [_dataSource release];
+                                                 _dataSource = [content mutableCopy];
+                                                 
+                                                 // 更新界面
+                                                 [collectionView reloadData];
+                                             }
+                                         }
+                                     }];
     }
 
     return self;
@@ -213,21 +252,12 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"OptionalCell"
                                                                            forIndexPath:indexPath];
-    DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
-    optional.bounds = CGRectMake(0, 0, 300, 300);
+    DDOptionalCellView *optional = [[DDOptionalCellView alloc] initWithFrame:CGRectZero];
     optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
-    __block DDOptionalView *view = self;
-    optional.tapAction = ^(UIButton *sender) {
-        if (sender.tag == kDetailButtonTag) {
-            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            [view.superview addSubview:detail];
-            [detail release];
-        } else {
-#pragma mark - TODO
-            NSLog(@"选购");
-        }
-    };
-    //    cell.backgroundColor = [UIColor grayColor];
+    if (_dataSource) {
+        optional.titleLabel.text = [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"productId"]];
+        optional.displayLabel.text = _dataSource[indexPath.row][@"published"];
+    }
     [cell.contentView addSubview:optional];
     [optional release];
     return cell;

@@ -8,12 +8,17 @@
 
 #import "DDPreciousMetalView.h"
 #import "DDPullDown.h"
-#import "DDOptional.h"
+#import "DDCustomCellView.h"
 #import "DDShowDetail.h"
+#import "DDSelectViewController.h"
 
 @interface DDPreciousMetalView () <
     UICollectionViewDelegate,
     UICollectionViewDataSource>
+{
+    NSMutableArray *_dataSource;
+    UIPopoverController *_popover;
+}
 
 // 创建label
 - (UILabel *)label;
@@ -31,6 +36,8 @@
 - (void)dealloc
 {
     NSLog(@"%@ is dealloced", [self class]);
+    [_dataSource release];
+    [_popover release];
     [super dealloc];
 }
 
@@ -54,6 +61,7 @@
         [categoryButton addTarget:self
                            action:@selector(buttonAction:)
                  forControlEvents:UIControlEventTouchUpInside];
+        categoryButton.tag = kMetalButtonTag;
         [self addSubview:categoryButton];
 
         // 供应商
@@ -70,6 +78,7 @@
         [supplierButton addTarget:self
                            action:@selector(buttonAction:)
                  forControlEvents:UIControlEventTouchUpInside];
+        supplierButton.tag = kMetalButtonTag + 1;
         [self addSubview:supplierButton];
         
         // 适宜人群，按年龄
@@ -88,6 +97,7 @@
         [targetAgeButton addTarget:self
                            action:@selector(buttonAction:)
                  forControlEvents:UIControlEventTouchUpInside];
+        targetAgeButton.tag = kMetalButtonTag + 2;
         [self addSubview:targetAgeButton];
         
         // 适宜人群，按意愿
@@ -106,6 +116,7 @@
         [targetWishButton addTarget:self
                             action:@selector(buttonAction:)
                   forControlEvents:UIControlEventTouchUpInside];
+        targetWishButton.tag = kMetalButtonTag + 3;
         [self addSubview:targetWishButton];
         
         // 集合视图
@@ -141,12 +152,55 @@
         pullDown.status.textColor = [UIColor whiteColor];
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
-        __block DDPreciousMetalView *view = self;
+    
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            NSLog(@"开始刷新");
-            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+            [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                              supplierId:@""
+                                               purposeId:@""
+                                                   ageId:@""
+                                                  typeId:@""
+                                                pageSize:@"12"
+                                                 pageNum:@"1"
+                                       completionHandler:^(id content, NSString *resultCode) {
+                                           NSMutableArray *data = content;
+                                           if (_dataSource != data) {
+                                               [_dataSource release];
+                                               _dataSource = nil;
+                                               _dataSource = [content mutableCopy];
+                                               [collectionView reloadData];
+                                           }
+                                           [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                                                 withObject:nil
+                                                                 afterDelay:1];
+                                       }];
         };
-#pragma mark - TODO 刷新数据CollectionView
+        
+        // 加载数据
+        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                          supplierId:@""
+                                           purposeId:@""
+                                               ageId:@""
+                                              typeId:@""
+                                            pageSize:@"12"
+                                             pageNum:@"1"
+                                   completionHandler:^(id content, NSString *resultCode) {
+                                       if (0 != [resultCode intValue]) {
+                                           return;
+                                       }
+                                       if ([content isKindOfClass:[NSArray class]]) {
+                                           NSMutableArray *data = content;
+                                           if (0 == data.count) {
+                                               return;
+                                           }
+                                           if (_dataSource != data) {
+                                               [_dataSource release];
+                                               _dataSource = [content mutableCopy];
+                                               
+                                               // 更新界面
+                                               [collectionView reloadData];
+                                           }
+                                       }
+                                   }];
 
     }
     return self;
@@ -183,7 +237,81 @@
 
 - (void)buttonAction:(UIButton *)sender
 {
+    NSInteger index = sender.tag - kMetalButtonTag;
+    switch (index) {
+        case 0: {
+            NSArray *titles = @[@"默认", @"民俗系列", @"佛教系列", @"儿童系列", @"钱币邮票系列", @"婚庆系列"];
+                CGRect rect = CGRectMake(0, 0, 240, 40);
+            [self processButtonActionWithSender:sender titles:titles rect:rect];
+        }
+            break;
+        case 1: {
+            NSArray *titles = @[@"默认", @"中超国鼎", @"国富黄金", @"中国工艺", @"背景美工", @"上海金市", @"中国银行(吉祥金)"];
+            CGRect rect = CGRectMake(0, 0, 640, 40);
+            [self processButtonActionWithSender:sender titles:titles rect:rect];
+        }
+            break;
+        case 2: {
+            NSArray *titles = @[@"默认", @"儿童", @"青年", @"中年", @"老年"];
+            CGRect rect = CGRectMake(0, 0, 1080, 40);
+            [self processButtonActionWithSender:sender titles:titles rect:rect];
+        }
+            break;
+        case 3: {
+            NSArray *titles = @[@"默认", @"收藏", @"投资", @"馈赠", @"公司定制"];
+            CGRect rect = CGRectMake(0, 0, 1480, 40);
+            [self processButtonActionWithSender:sender titles:titles rect:rect];
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)processButtonActionWithSender:(UIButton *)sender titles:(NSArray *)titles rect:(CGRect)rect
+{
+    DDSelectViewController *select = [[DDSelectViewController alloc]
+                                      initWithStyle:UITableViewStylePlain
+                                      dataSource:titles];
+    __block UIButton *button = sender;
+    select.completionHandler = ^(NSString *returnString, NSInteger index) {
+        [button setTitle:returnString forState:UIControlStateNormal];
+        if (_popover.isPopoverVisible) {
+            [_popover dismissPopoverAnimated:YES];
+        }
+        
+        // 请求网络，更新数据
+//        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+//                                          supplierId:@""
+//                                           purposeId:@""
+//                                               ageId:@""
+//                                              typeId:@""
+//                                            pageSize:@"12"
+//                                             pageNum:@"1"
+//                                   completionHandler:^(id content, NSString *resultCode) {
+//                                       NSMutableArray *data = content;
+//                                       if (_dataSource != data) {
+//                                           [_dataSource release];
+//                                           _dataSource = nil;
+//                                           _dataSource = [content mutableCopy];
+//                                           [collectionView reloadData];
+//                                       }
+//                                       [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+//                                                             withObject:nil
+//                                                             afterDelay:1];
+//                                   }];
+    };
     
+    if (_popover) {
+        [_popover release];
+        _popover = nil;
+    }
+    _popover = [[UIPopoverController alloc] initWithContentViewController:select];
+    _popover.popoverContentSize = CGSizeMake(250, 300);
+    [_popover presentPopoverFromRect:rect
+                              inView:self
+            permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
 #pragma mark - <UICollectionViewDataSource>
@@ -191,7 +319,12 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 3;
+    NSInteger count = 3;
+    if (_dataSource) {
+        count = _dataSource.count;
+    }
+    
+    return count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -199,23 +332,11 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"自选模式"
                                                                            forIndexPath:indexPath];
-    DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
-    optional.bounds = CGRectMake(0, 0, 300, 300);
-    optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
-    __block DDPreciousMetalView *view = self;
-    optional.tapAction = ^(UIButton *sender) {
-        if (sender.tag == kDetailButtonTag) {
-            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            [view.superview addSubview:detail];
-            [detail release];
-        } else {
-#pragma mark - TODO
-            NSLog(@"选购");
-        }
-    };
-    //    cell.backgroundColor = [UIColor grayColor];
-    [cell.contentView addSubview:optional];
-    [optional release];
+    DDCustomCellView *metal = [[DDCustomCellView alloc] initWithFrame:CGRectZero];
+    metal.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
+
+    [cell.contentView addSubview:metal];
+    [metal release];
     return cell;
 }
 

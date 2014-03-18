@@ -108,6 +108,7 @@
             [_button addTarget:self
                        action:@selector(processTap:)
              forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:_button];
         }
     }
     return self;

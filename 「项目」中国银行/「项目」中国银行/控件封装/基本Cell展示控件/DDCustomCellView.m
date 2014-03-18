@@ -6,14 +6,17 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "DDOptional.h"
+#import "DDCustomCellView.h"
 
-@implementation DDOptional
+@implementation DDCustomCellView
 
 - (void)dealloc
 {
     NSLog(@"%@ is dealloced", [self class]);
-    [_tapAction release];
+    [_tapDetailAction   release];
+    [_tapBuyAction release];
+    [_contentView release];
+    [_titleLabel release];
     [super dealloc];
 }
 
@@ -27,23 +30,22 @@
         [self addSubview:imageView];
         [imageView release];
         
-        UILabel *titleLabel = [[UILabel alloc] init];
-        titleLabel.bounds = CGRectMake(0,
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.bounds = CGRectMake(0,
                                        0,
                                        CGRectGetWidth(imageView.bounds),
                                        CGRectGetHeight(imageView.bounds) * 0.2);
-        titleLabel.center = CGPointMake(CGRectGetMidX(imageView.bounds),
-                                        CGRectGetMidY(titleLabel.bounds));
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.text = @"test";
-        [imageView addSubview:titleLabel];
-        [titleLabel release];
+        _titleLabel.center = CGPointMake(CGRectGetMidX(imageView.bounds),
+                                        CGRectGetMidY(_titleLabel.bounds));
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.text = @"test";
+        [imageView addSubview:_titleLabel];
         
         // 详情按钮
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         detailButton.bounds = CGRectMake(0, 0, 60, 30);
         detailButton.tag = kDetailButtonTag;
-        detailButton.center = CGPointMake(CGRectGetMidX(titleLabel.bounds) - CGRectGetMidX(detailButton.bounds) - 10,
+        detailButton.center = CGPointMake(CGRectGetMidX(_titleLabel.bounds) - CGRectGetMidX(detailButton.bounds) - 10,
                                     CGRectGetMaxY(imageView.bounds) - CGRectGetHeight(detailButton.bounds));
         [detailButton setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal]; // cache
         [detailButton addTarget:self
@@ -61,14 +63,30 @@
                    action:@selector(processTap:)
          forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:chooseButton];
+        
+        // 内容视图
+        _contentView = [[UIView alloc] init];
+        _contentView.bounds = CGRectMake(0, 0, 270, 170);
+        _contentView.center = CGPointMake(CGRectGetMidX(imageView.bounds),
+                                          CGRectGetMidY(imageView.bounds) + 10);
+        [imageView addSubview:_contentView];
     }
     return self;
 }
 
 - (void)processTap:(UIButton *)sender
 {
-    if (_tapAction) {
-        _tapAction(sender);
+    NSInteger index = sender.tag;
+    if (kDetailButtonTag == index) {
+        // 查看详情
+        if (_tapDetailAction) {
+            _tapDetailAction(sender);
+        }
+    } else {
+        // 购买
+        if (_tapBuyAction) {
+            _tapBuyAction(sender);
+        }
     }
 }
 

@@ -12,6 +12,9 @@
 @interface DDConsultView ()<
     UITableViewDelegate,
     UITableViewDataSource>
+{
+    NSMutableArray *_dataSource;
+}
 
 @end
 
@@ -20,13 +23,8 @@
 - (void)dealloc
 {
     NSLog(@"%@ dealloc", [self class]);
+    [_dataSource release];
     [super dealloc];
-}
-
-
-- (void)stop:(DDRefreshBaseView *)refreshBaseView
-{
-    [refreshBaseView endRefreshingWithSuccess:YES];
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -60,10 +58,22 @@
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         // 下拉箭头多次用到，cache
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
-        __block DDConsultView *view = self;
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            NSLog(@"开始刷新");
-            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+            [DDHTTPManager sendRequstWithPageSize:@"12"
+                                       pageNumber:@"1"
+                                          byTitle:@""
+                                       byKeywords:@""
+                                completionHandler:^(id content, NSString *resultCode) {
+                                    // 初始化数据源，加载数据
+                                    NSMutableArray *data = content;
+                                    if (_dataSource != data) {
+                                        [_dataSource release];
+                                        _dataSource = nil;
+                                        _dataSource = [data mutableCopy];
+                                    }
+                                    [tableView reloadData];
+                                    [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:) withObject:nil afterDelay:1];
+                                }];
         };
 #pragma mark - TODO 刷新数据TableView
         
@@ -106,6 +116,17 @@
         titleLabel.text = @"标题";
         [self addSubview:titleLabel];
         [titleLabel release];
+        
+        // 加载数据
+        [DDHTTPManager sendRequstWithPageSize:@"12"
+                                   pageNumber:@"1"
+                                      byTitle:@""
+                                   byKeywords:@""
+                            completionHandler:^(id content, NSString *resultCode) {
+                                // 初始化数据源，加载数据
+                                _dataSource = [content mutableCopy];
+                                [tableView reloadData];
+                            }];
     }
 
     return self;
@@ -116,7 +137,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return 12;
+    return _dataSource.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -147,10 +168,10 @@
         [cell.contentView addSubview:titleViewLabel];
         [titleViewLabel release];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row];
-    // title view
-    titleViewLabel.text = [NSString stringWithFormat:@"测试标题 %ld", indexPath.row];
-    
+    if (_dataSource) {
+        cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
+        titleViewLabel.text = _dataSource[indexPath.row][@"title"];
+    }
     return cell;
 }
 

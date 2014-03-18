@@ -26,10 +26,33 @@
 // 首页最新消息列表
 #define kRecentNewsList @"appIndex/getRecentNewsList"
 #define kPageNumKey @"pageNum"
-#define kPageSize @"pageSize"
+#define kPageSizeKey @"pageSize"
 // 首页热点消息
 #define kHotProductList @"appIndex/getHotProductList"
-#define kUserID @"userId"
-#define kTotalNum @"totalNum"
+#define kUserIDKey @"userId"
+#define kTotalNumberKey @"totalNum"
+// 产品定制
+#define kCustomizationList @"appIndex/getCustomizationList"
+
+// 出国服务
+#define kPolicyAdviceList @"appAbroad/getPolicyAdviceList"
+#define kByTitleKey @"byTitle"
+#define kByKeywordsKey @"byKeywords"
+
+// 自选模式
+#define kOptionalList @"appAbroad/getChooseByYourselfModeList"
+#define kTypeIdKey @"typeId"
+
+// 理财产品
+#define kFundList @"appFinancial/getFundList"
+
+// 贵金属
+#define kMetalsList @"appFinancial/getMetalsList"
+#define kSupplierIdKey @"supplierId"
+#define kPurposeIdKey @"purposeId"
+#define kAgeIdKey @"ageId"
+
+// 保险
+#define kInsureList @"appFinancial/getInsureList"
 
 #endif

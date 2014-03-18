@@ -158,10 +158,10 @@
         pullDown.status.textColor = [UIColor whiteColor];
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"]; // cache
-        __block DDFinanceProductsView *view = self;
+
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
             NSLog(@"开始刷新");
-            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+
         };
 
         // 申请按钮

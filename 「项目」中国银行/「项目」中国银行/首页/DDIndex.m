@@ -24,6 +24,7 @@
     
     UITableView *_tableView;           // 右侧新闻
     DDCollectionViewPackage *_hotNewsviewPackage; // 最热消息视图打包
+    DDCollectionViewPackage *_customProductPackage; // 产品自定义
 }
 
 // 发起http请求
@@ -99,6 +100,7 @@
     [_updateImagesIntervalTimer release];
     [_tableView release];
     [_hotNewsviewPackage release];
+    [_customProductPackage release];
     [super dealloc];
 }
 
@@ -124,7 +126,6 @@
 }
 
 #pragma mark - 相册实现相关方法
-
 
 - (void)requestForImages
 {
@@ -269,7 +270,7 @@
 
 - (void)initializeLatestNewsView
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:kImageWithNameHaveSuffix(@"最新动态-底_09.png")];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:kImageWithName(@"最新动态-底_09")];
     imageView.bounds = CGRectMake(0, 0, 280, 320);
     imageView.center = CGPointMake(CGRectGetMaxX(self.bounds) - CGRectGetMidX(imageView.bounds) - 20,
                          CGRectGetMidY(_downImageView.frame));
@@ -310,10 +311,11 @@
                               }
                               
                               [_dataSource setObject:content forKey:kHotNewsKey];
-                              // 刷新数据源
-                              _hotNewsviewPackage.dataSource = content;
+                              // 设置数据源
+                              _hotNewsviewPackage.dataSource = [content mutableCopy];
                               // 刷新打包视图界面数据
                               [_hotNewsviewPackage.collectionView reloadData];
+                              _hotNewsviewPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
                           }
                       }];
 }
@@ -339,7 +341,6 @@
                                                          reuseIdentifier:@"HotNewsViewCellIdenitfier"
                                                   collectionCellViewType:DDCollectionCellViewSubTitle
                                                 collectionCellViewBounds:kHotNewsShowComponentBounds
-                                                              dataSource:_dataSource[kHotNewsKey]
                                                       refreshButtonImage:refreshButtonImage];
     [layout release];
     _hotNewsviewPackage.backgroundImageView.image = kImageWithNameHaveSuffix(@"最热-底_12.png");
@@ -351,7 +352,23 @@
 
 - (void)requestForProjectCustom
 {
-#pragma mark - TODO 请求产品定制数据并添加到数据源中
+    [DDHTTPManager sendRequestForCustomProjectWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                             totalNumber:@"12"
+                                       completionHandler:^(id content, NSString *resultCode) {
+                                           if (0 != [resultCode intValue]) {
+                                               return;
+                                           }
+                                           if ([content isKindOfClass:[NSArray class]]) {
+                                               if (0 == [content count]) {
+                                                   return;
+                                               }
+                                               [_dataSource setObject:content forKey:kCustomKey];
+                                               // 设置数据源
+                                               _customProductPackage.dataSource = [content mutableCopy];
+                                               _customProductPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
+                                               [_customProductPackage.collectionView reloadData];
+                                           }
+                                       }];
 }
 
 - (void)initializeProjectCustomView
@@ -367,20 +384,18 @@
                               CGRectGetMaxY(_downImageView.frame),
                               280,
                               300);
-    UIImage *refreshButtonImage = kImageWithNameHaveSuffix(@"最新动态_38.png");
-    DDCollectionViewPackage *viewPackage =
+    UIImage *refreshButtonImage = kImageWithNameHaveSuffix(@"产品定制_39.png");
+    _customProductPackage =
         [[DDCollectionViewPackage alloc] initWithFrame:frame
                                   collectionViewLayout:layout
                                        reuseIdentifier:@"customProjectViewCellIdenitfier"
                                 collectionCellViewType:DDCollectionCellViewDefault
                               collectionCellViewBounds:kCustomProjectComponentBounds
-                                            dataSource:nil
                                     refreshButtonImage:refreshButtonImage];
     [layout release];
-    viewPackage.backgroundImageView.image = kImageWithNameHaveSuffix(@"产品定制-底_14.png");
-    viewPackage.collectionView.tag = kCustomProjectCollectionViewTag;
-    [self addSubview:viewPackage];
-    [viewPackage release];
+    _customProductPackage.backgroundImageView.image = kImageWithNameHaveSuffix(@"产品定制-底_14.png");
+    _customProductPackage.collectionView.tag = kCustomProjectCollectionViewTag;
+    [self addSubview:_customProductPackage];
 }
 
 #pragma mark - <UITableViewDataSource>

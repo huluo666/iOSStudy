@@ -8,12 +8,15 @@
 
 #import "DDInsuranceView.h"
 #import "DDPullDown.h"
-#import "DDOptional.h"
 #import "DDShowDetail.h"
+#import "DDInsureCellView.h"
 
 @interface DDInsuranceView () <
     UICollectionViewDelegate,
     UICollectionViewDataSource>
+{
+    NSMutableArray *_dataSource;
+}
 
 @end
 
@@ -22,6 +25,7 @@
 - (void)dealloc
 {
     NSLog(@"%@ is dealloced", [self class]);
+    [_dataSource release];
     [super dealloc];
 }
 
@@ -61,12 +65,48 @@
         pullDown.status.textColor = [UIColor whiteColor];
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
-        __block DDInsuranceView *view = self;
+
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            NSLog(@"开始刷新");
-            [view performSelector:@selector(stop:) withObject:refreshBaseView afterDelay:1.0f];
+            [DDHTTPManager sendRequestFortInsureWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                                pageNumber:@"1"
+                                                  pageSize:@"12"
+                                         completionHandler:^(id content, NSString *resultCode) {
+                                             NSMutableArray *data = content;
+                                             if (_dataSource != data) {
+                                                 [_dataSource release];
+                                                 _dataSource = nil;
+                                                 _dataSource = [content mutableCopy];
+                                                 [collectionView reloadData];
+                                             }
+                                             [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                                                   withObject:nil
+                                                                   afterDelay:1];
+                                         }];
+
         };
-#pragma mark - TODO 刷新数据CollectionView
+        
+        // 加载网络数据
+        [DDHTTPManager sendRequestFortInsureWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                            pageNumber:@"1"
+                                              pageSize:@"12"
+                                     completionHandler:^(id content, NSString *resultCode) {
+                                         if (0 != [resultCode intValue]) {
+                                             return;
+                                         }
+                                         if ([content isKindOfClass:[NSArray class]]) {
+                                             NSMutableArray *data = content;
+                                             if (0 == data.count) {
+                                                 return;
+                                             }
+                                             if (_dataSource != data) {
+                                                 [_dataSource release];
+                                                 _dataSource = [content mutableCopy];
+                                                 
+                                                 // 更新界面
+                                                 [collectionView reloadData];
+                                             }
+                                         }
+                                     }];
 
     }
     return self;
@@ -77,7 +117,11 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return 4;
+    NSInteger count = 2;
+    if (_dataSource) {
+        count = _dataSource.count;
+    }
+    return count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -85,23 +129,22 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"自选模式"
                                                                            forIndexPath:indexPath];
-    DDOptional *optional = [[DDOptional alloc] initWithFrame:CGRectZero];
-    optional.bounds = CGRectMake(0, 0, 300, 300);
-    optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
-    __block DDInsuranceView *view = self;
-    optional.tapAction = ^(UIButton *sender) {
-        if (sender.tag == kDetailButtonTag) {
-            DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-            [view.superview addSubview:detail];
-            [detail release];
-        } else {
-#pragma mark - TODO
-            NSLog(@"选购");
-        }
-    };
-    //    cell.backgroundColor = [UIColor grayColor];
-    [cell.contentView addSubview:optional];
-    [optional release];
+    DDInsureCellView *insure = [[DDInsureCellView alloc] initWithFrame:CGRectZero];
+    insure.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
+    if (_dataSource) {
+        insure.titleLabel.text = _dataSource[indexPath.row][@"name"];
+        insure.categoryNameLabel.text = _dataSource[indexPath.row][@"categoryName"];
+        insure.characteristicLabel.text = [NSString stringWithFormat:@"产品属性：%@",
+                                           _dataSource[indexPath.row][@"characteristic"]];
+        insure.companyLabel.text = [NSString stringWithFormat:@"发行公司：%@",
+                                           _dataSource[indexPath.row][@"company"]];
+        insure.crowdAgeLabel.text = [NSString stringWithFormat:@"使用人群：%@岁客户",
+                                    [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"crowd_age"]]];
+        insure.timesLabel.text = [NSString stringWithFormat:@"保险期限：%@年",
+                                     [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"crowd_age"]]];
+    }
+    [cell.contentView addSubview:insure];
+    [insure release];
     return cell;
 }
 

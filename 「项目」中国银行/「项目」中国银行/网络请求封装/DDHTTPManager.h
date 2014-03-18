@@ -43,11 +43,57 @@
 
 /*!
  *    获取首页左下角热点新闻
- *
+ *    @param suerId     用户ID
  *    @param newsId     新闻ID
  *    @param completion 完成调用
  */
 + (void)sendRequstWithUserId:(NSString *)userId
                  totalNumber:(NSString *)totalNumber
            completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+/*!
+ *    获取首页右下角产品定制
+ *
+ *    @param userId      用户ID
+ *    @param totalNumber 一共多少
+ *    @param completion  完成调用
+ */
++ (void)sendRequestForCustomProjectWithUserId:(NSString *)userId
+                                  totalNumber:(NSString *)totalNumber
+                            completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 政策咨询
++ (void)sendRequstWithPageSize:(NSString *)pageSize
+                    pageNumber:(NSString *)pageNumber
+                       byTitle:(NSString *)byTitle
+                    byKeywords:(NSString *)byKeywords
+             completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 用于获取自选模式列表
++ (void)sendRequstForOptionalWithUserId:(NSString *)userId
+                                 typeId:(NSString *)typeId
+                             pageNumber:(NSString *)pageNumber
+                               pageSize:(NSString *)pageSize
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion;
+// 基金
++ (void)sendRequestForFundsWithUserId:(NSString *)userId
+                           pageNumber:(NSString *)pageNumber
+                             pageSize:(NSString *)pageSize
+                    completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 贵金属
++(void)sendRequestForMetalWithUserId:(NSString *)userId
+                          supplierId:(NSString *)supplierId
+                           purposeId:(NSString *)purposeId
+                               ageId:(NSString *)ageId
+                              typeId:(NSString *)typeId
+                            pageSize:(NSString *)pageSize
+                             pageNum:(NSString *)pageNum
+                   completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 保险
++ (void)sendRequestFortInsureWithUserId:(NSString *)userId
+                             pageNumber:(NSString *)pageNumber
+                               pageSize:(NSString *)pageSize
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion;
 @end

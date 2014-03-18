@@ -222,7 +222,6 @@
 		95682AC318CD4BCF00C2CFAD /* DDShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */; };
 		9583CDD318D29A9F00399C22 /* DDPopVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDCC18D29A9F00399C22 /* DDPopVIew.m */; };
 		9583CDD418D29A9F00399C22 /* DDCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDCF18D29A9F00399C22 /* DDCombo.m */; };
-		9583CDD518D29A9F00399C22 /* DDOptional.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDD218D29A9F00399C22 /* DDOptional.m */; };
 		9583CDDC18D29B8000399C22 /* DDCollectionViewPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDD818D29B8000399C22 /* DDCollectionViewPackage.m */; };
 		9583CDDD18D29B8000399C22 /* DDCollectionCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDDB18D29B8000399C22 /* DDCollectionCellView.m */; };
 		9583CDE118D29BF000399C22 /* DDConsultView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDE018D29BF000399C22 /* DDConsultView.m */; };
@@ -299,6 +298,11 @@
 		95E0749518D6D9020054DDAA /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E0748618D6D9020054DDAA /* UIImageView+WebCache.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		95E0749718D6D9140054DDAA /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E0749618D6D9140054DDAA /* ImageIO.framework */; };
 		95E0749918D6D91E0054DDAA /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95E0749818D6D91E0054DDAA /* MapKit.framework */; };
+		95F1629718D8284A0057CE9B /* DDCustomCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F1629618D8284A0057CE9B /* DDCustomCellView.m */; };
+		95F1629A18D82C170057CE9B /* DDOptionalCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F1629918D82C170057CE9B /* DDOptionalCellView.m */; };
+		95F1629E18D83B8C0057CE9B /* DDFundCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F1629D18D83B8C0057CE9B /* DDFundCellView.m */; };
+		95F162A218D843950057CE9B /* DDInsureCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F162A118D843950057CE9B /* DDInsureCellView.m */; };
+		95F162A918D866270057CE9B /* DDSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F162A818D866270057CE9B /* DDSelectViewController.m */; };
 		95F5B37E18C9A13100C81D68 /* 眉头_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F5B37C18C9A13100C81D68 /* 眉头_01@2x.png */; };
 		95F5B37F18C9A13100C81D68 /* 眉头阴影_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F5B37D18C9A13100C81D68 /* 眉头阴影_04@2x.png */; };
 		95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F5B38518C9B20B00C81D68 /* DDLogin.m */; };
@@ -547,8 +551,6 @@
 		9583CDCC18D29A9F00399C22 /* DDPopVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopVIew.m; sourceTree = "<group>"; };
 		9583CDCE18D29A9F00399C22 /* DDCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCombo.h; sourceTree = "<group>"; };
 		9583CDCF18D29A9F00399C22 /* DDCombo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCombo.m; sourceTree = "<group>"; };
-		9583CDD118D29A9F00399C22 /* DDOptional.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOptional.h; sourceTree = "<group>"; };
-		9583CDD218D29A9F00399C22 /* DDOptional.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOptional.m; sourceTree = "<group>"; };
 		9583CDD718D29B8000399C22 /* DDCollectionViewPackage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionViewPackage.h; sourceTree = "<group>"; };
 		9583CDD818D29B8000399C22 /* DDCollectionViewPackage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCollectionViewPackage.m; sourceTree = "<group>"; };
 		9583CDDA18D29B8000399C22 /* DDCollectionCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCollectionCellView.h; sourceTree = "<group>"; };
@@ -698,6 +700,16 @@
 		95E0748618D6D9020054DDAA /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		95E0749618D6D9140054DDAA /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		95E0749818D6D91E0054DDAA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		95F1629518D8284A0057CE9B /* DDCustomCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCellView.h; sourceTree = "<group>"; };
+		95F1629618D8284A0057CE9B /* DDCustomCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCellView.m; sourceTree = "<group>"; };
+		95F1629818D82C170057CE9B /* DDOptionalCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDOptionalCellView.h; sourceTree = "<group>"; };
+		95F1629918D82C170057CE9B /* DDOptionalCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDOptionalCellView.m; sourceTree = "<group>"; };
+		95F1629C18D83B8C0057CE9B /* DDFundCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFundCellView.h; sourceTree = "<group>"; };
+		95F1629D18D83B8C0057CE9B /* DDFundCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFundCellView.m; sourceTree = "<group>"; };
+		95F162A018D843950057CE9B /* DDInsureCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInsureCellView.h; sourceTree = "<group>"; };
+		95F162A118D843950057CE9B /* DDInsureCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInsureCellView.m; sourceTree = "<group>"; };
+		95F162A718D866270057CE9B /* DDSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSelectViewController.h; sourceTree = "<group>"; };
+		95F162A818D866270057CE9B /* DDSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSelectViewController.m; sourceTree = "<group>"; };
 		95F5B37C18C9A13100C81D68 /* 眉头_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "眉头_01@2x.png"; sourceTree = "<group>"; };
 		95F5B37D18C9A13100C81D68 /* 眉头阴影_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "眉头阴影_04@2x.png"; sourceTree = "<group>"; };
 		95F5B38418C9B20B00C81D68 /* DDLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogin.h; sourceTree = "<group>"; };
@@ -1131,6 +1143,7 @@
 		95682AB118CD4B6D00C2CFAD /* 控件封装 */ = {
 			isa = PBXGroup;
 			children = (
+				95F1629418D8284A0057CE9B /* 基本Cell展示控件 */,
 				95C1F83518D188D1001AE45B /* 日期选择(三方) */,
 				95C1F77918D1371B001AE45B /* 下拉刷新 */,
 				95682AC018CD4BC400C2CFAD /* 查看详情控件 */,
@@ -1172,6 +1185,9 @@
 		9583CDC318D2988400399C22 /* 理财产品视图控件 */ = {
 			isa = PBXGroup;
 			children = (
+				95F162A318D864270057CE9B /* 贵金属气泡窗口 */,
+				95F1629F18D843870057CE9B /* 保险展示 */,
+				95F1629B18D83B800057CE9B /* 基金展示 */,
 				9583CE0818D309F400399C22 /* 理财产品气泡窗口 */,
 				9583CE0018D2E2E200399C22 /* 理财产品Cell自定义 */,
 			);
@@ -1199,8 +1215,8 @@
 		9583CDD018D29A9F00399C22 /* 自选模式展示视图 */ = {
 			isa = PBXGroup;
 			children = (
-				9583CDD118D29A9F00399C22 /* DDOptional.h */,
-				9583CDD218D29A9F00399C22 /* DDOptional.m */,
+				95F1629818D82C170057CE9B /* DDOptionalCellView.h */,
+				95F1629918D82C170057CE9B /* DDOptionalCellView.m */,
 			);
 			path = "自选模式展示视图";
 			sourceTree = "<group>";
@@ -1533,6 +1549,42 @@
 				95E0748618D6D9020054DDAA /* UIImageView+WebCache.m */,
 			);
 			path = SDWebImage;
+			sourceTree = "<group>";
+		};
+		95F1629418D8284A0057CE9B /* 基本Cell展示控件 */ = {
+			isa = PBXGroup;
+			children = (
+				95F1629518D8284A0057CE9B /* DDCustomCellView.h */,
+				95F1629618D8284A0057CE9B /* DDCustomCellView.m */,
+			);
+			path = "基本Cell展示控件";
+			sourceTree = "<group>";
+		};
+		95F1629B18D83B800057CE9B /* 基金展示 */ = {
+			isa = PBXGroup;
+			children = (
+				95F1629C18D83B8C0057CE9B /* DDFundCellView.h */,
+				95F1629D18D83B8C0057CE9B /* DDFundCellView.m */,
+			);
+			path = "基金展示";
+			sourceTree = "<group>";
+		};
+		95F1629F18D843870057CE9B /* 保险展示 */ = {
+			isa = PBXGroup;
+			children = (
+				95F162A018D843950057CE9B /* DDInsureCellView.h */,
+				95F162A118D843950057CE9B /* DDInsureCellView.m */,
+			);
+			path = "保险展示";
+			sourceTree = "<group>";
+		};
+		95F162A318D864270057CE9B /* 贵金属气泡窗口 */ = {
+			isa = PBXGroup;
+			children = (
+				95F162A718D866270057CE9B /* DDSelectViewController.h */,
+				95F162A818D866270057CE9B /* DDSelectViewController.m */,
+			);
+			path = "贵金属气泡窗口";
 			sourceTree = "<group>";
 		};
 		95F5B38318C9B20300C81D68 /* 登录 */ = {
@@ -1869,12 +1921,15 @@
 				95E0745218D691A10054DDAA /* SBJsonStreamParser.m in Sources */,
 				95E0745618D691A10054DDAA /* SBJsonStreamWriter.m in Sources */,
 				95E0744B18D691A10054DDAA /* ASINetworkQueue.m in Sources */,
+				95F1629A18D82C170057CE9B /* DDOptionalCellView.m in Sources */,
 				95553A6718D43B84003BDF24 /* DDOrderView.m in Sources */,
+				95F162A918D866270057CE9B /* DDSelectViewController.m in Sources */,
 				95E0744D18D691A10054DDAA /* MyMD5.m in Sources */,
 				06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */,
 				06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */,
 				95C1F78418D1371B001AE45B /* DDRefreshBaseView.m in Sources */,
 				95E0745B18D691A10054DDAA /* SBJsonWriter.m in Sources */,
+				95F1629E18D83B8C0057CE9B /* DDFundCellView.m in Sources */,
 				95E0744418D691A10054DDAA /* ASIAuthenticationDialog.m in Sources */,
 				95C1F78518D1371B001AE45B /* DDRefreshControlConst.m in Sources */,
 				95E0744E18D691A10054DDAA /* JSONKit.m in Sources */,
@@ -1889,11 +1944,11 @@
 				95C1F84C18D188E4001AE45B /* PMDimmingView.m in Sources */,
 				95E0740618D68E450054DDAA /* DDHTTPManager.m in Sources */,
 				95E0745518D691A10054DDAA /* SBJsonStreamParserState.m in Sources */,
-				9583CDD518D29A9F00399C22 /* DDOptional.m in Sources */,
 				95E0745318D691A10054DDAA /* SBJsonStreamParserAccumulator.m in Sources */,
 				95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */,
 				95E0744818D691A10054DDAA /* ASIFormDataRequest.m in Sources */,
 				95E0748F18D6D9020054DDAA /* SDWebImagePrefetcher.m in Sources */,
+				95F162A218D843950057CE9B /* DDInsureCellView.m in Sources */,
 				95E0745418D691A10054DDAA /* SBJsonStreamParserAdapter.m in Sources */,
 				95E0749318D6D9020054DDAA /* UIImage+WebP.m in Sources */,
 				952BB34218C970B2002F4928 /* DDAppDelegate.m in Sources */,
@@ -1915,6 +1970,7 @@
 				95E0748D18D6D9020054DDAA /* SDWebImageDownloaderOperation.m in Sources */,
 				95C1F84918D188E4001AE45B /* PMCalendarBackgroundView.m in Sources */,
 				9583CDD418D29A9F00399C22 /* DDCombo.m in Sources */,
+				95F1629718D8284A0057CE9B /* DDCustomCellView.m in Sources */,
 				952BB33E18C970B2002F4928 /* main.m in Sources */,
 				95E0745718D691A10054DDAA /* SBJsonStreamWriterAccumulator.m in Sources */,
 				95E0744518D691A10054DDAA /* ASIDataCompressor.m in Sources */,
