@@ -26,9 +26,12 @@
 
 - (void)dealloc
 {
-    NSLog(@"%@ is dealloced", [self class]);
+    NSLog(@"%@ dealloced", [self class]);
     [_backgroundView release];
     [_bottomView release];
+    [_contentView release];
+    [_titleLabel release];
+    [_buyAction release];
     [super dealloc];
 }
 
@@ -42,7 +45,7 @@
         _backgroundView= [[UIView alloc] initWithFrame:self.frame];
         _backgroundView.backgroundColor = [UIColor blackColor];
         _backgroundView.alpha = 0.5;
-        _backgroundView.userInteractionEnabled = NO;
+        _backgroundView.userInteractionEnabled = YES;
         [self addSubview:_backgroundView];
         
         // 详情框底视图
@@ -53,30 +56,26 @@
         [self addSubview:_bottomView];
         
         // title
-        UILabel *titleLabel = [[UILabel alloc] init];
-        titleLabel.bounds = CGRectMake(0,
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.bounds = CGRectMake(0,
                                        0,
                                        CGRectGetWidth(_bottomView.bounds),
                                        CGRectGetHeight(_bottomView.bounds) * 0.1);
-        titleLabel.center = CGPointMake(CGRectGetMidX(_bottomView.bounds), CGRectGetMidY(titleLabel.bounds));
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.font = [UIFont systemFontOfSize:22];
-        titleLabel.font = [UIFont boldSystemFontOfSize:22];
-        titleLabel.text = @"测试标题";
-        [_bottomView addSubview:titleLabel];
-        [titleLabel release];
+        _titleLabel.center = CGPointMake(CGRectGetMidX(_bottomView.bounds), CGRectGetMidY(_titleLabel.bounds));
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.font = [UIFont systemFontOfSize:22];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:22];
+        [_bottomView addSubview:_titleLabel];
         
         // contentView
-        UIView *contentView = [[UIView alloc] init];
-        contentView.bounds = CGRectMake(0,
+        _contentView = [[UIView alloc] init];
+        _contentView.bounds = CGRectMake(0,
                                         0,
                                         CGRectGetWidth(_bottomView.bounds),
                                         CGRectGetHeight(_bottomView.bounds) * 0.75);
-        contentView.center = CGPointMake(CGRectGetMidX(_bottomView.bounds),
-                                         CGRectGetMidY(contentView.bounds) + CGRectGetHeight(titleLabel.bounds));
-        contentView.backgroundColor = [UIColor orangeColor];
-        [_bottomView addSubview:contentView];
-        [contentView release];
+        _contentView.center = CGPointMake(CGRectGetMidX(_bottomView.bounds),
+                                         CGRectGetMidY(_contentView.bounds) + CGRectGetHeight(_titleLabel.bounds));
+        [_bottomView addSubview:_contentView];
         
         // 取消按钮
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -85,17 +84,44 @@
                                         CGRectGetWidth(_bottomView.bounds) * 0.05,
                                         CGRectGetWidth(_bottomView.bounds) * 0.05);
         closeButton.center = CGPointMake(CGRectGetMaxX(_bottomView.bounds) - CGRectGetMidX(closeButton.bounds) * 1.5,
-                                         CGRectGetMidY(titleLabel.bounds));
+                                         CGRectGetMidY(_titleLabel.bounds));
         [closeButton setBackgroundImage:kImageWithName(@"close_07") forState:UIControlStateNormal];
         [closeButton addTarget:self
                         action:@selector(closeSelf)
               forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:closeButton];
         
+        // 购买按钮
+        UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        buyButton.bounds = CGRectMake(0, 0, 159, 50);
+        buyButton.center = CGPointMake(CGRectGetMidX(_contentView.bounds),
+                                       CGRectGetMaxY(_contentView.frame) - CGRectGetMidY(buyButton.bounds) * 1.2);
+        buyButton.hidden = NO;
+        [buyButton setBackgroundImage:kImageWithName(@"购买")
+                             forState:UIControlStateNormal];
+        [buyButton addTarget:self
+                      action:@selector(buyButtonAction:)
+            forControlEvents:UIControlEventTouchUpInside];
+        [_bottomView addSubview:buyButton];
+        
         // 调用动画
         [self startBasicScaleAnimationFromValue:@0 toValue:@1];
     }
     return self;
+}
+
+- (void)setBuyButtonHidden:(BOOL)buyButtonHidden
+{
+    UIButton *buyButton = (UIButton *)[_bottomView.subviews lastObject];
+    buyButton.hidden = buyButtonHidden;
+}
+
+- (void)buyButtonAction:(UIButton *)sender
+{
+    if (_buyAction) {
+        _buyAction(sender);
+    }
+    sender.enabled = NO;
 }
 
 - (void)startBasicScaleAnimationFromValue:(NSValue *)fromeValue toValue:(NSValue *)toValue

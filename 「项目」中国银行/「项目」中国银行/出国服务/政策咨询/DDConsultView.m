@@ -168,7 +168,7 @@
         [cell.contentView addSubview:titleViewLabel];
         [titleViewLabel release];
     }
-    if (_dataSource) {
+    if (_dataSource && _dataSource.count > 0) {
         cell.textLabel.text = [NSString stringWithFormat:@"%ld", indexPath.row + 1];
         titleViewLabel.text = _dataSource[indexPath.row][@"title"];
     }

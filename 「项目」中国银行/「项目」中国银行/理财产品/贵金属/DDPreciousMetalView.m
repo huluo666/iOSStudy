@@ -11,6 +11,7 @@
 #import "DDCustomCellView.h"
 #import "DDShowDetail.h"
 #import "DDSelectViewController.h"
+#import "DDHandleShowDetail.h"
 
 @interface DDPreciousMetalView () <
     UICollectionViewDelegate,
@@ -18,7 +19,13 @@
 {
     NSMutableArray *_dataSource;
     UIPopoverController *_popover;
+    UICollectionView *_collectionView;
 }
+
+@property (nonatomic, copy) NSString *currentTypeId;
+@property (nonatomic, copy) NSString *currentAgeId;
+@property (nonatomic, copy) NSString *currentPurposeId;
+@property (nonatomic, copy) NSString *currentSupplierId;
 
 // 创建label
 - (UILabel *)label;
@@ -38,6 +45,11 @@
     NSLog(@"%@ is dealloced", [self class]);
     [_dataSource release];
     [_popover release];
+    [_collectionView release];
+    [_currentTypeId release];
+    [_currentAgeId release];
+    [_currentPurposeId release];
+    [_currentSupplierId release];
     [super dealloc];
 }
 
@@ -45,8 +57,11 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-//        self.backgroundColor = [UIColor brownColor];
-
+        self.currentAgeId = @"0";
+        self.currentPurposeId = @"0";
+        self.currentSupplierId = @"0";
+        self.currentTypeId = @"0";
+        
         // 类别
         UILabel *categorylabel = [self label];
         categorylabel.center = CGPointMake(CGRectGetMidX(categorylabel.bounds),
@@ -128,26 +143,25 @@
         
         // Collection view
         CGRect frame = self.bounds;
-        UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
-                                                              collectionViewLayout:layout];
+        _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero
+                                             collectionViewLayout:layout];
         [layout release];
-        collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.98, 640);
-        collectionView.center = CGPointMake(CGRectGetMidX(frame),
-                                            CGRectGetMaxY(targetWishButton.frame) + CGRectGetMidY(collectionView.bounds));
+        _collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.98, 640);
+        _collectionView.center = CGPointMake(CGRectGetMidX(frame),
+                                            CGRectGetMaxY(targetWishButton.frame) + CGRectGetMidY(_collectionView.bounds));
         
-        collectionView.backgroundColor = [UIColor clearColor];
-        collectionView.delegate = self;
-        collectionView.dataSource = self;
-        [collectionView registerClass:[UICollectionViewCell class]
+        _collectionView.backgroundColor = [UIColor clearColor];
+        _collectionView.delegate = self;
+        _collectionView.dataSource = self;
+        [_collectionView registerClass:[UICollectionViewCell class]
            forCellWithReuseIdentifier:@"自选模式"];
-        collectionView.alwaysBounceVertical = YES;
-        collectionView.showsVerticalScrollIndicator = YES;
-        [self addSubview:collectionView];
-        [collectionView release];
+        _collectionView.alwaysBounceVertical = YES;
+        _collectionView.showsVerticalScrollIndicator = YES;
+        [self addSubview:_collectionView];
         
         // 下拉刷新
         DDPullDown *pullDown = [DDPullDown pullDown];
-        pullDown.scrollView = collectionView;
+        pullDown.scrollView = _collectionView;
         pullDown.lastUpdate.textColor = [UIColor whiteColor];
         pullDown.status.textColor = [UIColor whiteColor];
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
@@ -155,10 +169,10 @@
     
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
             [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
-                                              supplierId:@""
-                                               purposeId:@""
-                                                   ageId:@""
-                                                  typeId:@""
+                                              supplierId:self.currentSupplierId
+                                               purposeId:self.currentPurposeId
+                                                   ageId:self.currentAgeId
+                                                  typeId:self.currentTypeId
                                                 pageSize:@"12"
                                                  pageNum:@"1"
                                        completionHandler:^(id content, NSString *resultCode) {
@@ -167,7 +181,7 @@
                                                [_dataSource release];
                                                _dataSource = nil;
                                                _dataSource = [content mutableCopy];
-                                               [collectionView reloadData];
+                                               [_collectionView reloadData];
                                            }
                                            [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
                                                                  withObject:nil
@@ -177,10 +191,10 @@
         
         // 加载数据
         [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
-                                          supplierId:@""
-                                           purposeId:@""
-                                               ageId:@""
-                                              typeId:@""
+                                          supplierId:self.currentSupplierId
+                                           purposeId:self.currentPurposeId
+                                               ageId:self.currentAgeId
+                                              typeId:self.currentTypeId
                                             pageSize:@"12"
                                              pageNum:@"1"
                                    completionHandler:^(id content, NSString *resultCode) {
@@ -197,7 +211,7 @@
                                                _dataSource = [content mutableCopy];
                                                
                                                // 更新界面
-                                               [collectionView reloadData];
+                                               [_collectionView reloadData];
                                            }
                                        }
                                    }];
@@ -281,26 +295,42 @@
             [_popover dismissPopoverAnimated:YES];
         }
         
+        NSInteger selectedIndex = sender.tag - kMetalButtonTag;
+        switch (selectedIndex) {
+            case 0:
+                self.currentTypeId = [NSString stringWithFormat:@"%ld", index];
+                break;
+            case 1:
+                self.currentSupplierId = [NSString stringWithFormat:@"%ld", index];
+                break;
+            case 2:
+                self.currentAgeId= [NSString stringWithFormat:@"%ld", index];
+                break;
+            case 3:
+                self.currentPurposeId = [NSString stringWithFormat:@"%ld", index];
+                break;
+            default:
+                break;
+        }
+        
         // 请求网络，更新数据
-//        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
-//                                          supplierId:@""
-//                                           purposeId:@""
-//                                               ageId:@""
-//                                              typeId:@""
-//                                            pageSize:@"12"
-//                                             pageNum:@"1"
-//                                   completionHandler:^(id content, NSString *resultCode) {
-//                                       NSMutableArray *data = content;
-//                                       if (_dataSource != data) {
-//                                           [_dataSource release];
-//                                           _dataSource = nil;
-//                                           _dataSource = [content mutableCopy];
-//                                           [collectionView reloadData];
-//                                       }
-//                                       [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
-//                                                             withObject:nil
-//                                                             afterDelay:1];
-//                                   }];
+//        NSLog(@"%@ %@ %@ %@", self.currentTypeId, );
+        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                          supplierId:self.currentSupplierId
+                                           purposeId:self.currentPurposeId
+                                               ageId:self.currentAgeId
+                                              typeId:self.currentTypeId
+                                            pageSize:@"12"
+                                             pageNum:@"1"
+                                   completionHandler:^(id content, NSString *resultCode) {
+                                       NSMutableArray *data = content;
+                                       if (_dataSource != data) {
+                                           [_dataSource release];
+                                           _dataSource = nil;
+                                           _dataSource = [content mutableCopy];
+                                           [_collectionView reloadData];
+                                       }
+                                   }];
     };
     
     if (_popover) {
@@ -320,7 +350,7 @@
      numberOfItemsInSection:(NSInteger)section
 {
     NSInteger count = 3;
-    if (_dataSource) {
+    if (_dataSource && _dataSource.count > 0) {
         count = _dataSource.count;
     }
     
@@ -334,7 +364,12 @@
                                                                            forIndexPath:indexPath];
     DDCustomCellView *metal = [[DDCustomCellView alloc] initWithFrame:CGRectZero];
     metal.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
-
+    if (_dataSource && _dataSource.count > 0) {
+        metal.titleLabel.text = _dataSource[indexPath.row][@"number"];
+        metal.tapDetailAction = ^(UIButton *sender) {
+            [DDHandleShowDetail handleMetalShowDetailWithDataSource:_dataSource[0] indexPath:indexPath];
+        };
+    }
     [cell.contentView addSubview:metal];
     [metal release];
     return cell;

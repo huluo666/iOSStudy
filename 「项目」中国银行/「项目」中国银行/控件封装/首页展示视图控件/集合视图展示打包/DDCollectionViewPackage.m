@@ -7,8 +7,8 @@
 //
 
 #import "DDCollectionViewPackage.h"
-#import "DDShowDetail.h"
 #import "DDAppDelegate.h"
+#import "DDHandleShowDetail.h"
 
 @interface DDCollectionViewPackage () <UICollectionViewDelegate, UICollectionViewDataSource>
 {
@@ -123,7 +123,7 @@
 {
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:_identifier
                                                                            forIndexPath:indexPath];
-    if (_dataSource) {
+    if (_dataSource && _dataSource.count > 0) {
         DDCollectionCellView *cellView = [[DDCollectionCellView alloc] initWithFrame:_collectionCellViewBounds
                                                                  projectShowViewType:_collectionCellViewType];
         if (_collectionCellViewType == DDCollectionCellViewSubTitle) {
@@ -133,14 +133,12 @@
         cellView.imageView.image = kImageWithName(@"网上银行BOCNET1");
         cellView.processTap = ^(UIView *view) {
             if ([view isKindOfClass:[UIButton class]]) {
-                // 点击详情按钮回调(热点消息)
-                DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
-                // 添加到根视图上
-                [kRootView addSubview:detail];
-                [detail release];
+                // 热门
+                [DDHandleShowDetail handleHotShowDetailWithDataSource:_dataSource indexPath:indexPath];
             } else {
-                // 点击cell回调(产品定制)
-            };
+                // 定制
+                [DDHandleShowDetail handleCustomShowDetailWithDataSource:_dataSource indexPath:indexPath];
+            }
         };
         [cell.contentView addSubview:cellView];
         [cellView release];

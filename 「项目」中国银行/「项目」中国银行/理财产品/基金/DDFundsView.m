@@ -11,6 +11,7 @@
 #import "DDShowDetail.h"
 #import "DDPullDown.h"
 #import "DDFundCellView.h"
+#import "DDHandleShowDetail.h"
 
 @interface DDFundsView () <
     UICollectionViewDelegate,
@@ -131,7 +132,7 @@
                                                                            forIndexPath:indexPath];
     DDFundCellView *fund = [[DDFundCellView alloc] initWithFrame:CGRectZero];
     fund.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
-    if (_dataSource) {
+    if (_dataSource && _dataSource.count > 0) {
         fund.titleLabel.text = [NSString stringWithFormat:@"%@",
                                 _dataSource[indexPath.row][@"number"]];
         fund.accumulativeValueLabel.text = [NSString stringWithFormat:@"单位净值: %@",
@@ -140,6 +141,10 @@
                                      _dataSource[indexPath.row][@"asset_value"]];
         fund.stopTimeLabel.text = [NSString stringWithFormat:@"截至日期： %@",
                                    _dataSource[indexPath.row][@"stop_time"]];
+        fund.tapDetailAction = ^(UIButton *sender) {
+            [DDHandleShowDetail handleFundShowDetailWithDataSource:_dataSource
+                                                         indexPath:indexPath];
+        };
     }
     [cell.contentView addSubview:fund];
     [fund release];

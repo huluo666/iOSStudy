@@ -126,6 +126,8 @@
 #define kPhotoRULKey @"photo"
 #define kContentKey @"content"
 #define kNewsTitleKey @"title"
+#define kNewsDetailKey @"content"
+#define kNewsDetailContentKey @"detail"
 
 #endif
 

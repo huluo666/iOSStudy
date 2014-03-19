@@ -159,7 +159,17 @@
                 completionHandler:completion];
 }
 
-// 首页热点新闻
+// 首页最新动态详细
++ (void)sendRequestForLastNewsWithId:(NSString *)ID
+                   completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID]
+                             keys:@[kIdKey]
+                  URLModuleString:kRecentNewsDetailList
+                completionHandler:completion];
+}
+
+// 首页热门产品
 + (void)sendRequstWithUserId:(NSString *)userId
                  totalNumber:(NSString *)totalNumber
            completionHandler:(void (^)(id content, NSString * resultCode))completion
@@ -167,6 +177,16 @@
     [self sendRequstWithArguments:@[userId, totalNumber]
                              keys:@[kUserIDKey, kTotalNumberKey]
                   URLModuleString:kHotProductList
+                completionHandler:completion];
+}
+
+// 热门产品详细信息
++ (void)sendRequestForHotDetailWithId:(NSString *)ID
+                    completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID]
+                             keys:@[kIdKey]
+                  URLModuleString:kHotDetail
                 completionHandler:completion];
 }
 
@@ -178,6 +198,16 @@
     [self sendRequstWithArguments:@[userId, totalNumber]
                              keys:@[kUserIDKey, kTotalNumberKey]
                   URLModuleString:kCustomizationList
+                completionHandler:completion];
+}
+
+// 首页产品定制详细
++ (void)sendRequestForCustomProjecDetailtWithId:(NSString *)ID
+                              completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID]
+                             keys:@[kIdKey]
+                  URLModuleString:kCustomProductsDetail
                 completionHandler:completion];
 }
 
@@ -209,6 +239,17 @@
                 completionHandler:completion];
 }
 
+// 自选模式详细
++ (void)sendRequestForOptionalDetailtWithId:(NSString *)ID
+                                     typeId:(NSString *)typeId
+                              completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID, typeId]
+                             keys:@[kIdKey, kTypeIdKey]
+                  URLModuleString:kOptionalDetail
+                completionHandler:completion];
+}
+
 #pragma mark - 理财产品
 
 // 基金
@@ -222,6 +263,17 @@
                   URLModuleString:kFundList
                 completionHandler:completion];
 }
+
+// 基金详细
++ (void)sendRequestForFundDetailtWithId:(NSString *)ID
+                              completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID]
+                             keys:@[kIdKey]
+                  URLModuleString:kFundDetail
+                completionHandler:completion];
+}
+
 
 // 贵金属
 +(void)sendRequestForMetalWithUserId:(NSString *)userId
@@ -239,6 +291,16 @@
                 completionHandler:completion];
 }
 
+// 贵金属详情
++ (void)sendRequestForMetalDetailtWithId:(NSString *)ID
+                       completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID]
+                             keys:@[kIdKey]
+                  URLModuleString:kMetalDetail
+                completionHandler:completion];
+}
+
 // 保险
 + (void)sendRequestFortInsureWithUserId:(NSString *)userId
                              pageNumber:(NSString *)pageNumber
@@ -248,6 +310,16 @@
     [self sendRequstWithArguments:@[userId, pageNumber, pageSize]
                              keys:@[kUserIDKey, kPageNumKey, kPageSizeKey]
                   URLModuleString:kInsureList
+                completionHandler:completion];
+}
+
+// 保险详细
++ (void)sendRequestForInsureDetailtWithId:(NSString *)ID
+                        completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID]
+                             keys:@[kIdKey]
+                  URLModuleString:kInsureDetail
                 completionHandler:completion];
 }
 @end

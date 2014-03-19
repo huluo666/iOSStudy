@@ -10,6 +10,7 @@
 #import "DDPullDown.h"
 #import "DDShowDetail.h"
 #import "DDInsureCellView.h"
+#import "DDHandleShowDetail.h"
 
 @interface DDInsuranceView () <
     UICollectionViewDelegate,
@@ -142,6 +143,10 @@
                                     [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"crowd_age"]]];
         insure.timesLabel.text = [NSString stringWithFormat:@"保险期限：%@年",
                                      [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"crowd_age"]]];
+        insure.tapDetailAction = ^(UIButton *sender) {
+            [DDHandleShowDetail handleInsureShowDetailWithDataSource:_dataSource
+                                                           indexPath:indexPath];
+        };
     }
     [cell.contentView addSubview:insure];
     [insure release];

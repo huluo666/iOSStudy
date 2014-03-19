@@ -12,5 +12,8 @@
 
 @property (retain, nonatomic, readonly) UILabel *titleLabel; // 详情标题
 @property (retain, nonatomic, readonly) UIView *contentView; // 内容视图
+@property (assign, nonatomic) BOOL buyButtonHidden;
+
+@property (copy, nonatomic) void (^buyAction)(UIButton *sender);
 
 @end

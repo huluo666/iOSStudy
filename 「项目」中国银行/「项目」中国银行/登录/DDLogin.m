@@ -179,7 +179,7 @@
     [DDHTTPManager sendRequstWithUsername:username
                                  password:password
                         completionHandler:^(id content, NSString *resultCode) {
-                            if (![resultCode intValue]) {
+                            if (![resultCode intValue] && content) {
                                 // 登录成功
                                 [UIView animateWithDuration:kAnimateDuration animations:^{
                                     CGPoint center = this.center;

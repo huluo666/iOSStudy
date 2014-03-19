@@ -12,6 +12,8 @@
 #import "DDCollectionViewPackage.h"
 #import "UIImageView+WebCache.h"
 #import "DDConstant.h"
+#import "DDShowDetail.h"
+#import "DDAppDelegate.h"
 
 @interface DDIndex () <
     UITableViewDataSource,
@@ -256,11 +258,20 @@
                               }
                               
                               if ([content isKindOfClass:[NSArray class]]) {
+                                  // 存标题
                                   NSArray *contents = [content valueForKey:kNewsTitleKey];
                                   if (!contents.count) {
                                       return;
                                   }
                                   [_dataSource setObject:contents forKey:kLatestNewsKey];
+                                  
+                                  // 存内容
+                                  NSArray *news = [content valueForKey:kNewsDetailKey];
+                                  
+                                  if (!news.count) {
+                                      return;
+                                  }
+                                  [_dataSource setObject:news forKey:kNewsDetailContentKey];
                               }
                               
                               // 刷新数据
@@ -309,7 +320,6 @@
                               if (0 == [content count]) {
                                   return;
                               }
-                              
                               [_dataSource setObject:content forKey:kHotNewsKey];
                               // 设置数据源
                               _hotNewsviewPackage.dataSource = [content mutableCopy];
@@ -427,8 +437,32 @@
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didSelectRowAtIndexPath");
-#pragma mark - TODO 弹出动画
+    // 后台坑爹，数据不需要请求了
+    NSLog(@"%@", _dataSource[kNewsDetailContentKey][indexPath.row]);
+    
+    // title
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *title = cell.textLabel.text;
+    
+    DDShowDetail *detail = [[DDShowDetail alloc] initWithFrame:CGRectZero];
+    detail.buyButtonHidden = YES;
+    detail.titleLabel.text = title;
+
+    // content
+    CGRect labelFrame = CGRectMake(20,
+                                   20,
+                                   CGRectGetWidth(detail.contentView.bounds) - 40,
+                                   CGRectGetHeight(detail.contentView.bounds) - 40);
+    UILabel *contentLabel = [[UILabel alloc] initWithFrame:labelFrame];
+    NSString *labelText = _dataSource[kNewsDetailContentKey][indexPath.row];
+    [contentLabel setText:labelText];
+    [contentLabel setNumberOfLines:0];
+    [contentLabel sizeToFit];
+    [detail.contentView addSubview:contentLabel];
+    
+    [kRootView addSubview:detail];
+    [detail release];
+    
 }
 
 @end

@@ -27,12 +27,19 @@
 #define kRecentNewsList @"appIndex/getRecentNewsList"
 #define kPageNumKey @"pageNum"
 #define kPageSizeKey @"pageSize"
+// 后夜最新消息详细
+#define kRecentNewsDetailList @"appIndex/getRecentProductDetail"
+#define kIdKey @"id"
 // 首页热点消息
 #define kHotProductList @"appIndex/getHotProductList"
 #define kUserIDKey @"userId"
 #define kTotalNumberKey @"totalNum"
+// 热点消息详细
+#define kHotDetail @"appIndex/getHotProductDetail"
 // 产品定制
 #define kCustomizationList @"appIndex/getCustomizationList"
+// 产品定制详细
+#define kCustomProductsDetail @"appIndex/getCustomizationDetail"
 
 // 出国服务
 #define kPolicyAdviceList @"appAbroad/getPolicyAdviceList"
@@ -42,17 +49,27 @@
 // 自选模式
 #define kOptionalList @"appAbroad/getChooseByYourselfModeList"
 #define kTypeIdKey @"typeId"
+// 自选模式详细
+#define kOptionalDetail @"appAbroad/getChooseByYourselfDetail"
 
 // 理财产品
 #define kFundList @"appFinancial/getFundList"
+
+// 基金详细
+#define kFundDetail @"appFinancial/getFundDetail"
 
 // 贵金属
 #define kMetalsList @"appFinancial/getMetalsList"
 #define kSupplierIdKey @"supplierId"
 #define kPurposeIdKey @"purposeId"
 #define kAgeIdKey @"ageId"
+// 贵金属详细
+#define kMetalDetail @"appFinancial/getMetalsDetail"
 
 // 保险
 #define kInsureList @"appFinancial/getInsureList"
+
+// 保险详细
+#define kInsureDetail @"appFinancial/getInsureDetail"
 
 #endif

@@ -39,7 +39,6 @@ static NSString *CellIdentifier = @"Cell";
     [super viewDidLoad];
 
     UITableView *tableView = [[UITableView alloc] init];
-    tableView.backgroundColor = kRandomColor;
     [tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:CellIdentifier];
     self.tableView = tableView;
     [tableView release];

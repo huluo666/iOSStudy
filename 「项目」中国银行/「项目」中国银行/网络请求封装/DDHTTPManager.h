@@ -31,7 +31,7 @@
                    completionHandler:(void (^)(id content, NSString * resultCode))completion;
 
 /*!
- *    获取首页右上角图片
+ *    获取首页右上角新闻
  *
  *    @param number     页码
  *    @param pageSize   页数
@@ -40,6 +40,10 @@
 + (void)sendRequstWithPageNumber:(NSString *)pageNumber
                         pageSize:(NSString *)pageSize
                completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 获取首页右上角新闻详细内容
++ (void)sendRequestForLastNewsWithId:(NSString *)ID
+                   completionHandler:(void (^)(id content, NSString * resultCode))completion;
 
 /*!
  *    获取首页左下角热点新闻
@@ -50,6 +54,10 @@
 + (void)sendRequstWithUserId:(NSString *)userId
                  totalNumber:(NSString *)totalNumber
            completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 热门详细
++ (void)sendRequestForHotDetailWithId:(NSString *)ID
+                    completionHandler:(void (^)(id content, NSString * resultCode))completion;
 
 /*!
  *    获取首页右下角产品定制
@@ -62,6 +70,9 @@
                                   totalNumber:(NSString *)totalNumber
                             completionHandler:(void (^)(id content, NSString * resultCode))completion;
 
+// 首页产品定制详细
++ (void)sendRequestForCustomProjecDetailtWithId:(NSString *)ID
+                              completionHandler:(void (^)(id content, NSString * resultCode))completion;
 // 政策咨询
 + (void)sendRequstWithPageSize:(NSString *)pageSize
                     pageNumber:(NSString *)pageNumber
@@ -75,11 +86,21 @@
                              pageNumber:(NSString *)pageNumber
                                pageSize:(NSString *)pageSize
                       completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 自选模式详细
++ (void)sendRequestForOptionalDetailtWithId:(NSString *)ID
+                                     typeId:(NSString *)typeId
+                          completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
 // 基金
 + (void)sendRequestForFundsWithUserId:(NSString *)userId
                            pageNumber:(NSString *)pageNumber
                              pageSize:(NSString *)pageSize
                     completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 基金详细
++ (void)sendRequestForFundDetailtWithId:(NSString *)ID
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion;
 
 // 贵金属
 +(void)sendRequestForMetalWithUserId:(NSString *)userId
@@ -91,9 +112,19 @@
                              pageNum:(NSString *)pageNum
                    completionHandler:(void (^)(id content, NSString * resultCode))completion;
 
+// 贵金属详情
++ (void)sendRequestForMetalDetailtWithId:(NSString *)ID
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+
 // 保险
 + (void)sendRequestFortInsureWithUserId:(NSString *)userId
                              pageNumber:(NSString *)pageNumber
                                pageSize:(NSString *)pageSize
                       completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 保险详细
++ (void)sendRequestForInsureDetailtWithId:(NSString *)ID
+                        completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
 @end
