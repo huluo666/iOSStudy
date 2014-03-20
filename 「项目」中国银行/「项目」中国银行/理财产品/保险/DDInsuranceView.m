@@ -11,6 +11,8 @@
 #import "DDShowDetail.h"
 #import "DDInsureCellView.h"
 #import "DDHandleShowDetail.h"
+#import "DDBuyView.h"
+#import "DDAppDelegate.h"
 
 @interface DDInsuranceView () <
     UICollectionViewDelegate,
@@ -147,6 +149,13 @@
             [DDHandleShowDetail handleInsureShowDetailWithDataSource:_dataSource
                                                            indexPath:indexPath];
         };
+        insure.tapBuyAction = ^(UIButton *sender) {
+            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+            buyView.productInfo = _dataSource[indexPath.row];
+            [kRootView addSubview:buyView];
+            [buyView release];
+        };
+        
     }
     [cell.contentView addSubview:insure];
     [insure release];

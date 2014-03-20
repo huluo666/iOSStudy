@@ -12,6 +12,8 @@
 #import "DDShowDetail.h"
 #import "DDSelectViewController.h"
 #import "DDHandleShowDetail.h"
+#import "DDBuyView.h"
+#import "DDAppDelegate.h"
 
 @interface DDPreciousMetalView () <
     UICollectionViewDelegate,
@@ -332,7 +334,7 @@
                                        }
                                    }];
     };
-    
+
     if (_popover) {
         [_popover release];
         _popover = nil;
@@ -342,6 +344,7 @@
     [_popover presentPopoverFromRect:rect
                               inView:self
             permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    [select release];
 }
 
 #pragma mark - <UICollectionViewDataSource>
@@ -368,6 +371,12 @@
         metal.titleLabel.text = _dataSource[indexPath.row][@"number"];
         metal.tapDetailAction = ^(UIButton *sender) {
             [DDHandleShowDetail handleMetalShowDetailWithDataSource:_dataSource[0] indexPath:indexPath];
+        };
+        metal.tapBuyAction = ^(UIButton *sender) {
+            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+            buyView.productInfo = _dataSource[indexPath.row];
+            [kRootView addSubview:buyView];
+            [buyView release];
         };
     }
     [cell.contentView addSubview:metal];

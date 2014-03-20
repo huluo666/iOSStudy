@@ -12,6 +12,7 @@
 #import "DDAppDelegate.h"
 #import "DDOptionalCellView.h"
 #import "DDHandleShowDetail.h"
+#import "DDBuyView.h"
 
 @interface DDOptionalView () <
     UICollectionViewDelegate,
@@ -283,12 +284,21 @@
     DDOptionalCellView *optional = [[DDOptionalCellView alloc] initWithFrame:CGRectZero];
     optional.center = CGPointMake(CGRectGetMidX(cell.bounds), CGRectGetMidY(cell.bounds));
     if (_dataSource && _dataSource.count > 0) {
+        
+        NSLog(@"自选模式：%@", _dataSource);
+        
         optional.titleLabel.text = [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"productId"]];
         optional.displayLabel.text = _dataSource[indexPath.row][@"published"];
         optional.tapDetailAction = ^(UIButton *sender) {
             [DDHandleShowDetail handleOptionalShowDetailWithDataSource:_dataSource
                                                              indexPath:indexPath
                                                                 typeId:_currentTypeId];
+        };
+        optional.tapBuyAction = ^(UIButton *sender) {
+            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+            buyView.productInfo = _dataSource[indexPath.row];
+            [kRootView addSubview:buyView];
+            [buyView release];
         };
     }
     [cell.contentView addSubview:optional];

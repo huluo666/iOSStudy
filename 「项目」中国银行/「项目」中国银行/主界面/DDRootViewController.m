@@ -31,9 +31,6 @@
 // 创建导航视图
 - (UIView *)createNaviViewWithIndex:(NSInteger)index;
 
-// 切换视图
-- (void)switchVC:(UIButton *)sender;
-
 // 初始化登录界面
 - (void)initializeLoginView;
 // 登出

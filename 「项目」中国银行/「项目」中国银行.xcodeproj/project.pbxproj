@@ -18,6 +18,7 @@
 		9510CDFB18D9864F0085C58B /* DDHandleShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9510CDFA18D9864F0085C58B /* DDHandleShowDetail.m */; };
 		9510CDFF18D990300085C58B /* DDFundShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 9510CDFE18D990300085C58B /* DDFundShowDetail.m */; };
 		9510CE0618D9BB600085C58B /* DDBuyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9510CE0518D9BB600085C58B /* DDBuyView.m */; };
+		95244B3018DAAF8300D0340C /* DDShopCartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95244B2F18DAAF8300D0340C /* DDShopCartCell.m */; };
 		952BB33218C970B2002F4928 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33118C970B2002F4928 /* Foundation.framework */; };
 		952BB33418C970B2002F4928 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33318C970B2002F4928 /* CoreGraphics.framework */; };
 		952BB33618C970B2002F4928 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 952BB33518C970B2002F4928 /* UIKit.framework */; };
@@ -225,6 +226,9 @@
 		95636E3118D04F3300C29D9B /* 箭头右@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E2F18D04F3300C29D9B /* 箭头右@2x.png */; };
 		95636E3218D04F3300C29D9B /* 箭头左@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E3018D04F3300C29D9B /* 箭头左@2x.png */; };
 		95682AC318CD4BCF00C2CFAD /* DDShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */; };
+		956C7B4018DABB6800D1C885 /* DDRecordInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 956C7B3F18DABB6800D1C885 /* DDRecordInfo.m */; };
+		956C7B4218DABE5100D1C885 /* record_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 956C7B4118DABE5100D1C885 /* record_info.png */; };
+		956C7B4418DAE1E800D1C885 /* 眉头_01.png in Resources */ = {isa = PBXBuildFile; fileRef = 956C7B4318DAE1E800D1C885 /* 眉头_01.png */; };
 		9583CDD318D29A9F00399C22 /* DDPopVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDCC18D29A9F00399C22 /* DDPopVIew.m */; };
 		9583CDD418D29A9F00399C22 /* DDCombo.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDCF18D29A9F00399C22 /* DDCombo.m */; };
 		9583CDDC18D29B8000399C22 /* DDCollectionViewPackage.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDD818D29B8000399C22 /* DDCollectionViewPackage.m */; };
@@ -346,6 +350,8 @@
 		9510CDFE18D990300085C58B /* DDFundShowDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFundShowDetail.m; sourceTree = "<group>"; };
 		9510CE0418D9BB600085C58B /* DDBuyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDBuyView.h; sourceTree = "<group>"; };
 		9510CE0518D9BB600085C58B /* DDBuyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDBuyView.m; sourceTree = "<group>"; };
+		95244B2E18DAAF8300D0340C /* DDShopCartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDShopCartCell.h; sourceTree = "<group>"; };
+		95244B2F18DAAF8300D0340C /* DDShopCartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDShopCartCell.m; sourceTree = "<group>"; };
 		952BB32E18C970B2002F4928 /* 「项目」中国银行.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「项目」中国银行.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		952BB33118C970B2002F4928 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		952BB33318C970B2002F4928 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -562,6 +568,10 @@
 		95636E3018D04F3300C29D9B /* 箭头左@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头左@2x.png"; sourceTree = "<group>"; };
 		95682AC118CD4BCF00C2CFAD /* DDShowDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDShowDetail.h; sourceTree = "<group>"; };
 		95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDShowDetail.m; sourceTree = "<group>"; };
+		956C7B3E18DABB6800D1C885 /* DDRecordInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRecordInfo.h; sourceTree = "<group>"; };
+		956C7B3F18DABB6800D1C885 /* DDRecordInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRecordInfo.m; sourceTree = "<group>"; };
+		956C7B4118DABE5100D1C885 /* record_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = record_info.png; sourceTree = "<group>"; };
+		956C7B4318DAE1E800D1C885 /* 眉头_01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "眉头_01.png"; sourceTree = "<group>"; };
 		9583CDCB18D29A9F00399C22 /* DDPopVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopVIew.h; sourceTree = "<group>"; };
 		9583CDCC18D29A9F00399C22 /* DDPopVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopVIew.m; sourceTree = "<group>"; };
 		9583CDCE18D29A9F00399C22 /* DDCombo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCombo.h; sourceTree = "<group>"; };
@@ -818,8 +828,11 @@
 		06D388C818C9F50800113372 /* 购物车 */ = {
 			isa = PBXGroup;
 			children = (
+				956C7B3D18DABB5500D1C885 /* 录入信息 */,
 				06D388D818C9FDD600113372 /* DDShopcart.h */,
 				06D388D918C9FDD600113372 /* DDShopcart.m */,
+				95244B2E18DAAF8300D0340C /* DDShopCartCell.h */,
+				95244B2F18DAAF8300D0340C /* DDShopCartCell.m */,
 			);
 			path = "购物车";
 			sourceTree = "<group>";
@@ -966,6 +979,8 @@
 		952BB3E518C98C4C002F4928 /* 资源 */ = {
 			isa = PBXGroup;
 			children = (
+				956C7B4318DAE1E800D1C885 /* 眉头_01.png */,
+				956C7B4118DABE5100D1C885 /* record_info.png */,
 				95C1F82918D17ABC001AE45B /* bb_08.png */,
 				95C1F82A18D17ABC001AE45B /* aa_07.png */,
 				95C1F82B18D17ABC001AE45B /* a_07.png */,
@@ -1243,6 +1258,15 @@
 				9510CDFA18D9864F0085C58B /* DDHandleShowDetail.m */,
 			);
 			path = "查看详情控件";
+			sourceTree = "<group>";
+		};
+		956C7B3D18DABB5500D1C885 /* 录入信息 */ = {
+			isa = PBXGroup;
+			children = (
+				956C7B3E18DABB6800D1C885 /* DDRecordInfo.h */,
+				956C7B3F18DABB6800D1C885 /* DDRecordInfo.m */,
+			);
+			path = "录入信息";
 			sourceTree = "<group>";
 		};
 		9583CDBC18D2988400399C22 /* 出国服务视图控件 */ = {
@@ -1773,6 +1797,7 @@
 				952BB4D918C98CE1002F4928 /* 借记卡产品.png in Resources */,
 				952BB4B818C98CE1002F4928 /* 产品介绍_01.png in Resources */,
 				952BB53E18C98CE1002F4928 /* photo-lady_22.png in Resources */,
+				956C7B4218DABE5100D1C885 /* record_info.png in Resources */,
 				952BB52918C98CE1002F4928 /* di_05.png in Resources */,
 				952BB4EB18C98CE1002F4928 /* 申请办理_06.png in Resources */,
 				952BB4AD18C98CE1002F4928 /* 4_11.png in Resources */,
@@ -1900,6 +1925,7 @@
 				95C1F83118D17ABC001AE45B /* a_07.png in Resources */,
 				952BB4EC18C98CE1002F4928 /* 视频图标_05.png in Resources */,
 				952BB4D818C98CE1002F4928 /* 借记卡产品_04.png in Resources */,
+				956C7B4418DAE1E800D1C885 /* 眉头_01.png in Resources */,
 				952BB55118C98CE1002F4928 /* UIStepperLeft.png in Resources */,
 				952BB51F18C98CE1002F4928 /* blueArrow.png in Resources */,
 				952BB51918C98CE1002F4928 /* apply_01.png in Resources */,
@@ -1975,6 +2001,7 @@
 				06D388D718C9FDBD00113372 /* DDSchedule.m in Sources */,
 				95E0749118D6D9020054DDAA /* UIImage+GIF.m in Sources */,
 				9583CE0C18D30A1B00399C22 /* DDDeadlineViewController.m in Sources */,
+				95244B3018DAAF8300D0340C /* DDShopCartCell.m in Sources */,
 				95C1F84D18D188E4001AE45B /* PMPeriod.m in Sources */,
 				95553A6318D3F1E8003BDF24 /* DDCoinTypeViewController.m in Sources */,
 				95E0749518D6D9020054DDAA /* UIImageView+WebCache.m in Sources */,
@@ -2041,6 +2068,7 @@
 				9583CDE118D29BF000399C22 /* DDConsultView.m in Sources */,
 				95E0749018D6D9020054DDAA /* UIButton+WebCache.m in Sources */,
 				95C1F84B18D188E4001AE45B /* PMCalendarView.m in Sources */,
+				956C7B4018DABB6800D1C885 /* DDRecordInfo.m in Sources */,
 				95C1F78618D1371B001AE45B /* DDPullDown.m in Sources */,
 				06D388D418C9FD8D00113372 /* DDChoose.m in Sources */,
 				95E0748B18D6D9020054DDAA /* SDWebImageDecoder.m in Sources */,

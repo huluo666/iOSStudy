@@ -16,25 +16,34 @@
 
 @implementation DDBuyView
 
+- (void)dealloc
+{
+    [_buyCountField release];
+    [_productInfo release];
+    [super dealloc];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.bounds = CGRectMake(0, 0, 434, 328);
+        self.bounds = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
+        CGRect bounds = CGRectMake(0, 0, 434, 328);
         self.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight * 2);
         [UIView animateWithDuration:kAnimateDuration animations:^{
             self.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight / 2);
         }];
         
-        CGRect frame = CGRectMake(-295, -220, kRootViewWidth, kRootViewHeight);
+        CGRect frame = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
         UIView *view = [[UIView alloc] initWithFrame:frame];
-        view.backgroundColor = [UIColor greenColor];
+        view.userInteractionEnabled = NO;
+        view.alpha = 0.5;
         [self addSubview:view];
         [view release];
         
         UIImage *backgroundImage = [UIImage imageNamed:@"购买量_05"];
         UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
-        backgroundView.bounds = self.bounds;
+        backgroundView.bounds = bounds;
         backgroundView.center = CGPointMake(CGRectGetMidX(self.bounds),
                                                     CGRectGetMidY(self.bounds));
         backgroundView.userInteractionEnabled = YES;
@@ -56,8 +65,8 @@
         _buyCountField.bounds = CGRectMake(0, 0, 250, 40);
         _buyCountField.center = CGPointMake(CGRectGetMidX(backgroundView.bounds) - 15,
                                            CGRectGetMidY(backgroundView.bounds) - 12);
-        _buyCountField.backgroundColor = [UIColor redColor];
         _buyCountField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _buyCountField.keyboardType = UIKeyboardTypeNumberPad;
         [backgroundView addSubview:_buyCountField];
         
         // 单位
@@ -96,7 +105,44 @@
 
 - (void)buy
 {
-    // ...
+    if (!_productInfo) {
+        return;
+    }
+    
+    [self closeSelf];
+    
+    NSLog(@"产品信息：%@", _productInfo);
+    
+    // 获取订单信息
+    NSString *number = _buyCountField.text;
+    NSArray *objs = @[number, _productInfo];
+    NSDictionary *orderInfo = [[NSDictionary alloc] initWithObjects:objs forKeys:@[kBuyNumer, kBuyProductInfo]];
+    
+    // 获取未处理订单
+    NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH]; // 关联解档管理器与数据
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:unarchiverData];
+    // 通过解档管理器和key解档数据
+    NSMutableArray *notProcessOrders = [unarchiver decodeObjectForKey:kOrderInfo];
+    [unarchiverData release];
+    [unarchiver release];
+    
+    if (!notProcessOrders) {
+        notProcessOrders = [NSMutableArray array];
+    }
+    [notProcessOrders addObject:orderInfo];
+    [orderInfo release];
+
+    // 保存订单信息
+    // 创建数据容器
+    NSMutableData *archiverData = [NSMutableData data];
+    // 关联容器与归档管理器
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:archiverData];
+    [archiver encodeObject:notProcessOrders forKey:kOrderInfo];
+    [archiver finishEncoding];
+    [archiverData writeToFile:PATH atomically:YES];
+    [archiver release];
+    
+    NSLog(@"存进去的数据 = %@", notProcessOrders);
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

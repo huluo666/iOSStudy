@@ -13,4 +13,6 @@
 @property (retain, nonatomic) NSTimer *imageSwitchIntervalTimer;
 @property (retain, nonatomic) NSTimer *updateImagesIntervalTimer;
 
+- (void)sendHttpRequest;
+
 @end

@@ -25,6 +25,7 @@
 {
     NSLog(@"%@ is dealloced", [self class]);
     [_listBackgroundView release];
+//    [_data release];
     [super dealloc];
 }
 
@@ -72,6 +73,14 @@
         [_listBackgroundView addSubview:orderLabel];
         [orderLabel release];
         
+        UITableView *tableView = [[UITableView alloc] init];
+        tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.95, 350);
+        tableView.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                       CGRectGetMidY(self.bounds));
+        tableView.delegate = self;
+        tableView.dataSource = self;
+        [self addSubview:tableView];
+        [tableView release];
         
         // 模拟提交订单
         [self performSelector:@selector(submit) withObject:nil afterDelay:3];
@@ -107,6 +116,26 @@
         orderView.center = center;
     }];
 }
+
+#pragma mark - tableview deletage
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return _dataSource.count;
+}
+
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *cellIdentifier = @"ShopCartCell";
+//    DDShopCartCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    if (!cell) {
+//        cell = [[DDShopCartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+//    }
+//    NSLog(@"date = %@", _dataSource[indexPath.row]);
+//    cell.data = _dataSource[indexPath.row];
+//    return cell;
+//}
+
 
 
 @end

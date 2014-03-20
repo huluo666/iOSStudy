@@ -12,6 +12,8 @@
 #import "DDPullDown.h"
 #import "DDFundCellView.h"
 #import "DDHandleShowDetail.h"
+#import "DDBuyView.h"
+#import "DDAppDelegate.h"
 
 @interface DDFundsView () <
     UICollectionViewDelegate,
@@ -144,6 +146,12 @@
         fund.tapDetailAction = ^(UIButton *sender) {
             [DDHandleShowDetail handleFundShowDetailWithDataSource:_dataSource
                                                          indexPath:indexPath];
+        };
+        fund.tapBuyAction = ^(UIButton *sender) {
+            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+            buyView.productInfo = _dataSource[indexPath.row];
+            [kRootView addSubview:buyView];
+            [buyView release];
         };
     }
     [cell.contentView addSubview:fund];

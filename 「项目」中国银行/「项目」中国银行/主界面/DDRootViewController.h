@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign, getter = isLogined) BOOL logined;
 
-
+// 切换视图
+- (void)switchVC:(UIButton *)sender;
 
 @end

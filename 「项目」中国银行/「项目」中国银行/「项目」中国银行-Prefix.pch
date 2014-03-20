@@ -166,3 +166,10 @@ fprintf(stderr, "-------\n");                                               \
 
 #define echo() NSLog(@"---\n content = %@, \n --- \n resultCode = %@", content, resultCode)
 
+// 购买产品数量和产品信息
+#define kBuyNumer @"buynumber"
+#define kBuyProductInfo @"buyProductInfo"
+#define kOrderInfo @"orderInfo"
+
+#define PATH [NSHomeDirectory() stringByAppendingPathComponent:@"productInfo.plist"]
+

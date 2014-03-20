@@ -43,7 +43,10 @@
                                        DDMetalShowDetail *metal = [[DDMetalShowDetail alloc] initWithFrame:CGRectZero contents:contents];
                                        metal.titleLabel.text = dataSource[indexPath.row][@"name"];
                                        metal.buyAction = ^(UIButton *sender) {
-                                          
+                                           DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                           buyView.productInfo = content;
+                                           [kRootView addSubview:buyView];
+                                           [buyView release];
                                        };
                                        [kRootView addSubview:metal];
                                        [metal release];
@@ -65,7 +68,10 @@
                                        DDInsureShowDetail *insure = [[DDInsureShowDetail alloc] initWithFrame:CGRectZero contents:contents];
                                        insure.titleLabel.text = dataSource[indexPath.row][@"name"];
                                        insure.buyAction = ^(UIButton *sender) {
-                                           NSLog(@"buy");
+                                           DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                           buyView.productInfo = content;
+                                           [kRootView addSubview:buyView];
+                                           [buyView release];
                                        };
                                        [kRootView addSubview:insure];
                                        [insure release];
@@ -93,7 +99,10 @@
                                        
                                        abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                        abroad.buyAction = ^(UIButton *sender) {
-                                           NSLog(@"buy");
+                                           DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                           buyView.productInfo = content;
+                                           [kRootView addSubview:buyView];
+                                           [buyView release];
                                        };
                                        [kRootView addSubview:abroad];
                                        [abroad release];
@@ -116,7 +125,10 @@
                                        DDFundShowDetail *fund = [[DDFundShowDetail alloc] initWithFrame:CGRectZero contents:contents];
                                        fund.titleLabel.text = dataSource[indexPath.row][@"name"];
                                        fund.buyAction = ^(UIButton *sender) {
-                                           NSLog(@"buy");
+                                           DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                           [kRootView addSubview:buyView];
+                                           buyView.productInfo = content;
+                                           [buyView release];
                                        };
                                        [kRootView addSubview:fund];
                                        [fund release];
@@ -148,7 +160,10 @@
                                                  
                                                  abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                                  abroad.buyAction = ^(UIButton *sender) {
-                                                     NSLog(@"buy");
+                                                     DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                                     buyView.productInfo = content;
+                                                     [kRootView addSubview:buyView];
+                                                     [buyView release];
                                                  };
                                                  [kRootView addSubview:abroad];
                                                  [abroad release];
@@ -175,7 +190,10 @@
                                                  
                                                  abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                                  abroad.buyAction = ^(UIButton *sender) {
-                                                     NSLog(@"buy");
+                                                     DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                                     buyView.productInfo = content;
+                                                     [kRootView addSubview:buyView];
+                                                     [buyView release];
                                                  };
                                                  [kRootView addSubview:abroad];
                                                  [abroad release];
@@ -206,7 +224,10 @@
                                          
                                          abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                          abroad.buyAction = ^(UIButton *sender) {
-                                             NSLog(@"buy");
+                                             DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                             buyView.productInfo = content;
+                                             [kRootView addSubview:buyView];
+                                             [buyView release];
                                          };
                                          [kRootView addSubview:abroad];
                                          [abroad release];
@@ -228,7 +249,10 @@
                                     DDFundShowDetail *fund = [[DDFundShowDetail alloc] initWithFrame:CGRectZero contents:contents];
                                     fund.titleLabel.text = dataSource[indexPath.row][@"name"];
                                     fund.buyAction = ^(UIButton *sender) {
-                                        NSLog(@"buy");
+                                        DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                        buyView.productInfo = content;
+                                        [kRootView addSubview:buyView];
+                                        [buyView release];
                                     };
                                     [kRootView addSubview:fund];
                                     [fund release];
@@ -252,6 +276,7 @@
                                       metal.titleLabel.text = dataSource[@"name"];
                                       metal.buyAction = ^(UIButton *sender) {
                                           DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                          buyView.productInfo = content;
                                           [kRootView addSubview:buyView];
                                           [buyView release];
                                       };
@@ -276,7 +301,10 @@
                                        DDInsureShowDetail *insure = [[DDInsureShowDetail alloc] initWithFrame:CGRectZero contents:contents];
                                        insure.titleLabel.text = dataSource[indexPath.row][@"name"];
                                        insure.buyAction = ^(UIButton *sender) {
-                                           NSLog(@"buy");
+                                           DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
+                                           buyView.productInfo = content;
+                                           [kRootView addSubview:buyView];
+                                           [buyView release];
                                        };
                                        [kRootView addSubview:insure];
                                        [insure release];

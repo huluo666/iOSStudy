@@ -10,4 +10,6 @@
 
 @interface DDBuyView : UIView
 
+@property (nonatomic, retain) NSDictionary *productInfo;
+
 @end

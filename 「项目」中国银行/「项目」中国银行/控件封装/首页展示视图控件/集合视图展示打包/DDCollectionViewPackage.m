@@ -130,6 +130,7 @@
             cellView.detailTextLabel.text = _dataSource[indexPath.row][@"published"];
         }
         cellView.textLabel.text = _dataSource[indexPath.row][@"name"];
+        NSLog(@"%@", _dataSource[indexPath.row]);
         cellView.imageView.image = kImageWithName(@"网上银行BOCNET1");
         cellView.processTap = ^(UIView *view) {
             if ([view isKindOfClass:[UIButton class]]) {

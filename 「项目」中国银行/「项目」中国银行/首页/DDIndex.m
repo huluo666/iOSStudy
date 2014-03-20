@@ -310,6 +310,10 @@
 
 - (void)requestForHotNews
 {
+    id obj = [[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId];
+    if (![obj isKindOfClass:[NSNumber class]]) {
+        return;
+    }
     [DDHTTPManager sendRequstWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
                             totalNumber:@"12"
                       completionHandler:^(id content, NSString *resultCode) {
@@ -362,6 +366,10 @@
 
 - (void)requestForProjectCustom
 {
+    id obj = [[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId];
+    if (![obj isKindOfClass:[NSNumber class]]) {
+        return;
+    }
     [DDHTTPManager sendRequestForCustomProjectWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
                                              totalNumber:@"12"
                                        completionHandler:^(id content, NSString *resultCode) {

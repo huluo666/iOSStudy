@@ -9,6 +9,8 @@
 #import "DDLogin.h"
 #import "DDAppDelegate.h"
 #import "DDRootViewController.h"
+#import "DDAppDelegate.h"
+#import "DDIndex.h"
 
 @interface DDLogin ()
 {
@@ -179,7 +181,9 @@
     [DDHTTPManager sendRequstWithUsername:username
                                  password:password
                         completionHandler:^(id content, NSString *resultCode) {
-                            if (![resultCode intValue] && content) {
+                            if (![resultCode intValue] &&
+                                content &&
+                                [content isKindOfClass:[NSMutableDictionary class] ]) {
                                 // 登录成功
                                 [UIView animateWithDuration:kAnimateDuration animations:^{
                                     CGPoint center = this.center;
@@ -191,6 +195,10 @@
                                     // 保存用户数据字典
                                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                                     [userDefaults setValuesForKeysWithDictionary:content];
+                                    
+                                    // 发起网络请求，初始化首页界面
+                                    DDIndex *index = [[[[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController] view] subviews] firstObject];
+                                    [index sendHttpRequest];
                                 }];
                             } else {
                                 // 登录失败
