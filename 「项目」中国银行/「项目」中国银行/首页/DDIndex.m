@@ -116,15 +116,15 @@
     [invocation setTarget:self];
     [invocation setSelector:@selector(requestForImages)];
     [invocation retainArguments];
-//    _updateImagesIntervalTimer = [NSTimer timerWithTimeInterval:kDataUpdateTimeInterval
-//                                                     invocation:invocation
-//                                                        repeats:YES];
-//    
-//    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-//    [runLoop addTimer:_updateImagesIntervalTimer forMode:NSDefaultRunLoopMode];
-    _updateImagesIntervalTimer = [[NSTimer scheduledTimerWithTimeInterval:kDataUpdateTimeInterval
-                                                              invocation:invocation
-                                                                 repeats:YES] retain];
+    _updateImagesIntervalTimer = [[NSTimer timerWithTimeInterval:kDataUpdateTimeInterval
+                                                     invocation:invocation
+                                                        repeats:YES] retain];
+    
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:_updateImagesIntervalTimer forMode:NSDefaultRunLoopMode];
+//    _updateImagesIntervalTimer = [[NSTimer scheduledTimerWithTimeInterval:kDataUpdateTimeInterval
+//                                                              invocation:invocation
+//                                                                 repeats:YES] retain];
     
     [self requestForLatestNews];
     [self requestForHotNews];

@@ -9,6 +9,11 @@
 #import "DDComboView.h"
 #import "DDCombo.h"
 
+typedef enum {
+    DDZoomIn, // 放大
+    DDZoomOut // 缩小
+} DDScaleType;
+
 @interface DDComboView ()
 {
     NSMutableArray *_combos;                    // 套餐模式控件数组
@@ -20,10 +25,9 @@
 - (void)processSwipeGesture:(UISwipeGestureRecognizer *)swipe;
 
 // 为view添加缩放动画
-- (void)startBasicScaleAnimationFromValue:(NSValue *)fromeValue
-                                  toValue:(NSValue *)toValue
-                                  ForView:(UIView *)view
-                    withAnimationDuration:(NSTimeInterval)duration;
+- (void)scaleViewForView:(UIView *)view
+                    type:(DDScaleType)type
+                duration:(NSTimeInterval)duration;
 
 @end
 
@@ -80,11 +84,10 @@
             [combo release];
 
             // 默认放大第三个
-            if (i == 2) {
-                [self startBasicScaleAnimationFromValue:@1.2
-                                                toValue:@1.2
-                                                ForView:_combos[i]
-                                  withAnimationDuration:0];
+            if (i != 2) {
+                [self scaleViewForView:combo
+                                  type:DDZoomOut
+                              duration:0];
             }
         }
     }
@@ -111,15 +114,12 @@
         firstCombo.center = [[_comboLocationList lastObject] CGPointValue];
         [_combos removeObjectAtIndex:0];
         [_combos addObject:firstCombo];
-        
-        // 缩放动画
-        [self startBasicScaleAnimationFromValue:@1.2
-                                        toValue:@1
-                                        ForView:_combos[1]
-                          withAnimationDuration:kAnimateDuration / 2];
-        [self startBasicScaleAnimationFromValue:@1
-                                        toValue:@1.2 ForView:_combos[2]
-                          withAnimationDuration:kAnimateDuration / 2];
+        [self scaleViewForView:_combos[1]
+                          type:DDZoomOut
+                      duration:kAnimateDuration / 2];
+        [self scaleViewForView:_combos[2]
+                          type:DDZoomIn
+                      duration:kAnimateDuration / 2];
     } else {
         // 向右移动
         // 调整坐标顺序
@@ -128,15 +128,12 @@
         [_combos removeObject:lastCombo];
         [_combos insertObject:lastCombo atIndex:0];
         
-        // 缩放动画
-        [self startBasicScaleAnimationFromValue:@1.2
-                                        toValue:@1
-                                        ForView:_combos[3]
-                          withAnimationDuration:kAnimateDuration / 2];
-        [self startBasicScaleAnimationFromValue:@1
-                                        toValue:@1.2
-                                        ForView:_combos[2]
-                          withAnimationDuration:kAnimateDuration / 2];
+        [self scaleViewForView:_combos[3]
+                          type:DDZoomOut
+                      duration:kAnimateDuration / 2];
+        [self scaleViewForView:_combos[2]
+                          type:DDZoomIn
+                      duration:kAnimateDuration / 2];
     }
     
     // 移动一格
@@ -152,40 +149,24 @@
 
 #pragma mark - 缩放动画
 
-- (void)startBasicScaleAnimationFromValue:(NSValue *)fromeValue
-                                  toValue:(NSValue *)toValue
-                                  ForView:(UIView *)view
-                    withAnimationDuration:(NSTimeInterval)duration
+- (void)scaleViewForView:(UIView *)view type:(DDScaleType)type duration:(NSTimeInterval)duration;
 {
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    animation.duration = duration;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.fromValue = fromeValue;
-    animation.toValue = toValue;
-    animation.removedOnCompletion = NO;
-    animation.delegate = self;
-    animation.fillMode = kCAFillModeForwards;
-    [view.layer addAnimation:animation forKey:@"transform.scale"];
+    _isAnimating = YES;
+    [UIView animateWithDuration:duration
+                     animations:^{
+                         if (DDZoomIn == type) {
+                             // 放大
+                             view.transform = CGAffineTransformIdentity;
+                             view.userInteractionEnabled = YES;
+                         } else if (DDZoomOut == type) {
+                             // 缩小
+                             view.transform = CGAffineTransformScale(view.transform, 0.8, 0.8);
+                             view.userInteractionEnabled = NO;
+                         }
+                     } completion:^(BOOL finished) {
+                         _isAnimating = NO;
+                     }];
     
-    // 切换用户交互
-    if (fromeValue < toValue) {
-        view.userInteractionEnabled = NO;
-    } else {
-        view.userInteractionEnabled = YES;
-    }
-}
-
-- (void)scaleForView:(UIView *)view
-          fromeValue:(NSInteger)fromValue
-             toValue:(NSInteger)toValue
-    withAnimationDuration:(NSTimeInterval)duration
-{
-    view.transform = CGAffineTransformScale(view.transform, fromValue, toValue);
-}
-
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    _isAnimating = NO;
 }
 
 @end

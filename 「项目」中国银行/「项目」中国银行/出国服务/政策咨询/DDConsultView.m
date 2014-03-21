@@ -35,7 +35,7 @@
         UIImageView *tableViewBackgorundView = [[UIImageView alloc] init];
         tableViewBackgorundView.frame = self.bounds;
         // 背景图片多次利用，需要cache
-        tableViewBackgorundView.image = [UIImage imageNamed:@"背景"];
+        tableViewBackgorundView.image = kImageWithName(@"背景");
         
         // tableView
         UITableView *tableView = [[UITableView alloc] init];
@@ -56,26 +56,27 @@
         pullDown.lastUpdate.textColor = [UIColor whiteColor];
         pullDown.status.textColor = [UIColor whiteColor];
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
-        // 下拉箭头多次用到，cache
-        pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
+
+        pullDown.arrow.image = kImageWithName(@"blackArrow");
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
             [DDHTTPManager sendRequstWithPageSize:@"12"
                                        pageNumber:@"1"
                                           byTitle:@""
                                        byKeywords:@""
                                 completionHandler:^(id content, NSString *resultCode) {
-                                    // 初始化数据源，加载数据
-                                    NSMutableArray *data = content;
-                                    if (_dataSource != data) {
-                                        [_dataSource release];
-                                        _dataSource = nil;
-                                        _dataSource = [data mutableCopy];
-                                    }
-                                    [tableView reloadData];
-                                    [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:) withObject:nil afterDelay:1];
-                                }];
+                // 初始化数据源，加载数据
+                NSMutableArray *data = content;
+                if (_dataSource != data) {
+                    [_dataSource release];
+                    _dataSource = nil;
+                    _dataSource = [data mutableCopy];
+                }
+                [tableView reloadData];
+                [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                      withObject:nil
+                                      afterDelay:1];
+            }];
         };
-#pragma mark - TODO 刷新数据TableView
         
         // 上下两条阴影
         UIImageView *upShadowView = [[UIImageView alloc] init];
@@ -123,12 +124,12 @@
                                       byTitle:@""
                                    byKeywords:@""
                             completionHandler:^(id content, NSString *resultCode) {
-                                // 初始化数据源，加载数据
-                                _dataSource = [content mutableCopy];
-                                [tableView reloadData];
-                            }];
+            // 初始化数据源，加载数据
+            _dataSource = [content mutableCopy];
+            [tableView reloadData];
+        }];
     }
-
+    
     return self;
 }
 
@@ -137,7 +138,13 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return _dataSource.count;
+    NSInteger count = 0;
+    if (_dataSource != nil &&
+        [_dataSource isKindOfClass:[NSArray class]]) {
+        count = _dataSource.count;
+    }
+
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView

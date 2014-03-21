@@ -9,9 +9,7 @@
 #import "DDFinanceProductsView.h"
 #import "DDFinancingProductsCell.h"
 #import "DDPullDown.h"
-#import "DDDeadlineViewController.h"
-#import "DDProfitTypeViewController.h"
-#import "DDCoinTypeViewController.h"
+#import "DDSelectViewController.h"
 
 @interface DDFinanceProductsView () <
     UITableViewDataSource,
@@ -359,7 +357,10 @@
                 _popover = nil;
             }
             
-            DDDeadlineViewController *deadlineVC = [[DDDeadlineViewController alloc] init];
+//            DDDeadlineViewController *deadlineVC = [[DDDeadlineViewController alloc] init];
+            DDSelectViewController *deadlineVC = [[DDSelectViewController alloc]
+                                                  initWithStyle:UITableViewStylePlain
+                                                  dataSource:nil];
             _popover = [[UIPopoverController alloc] initWithContentViewController:deadlineVC];
             [deadlineVC release];
             _popover.popoverContentSize = CGSizeMake(150, 200);
@@ -379,7 +380,10 @@
                 [_popover dismissPopoverAnimated:YES];
                 _popover = nil;
             }
-            DDProfitTypeViewController *profitType = [[DDProfitTypeViewController alloc] init];
+//            DDProfitTypeViewController *profitType = [[DDProfitTypeViewController alloc] init];
+            DDSelectViewController *profitType = [[DDSelectViewController alloc]
+                                                  initWithStyle:UITableViewStylePlain
+                                                  dataSource:nil];
             _popover = [[UIPopoverController alloc] initWithContentViewController:profitType];
             [profitType release];
             _popover.popoverContentSize = CGSizeMake(150, 200);
@@ -395,7 +399,10 @@
                 [_popover dismissPopoverAnimated:YES];
                 _popover = nil;
             }
-            DDCoinTypeViewController *coinType = [[DDCoinTypeViewController alloc] init];
+//            DDCoinTypeViewController *coinType = [[DDCoinTypeViewController alloc] init];
+            DDSelectViewController *coinType = [[DDSelectViewController alloc]
+                                                  initWithStyle:UITableViewStylePlain
+                                                  dataSource:nil];
             _popover = [[UIPopoverController alloc] initWithContentViewController:coinType];
             [coinType release];
             _popover.popoverContentSize = CGSizeMake(150, 200);
@@ -455,7 +462,8 @@
     NSLog(@"dismissed");
 }
 
-- (void)calendarController:(PMCalendarController *)calendarController didChangePeriod:(PMPeriod *)newPeriod
+- (void)calendarController:(PMCalendarController *)calendarController
+           didChangePeriod:(PMPeriod *)newPeriod
 {
     _startDataLabel.text = [NSString stringWithFormat:@"%@" ,
                             [newPeriod.startDate dateStringWithFormat:@"dd-MM-yyyy"]];
@@ -478,8 +486,9 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     
     if (!cell) {
-        cell = [[[DDFinancingProductsCell alloc] initWithStyle:UITableViewCellStyleValue2
-                                              reuseIdentifier:identifier] autorelease];
+        cell = [[[DDFinancingProductsCell alloc]
+                 initWithStyle:UITableViewCellStyleValue2
+                 reuseIdentifier:identifier] autorelease];
     }
     return cell;
 }
@@ -492,9 +501,10 @@
     CGPoint backgroundViewCenter = _backgroundView.center;
     [UIView animateWithDuration:kAnimateDuration / 2
                      animations:^{
-                         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
-                                                              backgroundViewCenter.y - 350);
-                     }];
+        _backgroundView.center = CGPointMake(backgroundViewCenter.x,
+                                             backgroundViewCenter.y - 350);
+
+    }];
     return YES;
 }
 
@@ -504,9 +514,9 @@
     CGPoint backgroundViewCenter = _backgroundView.center;
     [UIView animateWithDuration:kAnimateDuration / 2
                      animations:^{
-                         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
-                                                              backgroundViewCenter.y + 350);
-                     }];
+        _backgroundView.center = CGPointMake(backgroundViewCenter.x,
+                                             backgroundViewCenter.y + 350);
+    }];
 }
 
 @end

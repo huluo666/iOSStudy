@@ -270,9 +270,11 @@
      numberOfItemsInSection:(NSInteger)section
 {
     NSInteger count = 0;
-    if (_dataSource && _dataSource.count > 0) {
+    if (_dataSource != nil &&
+        [_dataSource isKindOfClass:[NSArray class]]) {
         count = _dataSource.count;
     }
+    
     return count;
 }
 

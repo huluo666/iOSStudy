@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0623256218DC8DE20092BA3C /* DDSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0623256118DC8DE20092BA3C /* DDSelectViewController.m */; };
 		06D388CB18C9F6D700113372 /* DDIndex.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CA18C9F6D700113372 /* DDIndex.m */; };
 		06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388CD18C9FD5000113372 /* DDAbroad.m */; };
 		06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D388D018C9FD6F00113372 /* DDFinancing.m */; };
@@ -219,8 +220,6 @@
 		952BB57018C98CEE002F4928 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56918C98CEE002F4928 /* Icon@2x.png */; };
 		952BB57118C98CEE002F4928 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 952BB56A18C98CEE002F4928 /* iTunesArtwork.png */; };
 		952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 952BB57518C98DA4002F4928 /* DDRootViewController.m */; };
-		95553A6018D3F1D8003BDF24 /* DDProfitTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95553A5F18D3F1D8003BDF24 /* DDProfitTypeViewController.m */; };
-		95553A6318D3F1E8003BDF24 /* DDCoinTypeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95553A6218D3F1E8003BDF24 /* DDCoinTypeViewController.m */; };
 		95636E3118D04F3300C29D9B /* 箭头右@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E2F18D04F3300C29D9B /* 箭头右@2x.png */; };
 		95636E3218D04F3300C29D9B /* 箭头左@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95636E3018D04F3300C29D9B /* 箭头左@2x.png */; };
 		95682AC318CD4BCF00C2CFAD /* DDShowDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = 95682AC218CD4BCF00C2CFAD /* DDShowDetail.m */; };
@@ -239,7 +238,6 @@
 		9583CDFC18D2CEFB00399C22 /* DDPreciousMetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDFB18D2CEFB00399C22 /* DDPreciousMetalView.m */; };
 		9583CDFF18D2CF0D00399C22 /* DDInsuranceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CDFE18D2CF0D00399C22 /* DDInsuranceView.m */; };
 		9583CE0618D2E36800399C22 /* DDFinancingProductsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CE0518D2E36800399C22 /* DDFinancingProductsCell.m */; };
-		9583CE0C18D30A1B00399C22 /* DDDeadlineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9583CE0B18D30A1B00399C22 /* DDDeadlineViewController.m */; };
 		95A4E18918CDBE6E00618B79 /* index_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 95A4E18818CDBE6E00618B79 /* index_background.png */; };
 		95AF30B618DC17310077CF9E /* DDSchedule.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AF30B518DC17310077CF9E /* DDSchedule.m */; };
 		95AF30C218DC17960077CF9E /* DDOrderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AF30C118DC17960077CF9E /* DDOrderView.m */; };
@@ -314,7 +312,6 @@
 		95F1629A18D82C170057CE9B /* DDOptionalCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F1629918D82C170057CE9B /* DDOptionalCellView.m */; };
 		95F1629E18D83B8C0057CE9B /* DDFundCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F1629D18D83B8C0057CE9B /* DDFundCellView.m */; };
 		95F162A218D843950057CE9B /* DDInsureCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F162A118D843950057CE9B /* DDInsureCellView.m */; };
-		95F162A918D866270057CE9B /* DDSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F162A818D866270057CE9B /* DDSelectViewController.m */; };
 		95F5B37E18C9A13100C81D68 /* 眉头_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F5B37C18C9A13100C81D68 /* 眉头_01@2x.png */; };
 		95F5B37F18C9A13100C81D68 /* 眉头阴影_04@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95F5B37D18C9A13100C81D68 /* 眉头阴影_04@2x.png */; };
 		95F5B38618C9B20B00C81D68 /* DDLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 95F5B38518C9B20B00C81D68 /* DDLogin.m */; };
@@ -331,6 +328,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0623256018DC8DE20092BA3C /* DDSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSelectViewController.h; sourceTree = "<group>"; };
+		0623256118DC8DE20092BA3C /* DDSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSelectViewController.m; sourceTree = "<group>"; };
 		06D388C918C9F6D700113372 /* DDIndex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDIndex.h; sourceTree = "<group>"; };
 		06D388CA18C9F6D700113372 /* DDIndex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDIndex.m; sourceTree = "<group>"; };
 		06D388CC18C9FD5000113372 /* DDAbroad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAbroad.h; sourceTree = "<group>"; };
@@ -559,10 +558,6 @@
 		952BB56A18C98CEE002F4928 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		952BB57418C98DA4002F4928 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		952BB57518C98DA4002F4928 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
-		95553A5E18D3F1D8003BDF24 /* DDProfitTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDProfitTypeViewController.h; sourceTree = "<group>"; };
-		95553A5F18D3F1D8003BDF24 /* DDProfitTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDProfitTypeViewController.m; sourceTree = "<group>"; };
-		95553A6118D3F1E8003BDF24 /* DDCoinTypeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCoinTypeViewController.h; sourceTree = "<group>"; };
-		95553A6218D3F1E8003BDF24 /* DDCoinTypeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCoinTypeViewController.m; sourceTree = "<group>"; };
 		95636E2F18D04F3300C29D9B /* 箭头右@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头右@2x.png"; sourceTree = "<group>"; };
 		95636E3018D04F3300C29D9B /* 箭头左@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "箭头左@2x.png"; sourceTree = "<group>"; };
 		95682AC118CD4BCF00C2CFAD /* DDShowDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDShowDetail.h; sourceTree = "<group>"; };
@@ -595,8 +590,6 @@
 		9583CDFE18D2CF0D00399C22 /* DDInsuranceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInsuranceView.m; sourceTree = "<group>"; };
 		9583CE0418D2E36800399C22 /* DDFinancingProductsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFinancingProductsCell.h; sourceTree = "<group>"; };
 		9583CE0518D2E36800399C22 /* DDFinancingProductsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFinancingProductsCell.m; sourceTree = "<group>"; };
-		9583CE0A18D30A1B00399C22 /* DDDeadlineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDeadlineViewController.h; sourceTree = "<group>"; };
-		9583CE0B18D30A1B00399C22 /* DDDeadlineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDeadlineViewController.m; sourceTree = "<group>"; };
 		95A4E17718CDB2E800618B79 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		95A4E18818CDBE6E00618B79 /* index_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = index_background.png; sourceTree = "<group>"; };
 		95AF30B418DC17310077CF9E /* DDSchedule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSchedule.h; sourceTree = "<group>"; };
@@ -742,8 +735,6 @@
 		95F1629D18D83B8C0057CE9B /* DDFundCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFundCellView.m; sourceTree = "<group>"; };
 		95F162A018D843950057CE9B /* DDInsureCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDInsureCellView.h; sourceTree = "<group>"; };
 		95F162A118D843950057CE9B /* DDInsureCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDInsureCellView.m; sourceTree = "<group>"; };
-		95F162A718D866270057CE9B /* DDSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSelectViewController.h; sourceTree = "<group>"; };
-		95F162A818D866270057CE9B /* DDSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSelectViewController.m; sourceTree = "<group>"; };
 		95F5B37C18C9A13100C81D68 /* 眉头_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "眉头_01@2x.png"; sourceTree = "<group>"; };
 		95F5B37D18C9A13100C81D68 /* 眉头阴影_04@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "眉头阴影_04@2x.png"; sourceTree = "<group>"; };
 		95F5B38418C9B20B00C81D68 /* DDLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLogin.h; sourceTree = "<group>"; };
@@ -781,6 +772,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0623255F18DC8DE20092BA3C /* 气泡窗口 */ = {
+			isa = PBXGroup;
+			children = (
+				0623256018DC8DE20092BA3C /* DDSelectViewController.h */,
+				0623256118DC8DE20092BA3C /* DDSelectViewController.m */,
+			);
+			path = "气泡窗口";
+			sourceTree = "<group>";
+		};
 		06D388C318C9F48F00113372 /* 出国服务 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1212,24 +1212,6 @@
 			path = "主界面";
 			sourceTree = "<group>";
 		};
-		95553A5C18D3F17F003BDF24 /* 币种 */ = {
-			isa = PBXGroup;
-			children = (
-				95553A6118D3F1E8003BDF24 /* DDCoinTypeViewController.h */,
-				95553A6218D3F1E8003BDF24 /* DDCoinTypeViewController.m */,
-			);
-			path = "币种";
-			sourceTree = "<group>";
-		};
-		95553A5D18D3F17F003BDF24 /* 收益类型 */ = {
-			isa = PBXGroup;
-			children = (
-				95553A5E18D3F1D8003BDF24 /* DDProfitTypeViewController.h */,
-				95553A5F18D3F1D8003BDF24 /* DDProfitTypeViewController.m */,
-			);
-			path = "收益类型";
-			sourceTree = "<group>";
-		};
 		95682AB118CD4B6D00C2CFAD /* 控件封装 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1292,10 +1274,9 @@
 		9583CDC318D2988400399C22 /* 理财产品视图控件 */ = {
 			isa = PBXGroup;
 			children = (
-				95F162A318D864270057CE9B /* 贵金属气泡窗口 */,
+				0623255F18DC8DE20092BA3C /* 气泡窗口 */,
 				95F1629F18D843870057CE9B /* 保险展示 */,
 				95F1629B18D83B800057CE9B /* 基金展示 */,
-				9583CE0818D309F400399C22 /* 理财产品气泡窗口 */,
 				9583CE0018D2E2E200399C22 /* 理财产品Cell自定义 */,
 			);
 			path = "理财产品视图控件";
@@ -1416,25 +1397,6 @@
 				9583CE0518D2E36800399C22 /* DDFinancingProductsCell.m */,
 			);
 			path = "理财产品Cell自定义";
-			sourceTree = "<group>";
-		};
-		9583CE0818D309F400399C22 /* 理财产品气泡窗口 */ = {
-			isa = PBXGroup;
-			children = (
-				95553A5C18D3F17F003BDF24 /* 币种 */,
-				95553A5D18D3F17F003BDF24 /* 收益类型 */,
-				9583CE0918D309F400399C22 /* 投资期限 */,
-			);
-			path = "理财产品气泡窗口";
-			sourceTree = "<group>";
-		};
-		9583CE0918D309F400399C22 /* 投资期限 */ = {
-			isa = PBXGroup;
-			children = (
-				9583CE0A18D30A1B00399C22 /* DDDeadlineViewController.h */,
-				9583CE0B18D30A1B00399C22 /* DDDeadlineViewController.m */,
-			);
-			path = "投资期限";
 			sourceTree = "<group>";
 		};
 		95AF30B218DC17140077CF9E /* 查询窗口 */ = {
@@ -1728,15 +1690,6 @@
 				95F162A118D843950057CE9B /* DDInsureCellView.m */,
 			);
 			path = "保险展示";
-			sourceTree = "<group>";
-		};
-		95F162A318D864270057CE9B /* 贵金属气泡窗口 */ = {
-			isa = PBXGroup;
-			children = (
-				95F162A718D866270057CE9B /* DDSelectViewController.h */,
-				95F162A818D866270057CE9B /* DDSelectViewController.m */,
-			);
-			path = "贵金属气泡窗口";
 			sourceTree = "<group>";
 		};
 		95F5B38318C9B20300C81D68 /* 登录 */ = {
@@ -2054,11 +2007,9 @@
 				06D388CB18C9F6D700113372 /* DDIndex.m in Sources */,
 				95E0744F18D691A10054DDAA /* NSObject+SBJson.m in Sources */,
 				95E0749118D6D9020054DDAA /* UIImage+GIF.m in Sources */,
-				9583CE0C18D30A1B00399C22 /* DDDeadlineViewController.m in Sources */,
 				95244B3018DAAF8300D0340C /* DDShopCartCell.m in Sources */,
 				95C1F84D18D188E4001AE45B /* PMPeriod.m in Sources */,
 				95AF30CD18DC2ED50077CF9E /* DDSerachDetailResult.m in Sources */,
-				95553A6318D3F1E8003BDF24 /* DDCoinTypeViewController.m in Sources */,
 				95E0749518D6D9020054DDAA /* UIImageView+WebCache.m in Sources */,
 				9583CDF318D2AC6400399C22 /* DDOptionalView.m in Sources */,
 				952BB57618C98DA4002F4928 /* DDRootViewController.m in Sources */,
@@ -2077,18 +2028,17 @@
 				95E0745618D691A10054DDAA /* SBJsonStreamWriter.m in Sources */,
 				95E0744B18D691A10054DDAA /* ASINetworkQueue.m in Sources */,
 				95F1629A18D82C170057CE9B /* DDOptionalCellView.m in Sources */,
-				95F162A918D866270057CE9B /* DDSelectViewController.m in Sources */,
 				95E0744D18D691A10054DDAA /* MyMD5.m in Sources */,
 				06D388CE18C9FD5000113372 /* DDAbroad.m in Sources */,
 				06D388D118C9FD6F00113372 /* DDFinancing.m in Sources */,
 				95C1F78418D1371B001AE45B /* DDRefreshBaseView.m in Sources */,
 				95E0745B18D691A10054DDAA /* SBJsonWriter.m in Sources */,
 				95F1629E18D83B8C0057CE9B /* DDFundCellView.m in Sources */,
+				0623256218DC8DE20092BA3C /* DDSelectViewController.m in Sources */,
 				951029ED18DBDEE000091EE2 /* DDListCell.m in Sources */,
 				95E0744418D691A10054DDAA /* ASIAuthenticationDialog.m in Sources */,
 				95C1F78518D1371B001AE45B /* DDRefreshControlConst.m in Sources */,
 				95E0744E18D691A10054DDAA /* JSONKit.m in Sources */,
-				95553A6018D3F1D8003BDF24 /* DDProfitTypeViewController.m in Sources */,
 				95AF30B618DC17310077CF9E /* DDSchedule.m in Sources */,
 				9583CE0618D2E36800399C22 /* DDFinancingProductsCell.m in Sources */,
 				95E0744718D691A10054DDAA /* ASIDownloadCache.m in Sources */,

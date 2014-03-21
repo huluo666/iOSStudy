@@ -22,12 +22,12 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.frame = CGRectMake(0, 80, 300, 400);
+        self.frame = CGRectMake(0, 80, 400, 500);
         
         // 背景图片
         UIImageView *backgroundImageView = [[UIImageView alloc]
                                             initWithImage:kImageWithNameHaveSuffix(@"prepare1_01.png")];
-        backgroundImageView.bounds = CGRectMake(0, 0, 300, 480);
+        backgroundImageView.bounds = CGRectMake(0, 0, 376, 545);
         backgroundImageView.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
         backgroundImageView.userInteractionEnabled = YES;
         backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
