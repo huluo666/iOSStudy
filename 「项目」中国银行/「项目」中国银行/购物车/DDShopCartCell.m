@@ -56,16 +56,22 @@
     label1.text = [NSString stringWithFormat:@"%@个", data[@"buynumber"]];
     
     UILabel *label2 = (UILabel *)_labels[1];
-    label2.text = [NSString stringWithFormat:@"%@", data[@"buyProductInfo"][@"categoryName"] ? data[@"buyProductInfo"][@"categoryName"] : @"无力吐槽"];
+    NSString *fkbg = nil;
+    if ([data[@"buyProductInfo"] isKindOfClass:[NSArray class]]) {
+        fkbg = data[@"buyProductInfo"][0][@"categoryName"];
+    } else if ([data[@"buyProductInfo"] isKindOfClass:[NSDictionary class]]) {
+        fkbg = data[@"buyProductInfo"][@"categoryName"];
+    }
+    label2.text = [NSString stringWithFormat:@"%@",fkbg ? fkbg : @"无力吐槽"];
     
     UILabel *label3 = (UILabel *)_labels[2];
-    label3.text = [NSString stringWithFormat:@"%@", data[@"buyProductInfo"][@"info"] ? data[@"buyProductInfo"][@"info"] : @"再次无力吐槽"];
-    
-    if (data[@"buyProductInfo"][@"info"]) {
-        NSLog(@"info不为空");
-    } else {
-        NSLog(@"info为空");
+    NSString *fkbgAgain = nil;
+    if ([data[@"buyProductInfo"] isKindOfClass:[NSArray class]]) {
+        fkbgAgain = data[@"buyProductInfo"][0][@"info"];
+    } else if ([data[@"buyProductInfo"] isKindOfClass:[NSDictionary class]]) {
+        fkbgAgain = data[@"buyProductInfo"][@"info"];
     }
+    label3.text = [NSString stringWithFormat:@"%@", fkbgAgain ? fkbgAgain : @"再次无力吐槽"];    
 }
 
 @end

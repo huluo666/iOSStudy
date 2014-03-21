@@ -108,12 +108,26 @@
         // 保存
         DDRecordInfo *record = [[DDRecordInfo alloc] init];
         record.doSomeThing = ^(NSMutableDictionary *dict){
+            // 跳转前把跳转后的页面需要的数据保存
+            // TODO:归档
+//            NSMutableData *archiverData = [NSMutableData data];
+//            NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:archiverData];
+//            [archiver encodeObject:dict forKey:kOrderInfo];
+//            [archiver finishEncoding];
+//            [archiverData writeToFile:PATH_ORDER atomically:YES];
+//            [archiver release];
+            
+//            NSLog(@"选购清单接收的数据是%@", archiver);
+            
+            
+            NSUserDefaults *useDefaults = [NSUserDefaults standardUserDefaults];
+            [useDefaults setObject:dict forKey:@"选购清单"];
+            
+            
             // 移除自己，跳到选购清单
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             button.tag = kButtonTag + 3;
             DDRootViewController *root = (DDRootViewController *)[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController];
-            DDChoose *choose = (DDChoose *)[root.view subviews][3];
-            choose.dataSource = dict;
             [root switchVC:button];
         };
         record.data = _dataSource;
@@ -125,7 +139,6 @@
         // 查询
     }
 }
-
 
 #pragma mark - tableview deletage
 

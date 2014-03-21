@@ -10,6 +10,4 @@
 
 @interface DDChoose : UIView
 
-@property (retain, nonatomic) NSMutableDictionary *dataSource;
-
 @end

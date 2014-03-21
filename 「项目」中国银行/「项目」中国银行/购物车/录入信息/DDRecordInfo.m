@@ -100,7 +100,21 @@
     NSString *tel = ((UITextField *)_fields[2]).text ? ((UITextField *)_fields[2]).text: @"真心无力吐槽";
     NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId];
     
-    NSArray *shoppingList = [[_data valueForKey:@"buyProductInfo"] valueForKey:@"productId"] ? [[_data valueForKey:@"buyProductInfo"] valueForKey:@"productId"] : @[];
+    
+    NSArray *dicts = [_data valueForKey:@"buyProductInfo"];
+    NSLog(@"buyProductInfos = %@", dicts);
+    NSMutableArray *productInfos = [NSMutableArray array];
+
+    for (int i = 0; i < dicts.count; i++) {
+        id obj = dicts[i];
+        if ([obj isKindOfClass:[NSArray class]]) {
+            [productInfos insertObject:obj[0] ? obj[0]: @{} atIndex:0];
+        }
+        if ([obj isKindOfClass:[NSDictionary class]]) {
+            [productInfos insertObject:obj ? obj : @{} atIndex:0];
+        }
+    }
+    NSArray *shoppingList = [productInfos valueForKey:@"productId"] ? [productInfos valueForKey:@"productId"] : @[];
     NSArray *amount = [_data valueForKey:@"buynumber"] ? [_data valueForKey:@"buynumber"] : @[];
 
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
@@ -139,6 +153,7 @@
                                           completion:^(BOOL finished) {
                                               [doneView removeFromSuperview];
                                               if (_doSomeThing) {
+                                                  NSLog(@"传给选购清单的信息：%@", dict);
                                                   _doSomeThing(dict);
                                               }
                                           }];

@@ -7,8 +7,9 @@
 //
 
 #import "DDSchedule.h"
+#import "DDSearchResult.h"
 
-@interface DDSchedule () <UITextFieldDelegate>
+@interface DDSchedule () <UITextFieldDelegate, UITextFieldDelegate>
 {
     UIImageView *_backgroundView;    // 查询背景图片
     UITextField *_searchField;       // 查询输入框
@@ -24,6 +25,7 @@
 - (void)dealloc
 {
     NSLog(@"%@ is dealloced", [self class]);
+    [_backgroundView release];
     [_searchField release];
     [super dealloc];
 }
@@ -85,6 +87,9 @@
         _searchField.center = CGPointMake(CGRectGetMidX(searchView.bounds),
                                           CGRectGetMidY(searchView.bounds));
         _searchField.placeholder = @"Serach";
+        _searchField.returnKeyType = UIReturnKeySearch;
+        _searchField.enablesReturnKeyAutomatically = YES;
+        _searchField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _searchField.delegate = self;
         [searchView addSubview:_searchField];
         
@@ -108,7 +113,43 @@
 
 - (void)search:(UIButton *)sender
 {
-    NSLog(@"查询");
+    if (0 ==_searchField.text.length) {
+        return;
+    }
+    [DDHTTPManager sendRequestForProgressWithKeywords:_searchField.text
+                                             pageSize:@"10"
+                                           pageNumber:@"1"
+                                               userId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                    completionHandler:^(id content, NSString *resultCode) {
+                                        echo();
+                                        // 加载查询结果页面
+                                        __block DDSearchResult *result = [[DDSearchResult alloc] initWithFrame:CGRectZero];
+                                        CGPoint center = CGPointMake(CGRectGetMidX(self.bounds),
+                                                                     CGRectGetMidY(self.bounds));
+                                        result.center =  CGPointMake(3 * center.x, center.y);
+                                        
+                                        if ([content isKindOfClass:[NSArray class]]) {
+                                            result.dataSource = content;
+                                        }
+                                        
+                                        
+                                        result.goBack = ^{
+                                            [UIView animateWithDuration:kAnimateDuration animations:^{
+                                                _backgroundView.center = center;
+                                                result.center =  CGPointMake(3 * center.x, center.y);
+                                            } completion:^(BOOL finished) {
+                                                [result removeFromSuperview];
+                                            }];
+                                        };
+                                        
+                                        [UIView animateWithDuration:kAnimateDuration
+                                                         animations:^{
+                                                             result.center =  CGPointMake(center.x, center.y);
+                                                             _backgroundView.center = CGPointMake(-2 * center.x, center.y);
+                                                         }];
+                                        [self addSubview:result];
+                                        [result release];
+                                    }];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -140,5 +181,18 @@
                                                               backgroundViewCenter.y + 150);
                      }];
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    BOOL shouldReturn = NO;
+    if (_searchField.text && _searchField.text.length > 0) {
+        shouldReturn = YES;
+        [self search:nil];
+        [self endEditing:YES];
+    }
+    return shouldReturn;
+}
+
+// 限制长度，过滤输入
 
 @end

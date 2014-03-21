@@ -322,6 +322,34 @@
                   URLModuleString:kInsureDetail
                 completionHandler:completion];
 }
+
+// 购买产品
++ (void)sendRequestForBuyProductsWithClientId:(NSString *)ID
+                                   clientName:(NSString *)name
+                                    ClientTel:(NSString *)tel
+                                 shoppingList:(NSArray *)lists
+                                       userId:(NSString *)userId
+                                   amountList:(NSArray *)amount
+                            completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID, name, tel, lists, userId, amount]
+                             keys:@[kIdKey, kClientName, kTel, kList, kUserIDKey, kAmount]
+                  URLModuleString:kBuyProducts
+                completionHandler:completion];
+}
+
+// 查询进度
++ (void)sendRequestForProgressWithKeywords:(NSString *)keywords
+                                  pageSize:(NSString *)pageSize
+                                pageNumber:(NSString *)pgeNumber
+                                    userId:(NSString *)userId
+                         completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[keywords, pageSize, pgeNumber, userId]
+                             keys:@[kKeywords, kPageSizeKey, kPageNumKey, kUserIDKey]
+                  URLModuleString:kProgress
+                completionHandler:completion];
+}
 @end
 
 

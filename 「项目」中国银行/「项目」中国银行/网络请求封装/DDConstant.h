@@ -72,4 +72,15 @@
 // 保险详细
 #define kInsureDetail @"appFinancial/getInsureDetail"
 
+// 购买
+#define kBuyProducts @"appPickList/submitOrder"
+#define kClientName @"clientName"
+#define kTel @"tel"
+#define kList @"lists"
+#define kAmount @"amount"
+
+// 查询
+#define kProgress @"appServiceSchedule/getOrderServiceProgressByCondition"
+#define kKeywords @"keywords"
+
 #endif

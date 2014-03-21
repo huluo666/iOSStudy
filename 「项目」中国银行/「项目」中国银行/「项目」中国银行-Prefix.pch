@@ -172,4 +172,4 @@ fprintf(stderr, "-------\n");                                               \
 #define kOrderInfo @"orderInfo"
 
 #define PATH [NSHomeDirectory() stringByAppendingPathComponent:@"productInfo.plist"]
-
+#define PATH_ORDER [NSHomeDirectory() stringByAppendingPathComponent:@"orderInfo.plist"]

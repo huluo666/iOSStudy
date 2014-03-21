@@ -126,5 +126,21 @@
 // 保险详细
 + (void)sendRequestForInsureDetailtWithId:(NSString *)ID
                         completionHandler:(void (^)(id content, NSString * resultCode))completion;
+// 购买产品
++ (void)sendRequestForBuyProductsWithClientId:(NSString *)ID
+                                   clientName:(NSString *)name
+                                    ClientTel:(NSString *)tel
+                                 shoppingList:(NSArray *)lists
+                                       userId:(NSString *)userId
+                                   amountList:(NSArray *)amount
+                            completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 查询进度
++ (void)sendRequestForProgressWithKeywords:(NSString *)keywords
+                                  pageSize:(NSString *)pageSize
+                                pageNumber:(NSString *)pgeNumber
+                                    userId:(NSString *)userId
+                         completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
 
 @end

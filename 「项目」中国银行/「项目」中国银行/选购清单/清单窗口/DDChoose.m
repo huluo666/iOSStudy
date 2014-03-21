@@ -8,10 +8,12 @@
 
 #import "DDChoose.h"
 #import "DDOrderView.h"
+#import "DDListCell.h"
 
-@interface DDChoose ()
+@interface DDChoose () <UITableViewDelegate, UITableViewDataSource>
 {
     UIImageView *_listBackgroundView; // 清单背景颜色
+    NSDictionary *_dataSource;
 }
 
 // 提交办理
@@ -25,7 +27,7 @@
 {
     NSLog(@"%@ is dealloced", [self class]);
     [_listBackgroundView release];
-//    [_data release];
+    [_dataSource release];
     [super dealloc];
 }
 
@@ -34,6 +36,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.frame = CGRectMake(0, 0, kMainViewWidth, kMainViewHeight);
+        
+        // 加载数据
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        id getobj = [userDefaults objectForKey:@"选购清单"];
+        
+        if ([getobj isKindOfClass:[NSDictionary class]]) {
+            _dataSource = [getobj retain];
+        }
+        
         // 初始化大背景
         UIImageView *bottomView = [[UIImageView alloc] init];
         bottomView.frame = kMainViewBounds;
@@ -67,23 +78,24 @@
         orderLabel.textAlignment = NSTextAlignmentCenter;
         orderLabel.font = [UIFont systemFontOfSize:24];
         orderLabel.textColor = [UIColor whiteColor];
-        orderLabel.bounds = CGRectMake(0, 0, width * 0.8, 40);
+        orderLabel.bounds = CGRectMake(0, 0, width * 0.65, 40);
         orderLabel.center = CGPointMake(CGRectGetMaxX(nameLabel.frame) + CGRectGetMidX(orderLabel.bounds) + 20, 70);
         orderLabel.text = @"订单号";
         [_listBackgroundView addSubview:orderLabel];
         [orderLabel release];
         
         UITableView *tableView = [[UITableView alloc] init];
-        tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.95, 350);
-        tableView.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                       CGRectGetMidY(self.bounds));
+        tableView.bounds = CGRectMake(0, 0, 800, 500);
+        tableView.center = CGPointMake(CGRectGetMidX(_listBackgroundView.bounds),
+                                       CGRectGetMidY(_listBackgroundView.bounds) + 50);
         tableView.delegate = self;
         tableView.dataSource = self;
-        [self addSubview:tableView];
+        [_listBackgroundView addSubview:tableView];
+        tableView.backgroundColor = [UIColor clearColor];
         [tableView release];
         
         // 模拟提交订单
-        [self performSelector:@selector(submit) withObject:nil afterDelay:3];
+//        [self performSelector:@selector(submit) withObject:nil afterDelay:3];
     }
     return self;
 }
@@ -121,20 +133,46 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _dataSource.count;
+    NSInteger count = 0;
+    if (_dataSource && _dataSource.count > 0) {
+        count = [_dataSource[@"shoppingList"] count];
+    }
+    return count;
 }
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString *cellIdentifier = @"ShopCartCell";
-//    DDShopCartCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-//    if (!cell) {
-//        cell = [[DDShopCartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-//    }
-//    NSLog(@"date = %@", _dataSource[indexPath.row]);
-//    cell.data = _dataSource[indexPath.row];
-//    return cell;
-//}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"ShopCartCell";
+    DDListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[DDListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier buttonStyle:DDSubmit];
+    }
+    cell.nameLabel.text = _dataSource[@"name"];
+    NSArray *list = _dataSource[@"shoppingList"];
+    cell.orderNumberLabel.text = [NSString stringWithFormat:@"%@", list[indexPath.row]];
+    cell.buttonTapAction = ^{
+        // 买产品
+        NSString *ClientId = _dataSource[@"ID"];
+        NSString *clientName = _dataSource[@"name"];
+        NSString *ClientTel = _dataSource[@"tel"];
+        NSArray *shoppingList = @[_dataSource[@"shoppingList"][indexPath.row]];
+        NSString *userId = [NSString stringWithFormat:@"%@", _dataSource[@"userId"]];
+        NSArray *amountList = @[_dataSource[@"amount"][indexPath.row]];
+        NSLog(@"%@", _dataSource);
+        
+        // 提交买产品
+        [DDHTTPManager sendRequestForBuyProductsWithClientId:ClientId
+                                                  clientName:clientName
+                                                   ClientTel:ClientTel
+                                                shoppingList:shoppingList
+                                                      userId:userId
+                                                  amountList:amountList
+                                           completionHandler:^(id content, NSString *resultCode) {
+                                               NSLog(@"完成");
+                                           }];
+    };
+    return cell;
+}
 
 
 
