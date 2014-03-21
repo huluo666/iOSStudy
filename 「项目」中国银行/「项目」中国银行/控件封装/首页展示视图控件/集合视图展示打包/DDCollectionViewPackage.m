@@ -153,7 +153,7 @@
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"section:%ld row:%ld",indexPath.section, indexPath.row);
+    NSLog(@"section:%d row:%d",indexPath.section, indexPath.row);
 }
 
 #pragma mark - <UIScrollViewDelegate>
@@ -176,7 +176,7 @@
         // 移动分页控件小圆点
         _pageControl.currentPage = [self currentPageIndexWithIndex:_currentPageIndex + 1];
         _currentPageIndex = _pageControl.currentPage;
-        NSLog(@"_currentPageIndex = %ld", _currentPageIndex);
+        NSLog(@"_currentPageIndex = %d", _currentPageIndex);
         // 位置还原
         _collectionView.contentOffset = CGPointMake(width, _collectionView.contentOffset.y);
     }
@@ -192,7 +192,7 @@
         // 移动分页控件小圆点
         _pageControl.currentPage = [self currentPageIndexWithIndex:_currentPageIndex - 1];
         _currentPageIndex = _pageControl.currentPage;
-        NSLog(@"_currentPageIndex = %ld", _currentPageIndex);
+        NSLog(@"_currentPageIndex = %d", _currentPageIndex);
         // 位置还原
         _collectionView.contentOffset = CGPointMake(width, _collectionView.contentOffset.y);
     }

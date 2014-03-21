@@ -210,7 +210,7 @@
     _currentSelectedButton = sender;
     
     NSInteger index = sender.tag - kTitleButtonTag;
-    self.currentTypeId = [NSString stringWithFormat:@"%ld", index];
+    self.currentTypeId = [NSString stringWithFormat:@"%d", index];
     
     // 更新数据
     [DDHTTPManager sendRequstForOptionalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
@@ -311,7 +311,7 @@
 - (void)collectionView:(UICollectionView *)collectionView
     didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"section:%ld row:%ld",indexPath.section, indexPath.row);
+    NSLog(@"section:%d row:%d",indexPath.section, indexPath.row);
 }
 
 @end

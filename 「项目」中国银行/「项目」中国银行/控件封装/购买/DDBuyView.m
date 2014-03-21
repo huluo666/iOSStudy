@@ -48,6 +48,7 @@
                                                     CGRectGetMidY(self.bounds));
         backgroundView.userInteractionEnabled = YES;
         [self addSubview:backgroundView];
+        [backgroundView release];
         
         // xx
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];

@@ -47,6 +47,7 @@
         backgroundView.image = kImageWithName(@"di_05");
         backgroundView.userInteractionEnabled = YES;
         [self addSubview:backgroundView];
+        [backgroundView release];
 
         _status = [[UIImageView alloc] init];
         _status.bounds = CGRectMake(0, 0, 530, 60);

@@ -24,7 +24,6 @@
     BOOL _isCartVisiable;                   // 购物车是否可见
 }
 
-
 // 初始化用户界面
 - (void)initializeUserInterface;
 
@@ -117,23 +116,11 @@
          forControlEvents:UIControlEventTouchUpInside];
         [_naviBar addSubview:button];
         
-        // 默认选中第一个
         if (!i) {
-            button.selected = YES;
-            UIView *view = [self createNaviViewWithIndex:i];
-            _appearedView = view;
-            [self.view addSubview:view];
-            [self.view sendSubviewToBack:view];
+            // 设置当前选中不为第一个
+            _currentSelectedButtonIndex = 1;
+            [self switchVC:button];
         }
-
-//        if (4 == i) {
-//            button.selected = YES;
-//            UIView *view = [self createNaviViewWithIndex:i];
-//            _appearedView = view;
-//            _currentSelectedButtonIndex = i;
-//            [self.view addSubview:view];
-//            [self.view sendSubviewToBack:view];
-//        }
     }
     
     // 加载购物车

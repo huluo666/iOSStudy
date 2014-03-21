@@ -15,8 +15,6 @@
     BOOL _needRemove;        // 是否需要移除视图
 }
 
-// 开始基础缩放动画
-- (void)startBasicScaleAnimationFromValue:(NSValue *)fromeValue toValue:(NSValue *)toValue;
 // 关闭当前窗口
 - (void)closeSelf;
 
@@ -104,8 +102,11 @@
             forControlEvents:UIControlEventTouchUpInside];
         [_bottomView addSubview:buyButton];
         
-        // 调用动画
-        [self startBasicScaleAnimationFromValue:@0 toValue:@1];
+        _bottomView.transform = CGAffineTransformScale(_bottomView.transform, 0.1, 0.1);
+        [UIView animateWithDuration:kAnimateDuration
+                         animations:^{
+                             _bottomView.transform = CGAffineTransformIdentity;
+                         }];
     }
     return self;
 }
@@ -124,31 +125,14 @@
     sender.enabled = NO;
 }
 
-- (void)startBasicScaleAnimationFromValue:(NSValue *)fromeValue toValue:(NSValue *)toValue
-{
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
-    animation.duration = kAnimateDuration / 2;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.fromValue = fromeValue;
-    animation.toValue = toValue;
-    animation.removedOnCompletion = NO;
-    animation.delegate = self;
-    animation.fillMode = kCAFillModeForwards;
-    [_bottomView.layer addAnimation:animation forKey:@"transform.scale"];
-}
-
-// 动画回调方法，非正式协议
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    if (_needRemove) {
-        [self removeFromSuperview];
-    }
-}
-
 - (void)closeSelf
 {
-    _needRemove = YES;
-    [self startBasicScaleAnimationFromValue:@1 toValue:@0];
+    [UIView animateWithDuration:kAnimateDuration
+                     animations:^{
+                         _bottomView.transform = CGAffineTransformScale(_bottomView.transform, 0.1, 0.1);;
+                     }
+                     completion:^(BOOL finished) {
+                         [self removeFromSuperview];
+                     }];
 }
-
 @end

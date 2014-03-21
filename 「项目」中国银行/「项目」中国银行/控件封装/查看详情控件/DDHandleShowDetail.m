@@ -96,6 +96,7 @@
                                        [contentLabel setNumberOfLines:0];
                                        [contentLabel sizeToFit];
                                        [abroad.contentView addSubview:contentLabel];
+                                       [contentLabel release];
                                        
                                        abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                        abroad.buyAction = ^(UIButton *sender) {
@@ -157,6 +158,7 @@
                                                  [contentLabel setNumberOfLines:0];
                                                  [contentLabel sizeToFit];
                                                  [abroad.contentView addSubview:contentLabel];
+                                                 [contentLabel release];
                                                  
                                                  abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                                  abroad.buyAction = ^(UIButton *sender) {
@@ -187,6 +189,7 @@
                                                  [contentLabel setNumberOfLines:0];
                                                  [contentLabel sizeToFit];
                                                  [abroad.contentView addSubview:contentLabel];
+                                                 [contentLabel release];
                                                  
                                                  abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                                  abroad.buyAction = ^(UIButton *sender) {
@@ -221,6 +224,7 @@
                                          [contentLabel setNumberOfLines:0];
                                          [contentLabel sizeToFit];
                                          [abroad.contentView addSubview:contentLabel];
+                                         [contentLabel release];
                                          
                                          abroad.titleLabel.text = dataSource[indexPath.row][@"name"];
                                          abroad.buyAction = ^(UIButton *sender) {

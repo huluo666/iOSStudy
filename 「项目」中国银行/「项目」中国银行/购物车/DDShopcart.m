@@ -37,9 +37,9 @@
         // 获取未处理订单
         NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH]; // 关联解档管理器与数据
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:unarchiverData];
+        [unarchiverData release];
         // 通过解档管理器和key解档数据
         _dataSource = [[unarchiver decodeObjectForKey:kOrderInfo] retain];
-        [unarchiverData release];
         [unarchiver release];
         
         NSLog(@"购物车获取数据：%@", _dataSource);
@@ -52,6 +52,7 @@
                                             CGRectGetMidY(self.bounds));
         backgroundView.userInteractionEnabled = YES;
         [self addSubview:backgroundView];
+        [backgroundView release];
         
         // 保存订单
         UIButton *saveButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -64,39 +65,39 @@
                        action:@selector(cartButtonAction:)
              forControlEvents:UIControlEventTouchUpInside];
         [backgroundView addSubview:saveButton];
-        
-        // 提交办理
-        UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        submitButton.bounds = CGRectMake(0, 0, 159, 50);
-        submitButton.center = CGPointMake(CGRectGetMidX(backgroundView.bounds) + CGRectGetMidX(submitButton.bounds) * 1.2,
-                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMidY(submitButton.bounds) * 2);
-        [submitButton setBackgroundImage:kImageWithName(@"提交办理") forState:UIControlStateNormal];
-        submitButton.tag = kCartButtonTag + 1;
-        [submitButton addTarget:self
-                       action:@selector(cartButtonAction:)
-             forControlEvents:UIControlEventTouchUpInside];
-        [backgroundView addSubview:submitButton];
-        
-        // 添加
-        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        addButton.bounds = CGRectMake(0, 0, 50, 50);
-        addButton.center = CGPointMake(CGRectGetMaxX(backgroundView.bounds) - 60,
-                                          CGRectGetMinY(backgroundView.bounds) + 60);
-        [addButton setBackgroundImage:kImageWithName(@"+_10") forState:UIControlStateNormal];
-        addButton.tag = kCartButtonTag + 2;
-        [addButton addTarget:self
-                      action:@selector(cartButtonAction:)
-            forControlEvents:UIControlEventTouchUpInside];
-        [backgroundView addSubview:addButton];
-        
-        // 表头
-        // table view
-        _tableView = [[UITableView alloc] init];
-        _tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.95, 350);
-        _tableView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds) + 10);
-        _tableView.dataSource = self;
-        _tableView.delegate = self;
-        [self addSubview:_tableView];
+//
+//        // 提交办理
+//        UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        submitButton.bounds = CGRectMake(0, 0, 159, 50);
+//        submitButton.center = CGPointMake(CGRectGetMidX(backgroundView.bounds) + CGRectGetMidX(submitButton.bounds) * 1.2,
+//                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMidY(submitButton.bounds) * 2);
+//        [submitButton setBackgroundImage:kImageWithName(@"提交办理") forState:UIControlStateNormal];
+//        submitButton.tag = kCartButtonTag + 1;
+//        [submitButton addTarget:self
+//                       action:@selector(cartButtonAction:)
+//             forControlEvents:UIControlEventTouchUpInside];
+//        [backgroundView addSubview:submitButton];
+//        
+//        // 添加
+//        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+//        addButton.bounds = CGRectMake(0, 0, 50, 50);
+//        addButton.center = CGPointMake(CGRectGetMaxX(backgroundView.bounds) - 60,
+//                                          CGRectGetMinY(backgroundView.bounds) + 60);
+//        [addButton setBackgroundImage:kImageWithName(@"+_10") forState:UIControlStateNormal];
+//        addButton.tag = kCartButtonTag + 2;
+//        [addButton addTarget:self
+//                      action:@selector(cartButtonAction:)
+//            forControlEvents:UIControlEventTouchUpInside];
+//        [backgroundView addSubview:addButton];
+//        
+//        // 表头
+//        // table view
+//        _tableView = [[UITableView alloc] init];
+//        _tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.95, 350);
+//        _tableView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds) + 10);
+//        _tableView.dataSource = self;
+//        _tableView.delegate = self;
+//        [self addSubview:_tableView];
     }
     return self;
 }
@@ -146,7 +147,7 @@
     static NSString *cellIdentifier = @"ShopCartCell";
     DDShopCartCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[DDShopCartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell = [[[DDShopCartCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier] autorelease];
     }
     NSLog(@"date = %@", _dataSource[indexPath.row]);
     cell.data = _dataSource[indexPath.row];

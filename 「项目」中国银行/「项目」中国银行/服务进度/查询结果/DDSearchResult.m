@@ -120,7 +120,7 @@
     static NSString *cellIdentifier = @"SearchResultCell";
     DDListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[DDListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier buttonStyle:DDDetail];
+        cell = [[[DDListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier buttonStyle:DDDetail] autorelease];
     }
     
     if (_dataSource) {

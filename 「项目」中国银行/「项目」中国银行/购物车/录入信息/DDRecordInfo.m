@@ -44,6 +44,7 @@
                                             CGRectGetMidY(self.bounds));
         backgroundView.userInteractionEnabled = YES;
         [self addSubview:backgroundView];
+        [backgroundView release];
         
         [UIView animateWithDuration:kAnimateDuration
                          animations:^{

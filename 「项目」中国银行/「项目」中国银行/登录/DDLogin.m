@@ -165,16 +165,6 @@
         return;
     }
     
-    
-//    [UIView animateWithDuration:kAnimateDuration animations:^{
-//        CGPoint center = self.center;
-//        self.center = CGPointMake(center.x, center.y * 3);
-//    } completion:^(BOOL finished) {
-//        //        DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
-//        //        rootVC.logined = YES;
-//        [self removeFromSuperview];
-//    }];
-    
     // 请求登录
     sender.enabled = NO;
     __block DDLogin *this = self;
@@ -196,10 +186,6 @@
                                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                                     [userDefaults setValuesForKeysWithDictionary:content];
                                     [userDefaults synchronize];
-                                    
-                                    // 发起网络请求，初始化首页界面
-                                    DDIndex *index = [[[[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController] view] subviews] firstObject];
-                                    [index sendHttpRequest];
                                 }];
                             } else {
                                 // 登录失败

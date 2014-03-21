@@ -300,16 +300,16 @@
         NSInteger selectedIndex = sender.tag - kMetalButtonTag;
         switch (selectedIndex) {
             case 0:
-                self.currentTypeId = [NSString stringWithFormat:@"%ld", index];
+                self.currentTypeId = [NSString stringWithFormat:@"%d", index];
                 break;
             case 1:
-                self.currentSupplierId = [NSString stringWithFormat:@"%ld", index];
+                self.currentSupplierId = [NSString stringWithFormat:@"%d", index];
                 break;
             case 2:
-                self.currentAgeId= [NSString stringWithFormat:@"%ld", index];
+                self.currentAgeId= [NSString stringWithFormat:@"%d", index];
                 break;
             case 3:
-                self.currentPurposeId = [NSString stringWithFormat:@"%ld", index];
+                self.currentPurposeId = [NSString stringWithFormat:@"%d", index];
                 break;
             default:
                 break;
@@ -389,7 +389,7 @@
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"section:%ld row:%ld",indexPath.section, indexPath.row);
+    NSLog(@"section:%d row:%d",indexPath.section, indexPath.row);
 }
 
 @end

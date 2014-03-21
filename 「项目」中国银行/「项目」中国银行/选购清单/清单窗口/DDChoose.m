@@ -97,9 +97,6 @@
         [_listBackgroundView addSubview:tableView];
         tableView.backgroundColor = [UIColor clearColor];
         [tableView release];
-        
-        // 模拟提交订单
-//        [self performSelector:@selector(submit) withObject:nil afterDelay:3];
     }
     return self;
 }
@@ -154,15 +151,16 @@
     cell.nameLabel.text = _dataSource[@"name"];
     NSArray *list = _dataSource[@"shoppingList"];
     cell.orderNumberLabel.text = [NSString stringWithFormat:@"%@", list[indexPath.row]];
+    __block NSDictionary *dataSource = _dataSource;
     cell.buttonTapAction = ^{
         // 买产品
-        NSString *ClientId = _dataSource[@"ID"];
-        NSString *clientName = _dataSource[@"name"];
-        NSString *ClientTel = _dataSource[@"tel"];
-        NSArray *shoppingList = @[_dataSource[@"shoppingList"][indexPath.row]];
-        NSString *userId = [NSString stringWithFormat:@"%@", _dataSource[@"userId"]];
-        NSArray *amountList = @[_dataSource[@"amount"][indexPath.row]];
-        NSLog(@"%@", _dataSource);
+        NSString *ClientId = dataSource[@"ID"];
+        NSString *clientName = dataSource[@"name"];
+        NSString *ClientTel = dataSource[@"tel"];
+        NSArray *shoppingList = @[dataSource[@"shoppingList"][indexPath.row]];
+        NSString *userId = [NSString stringWithFormat:@"%@", dataSource[@"userId"]];
+        NSArray *amountList = @[dataSource[@"amount"][indexPath.row]];
+        NSLog(@"%@", dataSource);
         
         // 提交买产品
         [DDHTTPManager sendRequestForBuyProductsWithClientId:ClientId

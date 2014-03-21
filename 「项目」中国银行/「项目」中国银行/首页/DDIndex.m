@@ -115,12 +115,16 @@
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setTarget:self];
     [invocation setSelector:@selector(requestForImages)];
-    _updateImagesIntervalTimer = [[NSTimer timerWithTimeInterval:kDataUpdateTimeInterval
-                                                     invocation:invocation
-                                                        repeats:YES] retain];
-    
-    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-    [runLoop addTimer:_updateImagesIntervalTimer forMode:NSDefaultRunLoopMode];
+    [invocation retainArguments];
+//    _updateImagesIntervalTimer = [NSTimer timerWithTimeInterval:kDataUpdateTimeInterval
+//                                                     invocation:invocation
+//                                                        repeats:YES];
+//    
+//    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+//    [runLoop addTimer:_updateImagesIntervalTimer forMode:NSDefaultRunLoopMode];
+    _updateImagesIntervalTimer = [[NSTimer scheduledTimerWithTimeInterval:kDataUpdateTimeInterval
+                                                              invocation:invocation
+                                                                 repeats:YES] retain];
     
     [self requestForLatestNews];
     [self requestForHotNews];
@@ -177,7 +181,7 @@
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setTarget:self];
     [invocation setSelector:@selector(startRunLoop)];
-    _imageSwitchIntervalTimer = [[NSTimer timerWithTimeInterval:2
+    _imageSwitchIntervalTimer = [[NSTimer timerWithTimeInterval:6.0f
                                                     invocation:invocation
                                                        repeats:YES] retain];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
@@ -206,7 +210,7 @@
     
     // 上面的视图向左移除并渐变
     CGPoint center = _upImageView.center;
-    [UIView animateWithDuration:kAnimateDuration
+    [UIView animateWithDuration:kAnimateDuration * 2
                      animations:^{
                          _upImageView.alpha = 0.85f;
                          _upImageView.center = CGPointMake(center.x - CGRectGetWidth(_downImageView.bounds),
@@ -326,7 +330,7 @@
                               }
                               [_dataSource setObject:content forKey:kHotNewsKey];
                               // 设置数据源
-                              _hotNewsviewPackage.dataSource = [content mutableCopy];
+                              _hotNewsviewPackage.dataSource = content;
                               // 刷新打包视图界面数据
                               [_hotNewsviewPackage.collectionView reloadData];
                               _hotNewsviewPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
@@ -382,7 +386,7 @@
                                                }
                                                [_dataSource setObject:content forKey:kCustomKey];
                                                // 设置数据源
-                                               _customProductPackage.dataSource = [content mutableCopy];
+                                               _customProductPackage.dataSource = content;
                                                _customProductPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
                                                [_customProductPackage.collectionView reloadData];
                                            }
@@ -467,6 +471,7 @@
     [contentLabel setNumberOfLines:0];
     [contentLabel sizeToFit];
     [detail.contentView addSubview:contentLabel];
+    [contentLabel release];
     
     [kRootView addSubview:detail];
     [detail release];
