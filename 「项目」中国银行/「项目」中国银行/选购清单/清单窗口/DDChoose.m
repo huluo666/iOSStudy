@@ -37,12 +37,16 @@
     if (self) {
         self.frame = CGRectMake(0, 0, kMainViewWidth, kMainViewHeight);
         
-        // 加载数据
-        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        id getobj = [userDefaults objectForKey:@"选购清单"];
+        // 关联解档管理器与数据
+        NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH_ORDER];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:unarchiverData];
+        // 通过解档管理器和key解档数据
+        id notProcessOrders = [unarchiver decodeObjectForKey:@"选购清单"];
+        [unarchiverData release];
+        [unarchiver release];
         
-        if ([getobj isKindOfClass:[NSDictionary class]]) {
-            _dataSource = [getobj retain];
+        if ([notProcessOrders isKindOfClass:[NSDictionary class]]) {
+            _dataSource = [notProcessOrders retain];
         }
         
         // 初始化大背景

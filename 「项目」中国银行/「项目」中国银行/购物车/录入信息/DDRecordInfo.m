@@ -49,7 +49,7 @@
                          animations:^{
                              self.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
                          }];
-        
+        _fields = [[NSMutableArray alloc] init];
         for (int i = 0; i < 3; i++) {
             UITextField *field = [[UITextField alloc] init];
             field.bounds = CGRectMake(0, 0, 450, 40);
@@ -92,6 +92,19 @@
 
 - (void)submit:(UIButton *)sender
 {
+    
+    NSLog(@"%@", _fields);
+    for (UITextField *field in _fields) {
+        NSLog(@"%@", field.text);
+        
+        if (!field.text) {
+            return;
+        }
+        if (field.text.length == 0) {
+            return;
+        }
+    }
+    
     // 记录信息
     NSLog(@"给我的数据是什么？%@", _data);
     

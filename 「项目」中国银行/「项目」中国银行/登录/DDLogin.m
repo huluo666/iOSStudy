@@ -195,6 +195,7 @@
                                     // 保存用户数据字典
                                     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
                                     [userDefaults setValuesForKeysWithDictionary:content];
+                                    [userDefaults synchronize];
                                     
                                     // 发起网络请求，初始化首页界面
                                     DDIndex *index = [[[[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController] view] subviews] firstObject];
