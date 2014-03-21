@@ -175,6 +175,14 @@
     }
 }
 
+- (void)scaleForView:(UIView *)view
+          fromeValue:(NSInteger)fromValue
+             toValue:(NSInteger)toValue
+    withAnimationDuration:(NSTimeInterval)duration
+{
+    view.transform = CGAffineTransformScale(view.transform, fromValue, toValue);
+}
+
 - (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
 {
     _isAnimating = NO;

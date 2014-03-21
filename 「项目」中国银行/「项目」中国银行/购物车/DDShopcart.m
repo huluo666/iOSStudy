@@ -65,39 +65,39 @@
                        action:@selector(cartButtonAction:)
              forControlEvents:UIControlEventTouchUpInside];
         [backgroundView addSubview:saveButton];
-//
-//        // 提交办理
-//        UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        submitButton.bounds = CGRectMake(0, 0, 159, 50);
-//        submitButton.center = CGPointMake(CGRectGetMidX(backgroundView.bounds) + CGRectGetMidX(submitButton.bounds) * 1.2,
-//                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMidY(submitButton.bounds) * 2);
-//        [submitButton setBackgroundImage:kImageWithName(@"提交办理") forState:UIControlStateNormal];
-//        submitButton.tag = kCartButtonTag + 1;
-//        [submitButton addTarget:self
-//                       action:@selector(cartButtonAction:)
-//             forControlEvents:UIControlEventTouchUpInside];
-//        [backgroundView addSubview:submitButton];
-//        
-//        // 添加
-//        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        addButton.bounds = CGRectMake(0, 0, 50, 50);
-//        addButton.center = CGPointMake(CGRectGetMaxX(backgroundView.bounds) - 60,
-//                                          CGRectGetMinY(backgroundView.bounds) + 60);
-//        [addButton setBackgroundImage:kImageWithName(@"+_10") forState:UIControlStateNormal];
-//        addButton.tag = kCartButtonTag + 2;
-//        [addButton addTarget:self
-//                      action:@selector(cartButtonAction:)
-//            forControlEvents:UIControlEventTouchUpInside];
-//        [backgroundView addSubview:addButton];
-//        
-//        // 表头
-//        // table view
-//        _tableView = [[UITableView alloc] init];
-//        _tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.95, 350);
-//        _tableView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds) + 10);
-//        _tableView.dataSource = self;
-//        _tableView.delegate = self;
-//        [self addSubview:_tableView];
+
+        // 提交办理
+        UIButton *submitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        submitButton.bounds = CGRectMake(0, 0, 159, 50);
+        submitButton.center = CGPointMake(CGRectGetMidX(backgroundView.bounds) + CGRectGetMidX(submitButton.bounds) * 1.2,
+                                        CGRectGetMaxY(backgroundView.bounds) - CGRectGetMidY(submitButton.bounds) * 2);
+        [submitButton setBackgroundImage:kImageWithName(@"提交办理") forState:UIControlStateNormal];
+        submitButton.tag = kCartButtonTag + 1;
+        [submitButton addTarget:self
+                       action:@selector(cartButtonAction:)
+             forControlEvents:UIControlEventTouchUpInside];
+        [backgroundView addSubview:submitButton];
+        
+        // 添加
+        UIButton *addButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        addButton.bounds = CGRectMake(0, 0, 50, 50);
+        addButton.center = CGPointMake(CGRectGetMaxX(backgroundView.bounds) - 60,
+                                          CGRectGetMinY(backgroundView.bounds) + 60);
+        [addButton setBackgroundImage:kImageWithName(@"+_10") forState:UIControlStateNormal];
+        addButton.tag = kCartButtonTag + 2;
+        [addButton addTarget:self
+                      action:@selector(cartButtonAction:)
+            forControlEvents:UIControlEventTouchUpInside];
+        [backgroundView addSubview:addButton];
+
+        // 表头
+        // table view
+        _tableView = [[UITableView alloc] init];
+        _tableView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.95, 350);
+        _tableView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds) + 10);
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        [self addSubview:_tableView];
     }
     return self;
 }
