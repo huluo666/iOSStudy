@@ -55,7 +55,7 @@
 {
     [super viewDidLoad];
     [self initializeUserInterface];
-    _logined = YES;
+//    _logined = YES;
     if (!_logined) {
         [self initializeLoginView];
     }
@@ -67,6 +67,8 @@
     [_naviBar release];
     [_appearedView release];
     _appearedView = nil;
+    [_nameLabel release];
+    [_realNameLabel release];
     [super dealloc];
 }
 
@@ -84,7 +86,8 @@
     // 设置左侧导航条
     _naviBar = [[UIView alloc] init];
     _naviBar.bounds = CGRectMake(0, 0, kNaviBarViewWidth, kRootViewHeight);
-    _naviBar.center = CGPointMake(CGRectGetMidX(_naviBar.bounds), self.view.center.y);
+    _naviBar.center = CGPointMake(CGRectGetMidX(_naviBar.bounds),
+                                  self.view.center.y);
     [self.view addSubview:_naviBar];
     [_naviBar release];
     
@@ -93,19 +96,25 @@
     naviBaseView.bounds = CGRectMake(0, 0, kNaviBarBaseViewWidth, kRootViewHeight);
     naviBaseView.center = CGPointMake(CGRectGetMidX(_naviBar.bounds) - 4,
                                       self.view.center.y);
-    naviBaseView.backgroundColor = [UIColor colorWithPatternImage:kImageWithNameHaveSuffix(@"导航-底_03.png")];
+    naviBaseView.backgroundColor = [UIColor colorWithPatternImage:
+                                    kImageWithNameHaveSuffix(@"导航-底_03.png")];
     [_naviBar addSubview:naviBaseView];
     [naviBaseView release];
     
     // 加载导航按钮
-    NSArray *naviBarImageNormalNames = @[@"首页_03.png", @"出国服务_05.png", @"理财产品_07.png", @"选购清单_09.png", @"服务进度_11.png"];
-    NSArray *naviBarImageSelectedNames = @[@"首页_03_h.png", @"出国服务_05_h.png", @"理财产品_07_h.png", @"选购清单_09_h.png", @"服务进度_11_h.png"];
+    NSArray *naviBarImageNormalNames = @[@"首页_03.png", @"出国服务_05.png",
+                                         @"理财产品_07.png", @"选购清单_09.png",
+                                         @"服务进度_11.png"];
+    NSArray *naviBarImageSelectedNames = @[@"首页_03_h.png", @"出国服务_05_h.png",
+                                           @"理财产品_07_h.png", @"选购清单_09_h.png",
+                                           @"服务进度_11_h.png"];
 
     for (int i = 0; i < 5; i++) {
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
         button.bounds = CGRectMake(0, 0, kNaviBarViewWidth, kNaviBarButtonHeight);
         button.center = CGPointMake(CGRectGetMidX(_naviBar.frame),
-                                    kHeaderViewHeight + CGRectGetMidY(button.bounds) + CGRectGetHeight(button.bounds) * i);
+                                    kHeaderViewHeight + CGRectGetMidY(button.bounds) +
+                                    CGRectGetHeight(button.bounds) * i);
         [button setBackgroundImage:kImageWithNameHaveSuffix(naviBarImageNormalNames[i])
                           forState:UIControlStateNormal];
         [button setBackgroundImage:kImageWithNameHaveSuffix(naviBarImageSelectedNames[i])
@@ -127,7 +136,8 @@
     UIButton *cartButton = [UIButton buttonWithType:UIButtonTypeCustom];
     cartButton.bounds = CGRectMake(0, 0, 60, 50);
     cartButton.center = CGPointMake(CGRectGetMidX(_naviBar.bounds),
-                                    CGRectGetMaxY(_naviBar.bounds) - CGRectGetMidX(cartButton.bounds) * 2);
+                                    CGRectGetMaxY(_naviBar.bounds) -
+                                    CGRectGetMidX(cartButton.bounds) * 2);
     [cartButton setBackgroundImage:kImageWithName(@"购物车_01")
                           forState:UIControlStateNormal];
     [cartButton addTarget:self
@@ -158,6 +168,23 @@
     userAvatar.userInteractionEnabled = YES;
     [headerView addSubview:userAvatar];
     [userAvatar release];
+    
+    // 登录用户信息
+    _nameLabel = [[UILabel alloc] init];
+    _nameLabel.bounds = CGRectMake(0, 0, 100, 30);
+    _nameLabel.center = CGPointMake(CGRectGetMidX(_nameLabel.bounds) +
+                                    CGRectGetMaxX(userAvatar.frame) + 5,
+                                    CGRectGetMidY(userAvatar.frame) -
+                                    CGRectGetMidY(_nameLabel.bounds));
+    [headerView addSubview:_nameLabel];
+    
+    _realNameLabel = [[UILabel alloc] init];
+    _realNameLabel.bounds = CGRectMake(0, 0, 100, 30);
+    _realNameLabel.center = CGPointMake(CGRectGetMidX(_nameLabel.bounds) +
+                                        CGRectGetMaxX(userAvatar.frame) + 5,
+                                        CGRectGetMidY(userAvatar.frame) +
+                                        CGRectGetMidY(_nameLabel.bounds));
+    [headerView addSubview:_realNameLabel];
     
     // 设置退出登录按钮
     UIButton *logoutButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -242,7 +269,8 @@
     }
     
     // 当前选中的导航按钮
-    UIButton *selectedButton = (UIButton *)[_naviBar viewWithTag:_currentSelectedButtonIndex + kButtonTag];
+    UIButton *selectedButton = (UIButton *)[_naviBar viewWithTag:
+                                            _currentSelectedButtonIndex + kButtonTag];
     // 将要选中的导航按钮
     UIButton *willSelectedButton = (UIButton *)[_naviBar viewWithTag:sender.tag];
     

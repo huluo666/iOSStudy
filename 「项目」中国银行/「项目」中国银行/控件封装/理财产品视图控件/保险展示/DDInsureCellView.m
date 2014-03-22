@@ -20,22 +20,26 @@
         
         _characteristicLabel = [self label];
         _characteristicLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                                     CGRectGetMaxY(_categoryNameLabel.frame) + CGRectGetMidY(_characteristicLabel.bounds));
+                                                     CGRectGetMaxY(_categoryNameLabel.frame) +
+                                                  CGRectGetMidY(_characteristicLabel.bounds));
         [self.contentView addSubview:_characteristicLabel];
         
         _companyLabel = [self label];
         _companyLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                              CGRectGetMaxY(_characteristicLabel.frame) + CGRectGetMidY(_companyLabel.bounds));
+                                              CGRectGetMaxY(_characteristicLabel.frame) +
+                                           CGRectGetMidY(_companyLabel.bounds));
         [self.contentView addSubview:_companyLabel];
         
         _crowdAgeLabel = [self label];
         _crowdAgeLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                            CGRectGetMaxY(_companyLabel.frame) + CGRectGetMidY(_crowdAgeLabel.bounds));
+                                            CGRectGetMaxY(_companyLabel.frame) +
+                                            CGRectGetMidY(_crowdAgeLabel.bounds));
         [self.contentView addSubview:_crowdAgeLabel];
         
         _timesLabel = [self label];
         _timesLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                            CGRectGetMaxY(_crowdAgeLabel.frame) + CGRectGetMidY(_timesLabel.bounds));
+                                            CGRectGetMaxY(_crowdAgeLabel.frame) +
+                                         CGRectGetMidY(_timesLabel.bounds));
         [self.contentView addSubview:_timesLabel];
     }
     return self;

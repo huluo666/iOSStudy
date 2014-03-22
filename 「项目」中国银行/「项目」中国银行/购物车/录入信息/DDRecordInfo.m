@@ -48,7 +48,8 @@
         
         [UIView animateWithDuration:kAnimateDuration
                          animations:^{
-                             self.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+                             self.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                                       CGRectGetMidY(self.bounds));
                          }];
         _fields = [[NSMutableArray alloc] init];
         for (int i = 0; i < 3; i++) {
@@ -84,7 +85,8 @@
 {
     [UIView animateWithDuration:kAnimateDuration
                      animations:^{
-                         self.center = CGPointMake(CGRectGetMidX(self.bounds), 3 * CGRectGetMidY(self.bounds));
+                         self.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                                   3 * CGRectGetMidY(self.bounds));
                      }
                      completion:^(BOOL finished) {
                          [self removeFromSuperview];
@@ -109,10 +111,14 @@
     // 记录信息
     NSLog(@"给我的数据是什么？%@", _data);
     
-    NSString *name = ((UITextField *)_fields[0]).text ? ((UITextField *)_fields[0]).text : @"无力吐槽";
-    NSString *ID = ((UITextField *)_fields[1]).text ? ((UITextField *)_fields[1]).text : @"再次无力吐槽";
-    NSString *tel = ((UITextField *)_fields[2]).text ? ((UITextField *)_fields[2]).text: @"真心无力吐槽";
-    NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId];
+    NSString *name = ((UITextField *)_fields[0]).text ?
+                            ((UITextField *)_fields[0]).text : @"无力吐槽";
+    NSString *ID = ((UITextField *)_fields[1]).text ?
+                        ((UITextField *)_fields[1]).text : @"再次无力吐槽";
+    NSString *tel = ((UITextField *)_fields[2]).text ?
+                        ((UITextField *)_fields[2]).text: @"真心无力吐槽";
+    NSString *userId = [[NSUserDefaults standardUserDefaults]
+                        objectForKey:kUserInfoId];
     
     
     NSArray *dicts = [_data valueForKey:@"buyProductInfo"];
@@ -128,8 +134,10 @@
             [productInfos insertObject:obj ? obj : @{} atIndex:0];
         }
     }
-    NSArray *shoppingList = [productInfos valueForKey:@"productId"] ? [productInfos valueForKey:@"productId"] : @[];
-    NSArray *amount = [_data valueForKey:@"buynumber"] ? [_data valueForKey:@"buynumber"] : @[];
+    NSArray *shoppingList = [productInfos valueForKey:@"productId"] ?
+                                [productInfos valueForKey:@"productId"] : @[];
+    NSArray *amount = [_data valueForKey:@"buynumber"] ?
+                            [_data valueForKey:@"buynumber"] : @[];
 
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:name forKey:@"name"];
@@ -142,11 +150,17 @@
     // 干掉自己
     [self popSelf];
     
+    // 清除数据
+    NSError *error = nil;
+    BOOL success = [[NSFileManager defaultManager] removeItemAtPath:PATH error:&error];
+    NSAssert(success, @"delete file failure wiht %@", [error localizedDescription]);
+    
     // 出现动画
     UIImage *doneImage = kImageWithName(@"保存订单成功");
     UIImageView *doneView = [[UIImageView alloc] initWithImage:doneImage];
     doneView.bounds = CGRectMake(0, 0, 747, 457);
-    doneView.center = CGPointMake(CGRectGetMidX(self.bounds), 3 * CGRectGetMidY(self.bounds));
+    doneView.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                  3 * CGRectGetMidY(self.bounds));
     [kRootView addSubview:doneView];
     [doneView release];
     
@@ -156,13 +170,15 @@
           initialSpringVelocity:1.0f
                         options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
-                         doneView.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMidY(self.bounds));
+                         doneView.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                                       CGRectGetMidY(self.bounds));
                      } completion:^(BOOL finished) {
                          [UIView animateWithDuration:kAnimateDuration
                                                delay:2
                                              options:UIViewAnimationOptionCurveEaseInOut
                                           animations:^{
-                                               doneView.center = CGPointMake(CGRectGetMidX(self.bounds), 3 * CGRectGetMidY(self.bounds));
+                            doneView.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                                          3 * CGRectGetMidY(self.bounds));
                                           }
                                           completion:^(BOOL finished) {
                                               [doneView removeFromSuperview];

@@ -70,46 +70,48 @@
         pullDown.indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            [DDHTTPManager sendRequestForFundsWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+            [DDHTTPManager sendRequestForFundsWithUserId:[[NSUserDefaults standardUserDefaults]
+                                                          objectForKey:kUserInfoId]
                                               pageNumber:@"1"
                                                 pageSize:@"12"
                                        completionHandler:^(id content, NSString *resultCode) {
-                                           NSMutableArray *data = content;
-                                           if (data != _dataSource) {
-                                               [_dataSource release];
-                                               _dataSource = nil;
-                                               _dataSource = [content mutableCopy];
-                                               [collectionView reloadData];   
-                                           }
-                                           [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
-                                                                 withObject:nil
-                                                                 afterDelay:1];
-                                       }];
+                NSMutableArray *data = content;
+                if (data != _dataSource) {
+                   [_dataSource release];
+                   _dataSource = nil;
+                   _dataSource = [content mutableCopy];
+                   [collectionView reloadData];   
+                }
+                [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                     withObject:nil
+                                     afterDelay:1];
+            }];
         };
         
         
         // 加载网络数据
-        [DDHTTPManager sendRequestForFundsWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+        [DDHTTPManager sendRequestForFundsWithUserId:[[NSUserDefaults standardUserDefaults]
+                                                      objectForKey:kUserInfoId]
                                           pageNumber:@"1"
                                             pageSize:@"12"
                                    completionHandler:^(id content, NSString *resultCode) {
-                                       if (0 != [resultCode intValue]) {
-                                           return;
-                                       }
-                                       if ([content isKindOfClass:[NSArray class]]) {
-                                           NSMutableArray *data = content;
-                                           if (0 == data.count) {
-                                               return;
-                                           }
-                                           if (_dataSource != data) {
-                                               [_dataSource release];
-                                               _dataSource = [content mutableCopy];
-                                               
-                                               // 更新界面
-                                               [collectionView reloadData];
-                                           }
-                                       }
-                                   }];
+            if (0 != [resultCode intValue]) {
+               return;
+            }
+            if ([content isKindOfClass:[NSArray class]]) {
+               NSMutableArray *data = content;
+               if (0 == data.count) {
+                   return;
+               }
+               if (_dataSource != data) {
+                   [_dataSource release];
+                   _dataSource = [content mutableCopy];
+                   
+                   // 更新界面
+                   [collectionView reloadData];
+               }
+            }
+        }];
 
     }
     return self;
@@ -148,8 +150,8 @@
                                                          indexPath:indexPath];
         };
         fund.tapBuyAction = ^(UIButton *sender) {
-            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
-            buyView.productInfo = _dataSource[indexPath.row];
+            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero
+                                                      productInfo:_dataSource[indexPath.row]];
             [kRootView addSubview:buyView];
             [buyView release];
         };

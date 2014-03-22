@@ -18,7 +18,9 @@
     [super dealloc];
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier buttonStyle:(DDButtonSyle)buttonStyle
+- (id)initWithStyle:(UITableViewCellStyle)style
+    reuseIdentifier:(NSString *)reuseIdentifier
+        buttonStyle:(DDButtonSyle)buttonStyle
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
@@ -33,19 +35,23 @@
         
         _orderNumberLabel = [[UILabel alloc] init];
         _orderNumberLabel.bounds = CGRectMake(0, 0, 500, 50);
-        _orderNumberLabel.center = CGPointMake(CGRectGetMidX(_orderNumberLabel.bounds) + CGRectGetMaxX(_nameLabel.frame),
+        _orderNumberLabel.center = CGPointMake(CGRectGetMidX(_orderNumberLabel.bounds) +
+                                               CGRectGetMaxX(_nameLabel.frame),
                                         CGRectGetMidY(self.contentView.bounds));
         _orderNumberLabel.textAlignment = NSTextAlignmentCenter;
         [self.contentView addSubview:_orderNumberLabel];
         
         UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         buyButton.bounds = CGRectMake(0, 0, 159, 50);
-        buyButton.center = CGPointMake(CGRectGetMidX(buyButton.bounds) + CGRectGetMaxX(_orderNumberLabel.frame),
+        buyButton.center = CGPointMake(CGRectGetMidX(buyButton.bounds) +
+                                       CGRectGetMaxX(_orderNumberLabel.frame),
                                        CGRectGetMidY(self.contentView.bounds));
         if (buttonStyle == DDSubmit) {
-            [buyButton setBackgroundImage:[UIImage imageNamed:@"提交办理"] forState:UIControlStateNormal];
+            [buyButton setBackgroundImage:[UIImage imageNamed:@"提交办理"]
+                                 forState:UIControlStateNormal];
         } else {
-            [buyButton setBackgroundImage:[UIImage imageNamed:@"查询详情"] forState:UIControlStateNormal];
+            [buyButton setBackgroundImage:[UIImage imageNamed:@"查询详情"]
+                                 forState:UIControlStateNormal];
         }
 
         [buyButton addTarget:self

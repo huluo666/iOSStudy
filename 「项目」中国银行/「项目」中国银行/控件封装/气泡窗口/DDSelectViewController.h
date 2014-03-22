@@ -11,6 +11,7 @@
 @interface DDSelectViewController : UITableViewController
 
 @property (copy, nonatomic) void(^completionHandler)(NSString *returnString, NSInteger index);
+@property (retain, nonatomic) UIView *headerView;
 
 - (id)initWithStyle:(UITableViewStyle)style dataSource:(NSArray *)dataSource;
 

@@ -11,8 +11,9 @@
 #import "DDPopView.h"
 #import "DDConsultView.h"
 #import "DDComboView.h"
+#import "DDSelectViewController.h"
 
-@interface DDAbroad () <UITextFieldDelegate>
+@interface DDAbroad () <UITextFieldDelegate, UIPopoverControllerDelegate>
 {
     UIView *_currentSelectedView;               // 当前选中视图
     UISegmentedControl *_segmentedControl;      // 分段控件
@@ -103,7 +104,8 @@
         UIImageView *shadowView = [[UIImageView alloc] init];
         shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(_segmentedControl.bounds), 10);
         shadowView.center = CGPointMake(CGRectGetMidX(_segmentedControl.frame),
-                                        CGRectGetMaxY(_segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
+                                        CGRectGetMaxY(_segmentedControl.frame) +
+                                        CGRectGetMidY(shadowView.bounds));
         shadowView.image = kImageWithName(@"pshadow_08");
         [self addSubview:shadowView];
         [shadowView release];
@@ -198,17 +200,19 @@
 
 - (void)searchAction:(UIButton *)sender
 {
-    // pop view
-    if (!_isSearchBarVisiable) {
-        CGRect frame = CGRectMake(690, 70, 200, 150);
-        DDPopVIew *popView = [[DDPopVIew alloc] initWithFrame:frame];
-        [_currentSelectedView addSubview:popView];
-        [popView release];
-        _isSearchBarVisiable = YES;
-    } else {
-        [[_currentSelectedView.subviews lastObject] removeFromSuperview];
-        _isSearchBarVisiable = NO;
-    }
+    DDSelectViewController *select = [[DDSelectViewController alloc]
+                                       initWithStyle:UITableViewStylePlain
+                                       dataSource:nil];
+    UIPopoverController *popover = [[UIPopoverController alloc]
+                                   initWithContentViewController:select];
+    [select release];
+    popover.delegate = self;
+    popover.popoverContentSize = CGSizeMake(200, 200);
+    CGRect rect = CGRectMake(680, 100, 250, 150);
+    [popover presentPopoverFromRect:rect
+                             inView:self
+           permittedArrowDirections:0
+                           animated:YES];
 }
 
 - (void)loadConsultView
@@ -281,13 +285,12 @@
     }
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+#pragma mark - <UIPopoverControllerDelegate>
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
-    [self endEditing:YES];
-    if (_isSearchBarVisiable) {
-        [[_currentSelectedView.subviews lastObject] removeFromSuperview];
-        _isSearchBarVisiable = NO;
-    }
+    [popoverController release];
 }
+
 
 @end

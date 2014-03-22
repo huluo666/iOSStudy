@@ -10,7 +10,9 @@
 #import "DDAppDelegate.h"
 #import "DDHandleShowDetail.h"
 
-@interface DDCollectionViewPackage () <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface DDCollectionViewPackage () <
+    UICollectionViewDelegate,
+    UICollectionViewDataSource>
 {
     NSInteger _currentPageIndex;
 }
@@ -75,7 +77,8 @@
         // 添加右上角button
         UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
         refreshButton.bounds = CGRectMake(0, 0, 50, 50);
-        refreshButton.center = CGPointMake(CGRectGetWidth(_backgroundImageView.bounds) - CGRectGetMidX(refreshButton.bounds),
+        refreshButton.center = CGPointMake(CGRectGetWidth(_backgroundImageView.bounds) -
+                                           CGRectGetMidX(refreshButton.bounds),
                                            CGRectGetMidY(refreshButton.bounds) * 1.2);
         [refreshButton setBackgroundImage:refreshButtonImage forState:UIControlStateNormal];
         [_backgroundImageView addSubview:refreshButton];
@@ -135,10 +138,12 @@
         cellView.processTap = ^(UIView *view) {
             if ([view isKindOfClass:[UIButton class]]) {
                 // 热门
-                [DDHandleShowDetail handleHotShowDetailWithDataSource:_dataSource indexPath:indexPath];
+                [DDHandleShowDetail handleHotShowDetailWithDataSource:_dataSource
+                                                            indexPath:indexPath];
             } else {
                 // 定制
-                [DDHandleShowDetail handleCustomShowDetailWithDataSource:_dataSource indexPath:indexPath];
+                [DDHandleShowDetail handleCustomShowDetailWithDataSource:_dataSource
+                                                               indexPath:indexPath];
             }
         };
         [cell.contentView addSubview:cellView];
@@ -168,9 +173,10 @@
     if (2 * width == _collectionView.contentOffset.x) {
         // 更新数据
         for (int i = 0; i < 4; i++) {
-            id removeObj = _dataSource[0];
+            id removeObj = [_dataSource[0] retain];
             [_dataSource removeObject:removeObj];
             [_dataSource addObject:removeObj];
+            [removeObj release];
         }
         
         // 移动分页控件小圆点
@@ -184,9 +190,10 @@
     if (0 == _collectionView.contentOffset.x) {
         // 更新数据
         for (int i = 0; i < 4; i++) {
-            id removeObj = [_dataSource lastObject];
+            id removeObj = [[_dataSource lastObject] retain];
             [_dataSource removeObject:removeObj];
             [_dataSource insertObject:removeObj atIndex:0];
+            [removeObj release];
         }
         
         // 移动分页控件小圆点

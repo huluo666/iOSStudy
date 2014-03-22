@@ -11,6 +11,8 @@
 @interface DDRootViewController : UIViewController
 
 @property (nonatomic, assign, getter = isLogined) BOOL logined;
+@property (nonatomic, retain) UILabel *nameLabel;
+@property (nonatomic, retain) UILabel *realNameLabel;
 
 // 切换视图
 - (void)switchVC:(UIButton *)sender;

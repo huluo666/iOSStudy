@@ -70,47 +70,47 @@
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
 
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            [DDHTTPManager sendRequestFortInsureWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+            [DDHTTPManager sendRequestFortInsureWithUserId:[[NSUserDefaults standardUserDefaults]
+                                                            objectForKey:kUserInfoId]
                                                 pageNumber:@"1"
                                                   pageSize:@"12"
                                          completionHandler:^(id content, NSString *resultCode) {
                                              NSMutableArray *data = content;
-                                             if (_dataSource != data) {
-                                                 [_dataSource release];
-                                                 _dataSource = nil;
-                                                 _dataSource = [content mutableCopy];
-                                                 [collectionView reloadData];
-                                             }
-                                             [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
-                                                                   withObject:nil
-                                                                   afterDelay:1];
-                                         }];
-
+                 if (_dataSource != data) {
+                     [_dataSource release];
+                     _dataSource = nil;
+                     _dataSource = [content mutableCopy];
+                     [collectionView reloadData];
+                 }
+                 [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                       withObject:nil
+                                       afterDelay:1];
+             }];
         };
         
         // 加载网络数据
-        [DDHTTPManager sendRequestFortInsureWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+        [DDHTTPManager sendRequestFortInsureWithUserId:[[NSUserDefaults standardUserDefaults]
+                                                        objectForKey:kUserInfoId]
                                             pageNumber:@"1"
                                               pageSize:@"12"
                                      completionHandler:^(id content, NSString *resultCode) {
-                                         if (0 != [resultCode intValue]) {
-                                             return;
-                                         }
-                                         if ([content isKindOfClass:[NSArray class]]) {
-                                             NSMutableArray *data = content;
-                                             if (0 == data.count) {
-                                                 return;
-                                             }
-                                             if (_dataSource != data) {
-                                                 [_dataSource release];
-                                                 _dataSource = [content mutableCopy];
-                                                 
-                                                 // 更新界面
-                                                 [collectionView reloadData];
-                                             }
-                                         }
-                                     }];
-
+             if (0 != [resultCode intValue]) {
+                 return;
+             }
+             if ([content isKindOfClass:[NSArray class]]) {
+                 NSMutableArray *data = content;
+                 if (0 == data.count) {
+                     return;
+                 }
+                 if (_dataSource != data) {
+                     [_dataSource release];
+                     _dataSource = [content mutableCopy];
+                     
+                     // 更新界面
+                     [collectionView reloadData];
+                 }
+             }
+         }];
     }
     return self;
 }
@@ -142,16 +142,18 @@
         insure.companyLabel.text = [NSString stringWithFormat:@"发行公司：%@",
                                            _dataSource[indexPath.row][@"company"]];
         insure.crowdAgeLabel.text = [NSString stringWithFormat:@"使用人群：%@岁客户",
-                                    [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"crowd_age"]]];
+                                    [NSString stringWithFormat:@"%@",
+                                     _dataSource[indexPath.row][@"crowd_age"]]];
         insure.timesLabel.text = [NSString stringWithFormat:@"保险期限：%@年",
-                                     [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"crowd_age"]]];
+                                     [NSString stringWithFormat:@"%@",
+                                      _dataSource[indexPath.row][@"crowd_age"]]];
         insure.tapDetailAction = ^(UIButton *sender) {
             [DDHandleShowDetail handleInsureShowDetailWithDataSource:_dataSource
                                                            indexPath:indexPath];
         };
         insure.tapBuyAction = ^(UIButton *sender) {
-            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
-            buyView.productInfo = _dataSource[indexPath.row];
+            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero
+                                                      productInfo:_dataSource[indexPath.row]];
             [kRootView addSubview:buyView];
             [buyView release];
         };

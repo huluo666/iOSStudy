@@ -90,7 +90,10 @@
             preciousMetalSelected = [preciousMetalSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             insuranceSelected = [insuranceSelected imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
         }
-        _imgaesSelected = [@[financeProductsSelected, fundsSelected, preciousMetalSelected, insuranceSelected] retain];
+        _imgaesSelected = [@[financeProductsSelected,
+                             fundsSelected,
+                             preciousMetalSelected,
+                             insuranceSelected] retain];
         
         // 分段控件
         _segmentedControl = [[UISegmentedControl alloc] initWithItems:_images];
@@ -105,7 +108,8 @@
         UIImageView *shadowView = [[UIImageView alloc] init];
         shadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(_segmentedControl.bounds), 10);
         shadowView.center = CGPointMake(CGRectGetMidX(_segmentedControl.frame),
-                                        CGRectGetMaxY(_segmentedControl.frame) + CGRectGetMidY(shadowView.bounds));
+                                        CGRectGetMaxY(_segmentedControl.frame) +
+                                        CGRectGetMidY(shadowView.bounds));
         shadowView.image = kImageWithName(@"pshadow_08");
         [self addSubview:shadowView];
         [shadowView release];
@@ -148,7 +152,8 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDFinanceProductsView *financeProductsView = [[DDFinanceProductsView alloc] initWithFrame:frame];
+    DDFinanceProductsView *financeProductsView = [[DDFinanceProductsView alloc]
+                                                  initWithFrame:frame];
     [self addSubview:financeProductsView];
     [financeProductsView release];
     _currentSelectedView = financeProductsView;
@@ -177,7 +182,8 @@
                               CGRectGetMaxY(_segmentedControl.frame) + 20,
                               kMainViewWidth * 0.98,
                               kMainViewHeight * 0.85);
-    DDPreciousMetalView *preciousMetal = [[DDPreciousMetalView alloc] initWithFrame:frame];
+    DDPreciousMetalView *preciousMetal = [[DDPreciousMetalView alloc]
+                                          initWithFrame:frame];
     [self addSubview:preciousMetal];
     [preciousMetal release];
     _currentSelectedView = preciousMetal;

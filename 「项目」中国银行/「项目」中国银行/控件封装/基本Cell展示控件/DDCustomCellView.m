@@ -45,9 +45,12 @@
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         detailButton.bounds = CGRectMake(0, 0, 60, 30);
         detailButton.tag = kDetailButtonTag;
-        detailButton.center = CGPointMake(CGRectGetMidX(_titleLabel.bounds) - CGRectGetMidX(detailButton.bounds) - 10,
-                                    CGRectGetMaxY(imageView.bounds) - CGRectGetHeight(detailButton.bounds));
-        [detailButton setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal]; // cache
+        detailButton.center = CGPointMake(CGRectGetMidX(_titleLabel.bounds) -
+                                          CGRectGetMidX(detailButton.bounds) - 10,
+                                          CGRectGetMaxY(imageView.bounds) -
+                                          CGRectGetHeight(detailButton.bounds));
+        [detailButton setBackgroundImage:[UIImage imageNamed:@"详情_01"]
+                                forState:UIControlStateNormal]; // cache
         [detailButton addTarget:self
                    action:@selector(processTap:)
          forControlEvents:UIControlEventTouchUpInside];
@@ -56,9 +59,11 @@
         // 选购按钮
         UIButton *chooseButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         chooseButton.bounds = detailButton.bounds;
-        chooseButton.center = CGPointMake( CGRectGetWidth(imageView.bounds) - CGRectGetMidX(detailButton.frame),
-                                    detailButton.center.y);
-        [chooseButton setBackgroundImage:[UIImage imageNamed:@"选购_03"] forState:UIControlStateNormal]; // chche
+        chooseButton.center = CGPointMake(CGRectGetWidth(imageView.bounds) -
+                                          CGRectGetMidX(detailButton.frame),
+                                          detailButton.center.y);
+        [chooseButton setBackgroundImage:[UIImage imageNamed:@"选购_03"]
+                                forState:UIControlStateNormal]; // chche
         [chooseButton addTarget:self
                    action:@selector(processTap:)
          forControlEvents:UIControlEventTouchUpInside];

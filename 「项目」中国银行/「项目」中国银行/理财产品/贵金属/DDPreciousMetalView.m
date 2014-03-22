@@ -73,7 +73,8 @@
         [self addSubview:categorylabel];
 
         UIButton *categoryButton = [self buttonWithStateNormalTitle:@"默认"];
-        categoryButton.center = CGPointMake(CGRectGetMaxX(categorylabel.frame) + CGRectGetMidX(categoryButton.bounds) + 5,
+        categoryButton.center = CGPointMake(CGRectGetMaxX(categorylabel.frame) +
+                                            CGRectGetMidX(categoryButton.bounds) + 5,
                                             CGRectGetMidY(categoryButton.bounds));
         [categoryButton addTarget:self
                            action:@selector(buttonAction:)
@@ -83,14 +84,16 @@
 
         // 供应商
         UILabel *supplierLabel = [self label];
-        supplierLabel.center = CGPointMake(CGRectGetMaxX(categoryButton.frame) + CGRectGetMidX(supplierLabel.bounds) + 5,
+        supplierLabel.center = CGPointMake(CGRectGetMaxX(categoryButton.frame) +
+                                           CGRectGetMidX(supplierLabel.bounds) + 5,
                                            CGRectGetMidY(supplierLabel.bounds));
         supplierLabel.text = @"供应商:";
         supplierLabel.textAlignment = NSTextAlignmentRight;
         [self addSubview:supplierLabel];
         
         UIButton *supplierButton = [self buttonWithStateNormalTitle:@"默认"];
-        supplierButton.center = CGPointMake(CGRectGetMaxX(supplierLabel.frame) + CGRectGetMidX(supplierButton.bounds) + 5,
+        supplierButton.center = CGPointMake(CGRectGetMaxX(supplierLabel.frame) +
+                                            CGRectGetMidX(supplierButton.bounds) + 5,
                                             CGRectGetMidY(supplierButton.bounds));
         [supplierButton addTarget:self
                            action:@selector(buttonAction:)
@@ -100,7 +103,8 @@
         
         // 适宜人群，按年龄
         UILabel *targetAgeLabel = [self label];
-        targetAgeLabel.center = CGPointMake(CGRectGetMaxX(supplierButton.frame) + CGRectGetMidX(targetAgeLabel.bounds) + 5,
+        targetAgeLabel.center = CGPointMake(CGRectGetMaxX(supplierButton.frame) +
+                                            CGRectGetMidX(targetAgeLabel.bounds) + 5,
                                            CGRectGetMidY(targetAgeLabel.bounds));
         targetAgeLabel.text = @"适宜人群（按年龄)";
         targetAgeLabel.bounds = CGRectMake(0, 0, 80, 40);
@@ -109,7 +113,8 @@
         [self addSubview:targetAgeLabel];
         
         UIButton *targetAgeButton = [self buttonWithStateNormalTitle:@"默认"];
-        targetAgeButton.center = CGPointMake(CGRectGetMaxX(targetAgeLabel.frame) + CGRectGetMidX(targetAgeButton.bounds) + 5,
+        targetAgeButton.center = CGPointMake(CGRectGetMaxX(targetAgeLabel.frame) +
+                                             CGRectGetMidX(targetAgeButton.bounds) + 5,
                                             CGRectGetMidY(targetAgeButton.bounds));
         [targetAgeButton addTarget:self
                            action:@selector(buttonAction:)
@@ -119,7 +124,8 @@
         
         // 适宜人群，按意愿
         UILabel *targetWishLabel = [self label];
-        targetWishLabel.center = CGPointMake(CGRectGetMaxX(targetAgeButton.frame) + CGRectGetMidX(targetWishLabel.bounds) + 5,
+        targetWishLabel.center = CGPointMake(CGRectGetMaxX(targetAgeButton.frame) +
+                                             CGRectGetMidX(targetWishLabel.bounds) + 5,
                                             CGRectGetMidY(targetWishLabel.bounds));
         targetWishLabel.text = @"适宜人群（按意愿)";
         targetWishLabel.bounds = CGRectMake(0, 0, 80, 40);
@@ -128,7 +134,8 @@
         [self addSubview:targetWishLabel];
         
         UIButton *targetWishButton = [self buttonWithStateNormalTitle:@"默认"];
-        targetWishButton.center = CGPointMake(CGRectGetMaxX(targetWishLabel.frame) + CGRectGetMidX(targetWishButton.bounds) + 5,
+        targetWishButton.center = CGPointMake(CGRectGetMaxX(targetWishLabel.frame) +
+                                              CGRectGetMidX(targetWishButton.bounds) + 5,
                                              CGRectGetMidY(targetWishButton.bounds));
         [targetWishButton addTarget:self
                             action:@selector(buttonAction:)
@@ -150,7 +157,8 @@
         [layout release];
         _collectionView.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.98, 640);
         _collectionView.center = CGPointMake(CGRectGetMidX(frame),
-                                            CGRectGetMaxY(targetWishButton.frame) + CGRectGetMidY(_collectionView.bounds));
+                                            CGRectGetMaxY(targetWishButton.frame) +
+                                             CGRectGetMidY(_collectionView.bounds));
         
         _collectionView.backgroundColor = [UIColor clearColor];
         _collectionView.delegate = self;
@@ -170,7 +178,8 @@
         pullDown.arrow.image = [UIImage imageNamed:@"blackArrow"];
     
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+            [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults]
+                                                          objectForKey:kUserInfoId]
                                               supplierId:self.currentSupplierId
                                                purposeId:self.currentPurposeId
                                                    ageId:self.currentAgeId
@@ -178,21 +187,22 @@
                                                 pageSize:@"12"
                                                  pageNum:@"1"
                                        completionHandler:^(id content, NSString *resultCode) {
-                                           NSMutableArray *data = content;
-                                           if (_dataSource != data) {
-                                               [_dataSource release];
-                                               _dataSource = nil;
-                                               _dataSource = [content mutableCopy];
-                                               [_collectionView reloadData];
-                                           }
-                                           [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
-                                                                 withObject:nil
-                                                                 afterDelay:1];
-                                       }];
+               NSMutableArray *data = content;
+               if (_dataSource != data) {
+                   [_dataSource release];
+                   _dataSource = nil;
+                   _dataSource = [content mutableCopy];
+                   [_collectionView reloadData];
+               }
+               [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                     withObject:nil
+                                     afterDelay:1];
+            }];
         };
         
         // 加载数据
-        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults]
+                                                      objectForKey:kUserInfoId]
                                           supplierId:self.currentSupplierId
                                            purposeId:self.currentPurposeId
                                                ageId:self.currentAgeId
@@ -200,23 +210,23 @@
                                             pageSize:@"12"
                                              pageNum:@"1"
                                    completionHandler:^(id content, NSString *resultCode) {
-                                       if (0 != [resultCode intValue]) {
-                                           return;
-                                       }
-                                       if ([content isKindOfClass:[NSArray class]]) {
-                                           NSMutableArray *data = content;
-                                           if (0 == data.count) {
-                                               return;
-                                           }
-                                           if (_dataSource != data) {
-                                               [_dataSource release];
-                                               _dataSource = [content mutableCopy];
-                                               
-                                               // 更新界面
-                                               [_collectionView reloadData];
-                                           }
-                                       }
-                                   }];
+           if (0 != [resultCode intValue]) {
+               return;
+           }
+           if ([content isKindOfClass:[NSArray class]]) {
+               NSMutableArray *data = content;
+               if (0 == data.count) {
+                   return;
+               }
+               if (_dataSource != data) {
+                   [_dataSource release];
+                   _dataSource = [content mutableCopy];
+                   
+                   // 更新界面
+                   [_collectionView reloadData];
+               }
+           }
+       }];
 
     }
     return self;
@@ -256,13 +266,15 @@
     NSInteger index = sender.tag - kMetalButtonTag;
     switch (index) {
         case 0: {
-            NSArray *titles = @[@"默认", @"民俗系列", @"佛教系列", @"儿童系列", @"钱币邮票系列", @"婚庆系列"];
+            NSArray *titles = @[@"默认", @"民俗系列", @"佛教系列",
+                                @"儿童系列", @"钱币邮票系列", @"婚庆系列"];
                 CGRect rect = CGRectMake(0, 0, 240, 40);
             [self processButtonActionWithSender:sender titles:titles rect:rect];
         }
             break;
         case 1: {
-            NSArray *titles = @[@"默认", @"中超国鼎", @"国富黄金", @"中国工艺", @"背景美工", @"上海金市", @"中国银行(吉祥金)"];
+            NSArray *titles = @[@"默认", @"中超国鼎", @"国富黄金", @"中国工艺",
+                                @"背景美工", @"上海金市", @"中国银行(吉祥金)"];
             CGRect rect = CGRectMake(0, 0, 640, 40);
             [self processButtonActionWithSender:sender titles:titles rect:rect];
         }
@@ -285,7 +297,9 @@
     }
 }
 
-- (void)processButtonActionWithSender:(UIButton *)sender titles:(NSArray *)titles rect:(CGRect)rect
+- (void)processButtonActionWithSender:(UIButton *)sender
+                               titles:(NSArray *)titles
+                                 rect:(CGRect)rect
 {
     DDSelectViewController *select = [[DDSelectViewController alloc]
                                       initWithStyle:UITableViewStylePlain
@@ -317,7 +331,8 @@
         
         // 请求网络，更新数据
 //        NSLog(@"%@ %@ %@ %@", self.currentTypeId, );
-        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+        [DDHTTPManager sendRequestForMetalWithUserId:[[NSUserDefaults standardUserDefaults]
+                                                      objectForKey:kUserInfoId]
                                           supplierId:self.currentSupplierId
                                            purposeId:self.currentPurposeId
                                                ageId:self.currentAgeId
@@ -325,14 +340,14 @@
                                             pageSize:@"12"
                                              pageNum:@"1"
                                    completionHandler:^(id content, NSString *resultCode) {
-                                       NSMutableArray *data = content;
-                                       if (_dataSource != data) {
-                                           [_dataSource release];
-                                           _dataSource = nil;
-                                           _dataSource = [content mutableCopy];
-                                           [_collectionView reloadData];
-                                       }
-                                   }];
+            NSMutableArray *data = content;
+            if (_dataSource != data) {
+               [_dataSource release];
+               _dataSource = nil;
+               _dataSource = [content mutableCopy];
+               [_collectionView reloadData];
+            }
+       }];
     };
 
     if (_popover) {
@@ -352,8 +367,9 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    NSInteger count = 3;
-    if (_dataSource && _dataSource.count > 0) {
+    NSInteger count = 0;
+    if (_dataSource != nil &&
+        [_dataSource isKindOfClass:[NSArray class]]) {
         count = _dataSource.count;
     }
     
@@ -373,8 +389,8 @@
             [DDHandleShowDetail handleMetalShowDetailWithDataSource:_dataSource[0] indexPath:indexPath];
         };
         metal.tapBuyAction = ^(UIButton *sender) {
-            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero];
-            buyView.productInfo = _dataSource[indexPath.row];
+            DDBuyView *buyView = [[DDBuyView alloc] initWithFrame:CGRectZero
+                                                      productInfo:_dataSource[indexPath.row]];
             [kRootView addSubview:buyView];
             [buyView release];
         };

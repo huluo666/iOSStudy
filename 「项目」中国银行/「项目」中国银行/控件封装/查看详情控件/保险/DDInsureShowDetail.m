@@ -18,7 +18,8 @@
         for (int i = 0; i < 6; i++) {
             UILabel *label = [[UILabel alloc] init];
             label.bounds = CGRectMake(0, 0, 600, 60);
-            label.center = CGPointMake(CGRectGetMidX(self.contentView.bounds), lastMaxY + CGRectGetMidY(label.bounds));
+            label.center = CGPointMake(CGRectGetMidX(self.contentView.bounds),
+                                       lastMaxY + CGRectGetMidY(label.bounds));
             lastMaxY = CGRectGetMaxY(label.frame);
             if (contents.count == 6) {
                 label.text = contents[i];

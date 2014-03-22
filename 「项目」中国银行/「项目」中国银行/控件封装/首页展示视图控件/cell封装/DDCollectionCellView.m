@@ -24,7 +24,8 @@
     [super dealloc];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame projectShowViewType:(DDCollectionCellViewType)type
+- (instancetype)initWithFrame:(CGRect)frame
+          projectShowViewType:(DDCollectionCellViewType)type
 {
     if (self = [super initWithFrame:frame]) {
         CGRect bounds = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame));
@@ -88,23 +89,27 @@
                                                 bounds.size.height / 3);
             _textLabel = [[UILabel alloc] init];
             _textLabel.bounds = textLabelBounds;
-            _textLabel.center = CGPointMake(CGRectGetMidX(_textLabel.bounds) + CGRectGetWidth(imageViewBounds) + 10,
-                                           CGRectGetMidY(_textLabel.bounds));
+            _textLabel.center = CGPointMake(CGRectGetMidX(_textLabel.bounds) +
+                                            CGRectGetWidth(imageViewBounds) + 10,
+                                            CGRectGetMidY(_textLabel.bounds));
             [self addSubview:_textLabel];
             
             // 显示详细信息文本
             _detailTextLabel = [[UILabel alloc] init];
             _detailTextLabel.bounds = textLabelBounds;
             _detailTextLabel.center = CGPointMake(_textLabel.center.x,
-                                                 _textLabel.center.y + CGRectGetHeight(_textLabel.bounds));
+                                                 _textLabel.center.y +
+                                                  CGRectGetHeight(_textLabel.bounds));
             [self addSubview:_detailTextLabel];
 
             // 详情button
             _button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
             _button.bounds = CGRectMake(0, 0, 60, 30);
             _button.center = CGPointMake(CGRectGetWidth(bounds) / 6 * 5,
-                                        CGRectGetMaxY(bounds) - CGRectGetMidY(_button.bounds) - 5);
-            [_button setBackgroundImage:[UIImage imageNamed:@"详情_01"] forState:UIControlStateNormal];
+                                        CGRectGetMaxY(bounds) -
+                                         CGRectGetMidY(_button.bounds) - 5);
+            [_button setBackgroundImage:[UIImage imageNamed:@"详情_01"]
+                               forState:UIControlStateNormal];
             [_button addTarget:self
                        action:@selector(processTap:)
              forControlEvents:UIControlEventTouchUpInside];

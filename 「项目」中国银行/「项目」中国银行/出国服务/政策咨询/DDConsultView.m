@@ -82,7 +82,8 @@
         UIImageView *upShadowView = [[UIImageView alloc] init];
         upShadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds) * 1.1, 5);
         upShadowView.center = CGPointMake(CGRectGetMidX(tableView.frame),
-                                          CGRectGetMinY(tableView.frame) + CGRectGetMidY(upShadowView.bounds));
+                                          CGRectGetMinY(tableView.frame) +
+                                          CGRectGetMidY(upShadowView.bounds));
         upShadowView.image = kImageWithName(@"up_19");
         [self addSubview:upShadowView];
         [upShadowView release];
@@ -90,7 +91,8 @@
         UIImageView *downShadowView = [[UIImageView alloc] init];
         downShadowView.bounds = CGRectMake(0, 0, CGRectGetWidth(tableView.bounds) * 1.1, 5);
         downShadowView.center = CGPointMake(CGRectGetMidX(tableView.frame),
-                                            CGRectGetMaxY(tableView.frame) + CGRectGetMidY(downShadowView.bounds));
+                                            CGRectGetMaxY(tableView.frame) +
+                                            CGRectGetMidY(downShadowView.bounds));
         downShadowView.image = kImageWithName(@"down_27");
         [self addSubview:downShadowView];
         [downShadowView release];
@@ -98,8 +100,10 @@
         // 两个Label
         UILabel *serialNumberLabel = [[UILabel alloc] init];
         serialNumberLabel.bounds = CGRectMake(0, 0, 125, 40);
-        serialNumberLabel.center = CGPointMake(CGRectGetMinX(tableView.frame) + CGRectGetMidX(serialNumberLabel.bounds),
-                                               upShadowView.center.y - CGRectGetMidY(serialNumberLabel.bounds));
+        serialNumberLabel.center = CGPointMake(CGRectGetMinX(tableView.frame) +
+                                               CGRectGetMidX(serialNumberLabel.bounds),
+                                               upShadowView.center.y -
+                                               CGRectGetMidY(serialNumberLabel.bounds));
         serialNumberLabel.font = [UIFont systemFontOfSize:22];
         serialNumberLabel.textColor = [UIColor whiteColor];
         serialNumberLabel.textAlignment = NSTextAlignmentCenter;
@@ -109,8 +113,10 @@
         
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.bounds = CGRectMake(0, 0, 675, 40);
-        titleLabel.center = CGPointMake(CGRectGetMaxX(serialNumberLabel.frame) + CGRectGetMidX(titleLabel.bounds),
-                                        upShadowView.center.y - CGRectGetMidY(serialNumberLabel.bounds));
+        titleLabel.center = CGPointMake(CGRectGetMaxX(serialNumberLabel.frame) +
+                                        CGRectGetMidX(titleLabel.bounds),
+                                        upShadowView.center.y -
+                                        CGRectGetMidY(serialNumberLabel.bounds));
         titleLabel.font = [UIFont systemFontOfSize:22];
         titleLabel.textColor = [UIColor whiteColor];
         titleLabel.textAlignment = NSTextAlignmentCenter;

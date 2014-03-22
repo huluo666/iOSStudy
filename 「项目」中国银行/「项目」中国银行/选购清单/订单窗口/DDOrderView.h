@@ -13,5 +13,6 @@
 @interface DDOrderView : UIView
 
 @property (copy, nonatomic) void(^swipRight)(void);
+@property (retain, nonatomic) NSDictionary *dataSource;
 
 @end

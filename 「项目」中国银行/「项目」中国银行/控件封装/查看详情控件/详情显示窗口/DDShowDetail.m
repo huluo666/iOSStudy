@@ -59,7 +59,8 @@
                                        0,
                                        CGRectGetWidth(_bottomView.bounds),
                                        CGRectGetHeight(_bottomView.bounds) * 0.1);
-        _titleLabel.center = CGPointMake(CGRectGetMidX(_bottomView.bounds), CGRectGetMidY(_titleLabel.bounds));
+        _titleLabel.center = CGPointMake(CGRectGetMidX(_bottomView.bounds),
+                                         CGRectGetMidY(_titleLabel.bounds));
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont systemFontOfSize:22];
         _titleLabel.font = [UIFont boldSystemFontOfSize:22];
@@ -72,7 +73,8 @@
                                         CGRectGetWidth(_bottomView.bounds),
                                         CGRectGetHeight(_bottomView.bounds) * 0.75);
         _contentView.center = CGPointMake(CGRectGetMidX(_bottomView.bounds),
-                                         CGRectGetMidY(_contentView.bounds) + CGRectGetHeight(_titleLabel.bounds));
+                                         CGRectGetMidY(_contentView.bounds) +
+                                          CGRectGetHeight(_titleLabel.bounds));
         [_bottomView addSubview:_contentView];
         
         // 取消按钮
@@ -81,9 +83,11 @@
                                         0,
                                         CGRectGetWidth(_bottomView.bounds) * 0.05,
                                         CGRectGetWidth(_bottomView.bounds) * 0.05);
-        closeButton.center = CGPointMake(CGRectGetMaxX(_bottomView.bounds) - CGRectGetMidX(closeButton.bounds) * 1.5,
+        closeButton.center = CGPointMake(CGRectGetMaxX(_bottomView.bounds) -
+                                         CGRectGetMidX(closeButton.bounds) * 1.5,
                                          CGRectGetMidY(_titleLabel.bounds));
-        [closeButton setBackgroundImage:kImageWithName(@"close_07") forState:UIControlStateNormal];
+        [closeButton setBackgroundImage:kImageWithName(@"close_07")
+                               forState:UIControlStateNormal];
         [closeButton addTarget:self
                         action:@selector(closeSelf)
               forControlEvents:UIControlEventTouchUpInside];
@@ -93,7 +97,8 @@
         UIButton *buyButton = [UIButton buttonWithType:UIButtonTypeCustom];
         buyButton.bounds = CGRectMake(0, 0, 159, 50);
         buyButton.center = CGPointMake(CGRectGetMidX(_contentView.bounds),
-                                       CGRectGetMaxY(_contentView.frame) - CGRectGetMidY(buyButton.bounds) * 1.2);
+                                       CGRectGetMaxY(_contentView.frame) -
+                                       CGRectGetMidY(buyButton.bounds) * 1.2);
         buyButton.hidden = NO;
         [buyButton setBackgroundImage:kImageWithName(@"购买")
                              forState:UIControlStateNormal];

@@ -73,41 +73,47 @@
 
         // 起售日期选择标签
         _startDataLabel = [self labelHasTapGesture];
-        _startDataLabel.center = CGPointMake(CGRectGetMaxX(fromTimeLabel.frame) + CGRectGetMidX(_startDataLabel.bounds) + 6,
+        _startDataLabel.center = CGPointMake(CGRectGetMaxX(fromTimeLabel.frame) +
+                                             CGRectGetMidX(_startDataLabel.bounds) + 6,
                                             backgroundViewHeight * 0.05);
         [_backgroundView addSubview:_startDataLabel];
 
         // UILabel
         UILabel *toTimeLabel = [self labelWithTitle:@"到"];
         toTimeLabel.bounds = CGRectMake(0, 0, 20, 40);
-        toTimeLabel.center = CGPointMake(CGRectGetMaxX(_startDataLabel.frame) + CGRectGetMidX(toTimeLabel.bounds) + 6,
+        toTimeLabel.center = CGPointMake(CGRectGetMaxX(_startDataLabel.frame) +
+                                         CGRectGetMidX(toTimeLabel.bounds) + 6,
                                          backgroundViewHeight * 0.05);
         [_backgroundView addSubview:toTimeLabel];
         
         // 停售日期选择标签
         _endDataLabel = [self labelHasTapGesture];
-        _endDataLabel.center = CGPointMake(CGRectGetMaxX(toTimeLabel.frame) + CGRectGetMidX(_endDataLabel.bounds) + 6,
+        _endDataLabel.center = CGPointMake(CGRectGetMaxX(toTimeLabel.frame) +
+                                           CGRectGetMidX(_endDataLabel.bounds) + 6,
                                           backgroundViewHeight * 0.05);
         [_backgroundView addSubview:_endDataLabel];
 
         // 投资期限
         UIButton *deadlineButton = [self buttonWitStateNormalTitle:@"投资期限"];
         [deadlineButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        deadlineButton.center = CGPointMake(CGRectGetMaxX(_endDataLabel.frame) + CGRectGetMidX(deadlineButton.bounds) + 6,
+        deadlineButton.center = CGPointMake(CGRectGetMaxX(_endDataLabel.frame) +
+                                            CGRectGetMidX(deadlineButton.bounds) + 6,
                                             backgroundViewHeight * 0.05);
         deadlineButton.tag = kFinanceButtonTag;
         [_backgroundView addSubview:deadlineButton];
         
         // 收益类型
         UIButton *profitTypeButton = [self buttonWitStateNormalTitle:@"收益类型"];
-        profitTypeButton.center = CGPointMake(CGRectGetMaxX(deadlineButton.frame) + CGRectGetMidX(profitTypeButton.bounds) + 6,
+        profitTypeButton.center = CGPointMake(CGRectGetMaxX(deadlineButton.frame) +
+                                              CGRectGetMidX(profitTypeButton.bounds) + 6,
                                               backgroundViewHeight * 0.05);
         profitTypeButton.tag = kFinanceButtonTag + 1;
         [_backgroundView addSubview:profitTypeButton];
 
         // 币种
         UIButton *coinTypeButton = [self buttonWitStateNormalTitle:@"币种"];
-        coinTypeButton.center =  CGPointMake(CGRectGetMaxX(profitTypeButton.frame) + CGRectGetMidX(coinTypeButton.bounds) + 6,
+        coinTypeButton.center =  CGPointMake(CGRectGetMaxX(profitTypeButton.frame) +
+                                             CGRectGetMidX(coinTypeButton.bounds) + 6,
                                              backgroundViewHeight * 0.05);
         coinTypeButton.tag = kFinanceButtonTag + 2;
         [_backgroundView addSubview:coinTypeButton];
@@ -116,7 +122,8 @@
         UIImage *searchBackgroundImage = kImageWithName(@"搜索框_11");
         UIImageView *imageView = [[UIImageView alloc] initWithImage:searchBackgroundImage];
         imageView.bounds = CGRectMake(0, 0, 230, 40);
-        imageView.center = CGPointMake(CGRectGetMaxX(coinTypeButton.frame) + CGRectGetMidX(imageView.bounds) + 16,
+        imageView.center = CGPointMake(CGRectGetMaxX(coinTypeButton.frame) +
+                                       CGRectGetMidX(imageView.bounds) + 16,
                                        backgroundViewHeight * 0.05);
         imageView.userInteractionEnabled = YES;
         [_backgroundView addSubview:imageView];
@@ -128,7 +135,8 @@
                                             0,
                                             CGRectGetWidth(imageView.bounds) * 0.9,
                                             CGRectGetHeight(imageView.bounds));
-        searchTextField.center = CGPointMake(CGRectGetMidX(imageView.bounds), CGRectGetMidY(imageView.bounds));
+        searchTextField.center = CGPointMake(CGRectGetMidX(imageView.bounds),
+                                             CGRectGetMidY(imageView.bounds));
         searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         searchTextField.textAlignment = NSTextAlignmentLeft;
         searchTextField.placeholder = @"Search";
@@ -166,7 +174,8 @@
         UIButton *applicationButton = [UIButton buttonWithType:UIButtonTypeCustom];
         applicationButton.bounds = CGRectMake(0, 0, 159, 50);
         applicationButton.center = CGPointMake(CGRectGetMidX(tableView.frame),
-                                               CGRectGetMaxY(tableView.frame) + CGRectGetMidY(applicationButton.bounds) + 50);
+                                               CGRectGetMaxY(tableView.frame) +
+                                               CGRectGetMidY(applicationButton.bounds) + 50);
         [applicationButton setBackgroundImage:kImageWithName(@"申请")
                                      forState:UIControlStateNormal];
         [applicationButton addTarget:self
@@ -178,7 +187,8 @@
         UILabel *predictLabel = [[UILabel alloc] init];
         predictLabel.bounds = CGRectMake(0, 0, 115, 50);
         predictLabel.center = CGPointMake(80 + CGRectGetMidX(predictLabel.bounds),
-                                          CGRectGetMaxY(tableView.frame) + CGRectGetMidY(predictLabel.bounds));
+                                          CGRectGetMaxY(tableView.frame) +
+                                          CGRectGetMidY(predictLabel.bounds));
         predictLabel.text = @"预计收益计算：";
         predictLabel.textColor = [UIColor grayColor];
         predictLabel.font = [UIFont boldSystemFontOfSize:16];
@@ -189,8 +199,10 @@
         // 收益
         UILabel *prfigureLabel = [[UILabel alloc] init];
         prfigureLabel.bounds = CGRectMake(0, 0, 70, 50);
-        prfigureLabel.center = CGPointMake(CGRectGetMaxX(predictLabel.frame) + CGRectGetMidX(prfigureLabel.bounds),
-                                           CGRectGetMaxY(tableView.frame) + CGRectGetMidY(prfigureLabel.bounds));
+        prfigureLabel.center = CGPointMake(CGRectGetMaxX(predictLabel.frame) +
+                                           CGRectGetMidX(prfigureLabel.bounds),
+                                           CGRectGetMaxY(tableView.frame) +
+                                           CGRectGetMidY(prfigureLabel.bounds));
         prfigureLabel.text = @"投资金额";
         prfigureLabel.textColor = [UIColor grayColor];
         prfigureLabel.font = [UIFont systemFontOfSize:15];
@@ -200,7 +212,8 @@
         
         UITextField *prfigureField = [[UITextField alloc] init];
         prfigureField.bounds = CGRectMake(0, 0, 150, 40);
-        prfigureField.center = CGPointMake(CGRectGetMaxX(prfigureLabel.frame) + CGRectGetMidX(prfigureField.bounds) + 5,
+        prfigureField.center = CGPointMake(CGRectGetMaxX(prfigureLabel.frame) +
+                                           CGRectGetMidX(prfigureField.bounds) + 5,
                                            CGRectGetMidY(prfigureLabel.frame));
         prfigureField.layer.cornerRadius = 5;
         prfigureField.backgroundColor = [UIColor whiteColor];
@@ -211,8 +224,10 @@
         // 单位
         UILabel *unit = [[UILabel alloc] init];
         unit.bounds = CGRectMake(0, 0, 30, 50);
-        unit.center = CGPointMake(CGRectGetMaxX(prfigureField.frame) + CGRectGetMidX(unit.bounds) + 5,
-                                  CGRectGetMaxY(tableView.frame) + CGRectGetMidY(unit.bounds));
+        unit.center = CGPointMake(CGRectGetMaxX(prfigureField.frame) +
+                                  CGRectGetMidX(unit.bounds) + 5,
+                                  CGRectGetMaxY(tableView.frame) +
+                                  CGRectGetMidY(unit.bounds));
         unit.text = @"万元";
         unit.textColor = [UIColor grayColor];
         unit.font = [UIFont systemFontOfSize:15];
@@ -223,8 +238,10 @@
         // 预期投资收入
         UILabel *incomeLabel = [[UILabel alloc] init];
         incomeLabel.bounds = CGRectMake(0, 0, 110, 50);
-        incomeLabel.center = CGPointMake(CGRectGetMaxX(unit.frame) + CGRectGetMidX(incomeLabel.bounds) + 15,
-                                         CGRectGetMaxY(tableView.frame) + CGRectGetMidY(incomeLabel.bounds));
+        incomeLabel.center = CGPointMake(CGRectGetMaxX(unit.frame) +
+                                         CGRectGetMidX(incomeLabel.bounds) + 15,
+                                         CGRectGetMaxY(tableView.frame) +
+                                         CGRectGetMidY(incomeLabel.bounds));
         incomeLabel.text = @"预期投资收益：";
         incomeLabel.textColor = [UIColor grayColor];
         incomeLabel.font = [UIFont systemFontOfSize:15];
@@ -235,7 +252,8 @@
         
         UITextField *incomeField = [[UITextField alloc] init];
         incomeField.bounds = CGRectMake(0, 0, 150, 40);
-        incomeField.center = CGPointMake(CGRectGetMaxX(incomeLabel.frame) + CGRectGetMidX(incomeField.bounds) + 5,
+        incomeField.center = CGPointMake(CGRectGetMaxX(incomeLabel.frame) +
+                                         CGRectGetMidX(incomeField.bounds) + 5,
                                          CGRectGetMidY(prfigureField.frame));
         incomeField.layer.cornerRadius = 5;
         incomeField.enabled = NO;
@@ -246,8 +264,10 @@
         // 单位
         UILabel *unitIncome = [[UILabel alloc] init];
         unitIncome.bounds = CGRectMake(0, 0, 30, 50);
-        unitIncome.center = CGPointMake(CGRectGetMaxX(incomeField.frame) + CGRectGetMidX(unitIncome.bounds) + 5,
-                                        CGRectGetMaxY(tableView.frame) + CGRectGetMidY(unitIncome.bounds));
+        unitIncome.center = CGPointMake(CGRectGetMaxX(incomeField.frame) +
+                                        CGRectGetMidX(unitIncome.bounds) + 5,
+                                        CGRectGetMaxY(tableView.frame) +
+                                        CGRectGetMidY(unitIncome.bounds));
         unitIncome.text = @"万元";
         unitIncome.textColor = [UIColor grayColor];
         unitIncome.font = [UIFont systemFontOfSize:15];
@@ -258,7 +278,8 @@
         // 计算
         UIButton *calculateButton = [UIButton buttonWithType:UIButtonTypeCustom];
         calculateButton.bounds = CGRectMake(0, 0, 86, 42);
-        calculateButton.center = CGPointMake(CGRectGetMaxX(unitIncome.frame) + CGRectGetMidX(calculateButton.bounds) + 5,
+        calculateButton.center = CGPointMake(CGRectGetMaxX(unitIncome.frame) +
+                                             CGRectGetMidX(calculateButton.bounds) + 5,
                                              CGRectGetMidY(unitIncome.frame));
         [calculateButton setBackgroundImage:kImageWithName(@"计算_01")
                                    forState:UIControlStateNormal];
@@ -269,8 +290,11 @@
         [_backgroundView addSubview:calculateButton];
         
         // tableView每一项对应名称
-        NSArray *labelsWidth = @[@"71", @"165", @"55", @"59", @"58", @"90", @"94", @"93", @"93", @"52", @"50"];
-        NSArray *titles =  @[@"产品",@"代码",@"投资期限(天)",@"预期收益率(％)",@"起点金额(万元)",@"起售日",@"停售日",@"起息日",@"到期日",@"额度  (亿元)",@"网银"];
+        NSArray *labelsWidth = @[@"71", @"165", @"55", @"59", @"58", @"90",
+                                 @"94", @"93", @"93", @"52", @"50"];
+        NSArray *titles =  @[@"产品", @"代码", @"投资期限(天)", @"预期收益率(％)",
+                             @"起点金额(万元)", @"起售日", @"停售日", @"起息日", @"到期日",
+                             @"额度  (亿元)", @"网银"];
         
         CGFloat lastLabelMaxX = 22;
         for (int i = 0; i < labelsWidth.count; i++) {
@@ -380,7 +404,6 @@
                 [_popover dismissPopoverAnimated:YES];
                 _popover = nil;
             }
-//            DDProfitTypeViewController *profitType = [[DDProfitTypeViewController alloc] init];
             DDSelectViewController *profitType = [[DDSelectViewController alloc]
                                                   initWithStyle:UITableViewStylePlain
                                                   dataSource:nil];
@@ -399,7 +422,6 @@
                 [_popover dismissPopoverAnimated:YES];
                 _popover = nil;
             }
-//            DDCoinTypeViewController *coinType = [[DDCoinTypeViewController alloc] init];
             DDSelectViewController *coinType = [[DDSelectViewController alloc]
                                                   initWithStyle:UITableViewStylePlain
                                                   dataSource:nil];

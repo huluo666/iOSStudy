@@ -11,5 +11,6 @@
 @interface DDCombo : UIView
 
 @property (nonatomic, retain, readonly) UILabel *titleLabel;
+@property (copy, nonatomic) void(^showDetail)(void);
 
 @end

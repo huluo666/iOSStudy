@@ -13,7 +13,6 @@
 @interface DDChoose () <UITableViewDelegate, UITableViewDataSource>
 {
     UIImageView *_listBackgroundView; // 清单背景颜色
-    NSDictionary *_dataSource;
 }
 
 // 提交办理
@@ -28,6 +27,7 @@
     NSLog(@"%@ is dealloced", [self class]);
     [_listBackgroundView release];
     [_dataSource release];
+    [_tableView release];
     [super dealloc];
 }
 
@@ -39,7 +39,8 @@
         
         // 关联解档管理器与数据
         NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH_ORDER];
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:unarchiverData];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+                                         initForReadingWithData:unarchiverData];
         // 通过解档管理器和key解档数据
         id notProcessOrders = [unarchiver decodeObjectForKey:@"选购清单"];
         [unarchiverData release];
@@ -83,25 +84,25 @@
         orderLabel.font = [UIFont systemFontOfSize:24];
         orderLabel.textColor = [UIColor whiteColor];
         orderLabel.bounds = CGRectMake(0, 0, width * 0.65, 40);
-        orderLabel.center = CGPointMake(CGRectGetMaxX(nameLabel.frame) + CGRectGetMidX(orderLabel.bounds) + 20, 70);
+        orderLabel.center = CGPointMake(CGRectGetMaxX(nameLabel.frame) +
+                                        CGRectGetMidX(orderLabel.bounds) + 20, 70);
         orderLabel.text = @"订单号";
         [_listBackgroundView addSubview:orderLabel];
         [orderLabel release];
         
-        UITableView *tableView = [[UITableView alloc] init];
-        tableView.bounds = CGRectMake(0, 0, 800, 500);
-        tableView.center = CGPointMake(CGRectGetMidX(_listBackgroundView.bounds),
+        _tableView = [[UITableView alloc] init];
+        _tableView.bounds = CGRectMake(0, 0, 800, 500);
+        _tableView.center = CGPointMake(CGRectGetMidX(_listBackgroundView.bounds),
                                        CGRectGetMidY(_listBackgroundView.bounds) + 50);
-        tableView.delegate = self;
-        tableView.dataSource = self;
-        [_listBackgroundView addSubview:tableView];
-        tableView.backgroundColor = [UIColor clearColor];
-        [tableView release];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        [_listBackgroundView addSubview:_tableView];
+        _tableView.backgroundColor = [UIColor clearColor];
     }
     return self;
 }
 
-- (void)submit
+- (void)submitWithDataSource:(NSDictionary *)dict
 {
     // 创建订单信息页面
     CGRect frame = CGRectMake(20,
@@ -112,6 +113,7 @@
     __block DDOrderView *orderView = [[DDOrderView alloc] initWithFrame:frame];
     CGPoint center = _listBackgroundView.center;
     orderView.center = CGPointMake(3 * center.x, center.y);
+    orderView.dataSource = dict;
     [self addSubview:orderView];
     [orderView release];
 
@@ -132,7 +134,8 @@
 
 #pragma mark - tableview deletage
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = 0;
     if (_dataSource && _dataSource.count > 0) {
@@ -141,37 +144,38 @@
     return count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"ShopCartCell";
     DDListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[DDListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier buttonStyle:DDSubmit];
+        cell = [[DDListCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                 reuseIdentifier:cellIdentifier
+                                     buttonStyle:DDSubmit];
     }
     cell.nameLabel.text = _dataSource[@"name"];
     NSArray *list = _dataSource[@"shoppingList"];
     cell.orderNumberLabel.text = [NSString stringWithFormat:@"%@", list[indexPath.row]];
-    __block NSDictionary *dataSource = _dataSource;
+    __block DDChoose *this = self;
     cell.buttonTapAction = ^{
-        // 买产品
-        NSString *ClientId = dataSource[@"ID"];
-        NSString *clientName = dataSource[@"name"];
-        NSString *ClientTel = dataSource[@"tel"];
-        NSArray *shoppingList = @[dataSource[@"shoppingList"][indexPath.row]];
-        NSString *userId = [NSString stringWithFormat:@"%@", dataSource[@"userId"]];
-        NSArray *amountList = @[dataSource[@"amount"][indexPath.row]];
-        NSLog(@"%@", dataSource);
+        NSLog(@"%@", _dataSource);
+        // 到订单窗口
+        NSString *clientId = [NSString stringWithFormat:@"%@", _dataSource[@"ID"]];
+        NSString *clientName = [NSString stringWithFormat:@"%@", _dataSource[@"name"]];
+        NSString *clientTel = [NSString stringWithFormat:@"%@" ,_dataSource[@"tel"]];
+        NSArray *shoppingList = @[[NSString stringWithFormat:@"%@", _dataSource[@"shoppingList"][indexPath.row]]];
+        NSString *userId = [NSString stringWithFormat:@"%@", _dataSource[@"userId"]];
+        NSArray *amountList = @[[NSString stringWithFormat:@"%@", _dataSource[@"amount"][indexPath.row]]];
         
-        // 提交买产品
-        [DDHTTPManager sendRequestForBuyProductsWithClientId:ClientId
-                                                  clientName:clientName
-                                                   ClientTel:ClientTel
-                                                shoppingList:shoppingList
-                                                      userId:userId
-                                                  amountList:amountList
-                                           completionHandler:^(id content, NSString *resultCode) {
-                                               NSLog(@"完成");
-                                           }];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [dict setObject:clientId forKey:@"clientId"];
+        [dict setObject:clientName forKey:@"clientName"];
+        [dict setObject:clientTel forKey:@"clientTel"];
+        [dict setObject:shoppingList forKey:@"shoppingList"];
+        [dict setObject:userId forKey:@"userId"];
+        [dict setObject:amountList forKey:@"amountList"];
+        [this submitWithDataSource:dict];
     };
     return cell;
 }

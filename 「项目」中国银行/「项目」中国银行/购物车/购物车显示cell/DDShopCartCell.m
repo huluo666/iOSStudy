@@ -16,11 +16,12 @@
 
 @implementation DDShopCartCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style
+    reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        _labels = [NSMutableArray array];
+        _labels = [[NSMutableArray alloc] init];
         NSArray *widths = @[@(100), @(200), @(550)];
         CGFloat lastMaxX = 0;
         for (int i = 0; i < widths.count; i++) {
@@ -29,7 +30,8 @@
                                       0,
                                       [widths[i] floatValue],
                                       CGRectGetHeight(self.contentView.bounds));
-            label.center = CGPointMake(lastMaxX + CGRectGetMidX(label.bounds), CGRectGetMidY(self.contentView.bounds));
+            label.center = CGPointMake(lastMaxX + CGRectGetMidX(label.bounds),
+                                       CGRectGetMidY(self.contentView.bounds));
             label.textAlignment = NSTextAlignmentCenter;
             [self.contentView addSubview:label];
             [label release];
@@ -71,7 +73,8 @@
     } else if ([data[@"buyProductInfo"] isKindOfClass:[NSDictionary class]]) {
         fkbgAgain = data[@"buyProductInfo"][@"info"];
     }
-    label3.text = [NSString stringWithFormat:@"%@", fkbgAgain ? fkbgAgain : @"再次无力吐槽"];    
+    label3.text = [NSString stringWithFormat:@"%@",
+                   fkbgAgain ? fkbgAgain : @"再次无力吐槽"];
 }
 
 @end

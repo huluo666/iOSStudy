@@ -80,6 +80,16 @@
                     byKeywords:(NSString *)byKeywords
              completionHandler:(void (^)(id content, NSString * resultCode))completion;
 
+// 获取套餐模式
++ (void)sendRequestForMealsWithUserId:(NSString *)userId
+                           pageNumber:(NSString *)pageNumer
+                             pageSize:(NSString *)pageSize
+                    completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 套餐模式详细
+
+
+
 // 用于获取自选模式列表
 + (void)sendRequstForOptionalWithUserId:(NSString *)userId
                                  typeId:(NSString *)typeId
@@ -129,8 +139,9 @@
 // 购买产品
 + (void)sendRequestForBuyProductsWithClientId:(NSString *)ID
                                    clientName:(NSString *)name
-                                    ClientTel:(NSString *)tel
+                                    clientTel:(NSString *)tel
                                  shoppingList:(NSArray *)lists
+                                       status:(NSString *)status
                                        userId:(NSString *)userId
                                    amountList:(NSArray *)amount
                             completionHandler:(void (^)(id content, NSString * resultCode))completion;

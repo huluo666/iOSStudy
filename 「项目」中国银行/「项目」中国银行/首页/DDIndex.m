@@ -111,7 +111,8 @@
     [self requestForImages];
     
     // 每隔10分钟更新图片数据
-    NSMethodSignature *signature = [DDIndex instanceMethodSignatureForSelector:@selector(requestForImages)];
+    NSMethodSignature *signature = [DDIndex instanceMethodSignatureForSelector:
+                                    @selector(requestForImages)];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setTarget:self];
     [invocation setSelector:@selector(requestForImages)];
@@ -138,25 +139,25 @@
     // 请求网络获取图片
     [DDHTTPManager sendRequstWithImagesTotalNumber:@"5"
                                  completionHandler:^(id content, NSString *resultCode) {
-                                     if ([content isKindOfClass:[NSArray class]]) {
-                                         NSArray *imageUrlString = [content valueForKey:kPhotoRULKey];
-                                         if (!imageUrlString.count) {
-                                             return;
-                                         }
-                                         
-                                         // 保存图片路径,拼接路径
-                                         NSMutableArray *array = [[NSMutableArray alloc] init];
-                                         for (int i = 0; i < imageUrlString.count; i++) {
-                                             NSString *urlString = [NSString stringWithFormat:
-                                                                    @"http://192.168.10.201:8080%@",
-                                                                    imageUrlString[i]];
-                                             [array addObject:urlString];
-                                         }
-                                         
-                                         [_dataSource setObject:array forKey:kLoopImagesURLKey];
-                                         [array release];
+         if ([content isKindOfClass:[NSArray class]]) {
+             NSArray *imageUrlString = [content valueForKey:kPhotoRULKey];
+             if (!imageUrlString.count) {
+                 return;
+             }
+             
+             // 保存图片路径,拼接路径
+             NSMutableArray *array = [[NSMutableArray alloc] init];
+             for (int i = 0; i < imageUrlString.count; i++) {
+                 NSString *urlString = [NSString stringWithFormat:
+                                        @"http://192.168.10.201:8080%@",
+                                        imageUrlString[i]];
+                 [array addObject:urlString];
+             }
+             
+             [_dataSource setObject:array forKey:kLoopImagesURLKey];
+             [array release];
                                      }
-                                 }];
+    }];
 }
 
 - (void)initializePlayImagesRunLoopView
@@ -177,7 +178,8 @@
     [self addSubview:_upImageView];
 
     // 开启计时器
-    NSMethodSignature *signature = [DDIndex instanceMethodSignatureForSelector:@selector(startRunLoop)];
+    NSMethodSignature *signature = [DDIndex instanceMethodSignatureForSelector:
+                                    @selector(startRunLoop)];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setTarget:self];
     [invocation setSelector:@selector(startRunLoop)];
@@ -197,7 +199,8 @@
 {
     // 获取所有图片路径
     NSMutableArray *imagesURLString = [[[NSMutableArray alloc]
-                                        initWithArray:_dataSource[kLoopImagesURLKey]] autorelease];
+                                        initWithArray:_dataSource[kLoopImagesURLKey]]
+                                       autorelease];
     
     if (!imagesURLString.count) {
         return;
@@ -212,22 +215,22 @@
     CGPoint center = _upImageView.center;
     [UIView animateWithDuration:kAnimateDuration * 2
                      animations:^{
-                         _upImageView.alpha = 0.85f;
-                         _upImageView.center = CGPointMake(center.x - CGRectGetWidth(_downImageView.bounds),
-                                                           center.y);
-                     }
+         _upImageView.alpha = 0.85f;
+         _upImageView.center = CGPointMake(center.x - CGRectGetWidth(_downImageView.bounds),
+                                           center.y);
+     }
                      completion:^(BOOL finished) {
-                         _upImageView.alpha = 1.0f;
-                         _upImageView.center = center;
-                         
-                         // 更新显示图片
-                         [_upImageView setImageWithURL:[self urlWithString:imagesURLString[downImageIndex]]];
-                         _currentShowImageIndex = downImageIndex;
-                         NSString *willRemoveImageURL = [imagesURLString firstObject];
-                         [imagesURLString removeObject:willRemoveImageURL];
-                         [imagesURLString addObject:willRemoveImageURL];
-                         downImageIndex = [self realImageIndexWithIndex:_currentShowImageIndex + 1];
-                         [_downImageView setImageWithURL:[self urlWithString:imagesURLString[downImageIndex]]];
+         _upImageView.alpha = 1.0f;
+         _upImageView.center = center;
+         
+         // 更新显示图片
+         [_upImageView setImageWithURL:[self urlWithString:imagesURLString[downImageIndex]]];
+         _currentShowImageIndex = downImageIndex;
+         NSString *willRemoveImageURL = [imagesURLString firstObject];
+         [imagesURLString removeObject:willRemoveImageURL];
+         [imagesURLString addObject:willRemoveImageURL];
+         downImageIndex = [self realImageIndexWithIndex:_currentShowImageIndex + 1];
+         [_downImageView setImageWithURL:[self urlWithString:imagesURLString[downImageIndex]]];
      
                          // 循环调用
 #pragma mark - NOTE
@@ -238,7 +241,7 @@
 //                         [self performSelector:@selector(startRunLoop)
 //                                    withObject:nil
 //                                    afterDelay:kAnimateDuration * 2];
-                     }];
+    }];
 }
 
 - (NSInteger)realImageIndexWithIndex:(NSInteger)index
@@ -257,38 +260,40 @@
     [DDHTTPManager sendRequstWithPageNumber:@"1"
                                    pageSize:@"20"
                           completionHandler:^(id content, NSString *resultCode) {
-                              if (0 != [resultCode intValue]) {
-                                  return;
-                              }
-                              
-                              if ([content isKindOfClass:[NSArray class]]) {
-                                  // 存标题
-                                  NSArray *contents = [content valueForKey:kNewsTitleKey];
-                                  if (!contents.count) {
-                                      return;
-                                  }
-                                  [_dataSource setObject:contents forKey:kLatestNewsKey];
-                                  
-                                  // 存内容
-                                  NSArray *news = [content valueForKey:kNewsDetailKey];
-                                  
-                                  if (!news.count) {
-                                      return;
-                                  }
-                                  [_dataSource setObject:news forKey:kNewsDetailContentKey];
-                              }
-                              
-                              // 刷新数据
-                              [_tableView reloadData];
-                          }];
+          if (0 != [resultCode intValue]) {
+              return;
+          }
+          
+          if ([content isKindOfClass:[NSArray class]]) {
+              // 存标题
+              NSArray *contents = [content valueForKey:kNewsTitleKey];
+              if (!contents.count) {
+                  return;
+              }
+              [_dataSource setObject:contents forKey:kLatestNewsKey];
+              
+              // 存内容
+              NSArray *news = [content valueForKey:kNewsDetailKey];
+              
+              if (!news.count) {
+                  return;
+              }
+              [_dataSource setObject:news forKey:kNewsDetailContentKey];
+          }
+          
+          // 刷新数据
+          [_tableView reloadData];
+    }];
 }
 
 - (void)initializeLatestNewsView
 {
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:kImageWithName(@"最新动态-底_09")];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:
+                              kImageWithName(@"最新动态-底_09")];
     imageView.bounds = CGRectMake(0, 0, 280, 320);
-    imageView.center = CGPointMake(CGRectGetMaxX(self.bounds) - CGRectGetMidX(imageView.bounds) - 20,
-                         CGRectGetMidY(_downImageView.frame));
+    imageView.center = CGPointMake(CGRectGetMaxX(self.bounds) -
+                                   CGRectGetMidX(imageView.bounds) - 20,
+                                   CGRectGetMidY(_downImageView.frame));
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.userInteractionEnabled = YES;
     [self addSubview:imageView];
@@ -304,9 +309,11 @@
     // 右上角button
     UIButton *refreshButton = [UIButton buttonWithType:UIButtonTypeCustom];
     refreshButton.bounds = CGRectMake(0, 0, 50, 50);
-    refreshButton.center = CGPointMake(CGRectGetWidth(imageView.bounds) - CGRectGetMidX(refreshButton.bounds),
+    refreshButton.center = CGPointMake(CGRectGetWidth(imageView.bounds) -
+                                       CGRectGetMidX(refreshButton.bounds),
                                        CGRectGetMidY(refreshButton.bounds));
-    [refreshButton setBackgroundImage:kImageWithName(@"最新动态_38") forState:UIControlStateNormal];
+    [refreshButton setBackgroundImage:kImageWithName(@"最新动态_38")
+                             forState:UIControlStateNormal];
     [imageView addSubview:refreshButton];
 }
 
@@ -321,21 +328,21 @@
     [DDHTTPManager sendRequstWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
                             totalNumber:@"12"
                       completionHandler:^(id content, NSString *resultCode) {
-                          if (0 != [resultCode intValue]) {
-                              return;
-                          }
-                          if ([content isKindOfClass:[NSArray class]]) {
-                              if (0 == [content count]) {
-                                  return;
-                              }
-                              [_dataSource setObject:content forKey:kHotNewsKey];
-                              // 设置数据源
-                              _hotNewsviewPackage.dataSource = content;
-                              // 刷新打包视图界面数据
-                              [_hotNewsviewPackage.collectionView reloadData];
-                              _hotNewsviewPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
-                          }
-                      }];
+          if (0 != [resultCode intValue]) {
+              return;
+          }
+          if ([content isKindOfClass:[NSArray class]]) {
+              if (0 == [content count]) {
+                  return;
+              }
+              [_dataSource setObject:content forKey:kHotNewsKey];
+              // 设置数据源
+              _hotNewsviewPackage.dataSource = content;
+              // 刷新打包视图界面数据
+              [_hotNewsviewPackage.collectionView reloadData];
+              _hotNewsviewPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
+          }
+    }];
 }
 
 - (void)initializeHotNewsView
@@ -377,20 +384,20 @@
     [DDHTTPManager sendRequestForCustomProjectWithUserId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
                                              totalNumber:@"12"
                                        completionHandler:^(id content, NSString *resultCode) {
-                                           if (0 != [resultCode intValue]) {
-                                               return;
-                                           }
-                                           if ([content isKindOfClass:[NSArray class]]) {
-                                               if (0 == [content count]) {
-                                                   return;
-                                               }
-                                               [_dataSource setObject:content forKey:kCustomKey];
-                                               // 设置数据源
-                                               _customProductPackage.dataSource = content;
-                                               _customProductPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
-                                               [_customProductPackage.collectionView reloadData];
-                                           }
-                                       }];
+        if (0 != [resultCode intValue]) {
+           return;
+        }
+        if ([content isKindOfClass:[NSArray class]]) {
+           if (0 == [content count]) {
+               return;
+           }
+           [_dataSource setObject:content forKey:kCustomKey];
+           // 设置数据源
+           _customProductPackage.dataSource = content;
+           _customProductPackage.pageControl.numberOfPages = ceil([content count] / 4.0);
+           [_customProductPackage.collectionView reloadData];
+        }
+    }];
 }
 
 - (void)initializeProjectCustomView
@@ -475,7 +482,6 @@
     
     [kRootView addSubview:detail];
     [detail release];
-    
 }
 
 @end

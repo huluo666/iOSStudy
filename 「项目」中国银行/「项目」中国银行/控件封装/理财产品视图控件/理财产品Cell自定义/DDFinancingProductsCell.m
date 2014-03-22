@@ -16,22 +16,26 @@
     [super dealloc];
 }
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+- (id)initWithStyle:(UITableViewCellStyle)style
+    reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         UIImage *backgroundImage = kImageWithName(@"line_15");
-        UIImageView *backgroundView = [[UIImageView alloc] initWithImage:backgroundImage];
+        UIImageView *backgroundView = [[UIImageView alloc]
+                                       initWithImage:backgroundImage];
         self.backgroundView = backgroundView;
         [backgroundView release];
 
         UIImage *selectedBackgroundImage = kImageWithName(@"选中new");
-        UIImageView *selectedBackgroundView = [[UIImageView alloc] initWithImage:selectedBackgroundImage];
+        UIImageView *selectedBackgroundView = [[UIImageView alloc]
+                                               initWithImage:selectedBackgroundImage];
         self.selectedBackgroundView = selectedBackgroundView;
         [selectedBackgroundView release];
         
         // 配置contentView
-        NSArray *labelsWidth = @[@"71", @"165", @"55", @"65", @"45", @"94", @"94", @"93", @"93", @"52", @"50"];
+        NSArray *labelsWidth = @[@"71", @"165", @"55", @"65", @"45", @"94",
+                                 @"94", @"93", @"93", @"52", @"50"];
         CGFloat lastLabelMaxX = 0;
         for (int i = 0; i < labelsWidth.count; i++) {
             UILabel *label = [[UILabel alloc] init];

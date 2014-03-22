@@ -19,12 +19,33 @@
 - (void)dealloc
 {
     [_buyCountField release];
-    [_productInfo release];
+    [_productInfos release];
     [super dealloc];
 }
 
-- (id)initWithFrame:(CGRect)frame
+- (id)initWithFrame:(CGRect)frame productInfo:(NSDictionary *)productInfos
 {
+    NSLog(@"产品信息 = %@", productInfos);
+    
+    // 判读是否过期
+    NSString *deadline = productInfos[@"stop_time"];
+    if (deadline != nil) {
+        NSDateFormatter *fromatter = [[NSDateFormatter alloc] init];
+        fromatter.dateFormat = @"yyyy-MM-dd";
+        NSDate *stopTime = [fromatter dateFromString:deadline];
+        if ([stopTime compare:[NSDate date]] == NSOrderedAscending) {
+            // 弹出提示
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示"
+                                                            message:@"该产品不在购买期"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil];
+            [alert show];
+            [alert release];
+            return nil;
+        };
+    }
+    
     self = [super initWithFrame:frame];
     if (self) {
         self.bounds = CGRectMake(0, 0, kRootViewWidth, kRootViewHeight);
@@ -53,9 +74,12 @@
         // xx
         UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         closeButton.bounds = CGRectMake(0, 0, 45, 45);
-        closeButton.center = CGPointMake(CGRectGetMaxX(backgroundView.bounds) - CGRectGetMidX(closeButton.bounds) - 16,
-                                         CGRectGetMinY(backgroundView.bounds) + CGRectGetMidY(closeButton.bounds) + 16);
-        [closeButton setBackgroundImage:kImageWithName(@"close_07") forState:UIControlStateNormal];
+        closeButton.center = CGPointMake(CGRectGetMaxX(backgroundView.bounds) -
+                                         CGRectGetMidX(closeButton.bounds) - 16,
+                                         CGRectGetMinY(backgroundView.bounds) +
+                                         CGRectGetMidY(closeButton.bounds) + 16);
+        [closeButton setBackgroundImage:kImageWithName(@"close_07")
+                               forState:UIControlStateNormal];
         [closeButton addTarget:self
                         action:@selector(closeSelf)
               forControlEvents:UIControlEventTouchUpInside];
@@ -73,7 +97,8 @@
         // 单位
         UILabel *units = [[UILabel alloc] init];
         units.bounds = CGRectMake(0, 0, 50, 40);
-        units.center = CGPointMake(CGRectGetMaxX(_buyCountField.frame) + CGRectGetMidX(units.bounds),
+        units.center = CGPointMake(CGRectGetMaxX(_buyCountField.frame) +
+                                   CGRectGetMidX(units.bounds),
                                    CGRectGetMidY(_buyCountField.frame));
         units.text = @"万元";
         [backgroundView addSubview:units];
@@ -84,11 +109,14 @@
         buyButton.bounds = CGRectMake(0, 0, 159, 50);
         buyButton.center = CGPointMake(CGRectGetMidX(backgroundView.bounds),
                                          CGRectGetMaxY(backgroundView.bounds) - 70);
-        [buyButton setBackgroundImage:kImageWithName(@"购买") forState:UIControlStateNormal];
+        [buyButton setBackgroundImage:kImageWithName(@"购买")
+                             forState:UIControlStateNormal];
         [buyButton addTarget:self
                       action:@selector(buy)
             forControlEvents:UIControlEventTouchUpInside];
         [backgroundView addSubview:buyButton];
+        
+        self.productInfos = productInfos;
     }
     return self;
 }
@@ -97,7 +125,8 @@
 {
     [UIView animateWithDuration:kAnimateDuration
                      animations:^{
-                         self.center = CGPointMake(kRootViewWidth / 2, kRootViewHeight * 2);
+                         self.center = CGPointMake(kRootViewWidth / 2,
+                                                   kRootViewHeight * 2);
                      }
                      completion:^(BOOL finished) {
                          [self removeFromSuperview];
@@ -106,22 +135,26 @@
 
 - (void)buy
 {
-    if (!_productInfo) {
+    if (!_productInfos) {
         return;
     }
     
     [self closeSelf];
     
-    NSLog(@"产品信息：%@", _productInfo);
+    NSLog(@"产品信息：%@", _productInfos);
     
     // 获取订单信息
     NSString *number = _buyCountField.text;
-    NSArray *objs = @[number, _productInfo];
-    NSDictionary *orderInfo = [[NSDictionary alloc] initWithObjects:objs forKeys:@[kBuyNumer, kBuyProductInfo]];
+    NSArray *objs = @[number, _productInfos];
+    NSDictionary *orderInfo = [[NSDictionary alloc]
+                               initWithObjects:objs
+                               forKeys:@[kBuyNumer, kBuyProductInfo]];
     
     // 获取未处理订单
-    NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH]; // 关联解档管理器与数据
-    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc] initForReadingWithData:unarchiverData];
+    NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH];
+    // 关联解档管理器与数据
+    NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+                                     initForReadingWithData:unarchiverData];
     // 通过解档管理器和key解档数据
     NSMutableArray *notProcessOrders = [unarchiver decodeObjectForKey:kOrderInfo];
     [unarchiverData release];
@@ -137,7 +170,8 @@
     // 创建数据容器
     NSMutableData *archiverData = [NSMutableData data];
     // 关联容器与归档管理器
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc] initForWritingWithMutableData:archiverData];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
+                                 initForWritingWithMutableData:archiverData];
     [archiver encodeObject:notProcessOrders forKey:kOrderInfo];
     [archiver finishEncoding];
     [archiverData writeToFile:PATH atomically:YES];

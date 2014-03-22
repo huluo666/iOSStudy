@@ -68,7 +68,8 @@
         orderLabel.font = [UIFont systemFontOfSize:24];
         orderLabel.textColor = [UIColor whiteColor];
         orderLabel.bounds = CGRectMake(0, 0, width * 0.65, 40);
-        orderLabel.center = CGPointMake(CGRectGetMaxX(nameLabel.frame) + CGRectGetMidX(orderLabel.bounds) + 20, 70);
+        orderLabel.center = CGPointMake(CGRectGetMaxX(nameLabel.frame) +
+                                        CGRectGetMidX(orderLabel.bounds) + 20, 70);
         orderLabel.text = @"订单号";
         [_listBackgroundView addSubview:orderLabel];
         [orderLabel release];
@@ -86,9 +87,13 @@
         UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
         back.bounds = CGRectMake(0, 0, 159, 50);
         back.center = CGPointMake(CGRectGetMidX(_listBackgroundView.bounds),
-                                  CGRectGetMaxY(_listBackgroundView.bounds) - CGRectGetMidY(back.bounds) - 20);
-        [back setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-        [back addTarget:self action:@selector(goback:) forControlEvents:UIControlEventTouchUpInside];
+                                  CGRectGetMaxY(_listBackgroundView.bounds) -
+                                  CGRectGetMidY(back.bounds) - 20);
+        [back setBackgroundImage:[UIImage imageNamed:@"返回"]
+                        forState:UIControlStateNormal];
+        [back addTarget:self
+                 action:@selector(goback:)
+       forControlEvents:UIControlEventTouchUpInside];
         [_listBackgroundView addSubview:back];
     }
     return self;
@@ -105,7 +110,8 @@
 
 #pragma mark - UITableView datasource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = 0;
     if (_dataSource) {
@@ -115,47 +121,55 @@
     return count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *cellIdentifier = @"SearchResultCell";
     DDListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (!cell) {
-        cell = [[[DDListCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier buttonStyle:DDDetail] autorelease];
+        cell = [[[DDListCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                  reuseIdentifier:cellIdentifier
+                                      buttonStyle:DDDetail] autorelease];
     }
     
     if (_dataSource) {
-        cell.nameLabel.text = [NSString stringWithFormat:@"%@", _dataSource[indexPath.row][@"purchaser"]];
-        cell.orderNumberLabel.text = [NSString stringWithFormat:@"%@" ,_dataSource[indexPath.row][@"order"]];
+        cell.nameLabel.text = [NSString stringWithFormat:@"%@",
+                               _dataSource[indexPath.row][@"purchaser"]];
+        cell.orderNumberLabel.text = [NSString stringWithFormat:@"%@",
+                                      _dataSource[indexPath.row][@"order"]];
         __block DDSearchResult *this = self;
         __block UIImageView *imageView = _listBackgroundView;
         cell.buttonTapAction = ^{
             NSLog(@"查看详情");
-            __block DDSerachDetailResult *detailResult = [[DDSerachDetailResult alloc] initWithFrame:CGRectZero];
+            __block DDSerachDetailResult *detailResult = [[DDSerachDetailResult alloc]
+                                                          initWithFrame:CGRectZero];
             CGPoint center = CGPointMake(CGRectGetMidX(this.bounds),
                                          CGRectGetMidY(this.bounds));
             detailResult.center =  CGPointMake(3 * center.x, center.y);
             NSLog(@"_dataSource = %@", _dataSource);
-            detailResult.serviceStatus = [_dataSource[indexPath.row][@"serviceStatus"] integerValue];
+            detailResult.serviceStatus = [_dataSource[indexPath.row]
+                                          [@"serviceStatus"]
+                                          integerValue];
             detailResult.goBack = ^{
-                [UIView animateWithDuration:kAnimateDuration animations:^{
+                [UIView animateWithDuration:kAnimateDuration
+                                 animations:^{
                     imageView.center = center;
                     detailResult.center =  CGPointMake(3 * center.x, center.y);
-                } completion:^(BOOL finished) {
+                }
+                                 completion:^(BOOL finished) {
                     [detailResult removeFromSuperview];
                 }];
             };
             
             [UIView animateWithDuration:kAnimateDuration
                              animations:^{
-                                 detailResult.center =  CGPointMake(center.x, center.y);
-                                 imageView.center = CGPointMake(-2 * center.x, center.y);
-                             }];
+                 detailResult.center =  CGPointMake(center.x, center.y);
+                 imageView.center = CGPointMake(-2 * center.x, center.y);
+             }];
             
             [this addSubview:detailResult];
             [detailResult release];
         };
-        
-        
     }
     return cell;
 }

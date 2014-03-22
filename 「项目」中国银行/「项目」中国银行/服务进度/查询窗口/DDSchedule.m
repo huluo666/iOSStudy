@@ -96,7 +96,8 @@
         // 查询按钮
         UIButton *submitSearchButton = [UIButton buttonWithType:UIButtonTypeCustom];
         submitSearchButton.bounds = CGRectMake(0, 0, 30, 30);
-        submitSearchButton.center = CGPointMake(CGRectGetMaxX(searchView.bounds) - CGRectGetMidX(submitSearchButton.bounds) * 1.2,
+        submitSearchButton.center = CGPointMake(CGRectGetMaxX(searchView.bounds) -
+                                                CGRectGetMidX(submitSearchButton.bounds) * 1.2,
                                                 CGRectGetMidY(searchView.bounds));
         [submitSearchButton setBackgroundImage:kImageWithName(@"search-1_76")
                                       forState:UIControlStateNormal];
@@ -119,37 +120,39 @@
     [DDHTTPManager sendRequestForProgressWithKeywords:_searchField.text
                                              pageSize:@"10"
                                            pageNumber:@"1"
-                                               userId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                               userId:[[NSUserDefaults standardUserDefaults]
+                                                       objectForKey:kUserInfoId]
                                     completionHandler:^(id content, NSString *resultCode) {
-                                        echo();
-                                        // 加载查询结果页面
-                                        __block DDSearchResult *result = [[DDSearchResult alloc] initWithFrame:CGRectZero];
-                                        CGPoint center = CGPointMake(CGRectGetMidX(self.bounds),
-                                                                     CGRectGetMidY(self.bounds));
-                                        result.center =  CGPointMake(3 * center.x, center.y);
-                                        
-                                        if ([content isKindOfClass:[NSArray class]]) {
-                                            result.dataSource = content;
-                                        }
-                                        
-                                        
-                                        result.goBack = ^{
-                                            [UIView animateWithDuration:kAnimateDuration animations:^{
-                                                _backgroundView.center = center;
-                                                result.center =  CGPointMake(3 * center.x, center.y);
-                                            } completion:^(BOOL finished) {
-                                                [result removeFromSuperview];
-                                            }];
-                                        };
-                                        
-                                        [UIView animateWithDuration:kAnimateDuration
-                                                         animations:^{
-                                                             result.center =  CGPointMake(center.x, center.y);
-                                                             _backgroundView.center = CGPointMake(-2 * center.x, center.y);
-                                                         }];
-                                        [self addSubview:result];
-                                        [result release];
-                                    }];
+        echo();
+        // 加载查询结果页面
+        __block DDSearchResult *result = [[DDSearchResult alloc] initWithFrame:CGRectZero];
+        CGPoint center = CGPointMake(CGRectGetMidX(self.bounds),
+                                     CGRectGetMidY(self.bounds));
+        result.center =  CGPointMake(3 * center.x, center.y);
+        
+        if ([content isKindOfClass:[NSArray class]]) {
+            result.dataSource = content;
+        }
+        
+        
+        result.goBack = ^{
+            [UIView animateWithDuration:kAnimateDuration
+                             animations:^{
+                _backgroundView.center = center;
+                result.center =  CGPointMake(3 * center.x, center.y);
+            } completion:^(BOOL finished) {
+                [result removeFromSuperview];
+            }];
+        };
+        
+        [UIView animateWithDuration:kAnimateDuration
+                         animations:^{
+             result.center =  CGPointMake(center.x, center.y);
+             _backgroundView.center = CGPointMake(-2 * center.x, center.y);
+         }];
+        [self addSubview:result];
+        [result release];
+    }];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -165,9 +168,9 @@
     CGPoint backgroundViewCenter = _backgroundView.center;
     [UIView animateWithDuration:kAnimateDuration / 2
                      animations:^{
-                         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
-                                                              backgroundViewCenter.y - 150);
-                     }];
+         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
+                                              backgroundViewCenter.y - 150);
+     }];
     return YES;
 }
 
@@ -177,9 +180,9 @@
     CGPoint backgroundViewCenter = _backgroundView.center;
     [UIView animateWithDuration:kAnimateDuration / 2
                      animations:^{
-                         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
-                                                              backgroundViewCenter.y + 150);
-                     }];
+         _backgroundView.center = CGPointMake(backgroundViewCenter.x,
+                                              backgroundViewCenter.y + 150);
+     }];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

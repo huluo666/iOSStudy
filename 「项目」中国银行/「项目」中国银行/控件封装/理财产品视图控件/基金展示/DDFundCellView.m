@@ -29,17 +29,20 @@
         
         _accumulativeValueLabel = [self label];
         _accumulativeValueLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                                     CGRectGetMaxY(_nameLabel.frame) + CGRectGetMidY(_accumulativeValueLabel.bounds));
+                                                     CGRectGetMaxY(_nameLabel.frame) +
+                                                     CGRectGetMidY(_accumulativeValueLabel.bounds));
         [self.contentView addSubview:_accumulativeValueLabel];
 
         _assetValueLabel = [self label];
         _assetValueLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                              CGRectGetMaxY(_accumulativeValueLabel.frame) + CGRectGetMidY(_assetValueLabel.bounds));
+                                              CGRectGetMaxY(_accumulativeValueLabel.frame) +
+                                              CGRectGetMidY(_assetValueLabel.bounds));
         [self.contentView addSubview:_assetValueLabel];
 
         _stopTimeLabel = [self label];
         _stopTimeLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                              CGRectGetMaxY(_assetValueLabel.frame) + CGRectGetMidY(_stopTimeLabel.bounds));
+                                              CGRectGetMaxY(_assetValueLabel.frame) +
+                                            CGRectGetMidY(_stopTimeLabel.bounds));
         [self.contentView addSubview:_stopTimeLabel];
     }
     return self;

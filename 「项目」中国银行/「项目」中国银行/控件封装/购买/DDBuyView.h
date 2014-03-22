@@ -10,6 +10,7 @@
 
 @interface DDBuyView : UIView
 
-@property (nonatomic, retain) NSDictionary *productInfo;
+- (id)initWithFrame:(CGRect)frame productInfo:(NSDictionary *)productInfos;
+@property (nonatomic, retain) NSDictionary *productInfos;
 
 @end

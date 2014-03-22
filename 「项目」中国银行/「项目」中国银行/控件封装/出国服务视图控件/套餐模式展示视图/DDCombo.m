@@ -14,6 +14,7 @@
 {
     NSLog(@"%@ dealloc", [self class]);
     [_titleLabel release];
+    [_showDetail release];
     [super dealloc];
 }
 
@@ -28,9 +29,11 @@
         UIImageView *backgroundImageView = [[UIImageView alloc]
                                             initWithImage:kImageWithNameHaveSuffix(@"prepare1_01.png")];
         backgroundImageView.bounds = CGRectMake(0, 0, 376, 545);
-        backgroundImageView.center = CGPointMake(self.frame.size.width / 2, self.frame.size.height / 2);
+        backgroundImageView.center = CGPointMake(self.frame.size.width / 2,
+                                                 self.frame.size.height / 2);
         backgroundImageView.userInteractionEnabled = YES;
-        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        backgroundImageView.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+                                               UIViewAutoresizingFlexibleWidth;
         [self addSubview:backgroundImageView];
         [backgroundImageView release];
         
@@ -38,7 +41,8 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.bounds = CGRectMake(0, 0, CGRectGetWidth(backgroundImageView.bounds),
                                        CGRectGetHeight(backgroundImageView.bounds) * 0.2);
-        _titleLabel.center = CGPointMake(CGRectGetMidX(_titleLabel.bounds), CGRectGetMidY(_titleLabel.bounds));
+        _titleLabel.center = CGPointMake(CGRectGetMidX(_titleLabel.bounds),
+                                         CGRectGetMidY(_titleLabel.bounds));
         _titleLabel.font = [UIFont systemFontOfSize:18];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.text = @"测试标题";
@@ -46,15 +50,18 @@
         
         // 详情
         UIButton *detailButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [detailButton setBackgroundImage:kImageWithName(@"未选中_23") // 涉及到动画，内存容易出现问题
+        // 涉及到动画，内存容易出现问题
+        [detailButton setBackgroundImage:kImageWithName(@"未选中_23")
                                 forState:UIControlStateNormal];
         detailButton.bounds = CGRectMake(0, 0, 100, 50);
         detailButton.center = CGPointMake(CGRectGetMidX(backgroundImageView.bounds),
-                                          CGRectGetMaxY(backgroundImageView.bounds) - CGRectGetMaxY(detailButton.bounds) * 1.5);
+                                          CGRectGetMaxY(backgroundImageView.bounds) -
+                                          CGRectGetMaxY(detailButton.bounds) * 1.5);
         [detailButton addTarget:self
                          action:@selector(showDetail:)
                forControlEvents:UIControlEventTouchUpInside];
-        detailButton.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+        detailButton.autoresizingMask = UIViewAutoresizingFlexibleHeight |
+                                        UIViewAutoresizingFlexibleWidth;
         [backgroundImageView addSubview:detailButton];
     }
     return self;
@@ -62,7 +69,9 @@
 
 - (void)showDetail:(UIButton *)sender
 {
-    NSLog(@"showDetail");
+    if (_showDetail) {
+        _showDetail();
+    }
 }
 
 

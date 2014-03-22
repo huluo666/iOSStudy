@@ -58,9 +58,13 @@
         UIButton *back = [UIButton buttonWithType:UIButtonTypeCustom];
         back.bounds = CGRectMake(0, 0, 159, 50);
         back.center = CGPointMake(CGRectGetMidX(backgroundView.bounds),
-                                  CGRectGetMaxY(backgroundView.bounds) - CGRectGetMidY(back.bounds) - 20);
-        [back setBackgroundImage:[UIImage imageNamed:@"返回"] forState:UIControlStateNormal];
-        [back addTarget:self action:@selector(goback:) forControlEvents:UIControlEventTouchUpInside];
+                                  CGRectGetMaxY(backgroundView.bounds) -
+                                  CGRectGetMidY(back.bounds) - 20);
+        [back setBackgroundImage:[UIImage imageNamed:@"返回"]
+                        forState:UIControlStateNormal];
+        [back addTarget:self
+                 action:@selector(goback:)
+       forControlEvents:UIControlEventTouchUpInside];
         [backgroundView addSubview:back];
     }
     return self;

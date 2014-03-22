@@ -94,8 +94,10 @@
         // 登录按钮
         UIButton *loginButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         loginButton.bounds = CGRectMake(0, 0, 150, 50);
-        loginButton.center = CGPointMake(CGRectGetMaxX(loginImageView.bounds) - CGRectGetMidY(loginButton.bounds) - 100,
-                                         CGRectGetMaxY(loginImageView.bounds) - CGRectGetMidX(loginButton.bounds) - 95);
+        loginButton.center = CGPointMake(CGRectGetMaxX(loginImageView.bounds) -
+                                         CGRectGetMidY(loginButton.bounds) - 100,
+                                         CGRectGetMaxY(loginImageView.bounds) -
+                                         CGRectGetMidX(loginButton.bounds) - 95);
         [loginButton setBackgroundImage:kImageWithNameHaveSuffix(@"登录_03.png")
                                forState:UIControlStateNormal];
         [loginButton addTarget:self
@@ -120,11 +122,11 @@
         // 等一秒后背景变灰，出现登录框
         [UIView animateWithDuration:kAnimateDuration / 2
                          animations:^{
-                             backgroundView.alpha = 0.5f;
-                             backgroundView.backgroundColor = [UIColor blackColor];
-                             loginImageView.center = CGPointMake(backgroundImageView.center.x,
-                                                                 backgroundImageView.center.y - 40);
-                         }];
+             backgroundView.alpha = 0.5f;
+             backgroundView.backgroundColor = [UIColor blackColor];
+             loginImageView.center = CGPointMake(backgroundImageView.center.x,
+                                                 backgroundImageView.center.y - 40);
+         }];
     }
     return self;
 }
@@ -171,27 +173,32 @@
     [DDHTTPManager sendRequstWithUsername:username
                                  password:password
                         completionHandler:^(id content, NSString *resultCode) {
-                            if (![resultCode intValue] &&
-                                content &&
-                                [content isKindOfClass:[NSMutableDictionary class] ]) {
-                                // 登录成功
-                                [UIView animateWithDuration:kAnimateDuration animations:^{
-                                    CGPoint center = this.center;
-                                    this.center = CGPointMake(center.x, center.y * 3);
-                                } completion:^(BOOL finished) {
-                                    // 移除当前视图
-                                    [this removeFromSuperview];
-                                    
-                                    // 保存用户数据字典
-                                    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-                                    [userDefaults setValuesForKeysWithDictionary:content];
-                                    [userDefaults synchronize];
-                                }];
-                            } else {
-                                // 登录失败
-                                [this showAlertWithMessage:@"用户名或者密码错误"];
-                            }
-                        }];
+        if (![resultCode intValue] &&
+            content &&
+            [content isKindOfClass:[NSMutableDictionary class] ]) {
+            // 登录成功
+            [UIView animateWithDuration:kAnimateDuration animations:^{
+                CGPoint center = this.center;
+                this.center = CGPointMake(center.x, center.y * 3);
+            } completion:^(BOOL finished) {
+                // 移除当前视图
+                [this removeFromSuperview];
+                
+                // 保存用户数据字典
+                NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+                [userDefaults setValuesForKeysWithDictionary:content];
+                [userDefaults synchronize];
+                
+                // 加载用户信息
+                DDRootViewController *root = (DDRootViewController *)kRootViewController;
+                root.nameLabel.text = [userDefaults objectForKey:kUserInfoUsername];
+                root.realNameLabel.text = [userDefaults objectForKey:kUserInfoRealname];
+            }];
+        } else {
+            // 登录失败
+            [this showAlertWithMessage:@"用户名或者密码错误"];
+        }
+    }];
 }
 
 - (void)showAlertWithMessage:(NSString *)message
@@ -207,7 +214,8 @@
     [alertView release];
     
     // 等一秒移除
-    NSMethodSignature *signature = [UIAlertView instanceMethodSignatureForSelector:@selector(dismissWithClickedButtonIndex:animated:)];
+    NSMethodSignature *signature = [UIAlertView instanceMethodSignatureForSelector:
+                                    @selector(dismissWithClickedButtonIndex:animated:)];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
     [invocation setTarget:alertView];
     [invocation setSelector:@selector(dismissWithClickedButtonIndex:animated:)];

@@ -22,6 +22,7 @@ static NSString *CellIdentifier = @"Cell";
 {
     NSLog(@"气泡窗口over");
     [_completionHandler release];
+    [_headerView release];
     [super dealloc];
 }
 
@@ -51,11 +52,14 @@ static NSString *CellIdentifier = @"Cell";
     return _dataSource.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier
+                                                            forIndexPath:indexPath];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:CellIdentifier] autorelease];
     }
     cell.textLabel.text = _dataSource[indexPath.row];
     cell.textLabel.textAlignment = NSTextAlignmentCenter;

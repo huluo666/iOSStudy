@@ -46,6 +46,9 @@
 #define kByTitleKey @"byTitle"
 #define kByKeywordsKey @"byKeywords"
 
+// 套餐模式
+#define kMealsList @"appAbroad/getMealsList"
+
 // 自选模式
 #define kOptionalList @"appAbroad/getChooseByYourselfModeList"
 #define kTypeIdKey @"typeId"
@@ -74,10 +77,11 @@
 
 // 购买
 #define kBuyProducts @"appPickList/submitOrder"
-#define kClientName @"clientName"
+#define kClientName @"name"
 #define kTel @"tel"
-#define kList @"lists"
-#define kAmount @"amount"
+#define kList @"shoppingList"
+#define kStatus @"status"
+#define kAmount @"amountList"
 
 // 查询
 #define kProgress @"appServiceSchedule/getOrderServiceProgressByCondition"
