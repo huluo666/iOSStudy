@@ -56,19 +56,19 @@
 //    CGContextDrawPath(ctx, kCGPathFillStroke);
     
     //创建路径
-    CGMutablePathRef path = CGPathCreateMutable();
-//    CGPathAddCurveToPoint(<#CGMutablePathRef path#>, <#const CGAffineTransform *m#>, <#CGFloat cp1x#>, <#CGFloat cp1y#>, <#CGFloat cp2x#>, <#CGFloat cp2y#>, <#CGFloat x#>, <#CGFloat y#>)
-    CGPathAddRect(path, NULL, CGRectMake(10, 40, 100, 100));
-    
-    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
-    animation.duration = 3;
-    animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeInEaseOut"];
-    animation.repeatCount = 1000;
-    animation.path = path;
-    
-    //为subView视图添加动画
-    [subView.layer addAnimation:animation forKey:@"test"];
-    
+//    CGMutablePathRef path = CGPathCreateMutable();
+////    CGPathAddCurveToPoint(<#CGMutablePathRef path#>, <#const CGAffineTransform *m#>, <#CGFloat cp1x#>, <#CGFloat cp1y#>, <#CGFloat cp2x#>, <#CGFloat cp2y#>, <#CGFloat x#>, <#CGFloat y#>)
+//    CGPathAddRect(path, NULL, CGRectMake(10, 40, 100, 100));
+//    
+//    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+//    animation.duration = 3;
+//    animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeInEaseOut"];
+//    animation.repeatCount = 1000;
+//    animation.path = path;
+//    
+//    //为subView视图添加动画
+//    [subView.layer addAnimation:animation forKey:@"test"];
+//    
 }
 
 @end

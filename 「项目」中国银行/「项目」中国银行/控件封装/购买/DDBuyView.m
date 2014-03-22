@@ -7,10 +7,13 @@
 //
 
 #import "DDBuyView.h"
+#import "DDAppDelegate.h"
+#import "DDRootViewController.h"
 
 @interface DDBuyView ()
 
 @property (retain, nonatomic) UITextField *buyCountField;
+@property (retain, nonatomic) UIImageView *imageView; // 曲线动画小球
 
 @end
 
@@ -20,6 +23,7 @@
 {
     [_buyCountField release];
     [_productInfos release];
+    [_imageView release];
     [super dealloc];
 }
 
@@ -135,11 +139,35 @@
 
 - (void)buy
 {
+    // 判断数据
     if (!_productInfos) {
         return;
     }
     
+    // 移除自身
     [self closeSelf];
+    
+    //　曲线动画
+    UIImage *image = kImageWithName(@"o_01");
+    _imageView = [[UIImageView alloc] initWithImage:image];
+    _imageView.bounds = CGRectMake(0, 0, 30, 30);
+    _imageView.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                   CGRectGetMidY(self.bounds) + 100);
+    [kRootView addSubview:_imageView];
+    
+    CAKeyframeAnimation *animation=[CAKeyframeAnimation animationWithKeyPath:@"position"];
+    animation.duration = 1.0f;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:@"easeInEaseOut"];
+    animation.fillMode = kCAFillModeForwards;
+    animation.calculationMode = kCAAnimationCubicPaced;
+    animation.removedOnCompletion = YES;
+    animation.delegate = self;
+    CGMutablePathRef curvedPath = CGPathCreateMutable();
+    CGPathMoveToPoint(curvedPath, NULL, CGRectGetMidX(self.bounds),
+                      CGRectGetMidY(self.bounds) + 100);
+    CGPathAddQuadCurveToPoint(curvedPath, NULL, 30, 100, 40, 700);
+    animation.path=curvedPath;
+    [_imageView.layer addAnimation:animation forKey:nil];
     
     NSLog(@"产品信息：%@", _productInfos);
     
@@ -149,7 +177,6 @@
     NSDictionary *orderInfo = [[NSDictionary alloc]
                                initWithObjects:objs
                                forKeys:@[kBuyNumer, kBuyProductInfo]];
-    
     // 获取未处理订单
     NSData *unarchiverData = [[NSData alloc] initWithContentsOfFile:PATH];
     // 关联解档管理器与数据
@@ -178,6 +205,22 @@
     [archiver release];
     
     NSLog(@"存进去的数据 = %@", notProcessOrders);
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    [_imageView removeFromSuperview];
+    
+    // 改变购物车计算
+    DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
+    NSString *countString = rootVC.count;
+    NSInteger count = 0;
+    if (countString) {
+        count = [countString integerValue];
+    }
+    count += 1;
+    rootVC.count = [NSString stringWithFormat:@"%d", count];
+    rootVC.countLabel.text = [NSString stringWithFormat:@"%d", count];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

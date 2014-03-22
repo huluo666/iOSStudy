@@ -14,6 +14,9 @@
 @property (nonatomic, retain) UILabel *nameLabel;
 @property (nonatomic, retain) UILabel *realNameLabel;
 
+@property (nonatomic, retain) NSString *count;      // 购物车计算
+@property (nonatomic, retain) UILabel *countLabel;  // 购物车显示标签
+
 // 切换视图
 - (void)switchVC:(UIButton *)sender;
 

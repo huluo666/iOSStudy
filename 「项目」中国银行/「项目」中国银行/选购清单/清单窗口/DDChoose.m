@@ -138,7 +138,7 @@
  numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = 0;
-    if (_dataSource && _dataSource.count > 0) {
+    if (_dataSource && [_dataSource isKindOfClass:[NSDictionary class]]) {
         count = [_dataSource[@"shoppingList"] count];
     }
     return count;

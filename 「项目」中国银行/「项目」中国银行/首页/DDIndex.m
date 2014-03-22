@@ -6,14 +6,13 @@
 //  Copyright (c) 2014 CUAN. All rights reserved.
 //
 
-
-
 #import "DDIndex.h"
 #import "DDCollectionViewPackage.h"
 #import "UIImageView+WebCache.h"
 #import "DDConstant.h"
 #import "DDShowDetail.h"
 #import "DDAppDelegate.h"
+#import "DDBuyView.h"
 
 @interface DDIndex () <
     UITableViewDataSource,

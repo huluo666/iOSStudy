@@ -55,7 +55,7 @@
 {
     [super viewDidLoad];
     [self initializeUserInterface];
-//    _logined = YES;
+    _logined = YES;
     if (!_logined) {
         [self initializeLoginView];
     }
@@ -69,6 +69,8 @@
     _appearedView = nil;
     [_nameLabel release];
     [_realNameLabel release];
+    [_countLabel release];
+    [_count release];
     [super dealloc];
 }
 
@@ -144,6 +146,19 @@
                    action:@selector(shopingCartAction:)
          forControlEvents:UIControlEventTouchUpInside];
     [_naviBar addSubview:cartButton];
+    
+    // 购物车label
+    _countLabel = [[UILabel alloc] init];
+    _countLabel.bounds = CGRectMake(0, 0, 30, 25);
+    _countLabel.center = CGPointMake(CGRectGetMaxX(cartButton.bounds),
+                                     CGRectGetMinY(cartButton.bounds) +
+                                     CGRectGetMidY(_countLabel.bounds));
+    _countLabel.textColor = [UIColor redColor];
+    _countLabel.font = [UIFont systemFontOfSize:24];
+    _countLabel.font = [UIFont boldSystemFontOfSize:24];
+    _countLabel.text = _count;
+//    _countLabel.font = [UIFont fontWithName:<#(NSString *)#> size:<#(CGFloat)#>];
+    [cartButton addSubview:_countLabel];
     
     // 设置眉头底图
     UIImage *headerImage = kImageWithNameHaveSuffix(@"眉头_01.png");
