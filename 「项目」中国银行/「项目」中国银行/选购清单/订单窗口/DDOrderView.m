@@ -8,6 +8,8 @@
 
 #import "DDOrderView.h"
 #import "DDChoose.h"
+#import "DDRootViewController.h"
+#import "DDAppDelegate.h"
 
 @implementation DDOrderView
 
@@ -141,6 +143,16 @@
                                            DDChoose *choose = (DDChoose *)self.superview;
                                            choose.dataSource = nil;
                                            [choose.tableView reloadData];
+                                           
+                                           // 购物车计数减一
+                                           DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
+                                           NSString *countString = rootVC.count;
+                                           NSInteger count = [countString integerValue];
+                                           if (count > 0) {
+                                               count -= 1;
+                                           }
+                                           rootVC.countLabel.text = [NSString stringWithFormat:@"%d", count];
+                                           rootVC.count = [NSString stringWithFormat:@"%d", count];
                                            
                                             if (_swipRight) {
                                                 _swipRight();

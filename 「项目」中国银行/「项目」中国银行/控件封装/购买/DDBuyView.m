@@ -166,8 +166,9 @@
     CGPathMoveToPoint(curvedPath, NULL, CGRectGetMidX(self.bounds),
                       CGRectGetMidY(self.bounds) + 100);
     CGPathAddQuadCurveToPoint(curvedPath, NULL, 30, 100, 40, 700);
-    animation.path=curvedPath;
+    animation.path = curvedPath;
     [_imageView.layer addAnimation:animation forKey:nil];
+    CGPathRelease(curvedPath);
     
     NSLog(@"产品信息：%@", _productInfos);
     
