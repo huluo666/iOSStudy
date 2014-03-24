@@ -8,6 +8,7 @@
 
 #import "DDRecordInfo.h"
 #import "DDAppDelegate.h"
+#import "DDRootViewController.h"
 
 @interface DDRecordInfo ()
 @property (retain, nonatomic) NSMutableArray *fields;
@@ -138,7 +139,6 @@
                                 [productInfos valueForKey:@"productId"] : @[];
     NSArray *amount = [_data valueForKey:@"buynumber"] ?
                             [_data valueForKey:@"buynumber"] : @[];
-
     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
     [dict setObject:name forKey:@"name"];
     [dict setObject:ID forKey:@"ID"];
@@ -146,6 +146,16 @@
     [dict setObject:userId forKey:@"userId"];
     [dict setObject:shoppingList forKey:@"shoppingList"];
     [dict setObject:amount forKey:@"amount"];
+
+    
+    // 获取订单编号
+    [DDHTTPManager sendRequestForLaterSubmitWithId:ID
+                                      shoppingList:shoppingList
+                                            userId:[[NSUserDefaults standardUserDefaults] objectForKey:kUserInfoId]
+                                        amountList:amount
+                                 completionHandler:^(id content, NSString *resultCode) {
+                                     echo();
+    }];
     
     // 干掉自己
     [self popSelf];
@@ -154,6 +164,11 @@
     NSError *error = nil;
     BOOL success = [[NSFileManager defaultManager] removeItemAtPath:PATH error:&error];
     NSAssert(success, @"delete file failure wiht %@", [error localizedDescription]);
+    
+    // 购物车计数清零
+    DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
+    rootVC.countLabel.text = @"";
+    rootVC.count = [NSString stringWithFormat:@"%d", 0];
     
     // 出现动画
     UIImage *doneImage = kImageWithName(@"保存订单成功");
@@ -177,8 +192,8 @@
                                                delay:2
                                              options:UIViewAnimationOptionCurveEaseInOut
                                           animations:^{
-                            doneView.center = CGPointMake(CGRectGetMidX(self.bounds),
-                                                          3 * CGRectGetMidY(self.bounds));
+                                              doneView.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                                                            3 * CGRectGetMidY(self.bounds));
                                           }
                                           completion:^(BOOL finished) {
                                               [doneView removeFromSuperview];

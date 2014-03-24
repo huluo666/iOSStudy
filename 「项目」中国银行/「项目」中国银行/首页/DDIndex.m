@@ -122,6 +122,7 @@
     
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:_updateImagesIntervalTimer forMode:NSDefaultRunLoopMode];
+    
 //    _updateImagesIntervalTimer = [[NSTimer scheduledTimerWithTimeInterval:kDataUpdateTimeInterval
 //                                                              invocation:invocation
 //                                                                 repeats:YES] retain];
@@ -155,7 +156,7 @@
              
              [_dataSource setObject:array forKey:kLoopImagesURLKey];
              [array release];
-                                     }
+         }
     }];
 }
 
@@ -187,7 +188,22 @@
                                                        repeats:YES] retain];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:_imageSwitchIntervalTimer forMode:NSDefaultRunLoopMode];
+    
+//    [self simulateBusy];
 }
+
+// 模拟当前线程正好繁忙的情况
+- (void)simulateBusy
+{
+    NSLog(@"start simulate busy!");
+    NSInteger caculateCount = NSIntegerMax;
+    CGFloat uselessValue = 0;
+    for (NSUInteger i = 0; i < caculateCount; ++i) {
+        uselessValue = i / 0.3333;
+    }
+    NSLog(@"finish simulate busy!");
+}
+
 
 - (NSURL *)urlWithString:(NSString *)urlString
 {

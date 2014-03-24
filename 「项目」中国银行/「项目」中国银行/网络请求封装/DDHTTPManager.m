@@ -298,7 +298,8 @@
                    completionHandler:(void (^)(id content, NSString * resultCode))completion
 {
     [self sendRequstWithArguments:@[userId, supplierId, purposeId, ageId, typeId, pageSize, pageNum]
-                             keys:@[kUserIDKey, kSupplierIdKey, kPurposeIdKey, kAgeIdKey ,kTypeIdKey, kPageSizeKey, kPageNumKey]
+                             keys:@[kUserIDKey, kSupplierIdKey, kPurposeIdKey,
+                                    kAgeIdKey ,kTypeIdKey, kPageSizeKey, kPageNumKey]
                   URLModuleString:kMetalsList
                 completionHandler:completion];
 }
@@ -335,7 +336,19 @@
                 completionHandler:completion];
 }
 
-// 购买产品
+// 稍后提交
++ (void)sendRequestForLaterSubmitWithId:(NSString *)ID
+                           shoppingList:(NSArray *)lists
+                                 userId:(NSString *)userId
+                             amountList:(NSArray *)amount
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion
+{
+    [self sendRequstWithArguments:@[ID, lists, userId, amount]
+                             keys:@[kUserIDKey, kList, kUserIDKey, kAmount]
+                  URLModuleString:KlaterSumbit
+                completionHandler:completion];
+}
+
 // 购买产品
 + (void)sendRequestForBuyProductsWithClientId:(NSString *)ID
                                    clientName:(NSString *)name

@@ -16,6 +16,12 @@
 
 @implementation DDShopCartCell
 
+- (void)dealloc
+{
+    [_labels release];
+    [super dealloc];
+}
+
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
 {

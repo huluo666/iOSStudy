@@ -143,6 +143,9 @@
                                                                   rootViewController];
             [root switchVC:button];
         };
+        
+        NSLog(@"        _dataSource = %@",         _dataSource);
+
         record.data = _dataSource;
         [kRootView addSubview:record];
         [record release];

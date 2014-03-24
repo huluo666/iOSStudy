@@ -75,6 +75,9 @@
 // 保险详细
 #define kInsureDetail @"appFinancial/getInsureDetail"
 
+// 稍后提交
+#define KlaterSumbit @"appPickList/laterSubmitOrder"
+
 // 购买
 #define kBuyProducts @"appPickList/submitOrder"
 #define kClientName @"name"

@@ -136,6 +136,13 @@
 // 保险详细
 + (void)sendRequestForInsureDetailtWithId:(NSString *)ID
                         completionHandler:(void (^)(id content, NSString * resultCode))completion;
+
+// 稍后提交
++ (void)sendRequestForLaterSubmitWithId:(NSString *)ID
+                           shoppingList:(NSArray *)lists
+                                 userId:(NSString *)userId
+                             amountList:(NSArray *)amount
+                      completionHandler:(void (^)(id content, NSString * resultCode))completion;
 // 购买产品
 + (void)sendRequestForBuyProductsWithClientId:(NSString *)ID
                                    clientName:(NSString *)name

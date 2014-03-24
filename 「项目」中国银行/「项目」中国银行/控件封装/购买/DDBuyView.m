@@ -148,12 +148,23 @@
     [self closeSelf];
     
     //　曲线动画
-    UIImage *image = kImageWithName(@"o_01");
+    UIImage *image = kImageWithName(@"logo");
     _imageView = [[UIImageView alloc] initWithImage:image];
     _imageView.bounds = CGRectMake(0, 0, 30, 30);
     _imageView.center = CGPointMake(CGRectGetMidX(self.bounds),
                                    CGRectGetMidY(self.bounds) + 100);
     [kRootView addSubview:_imageView];
+    
+    [UIView animateWithDuration:0.6f
+                     animations:^{
+                         _imageView.transform = CGAffineTransformScale(_imageView.transform, 2, 2);
+                     }
+                     completion:^(BOOL finished) {
+                         [UIView animateWithDuration:0.4f
+                                          animations:^{
+                                              _imageView.transform = CGAffineTransformIdentity;
+                                          }];
+                     }];
     
     CAKeyframeAnimation *animation=[CAKeyframeAnimation animationWithKeyPath:@"position"];
     animation.duration = 1.0f;

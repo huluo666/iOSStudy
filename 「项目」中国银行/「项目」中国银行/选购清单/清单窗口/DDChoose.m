@@ -16,7 +16,7 @@
 }
 
 // 提交办理
-- (void)submit;
+- (void)submitWithDataSource:(NSDictionary *)dict;
 
 @end
 
@@ -49,6 +49,8 @@
         if ([notProcessOrders isKindOfClass:[NSDictionary class]]) {
             _dataSource = [notProcessOrders retain];
         }
+        
+        NSLog(@"清单窗口接受到的数据 = %@", _dataSource);
         
         // 初始化大背景
         UIImageView *bottomView = [[UIImageView alloc] init];
@@ -154,6 +156,8 @@
                                  reuseIdentifier:cellIdentifier
                                      buttonStyle:DDSubmit];
     }
+    
+   
     cell.nameLabel.text = _dataSource[@"name"];
     NSArray *list = _dataSource[@"shoppingList"];
     cell.orderNumberLabel.text = [NSString stringWithFormat:@"%@", list[indexPath.row]];
@@ -179,7 +183,5 @@
     };
     return cell;
 }
-
-
 
 @end

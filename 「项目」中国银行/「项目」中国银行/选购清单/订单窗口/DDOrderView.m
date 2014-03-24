@@ -123,6 +123,7 @@
     NSLog(@"%@", _dataSource[@"shoppingList"]);
     NSLog(@"%@", _dataSource[@"userId"]);
     NSLog(@"%@", _dataSource[@"amountList"]);
+    
     // 提交买产品
     [DDHTTPManager sendRequestForBuyProductsWithClientId:_dataSource[@"clientId"]
                                               clientName:_dataSource[@"clientName"]
@@ -141,23 +142,17 @@
                                            NSAssert(success, @"remove file failure with %@", [error description]);
                                            
                                            DDChoose *choose = (DDChoose *)self.superview;
+                                           
+                                           NSLog(@"干掉清单数据：%@", _dataSource);
+                                           NSLog(@"choose.dataSource= %@", choose.dataSource);
+                                           
                                            choose.dataSource = nil;
                                            [choose.tableView reloadData];
                                            
-                                           // 购物车计数减一
-                                           DDRootViewController *rootVC = (DDRootViewController *)kRootViewController;
-                                           NSString *countString = rootVC.count;
-                                           NSInteger count = [countString integerValue];
-                                           if (count > 0) {
-                                               count -= 1;
+                                           if (_swipRight) {
+                                               _swipRight();
                                            }
-                                           rootVC.countLabel.text = [NSString stringWithFormat:@"%d", count];
-                                           rootVC.count = [NSString stringWithFormat:@"%d", count];
-                                           
-                                            if (_swipRight) {
-                                                _swipRight();
-                                            }
-                                          }];
+                                       }];
 }
 
 - (void)handleSwipRight
