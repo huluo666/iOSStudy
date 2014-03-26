@@ -122,6 +122,8 @@ shouldSelectViewController:(UIViewController *)viewController
         vc4.value = vc1.value;
     }
     
+
+    
     return YES;
 }
 

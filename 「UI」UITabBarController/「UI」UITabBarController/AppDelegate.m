@@ -18,7 +18,7 @@
 #define SORTED_TITLES_KEY @"titles"
 #define SORTED_VIEWCONTROLLS_KEY @"sortedArray"
 
-@interface AppDelegate ()
+@interface AppDelegate () <UITabBarControllerDelegate>
 
 @property (assign, nonatomic) BOOL isChanged;
 
@@ -200,6 +200,16 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    CATransition *animation =[CATransition animation];
+    [animation setDuration:0.75f];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [animation setType:kCATransitionMoveIn];
+    [animation setSubtype:kCATransitionFromRight];
+    [tabBarController.view.layer addAnimation:animation forKey:@"reveal"];
+    
+    NSLog(@"should");
+    
     return YES;
 }
 
@@ -261,5 +271,6 @@
     
     NSLog(@"%@", viewControllers);
 }
+
 
 @end

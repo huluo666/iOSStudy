@@ -56,8 +56,10 @@
 
 - (void)buttonPressed:(UIButton *)sender
 {
+ __block   NSString * ste = @"";
     DDDetailViewController *detailVC = [[DDDetailViewController alloc] initWithBlock:^(NSString *str) {
         _display.text = str;
+        ste = [@"12" copy];
     }];
     [self presentViewController:detailVC animated:YES completion:nil];
     [detailVC release];

@@ -14,7 +14,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor redColor];
     UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     pushButton.center = CGPointMake(CGRectGetMidX(self.view.frame), CGRectGetMinY(self.view.frame) + 94);
     pushButton.bounds = CGRectMake(0, 0, 300, 40);

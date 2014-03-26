@@ -1,0 +1,566 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95052A5F18E154E80075CD30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052A5E18E154E80075CD30 /* Foundation.framework */; };
+		95052A6118E154E80075CD30 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052A6018E154E80075CD30 /* CoreGraphics.framework */; };
+		95052A6318E154E80075CD30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052A6218E154E80075CD30 /* UIKit.framework */; };
+		95052A6918E154E80075CD30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95052A6718E154E80075CD30 /* InfoPlist.strings */; };
+		95052A6B18E154E80075CD30 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A6A18E154E80075CD30 /* main.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052A6F18E154E80075CD30 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A6E18E154E80075CD30 /* DDAppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052A7218E154E80075CD30 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95052A7018E154E80075CD30 /* Main.storyboard */; };
+		95052A7518E154E80075CD30 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A7418E154E80075CD30 /* DDViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052A7718E154E80075CD30 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95052A7618E154E80075CD30 /* Images.xcassets */; };
+		95052A7E18E154E80075CD30 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052A7D18E154E80075CD30 /* XCTest.framework */; };
+		95052A7F18E154E80075CD30 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052A5E18E154E80075CD30 /* Foundation.framework */; };
+		95052A8018E154E80075CD30 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052A6218E154E80075CD30 /* UIKit.framework */; };
+		95052A8818E154E80075CD30 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95052A8618E154E80075CD30 /* InfoPlist.strings */; };
+		95052A8A18E154E80075CD30 /* _Demo_MysqlConnectTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A8918E154E80075CD30 /* _Demo_MysqlConnectTests.m */; };
+		95052AAA18E1553D0075CD30 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A9518E1553D0075CD30 /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AAB18E1553D0075CD30 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A9818E1553D0075CD30 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AAC18E1553D0075CD30 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A9A18E1553D0075CD30 /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AAD18E1553D0075CD30 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A9C18E1553D0075CD30 /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AAE18E1553D0075CD30 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052A9E18E1553D0075CD30 /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AAF18E1553D0075CD30 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052AA018E1553D0075CD30 /* ASIHTTPRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AB018E1553D0075CD30 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052AA418E1553D0075CD30 /* ASIInputStream.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AB118E1553D0075CD30 /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052AA618E1553D0075CD30 /* ASINetworkQueue.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AB218E1553D0075CD30 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 95052AA918E1553D0075CD30 /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		95052AB418E155930075CD30 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052AB318E155930075CD30 /* SystemConfiguration.framework */; };
+		95052AB618E1559C0075CD30 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052AB518E1559C0075CD30 /* MessageUI.framework */; };
+		95052AB818E155A40075CD30 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052AB718E155A40075CD30 /* MobileCoreServices.framework */; };
+		95052ABA18E155AB0075CD30 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052AB918E155AB0075CD30 /* CFNetwork.framework */; };
+		95052ABC18E155B10075CD30 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 95052ABB18E155B10075CD30 /* libz.1.2.5.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95052A8118E154E80075CD30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95052A5318E154E80075CD30 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95052A5A18E154E80075CD30;
+			remoteInfo = "「Demo」MysqlConnect";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		95052A5B18E154E80075CD30 /* 「Demo」MysqlConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「Demo」MysqlConnect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95052A5E18E154E80075CD30 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		95052A6018E154E80075CD30 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		95052A6218E154E80075CD30 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		95052A6618E154E80075CD30 /* 「Demo」MysqlConnect-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」MysqlConnect-Info.plist"; sourceTree = "<group>"; };
+		95052A6818E154E80075CD30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95052A6A18E154E80075CD30 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		95052A6C18E154E80075CD30 /* 「Demo」MysqlConnect-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "「Demo」MysqlConnect-Prefix.pch"; sourceTree = "<group>"; };
+		95052A6D18E154E80075CD30 /* DDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
+		95052A6E18E154E80075CD30 /* DDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
+		95052A7118E154E80075CD30 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		95052A7318E154E80075CD30 /* DDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
+		95052A7418E154E80075CD30 /* DDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
+		95052A7618E154E80075CD30 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		95052A7C18E154E80075CD30 /* 「Demo」MysqlConnectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "「Demo」MysqlConnectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95052A7D18E154E80075CD30 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		95052A8518E154E80075CD30 /* 「Demo」MysqlConnectTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」MysqlConnectTests-Info.plist"; sourceTree = "<group>"; };
+		95052A8718E154E80075CD30 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95052A8918E154E80075CD30 /* _Demo_MysqlConnectTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _Demo_MysqlConnectTests.m; sourceTree = "<group>"; };
+		95052A9418E1553D0075CD30 /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		95052A9518E1553D0075CD30 /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		95052A9618E1553D0075CD30 /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		95052A9718E1553D0075CD30 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		95052A9818E1553D0075CD30 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		95052A9918E1553D0075CD30 /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		95052A9A18E1553D0075CD30 /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		95052A9B18E1553D0075CD30 /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		95052A9C18E1553D0075CD30 /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		95052A9D18E1553D0075CD30 /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		95052A9E18E1553D0075CD30 /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		95052A9F18E1553D0075CD30 /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		95052AA018E1553D0075CD30 /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		95052AA118E1553D0075CD30 /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		95052AA218E1553D0075CD30 /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		95052AA318E1553D0075CD30 /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		95052AA418E1553D0075CD30 /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		95052AA518E1553D0075CD30 /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		95052AA618E1553D0075CD30 /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		95052AA718E1553D0075CD30 /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		95052AA818E1553D0075CD30 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		95052AA918E1553D0075CD30 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		95052AB318E155930075CD30 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		95052AB518E1559C0075CD30 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		95052AB718E155A40075CD30 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		95052AB918E155AB0075CD30 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		95052ABB18E155B10075CD30 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95052A5818E154E80075CD30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95052ABC18E155B10075CD30 /* libz.1.2.5.dylib in Frameworks */,
+				95052ABA18E155AB0075CD30 /* CFNetwork.framework in Frameworks */,
+				95052AB818E155A40075CD30 /* MobileCoreServices.framework in Frameworks */,
+				95052AB618E1559C0075CD30 /* MessageUI.framework in Frameworks */,
+				95052AB418E155930075CD30 /* SystemConfiguration.framework in Frameworks */,
+				95052A6118E154E80075CD30 /* CoreGraphics.framework in Frameworks */,
+				95052A6318E154E80075CD30 /* UIKit.framework in Frameworks */,
+				95052A5F18E154E80075CD30 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95052A7918E154E80075CD30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95052A7E18E154E80075CD30 /* XCTest.framework in Frameworks */,
+				95052A8018E154E80075CD30 /* UIKit.framework in Frameworks */,
+				95052A7F18E154E80075CD30 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95052A5218E154E80075CD30 = {
+			isa = PBXGroup;
+			children = (
+				95052A6418E154E80075CD30 /* 「Demo」MysqlConnect */,
+				95052A8318E154E80075CD30 /* 「Demo」MysqlConnectTests */,
+				95052A5D18E154E80075CD30 /* Frameworks */,
+				95052A5C18E154E80075CD30 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		95052A5C18E154E80075CD30 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95052A5B18E154E80075CD30 /* 「Demo」MysqlConnect.app */,
+				95052A7C18E154E80075CD30 /* 「Demo」MysqlConnectTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95052A5D18E154E80075CD30 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95052ABB18E155B10075CD30 /* libz.1.2.5.dylib */,
+				95052AB918E155AB0075CD30 /* CFNetwork.framework */,
+				95052AB718E155A40075CD30 /* MobileCoreServices.framework */,
+				95052AB518E1559C0075CD30 /* MessageUI.framework */,
+				95052AB318E155930075CD30 /* SystemConfiguration.framework */,
+				95052A5E18E154E80075CD30 /* Foundation.framework */,
+				95052A6018E154E80075CD30 /* CoreGraphics.framework */,
+				95052A6218E154E80075CD30 /* UIKit.framework */,
+				95052A7D18E154E80075CD30 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95052A6418E154E80075CD30 /* 「Demo」MysqlConnect */ = {
+			isa = PBXGroup;
+			children = (
+				95052A9318E1553D0075CD30 /* ASI */,
+				95052A6D18E154E80075CD30 /* DDAppDelegate.h */,
+				95052A6E18E154E80075CD30 /* DDAppDelegate.m */,
+				95052A7018E154E80075CD30 /* Main.storyboard */,
+				95052A7318E154E80075CD30 /* DDViewController.h */,
+				95052A7418E154E80075CD30 /* DDViewController.m */,
+				95052A7618E154E80075CD30 /* Images.xcassets */,
+				95052A6518E154E80075CD30 /* Supporting Files */,
+			);
+			path = "「Demo」MysqlConnect";
+			sourceTree = "<group>";
+		};
+		95052A6518E154E80075CD30 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95052A6618E154E80075CD30 /* 「Demo」MysqlConnect-Info.plist */,
+				95052A6718E154E80075CD30 /* InfoPlist.strings */,
+				95052A6A18E154E80075CD30 /* main.m */,
+				95052A6C18E154E80075CD30 /* 「Demo」MysqlConnect-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95052A8318E154E80075CD30 /* 「Demo」MysqlConnectTests */ = {
+			isa = PBXGroup;
+			children = (
+				95052A8918E154E80075CD30 /* _Demo_MysqlConnectTests.m */,
+				95052A8418E154E80075CD30 /* Supporting Files */,
+			);
+			path = "「Demo」MysqlConnectTests";
+			sourceTree = "<group>";
+		};
+		95052A8418E154E80075CD30 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95052A8518E154E80075CD30 /* 「Demo」MysqlConnectTests-Info.plist */,
+				95052A8618E154E80075CD30 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95052A9318E1553D0075CD30 /* ASI */ = {
+			isa = PBXGroup;
+			children = (
+				95052A9418E1553D0075CD30 /* ASIAuthenticationDialog.h */,
+				95052A9518E1553D0075CD30 /* ASIAuthenticationDialog.m */,
+				95052A9618E1553D0075CD30 /* ASICacheDelegate.h */,
+				95052A9718E1553D0075CD30 /* ASIDataCompressor.h */,
+				95052A9818E1553D0075CD30 /* ASIDataCompressor.m */,
+				95052A9918E1553D0075CD30 /* ASIDataDecompressor.h */,
+				95052A9A18E1553D0075CD30 /* ASIDataDecompressor.m */,
+				95052A9B18E1553D0075CD30 /* ASIDownloadCache.h */,
+				95052A9C18E1553D0075CD30 /* ASIDownloadCache.m */,
+				95052A9D18E1553D0075CD30 /* ASIFormDataRequest.h */,
+				95052A9E18E1553D0075CD30 /* ASIFormDataRequest.m */,
+				95052A9F18E1553D0075CD30 /* ASIHTTPRequest.h */,
+				95052AA018E1553D0075CD30 /* ASIHTTPRequest.m */,
+				95052AA118E1553D0075CD30 /* ASIHTTPRequestConfig.h */,
+				95052AA218E1553D0075CD30 /* ASIHTTPRequestDelegate.h */,
+				95052AA318E1553D0075CD30 /* ASIInputStream.h */,
+				95052AA418E1553D0075CD30 /* ASIInputStream.m */,
+				95052AA518E1553D0075CD30 /* ASINetworkQueue.h */,
+				95052AA618E1553D0075CD30 /* ASINetworkQueue.m */,
+				95052AA718E1553D0075CD30 /* ASIProgressDelegate.h */,
+				95052AA818E1553D0075CD30 /* Reachability.h */,
+				95052AA918E1553D0075CD30 /* Reachability.m */,
+			);
+			path = ASI;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		95052A5A18E154E80075CD30 /* 「Demo」MysqlConnect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95052A8D18E154E80075CD30 /* Build configuration list for PBXNativeTarget "「Demo」MysqlConnect" */;
+			buildPhases = (
+				95052A5718E154E80075CD30 /* Sources */,
+				95052A5818E154E80075CD30 /* Frameworks */,
+				95052A5918E154E80075CD30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "「Demo」MysqlConnect";
+			productName = "「Demo」MysqlConnect";
+			productReference = 95052A5B18E154E80075CD30 /* 「Demo」MysqlConnect.app */;
+			productType = "com.apple.product-type.application";
+		};
+		95052A7B18E154E80075CD30 /* 「Demo」MysqlConnectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95052A9018E154E80075CD30 /* Build configuration list for PBXNativeTarget "「Demo」MysqlConnectTests" */;
+			buildPhases = (
+				95052A7818E154E80075CD30 /* Sources */,
+				95052A7918E154E80075CD30 /* Frameworks */,
+				95052A7A18E154E80075CD30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95052A8218E154E80075CD30 /* PBXTargetDependency */,
+			);
+			name = "「Demo」MysqlConnectTests";
+			productName = "「Demo」MysqlConnectTests";
+			productReference = 95052A7C18E154E80075CD30 /* 「Demo」MysqlConnectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95052A5318E154E80075CD30 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = CUAN;
+				TargetAttributes = {
+					95052A7B18E154E80075CD30 = {
+						TestTargetID = 95052A5A18E154E80075CD30;
+					};
+				};
+			};
+			buildConfigurationList = 95052A5618E154E80075CD30 /* Build configuration list for PBXProject "「Demo」MysqlConnect" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 95052A5218E154E80075CD30;
+			productRefGroup = 95052A5C18E154E80075CD30 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95052A5A18E154E80075CD30 /* 「Demo」MysqlConnect */,
+				95052A7B18E154E80075CD30 /* 「Demo」MysqlConnectTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95052A5918E154E80075CD30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95052A7718E154E80075CD30 /* Images.xcassets in Resources */,
+				95052A6918E154E80075CD30 /* InfoPlist.strings in Resources */,
+				95052A7218E154E80075CD30 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95052A7A18E154E80075CD30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95052A8818E154E80075CD30 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95052A5718E154E80075CD30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95052AAB18E1553D0075CD30 /* ASIDataCompressor.m in Sources */,
+				95052A6F18E154E80075CD30 /* DDAppDelegate.m in Sources */,
+				95052AAF18E1553D0075CD30 /* ASIHTTPRequest.m in Sources */,
+				95052AAA18E1553D0075CD30 /* ASIAuthenticationDialog.m in Sources */,
+				95052AAE18E1553D0075CD30 /* ASIFormDataRequest.m in Sources */,
+				95052A7518E154E80075CD30 /* DDViewController.m in Sources */,
+				95052AB018E1553D0075CD30 /* ASIInputStream.m in Sources */,
+				95052A6B18E154E80075CD30 /* main.m in Sources */,
+				95052AB118E1553D0075CD30 /* ASINetworkQueue.m in Sources */,
+				95052AAC18E1553D0075CD30 /* ASIDataDecompressor.m in Sources */,
+				95052AB218E1553D0075CD30 /* Reachability.m in Sources */,
+				95052AAD18E1553D0075CD30 /* ASIDownloadCache.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95052A7818E154E80075CD30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95052A8A18E154E80075CD30 /* _Demo_MysqlConnectTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95052A8218E154E80075CD30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95052A5A18E154E80075CD30 /* 「Demo」MysqlConnect */;
+			targetProxy = 95052A8118E154E80075CD30 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		95052A6718E154E80075CD30 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95052A6818E154E80075CD30 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		95052A7018E154E80075CD30 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95052A7118E154E80075CD30 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		95052A8618E154E80075CD30 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95052A8718E154E80075CD30 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		95052A8B18E154E80075CD30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		95052A8C18E154E80075CD30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95052A8E18E154E80075CD30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」MysqlConnect/「Demo」MysqlConnect-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」MysqlConnect/「Demo」MysqlConnect-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		95052A8F18E154E80075CD30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」MysqlConnect/「Demo」MysqlConnect-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」MysqlConnect/「Demo」MysqlConnect-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		95052A9118E154E80075CD30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「Demo」MysqlConnect.app/「Demo」MysqlConnect";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」MysqlConnect/「Demo」MysqlConnect-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "「Demo」MysqlConnectTests/「Demo」MysqlConnectTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		95052A9218E154E80075CD30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「Demo」MysqlConnect.app/「Demo」MysqlConnect";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」MysqlConnect/「Demo」MysqlConnect-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」MysqlConnectTests/「Demo」MysqlConnectTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95052A5618E154E80075CD30 /* Build configuration list for PBXProject "「Demo」MysqlConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95052A8B18E154E80075CD30 /* Debug */,
+				95052A8C18E154E80075CD30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95052A8D18E154E80075CD30 /* Build configuration list for PBXNativeTarget "「Demo」MysqlConnect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95052A8E18E154E80075CD30 /* Debug */,
+				95052A8F18E154E80075CD30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		95052A9018E154E80075CD30 /* Build configuration list for PBXNativeTarget "「Demo」MysqlConnectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95052A9118E154E80075CD30 /* Debug */,
+				95052A9218E154E80075CD30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95052A5318E154E80075CD30 /* Project object */;
+}
