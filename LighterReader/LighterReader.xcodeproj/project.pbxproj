@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		068F403C18E474DA006F3B91 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */; };
+		068F403F18E476C1006F3B91 /* DDSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F403E18E476C1006F3B91 /* DDSignupViewController.m */; };
 		95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2918E3F4950051CE67 /* DDHomeView.m */; };
 		95297D2D18E3FE700051CE67 /* DDMainUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2C18E3FE700051CE67 /* DDMainUIViewController.m */; };
 		95297D3418E3FFAB0051CE67 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D3318E3FFAB0051CE67 /* DDRootViewController.m */; };
@@ -48,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		068F403A18E474DA006F3B91 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
+		068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindUIViewController.m"; sourceTree = "<group>"; };
+		068F403D18E476C1006F3B91 /* DDSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignupViewController.h; sourceTree = "<group>"; };
+		068F403E18E476C1006F3B91 /* DDSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSignupViewController.m; sourceTree = "<group>"; };
 		95297D2818E3F4950051CE67 /* DDHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeView.h; sourceTree = "<group>"; };
 		95297D2918E3F4950051CE67 /* DDHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeView.m; sourceTree = "<group>"; };
 		95297D2B18E3FE700051CE67 /* DDMainUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMainUIViewController.h; sourceTree = "<group>"; };
@@ -113,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		068F403918E474C3006F3B91 /* Categroy */ = {
+			isa = PBXGroup;
+			children = (
+				068F403A18E474DA006F3B91 /* UIView+FindUIViewController.h */,
+				068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */,
+			);
+			path = Categroy;
+			sourceTree = "<group>";
+		};
 		95297D2318E3F46E0051CE67 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +169,8 @@
 			children = (
 				95297D4C18E454580051CE67 /* PJRegisteredView.h */,
 				95297D4D18E454580051CE67 /* PJRegisteredView.m */,
+				068F403D18E476C1006F3B91 /* DDSignupViewController.h */,
+				068F403E18E476C1006F3B91 /* DDSignupViewController.m */,
 			);
 			path = Signup;
 			sourceTree = "<group>";
@@ -196,6 +213,7 @@
 				95AE912418E3B51A00181C39 /* Resource */,
 				95AE911E18E3B0CB00181C39 /* MainUI */,
 				95297D3118E3FF8A0051CE67 /* Root */,
+				068F403918E474C3006F3B91 /* Categroy */,
 				95AE913118E3F10B00181C39 /* DDHTTPManager */,
 				9589962D18E2BB850002EAF1 /* DDAppDelegate.h */,
 				9589962E18E2BB850002EAF1 /* DDAppDelegate.m */,
@@ -379,10 +397,12 @@
 				95297D4E18E454580051CE67 /* PJRegisteredView.m in Sources */,
 				95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */,
 				95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */,
+				068F403C18E474DA006F3B91 /* UIView+FindUIViewController.m in Sources */,
 				9589962F18E2BB850002EAF1 /* DDAppDelegate.m in Sources */,
 				95297D4A18E454380051CE67 /* DDMenuView.m in Sources */,
 				95297D3418E3FFAB0051CE67 /* DDRootViewController.m in Sources */,
 				9589962B18E2BB850002EAF1 /* main.m in Sources */,
+				068F403F18E476C1006F3B91 /* DDSignupViewController.m in Sources */,
 				95297D2D18E3FE700051CE67 /* DDMainUIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

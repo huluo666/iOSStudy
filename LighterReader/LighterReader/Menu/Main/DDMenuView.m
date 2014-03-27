@@ -7,6 +7,9 @@
 //
 
 #import "DDMenuView.h"
+#import "UIView+FindUIViewController.h"
+#import "DDRootViewController.h"
+#import "DDSignupViewController.h"
 
 @interface DDMenuView ()
 
@@ -146,13 +149,26 @@
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     NSInteger index = sender.tag - kMenuButtonTag;
+    DDRootViewController *rootVC = (DDRootViewController *)[self viewController];
     if (3 == index) {
         // 登录
         
     }
     if (4 == index) {
         // 注册
-
+        DDSignupViewController *singupVC = [[DDSignupViewController alloc] init];
+        [rootVC addChildViewController:singupVC];
+        NSLog(@"childs = %@", rootVC.childViewControllers);
+        [rootVC transitionFromViewController:rootVC.childViewControllers[0]
+                            toViewController:singupVC
+                                    duration:2
+                                     options:UIViewAnimationOptionTransitionFlipFromLeft
+                                  animations:^{
+                                      
+                                  }
+                                  completion:^(BOOL finished) {
+            ;
+        }];
     }
     
     [self swipLeftAction];
