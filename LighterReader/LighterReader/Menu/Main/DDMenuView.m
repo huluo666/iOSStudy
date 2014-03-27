@@ -148,6 +148,7 @@
     NSInteger index = sender.tag - kMenuButtonTag;
     if (3 == index) {
         // 登录
+        
     }
     if (4 == index) {
         // 注册
