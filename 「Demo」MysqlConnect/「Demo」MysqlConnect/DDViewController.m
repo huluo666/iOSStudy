@@ -8,6 +8,7 @@
 
 #import "DDViewController.h"
 #import "ASIFormDataRequest.h"
+#import "JSON.h"
 
 @interface DDViewController ()
 
@@ -31,8 +32,11 @@
     ASIFormDataRequest *request = [ASIFormDataRequest requestWithURL:url];
     
     NSDictionary *userLoginInfos = @{@"user_name":@"amdin", @"pass_word":@"admin"};
+    NSString *jsonString = [userLoginInfos JSONRepresentation];
     
-    [request setPostValue:userLoginInfos forKey:@"login"];
+    NSLog(@"jsonString = %@", jsonString);
+    
+    [request setPostValue:jsonString forKey:@"login"];
     [request startSynchronous];
     
     NSData *responseData = request.responseData;
