@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95297D2618E3F46E0051CE67 /* DDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2518E3F46E0051CE67 /* DDMenuView.m */; };
+		95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2918E3F4950051CE67 /* DDHomeView.m */; };
+		95297D2D18E3FE700051CE67 /* DDMainUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2C18E3FE700051CE67 /* DDMainUIViewController.m */; };
+		95297D3418E3FFAB0051CE67 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D3318E3FFAB0051CE67 /* DDRootViewController.m */; };
 		9589961F18E2BB850002EAF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589961E18E2BB850002EAF1 /* Foundation.framework */; };
 		9589962118E2BB850002EAF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962018E2BB850002EAF1 /* CoreGraphics.framework */; };
 		9589962318E2BB850002EAF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962218E2BB850002EAF1 /* UIKit.framework */; };
@@ -19,7 +23,11 @@
 		9589963A18E2BB850002EAF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962218E2BB850002EAF1 /* UIKit.framework */; };
 		9589964218E2BB850002EAF1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9589964018E2BB850002EAF1 /* InfoPlist.strings */; };
 		9589964418E2BB850002EAF1 /* LighterReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9589964318E2BB850002EAF1 /* LighterReaderTests.m */; };
-		9589964F18E2BBB20002EAF1 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9589964E18E2BBB20002EAF1 /* DDRootViewController.m */; };
+		95AE912B18E3BBB600181C39 /* mobile-icon-home-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 95AE912918E3BBB600181C39 /* mobile-icon-home-white.png */; };
+		95AE912C18E3BBB600181C39 /* mobile-icon-home-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95AE912A18E3BBB600181C39 /* mobile-icon-home-white@2x.png */; };
+		95AE912F18E3C1A800181C39 /* mobile-icon-store-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 95AE912D18E3C1A800181C39 /* mobile-icon-store-white.png */; };
+		95AE913018E3C1A800181C39 /* mobile-icon-store-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95AE912E18E3C1A800181C39 /* mobile-icon-store-white@2x.png */; };
+		95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AE913318E3F10B00181C39 /* DDHTTPManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		95297D2418E3F46E0051CE67 /* DDMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuView.h; sourceTree = "<group>"; };
+		95297D2518E3F46E0051CE67 /* DDMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuView.m; sourceTree = "<group>"; };
+		95297D2818E3F4950051CE67 /* DDHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeView.h; sourceTree = "<group>"; };
+		95297D2918E3F4950051CE67 /* DDHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeView.m; sourceTree = "<group>"; };
+		95297D2B18E3FE700051CE67 /* DDMainUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMainUIViewController.h; sourceTree = "<group>"; };
+		95297D2C18E3FE700051CE67 /* DDMainUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMainUIViewController.m; sourceTree = "<group>"; };
+		95297D3218E3FFAB0051CE67 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
+		95297D3318E3FFAB0051CE67 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
 		9589961B18E2BB850002EAF1 /* LighterReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LighterReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9589961E18E2BB850002EAF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9589962018E2BB850002EAF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -49,8 +65,13 @@
 		9589963F18E2BB850002EAF1 /* LighterReaderTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LighterReaderTests-Info.plist"; sourceTree = "<group>"; };
 		9589964118E2BB850002EAF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9589964318E2BB850002EAF1 /* LighterReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LighterReaderTests.m; sourceTree = "<group>"; };
-		9589964D18E2BBB20002EAF1 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
-		9589964E18E2BBB20002EAF1 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		95AE912318E3B4C200181C39 /* DDMacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMacroDefinition.h; sourceTree = "<group>"; };
+		95AE912918E3BBB600181C39 /* mobile-icon-home-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-home-white.png"; sourceTree = "<group>"; };
+		95AE912A18E3BBB600181C39 /* mobile-icon-home-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-home-white@2x.png"; sourceTree = "<group>"; };
+		95AE912D18E3C1A800181C39 /* mobile-icon-store-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-store-white.png"; sourceTree = "<group>"; };
+		95AE912E18E3C1A800181C39 /* mobile-icon-store-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-store-white@2x.png"; sourceTree = "<group>"; };
+		95AE913218E3F10B00181C39 /* DDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHTTPManager.h; sourceTree = "<group>"; };
+		95AE913318E3F10B00181C39 /* DDHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHTTPManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +98,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		95297D2318E3F46E0051CE67 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				95297D2418E3F46E0051CE67 /* DDMenuView.h */,
+				95297D2518E3F46E0051CE67 /* DDMenuView.m */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		95297D2718E3F4820051CE67 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				95297D2818E3F4950051CE67 /* DDHomeView.h */,
+				95297D2918E3F4950051CE67 /* DDHomeView.m */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		95297D3118E3FF8A0051CE67 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				95297D3218E3FFAB0051CE67 /* DDRootViewController.h */,
+				95297D3318E3FFAB0051CE67 /* DDRootViewController.m */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		9589961218E2BB850002EAF1 = {
 			isa = PBXGroup;
 			children = (
@@ -110,10 +158,15 @@
 		9589962418E2BB850002EAF1 /* LighterReader */ = {
 			isa = PBXGroup;
 			children = (
+				95297D2718E3F4820051CE67 /* Home */,
+				95297D2318E3F46E0051CE67 /* Menu */,
+				95AE912418E3B51A00181C39 /* Resource */,
+				95AE911E18E3B0CB00181C39 /* MainUI */,
+				95297D3118E3FF8A0051CE67 /* Root */,
+				95AE913118E3F10B00181C39 /* DDHTTPManager */,
 				9589962D18E2BB850002EAF1 /* DDAppDelegate.h */,
 				9589962E18E2BB850002EAF1 /* DDAppDelegate.m */,
-				9589964D18E2BBB20002EAF1 /* DDRootViewController.h */,
-				9589964E18E2BBB20002EAF1 /* DDRootViewController.m */,
+				95AE912318E3B4C200181C39 /* DDMacroDefinition.h */,
 				9589963018E2BB850002EAF1 /* Images.xcassets */,
 				9589962518E2BB850002EAF1 /* Supporting Files */,
 			);
@@ -147,6 +200,35 @@
 				9589964018E2BB850002EAF1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95AE911E18E3B0CB00181C39 /* MainUI */ = {
+			isa = PBXGroup;
+			children = (
+				95297D2B18E3FE700051CE67 /* DDMainUIViewController.h */,
+				95297D2C18E3FE700051CE67 /* DDMainUIViewController.m */,
+			);
+			path = MainUI;
+			sourceTree = "<group>";
+		};
+		95AE912418E3B51A00181C39 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				95AE912918E3BBB600181C39 /* mobile-icon-home-white.png */,
+				95AE912A18E3BBB600181C39 /* mobile-icon-home-white@2x.png */,
+				95AE912D18E3C1A800181C39 /* mobile-icon-store-white.png */,
+				95AE912E18E3C1A800181C39 /* mobile-icon-store-white@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		95AE913118E3F10B00181C39 /* DDHTTPManager */ = {
+			isa = PBXGroup;
+			children = (
+				95AE913218E3F10B00181C39 /* DDHTTPManager.h */,
+				95AE913318E3F10B00181C39 /* DDHTTPManager.m */,
+			);
+			path = DDHTTPManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,8 +307,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95AE912C18E3BBB600181C39 /* mobile-icon-home-white@2x.png in Resources */,
 				9589962918E2BB850002EAF1 /* InfoPlist.strings in Resources */,
 				9589963118E2BB850002EAF1 /* Images.xcassets in Resources */,
+				95AE913018E3C1A800181C39 /* mobile-icon-store-white@2x.png in Resources */,
+				95AE912F18E3C1A800181C39 /* mobile-icon-store-white.png in Resources */,
+				95AE912B18E3BBB600181C39 /* mobile-icon-home-white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,9 +331,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9589964F18E2BBB20002EAF1 /* DDRootViewController.m in Sources */,
+				95297D2618E3F46E0051CE67 /* DDMenuView.m in Sources */,
+				95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */,
+				95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */,
 				9589962F18E2BB850002EAF1 /* DDAppDelegate.m in Sources */,
+				95297D3418E3FFAB0051CE67 /* DDRootViewController.m in Sources */,
 				9589962B18E2BB850002EAF1 /* main.m in Sources */,
+				95297D2D18E3FE700051CE67 /* DDMainUIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +538,7 @@
 				9589964918E2BB850002EAF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9589964A18E2BB850002EAF1 /* Build configuration list for PBXNativeTarget "LighterReaderTests" */ = {
 			isa = XCConfigurationList;
@@ -456,6 +547,7 @@
 				9589964C18E2BB850002EAF1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

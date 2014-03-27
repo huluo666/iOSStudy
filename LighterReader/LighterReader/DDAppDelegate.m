@@ -16,12 +16,13 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     self.window.backgroundColor = [UIColor whiteColor];
 
+    // root view controller
     DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    self.window.rootViewController = rootVC;
     [rootVC release];
-
-    self.window.rootViewController = navi;
-    [navi release];
+    
+    // navi bar style
+    [UIBarButtonItem appearance] ;
     
     [self.window makeKeyAndVisible];
     return YES;
