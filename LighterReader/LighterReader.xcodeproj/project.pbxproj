@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95297D2618E3F46E0051CE67 /* DDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2518E3F46E0051CE67 /* DDMenuView.m */; };
 		95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2918E3F4950051CE67 /* DDHomeView.m */; };
 		95297D2D18E3FE700051CE67 /* DDMainUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2C18E3FE700051CE67 /* DDMainUIViewController.m */; };
 		95297D3418E3FFAB0051CE67 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D3318E3FFAB0051CE67 /* DDRootViewController.m */; };
+		95297D3C18E42C860051CE67 /* Buffer-FacebookLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 95297D3818E42C860051CE67 /* Buffer-FacebookLogin.png */; };
+		95297D3D18E42C860051CE67 /* Buffer-FacebookLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95297D3918E42C860051CE67 /* Buffer-FacebookLogin@2x.png */; };
+		95297D3E18E42C860051CE67 /* Buffer-TwitterLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 95297D3A18E42C860051CE67 /* Buffer-TwitterLogin.png */; };
+		95297D3F18E42C860051CE67 /* Buffer-TwitterLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95297D3B18E42C860051CE67 /* Buffer-TwitterLogin@2x.png */; };
+		95297D4418E44C270051CE67 /* Buffer-BufferLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 95297D4218E44C270051CE67 /* Buffer-BufferLogin.png */; };
+		95297D4518E44C270051CE67 /* Buffer-BufferLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95297D4318E44C270051CE67 /* Buffer-BufferLogin@2x.png */; };
+		95297D4A18E454380051CE67 /* DDMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D4918E454380051CE67 /* DDMenuView.m */; };
+		95297D4E18E454580051CE67 /* PJRegisteredView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D4D18E454580051CE67 /* PJRegisteredView.m */; };
 		9589961F18E2BB850002EAF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589961E18E2BB850002EAF1 /* Foundation.framework */; };
 		9589962118E2BB850002EAF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962018E2BB850002EAF1 /* CoreGraphics.framework */; };
 		9589962318E2BB850002EAF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962218E2BB850002EAF1 /* UIKit.framework */; };
@@ -41,14 +48,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		95297D2418E3F46E0051CE67 /* DDMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuView.h; sourceTree = "<group>"; };
-		95297D2518E3F46E0051CE67 /* DDMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuView.m; sourceTree = "<group>"; };
 		95297D2818E3F4950051CE67 /* DDHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeView.h; sourceTree = "<group>"; };
 		95297D2918E3F4950051CE67 /* DDHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeView.m; sourceTree = "<group>"; };
 		95297D2B18E3FE700051CE67 /* DDMainUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMainUIViewController.h; sourceTree = "<group>"; };
 		95297D2C18E3FE700051CE67 /* DDMainUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMainUIViewController.m; sourceTree = "<group>"; };
 		95297D3218E3FFAB0051CE67 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		95297D3318E3FFAB0051CE67 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		95297D3818E42C860051CE67 /* Buffer-FacebookLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-FacebookLogin.png"; sourceTree = "<group>"; };
+		95297D3918E42C860051CE67 /* Buffer-FacebookLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-FacebookLogin@2x.png"; sourceTree = "<group>"; };
+		95297D3A18E42C860051CE67 /* Buffer-TwitterLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-TwitterLogin.png"; sourceTree = "<group>"; };
+		95297D3B18E42C860051CE67 /* Buffer-TwitterLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-TwitterLogin@2x.png"; sourceTree = "<group>"; };
+		95297D4218E44C270051CE67 /* Buffer-BufferLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-BufferLogin.png"; sourceTree = "<group>"; };
+		95297D4318E44C270051CE67 /* Buffer-BufferLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-BufferLogin@2x.png"; sourceTree = "<group>"; };
+		95297D4818E454380051CE67 /* DDMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMenuView.h; sourceTree = "<group>"; };
+		95297D4918E454380051CE67 /* DDMenuView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMenuView.m; sourceTree = "<group>"; };
+		95297D4C18E454580051CE67 /* PJRegisteredView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PJRegisteredView.h; sourceTree = "<group>"; };
+		95297D4D18E454580051CE67 /* PJRegisteredView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PJRegisteredView.m; sourceTree = "<group>"; };
 		9589961B18E2BB850002EAF1 /* LighterReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LighterReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9589961E18E2BB850002EAF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9589962018E2BB850002EAF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,8 +116,8 @@
 		95297D2318E3F46E0051CE67 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
-				95297D2418E3F46E0051CE67 /* DDMenuView.h */,
-				95297D2518E3F46E0051CE67 /* DDMenuView.m */,
+				95297D4B18E4544F0051CE67 /* Signup */,
+				95297D4718E454260051CE67 /* Main */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -123,6 +138,24 @@
 				95297D3318E3FFAB0051CE67 /* DDRootViewController.m */,
 			);
 			path = Root;
+			sourceTree = "<group>";
+		};
+		95297D4718E454260051CE67 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				95297D4818E454380051CE67 /* DDMenuView.h */,
+				95297D4918E454380051CE67 /* DDMenuView.m */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		95297D4B18E4544F0051CE67 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				95297D4C18E454580051CE67 /* PJRegisteredView.h */,
+				95297D4D18E454580051CE67 /* PJRegisteredView.m */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		9589961218E2BB850002EAF1 = {
@@ -218,6 +251,12 @@
 				95AE912A18E3BBB600181C39 /* mobile-icon-home-white@2x.png */,
 				95AE912D18E3C1A800181C39 /* mobile-icon-store-white.png */,
 				95AE912E18E3C1A800181C39 /* mobile-icon-store-white@2x.png */,
+				95297D3818E42C860051CE67 /* Buffer-FacebookLogin.png */,
+				95297D3918E42C860051CE67 /* Buffer-FacebookLogin@2x.png */,
+				95297D3A18E42C860051CE67 /* Buffer-TwitterLogin.png */,
+				95297D3B18E42C860051CE67 /* Buffer-TwitterLogin@2x.png */,
+				95297D4218E44C270051CE67 /* Buffer-BufferLogin.png */,
+				95297D4318E44C270051CE67 /* Buffer-BufferLogin@2x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -307,8 +346,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95297D3F18E42C860051CE67 /* Buffer-TwitterLogin@2x.png in Resources */,
 				95AE912C18E3BBB600181C39 /* mobile-icon-home-white@2x.png in Resources */,
 				9589962918E2BB850002EAF1 /* InfoPlist.strings in Resources */,
+				95297D4418E44C270051CE67 /* Buffer-BufferLogin.png in Resources */,
+				95297D4518E44C270051CE67 /* Buffer-BufferLogin@2x.png in Resources */,
+				95297D3E18E42C860051CE67 /* Buffer-TwitterLogin.png in Resources */,
+				95297D3D18E42C860051CE67 /* Buffer-FacebookLogin@2x.png in Resources */,
+				95297D3C18E42C860051CE67 /* Buffer-FacebookLogin.png in Resources */,
 				9589963118E2BB850002EAF1 /* Images.xcassets in Resources */,
 				95AE913018E3C1A800181C39 /* mobile-icon-store-white@2x.png in Resources */,
 				95AE912F18E3C1A800181C39 /* mobile-icon-store-white.png in Resources */,
@@ -331,10 +376,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95297D2618E3F46E0051CE67 /* DDMenuView.m in Sources */,
+				95297D4E18E454580051CE67 /* PJRegisteredView.m in Sources */,
 				95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */,
 				95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */,
 				9589962F18E2BB850002EAF1 /* DDAppDelegate.m in Sources */,
+				95297D4A18E454380051CE67 /* DDMenuView.m in Sources */,
 				95297D3418E3FFAB0051CE67 /* DDRootViewController.m in Sources */,
 				9589962B18E2BB850002EAF1 /* main.m in Sources */,
 				95297D2D18E3FE700051CE67 /* DDMainUIViewController.m in Sources */,

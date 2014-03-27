@@ -13,7 +13,6 @@
 @interface DDRootViewController () <UIGestureRecognizerDelegate>
 
 @property (retain, nonatomic) UIPanGestureRecognizer *panGesture;
-@property (retain, nonatomic) DDMenuView *menu;
 @property (assign, nonatomic, getter = isMenuShow) BOOL menuShow;
 @property (retain, nonatomic) UIView *backgroundView;
 
@@ -24,7 +23,6 @@
 - (void)dealloc
 {
     [_panGesture release];
-    [_menu release];
     [_backgroundView release];
     [super dealloc];
 }
@@ -49,20 +47,19 @@
 
     // add main UI view controller
     DDMainUIViewController *mainUIVC = [[DDMainUIViewController alloc] init];
-    UINavigationController *navi = [[UINavigationController alloc]
-                                    initWithRootViewController:mainUIVC];
-    navi.navigationBar.barTintColor = [UIColor whiteColor];
-    navi.navigationBar.tintColor = [UIColor lightGrayColor];
     mainUIVC.handleMenuBarItemAction = ^{
         [self processMenu];
     };
+    UINavigationController *navi = [[UINavigationController alloc]
+                                    initWithRootViewController:mainUIVC];
     [mainUIVC release];
+    navi.navigationBar.barTintColor = [UIColor whiteColor];
+    navi.navigationBar.tintColor = [UIColor lightGrayColor];
+
     [self addChildViewController:navi];
     [navi release];
     
     [self.view addSubview:navi.view];
-    
-    _menu = [[DDMenuView alloc] init];
     
     // init background view
     _backgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -90,7 +87,8 @@
 - (void)processMenu
 {
     // init
-    __block DDMenuView *menu = _menu;
+    __block DDMenuView *menu = [[DDMenuView alloc] init];
+    menu.tag = kMenuViewTag;
     menu.center = CGPointMake(-2 * CGRectGetMidX(self.view.frame),
                               CGRectGetMidY(self.view.frame) + 10);
     
@@ -108,7 +106,6 @@
                          [_panGesture removeTarget:self
                                             action:@selector(panGestureAction:)];
                      }];
-    
     // disappear
     menu.handleLeftSwip = ^{
         if (_menuShow) {
@@ -122,11 +119,13 @@
                                  _menuShow = NO;
                                  [_panGesture addTarget:self
                                                  action:@selector(panGestureAction:)];
+                                 [menu removeFromSuperview];
                              }];
         }
     };
     
     [self.view addSubview:menu];
+    [menu release];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -135,7 +134,8 @@
     CGPoint point = [touch locationInView:_backgroundView];
     if (point.x > CGRectGetWidth(self.view.bounds) - 40) {
         // close menu
-        [_menu swipLeftAction];
+        DDMenuView *menu = (DDMenuView *)[self.view viewWithTag:kMenuViewTag];
+        [menu swipLeftAction];
     }
 
 }
