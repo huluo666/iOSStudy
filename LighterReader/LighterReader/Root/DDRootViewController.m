@@ -43,6 +43,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     _panGesture = [[UIPanGestureRecognizer alloc]
                    initWithTarget:self
                    action:@selector(panGestureAction:)];
@@ -103,8 +104,7 @@
             _backgroundView.alpha = 0.5;
         } completion:^(BOOL finished) {
             _menuShow = YES;
-            [_panGesture removeTarget:self
-                               action:@selector(panGestureAction:)];
+            [self.view removeGestureRecognizer:_panGesture];
         }];
         
         // disappear
@@ -116,8 +116,7 @@
                     _backgroundView.alpha = 0;
                 } completion:^(BOOL finished) {
                     _menuShow = NO;
-                    [_panGesture addTarget:self
-                                    action:@selector(panGestureAction:)];
+                    [self.view addGestureRecognizer:_panGesture];
                     [naviMenuView removeFromSuperview];
                 }];
             }
@@ -142,8 +141,7 @@
             
          } completion:^(BOOL finished) {
              _menuShow = YES;
-             [_panGesture removeTarget:self
-                                action:@selector(panGestureAction:)];
+            [self.view removeGestureRecognizer:_panGesture];
          }];
         
         // disappear
@@ -155,8 +153,7 @@
                     _backgroundView.alpha = 0;
                 } completion:^(BOOL finished) {
                      _menuShow = NO;
-                     [_panGesture addTarget:self
-                                     action:@selector(panGestureAction:)];
+                     [self.view addGestureRecognizer:_panGesture];
                      [signMenuView removeFromSuperview];
                 }];
             }

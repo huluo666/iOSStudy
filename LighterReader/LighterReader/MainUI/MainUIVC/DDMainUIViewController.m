@@ -11,10 +11,11 @@
 
 @interface DDMainUIViewController ()
 
-@property (nonatomic, retain) UIView *titleView;
+@property (nonatomic, retain) NSString *titleViewTitle;
 
 // load home page view
 - (void)loadHomeView;
+
 
 @end
 
@@ -22,7 +23,7 @@
 
 - (void)dealloc
 {
-    [_titleView release];
+    [_titleViewTitle release];
     [_handleMenuBarItemAction release];
     [super dealloc];
 }
@@ -40,29 +41,29 @@
 {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor whiteColor];
+        self.view.backgroundColor = [UIColor lightGrayColor];
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+        self.automaticallyAdjustsScrollViewInsets = YES;
         
         // left menu bar
         UIImage *menuBarImage = DDImageWithName(@"mobile-icon-home-white");
-        UIBarButtonItem *menuBarItem = [[UIBarButtonItem alloc] initWithImage:menuBarImage
-                                                                        style:UIBarButtonItemStylePlain
-                                                                       target:self
-                                                                       action:@selector(menuBarItemAction)];
-//        UIBarButtonItem *menuBarItem = [[UIBarButtonItem alloc] initWithTitle:@"menu" style:UIBarButtonItemStylePlain target:self action:@selector(menuBarItemAction)];
+        UIBarButtonItem *menuBarItem = [[UIBarButtonItem alloc]
+                                        initWithImage:menuBarImage
+                                        style:UIBarButtonItemStylePlain
+                                        target:self
+                                        action:@selector(menuBarItemAction)];
         self.navigationItem.leftBarButtonItem = menuBarItem;
         [menuBarItem release];
         
         // right search bar
         UIImage *serchBarImage = DDImageWithName(@"mobile-icon-store-white");
-        UIBarButtonItem *serchBarItem = [[UIBarButtonItem alloc] initWithImage:serchBarImage
-                                                                         style:UIBarButtonItemStylePlain
-                                                                        target:self
-                                                                        action:@selector(searchBarItemAction)];
+        UIBarButtonItem *serchBarItem = [[UIBarButtonItem alloc]
+                                         initWithImage:serchBarImage
+                                         style:UIBarButtonItemStylePlain
+                                         target:self
+                                         action:@selector(searchBarItemAction)];
         self.navigationItem.rightBarButtonItem = serchBarItem;
         [serchBarItem release];
-        
-        _titleView = [[UIView alloc] init];
-        self.navigationItem.titleView = _titleView;
     }
     return self;
 }
@@ -70,18 +71,42 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
-    view.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:view];
-    [view release];
-    
     // load home page
     [self loadHomeView];
+    
+    [self setTitleViewTitle:@"All/Home"];
+}
+
+- (void)setTitleViewTitle:(NSString *)titleViewTitle {
+    
+    if (_titleViewTitle != titleViewTitle) {
+        [_titleViewTitle release];
+        _titleViewTitle = [titleViewTitle retain];
+        
+        UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        titleButton.bounds = CGRectMake(0, 0, 0, 44);
+        [titleButton addTarget:self
+                        action:@selector(titleButtonAction:)
+              forControlEvents:UIControlEventTouchUpInside];
+        [titleButton setTitle:_titleViewTitle forState:UIControlStateNormal];
+        [titleButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        self.navigationItem.titleView = titleButton;
+    }
 }
 
 
 #pragma mark - private messages
+
+#pragma mark - load Views
+
+- (void)loadHomeView
+{
+    DDHomeView *homeView = [[DDHomeView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:homeView];
+    [homeView release];
+}
+
+#pragma mark - Actions
 
 - (void)menuBarItemAction
 {
@@ -97,11 +122,9 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
-- (void)loadHomeView
-{
-    DDHomeView *homeView = [[DDHomeView alloc] initWithFrame:self.view.bounds];
-    [self.view addSubview:homeView];
-    [homeView release];
+- (void)titleButtonAction:(UIButton *)sender {
+    
+    NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
 
