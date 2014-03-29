@@ -19,7 +19,7 @@
  */
 + (void)startSynchronousRequestWithURLString:(NSString *)URLString
                                       params:(NSDictionary *)params
-                           completionHandler:(void (^)(BOOL sucess, id content))completion;
+                           completionHandler:(void (^)(BOOL success, id content))completion;
 
 /**
  *  发起异步网络请求
@@ -30,6 +30,6 @@
  */
 + (void)startAsynchronousRequestWithURLString:(NSString *)URLString
                                        params:(NSDictionary *)params
-                            completionHandler:(void (^)(BOOL sucess, id content))completion;
+                            completionHandler:(void (^)(BOOL success, id content))completion;
 
 @end

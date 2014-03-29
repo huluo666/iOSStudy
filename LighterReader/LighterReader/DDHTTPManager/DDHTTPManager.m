@@ -154,8 +154,8 @@ static DDHTTPManager *DDHTTPManagerInstance = nil;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     NSDictionary *dict = [DDHTTPManager JSONObjectWithData:_responseData];
-    BOOL sucess = [dict[@"code"] integerValue] == 1 ? YES : NO;
-    _completionHandler(sucess, dict[@"content"]);
+    BOOL success = [dict[@"code"] integerValue] == 1 ? YES : NO;
+    _completionHandler(success, dict[@"content"]);
     _responseData.length = 0;
 }
 

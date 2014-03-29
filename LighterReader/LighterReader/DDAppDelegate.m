@@ -22,7 +22,7 @@
     [rootVC release];
     
     // navi bar style
-    [UIBarButtonItem appearance] ;
+    [UIBarButtonItem appearance];
     
     [self.window makeKeyAndVisible];
     return YES;

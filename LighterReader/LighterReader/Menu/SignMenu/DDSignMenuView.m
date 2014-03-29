@@ -14,8 +14,14 @@
 
 @interface DDSignMenuView ()
 
-@property (nonatomic ,assign, getter = isLogin) BOOL login;
+// swip left close self
+- (void)swipLeftAction;
 
+// generate button fast
+- (UIButton *)buttonWithBackgroundImage:(UIImage *)backgroundImage;
+
+// button action
+- (void)buttonAction:(UIButton *)sender;
 
 @end
 
@@ -31,6 +37,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        // init
         self.backgroundColor = [UIColor colorWithWhite:0.863 alpha:1.000];
         
         CGFloat width = [[UIScreen mainScreen] bounds].size.width;
@@ -44,7 +51,7 @@
         [self addGestureRecognizer:swipLeft];
         [swipLeft release];
 
-        // 登录、注册
+        // signin、signup
         self.contentSize = CGSizeMake(CGRectGetWidth(self.bounds),
                                       CGRectGetHeight(self.bounds));
         self.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -58,7 +65,7 @@
         titleLabel.numberOfLines = 0;
         [self addSubview:titleLabel];
         [titleLabel release];
-        
+
         UILabel *introduceLabel = [[UILabel alloc] init];
         introduceLabel.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.9, 60);
         introduceLabel.center = CGPointMake(CGRectGetMidX(self.bounds),
@@ -71,14 +78,14 @@
         introduceLabel.numberOfLines = 0;
         [self addSubview:introduceLabel];
         [introduceLabel release];
-        
+
         UIButton *loginWithFacebook = [self buttonWithBackgroundImage:
                                        DDImageWithName(@"Buffer-FacebookLogin")];
         loginWithFacebook.tag = kMenuButtonTag;
         loginWithFacebook.center = CGPointMake(CGRectGetMidX(self.bounds),
                                                CGRectGetMidY(loginWithFacebook.bounds) +
                                                CGRectGetMaxY(introduceLabel.frame) + 40);
-        
+
         UIButton *loginWithTwitter = [self buttonWithBackgroundImage:
                                       DDImageWithName(@"Buffer-TwitterLogin")];
         loginWithTwitter.tag = kMenuButtonTag + 1;
@@ -86,19 +93,21 @@
                                               CGRectGetMaxY(loginWithFacebook.frame) +
                                               CGRectGetMidY(loginWithTwitter.bounds) +
                                               30);
+        
         UIButton *loginWithBuffer = [self buttonWithBackgroundImage:DDImageWithName(@"Buffer-BufferLogin")];
         loginWithBuffer.tag = kMenuButtonTag + 2;
         loginWithBuffer.center = CGPointMake(CGRectGetMidX(self.bounds),
                                              CGRectGetMaxY(loginWithTwitter.frame) +
                                              CGRectGetMidY(loginWithBuffer.bounds) +
                                              30);
+        
         UIButton *loginWithReader = [self buttonWithBackgroundImage:nil];
         loginWithReader.tag = kMenuButtonTag + 3;
         loginWithReader.center = CGPointMake(CGRectGetMidX(self.bounds),
                                              CGRectGetMaxY(loginWithBuffer.frame) +
                                              CGRectGetMidY(loginWithReader.bounds) +
                                              30);
-        [loginWithReader setTitle:@"Sign in with lighter Reader" forState:UIControlStateNormal];
+        [loginWithReader setTitle:@"Sign in with Lighter Reader" forState:UIControlStateNormal];
         
         UIButton *createNewAccount = [self buttonWithBackgroundImage:nil];
         createNewAccount.tag = kMenuButtonTag + 4;
@@ -146,18 +155,18 @@
 
     NSInteger index = sender.tag - kMenuButtonTag;
     DDRootViewController *rootVC = (DDRootViewController *)[self viewController];
-    DDSignViewController *singupVC = [[DDSignViewController alloc] init];
+    DDSignViewController *signVC = [[DDSignViewController alloc] init];
 
     id navi = rootVC.childViewControllers[0];
     if ([navi isKindOfClass:[DDMainUINaviController class]]) {
         DDMainUINaviController *mainVC = (DDMainUINaviController *)navi;
-        singupVC.transitioningDelegate = mainVC;
-        [mainVC presentViewController:singupVC animated:YES completion:nil];
-        [singupVC release];
+        signVC.transitioningDelegate = mainVC;
+        [mainVC presentViewController:signVC animated:YES completion:nil];
+        [signVC release];
     }
     if (4 == index) {
         // 注册
-        singupVC.signtype = DDSignTypeSignup;
+        signVC.signtype = DDSignTypeSignup;
     }
     
     [self swipLeftAction];

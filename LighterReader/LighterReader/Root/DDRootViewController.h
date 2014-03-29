@@ -10,4 +10,6 @@
 
 @interface DDRootViewController : UIViewController
 
+@property (nonatomic ,assign, getter = isLogin) BOOL login;
+
 @end

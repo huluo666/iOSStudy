@@ -48,6 +48,7 @@
                                                                         style:UIBarButtonItemStylePlain
                                                                        target:self
                                                                        action:@selector(menuBarItemAction)];
+//        UIBarButtonItem *menuBarItem = [[UIBarButtonItem alloc] initWithTitle:@"menu" style:UIBarButtonItemStylePlain target:self action:@selector(menuBarItemAction)];
         self.navigationItem.leftBarButtonItem = menuBarItem;
         [menuBarItem release];
         
