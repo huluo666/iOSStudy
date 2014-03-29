@@ -16,6 +16,8 @@
 // load home page view
 - (void)loadHomeView;
 
+// title view single tap action
+- (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap;
 
 @end
 
@@ -83,17 +85,23 @@
         [_titleViewTitle release];
         _titleViewTitle = [titleViewTitle retain];
         
-        UIButton *titleButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        titleButton.bounds = CGRectMake(0, 0, 0, 44);
-        [titleButton addTarget:self
-                        action:@selector(titleButtonAction:)
-              forControlEvents:UIControlEventTouchUpInside];
-        [titleButton setTitle:_titleViewTitle forState:UIControlStateNormal];
-        [titleButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        self.navigationItem.titleView = titleButton;
+        UILabel *titleLabel = [[UILabel alloc] init];
+        titleLabel.frame = CGRectMake(0, 0, 0, 44);
+        titleLabel.textColor = [UIColor grayColor];
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.userInteractionEnabled = YES;
+        UITapGestureRecognizer *singleTapGesture = [[UITapGestureRecognizer alloc]
+                                              initWithTarget:self
+                                              action:@selector(titleViewSingleTapAction:)];
+        [titleLabel addGestureRecognizer:singleTapGesture];
+        [singleTapGesture release];
+        titleLabel.text = _titleViewTitle;
+        [self.view addSubview:titleLabel];
+        [titleLabel release];
+        
+        self.navigationItem.titleView = titleLabel;
     }
 }
-
 
 #pragma mark - private messages
 
@@ -104,6 +112,8 @@
     DDHomeView *homeView = [[DDHomeView alloc] initWithFrame:self.view.bounds];
     [self.view addSubview:homeView];
     [homeView release];
+    
+    [self setTitleViewTitle:@"All/Home"];
 }
 
 #pragma mark - Actions
@@ -122,10 +132,9 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
-- (void)titleButtonAction:(UIButton *)sender {
+- (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap {
     
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
-
 
 @end

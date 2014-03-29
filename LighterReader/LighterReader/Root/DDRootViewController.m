@@ -89,6 +89,7 @@
 
 - (void)processMenu {
     
+    _login = YES;
     if (_login) {
         /* show navi menu */
         // init
