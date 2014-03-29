@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06724FC818E716A400DA9A2F /* SystemConfiguration.framework */; };
+		06724FCD18E717A400DA9A2F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06724FCC18E717A400DA9A2F /* Reachability.m */; };
 		068F403C18E474DA006F3B91 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */; };
 		9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */; };
 		9511E24218E66E0C005B0EF6 /* DDSignMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E24118E66E0C005B0EF6 /* DDSignMenuView.m */; };
@@ -44,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06724FC818E716A400DA9A2F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		06724FCB18E717A400DA9A2F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		06724FCC18E717A400DA9A2F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		068F403A18E474DA006F3B91 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
 		068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindUIViewController.m"; sourceTree = "<group>"; };
 		9511E23B18E66DF2005B0EF6 /* DDSignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignViewController.h; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */,
 				9589962118E2BB850002EAF1 /* CoreGraphics.framework in Frameworks */,
 				9589962318E2BB850002EAF1 /* UIKit.framework in Frameworks */,
 				9589961F18E2BB850002EAF1 /* Foundation.framework in Frameworks */,
@@ -111,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06724FCA18E7176600DA9A2F /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				06724FCB18E717A400DA9A2F /* Reachability.h */,
+				06724FCC18E717A400DA9A2F /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		068F403918E474C3006F3B91 /* Categroy */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,6 +232,7 @@
 		9589961D18E2BB850002EAF1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				06724FC818E716A400DA9A2F /* SystemConfiguration.framework */,
 				9589961E18E2BB850002EAF1 /* Foundation.framework */,
 				9589962018E2BB850002EAF1 /* CoreGraphics.framework */,
 				9589962218E2BB850002EAF1 /* UIKit.framework */,
@@ -232,6 +248,7 @@
 				95297D2318E3F46E0051CE67 /* Menu */,
 				95AE911E18E3B0CB00181C39 /* MainUI */,
 				95297D3118E3FF8A0051CE67 /* Root */,
+				06724FCA18E7176600DA9A2F /* Reachability */,
 				95F5E81518E528A700E9F56D /* Encryption */,
 				068F403918E474C3006F3B91 /* Categroy */,
 				95AE913118E3F10B00181C39 /* DDHTTPManager */,
@@ -410,6 +427,7 @@
 				9511E25418E69E89005B0EF6 /* DDDismissAnimation.m in Sources */,
 				9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */,
 				95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */,
+				06724FCD18E717A400DA9A2F /* Reachability.m in Sources */,
 				9511E25818E69EA0005B0EF6 /* DDRootViewController.m in Sources */,
 				9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */,
 				95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */,

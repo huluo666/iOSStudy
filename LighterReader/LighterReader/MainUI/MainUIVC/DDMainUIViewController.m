@@ -8,6 +8,7 @@
 
 #import "DDMainUIViewController.h"
 #import "DDHomeView.h"
+#import "Reachability.h"
 
 @interface DDMainUIViewController ()
 
@@ -18,6 +19,13 @@
 
 // title view single tap action
 - (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap;
+
+// judge network connect is working
+-(BOOL)isConnectionAvailable;
+// reload data action
+- (void)reloadAction:(UIButton *)sender;
+// reload data with animation
+- (void)reloadData;
 
 @end
 
@@ -43,7 +51,7 @@
 {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor lightGrayColor];
+        self.view.backgroundColor = [UIColor colorWithWhite:0.870 alpha:1.000];
         self.edgesForExtendedLayout = UIRectEdgeNone;
         self.automaticallyAdjustsScrollViewInsets = YES;
         
@@ -77,6 +85,12 @@
     [self loadHomeView];
     
     [self setTitleViewTitle:@"All/Home"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self showNetworkLinkHint];
 }
 
 - (void)setTitleViewTitle:(NSString *)titleViewTitle {
@@ -136,5 +150,114 @@
     
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
+
+#pragma mark - check network link
+
+-(BOOL)isConnectionAvailable {
+
+    BOOL isExistenceNetwork = YES;
+    Reachability *reach = [Reachability reachabilityWithHostName:@"192.243.119.92"];
+    switch ([reach currentReachabilityStatus]) {
+        case NotReachable:
+            isExistenceNetwork = NO;
+            break;
+        case ReachableViaWiFi:
+            isExistenceNetwork = YES;
+            break;
+        case ReachableViaWWAN:
+            isExistenceNetwork = YES;
+            break;
+    }
+    return isExistenceNetwork;
+}
+
+- (void)showNetworkLinkHint {
+
+    BOOL available = [self isConnectionAvailable];
+    if (!available) {
+        UIButton *reloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        CGRect screenBounds = [[UIScreen mainScreen] bounds];
+        reloadButton.bounds = CGRectMake(0, 0, CGRectGetWidth(screenBounds), 30);
+        reloadButton.center = CGPointMake(CGRectGetMidX(screenBounds),
+                                   CGRectGetMaxY(screenBounds) -
+                                   CGRectGetMidY(reloadButton.bounds));
+        [reloadButton setBackgroundColor:[UIColor colorWithWhite:0.353 alpha:1.000]];
+        [reloadButton setTitleColor:[UIColor lightGrayColor]
+                           forState:UIControlStateNormal];
+        [reloadButton setTitle:@"No network. Tap here to reload"
+                      forState:UIControlStateNormal];
+        [reloadButton addTarget:self
+                         action:@selector(reloadAction:)
+               forControlEvents:UIControlEventTouchUpInside];
+        reloadButton.tag = kReloadButtonTag;
+        [self.view addSubview:reloadButton];
+        
+        [UIView animateWithDuration:1 animations:^{
+            reloadButton.center = CGPointMake(CGRectGetMidX(screenBounds),
+                                              CGRectGetMaxY(screenBounds) -
+                                              CGRectGetMidY(reloadButton.bounds) - 64);
+        }];
+    }
+}
+
+- (void)reloadAction:(UIButton *)sender {
+
+    UIButton *reloadButton = (UIButton *)[self.view viewWithTag:kReloadButtonTag];
+    if (reloadButton) {
+        [UIView animateWithDuration:1 animations:^{
+            CGRect screenBounds = [[UIScreen mainScreen] bounds];
+            reloadButton.center = CGPointMake(CGRectGetMidX(screenBounds),
+                                              CGRectGetMaxY(screenBounds) -
+                                              CGRectGetMidY(reloadButton.bounds));
+        } completion:^(BOOL finished) {
+            [reloadButton removeFromSuperview];
+            
+            // start reload data, start progress animation
+            [self reloadIndicatorAnimation];
+        }];
+    }
+    NSLog(@"%@", NSStringFromSelector(_cmd));
+}
+
+// reload data with animation
+- (void)reloadData {
+
+    // animation
+    UIView *backgroundView = [[UIView alloc] init];
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    backgroundView.bounds = CGRectMake(0, 0, CGRectGetWidth(screenBounds),80);
+    backgroundView.center = CGPointMake(CGRectGetMidX(self.view.bounds),
+                                        CGRectGetMidY(self.view.bounds) - 34);
+    [self.view addSubview:backgroundView];
+    [backgroundView release];
+    
+    UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc]
+                                              initWithActivityIndicatorStyle:
+                                              UIActivityIndicatorViewStyleWhiteLarge];
+    indicatorView.color = [UIColor grayColor];
+    indicatorView.frame = CGRectMake(0,
+                                     0,
+                                     CGRectGetWidth(backgroundView.bounds),
+                                     CGRectGetHeight(backgroundView.bounds) * 0.6);
+    [backgroundView addSubview:indicatorView];
+    [indicatorView release];
+    [indicatorView startAnimating];
+    
+    UILabel *hintLabel = [[UILabel alloc] initWithFrame:
+                          CGRectMake(0,
+                                     CGRectGetHeight(backgroundView.bounds) * 0.6,
+                                     CGRectGetWidth(backgroundView.bounds),
+                                     CGRectGetHeight(backgroundView.bounds) * 0.4)];
+    hintLabel.text = @"Loading...";
+    hintLabel.textAlignment = NSTextAlignmentCenter;
+    hintLabel.textColor = [UIColor lightGrayColor];
+    [backgroundView addSubview:hintLabel];
+    [hintLabel release];
+    
+    // reload data
+    
+    // after reload date ,stop animation
+}
+
 
 @end

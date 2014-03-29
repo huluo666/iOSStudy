@@ -41,3 +41,11 @@ fprintf(stderr, "-------\n");                                               \
 #define kSigninURL @"http://192.243.119.92/lighterReader/signin.php"
 
 #endif
+
+// mainUI
+#ifndef LighterReader_DDMainUIViewController_m
+#define LighterReader_DDMainUIViewController_m
+
+#define kReloadButtonTag 200
+
+#endif
