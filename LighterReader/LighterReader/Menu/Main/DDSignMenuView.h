@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DDMenuView : UITableView
+@interface DDSignMenuView : UITableView
 
 // swip close self
 - (void)swipLeftAction;

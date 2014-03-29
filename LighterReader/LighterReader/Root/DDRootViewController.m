@@ -8,9 +8,12 @@
 
 #import "DDRootViewController.h"
 #import "DDMainUIViewController.h"
-#import "DDMenuView.h"
+#import "DDSignMenuView.h"
+#import "DDMainUINaviController.h"
 
-@interface DDRootViewController () <UIGestureRecognizerDelegate>
+@interface DDRootViewController () <
+    UIGestureRecognizerDelegate
+>
 
 @property (retain, nonatomic) UIPanGestureRecognizer *panGesture;
 @property (assign, nonatomic, getter = isMenuShow) BOOL menuShow;
@@ -50,16 +53,12 @@
     mainUIVC.handleMenuBarItemAction = ^{
         [self processMenu];
     };
-    UINavigationController *navi = [[UINavigationController alloc]
+    DDMainUINaviController *navi = [[DDMainUINaviController alloc]
                                     initWithRootViewController:mainUIVC];
     [mainUIVC release];
-    navi.navigationBar.barTintColor = [UIColor whiteColor];
-    navi.navigationBar.tintColor = [UIColor lightGrayColor];
-
     [self addChildViewController:navi];
-    [navi release];
-    
     [self.view addSubview:navi.view];
+    [navi release];
     
     // init background view
     _backgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -87,7 +86,7 @@
 - (void)processMenu
 {
     // init
-    __block DDMenuView *menu = [[DDMenuView alloc] init];
+    __block DDSignMenuView *menu = [[DDSignMenuView alloc] initWithFrame:CGRectZero];
     menu.tag = kMenuViewTag;
     menu.center = CGPointMake(-2 * CGRectGetMidX(self.view.frame),
                               CGRectGetMidY(self.view.frame) + 10);
@@ -134,11 +133,31 @@
     CGPoint point = [touch locationInView:_backgroundView];
     if (point.x > CGRectGetWidth(self.view.bounds) - 40) {
         // close menu
-        DDMenuView *menu = (DDMenuView *)[self.view viewWithTag:kMenuViewTag];
+        DDSignMenuView *menu = (DDSignMenuView *)[self.view viewWithTag:kMenuViewTag];
         [menu swipLeftAction];
     }
-
 }
 
+//#pragma mark - <UITableViewDataSource>
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return 4;
+//}
+//
+//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    static NSString *cellIdentifier = @"menuCellIdentifier";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+//    if (!cell) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+//                                      reuseIdentifier:cellIdentifier];
+//        
+//    }
+//    return cell;
+//}
+//
+//
+//#pragma mark - <UITableViewDelegate>
 
 @end
