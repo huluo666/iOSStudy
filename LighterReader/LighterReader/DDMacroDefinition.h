@@ -49,3 +49,12 @@ fprintf(stderr, "-------\n");                                               \
 #define kReloadButtonTag 200
 
 #endif
+
+// mainUINavi
+#ifndef LighterReader_DDMainUINaviController_m
+#define LighterReader_DDMainUINaviController_m
+
+#define kClearViewTag 210
+#define kSettingViewTag 211
+
+#endif

@@ -9,6 +9,7 @@
 #import "DDMainUIViewController.h"
 #import "DDHomeView.h"
 #import "Reachability.h"
+#import "DDMainUINaviController.h"
 
 @interface DDMainUIViewController ()
 
@@ -26,6 +27,11 @@
 - (void)reloadAction:(UIButton *)sender;
 // reload data with animation
 - (void)reloadData;
+
+
+@property (retain, nonatomic) UIView *clearView;
+@property (retain, nonatomic) UIView *listView;
+
 
 @end
 
@@ -144,7 +150,10 @@
 - (void)searchBarItemAction
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    DDMainUINaviController *mainUINavi = (DDMainUINaviController *)self.navigationController;
+    [mainUINavi showSettingView];
 }
+
 
 - (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap {
     
@@ -213,7 +222,7 @@
             [reloadButton removeFromSuperview];
             
             // start reload data, start progress animation
-            [self reloadIndicatorAnimation];
+            [self reloadData];
         }];
     }
     NSLog(@"%@", NSStringFromSelector(_cmd));

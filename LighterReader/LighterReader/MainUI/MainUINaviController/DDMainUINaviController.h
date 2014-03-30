@@ -10,4 +10,7 @@
 
 @interface DDMainUINaviController : UINavigationController <UIViewControllerTransitioningDelegate>
 
+// show list style setting view
+- (void)showSettingView;
+
 @end
