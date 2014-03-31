@@ -21,7 +21,7 @@
     self.rootVC = rootVC;
     self.window.rootViewController = rootVC;
     [rootVC release];
-    
+
     // navi bar style
     [UIBarButtonItem appearance];
     

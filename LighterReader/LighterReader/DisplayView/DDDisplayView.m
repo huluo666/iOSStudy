@@ -92,13 +92,12 @@
         [_upView release];
         _upView = [upView retain];
         
-        CGRect screenBounds = [[UIScreen mainScreen] bounds];
-        _upView.center = CGPointMake(CGRectGetMidX(screenBounds),
-                                     CGRectGetMidY(screenBounds) -
-                                     32 -
-                                     CGRectGetHeight(_upView.bounds));
-        NSLog(@"%@", _upView);
     }
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    _upView.center = CGPointMake(CGRectGetMidX(screenBounds),
+                                 CGRectGetMidY(screenBounds) -
+                                 32 -
+                                 CGRectGetHeight(_upView.bounds));
 }
 
 

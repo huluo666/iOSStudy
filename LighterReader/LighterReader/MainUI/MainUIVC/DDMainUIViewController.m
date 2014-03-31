@@ -340,34 +340,72 @@
 //        willAppearView.upView = nil;
 //    };
     
-    __block DDDisplayView *willAppearView = [[DDDisplayView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    // 2
+    __block DDDisplayView *willAppearView = [[DDDisplayView alloc]
+                                             initWithFrame:CGRectZero
+                                             style:UITableViewStylePlain];
     willAppearView.backgroundColor = [UIColor orangeColor];
     [self.view addSubview:willAppearView];
     [willAppearView release];
     
-    __block DDDisplayView *appearedView = [[DDDisplayView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    // 1
+    __block DDDisplayView *appearedView = [[DDDisplayView alloc]
+                                           initWithFrame:CGRectZero
+                                           style:UITableViewStylePlain];
     appearedView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:appearedView];
     [appearedView release];
     
     CGPoint center = appearedView.center;
     
+    // 1 already slip up, set 2's up is 1
     appearedView.upSlipCompletionHandler = ^{
         willAppearView.upView = appearedView;
-        NSLog(@"%@", appearedView);
+        [self.view sendSubviewToBack:willAppearView];
     };
+    
+    // 2 wanna slip up, set 1 behind 2
     willAppearView.willUpSliphandler = ^{
         // send appearedView to back
         appearedView.center = center;
         [self.view sendSubviewToBack:appearedView];
     };
-    willAppearView.selfIdentityCompletionHandler = ^(){
-        NSLog(@"%@", self.view.subviews);
-        appearedView.frame = CGRectMake(0, -504, 320, 504);
+    
+    // 2 canceled slip up, 1 rebecame 2's up view
+    willAppearView.selfIdentityCompletionHandler = ^{
         willAppearView.upView = appearedView;
-        [self.view bringSubviewToFront:appearedView];
+        [self.view sendSubviewToBack:willAppearView];
     };
-
+    
+    // 2 slip up happend, 1 show aigin, 2 become 1's up view
+    willAppearView.upSlipCompletionHandler = ^{
+        appearedView.upView = willAppearView;
+        [self.view sendSubviewToBack:appearedView];
+    };
+    
+    // 1 wanna slip up, set 2 behind 1
+    appearedView.willUpSliphandler = ^{
+        willAppearView.center = center;
+        [self.view sendSubviewToBack:willAppearView];
+    };
+    
+    // 1 canceled slip up, 2 rebecame 1's up view
+    appearedView.selfIdentityCompletionHandler = ^{
+        appearedView.upView = willAppearView;
+        [self.view sendSubviewToBack:appearedView];
+    };
+    
+    // 2 slip up happend
+    willAppearView.downSlipCompletionHandler = ^{
+        appearedView.upView = willAppearView;
+        [self.view sendSubviewToBack:appearedView];
+    };
+    
+    // 1 slip up happend
+    appearedView.downSlipCompletionHandler = ^{
+        willAppearView.upView = appearedView;
+        [self.view sendSubviewToBack:willAppearView];
+    };
 }
 
 #pragma mark - <UITableViewDataSource>
