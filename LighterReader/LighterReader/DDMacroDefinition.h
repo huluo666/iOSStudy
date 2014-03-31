@@ -11,6 +11,8 @@
 
 #define DDImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NAME ofType:@"png"]]
 #define DDBounds [[UIScreen mainScreen] bounds]
+#define kUserDefaults [NSUserDefaults standardUserDefaults]
+#define kRandomColor [UIColor colorWithRed:arc4random() % 128 / 255.0f green:arc4random() % 64 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.000]
 
 #endif
 
@@ -56,5 +58,6 @@ fprintf(stderr, "-------\n");                                               \
 
 #define kClearViewTag 210
 #define kSettingViewTag 211
+#define kFloaterAdjustDislplayButtonTag 250
 
 #endif

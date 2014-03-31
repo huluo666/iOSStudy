@@ -15,6 +15,11 @@
     self = [super initWithFrame:frame];
     if (self) {
         // ....
+        UIImage *image = DDImageWithName(@"mobile-action-poster");
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        imageView.frame = CGRectMake(0, 0, 100, 100);
+        [self addSubview:imageView];
+        [imageView release];
     }
     return self;
 }

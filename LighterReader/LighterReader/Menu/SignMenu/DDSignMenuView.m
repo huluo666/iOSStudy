@@ -162,12 +162,12 @@
         DDMainUINaviController *mainVC = (DDMainUINaviController *)navi;
         signVC.transitioningDelegate = mainVC;
         [mainVC presentViewController:signVC animated:YES completion:nil];
-        [signVC release];
     }
     if (4 == index) {
         // 注册
         signVC.signtype = DDSignTypeSignup;
     }
+    [signVC release];
     
     [self swipLeftAction];
 }

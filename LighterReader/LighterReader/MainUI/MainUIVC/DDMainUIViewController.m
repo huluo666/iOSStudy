@@ -10,8 +10,9 @@
 #import "DDHomeView.h"
 #import "Reachability.h"
 #import "DDMainUINaviController.h"
+#import "DDDisplayView.h"
 
-@interface DDMainUIViewController ()
+@interface DDMainUIViewController () <UITableViewDataSource>
 
 @property (nonatomic, retain) NSString *titleViewTitle;
 
@@ -27,6 +28,9 @@
 - (void)reloadAction:(UIButton *)sender;
 // reload data with animation
 - (void)reloadData;
+
+// load display views
+- (void)loadDisplayViews;
 
 
 @property (retain, nonatomic) UIView *clearView;
@@ -88,9 +92,10 @@
 {
     [super viewDidLoad];
     // load home page
-    [self loadHomeView];
-    
+//    [self loadHomeView];
     [self setTitleViewTitle:@"All/Home"];
+    // load display views
+    [self loadDisplayViews];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -136,7 +141,7 @@
     [self setTitleViewTitle:@"All/Home"];
 }
 
-#pragma mark - Actions
+#pragma mark - Bar item Actions
 
 - (void)menuBarItemAction
 {
@@ -151,9 +156,40 @@
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
     DDMainUINaviController *mainUINavi = (DDMainUINaviController *)self.navigationController;
-    [mainUINavi showSettingView];
+    [mainUINavi showFloaterAdjustView];
+    
+    /* blocks action */
+    // set display style, notify display view reload data
+    mainUINavi.titleOnlyView = ^{
+        
+    };
+    mainUINavi.listView = ^{
+    
+    };
+    mainUINavi.magazineView = ^{
+    
+    };
+    mainUINavi.cardsView = ^{
+    
+    };
+    mainUINavi.refresh = ^{
+    
+    };
+    mainUINavi.markCategroyAsRead = ^{
+    
+    };
+    mainUINavi.toggleOldestFirst = ^{
+    
+    };
+    mainUINavi.toggleShowStoriesPolicy = ^{
+    
+    };
+    mainUINavi.openWebpageDirectly = ^{
+    
+    };
 }
 
+#pragma mark - title view tap action
 
 - (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap {
     
@@ -228,7 +264,8 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
-// reload data with animation
+#pragma mark - reload data with animation
+
 - (void)reloadData {
 
     // animation
@@ -266,6 +303,88 @@
     // reload data
     
     // after reload date ,stop animation
+}
+
+#pragma mark - load display views
+
+- (void)loadDisplayViews {
+
+//    __block DDDisplayView *willAppearView = [[DDDisplayView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+//    willAppearView.backgroundColor = [UIColor orangeColor];
+//    [self.view addSubview:willAppearView];
+//    [willAppearView release];
+//    
+//    __block DDDisplayView *appearedView = [[DDDisplayView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+//    appearedView.backgroundColor = [UIColor greenColor];
+//
+//    [self.view addSubview:appearedView];
+//    [appearedView release];
+//    
+//    DDDisplayView *upView = [[DDDisplayView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+//    NSLog(@"center.y = %f", upView.center.y);
+//    upView.center = CGPointMake(upView.center.x, upView.center.y - CGRectGetHeight(upView.bounds));
+//    upView.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:upView];
+//    [upView release];
+//    NSLog(@"%@", upView);
+//    
+//    willAppearView.upView = upView;
+//    
+//    appearedView.upSlipCompletionHandler = ^{
+//        appearedView.upView = nil;
+//        willAppearView.upView = appearedView;
+//    };
+//    
+//    willAppearView.downSlipCompletionHandler = ^{
+//        appearedView.upView = upView;
+//        willAppearView.upView = nil;
+//    };
+    
+    __block DDDisplayView *willAppearView = [[DDDisplayView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    willAppearView.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:willAppearView];
+    [willAppearView release];
+    
+    __block DDDisplayView *appearedView = [[DDDisplayView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    appearedView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:appearedView];
+    [appearedView release];
+    
+    CGPoint center = appearedView.center;
+    
+    appearedView.upSlipCompletionHandler = ^{
+        willAppearView.upView = appearedView;
+        NSLog(@"%@", appearedView);
+    };
+    willAppearView.willUpSliphandler = ^{
+        // send appearedView to back
+        appearedView.center = center;
+        [self.view sendSubviewToBack:appearedView];
+    };
+    willAppearView.selfIdentityCompletionHandler = ^(){
+        NSLog(@"%@", self.view.subviews);
+        appearedView.frame = CGRectMake(0, -504, 320, 504);
+        willAppearView.upView = appearedView;
+        [self.view bringSubviewToFront:appearedView];
+    };
+
+}
+
+#pragma mark - <UITableViewDataSource>
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 12;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *displayCellIdentifier = @"displayCellIdentifier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:displayCellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                      reuseIdentifier:displayCellIdentifier];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
+    return cell;
 }
 
 

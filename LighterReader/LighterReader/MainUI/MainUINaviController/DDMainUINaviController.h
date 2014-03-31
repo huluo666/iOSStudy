@@ -10,7 +10,19 @@
 
 @interface DDMainUINaviController : UINavigationController <UIViewControllerTransitioningDelegate>
 
-// show list style setting view
-- (void)showSettingView;
+// Display floater adjust view
+- (void)showFloaterAdjustView;
+
+// floater adjust action blocks
+@property (copy, nonatomic) void (^titleOnlyView)(void);
+@property (copy, nonatomic) void (^listView)(void);
+@property (copy, nonatomic) void (^magazineView)(void);
+@property (copy, nonatomic) void (^cardsView)(void);
+
+@property (copy, nonatomic) void (^refresh)(void);
+@property (copy, nonatomic) void (^markCategroyAsRead)(void);
+@property (copy, nonatomic) void (^toggleOldestFirst)(void);
+@property (copy, nonatomic) void (^toggleShowStoriesPolicy)(void);
+@property (copy, nonatomic) void (^openWebpageDirectly)(void);
 
 @end

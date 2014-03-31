@@ -18,6 +18,7 @@
 
     // root view controller
     DDRootViewController *rootVC = [[DDRootViewController alloc] init];
+    self.rootVC = rootVC;
     self.window.rootViewController = rootVC;
     [rootVC release];
     

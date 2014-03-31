@@ -18,6 +18,7 @@
 		9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E25318E69E89005B0EF6 /* DDPresentAnimation.m */; };
 		9511E25818E69EA0005B0EF6 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E25718E69EA0005B0EF6 /* DDRootViewController.m */; };
 		95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95297D2918E3F4950051CE67 /* DDHomeView.m */; };
+		9552F18E18E93DBA00569817 /* DDDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9552F18D18E93DBA00569817 /* DDDisplayView.m */; };
 		9589961F18E2BB850002EAF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589961E18E2BB850002EAF1 /* Foundation.framework */; };
 		9589962118E2BB850002EAF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962018E2BB850002EAF1 /* CoreGraphics.framework */; };
 		9589962318E2BB850002EAF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962218E2BB850002EAF1 /* UIKit.framework */; };
@@ -67,6 +68,8 @@
 		9511E25718E69EA0005B0EF6 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
 		95297D2818E3F4950051CE67 /* DDHomeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeView.h; sourceTree = "<group>"; };
 		95297D2918E3F4950051CE67 /* DDHomeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeView.m; sourceTree = "<group>"; };
+		9552F18C18E93DBA00569817 /* DDDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDisplayView.h; sourceTree = "<group>"; };
+		9552F18D18E93DBA00569817 /* DDDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDisplayView.m; sourceTree = "<group>"; };
 		9589961B18E2BB850002EAF1 /* LighterReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LighterReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9589961E18E2BB850002EAF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9589962018E2BB850002EAF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -210,6 +213,15 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		9552F18B18E93D9F00569817 /* DisplayView */ = {
+			isa = PBXGroup;
+			children = (
+				9552F18C18E93DBA00569817 /* DDDisplayView.h */,
+				9552F18D18E93DBA00569817 /* DDDisplayView.m */,
+			);
+			path = DisplayView;
+			sourceTree = "<group>";
+		};
 		9589961218E2BB850002EAF1 = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +256,7 @@
 		9589962418E2BB850002EAF1 /* LighterReader */ = {
 			isa = PBXGroup;
 			children = (
+				9552F18B18E93D9F00569817 /* DisplayView */,
 				95297D2718E3F4820051CE67 /* Home */,
 				95297D2318E3F46E0051CE67 /* Menu */,
 				95AE911E18E3B0CB00181C39 /* MainUI */,
@@ -426,6 +439,7 @@
 				9511E24618E66E59005B0EF6 /* DDNaviMenuView.m in Sources */,
 				9511E25418E69E89005B0EF6 /* DDDismissAnimation.m in Sources */,
 				9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */,
+				9552F18E18E93DBA00569817 /* DDDisplayView.m in Sources */,
 				95297D2A18E3F4950051CE67 /* DDHomeView.m in Sources */,
 				06724FCD18E717A400DA9A2F /* Reachability.m in Sources */,
 				9511E25818E69EA0005B0EF6 /* DDRootViewController.m in Sources */,
@@ -559,7 +573,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LighterReader/LighterReader-Prefix.pch";
 				INFOPLIST_FILE = "LighterReader/LighterReader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -572,7 +588,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LighterReader/LighterReader-Prefix.pch";
 				INFOPLIST_FILE = "LighterReader/LighterReader-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

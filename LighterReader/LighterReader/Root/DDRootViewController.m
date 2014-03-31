@@ -11,12 +11,9 @@
 #import "DDSignMenuView.h"
 #import "DDMainUINaviController.h"
 #import "DDNaviMenuView.h"
+#import "DDAppDelegate.h"
+@interface DDRootViewController ()
 
-@interface DDRootViewController () <
-    UIGestureRecognizerDelegate
->
-
-@property (retain, nonatomic) UIPanGestureRecognizer *panGesture;
 @property (assign, nonatomic, getter = isMenuShow) BOOL menuShow;
 @property (retain, nonatomic) UIView *backgroundView;
 
@@ -26,7 +23,7 @@
 
 - (void)dealloc
 {
-    [_panGesture release];
+    [_rightSwipGesture release];
     [_backgroundView release];
     [super dealloc];
 }
@@ -43,12 +40,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    /* very import */
+    DDAppDelegate *ddDelegate = [[UIApplication sharedApplication] delegate];
+    ddDelegate.rootVC = self;
     
-    _panGesture = [[UIPanGestureRecognizer alloc]
-                   initWithTarget:self
-                   action:@selector(panGestureAction:)];
-    _panGesture.delegate = self;
-    [self.view addGestureRecognizer:_panGesture];
+    _rightSwipGesture = [[UISwipeGestureRecognizer  alloc]
+                     initWithTarget:self
+                     action:@selector(rightSwipGestureAction:)];
+    _rightSwipGesture.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:_rightSwipGesture];
 
     // add main UI view controller
     DDMainUIViewController *mainUIVC = [[DDMainUIViewController alloc] init];
@@ -67,6 +68,8 @@
     _backgroundView.alpha = 0;
     _backgroundView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_backgroundView];
+    
+
 }
 
 #pragma mark - private messages
@@ -76,24 +79,23 @@
     NSLog(@"%@", NSStringFromSelector(_cmd));
 }
 
-- (void)panGestureAction:(UIPanGestureRecognizer *)panGesture
-{
-    NSLog(@"%@", NSStringFromSelector(_cmd));
-    
-    if ([panGesture locationInView:self.view].x < 30
-        && _menuShow == NO) {
-        NSLog(@"pan gesture action should execute");
+- (void)rightSwipGestureAction:(UISwipeGestureRecognizer *)rightSwipGesture {
+
+     NSLog(@"%@", NSStringFromSelector(_cmd));
+    if ([rightSwipGesture locationInView:self.view].x < 30 &&
+        _menuShow == NO) {
         [self processMenu];
     }
 }
 
 - (void)processMenu {
     
-    _login = YES;
+//    _login = YES;
     if (_login) {
         /* show navi menu */
         // init
-        __block DDNaviMenuView *naviMenuView = [[DDNaviMenuView alloc] initWithFrame:CGRectZero];
+        __block DDNaviMenuView *naviMenuView = [[DDNaviMenuView alloc]
+                                                initWithFrame:CGRectZero];
         naviMenuView.tag = kNaviMenuViewTag;
         naviMenuView.center = CGPointMake(-2 * CGRectGetMidX(self.view.frame),
                                   CGRectGetMidY(self.view.frame) + 10);
@@ -105,7 +107,7 @@
             _backgroundView.alpha = 0.5;
         } completion:^(BOOL finished) {
             _menuShow = YES;
-            [self.view removeGestureRecognizer:_panGesture];
+            [self.view removeGestureRecognizer:_rightSwipGesture];
         }];
         
         // disappear
@@ -117,7 +119,7 @@
                     _backgroundView.alpha = 0;
                 } completion:^(BOOL finished) {
                     _menuShow = NO;
-                    [self.view addGestureRecognizer:_panGesture];
+                    [self.view addGestureRecognizer:_rightSwipGesture];
                     [naviMenuView removeFromSuperview];
                 }];
             }
@@ -128,7 +130,8 @@
     } else {
         /* show sign */
         // init
-        __block DDSignMenuView *signMenuView = [[DDSignMenuView alloc] initWithFrame:CGRectZero];
+        __block DDSignMenuView *signMenuView = [[DDSignMenuView alloc]
+                                                initWithFrame:CGRectZero];
         signMenuView.tag = kSignMenuViewTag;
         signMenuView.center = CGPointMake(-2 * CGRectGetMidX(self.view.frame),
                                   CGRectGetMidY(self.view.frame) + 10);
@@ -142,7 +145,7 @@
             
          } completion:^(BOOL finished) {
              _menuShow = YES;
-            [self.view removeGestureRecognizer:_panGesture];
+            [self.view removeGestureRecognizer:_rightSwipGesture];
          }];
         
         // disappear
@@ -154,7 +157,7 @@
                     _backgroundView.alpha = 0;
                 } completion:^(BOOL finished) {
                      _menuShow = NO;
-                     [self.view addGestureRecognizer:_panGesture];
+                     [self.view addGestureRecognizer:_rightSwipGesture];
                      [signMenuView removeFromSuperview];
                 }];
             }

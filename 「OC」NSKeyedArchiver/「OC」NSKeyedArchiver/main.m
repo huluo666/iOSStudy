@@ -17,7 +17,7 @@ int main(int argc, const char * argv[])
     @autoreleasepool {
         
 #pragma mark 归档数据
-        
+
         // 创建字典并存值
         NSDictionary *dictionary = [NSDictionary dictionaryWithObjectsAndKeys:@"Lucy", @"name",
                                     @"22", @"age", nil];

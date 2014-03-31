@@ -182,7 +182,9 @@
     if (DDSignTypeSignup == _signtype) {
         /* singn up */
         // start http request insert user infos
-        [DDHTTPManager startAsynchronousRequestWithURLString:kSignupURL params:postDict completionHandler:^(BOOL success, id content) {
+        [DDHTTPManager startAsynchronousRequestWithURLString:kSignupURL
+                                                      params:postDict
+                                           completionHandler:^(BOOL success, id content) {
             if (success) {
                 NSString *successMessage = [NSString stringWithFormat:@"%@, please sing in!", content];
                 [self alertWithMessage:successMessage];
@@ -197,7 +199,9 @@
     } else {
         /* sign in */
         // start http request ask sign in
-        [DDHTTPManager startAsynchronousRequestWithURLString:kSigninURL params:postDict completionHandler:^(BOOL success, id content) {
+        [DDHTTPManager startAsynchronousRequestWithURLString:kSigninURL
+                                                      params:postDict
+                                           completionHandler:^(BOOL success, id content) {
             if (!success) {
                 // failure
                 NSString *failureMessage = [NSString stringWithFormat:@"sign in failure with `%@`", content];
