@@ -97,6 +97,7 @@
                                      CGRectGetMidY(screenBounds) -
                                      32 -
                                      CGRectGetHeight(_upView.bounds));
+        NSLog(@"%@", _upView);
     }
 }
 
