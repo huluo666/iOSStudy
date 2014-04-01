@@ -316,7 +316,6 @@
                                              initWithFrame:CGRectZero
                                              style:UITableViewStylePlain];
     willAppearView.backgroundColor = [UIColor orangeColor];
-    willAppearView.tag = 501;
     [self.view addSubview:willAppearView];
     [willAppearView release];
     
@@ -326,7 +325,6 @@
                                            style:UITableViewStylePlain];
     appearedView.backgroundColor = [UIColor greenColor];
     [self.view addSubview:appearedView];
-    appearedView.tag = 502;
     [appearedView release];
     
     CGPoint center = appearedView.center;
@@ -381,13 +379,11 @@
     
     
     // 1 wanna slip up, set 2 behind 1
-    if (!self.isAnimationRunning) {
-        appearedView.willUpSliphandler = ^{
-            _animationRunning = YES;
-            willAppearView.center = center;
-            [self.view sendSubviewToBack:willAppearView];
-        };
-    }
+    appearedView.willUpSliphandler = ^{
+        _animationRunning = YES;
+        willAppearView.center = center;
+        [self.view sendSubviewToBack:willAppearView];
+    };
     
     // 1 canceled slip up, 2 rebecame 1's up view
     appearedView.selfIdentityCompletionHandler = ^{
@@ -401,19 +397,15 @@
     appearedView.upSlipCompletionHandler = ^{
         willAppearView.upView = appearedView;
         [self.view sendSubviewToBack:willAppearView];
-        _animationRunning = NO;
     };
     
     // 2 wanna slip up, set 1 behind 2
-    if (!self.isAnimationRunning) {
-        willAppearView.willUpSliphandler = ^{
-            _animationRunning = YES;
-            // send appearedView to back
-            appearedView.center = center;
-            [self.view sendSubviewToBack:appearedView];
-        };
-    }
-
+    willAppearView.willUpSliphandler = ^{
+        // send appearedView to back
+        appearedView.center = center;
+        [self.view sendSubviewToBack:appearedView];
+    };
+    
     // 2 canceled slip up, 1 rebecame 2's up view
     willAppearView.selfIdentityCompletionHandler = ^{
         willAppearView.upView = appearedView;
@@ -425,10 +417,7 @@
     willAppearView.upSlipCompletionHandler = ^{
         appearedView.upView = willAppearView;
         [self.view sendSubviewToBack:appearedView];
-        _animationRunning = NO;
     };
-    
-    
     
     // 2 slip down happend
     willAppearView.downSlipCompletionHandler = ^{
@@ -440,14 +429,6 @@
     appearedView.downSlipCompletionHandler = ^{
         willAppearView.upView = appearedView;
         [self.view sendSubviewToBack:willAppearView];
-    };
-    
-    appearedView.upViewIdentityCompletionHandler = ^{
-        _animationRunning = NO;
-    };
-    
-    willAppearView.upViewIdentityCompletionHandler = ^{
-        _animationRunning = NO;
     };
 
     

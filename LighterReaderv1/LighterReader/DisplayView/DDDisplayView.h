@@ -16,7 +16,5 @@
 
 @property (copy, nonatomic) void (^willUpSliphandler)(void);
 @property (copy, nonatomic) void (^selfIdentityCompletionHandler)(void);
-@property (copy, nonatomic) void (^upViewIdentityCompletionHandler)(void);
-
 
 @end

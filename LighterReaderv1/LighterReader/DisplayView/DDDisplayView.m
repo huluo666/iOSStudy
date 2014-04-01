@@ -24,8 +24,6 @@
 // upView identity
 - (void)upViewTrantransformIdentity;
 
-@property (assign, nonatomic) BOOL flag;
-
 @end
 
 @implementation DDDisplayView
@@ -89,8 +87,6 @@
 #pragma mark - gesture action
 
 - (void)panGestureAction:(UIPanGestureRecognizer *)panGesture {
-    
-    NSLog(@"====%@",panGesture.view);
 
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     
@@ -114,7 +110,6 @@
             if (_willUpSliphandler) {
                 self.center = CGPointMake(startCenter.x, startCenter.y + translation.y);
                 _willUpSliphandler();
-                _flag = YES;
             }
         }
     }
@@ -123,51 +118,47 @@
     CGPoint velocity = [panGesture velocityInView:self];
     CGFloat magnitude = sqrtf((velocity.x * velocity.x) + (velocity.y * velocity.y));
     CGFloat slideMult = magnitude / 200;
+//    NSLog(@"slideMult = %f", slideMult);
     
-//    if (_flag) {
-//        _flag = NO;
-        // pan end
-        if (panGesture.state == UIGestureRecognizerStateEnded) {
-            
-            CGPoint translation = [panGesture translationInView:self];
-            startCenter = CGPointZero;
-            if (translation.y > 0) {
-                // down
-                if (self.upView.center.y < 0 && slideMult < 1) {
-                    
-                    [self upViewTrantransformIdentity];
-                } else {
-                    [self downTransformUpView];
-                }
+    // pan end
+    if (panGesture.state == UIGestureRecognizerStateEnded) {
+    
+        CGPoint translation = [panGesture translationInView:self];
+        startCenter = CGPointZero;
+        if (translation.y > 0) {
+            // down
+            if (self.upView.center.y < 0 && slideMult < 1) {
+                
+                [self upViewTrantransformIdentity];
             } else {
-                // up
-                if (self.center.y > 0 && slideMult < 1) {
-                    // transformIdentity
-                    [self trantransformIdentity];
-                } else {
-                    [self upTransformSelf];
-                }
+                [self downTransformUpView];
+            }
+        } else {
+            // up
+            if (self.center.y > 0 && slideMult < 1) {
+                // transformIdentity
+                [self trantransformIdentity];
+            } else {
+                [self upTransformSelf];
             }
         }
-//    }
-
+    }
 }
 
 #pragma mark -  transform
 
+static NSInteger count = 0;
+
 - (void)upTransformSelf {
     
-    if (!_flag) {
-        return;
-    }
     CGPoint center = self.center;
     [UIView animateWithDuration:0.3 animations:^{
         self.center = CGPointMake(center.x, center.y - CGRectGetHeight(self.frame));
     } completion:^(BOOL finished) {
         if (_upSlipCompletionHandler) {
             _upSlipCompletionHandler();
-            _flag = NO;
         }
+        NSLog(@"%ld", count++);
     }];
 }
 
@@ -190,6 +181,7 @@
                                   CGRectGetMidY(screenBounds) - 32);
     } completion:^(BOOL finished) {
         if (_selfIdentityCompletionHandler) {
+            NSLog(@"2");
             _selfIdentityCompletionHandler();
         }
     }];
@@ -198,14 +190,11 @@
 - (void)upViewTrantransformIdentity {
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     [UIView animateWithDuration:0.3 animations:^{
+        NSLog(@"333");
         _upView.center = CGPointMake(CGRectGetMidX(screenBounds),
                                      CGRectGetMidY(screenBounds) -
                                      32 -
                                      CGRectGetHeight(_upView.bounds));
-    } completion:^(BOOL finished) {
-        if (_upViewIdentityCompletionHandler) {
-            _upViewIdentityCompletionHandler();
-        }
     }];
 }
 
