@@ -1,6 +1,6 @@
 //
 //  DDFlipPageViewController.h
-//  「Demo」上下翻页
+//  「Demo」FlipPage
 //
 //  Created by 萧川 on 14-4-2.
 //  Copyright (c) 2014年 CUAN. All rights reserved.

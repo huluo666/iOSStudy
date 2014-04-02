@@ -1,6 +1,6 @@
 //
 //  DDFlipPageViewController.m
-//  「Demo」上下翻页
+//  「Demo」FlipPage
 //
 //  Created by 萧川 on 14-4-2.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
@@ -8,6 +8,8 @@
 
 #import "DDFlipPageViewController.h"
 #import "DDPageViewController.h"
+
+#define kAnimationDuration 0.2
 
 @interface DDFlipPageViewController ()
 
@@ -31,12 +33,12 @@
 - (void)appearedPageViewTransformToUp;
 
 // upview go to appeaerd view background
-- (void)sendUpPageViewToAppearedLocationBack;
+- (BOOL)sendUpPageViewToAppearedLocationBack;
 // cancel sendUpPageViewToAppearedLocationBack
 - (void)sendUpPageViewToAppearedLocationBackCanceled;
 
 // prepared page view to up view location front
-- (void)bringPreparedPageViewToUpLocationFront;
+- (BOOL)bringPreparedPageViewToUpLocationFront;
 // cancel bringPreparedPageViewToUpLocationFront
 - (void)bringPreparedPageViewToUpLocationFrontCanceled;
 
@@ -92,6 +94,12 @@
         [_pageViews addObject:pageVC.view];
         
         pageVC.view.tag = 11 + i;
+        
+        if (0 == i) {
+            pageVC.view.backgroundColor = [UIColor greenColor];
+        } else {
+            pageVC.view.backgroundColor = [UIColor redColor];
+        }
     }
     
     DDPageViewController *upPageVC = [[DDPageViewController alloc] init];
@@ -102,6 +110,7 @@
     [self.view addSubview:upPageVC.view];
     [upPageVC didMoveToParentViewController:self];
     [_pageViews addObject:upPageVC.view];
+    upPageVC.view.backgroundColor = [UIColor yellowColor];
 
     NSLog(@"%@", self.childViewControllers);
     NSLog(@"%@", self.view.subviews);
@@ -128,23 +137,23 @@
             
             // pan changed
             CGPoint translation = [panGesture translationInView:self.view];
-            NSLog(@"%f", translation.y);
+
             if (translation.y > 0) {
                 // will silp down
-                [self bringPreparedPageViewToUpLocationFront];
-                
-                // slip down
-                UIView *upPageView = _pageViews[2];
-                upPageView.center = CGPointMake(_pageViewCenterPointer.x,
-                                                _upPageViewCenterPointer.y + translation.y);
+                if ([self bringPreparedPageViewToUpLocationFront]) {
+                    // slip down
+                    UIView *upPageView = _pageViews[2];
+                    upPageView.center = CGPointMake(_pageViewCenterPointer.x,
+                                                    _upPageViewCenterPointer.y + translation.y);
+                }
             } else {
                 // will slip up
-                [self sendUpPageViewToAppearedLocationBack];
-                
-                // slip up
-                UIView *pageView = _pageViews[1];
-                pageView.center = CGPointMake(_pageViewCenterPointer.x,
-                                              _pageViewCenterPointer.y + translation.y);
+                if ([self sendUpPageViewToAppearedLocationBack]) {
+                    // slip up
+                    UIView *pageView = _pageViews[1];
+                    pageView.center = CGPointMake(_pageViewCenterPointer.x,
+                                                  _pageViewCenterPointer.y + translation.y);
+                }
             }
         }
             break;
@@ -153,6 +162,7 @@
             
             // pan end
             CGPoint translation = [panGesture translationInView:self.view];
+            NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!translation.y = %f", translation.y);
 
             // slip down
             if (translation.y > 0) {
@@ -198,10 +208,9 @@
     self.processing = YES;
     
     UIView *upPageView = _pageViews[2];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:kAnimationDuration animations:^{
         upPageView.center = _upPageViewCenterPointer;
     } completion:^(BOOL finished) {
-        self.processing = NO;
         [self bringPreparedPageViewToUpLocationFrontCanceled];
     }];
 }
@@ -214,18 +223,18 @@
     self.processing = YES;
     
     UIView *upPageView = _pageViews[2];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:kAnimationDuration animations:^{
         upPageView.center = _pageViewCenterPointer;
     } completion:^(BOOL finished) {
         // adjust order
         UIView *needAdjustView = [_pageViews firstObject];
         [_pageViews removeObject:needAdjustView];
         [_pageViews addObject:needAdjustView];
-    
-        self.processing = NO;
         
         NSLog(@"\n_pageViews =\n %@", _pageViews);
         NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
+        
+        self.processing = NO;
     }];
 }
 
@@ -237,10 +246,9 @@
     self.processing = YES;
     
     UIView *appearedPageView = _pageViews[1];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:kAnimationDuration animations:^{
         appearedPageView.center = _pageViewCenterPointer;
     } completion:^(BOOL finished) {
-        self.processing = NO;
         [self sendUpPageViewToAppearedLocationBackCanceled];
     }];
 }
@@ -253,84 +261,87 @@
     self.processing = YES;
  
     UIView *appearedPageView = _pageViews[1];
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:kAnimationDuration animations:^{
         appearedPageView.center = _upPageViewCenterPointer;
     } completion:^(BOOL finished) {
         // adjust order
         UIView *needAdjustView = [_pageViews lastObject];
         [_pageViews removeObject:needAdjustView];
         [_pageViews insertObject:needAdjustView atIndex:0];
-        
-        self.processing = NO;
+    
         NSLog(@"22222");
         NSLog(@"\n_pageViews =\n %@", _pageViews);
         NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
-        NSLog(@"完成");
+        
+        self.processing = NO;
     }];
 }
 
-- (void)sendUpPageViewToAppearedLocationBack {
+- (BOOL)sendUpPageViewToAppearedLocationBack {
+
+    BOOL invoke = NO;
     
-    self.processing = YES;
-    NSLog(@"1111");
-    UIView *upPageView = _pageViews[2];
-    if (upPageView.center.y != _pageViewCenterPointer.y) {
-        upPageView.center = _pageViewCenterPointer;
-        [self.view sendSubviewToBack:upPageView];
-        
-        NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
-        NSLog(@"准备");
+    if (self.isProcessing) {
+        return invoke;
     }
+    self.processing = YES;
+    
+    UIView *upPageView = _pageViews[2];
+
+    // this few statements will called repeatedly
+    upPageView.center = _pageViewCenterPointer;
+    [self.view sendSubviewToBack:upPageView];
+    NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
+    NSLog(@"准备");
+    invoke = YES;
     
     self.processing = NO;
+    return invoke;
 }
 
 - (void)sendUpPageViewToAppearedLocationBackCanceled {
-    
-    if (self.isProcessing) {
-        return;
-    }
-    self.processing = YES;
-    
+
     UIView *upPageView = _pageViews[2];
-    if (upPageView.center.y != _upPageViewCenterPointer.y) {
+//    if (upPageView.center.y != _upPageViewCenterPointer.y) {
         upPageView.center = _upPageViewCenterPointer;
         [self.view bringSubviewToFront:upPageView];
         
         NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
-    }
+//    }
 
     self.processing = NO;
 }
 
-- (void)bringPreparedPageViewToUpLocationFront {
-    
+- (BOOL)bringPreparedPageViewToUpLocationFront {
+
+    BOOL invoke = NO;
+    if (self.isProcessing) {
+        return invoke;
+    }
     self.processing = YES;
 
+    // this few statements will called repeatedly
     UIView *prepatedPageView =  _pageViews[0];
-    if (prepatedPageView.center.y != _upPageViewCenterPointer.y) {
-        prepatedPageView.center = _upPageViewCenterPointer;
-        [self.view bringSubviewToFront:prepatedPageView];
-        
-        NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
-    }
+    prepatedPageView.center = _upPageViewCenterPointer;
+    [self.view bringSubviewToFront:prepatedPageView];
+    
+    NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
+    invoke = YES;
+
     self.processing = NO;
+    
+    return invoke;
 }
 
 - (void)bringPreparedPageViewToUpLocationFrontCanceled {
-
-    if (self.isProcessing) {
-        return;
-    }
-    self.processing = YES;
     
     UIView *prepatedPageView =  _pageViews[0];
-    if (prepatedPageView.center.y != _pageViewCenterPointer.y) {
+//    if (prepatedPageView.center.y != _pageViewCenterPointer.y) {
         prepatedPageView.center = _pageViewCenterPointer;
         [self.view sendSubviewToBack:prepatedPageView];
         
         NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
-    }
+//    }
     self.processing = NO;
 }
 
