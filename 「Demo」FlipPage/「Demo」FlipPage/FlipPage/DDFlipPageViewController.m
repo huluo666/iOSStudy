@@ -162,7 +162,6 @@
             
             // pan end
             CGPoint translation = [panGesture translationInView:self.view];
-            NSLog(@"!!!!!!!!!!!!!!!!!!!!!!!!translation.y = %f", translation.y);
 
             // slip down
             if (translation.y > 0) {

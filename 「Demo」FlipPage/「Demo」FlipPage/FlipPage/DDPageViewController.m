@@ -10,6 +10,9 @@
 
 #define kRandomColor [UIColor colorWithRed:arc4random() % 128 / 255.0f green:arc4random() % 64 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.000]
 
+#define UIDeviceOrientationIsPortrait(orientation)  ((orientation) == UIDeviceOrientationPortrait || (orientation) == UIDeviceOrientationPortraitUpsideDown)
+#define UIDeviceOrientationIsLandscape(orientation) ((orientation) == UIDeviceOrientationLandscapeLeft || (orientation) == UIDeviceOrientationLandscapeRight)
+
 static NSString *cellIdentifier = @"Cell";
 
 @interface DDPageViewController ()
@@ -40,6 +43,20 @@ static NSString *cellIdentifier = @"Cell";
     self.view.bounds = pageViewBounds;
     self.tableView.frame = self.view.bounds;
     self.tableView.backgroundColor = kRandomColor;
+    // rowHeight
+
+    CGFloat rowHeight = 44;
+    CGFloat height = CGRectGetHeight(screenBounds);
+    if (480 == height) {
+        rowHeight = 83.2;
+    } else if (568 == height) {
+        rowHeight = 84;
+    } else if (1024 == height) {
+        rowHeight = 80;
+    }
+    
+    self.tableView.rowHeight = rowHeight;
+    NSLog(@"%f", screenBounds.size.height);
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
     
@@ -65,7 +82,18 @@ static NSString *cellIdentifier = @"Cell";
 //    }
 //    return count;
     
-    return 11;
+    NSInteger count = 0;
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    CGFloat height = CGRectGetHeight(screenBounds);
+    if (480 == height) {
+        count = 5;
+    } else if (568 == height) {
+        count = 6;
+    } else if (1024 == height) {
+        count = 12;
+    }
+    
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,8 +101,9 @@ static NSString *cellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.backgroundColor = kRandomColor;
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"测试数据内容 %ld", indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"测试数据内容 %d", indexPath.row];
     
     return cell;
 }
@@ -129,7 +158,6 @@ static NSString *cellIdentifier = @"Cell";
 }
 
  */
-
 
 
 @end
