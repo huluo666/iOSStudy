@@ -1,0 +1,487 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9508263D18EBAF7200228166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9508263C18EBAF7200228166 /* Foundation.framework */; };
+		9508263F18EBAF7200228166 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9508263E18EBAF7200228166 /* CoreGraphics.framework */; };
+		9508264118EBAF7200228166 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9508264018EBAF7200228166 /* UIKit.framework */; };
+		9508264718EBAF7200228166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9508264518EBAF7200228166 /* InfoPlist.strings */; };
+		9508264918EBAF7200228166 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508264818EBAF7200228166 /* main.m */; };
+		9508264D18EBAF7200228166 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508264C18EBAF7200228166 /* DDAppDelegate.m */; };
+		9508264F18EBAF7200228166 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9508264E18EBAF7200228166 /* Images.xcassets */; };
+		9508265618EBAF7200228166 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9508265518EBAF7200228166 /* XCTest.framework */; };
+		9508265718EBAF7200228166 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9508263C18EBAF7200228166 /* Foundation.framework */; };
+		9508265818EBAF7200228166 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9508264018EBAF7200228166 /* UIKit.framework */; };
+		9508266018EBAF7200228166 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9508265E18EBAF7200228166 /* InfoPlist.strings */; };
+		9508266218EBAF7200228166 /* _Demo_FlipPageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508266118EBAF7200228166 /* _Demo_FlipPageTests.m */; };
+		9508266D18EBAF8400228166 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508266C18EBAF8400228166 /* DDRootViewController.m */; };
+		9508267A18EBB03100228166 /* DDFlipPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508267718EBB03100228166 /* DDFlipPageViewController.m */; };
+		9508267B18EBB03100228166 /* DDPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9508267918EBB03100228166 /* DDPageView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9508265918EBAF7200228166 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9508263118EBAF7200228166 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9508263818EBAF7200228166;
+			remoteInfo = "「Demo」FlipPage";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9508263918EBAF7200228166 /* 「Demo」FlipPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「Demo」FlipPage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9508263C18EBAF7200228166 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9508263E18EBAF7200228166 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9508264018EBAF7200228166 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9508264418EBAF7200228166 /* 「Demo」FlipPage-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」FlipPage-Info.plist"; sourceTree = "<group>"; };
+		9508264618EBAF7200228166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9508264818EBAF7200228166 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9508264A18EBAF7200228166 /* 「Demo」FlipPage-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "「Demo」FlipPage-Prefix.pch"; sourceTree = "<group>"; };
+		9508264B18EBAF7200228166 /* DDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
+		9508264C18EBAF7200228166 /* DDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
+		9508264E18EBAF7200228166 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		9508265418EBAF7200228166 /* 「Demo」FlipPageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "「Demo」FlipPageTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9508265518EBAF7200228166 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9508265D18EBAF7200228166 /* 「Demo」FlipPageTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」FlipPageTests-Info.plist"; sourceTree = "<group>"; };
+		9508265F18EBAF7200228166 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9508266118EBAF7200228166 /* _Demo_FlipPageTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _Demo_FlipPageTests.m; sourceTree = "<group>"; };
+		9508266B18EBAF8400228166 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
+		9508266C18EBAF8400228166 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		9508267618EBB03100228166 /* DDFlipPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFlipPageViewController.h; sourceTree = "<group>"; };
+		9508267718EBB03100228166 /* DDFlipPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFlipPageViewController.m; sourceTree = "<group>"; };
+		9508267818EBB03100228166 /* DDPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPageView.h; sourceTree = "<group>"; };
+		9508267918EBB03100228166 /* DDPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPageView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9508263618EBAF7200228166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9508263F18EBAF7200228166 /* CoreGraphics.framework in Frameworks */,
+				9508264118EBAF7200228166 /* UIKit.framework in Frameworks */,
+				9508263D18EBAF7200228166 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9508265118EBAF7200228166 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9508265618EBAF7200228166 /* XCTest.framework in Frameworks */,
+				9508265818EBAF7200228166 /* UIKit.framework in Frameworks */,
+				9508265718EBAF7200228166 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9508263018EBAF7200228166 = {
+			isa = PBXGroup;
+			children = (
+				9508264218EBAF7200228166 /* 「Demo」FlipPage */,
+				9508265B18EBAF7200228166 /* 「Demo」FlipPageTests */,
+				9508263B18EBAF7200228166 /* Frameworks */,
+				9508263A18EBAF7200228166 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9508263A18EBAF7200228166 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9508263918EBAF7200228166 /* 「Demo」FlipPage.app */,
+				9508265418EBAF7200228166 /* 「Demo」FlipPageTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9508263B18EBAF7200228166 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9508263C18EBAF7200228166 /* Foundation.framework */,
+				9508263E18EBAF7200228166 /* CoreGraphics.framework */,
+				9508264018EBAF7200228166 /* UIKit.framework */,
+				9508265518EBAF7200228166 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9508264218EBAF7200228166 /* 「Demo」FlipPage */ = {
+			isa = PBXGroup;
+			children = (
+				9508267518EBB03100228166 /* FlipPage */,
+				9508264B18EBAF7200228166 /* DDAppDelegate.h */,
+				9508264C18EBAF7200228166 /* DDAppDelegate.m */,
+				9508264E18EBAF7200228166 /* Images.xcassets */,
+				9508264318EBAF7200228166 /* Supporting Files */,
+				9508266B18EBAF8400228166 /* DDRootViewController.h */,
+				9508266C18EBAF8400228166 /* DDRootViewController.m */,
+			);
+			path = "「Demo」FlipPage";
+			sourceTree = "<group>";
+		};
+		9508264318EBAF7200228166 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9508264418EBAF7200228166 /* 「Demo」FlipPage-Info.plist */,
+				9508264518EBAF7200228166 /* InfoPlist.strings */,
+				9508264818EBAF7200228166 /* main.m */,
+				9508264A18EBAF7200228166 /* 「Demo」FlipPage-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9508265B18EBAF7200228166 /* 「Demo」FlipPageTests */ = {
+			isa = PBXGroup;
+			children = (
+				9508266118EBAF7200228166 /* _Demo_FlipPageTests.m */,
+				9508265C18EBAF7200228166 /* Supporting Files */,
+			);
+			path = "「Demo」FlipPageTests";
+			sourceTree = "<group>";
+		};
+		9508265C18EBAF7200228166 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9508265D18EBAF7200228166 /* 「Demo」FlipPageTests-Info.plist */,
+				9508265E18EBAF7200228166 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9508267518EBB03100228166 /* FlipPage */ = {
+			isa = PBXGroup;
+			children = (
+				9508267618EBB03100228166 /* DDFlipPageViewController.h */,
+				9508267718EBB03100228166 /* DDFlipPageViewController.m */,
+				9508267818EBB03100228166 /* DDPageView.h */,
+				9508267918EBB03100228166 /* DDPageView.m */,
+			);
+			path = FlipPage;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9508263818EBAF7200228166 /* 「Demo」FlipPage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9508266518EBAF7200228166 /* Build configuration list for PBXNativeTarget "「Demo」FlipPage" */;
+			buildPhases = (
+				9508263518EBAF7200228166 /* Sources */,
+				9508263618EBAF7200228166 /* Frameworks */,
+				9508263718EBAF7200228166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "「Demo」FlipPage";
+			productName = "「Demo」FlipPage";
+			productReference = 9508263918EBAF7200228166 /* 「Demo」FlipPage.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9508265318EBAF7200228166 /* 「Demo」FlipPageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9508266818EBAF7200228166 /* Build configuration list for PBXNativeTarget "「Demo」FlipPageTests" */;
+			buildPhases = (
+				9508265018EBAF7200228166 /* Sources */,
+				9508265118EBAF7200228166 /* Frameworks */,
+				9508265218EBAF7200228166 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9508265A18EBAF7200228166 /* PBXTargetDependency */,
+			);
+			name = "「Demo」FlipPageTests";
+			productName = "「Demo」FlipPageTests";
+			productReference = 9508265418EBAF7200228166 /* 「Demo」FlipPageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9508263118EBAF7200228166 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = CUAN;
+				TargetAttributes = {
+					9508265318EBAF7200228166 = {
+						TestTargetID = 9508263818EBAF7200228166;
+					};
+				};
+			};
+			buildConfigurationList = 9508263418EBAF7200228166 /* Build configuration list for PBXProject "「Demo」FlipPage" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9508263018EBAF7200228166;
+			productRefGroup = 9508263A18EBAF7200228166 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9508263818EBAF7200228166 /* 「Demo」FlipPage */,
+				9508265318EBAF7200228166 /* 「Demo」FlipPageTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9508263718EBAF7200228166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9508264718EBAF7200228166 /* InfoPlist.strings in Resources */,
+				9508264F18EBAF7200228166 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9508265218EBAF7200228166 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9508266018EBAF7200228166 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9508263518EBAF7200228166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9508267A18EBB03100228166 /* DDFlipPageViewController.m in Sources */,
+				9508267B18EBB03100228166 /* DDPageView.m in Sources */,
+				9508266D18EBAF8400228166 /* DDRootViewController.m in Sources */,
+				9508264D18EBAF7200228166 /* DDAppDelegate.m in Sources */,
+				9508264918EBAF7200228166 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9508265018EBAF7200228166 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9508266218EBAF7200228166 /* _Demo_FlipPageTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9508265A18EBAF7200228166 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9508263818EBAF7200228166 /* 「Demo」FlipPage */;
+			targetProxy = 9508265918EBAF7200228166 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9508264518EBAF7200228166 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9508264618EBAF7200228166 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9508265E18EBAF7200228166 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9508265F18EBAF7200228166 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9508266318EBAF7200228166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9508266418EBAF7200228166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9508266618EBAF7200228166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」FlipPage/「Demo」FlipPage-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」FlipPage/「Demo」FlipPage-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9508266718EBAF7200228166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」FlipPage/「Demo」FlipPage-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」FlipPage/「Demo」FlipPage-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		9508266918EBAF7200228166 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「Demo」FlipPage.app/「Demo」FlipPage";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」FlipPage/「Demo」FlipPage-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "「Demo」FlipPageTests/「Demo」FlipPageTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		9508266A18EBAF7200228166 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「Demo」FlipPage.app/「Demo」FlipPage";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」FlipPage/「Demo」FlipPage-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」FlipPageTests/「Demo」FlipPageTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9508263418EBAF7200228166 /* Build configuration list for PBXProject "「Demo」FlipPage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9508266318EBAF7200228166 /* Debug */,
+				9508266418EBAF7200228166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9508266518EBAF7200228166 /* Build configuration list for PBXNativeTarget "「Demo」FlipPage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9508266618EBAF7200228166 /* Debug */,
+				9508266718EBAF7200228166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9508266818EBAF7200228166 /* Build configuration list for PBXNativeTarget "「Demo」FlipPageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9508266918EBAF7200228166 /* Debug */,
+				9508266A18EBAF7200228166 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9508263118EBAF7200228166 /* Project object */;
+}
