@@ -10,6 +10,9 @@
 #import "Reachability.h"
 #import "DDMainUINaviController.h"
 #import "DDFeedsGroupViewController.h"
+#import "DDFlipPageViewController.h"
+#import "DDTableViewController.h"
+#import "DDViewController.h"
 
 @interface DDMainUIViewController ()
 
@@ -51,8 +54,6 @@
     self = [super init];
     if (self) {
         self.view.backgroundColor = [UIColor colorWithWhite:0.870 alpha:1.000];
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.automaticallyAdjustsScrollViewInsets = YES;
         
         // left menu bar
         UIImage *menuBarImage = DDImageWithName(@"mobile-icon-home-white");
@@ -78,18 +79,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 
     [self setTitleViewTitle:@"All/Home"];
     
-    DDFeedsGroupViewController *feedsVC = [[DDFeedsGroupViewController alloc]
-                                           initWithStyle:UITableViewStylePlain];
-    feedsVC.celltype = DDCellTypeList;
-    [feedsVC.tableView reloadData];
-    [self addChildViewController:feedsVC];
-    [self.view addSubview:feedsVC.view];
+    
+//    DDViewController *VC = [[DDViewController alloc] init];
+//    [self addChildViewController:VC];
+//    [self.view addSubview:VC.view];
+    
+    DDFlipPageViewController *flipPageVC = [[DDFlipPageViewController alloc] init];
+    [self addChildViewController:flipPageVC];
+    [self.view addSubview:flipPageVC.view];
+    
+    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+    for (int i = 1; i <= 14; i++) {
+        [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
+    }
+    flipPageVC.dataSource = dataSource;
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated

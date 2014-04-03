@@ -157,8 +157,8 @@
     if (self) {
         self.navigationBar.barTintColor = [UIColor whiteColor];
         self.navigationBar.tintColor = [UIColor grayColor];
-        [self.navigationBar setBackgroundImage:DDImageWithName(@"navi")
-                                 forBarMetrics:UIBarMetricsDefault];
+//        [self.navigationBar setBackgroundImage:DDImageWithName(@"navi")
+//                                 forBarMetrics:UIBarMetricsDefault];
         
         [kUserDefaults setObject:@0 forKey:@"currentSelectedButtonIndex"];
         [kUserDefaults synchronize];

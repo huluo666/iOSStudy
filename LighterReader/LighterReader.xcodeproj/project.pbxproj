@@ -14,6 +14,10 @@
 		9503E4F218ED02A200AC326C /* DDListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E4F118ED02A200AC326C /* DDListCell.m */; };
 		9503E4F918ED09FB00AC326C /* DDTitleOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E4F818ED09FB00AC326C /* DDTitleOnlyCell.m */; };
 		9503E4FD18ED0A8E00AC326C /* DDCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E4FC18ED0A8E00AC326C /* DDCustomCell.m */; };
+		9503E51718ED80C800AC326C /* DDFlipPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E51318ED80C800AC326C /* DDFlipPageViewController.m */; };
+		9503E51818ED80C800AC326C /* DDPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E51618ED80C800AC326C /* DDPageViewController.m */; };
+		9503E56218ED8C1400AC326C /* DDTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E56118ED8C1400AC326C /* DDTableViewController.m */; };
+		9503E56518ED8F3200AC326C /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E56418ED8F3200AC326C /* DDViewController.m */; };
 		9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */; };
 		9511E24218E66E0C005B0EF6 /* DDSignMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E24118E66E0C005B0EF6 /* DDSignMenuView.m */; };
 		9511E24618E66E59005B0EF6 /* DDNaviMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E24518E66E59005B0EF6 /* DDNaviMenuView.m */; };
@@ -62,6 +66,14 @@
 		9503E4F818ED09FB00AC326C /* DDTitleOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTitleOnlyCell.m; sourceTree = "<group>"; };
 		9503E4FB18ED0A8E00AC326C /* DDCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCell.h; sourceTree = "<group>"; };
 		9503E4FC18ED0A8E00AC326C /* DDCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCell.m; sourceTree = "<group>"; };
+		9503E51218ED80C800AC326C /* DDFlipPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFlipPageViewController.h; sourceTree = "<group>"; };
+		9503E51318ED80C800AC326C /* DDFlipPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFlipPageViewController.m; sourceTree = "<group>"; };
+		9503E51518ED80C800AC326C /* DDPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPageViewController.h; sourceTree = "<group>"; };
+		9503E51618ED80C800AC326C /* DDPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPageViewController.m; sourceTree = "<group>"; };
+		9503E56018ED8C1400AC326C /* DDTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTableViewController.h; sourceTree = "<group>"; };
+		9503E56118ED8C1400AC326C /* DDTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTableViewController.m; sourceTree = "<group>"; };
+		9503E56318ED8F3200AC326C /* DDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
+		9503E56418ED8F3200AC326C /* DDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
 		9511E23B18E66DF2005B0EF6 /* DDSignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignViewController.h; sourceTree = "<group>"; };
 		9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSignViewController.m; sourceTree = "<group>"; };
 		9511E24018E66E0C005B0EF6 /* DDSignMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignMenuView.h; sourceTree = "<group>"; };
@@ -191,6 +203,33 @@
 			path = CustomCell;
 			sourceTree = "<group>";
 		};
+		9503E51018ED80C800AC326C /* FlipPage */ = {
+			isa = PBXGroup;
+			children = (
+				9503E51418ED80C800AC326C /* PageView */,
+				9503E51118ED80C800AC326C /* FlipPageVC */,
+			);
+			path = FlipPage;
+			sourceTree = "<group>";
+		};
+		9503E51118ED80C800AC326C /* FlipPageVC */ = {
+			isa = PBXGroup;
+			children = (
+				9503E51218ED80C800AC326C /* DDFlipPageViewController.h */,
+				9503E51318ED80C800AC326C /* DDFlipPageViewController.m */,
+			);
+			path = FlipPageVC;
+			sourceTree = "<group>";
+		};
+		9503E51418ED80C800AC326C /* PageView */ = {
+			isa = PBXGroup;
+			children = (
+				9503E51518ED80C800AC326C /* DDPageViewController.h */,
+				9503E51618ED80C800AC326C /* DDPageViewController.m */,
+			);
+			path = PageView;
+			sourceTree = "<group>";
+		};
 		9511E23A18E66DF2005B0EF6 /* SignVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,6 +330,7 @@
 		9589962418E2BB850002EAF1 /* LighterReader */ = {
 			isa = PBXGroup;
 			children = (
+				9503E51018ED80C800AC326C /* FlipPage */,
 				9503E4EA18ED027B00AC326C /* FeedsGroup */,
 				95297D2318E3F46E0051CE67 /* Menu */,
 				95AE911E18E3B0CB00181C39 /* MainUI */,
@@ -304,6 +344,10 @@
 				95AE912318E3B4C200181C39 /* DDMacroDefinition.h */,
 				9589963018E2BB850002EAF1 /* Images.xcassets */,
 				9589962518E2BB850002EAF1 /* Supporting Files */,
+				9503E56018ED8C1400AC326C /* DDTableViewController.h */,
+				9503E56118ED8C1400AC326C /* DDTableViewController.m */,
+				9503E56318ED8F3200AC326C /* DDViewController.h */,
+				9503E56418ED8F3200AC326C /* DDViewController.m */,
 			);
 			path = LighterReader;
 			sourceTree = "<group>";
@@ -472,8 +516,11 @@
 			files = (
 				9503E4FD18ED0A8E00AC326C /* DDCustomCell.m in Sources */,
 				9503E4EE18ED027B00AC326C /* DDFeedsGroupViewController.m in Sources */,
+				9503E56518ED8F3200AC326C /* DDViewController.m in Sources */,
 				9511E24618E66E59005B0EF6 /* DDNaviMenuView.m in Sources */,
 				9511E25418E69E89005B0EF6 /* DDDismissAnimation.m in Sources */,
+				9503E56218ED8C1400AC326C /* DDTableViewController.m in Sources */,
+				9503E51718ED80C800AC326C /* DDFlipPageViewController.m in Sources */,
 				9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */,
 				06724FCD18E717A400DA9A2F /* Reachability.m in Sources */,
 				9511E25818E69EA0005B0EF6 /* DDRootViewController.m in Sources */,
@@ -486,6 +533,7 @@
 				9589962F18E2BB850002EAF1 /* DDAppDelegate.m in Sources */,
 				9503E4F918ED09FB00AC326C /* DDTitleOnlyCell.m in Sources */,
 				95F5E81818E528C600E9F56D /* DDEncryption.m in Sources */,
+				9503E51818ED80C800AC326C /* DDPageViewController.m in Sources */,
 				9589962B18E2BB850002EAF1 /* main.m in Sources */,
 				9511E24E18E66FF3005B0EF6 /* DDMainUIViewController.m in Sources */,
 			);
