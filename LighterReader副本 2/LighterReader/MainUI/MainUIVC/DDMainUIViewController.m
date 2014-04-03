@@ -13,7 +13,7 @@
 
 @interface DDMainUIViewController ()
 
-@property (nonatomic, strong) NSString *titleViewTitle;
+@property (nonatomic, retain) NSString *titleViewTitle;
 
 // title view single tap action
 - (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap;
@@ -28,14 +28,20 @@
 @property (assign, nonatomic, getter = isAnimationRunning) BOOL animationRunning;
 
 
-@property (strong, nonatomic) UIView *clearView;
-@property (strong, nonatomic) UIView *listView;
+@property (retain, nonatomic) UIView *clearView;
+@property (retain, nonatomic) UIView *listView;
 
 
 @end
 
 @implementation DDMainUIViewController
 
+- (void)dealloc
+{
+    [_titleViewTitle release];
+    [_handleMenuBarItemAction release];
+    [super dealloc];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,6 +68,7 @@
                                         target:self
                                         action:@selector(menuBarItemAction)];
         self.navigationItem.leftBarButtonItem = menuBarItem;
+        [menuBarItem release];
         
         // right search bar
         UIImage *serchBarImage = DDImageWithName(@"mobile-icon-store-white");
@@ -71,6 +78,7 @@
                                          target:self
                                          action:@selector(searchBarItemAction)];
         self.navigationItem.rightBarButtonItem = serchBarItem;
+        [serchBarItem release];
     }
     return self;
 }
@@ -78,18 +86,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.edgesForExtendedLayout = UIRectEdgeNone;
-
+    // load home page
     [self setTitleViewTitle:@"All/Home"];
     
-    DDFeedsGroupViewController *feedsVC = [[DDFeedsGroupViewController alloc]
-                                           initWithStyle:UITableViewStylePlain];
-    feedsVC.celltype = DDCellTypeList;
-    [feedsVC.tableView reloadData];
+    DDFeedsGroupViewController *feedsVC = [[DDFeedsGroupViewController alloc] init];
     [self addChildViewController:feedsVC];
-    [self.view addSubview:feedsVC.view];
+    [self.view addSubview:feedsVC];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -101,7 +103,8 @@
 - (void)setTitleViewTitle:(NSString *)titleViewTitle {
     
     if (_titleViewTitle != titleViewTitle) {
-        _titleViewTitle = titleViewTitle;
+        [_titleViewTitle release];
+        _titleViewTitle = [titleViewTitle retain];
         
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.frame = CGRectMake(0, 0, 0, 44);
@@ -112,8 +115,10 @@
                                               initWithTarget:self
                                               action:@selector(titleViewSingleTapAction:)];
         [titleLabel addGestureRecognizer:singleTapGesture];
+        [singleTapGesture release];
         titleLabel.text = _titleViewTitle;
         [self.view addSubview:titleLabel];
+        [titleLabel release];
         
         self.navigationItem.titleView = titleLabel;
     }
@@ -255,6 +260,7 @@
     backgroundView.center = CGPointMake(CGRectGetMidX(self.view.bounds),
                                         CGRectGetMidY(self.view.bounds) - 34);
     [self.view addSubview:backgroundView];
+    [backgroundView release];
     
     UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc]
                                               initWithActivityIndicatorStyle:
@@ -265,6 +271,7 @@
                                      CGRectGetWidth(backgroundView.bounds),
                                      CGRectGetHeight(backgroundView.bounds) * 0.6);
     [backgroundView addSubview:indicatorView];
+    [indicatorView release];
     [indicatorView startAnimating];
     
     UILabel *hintLabel = [[UILabel alloc] initWithFrame:
@@ -276,6 +283,7 @@
     hintLabel.textAlignment = NSTextAlignmentCenter;
     hintLabel.textColor = [UIColor lightGrayColor];
     [backgroundView addSubview:hintLabel];
+    [hintLabel release];
     
     // reload data
     

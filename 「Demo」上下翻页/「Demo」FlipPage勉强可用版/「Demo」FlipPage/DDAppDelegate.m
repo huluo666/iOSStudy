@@ -1,8 +1,8 @@
 //
 //  DDAppDelegate.m
-//  LighterReader
+//  「Demo」FlipPage
 //
-//  Created by 萧川 on 14-3-26.
+//  Created by 萧川 on 14-4-2.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
@@ -15,15 +15,11 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
-
-    // root view controller
-    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-    self.rootVC = rootVC;
-    self.window.rootViewController = rootVC;
-
-    // navi bar style
-    [UIBarButtonItem appearance];
     
+    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    self.window.rootViewController = navi;
+
     [self.window makeKeyAndVisible];
     return YES;
 }

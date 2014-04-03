@@ -31,14 +31,6 @@
 
 @implementation HeaderView
 
-- (void)dealloc {
-    [_headerTitleOnlyView release];
-    [_headerListView release];
-    [_headerMagazineView release];
-    [_headerCardsView release];
-    
-    [super dealloc];
-}
 
 - (id)init
 {
@@ -147,7 +139,7 @@
     UITableViewDelegate
 >
 
-@property (retain, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) NSArray *dataSource;
 
 // show floater
 - (void)showFloaterAdjustView;
@@ -158,22 +150,6 @@
 
 @implementation DDMainUINaviController
 
-- (void)dealloc {
-    
-    [_dataSource release];
-    
-    [_titleOnlyView release];
-    [_listView release];
-    [_magazineView release];
-    [_cardsView release];
-    
-    [_refresh release];
-    [_markCategroyAsRead release];
-    [_toggleOldestFirst release];
-    [_toggleShowStoriesPolicy release];
-    [_openWebpageDirectly release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -200,14 +176,14 @@
 // Present
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
-    return [[[DDPresentAnimation alloc] init] autorelease];
+    return [[DDPresentAnimation alloc] init];
     
 }
 
 // Dismiss
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
 {
-    return [[[DDDismissAnimation alloc] init] autorelease];
+    return [[DDDismissAnimation alloc] init];
 }
 
 #pragma mark - Display floater adjust view
@@ -219,7 +195,6 @@
     clearView.frame = screenBounds;
     clearView.tag = kClearViewTag;
     [self.view addSubview:clearView];
-    [clearView release];
     
     CGRect frame = CGRectMake(CGRectGetWidth(screenBounds) * 0.2,
                               70,
@@ -235,7 +210,6 @@
     settingTableView.dataSource = self;
     settingTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:settingTableView];
-    [settingTableView release];
     
     
     NSLog(@"currentSelectedButtonIndex= %@", [kUserDefaults objectForKey:@"currentSelectedButtonIndex"]);
@@ -265,7 +239,6 @@
         }
     };
     settingTableView.tableHeaderView = headerView;
-    [headerView release];
     
     NSArray *images = @[DDImageWithName(@"mobile-action-refresh"),
                         DDImageWithName(@"mobile-action-mark-as-read"),
@@ -285,7 +258,6 @@
         [datas addObject:dict];
     }
     self.dataSource = datas;
-    [datas release];
 }
 
 - (void)disappearFloaterAdjustView {
@@ -326,13 +298,12 @@
     static NSString *settingViewCellIdentifier = @"settingViewCellIdentifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:settingViewCellIdentifier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                       reuseIdentifier:settingViewCellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                       reuseIdentifier:settingViewCellIdentifier];
         cell.backgroundColor = kCellBackgroundColor;
         UIView *selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
         selectedBackgroundView.backgroundColor = kCellSelectedBackgroundColor;
         cell.selectedBackgroundView = selectedBackgroundView;
-        [selectedBackgroundView release];
         cell.textLabel.textColor = [UIColor lightGrayColor];
         cell.textLabel.font = [UIFont systemFontOfSize:14];
     }

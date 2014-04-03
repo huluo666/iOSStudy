@@ -15,18 +15,12 @@
 @interface DDRootViewController ()
 
 @property (assign, nonatomic, getter = isMenuShow) BOOL menuShow;
-@property (retain, nonatomic) UIView *backgroundView;
+@property (strong, nonatomic) UIView *backgroundView;
 
 @end
 
 @implementation DDRootViewController
 
-- (void)dealloc
-{
-    [_rightSwipGesture release];
-    [_backgroundView release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,10 +52,8 @@
     };
     DDMainUINaviController *navi = [[DDMainUINaviController alloc]
                                     initWithRootViewController:mainUIVC];
-    [mainUIVC release];
     [self addChildViewController:navi];
     [self.view addSubview:navi.view];
-    [navi release];
     
     // init background view
     _backgroundView = [[UIView alloc] initWithFrame:self.view.bounds];
@@ -94,8 +86,9 @@
     if (_login) {
         /* show navi menu */
         // init
-        __block DDNaviMenuView *naviMenuView = [[DDNaviMenuView alloc]
+        DDNaviMenuView *naviMenuViewStrong = [[DDNaviMenuView alloc]
                                                 initWithFrame:CGRectZero];
+        __weak DDNaviMenuView *naviMenuView = naviMenuViewStrong;
         naviMenuView.tag = kNaviMenuViewTag;
         naviMenuView.center = CGPointMake(-2 * CGRectGetMidX(self.view.frame),
                                   CGRectGetMidY(self.view.frame) + 10);
@@ -126,12 +119,12 @@
         };
         
         [self.view addSubview:naviMenuView];
-        [naviMenuView release];
     } else {
         /* show sign */
         // init
-        __block DDSignMenuView *signMenuView = [[DDSignMenuView alloc]
+        DDSignMenuView *signMenuViewStrong = [[DDSignMenuView alloc]
                                                 initWithFrame:CGRectZero];
+        __weak DDSignMenuView *signMenuView = signMenuViewStrong;
         signMenuView.tag = kSignMenuViewTag;
         signMenuView.center = CGPointMake(-2 * CGRectGetMidX(self.view.frame),
                                   CGRectGetMidY(self.view.frame) + 10);
@@ -164,7 +157,6 @@
         };
         
         [self.view addSubview:signMenuView];
-        [signMenuView release];
     }
 }
 
