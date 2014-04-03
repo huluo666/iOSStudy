@@ -93,11 +93,10 @@
     [self.view addSubview:flipPageVC.view];
     
     NSMutableArray *dataSource = [[NSMutableArray alloc] init];
-    for (int i = 1; i <= 14; i++) {
+    for (int i = 1; i <= 18; i++) {
         [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
     }
     flipPageVC.dataSource = dataSource;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated
