@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign, getter = isProcessing) BOOL processing;
 @property (nonatomic, assign) NSInteger currentPageIndex;
+@property (nonatomic, assign) NSInteger maxPageIndex;
 
 @property (nonatomic, strong) CAShapeLayer *arcLayer;
 
@@ -132,11 +133,11 @@
     NSLog(@"%@", self.view.subviews);
     
     // data
-    _dataSource = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 10000; i++) {
-        [_dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
+    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+    for (int i = 1; i <= 14; i++) {
+        [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
     }
-    
+    self.dataSource = dataSource;
     NSArray *childVCs = self.childViewControllers;
     self.preapedVC = (DDPageViewController *)childVCs[0];
     self.appearedVC = (DDPageViewController *)childVCs[1];
@@ -144,7 +145,16 @@
     self.currentPageIndex = 1;
     self.appearedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex];
     self.preapedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex + 1];
-    
+}
+
+- (void)setDataSource:(NSMutableArray *)dataSource {
+    if (dataSource != _dataSource) {
+        _dataSource = dataSource;
+    }
+
+    NSInteger count = (double)[self contentRows];
+    double divide = ceil((double)_dataSource.count / count);
+    self.maxPageIndex =  (NSInteger)divide;
 }
 
 #pragma mark - swip gesture handler
@@ -152,10 +162,13 @@
 - (void)swipGestureAction:(UISwipeGestureRecognizer *)swipGestureRecognizer {
     
     NSLog(@"%@", NSStringFromSelector(_cmd));
+
     if (swipGestureRecognizer.direction == UISwipeGestureRecognizerDirectionUp) {
         // swip up
-        [self sendUpPageViewToAppearedLocationBack];
-        [self appearedPageViewTransformToUp];
+        if (_currentPageIndex < _maxPageIndex) {
+            [self sendUpPageViewToAppearedLocationBack];
+            [self appearedPageViewTransformToUp];            
+        }
     } else {
         // swip down
         if (self.currentPageIndex > 1) {
@@ -186,8 +199,13 @@
         
         // reload data
         DDPageViewController *preparedVC = (DDPageViewController *)[upPageView viewController];
-        preparedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex + 1];
-        [preparedVC.tableView reloadData];
+        NSMutableArray *dataSource = [self dataSourceWithPageIndex:_currentPageIndex + 1];
+        if (dataSource) {
+            preparedVC.dataSource = dataSource;
+            [preparedVC.tableView reloadData];
+        }
+        NSLog(@"_maxPageIndex = %d", _maxPageIndex);
+        NSLog(@"_currentPageIndex = %d", _currentPageIndex);
     }
     
     self.processing = NO;
@@ -209,7 +227,6 @@
         [_pageViews removeObject:needAdjustView];
         [_pageViews insertObject:needAdjustView atIndex:0];
         
-        NSLog(@"currentpageIndex = %ld", _currentPageIndex);
         self.processing = NO;
     }];
 }
@@ -252,8 +269,6 @@
         UIView *needAdjustView = [_pageViews firstObject];
         [_pageViews removeObject:needAdjustView];
         [_pageViews addObject:needAdjustView];
-        
-        NSLog(@"currentpageIndex = %ld", _currentPageIndex);
         
         self.processing = NO;
     }];
