@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    DDCellTypeTitleOnly,
+    DDCellTypeList,
+    DDCellTypeMagazine,
+    DDCellTypeCards
+} DDCellType;
+
 @interface DDPageViewController : UITableViewController
 
 @property (strong, nonatomic) NSArray *dataSource;
+@property (nonatomic, assign) DDCellType celltype;
+
 
 @end

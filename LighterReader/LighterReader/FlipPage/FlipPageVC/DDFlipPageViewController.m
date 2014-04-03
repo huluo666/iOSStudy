@@ -55,6 +55,8 @@
 // get childs VC dataSource with pageIndex
 - (NSMutableArray *)dataSourceWithPageIndex:(NSInteger)pageIndex;
 
+// moditify tableview controller's cell type
+- (void)moditifyCellType:(DDCellType)type;
 
 @end
 
@@ -64,15 +66,14 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-//        self.view.frame = [[UIScreen mainScreen] bounds];
+
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor redColor];
     
     // add swip gesture
     UISwipeGestureRecognizer *swipUp = [[UISwipeGestureRecognizer alloc]
@@ -87,11 +88,11 @@
     swipDown.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipDown];
 
-    // calculate bounds and centers
-//    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-    CGRect screenBounds = self.view.bounds;
-    _pageViewFrame = screenBounds;
-    _upPageViewFrame = CGRectMake(0, -CGRectGetHeight(screenBounds), CGRectGetWidth(screenBounds), CGRectGetHeight(screenBounds));
+    _pageViewFrame = self.view.bounds;
+    _upPageViewFrame = CGRectMake(0,
+                                  -CGRectGetHeight(_pageViewFrame),
+                                  CGRectGetWidth(_pageViewFrame),
+                                  CGRectGetHeight(_pageViewFrame));
 
     // init porperty
     _pageViews = [[NSMutableArray alloc] init];
@@ -104,22 +105,27 @@
         [self.view addSubview:pageVC.view];
         
         [_pageViews addObject:pageVC.view];
-        pageVC.view.tag = 11 + i;
     }
 
     DDPageViewController *upPageVC = [[DDPageViewController alloc] init];
-    upPageVC.view.frame = self.view.bounds;
+    upPageVC.view.frame = _upPageViewFrame;
     [self addChildViewController:upPageVC];
     [self.view addSubview:upPageVC.view];
     [_pageViews addObject:upPageVC.view];
-    upPageVC.view.tag = 13;
+    
+//    [self moditifyCellType:DDCellTypeTitleOnly];
 }
 
+#pragma mark - setter
+
 - (void)setDataSource:(NSMutableArray *)dataSource {
+    
     if (dataSource != _dataSource) {
         _dataSource = dataSource;
     }
 
+    self.currentPageIndex = 1;
+    
     NSInteger count = (double)[self contentRows];
     double divide = ceil((double)_dataSource.count / count);
     self.maxPageIndex =  (NSInteger)divide;
@@ -127,17 +133,25 @@
     NSArray *childVCs = self.childViewControllers;
     self.preapedVC = (DDPageViewController *)childVCs[0];
     self.appearedVC = (DDPageViewController *)childVCs[1];
-    self.upVC = (DDPageViewController *)childVCs[2];
-    self.currentPageIndex = 1;
+
     self.appearedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex];
     self.preapedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex + 1];
+}
+
+#pragma mark - moditify cell type
+
+- (void)moditifyCellType:(DDCellType)type {
+    
+    NSArray *childs = self.childViewControllers;
+    for (DDPageViewController *pageVC in childs) {
+        pageVC.celltype = type;
+        [pageVC.tableView reloadData];
+    }
 }
 
 #pragma mark - swip gesture handler
 
 - (void)swipGestureAction:(UISwipeGestureRecognizer *)swipGestureRecognizer {
-    
-    NSLog(@"%@", NSStringFromSelector(_cmd));
 
     if (swipGestureRecognizer.direction == UISwipeGestureRecognizerDirectionUp) {
         // swip up
@@ -167,11 +181,10 @@
     
     UIView *upPageView = _pageViews[2];
     
-    if (upPageView.frame.origin.y == _pageViewFrame.origin.y) {
+    if (upPageView.frame.origin.y != _pageViewFrame.origin.y) {
         upPageView.frame = _pageViewFrame;
         [self.view sendSubviewToBack:upPageView];
         
-        NSLog(@"<\n%@\n:%@>", NSStringFromSelector(_cmd), self.view.subviews);
         _currentPageIndex++;
         
         // reload data
@@ -181,8 +194,6 @@
             preparedVC.dataSource = dataSource;
             [preparedVC.tableView reloadData];
         }
-        NSLog(@"_maxPageIndex = %d", _maxPageIndex);
-        NSLog(@"_currentPageIndex = %d", _currentPageIndex);
     }
     
     self.processing = NO;

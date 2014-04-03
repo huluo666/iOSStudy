@@ -7,11 +7,8 @@
 //
 
 #import "DDPageViewController.h"
-
-#define kRandomColor [UIColor colorWithRed:arc4random() % 128 / 255.0f green:arc4random() % 64 / 255.0f blue:arc4random() % 255 / 255.0f alpha:1.000]
-
-#define UIDeviceOrientationIsPortrait(orientation)  ((orientation) == UIDeviceOrientationPortrait || (orientation) == UIDeviceOrientationPortraitUpsideDown)
-#define UIDeviceOrientationIsLandscape(orientation) ((orientation) == UIDeviceOrientationLandscapeLeft || (orientation) == UIDeviceOrientationLandscapeRight)
+#import "DDTitleOnlyCell.h"
+#import "DDListCell.h"
 
 static NSString *cellIdentifier = @"Cell";
 
@@ -50,11 +47,14 @@ static NSString *cellIdentifier = @"Cell";
     
     self.tableView.rowHeight = rowHeight;
 
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:cellIdentifier];
+    [self.tableView registerClass:[DDCustomCell class]
+           forCellReuseIdentifier:cellIdentifier];
     
     self.tableView.bounces = NO;
     _dataSource = [[NSArray alloc] init];
+ 
     
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,7 +65,8 @@ static NSString *cellIdentifier = @"Cell";
 
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = 0;
     if (_dataSource &&
@@ -73,29 +74,30 @@ static NSString *cellIdentifier = @"Cell";
         count = _dataSource.count;
     }
     return count;
-    
-//    NSInteger count = 0;
-//    CGRect screenBounds = [[UIScreen mainScreen] bounds];
-//    CGFloat height = CGRectGetHeight(screenBounds);
-//    if (480 == height) {
-//        count = 5;
-//    } else if (568 == height) {
-//        count = 6;
-//    } else if (1024 == height) {
-//        count = 12;
-//    }
-//    
-//    return count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    DDCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
+                                                            forIndexPath:indexPath];
+//    if (!cell) {
+//        cell = [[DDCustomCell alloc] initWithStyle:UITableViewCellStyleDefault
+//                                      reuseIdentifier:cellIdentifier];
+//        if (self.celltype == DDCellTypeTitleOnly) {
+//            cell = [[DDTitleOnlyCell alloc]
+//                    initWithStyle:UITableViewCellStyleDefault
+//                    reuseIdentifier:cellIdentifier];
+//        }
+//    }
+    
+    
+    
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-        cell.backgroundColor = kRandomColor;
+        cell = [[DDCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
     }
-    cell.textLabel.text = _dataSource[indexPath.row];
+    
+    cell.textLabel.text = @"Override to support conditional editing of the table view.";
     
     return cell;
 }
