@@ -52,9 +52,9 @@ static NSString *cellIdentifier = @"Cell";
     
     self.tableView.bounces = NO;
     _dataSource = [[NSArray alloc] init];
- 
     
     [self.tableView reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning
