@@ -9,7 +9,6 @@
 #import "DDMainUIViewController.h"
 #import "Reachability.h"
 #import "DDMainUINaviController.h"
-#import "DDFeedsGroupViewController.h"
 #import "DDFlipPageViewController.h"
 
 @interface DDMainUIViewController ()
@@ -31,18 +30,27 @@
 @property (strong, nonatomic) UIView *clearView;
 @property (strong, nonatomic) UIView *listView;
 
+// swicth page VC
+@property (nonatomic, assign) DDCellType currentCellTyp;
+
+@property (nonatomic, strong) NSMutableArray *dataSource;
+
+// switch cell type
+- (void)setCurrentCellTyp:(DDCellType)currentCellTyp;
+- (void)setPageViewControllerWithCellType:(DDCellType)cellType;
+
+// notify
+- (void)processNotify:(NSNotification *)notify;
+
 @end
 
 @implementation DDMainUIViewController
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+- (void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:@"login"
+                                                  object:nil];
 }
 
 - (id)init
@@ -67,6 +75,12 @@
                                          target:self
                                          action:@selector(searchBarItemAction)];
         self.navigationItem.rightBarButtonItem = serchBarItem;
+        
+        // regist notify
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(processNotify:)
+                                                     name:@"login" object:nil];
+        
     }
     return self;
 }
@@ -75,18 +89,50 @@
     
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    self.view.backgroundColor = [UIColor lightGrayColor];
 
     [self setTitleViewTitle:@"All/Home"];
-    
-    DDFlipPageViewController *flipPageVC = [[DDFlipPageViewController alloc] init];
-    [self addChildViewController:flipPageVC];
-    [self.view addSubview:flipPageVC.view];
     
     NSMutableArray *dataSource = [[NSMutableArray alloc] init];
     for (int i = 1; i <= 108; i++) {
         [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
     }
-    flipPageVC.dataSource = dataSource;
+    self.dataSource = dataSource;
+    
+    // add hint label
+    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
+    UILabel *hintLabel = [[UILabel alloc] initWithFrame:frame];
+    hintLabel.font = [UIFont systemFontOfSize:24];
+    hintLabel.textAlignment = NSTextAlignmentCenter;
+    hintLabel.textColor = [UIColor whiteColor];
+    hintLabel.text = @"Swip right to get started";
+    [self.view addSubview:hintLabel];
+
+}
+
+- (void)processNotify:(NSNotification *)notify {
+    
+    if ([notify.userInfo[@"isLogined"] integerValue]) {
+        [self setPageViewControllerWithCellType:DDCellTypeTitleOnly];
+    };
+}
+
+- (void)setCurrentCellTyp:(DDCellType)currentCellTyp {
+    
+    if (currentCellTyp != self.currentCellTyp) {
+        _currentCellTyp = currentCellTyp;
+        [self setPageViewControllerWithCellType:currentCellTyp];
+    }
+}
+
+- (void)setPageViewControllerWithCellType:(DDCellType)cellType {
+    
+    DDFlipPageViewController *flipPageVC = [[DDFlipPageViewController alloc]
+                                            initWithCellType:cellType];
+    [self addChildViewController:flipPageVC];
+    [self.view addSubview:flipPageVC.view];
+    flipPageVC.dataSource = self.dataSource;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -132,28 +178,34 @@
 - (void)searchBarItemAction
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
-    DDMainUINaviController *mainUINavi = (DDMainUINaviController *)self.navigationController;
+    __weak DDMainUINaviController *mainUINavi = (DDMainUINaviController *)self.navigationController;
     [mainUINavi showFloaterAdjustView];
     
     /* blocks action */
     // set display style, notify display view reload data
     mainUINavi.titleOnlyView = ^{
-        
+        [self setCurrentCellTyp:DDCellTypeTitleOnly];
     };
     mainUINavi.listView = ^{
-    
+        [self setCurrentCellTyp:DDCellTypeList];
     };
     mainUINavi.magazineView = ^{
-    
+        [self setCurrentCellTyp:DDCellTypeMagazine];
     };
     mainUINavi.cardsView = ^{
-    
+        [self setCurrentCellTyp:DDCellTypeCards];
     };
     mainUINavi.refresh = ^{
-    
+        NSArray *childs = self.childViewControllers;
+        for (UIViewController *viewController in childs) {
+            if ([viewController isKindOfClass:[DDFlipPageViewController class]]) {
+                DDFlipPageViewController *flipPageVC = (DDFlipPageViewController *)viewController;
+                [flipPageVC refresh];
+            }
+        }
     };
     mainUINavi.markCategroyAsRead = ^{
-    
+        
     };
     mainUINavi.toggleOldestFirst = ^{
     

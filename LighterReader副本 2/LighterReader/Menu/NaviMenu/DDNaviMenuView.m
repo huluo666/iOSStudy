@@ -13,18 +13,12 @@
 // swip left close self
 - (void)swipLeftAction;
 
-@property (retain, nonatomic) NSArray *dataSource;
+@property (strong, nonatomic) NSArray *dataSource;
 
 @end
 
 @implementation DDNaviMenuView
 
-- (void)dealloc
-{
-    [_handleLeftSwip release];
-    [_dataSource release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -43,14 +37,12 @@
                                               action:@selector(swipLeftAction)];
         swipLeft.direction = UISwipeGestureRecognizerDirectionLeft;
         [self addGestureRecognizer:swipLeft];
-        [swipLeft release];
         
         // tableView
         UITableView *tableView = [[UITableView alloc] initWithFrame:self.bounds
                                                               style:UITableViewStylePlain];
         tableView.backgroundColor = [UIColor orangeColor];
         [self addSubview:tableView];
-        [tableView release];
     }
     return self;
 }

@@ -7,6 +7,7 @@
 //
 
 #import "DDFlipPageViewController.h"
+#import "DDPageViewController.h"
 #import "UIView+FindUIViewController.h"
 
 #define kAnimationDuration 0.3
@@ -45,6 +46,7 @@
 - (void)bringPreparedPageViewToUpLocationFront;
 
 // when currentPageIndex = 0 ,slip down refresh
+- (void)refresh;
 - (void)refreshAnimation;
 
 // calculate content rows
@@ -53,7 +55,8 @@
 // get childs VC dataSource with pageIndex
 - (NSMutableArray *)dataSourceWithPageIndex:(NSInteger)pageIndex;
 
-@property (nonatomic, assign) DDCellType type;
+// moditify tableview controller's cell type
+- (void)moditifyCellType:(DDCellType)type;
 
 @end
 
@@ -65,15 +68,6 @@
     if (self) {
 
     }
-    return self;
-}
-
-- (id)initWithCellType:(DDCellType)type {
-
-    if (self = [super init]) {
-        self.type = type;
-    }
-    
     return self;
 }
 
@@ -105,21 +99,21 @@
     
     // gengrate page view
     for (int i = 0; i < 2; i++) {
-        DDPageViewController *pageVC = [[DDPageViewController alloc]
-                                        initWithCellType:self.type];
+        DDPageViewController *pageVC = [[DDPageViewController alloc] init];
         pageVC.view.frame = self.view.bounds;
         [self addChildViewController:pageVC];
         [self.view addSubview:pageVC.view];
+        
         [_pageViews addObject:pageVC.view];
     }
 
-    DDPageViewController *upPageVC = [[DDPageViewController alloc]
-                                      initWithCellType:self.type];
+    DDPageViewController *upPageVC = [[DDPageViewController alloc] init];
     upPageVC.view.frame = _upPageViewFrame;
     [self addChildViewController:upPageVC];
     [self.view addSubview:upPageVC.view];
     [_pageViews addObject:upPageVC.view];
     
+//    [self moditifyCellType:DDCellTypeTitleOnly];
 }
 
 #pragma mark - setter
@@ -142,6 +136,17 @@
 
     self.appearedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex];
     self.preapedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex + 1];
+}
+
+#pragma mark - moditify cell type
+
+- (void)moditifyCellType:(DDCellType)type {
+    
+    NSArray *childs = self.childViewControllers;
+    for (DDPageViewController *pageVC in childs) {
+        pageVC.celltype = type;
+        [pageVC.tableView reloadData];
+    }
 }
 
 #pragma mark - swip gesture handler
@@ -272,7 +277,7 @@
         // reload data, play animation
         [self refreshAnimation];
         
-        [self performSelector:@selector(stopAni) withObject:nil afterDelay:2.5];
+        [self performSelector:@selector(stopAni) withObject:nil afterDelay:2];
     }];
 }
 
@@ -293,7 +298,7 @@
     UIBezierPath *path = [UIBezierPath bezierPath];
     CGRect rect = [UIScreen mainScreen].applicationFrame;
     [path addArcWithCenter:CGPointMake(rect.size.width / 2,
-                                       rect.size.height / 2 - 32)
+                                       rect.size.height / 2)
                     radius:100
                 startAngle:0
                   endAngle:2 * M_PI

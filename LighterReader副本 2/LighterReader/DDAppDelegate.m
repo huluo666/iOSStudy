@@ -13,14 +13,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
 
     // root view controller
     DDRootViewController *rootVC = [[DDRootViewController alloc] init];
     self.rootVC = rootVC;
     self.window.rootViewController = rootVC;
-    [rootVC release];
 
     // navi bar style
     [UIBarButtonItem appearance];

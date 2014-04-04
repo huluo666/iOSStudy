@@ -27,11 +27,6 @@
 
 @implementation DDSignMenuView
 
-- (void)dealloc
-{
-    [_handleLeftSwip release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -49,7 +44,6 @@
                                               action:@selector(swipLeftAction)];
         swipLeft.direction = UISwipeGestureRecognizerDirectionLeft;
         [self addGestureRecognizer:swipLeft];
-        [swipLeft release];
 
         // signin、signup
         self.contentSize = CGSizeMake(CGRectGetWidth(self.bounds),
@@ -64,7 +58,6 @@
         titleLabel.text = @"Get started";
         titleLabel.numberOfLines = 0;
         [self addSubview:titleLabel];
-        [titleLabel release];
 
         UILabel *introduceLabel = [[UILabel alloc] init];
         introduceLabel.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.9, 60);
@@ -77,7 +70,6 @@
         introduceLabel.lineBreakMode = NSLineBreakByWordWrapping;
         introduceLabel.numberOfLines = 0;
         [self addSubview:introduceLabel];
-        [introduceLabel release];
 
         UIButton *loginWithFacebook = [self buttonWithBackgroundImage:
                                        DDImageWithName(@"Buffer-FacebookLogin")];
@@ -167,7 +159,6 @@
         // 注册
         signVC.signtype = DDSignTypeSignup;
     }
-    [signVC release];
     
     [self swipLeftAction];
 }

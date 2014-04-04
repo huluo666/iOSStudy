@@ -10,10 +10,11 @@
 #import "Reachability.h"
 #import "DDMainUINaviController.h"
 #import "DDFeedsGroupViewController.h"
+#import "DDFlipPageViewController.h"
 
 @interface DDMainUIViewController ()
 
-@property (nonatomic, retain) NSString *titleViewTitle;
+@property (nonatomic, strong) NSString *titleViewTitle;
 
 // title view single tap action
 - (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap;
@@ -27,21 +28,13 @@
 
 @property (assign, nonatomic, getter = isAnimationRunning) BOOL animationRunning;
 
-
-@property (retain, nonatomic) UIView *clearView;
-@property (retain, nonatomic) UIView *listView;
-
+@property (strong, nonatomic) UIView *clearView;
+@property (strong, nonatomic) UIView *listView;
 
 @end
 
 @implementation DDMainUIViewController
 
-- (void)dealloc
-{
-    [_titleViewTitle release];
-    [_handleMenuBarItemAction release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,9 +49,6 @@
 {
     self = [super init];
     if (self) {
-        self.view.backgroundColor = [UIColor colorWithWhite:0.870 alpha:1.000];
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-        self.automaticallyAdjustsScrollViewInsets = YES;
         
         // left menu bar
         UIImage *menuBarImage = DDImageWithName(@"mobile-icon-home-white");
@@ -68,7 +58,6 @@
                                         target:self
                                         action:@selector(menuBarItemAction)];
         self.navigationItem.leftBarButtonItem = menuBarItem;
-        [menuBarItem release];
         
         // right search bar
         UIImage *serchBarImage = DDImageWithName(@"mobile-icon-store-white");
@@ -78,20 +67,26 @@
                                          target:self
                                          action:@selector(searchBarItemAction)];
         self.navigationItem.rightBarButtonItem = serchBarItem;
-        [serchBarItem release];
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-    // load home page
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+
     [self setTitleViewTitle:@"All/Home"];
     
-    DDFeedsGroupViewController *feedsVC = [[DDFeedsGroupViewController alloc] init];
-    [self addChildViewController:feedsVC];
-    [self.view addSubview:feedsVC];
+    DDFlipPageViewController *flipPageVC = [[DDFlipPageViewController alloc] init];
+    [self addChildViewController:flipPageVC];
+    [self.view addSubview:flipPageVC.view];
+    
+    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+    for (int i = 1; i <= 108; i++) {
+        [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
+    }
+    flipPageVC.dataSource = dataSource;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -103,8 +98,7 @@
 - (void)setTitleViewTitle:(NSString *)titleViewTitle {
     
     if (_titleViewTitle != titleViewTitle) {
-        [_titleViewTitle release];
-        _titleViewTitle = [titleViewTitle retain];
+        _titleViewTitle = titleViewTitle;
         
         UILabel *titleLabel = [[UILabel alloc] init];
         titleLabel.frame = CGRectMake(0, 0, 0, 44);
@@ -115,10 +109,8 @@
                                               initWithTarget:self
                                               action:@selector(titleViewSingleTapAction:)];
         [titleLabel addGestureRecognizer:singleTapGesture];
-        [singleTapGesture release];
         titleLabel.text = _titleViewTitle;
         [self.view addSubview:titleLabel];
-        [titleLabel release];
         
         self.navigationItem.titleView = titleLabel;
     }
@@ -260,7 +252,6 @@
     backgroundView.center = CGPointMake(CGRectGetMidX(self.view.bounds),
                                         CGRectGetMidY(self.view.bounds) - 34);
     [self.view addSubview:backgroundView];
-    [backgroundView release];
     
     UIActivityIndicatorView *indicatorView = [[UIActivityIndicatorView alloc]
                                               initWithActivityIndicatorStyle:
@@ -271,7 +262,6 @@
                                      CGRectGetWidth(backgroundView.bounds),
                                      CGRectGetHeight(backgroundView.bounds) * 0.6);
     [backgroundView addSubview:indicatorView];
-    [indicatorView release];
     [indicatorView startAnimating];
     
     UILabel *hintLabel = [[UILabel alloc] initWithFrame:
@@ -283,7 +273,6 @@
     hintLabel.textAlignment = NSTextAlignmentCenter;
     hintLabel.textColor = [UIColor lightGrayColor];
     [backgroundView addSubview:hintLabel];
-    [hintLabel release];
     
     // reload data
     

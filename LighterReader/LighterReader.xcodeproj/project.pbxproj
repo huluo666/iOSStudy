@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0630264318EE3EE100DAFFF6 /* DDCardsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630263618EE3EE100DAFFF6 /* DDCardsCell.m */; };
+		0630264418EE3EE100DAFFF6 /* DDCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630263918EE3EE100DAFFF6 /* DDCustomCell.m */; };
+		0630264518EE3EE100DAFFF6 /* DDListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630263C18EE3EE100DAFFF6 /* DDListCell.m */; };
+		0630264618EE3EE100DAFFF6 /* DDMagazineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630263F18EE3EE100DAFFF6 /* DDMagazineCell.m */; };
+		0630264718EE3EE100DAFFF6 /* DDTitleOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0630264218EE3EE100DAFFF6 /* DDTitleOnlyCell.m */; };
 		06314BBC18EDACC400CC5F3E /* Buffer-BufferLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314B9E18EDACC400CC5F3E /* Buffer-BufferLogin.png */; };
 		06314BBD18EDACC400CC5F3E /* Buffer-BufferLogin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314B9F18EDACC400CC5F3E /* Buffer-BufferLogin@2x.png */; };
 		06314BBE18EDACC400CC5F3E /* Buffer-FacebookLogin.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314BA018EDACC400CC5F3E /* Buffer-FacebookLogin.png */; };
@@ -40,10 +45,6 @@
 		06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06724FC818E716A400DA9A2F /* SystemConfiguration.framework */; };
 		06724FCD18E717A400DA9A2F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06724FCC18E717A400DA9A2F /* Reachability.m */; };
 		068F403C18E474DA006F3B91 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */; };
-		9503E4EE18ED027B00AC326C /* DDFeedsGroupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E4ED18ED027B00AC326C /* DDFeedsGroupViewController.m */; };
-		9503E4F218ED02A200AC326C /* DDListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E4F118ED02A200AC326C /* DDListCell.m */; };
-		9503E4F918ED09FB00AC326C /* DDTitleOnlyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E4F818ED09FB00AC326C /* DDTitleOnlyCell.m */; };
-		9503E4FD18ED0A8E00AC326C /* DDCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E4FC18ED0A8E00AC326C /* DDCustomCell.m */; };
 		9503E51718ED80C800AC326C /* DDFlipPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E51318ED80C800AC326C /* DDFlipPageViewController.m */; };
 		9503E51818ED80C800AC326C /* DDPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E51618ED80C800AC326C /* DDPageViewController.m */; };
 		9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */; };
@@ -81,6 +82,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0630263518EE3EE100DAFFF6 /* DDCardsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCardsCell.h; sourceTree = "<group>"; };
+		0630263618EE3EE100DAFFF6 /* DDCardsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCardsCell.m; sourceTree = "<group>"; };
+		0630263818EE3EE100DAFFF6 /* DDCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCell.h; sourceTree = "<group>"; };
+		0630263918EE3EE100DAFFF6 /* DDCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCell.m; sourceTree = "<group>"; };
+		0630263B18EE3EE100DAFFF6 /* DDListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDListCell.h; sourceTree = "<group>"; };
+		0630263C18EE3EE100DAFFF6 /* DDListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDListCell.m; sourceTree = "<group>"; };
+		0630263E18EE3EE100DAFFF6 /* DDMagazineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMagazineCell.h; sourceTree = "<group>"; };
+		0630263F18EE3EE100DAFFF6 /* DDMagazineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMagazineCell.m; sourceTree = "<group>"; };
+		0630264118EE3EE100DAFFF6 /* DDTitleOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTitleOnlyCell.h; sourceTree = "<group>"; };
+		0630264218EE3EE100DAFFF6 /* DDTitleOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTitleOnlyCell.m; sourceTree = "<group>"; };
 		06314B9E18EDACC400CC5F3E /* Buffer-BufferLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-BufferLogin.png"; sourceTree = "<group>"; };
 		06314B9F18EDACC400CC5F3E /* Buffer-BufferLogin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-BufferLogin@2x.png"; sourceTree = "<group>"; };
 		06314BA018EDACC400CC5F3E /* Buffer-FacebookLogin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buffer-FacebookLogin.png"; sourceTree = "<group>"; };
@@ -116,14 +127,6 @@
 		06724FCC18E717A400DA9A2F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		068F403A18E474DA006F3B91 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
 		068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindUIViewController.m"; sourceTree = "<group>"; };
-		9503E4EC18ED027B00AC326C /* DDFeedsGroupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFeedsGroupViewController.h; sourceTree = "<group>"; };
-		9503E4ED18ED027B00AC326C /* DDFeedsGroupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFeedsGroupViewController.m; sourceTree = "<group>"; };
-		9503E4F018ED02A200AC326C /* DDListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDListCell.h; sourceTree = "<group>"; };
-		9503E4F118ED02A200AC326C /* DDListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDListCell.m; sourceTree = "<group>"; };
-		9503E4F718ED09FB00AC326C /* DDTitleOnlyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTitleOnlyCell.h; sourceTree = "<group>"; };
-		9503E4F818ED09FB00AC326C /* DDTitleOnlyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTitleOnlyCell.m; sourceTree = "<group>"; };
-		9503E4FB18ED0A8E00AC326C /* DDCustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCustomCell.h; sourceTree = "<group>"; };
-		9503E4FC18ED0A8E00AC326C /* DDCustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCustomCell.m; sourceTree = "<group>"; };
 		9503E51218ED80C800AC326C /* DDFlipPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDFlipPageViewController.h; sourceTree = "<group>"; };
 		9503E51318ED80C800AC326C /* DDFlipPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDFlipPageViewController.m; sourceTree = "<group>"; };
 		9503E51518ED80C800AC326C /* DDPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPageViewController.h; sourceTree = "<group>"; };
@@ -192,6 +195,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0630263318EE3EE100DAFFF6 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0630263418EE3EE100DAFFF6 /* CardsCell */,
+				0630263A18EE3EE100DAFFF6 /* ListCell */,
+				0630263D18EE3EE100DAFFF6 /* MagazineCell */,
+				0630264018EE3EE100DAFFF6 /* TitleOnlyCell */,
+				0630263718EE3EE100DAFFF6 /* CustomCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		0630263418EE3EE100DAFFF6 /* CardsCell */ = {
+			isa = PBXGroup;
+			children = (
+				0630263518EE3EE100DAFFF6 /* DDCardsCell.h */,
+				0630263618EE3EE100DAFFF6 /* DDCardsCell.m */,
+			);
+			path = CardsCell;
+			sourceTree = "<group>";
+		};
+		0630263718EE3EE100DAFFF6 /* CustomCell */ = {
+			isa = PBXGroup;
+			children = (
+				0630263818EE3EE100DAFFF6 /* DDCustomCell.h */,
+				0630263918EE3EE100DAFFF6 /* DDCustomCell.m */,
+			);
+			path = CustomCell;
+			sourceTree = "<group>";
+		};
+		0630263A18EE3EE100DAFFF6 /* ListCell */ = {
+			isa = PBXGroup;
+			children = (
+				0630263B18EE3EE100DAFFF6 /* DDListCell.h */,
+				0630263C18EE3EE100DAFFF6 /* DDListCell.m */,
+			);
+			path = ListCell;
+			sourceTree = "<group>";
+		};
+		0630263D18EE3EE100DAFFF6 /* MagazineCell */ = {
+			isa = PBXGroup;
+			children = (
+				0630263E18EE3EE100DAFFF6 /* DDMagazineCell.h */,
+				0630263F18EE3EE100DAFFF6 /* DDMagazineCell.m */,
+			);
+			path = MagazineCell;
+			sourceTree = "<group>";
+		};
+		0630264018EE3EE100DAFFF6 /* TitleOnlyCell */ = {
+			isa = PBXGroup;
+			children = (
+				0630264118EE3EE100DAFFF6 /* DDTitleOnlyCell.h */,
+				0630264218EE3EE100DAFFF6 /* DDTitleOnlyCell.m */,
+			);
+			path = TitleOnlyCell;
+			sourceTree = "<group>";
+		};
 		06314B9D18EDACC400CC5F3E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,53 +305,6 @@
 				068F403B18E474DA006F3B91 /* UIView+FindUIViewController.m */,
 			);
 			path = Categroy;
-			sourceTree = "<group>";
-		};
-		9503E4EA18ED027B00AC326C /* FeedsGroup */ = {
-			isa = PBXGroup;
-			children = (
-				9503E4EF18ED028F00AC326C /* ListCell */,
-				9503E4F618ED09E100AC326C /* TitleOnlyCell */,
-				9503E4FA18ED0A8700AC326C /* CustomCell */,
-				9503E4EB18ED027B00AC326C /* FeedsGroupVC */,
-			);
-			path = FeedsGroup;
-			sourceTree = "<group>";
-		};
-		9503E4EB18ED027B00AC326C /* FeedsGroupVC */ = {
-			isa = PBXGroup;
-			children = (
-				9503E4EC18ED027B00AC326C /* DDFeedsGroupViewController.h */,
-				9503E4ED18ED027B00AC326C /* DDFeedsGroupViewController.m */,
-			);
-			path = FeedsGroupVC;
-			sourceTree = "<group>";
-		};
-		9503E4EF18ED028F00AC326C /* ListCell */ = {
-			isa = PBXGroup;
-			children = (
-				9503E4F018ED02A200AC326C /* DDListCell.h */,
-				9503E4F118ED02A200AC326C /* DDListCell.m */,
-			);
-			path = ListCell;
-			sourceTree = "<group>";
-		};
-		9503E4F618ED09E100AC326C /* TitleOnlyCell */ = {
-			isa = PBXGroup;
-			children = (
-				9503E4F718ED09FB00AC326C /* DDTitleOnlyCell.h */,
-				9503E4F818ED09FB00AC326C /* DDTitleOnlyCell.m */,
-			);
-			path = TitleOnlyCell;
-			sourceTree = "<group>";
-		};
-		9503E4FA18ED0A8700AC326C /* CustomCell */ = {
-			isa = PBXGroup;
-			children = (
-				9503E4FB18ED0A8E00AC326C /* DDCustomCell.h */,
-				9503E4FC18ED0A8E00AC326C /* DDCustomCell.m */,
-			);
-			path = CustomCell;
 			sourceTree = "<group>";
 		};
 		9503E51018ED80C800AC326C /* FlipPage */ = {
@@ -421,8 +434,8 @@
 		9589962418E2BB850002EAF1 /* LighterReader */ = {
 			isa = PBXGroup;
 			children = (
+				0630263318EE3EE100DAFFF6 /* Cells */,
 				9503E51018ED80C800AC326C /* FlipPage */,
-				9503E4EA18ED027B00AC326C /* FeedsGroup */,
 				95297D2318E3F46E0051CE67 /* Menu */,
 				95AE911E18E3B0CB00181C39 /* MainUI */,
 				95297D3118E3FF8A0051CE67 /* Root */,
@@ -632,22 +645,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9503E4FD18ED0A8E00AC326C /* DDCustomCell.m in Sources */,
-				9503E4EE18ED027B00AC326C /* DDFeedsGroupViewController.m in Sources */,
+				0630264418EE3EE100DAFFF6 /* DDCustomCell.m in Sources */,
 				9511E24618E66E59005B0EF6 /* DDNaviMenuView.m in Sources */,
 				9511E25418E69E89005B0EF6 /* DDDismissAnimation.m in Sources */,
+				0630264618EE3EE100DAFFF6 /* DDMagazineCell.m in Sources */,
 				9503E51718ED80C800AC326C /* DDFlipPageViewController.m in Sources */,
+				0630264718EE3EE100DAFFF6 /* DDTitleOnlyCell.m in Sources */,
 				9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */,
 				06724FCD18E717A400DA9A2F /* Reachability.m in Sources */,
 				9511E25818E69EA0005B0EF6 /* DDRootViewController.m in Sources */,
+				0630264318EE3EE100DAFFF6 /* DDCardsCell.m in Sources */,
 				9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */,
 				95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */,
+				0630264518EE3EE100DAFFF6 /* DDListCell.m in Sources */,
 				068F403C18E474DA006F3B91 /* UIView+FindUIViewController.m in Sources */,
 				9511E24218E66E0C005B0EF6 /* DDSignMenuView.m in Sources */,
 				95F5E82818E5670400E9F56D /* DDMainUINaviController.m in Sources */,
-				9503E4F218ED02A200AC326C /* DDListCell.m in Sources */,
 				9589962F18E2BB850002EAF1 /* DDAppDelegate.m in Sources */,
-				9503E4F918ED09FB00AC326C /* DDTitleOnlyCell.m in Sources */,
 				95F5E81818E528C600E9F56D /* DDEncryption.m in Sources */,
 				9503E51818ED80C800AC326C /* DDPageViewController.m in Sources */,
 				9589962B18E2BB850002EAF1 /* main.m in Sources */,

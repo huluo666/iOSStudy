@@ -9,8 +9,10 @@
 #import "DDPageViewController.h"
 #import "DDTitleOnlyCell.h"
 #import "DDListCell.h"
+#import "DDMagazineCell.h"
+#import "DDCardsCell.h"
 
-static NSString *cellIdentifier = @"Cell";
+static NSString *cellIdentifier = @"cell";
 
 @interface DDPageViewController ()
 
@@ -24,6 +26,15 @@ static NSString *cellIdentifier = @"Cell";
     if (self) {
         // Custom initialization
     }
+    return self;
+}
+
+- (id)initWithCellType:(DDCellType)type {
+    
+    if (self = [super init]) {
+        self.celltype = type;
+    }
+    
     return self;
 }
 
@@ -45,22 +56,39 @@ static NSString *cellIdentifier = @"Cell";
         rowHeight = 80;
     }
     
+    [self registerCellCllass];
     self.tableView.rowHeight = rowHeight;
-
-    [self.tableView registerClass:[DDCustomCell class]
-           forCellReuseIdentifier:cellIdentifier];
-    
     self.tableView.bounces = NO;
     _dataSource = [[NSArray alloc] init];
-    
-    [self.tableView reloadData];
-
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)registerCellCllass {
+    
+    switch (self.celltype) {
+        case DDCellTypeTitleOnly: {
+            [self.tableView registerClass:[DDTitleOnlyCell class]
+                   forCellReuseIdentifier:cellIdentifier];
+        }
+            break;
+        case DDCellTypeList: {
+            [self.tableView registerClass:[DDListCell class]
+                   forCellReuseIdentifier:cellIdentifier];
+        }
+            break;
+            
+        case DDCellTypeMagazine: {
+            [self.tableView registerClass:[DDMagazineCell class]
+                   forCellReuseIdentifier:cellIdentifier];
+        }
+            break;
+        case DDCellTypeCards: {
+            [self.tableView registerClass:[DDCardsCell class]
+                   forCellReuseIdentifier:cellIdentifier];
+        }
+            break;
+        default:
+            break;
+    }
 }
 
 #pragma mark - Table view data source
@@ -81,24 +109,9 @@ static NSString *cellIdentifier = @"Cell";
     
     DDCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                             forIndexPath:indexPath];
-//    if (!cell) {
-//        cell = [[DDCustomCell alloc] initWithStyle:UITableViewCellStyleDefault
-//                                      reuseIdentifier:cellIdentifier];
-//        if (self.celltype == DDCellTypeTitleOnly) {
-//            cell = [[DDTitleOnlyCell alloc]
-//                    initWithStyle:UITableViewCellStyleDefault
-//                    reuseIdentifier:cellIdentifier];
-//        }
-//    }
-    
-    
-    
-    if (!cell) {
-        cell = [[DDCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    
-    cell.textLabel.text = @"Override to support conditional editing of the table view.";
-    
+    cell.titleLabel.text = @"Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view";
+    cell.reviewLabel.text = @"Override to support conditional editing of the table view.";
+    cell.hintLabel.text = @"200k sina / 12h";
     return cell;
 }
 

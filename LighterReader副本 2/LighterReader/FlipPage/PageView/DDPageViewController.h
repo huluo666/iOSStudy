@@ -20,6 +20,5 @@ typedef enum {
 @property (strong, nonatomic) NSArray *dataSource;
 @property (nonatomic, assign) DDCellType celltype;
 
-- (id)initWithCellType:(DDCellType)type;
 
 @end

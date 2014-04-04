@@ -7,13 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DDPageViewController.h"
 
 @interface DDFlipPageViewController : UIViewController
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
-
-- (id)initWithCellType:(DDCellType)type;
-- (void)refresh;
 
 @end

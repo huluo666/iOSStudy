@@ -1,5 +1,5 @@
 //
-//  DDFeedsGroupViewController.h
+//  DDTitleOnlyCell.h
 //  LighterReader
 //
 //  Created by 萧川 on 14-4-3.
@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DDCustomCell.h"
 
-@interface DDFeedsGroupViewController : UITableViewController
+@interface DDTitleOnlyCell : DDCustomCell
+
 
 @end

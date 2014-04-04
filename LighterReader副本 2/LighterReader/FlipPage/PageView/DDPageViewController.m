@@ -1,18 +1,22 @@
 //
-//  DDFeedsGroupViewController.m
-//  LighterReader
+//  DDPageViewController.m
+//  「Demo」FlipPage
 //
-//  Created by 萧川 on 14-4-3.
+//  Created by 萧川 on 14-4-2.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "DDFeedsGroupViewController.h"
+#import "DDPageViewController.h"
+#import "DDTitleOnlyCell.h"
+#import "DDListCell.h"
 
-@interface DDFeedsGroupViewController ()
+static NSString *cellIdentifier = @"Cell";
+
+@interface DDPageViewController ()
 
 @end
 
-@implementation DDFeedsGroupViewController
+@implementation DDPageViewController
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,11 +31,30 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    // calculate bounds and centers
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+
+    // rowHeight
+    CGFloat rowHeight = 44;
+    CGFloat height = CGRectGetHeight(screenBounds);
+    if (480 == height) {
+        rowHeight = 83.2;
+    } else if (568 == height) {
+        rowHeight = 84;
+    } else if (1024 == height) {
+        rowHeight = 80;
+    }
+    
+    self.tableView.rowHeight = rowHeight;
+
+    [self.tableView registerClass:[DDCustomCell class]
+           forCellReuseIdentifier:cellIdentifier];
+    
+    self.tableView.bounces = NO;
+    _dataSource = [[NSArray alloc] init];
+    
+    [self.tableView reloadData];
+
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,26 +65,39 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section
 {
-
-    // Return the number of sections.
-    return 0;
+    NSInteger count = 0;
+    if (_dataSource &&
+        [_dataSource isKindOfClass:[NSArray class]]) {
+        count = _dataSource.count;
+    }
+    return count;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-
-    // Return the number of rows in the section.
-    return 0;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    // Configure the cell...
+    DDCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
+                                                            forIndexPath:indexPath];
+//    if (!cell) {
+//        cell = [[DDCustomCell alloc] initWithStyle:UITableViewCellStyleDefault
+//                                      reuseIdentifier:cellIdentifier];
+//        if (self.celltype == DDCellTypeTitleOnly) {
+//            cell = [[DDTitleOnlyCell alloc]
+//                    initWithStyle:UITableViewCellStyleDefault
+//                    reuseIdentifier:cellIdentifier];
+//        }
+//    }
+    
+    
+    
+    if (!cell) {
+        cell = [[DDCustomCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    
+    cell.textLabel.text = @"Override to support conditional editing of the table view.";
     
     return cell;
 }
@@ -116,5 +152,6 @@
 }
 
  */
+
 
 @end

@@ -15,9 +15,9 @@
 @interface DDSignViewController ()
 
 // cancel sign
-- (void)cancelSingup:(UIButton *)sender;
+- (void)cancelSign:(UIButton *)sender;
 // submit sign infos
-- (void)submitSingup:(UIButton *)sender;
+- (void)submitSign:(UIButton *)sender;
 
 // record textfields
 @property (strong, nonatomic) NSMutableArray *textFields;
@@ -107,7 +107,7 @@
     [cancel setTitle:@"Cancel" forState:UIControlStateNormal];
     [cancel setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [cancel addTarget:self
-               action:@selector(cancelSingup:)
+               action:@selector(cancelSign:)
      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:cancel];
 
@@ -126,19 +126,19 @@
     [submit setTitle:@"Submit" forState:UIControlStateNormal];
     [submit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [submit addTarget:self
-               action:@selector(submitSingup:)
+               action:@selector(submitSign:)
      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:submit];
 }
 
 #pragma mark - private messags
 
-- (void)cancelSingup:(UIButton *)sende {
+- (void)cancelSign:(UIButton *)sende {
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
-- (void)submitSingup:(UIButton *)sender {
+- (void)submitSign:(UIButton *)sender {
     
     // get email address, password
     NSString *emailAddress = ((UITextField *)_textFields[0]).text;
@@ -158,6 +158,7 @@
         [self alertWithMessage:@"Email format error, please try again"];
         return;
     }
+    
     // check password
     BOOL passwordLegal = [self isValidatePassword:password];
     if (!passwordLegal) {
@@ -204,6 +205,9 @@
                 DDRootViewController *rootVC = (DDRootViewController *)[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController];
                 [rootVC setLogin:YES];
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+                
+                // notify login
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self userInfo:@{@"isLogined":@"1"}];
             }
         }];
     }

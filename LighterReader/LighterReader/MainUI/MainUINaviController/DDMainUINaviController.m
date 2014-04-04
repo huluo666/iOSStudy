@@ -196,16 +196,22 @@
     clearView.tag = kClearViewTag;
     [self.view addSubview:clearView];
     
+    CGFloat screenHeight = [[UIScreen mainScreen] bounds].size.height;
+    CGFloat rowHeight = 44;
+    if (screenHeight > 568) {
+        rowHeight = 64;
+    }
+    
     CGRect frame = CGRectMake(CGRectGetWidth(screenBounds) * 0.2,
                               70,
                               CGRectGetWidth(screenBounds) * 0.78,
-                              44 * 6);
+                              rowHeight * 6);
     UITableView *settingTableView = [[UITableView alloc]
                                      initWithFrame:frame
                                      style:UITableViewStylePlain];
     settingTableView.tag = kSettingViewTag;
     settingTableView.bounces = NO;
-    settingTableView.rowHeight = 44;
+    settingTableView.rowHeight = rowHeight;
     settingTableView.delegate = self;
     settingTableView.dataSource = self;
     settingTableView.separatorColor = [UIColor grayColor];

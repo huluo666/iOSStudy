@@ -20,7 +20,7 @@
 - (void)submitSingup:(UIButton *)sender;
 
 // record textfields
-@property (retain, nonatomic) NSMutableArray *textFields;
+@property (strong, nonatomic) NSMutableArray *textFields;
 
 // check email
 -(BOOL)isValidateEmail:(NSString *)email;
@@ -34,11 +34,6 @@
 
 @implementation DDSignViewController
 
-- (void)dealloc
-{
-    [_textFields release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,7 +65,6 @@
         label.textAlignment = NSTextAlignmentRight;
         label.text = titles[i];
         [self.view addSubview:label];
-        [label release];
         
         UITextField *textField = [[UITextField alloc] init];
         textField.bounds = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds) -
@@ -96,7 +90,6 @@
         
         [self.view addSubview:textField];
         [_textFields addObject:textField];
-        [textField release];
         textField.placeholder = placeholders[i];
     }
     
@@ -253,7 +246,6 @@
                               otherButtonTitles:nil];
     
     [alertView show];
-    [alertView release];
     
     // wait 1.2 seconds dismiss
     NSMethodSignature *signature = [UIAlertView instanceMethodSignatureForSelector:
