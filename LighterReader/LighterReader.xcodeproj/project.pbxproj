@@ -55,6 +55,8 @@
 		9511E25418E69E89005B0EF6 /* DDDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E25118E69E89005B0EF6 /* DDDismissAnimation.m */; };
 		9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E25318E69E89005B0EF6 /* DDPresentAnimation.m */; };
 		9511E25818E69EA0005B0EF6 /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E25718E69EA0005B0EF6 /* DDRootViewController.m */; };
+		951F5F0918EE899D00E59F79 /* mobile-icon-customize-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 951F5F0718EE899D00E59F79 /* mobile-icon-customize-white.png */; };
+		951F5F0A18EE899D00E59F79 /* mobile-icon-customize-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 951F5F0818EE899D00E59F79 /* mobile-icon-customize-white@2x.png */; };
 		9589961F18E2BB850002EAF1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589961E18E2BB850002EAF1 /* Foundation.framework */; };
 		9589962118E2BB850002EAF1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962018E2BB850002EAF1 /* CoreGraphics.framework */; };
 		9589962318E2BB850002EAF1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9589962218E2BB850002EAF1 /* UIKit.framework */; };
@@ -148,6 +150,8 @@
 		9511E25318E69E89005B0EF6 /* DDPresentAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPresentAnimation.m; sourceTree = "<group>"; };
 		9511E25618E69EA0005B0EF6 /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		9511E25718E69EA0005B0EF6 /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		951F5F0718EE899D00E59F79 /* mobile-icon-customize-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-customize-white.png"; sourceTree = "<group>"; };
+		951F5F0818EE899D00E59F79 /* mobile-icon-customize-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-customize-white@2x.png"; sourceTree = "<group>"; };
 		9589961B18E2BB850002EAF1 /* LighterReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LighterReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9589961E18E2BB850002EAF1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9589962018E2BB850002EAF1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -258,6 +262,8 @@
 		06314B9D18EDACC400CC5F3E /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				951F5F0718EE899D00E59F79 /* mobile-icon-customize-white.png */,
+				951F5F0818EE899D00E59F79 /* mobile-icon-customize-white@2x.png */,
 				06314B9E18EDACC400CC5F3E /* Buffer-BufferLogin.png */,
 				06314B9F18EDACC400CC5F3E /* Buffer-BufferLogin@2x.png */,
 				06314BA018EDACC400CC5F3E /* Buffer-FacebookLogin.png */,
@@ -616,6 +622,7 @@
 				06314BC618EDACC400CC5F3E /* mobile-action-mark-as-read.png in Resources */,
 				06314BD418EDACC400CC5F3E /* mobile-icon-home-white.png in Resources */,
 				06314BC218EDACC400CC5F3E /* mobile-action-list.png in Resources */,
+				951F5F0918EE899D00E59F79 /* mobile-icon-customize-white.png in Resources */,
 				06314BD318EDACC400CC5F3E /* mobile-action-visit@2x.png in Resources */,
 				06314BC118EDACC400CC5F3E /* Buffer-TwitterLogin@2x.png in Resources */,
 				9589962918E2BB850002EAF1 /* InfoPlist.strings in Resources */,
@@ -636,6 +643,7 @@
 				06314BD818EDACC400CC5F3E /* navi.png in Resources */,
 				06314BCF18EDACC400CC5F3E /* mobile-action-titleonly@2x.png in Resources */,
 				06314BC418EDACC400CC5F3E /* mobile-action-magazine.png in Resources */,
+				951F5F0A18EE899D00E59F79 /* mobile-icon-customize-white@2x.png in Resources */,
 				06314BCC18EDACC400CC5F3E /* mobile-action-refresh.png in Resources */,
 				06314BBC18EDACC400CC5F3E /* Buffer-BufferLogin.png in Resources */,
 				06314BCE18EDACC400CC5F3E /* mobile-action-titleonly.png in Resources */,

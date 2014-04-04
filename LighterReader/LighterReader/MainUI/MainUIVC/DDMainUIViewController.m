@@ -117,8 +117,14 @@
     if ([notify.userInfo[@"isLogined"] integerValue]) {
         // login in
         NSMutableArray *dataSource = [[NSMutableArray alloc] init];
-        for (int i = 1; i <= 108; i++) {
-            [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
+        for (int i = 1; i <= 22; i++) {
+            NSString *title = [NSString stringWithFormat:
+                               @"Create a new instance of the appropriate %d class,"
+                               " insert it into the array, and add a new row to the table view", i];
+            NSString *review = @"Override to support conditional editing of the table view.";
+            NSString *hint = @"200k sina / 12h";
+            NSDictionary *dict = @{@"title":title, @"review":review, @"hint":hint};
+            [dataSource addObject:dict];
         }
         self.dataSource = dataSource;
         
@@ -126,13 +132,21 @@
         
         // get search bar
         UIBarButtonItem *searchBarItem = self.navigationItem.rightBarButtonItem;
-        UIImage *floaterSetingImage = DDImageWithName(@"mobile-icon-store-white");
+        UIImage *floaterSetingImage = DDImageWithName(@"mobile-icon-customize-white");
         UIBarButtonItem *floaterSettingItem = [[UIBarButtonItem alloc]
                                                initWithImage:floaterSetingImage
                                                style:UIBarButtonItemStylePlain
                                                target:self
                                                action:@selector(floaterSettingItemAction)];
         self.navigationItem.rightBarButtonItems = @[searchBarItem, floaterSettingItem];
+        
+        for (UIView *view in self.view.subviews) {
+            if ([view isKindOfClass:[UILabel class]]) {
+                UILabel *label = (UILabel *)view;
+                [label removeFromSuperview];
+            }
+        }
+        NSLog(@"%@", self.view.subviews);
     } else {
         // login out
     }
@@ -147,6 +161,16 @@
 }
 
 - (void)setPageViewControllerWithCellType:(DDCellType)cellType {
+    
+    NSArray *childs = self.childViewControllers;
+    if (childs) {
+        for (UIViewController *viewController in childs) {
+            if ([viewController isKindOfClass:[DDFlipPageViewController class]]) {
+                [viewController.view removeFromSuperview];
+                [viewController removeFromParentViewController];
+            }
+        }
+    }
     
     DDFlipPageViewController *flipPageVC = [[DDFlipPageViewController alloc]
                                             initWithCellType:cellType];
@@ -248,6 +272,13 @@
 - (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap {
     
     NSLog(@"%@", NSStringFromSelector(_cmd));
+    NSArray *childs = self.childViewControllers;
+    for (UIViewController *viewController in childs) {
+        if ([viewController isKindOfClass:[DDFlipPageViewController class]]) {
+            DDFlipPageViewController *flipPageVC = (DDFlipPageViewController *)viewController;
+            [flipPageVC refresh];
+        }
+    }
 }
 
 #pragma mark - check network link

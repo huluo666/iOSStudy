@@ -109,9 +109,9 @@ static NSString *cellIdentifier = @"cell";
     
     DDCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                             forIndexPath:indexPath];
-    cell.titleLabel.text = @"Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view";
-    cell.reviewLabel.text = @"Override to support conditional editing of the table view.";
-    cell.hintLabel.text = @"200k sina / 12h";
+    cell.titleLabel.text = [_dataSource[indexPath.row] objectForKey:@"title"];
+    cell.reviewLabel.text = [_dataSource[indexPath.row] objectForKey:@"review"];
+    cell.hintLabel.text = [_dataSource[indexPath.row] objectForKey:@"hint"];
     return cell;
 }
 
