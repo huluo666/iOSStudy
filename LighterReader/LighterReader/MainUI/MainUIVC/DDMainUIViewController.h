@@ -11,5 +11,6 @@
 @interface DDMainUIViewController : UIViewController
 
 @property (nonatomic, copy) void(^handleMenuBarItemAction)(void);
+@property (nonatomic, copy) void(^handleSearchBarItemAction)(void);
 
 @end

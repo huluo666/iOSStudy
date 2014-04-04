@@ -315,7 +315,9 @@
     animation.removedOnCompletion = YES;
     [self.arcLayer addAnimation:animation forKey:@"animation"];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:self.view.bounds];
+    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds),
+                              CGRectGetHeight(self.view.bounds) - 64);
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.textAlignment = NSTextAlignmentCenter;
     label.text = @"Loading...";
     label.font = [UIFont italicSystemFontOfSize:24];

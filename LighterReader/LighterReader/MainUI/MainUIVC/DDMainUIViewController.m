@@ -15,10 +15,12 @@
 
 @property (nonatomic, strong) NSString *titleViewTitle;
 
+// set navi titleView title
+- (void)setTitleViewTitle:(NSString *)titleViewTitle;
 // title view single tap action
 - (void)titleViewSingleTapAction:(UITapGestureRecognizer *)singleTap;
 
-// judge network connect is working
+// cheak network connect is working
 -(BOOL)isConnectionAvailable;
 // reload data action
 - (void)reloadAction:(UIButton *)sender;
@@ -38,6 +40,11 @@
 // switch cell type
 - (void)setCurrentCellTyp:(DDCellType)currentCellTyp;
 - (void)setPageViewControllerWithCellType:(DDCellType)cellType;
+
+// bar item actions
+- (void)menuBarItemAction;
+- (void)floaterSettingItemAction;
+- (void)searchBarItemAction;
 
 // notify
 - (void)processNotify:(NSNotification *)notify;
@@ -90,32 +97,45 @@
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.892 alpha:1.000];
 
     [self setTitleViewTitle:@"All/Home"];
     
-    NSMutableArray *dataSource = [[NSMutableArray alloc] init];
-    for (int i = 1; i <= 108; i++) {
-        [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
-    }
-    self.dataSource = dataSource;
-    
     // add hint label
-    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds) - 64);
+    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds),
+                              CGRectGetHeight(self.view.bounds) - 64);
     UILabel *hintLabel = [[UILabel alloc] initWithFrame:frame];
     hintLabel.font = [UIFont systemFontOfSize:24];
     hintLabel.textAlignment = NSTextAlignmentCenter;
-    hintLabel.textColor = [UIColor whiteColor];
+    hintLabel.textColor = [UIColor orangeColor];
     hintLabel.text = @"Swip right to get started";
     [self.view addSubview:hintLabel];
-
 }
 
 - (void)processNotify:(NSNotification *)notify {
     
     if ([notify.userInfo[@"isLogined"] integerValue]) {
+        // login in
+        NSMutableArray *dataSource = [[NSMutableArray alloc] init];
+        for (int i = 1; i <= 108; i++) {
+            [dataSource addObject:[NSString stringWithFormat:@"测试数据内容编号为：%d", i]];
+        }
+        self.dataSource = dataSource;
+        
         [self setPageViewControllerWithCellType:DDCellTypeTitleOnly];
-    };
+        
+        // get search bar
+        UIBarButtonItem *searchBarItem = self.navigationItem.rightBarButtonItem;
+        UIImage *floaterSetingImage = DDImageWithName(@"mobile-icon-store-white");
+        UIBarButtonItem *floaterSettingItem = [[UIBarButtonItem alloc]
+                                               initWithImage:floaterSetingImage
+                                               style:UIBarButtonItemStylePlain
+                                               target:self
+                                               action:@selector(floaterSettingItemAction)];
+        self.navigationItem.rightBarButtonItems = @[searchBarItem, floaterSettingItem];
+    } else {
+        // login out
+    }
 }
 
 - (void)setCurrentCellTyp:(DDCellType)currentCellTyp {
@@ -135,8 +155,8 @@
     flipPageVC.dataSource = self.dataSource;
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     [self showNetworkLinkHint];
 }
@@ -166,17 +186,22 @@
 
 #pragma mark - Bar item Actions
 
-- (void)menuBarItemAction
-{
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+- (void)menuBarItemAction {
     
     if (_handleMenuBarItemAction) {
         _handleMenuBarItemAction();
     }
 }
 
-- (void)searchBarItemAction
-{
+- (void)searchBarItemAction {
+    
+    if (_handleSearchBarItemAction) {
+        _handleSearchBarItemAction();
+    }
+}
+
+- (void)floaterSettingItemAction {
+    
     NSLog(@"%@", NSStringFromSelector(_cmd));
     __weak DDMainUINaviController *mainUINavi = (DDMainUINaviController *)self.navigationController;
     [mainUINavi showFloaterAdjustView];
@@ -208,13 +233,13 @@
         
     };
     mainUINavi.toggleOldestFirst = ^{
-    
+        
     };
     mainUINavi.toggleShowStoriesPolicy = ^{
-    
+        
     };
     mainUINavi.openWebpageDirectly = ^{
-    
+        
     };
 }
 

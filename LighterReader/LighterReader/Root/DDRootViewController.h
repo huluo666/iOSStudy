@@ -11,6 +11,7 @@
 @interface DDRootViewController : UIViewController
 
 @property (nonatomic ,assign, getter = isLogin) BOOL login;
-@property (strong, nonatomic) UISwipeGestureRecognizer *rightSwipGesture;
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipRightGesture;
+@property (strong, nonatomic) UISwipeGestureRecognizer *swipLeftGesture;
 
 @end

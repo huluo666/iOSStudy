@@ -10,9 +10,6 @@
 
 @interface DDNaviMenuView ()
 
-// swip left close self
-- (void)swipLeftAction;
-
 @property (strong, nonatomic) NSArray *dataSource;
 
 @end
@@ -52,8 +49,8 @@
 - (void)swipLeftAction
 {
     NSLog(@"%@", NSStringFromSelector(_cmd));
-    if (_handleLeftSwip) {
-        _handleLeftSwip();
+    if (_handleSwipLeft) {
+        _handleSwipLeft();
     }
 }
 

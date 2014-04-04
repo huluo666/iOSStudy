@@ -32,6 +32,7 @@ fprintf(stderr, "-------\n");                                               \
 #define kNaviMenuViewTag 98
 #define kSignMenuViewTag 99
 #define kMenuButtonTag 100
+#define kSearchMenuViewTag 97
 
 #endif
 

@@ -12,7 +12,6 @@
 
 // swip close self
 - (void)swipLeftAction;
-
-@property (nonatomic ,copy) void (^handleLeftSwip)(void);
+@property (nonatomic ,copy) void (^handleSwipLeft)(void);
 
 @end
