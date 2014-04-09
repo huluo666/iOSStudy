@@ -22,8 +22,16 @@ typedef struct {
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *originDataSource;
 
-// section 2
-@property (strong, nonatomic) NSMutableArray *dataSource;
+/* section 2 */
+@property (nonatomic, strong) NSMutableArray *dataSource;
+// flodable cell indexPathss
+@property (nonatomic, strong) NSMutableDictionary *foldableCellIndexPaths;
+// record rowHeight = 0 indexPaths
+@property (nonatomic, strong) NSMutableArray *recored;
+// add data to _dataSource
+- (void)addDataWithDictionary:(NSDictionary *)dict;
+// record already expanded indexPaths titles's indxPath
+@property (nonatomic, strong) NSMutableArray *selectedIndexPath;
 
 @end
 
@@ -79,12 +87,39 @@ typedef struct {
     
     self.originDataSource = @[section1, @[], section3];
     
+    // section 2
+    _dataSource = [[NSMutableArray alloc] initWithArray:@[@"All"]];
+    _foldableCellIndexPaths = [[NSMutableDictionary alloc] init];
+    _recored = [[NSMutableArray alloc] init];
     
-    // .....
-    _dataSource = [[NSMutableArray alloc] init];
-    NSArray *titleStrings = @[@"All", @"CNiDev", @"Reader"];
+    NSDictionary *dict1 = @{@"CNiDev":@[@"1111", @"2222", @"2211", @"jd", @"333"], @"Reader":@[@"44444", @"55555", @"6666", @"77777"], @"News":@[@"News-1", @"News-2", @"News-3", @"News-4", @"News-5"]};
+    [self addDataWithDictionary:dict1];
+    
+    _selectedIndexPath = [[NSMutableArray alloc] init];
+}
 
+#pragma mark - add data to _dataSource
 
+- (void)addDataWithDictionary:(NSDictionary *)dict {
+    
+    NSArray *keys = [dict allKeys];
+    for (NSString *title in keys) {
+        [_dataSource addObject:title];
+        
+        NSInteger start = _dataSource.count;
+        NSIndexPath *key = [NSIndexPath indexPathForRow:start - 1 inSection:1];
+        
+        NSArray *valueArr = (NSArray *)[dict objectForKey:title];
+        [_dataSource addObjectsFromArray:valueArr];
+        
+        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (NSInteger i = start; i <= start + valueArr.count - 1; i++) {
+            NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
+            [tempArr addObject:path];
+            [_recored addObject:path];
+        }
+        [_foldableCellIndexPaths setObject:tempArr forKey:key];
+    }
 }
 
 #pragma mark - handle swip left
@@ -128,11 +163,12 @@ typedef struct {
     return count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
+- (DDNaviCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *cellIdentifier = @"normalCell";
     static NSString *customCellIdentifier = @"customCell";
+    static NSString *dropCellIdentifier = @"dropCellIdentifier";
     switch (indexPath.section) {
         case 0: {
             DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:customCellIdentifier];
@@ -150,17 +186,56 @@ typedef struct {
             break;
             
         case 1: {
+            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:dropCellIdentifier];
+            if (!cell) {
+                cell = [[DDNaviCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dropCellIdentifier];
+            }
 
-            DDNaviCell *cell = [[DDNaviCell alloc] init];
-
+            if (indexPath.section == 1 && indexPath.row == 0) {
+                cell.leftImageView.image = [UIImage imageNamed:@"mobile-selector-latest-white"];
+            } else {
+                cell.leftImageView.image = nil;
+            }
+            
+            if ([[_foldableCellIndexPaths allKeys] containsObject:indexPath]) {
+                // can be flod
+                [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-right-arrow-white") forState:UIControlStateNormal];
+                [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-down-arrow-white") forState:UIControlStateSelected];
+                
+                // record group's selected
+                if ([_selectedIndexPath containsObject:indexPath]) {
+                    cell.imageButton.selected = YES;
+                } else {
+                    cell.imageButton.selected = NO;
+                }
+                
+                // flod、expand actions
+                cell.imageButtonAction = ^(UIButton *sender){
+                    NSArray *arr = [_foldableCellIndexPaths objectForKey:indexPath];
+                    if (sender.isSelected) {
+                        [_selectedIndexPath addObject:indexPath];
+                        [_recored removeObjectsInArray:arr];
+                    } else {
+                        [_selectedIndexPath removeObject:indexPath];
+                        [_recored addObjectsFromArray:arr];
+                    }
+                    [tableView reloadData];
+                };
+            } else {
+                // can not be flod
+                [cell.imageButton setBackgroundImage:nil forState:UIControlStateNormal];
+                [cell.imageButton setBackgroundImage:nil forState:UIControlStateSelected];
+            }
+            
+            cell.titleLabel.text = _dataSource[indexPath.row];
             return cell;
         }
             break;
             
         case 2: {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
-                cell = [[UITableViewCell alloc]
+                cell = [[DDNaviCell alloc]
                         initWithStyle:UITableViewCellStyleDefault
                         reuseIdentifier:cellIdentifier];
             }
@@ -171,9 +246,9 @@ typedef struct {
             break;
             
         default: {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
-                cell = [[UITableViewCell alloc]
+                cell = [[DDNaviCell alloc]
                         initWithStyle:UITableViewCellStyleDefault
                         reuseIdentifier:cellIdentifier];
             }
@@ -188,6 +263,15 @@ typedef struct {
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     NSLog(@"%ld, %ld" ,indexPath.row, indexPath.section);
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger rowHeight = 44;
+    if ([_recored containsObject:indexPath]) {
+        rowHeight = 0;
+    }
+    return rowHeight;
 }
 
 @end
