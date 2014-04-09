@@ -133,6 +133,8 @@
         // get search bar
         UIBarButtonItem *searchBarItem = self.navigationItem.rightBarButtonItem;
         UIImage *floaterSetingImage = DDImageWithName(@"mobile-icon-customize-white");
+        
+        // floater setting bar
         UIBarButtonItem *floaterSettingItem = [[UIBarButtonItem alloc]
                                                initWithImage:floaterSetingImage
                                                style:UIBarButtonItemStylePlain
@@ -284,10 +286,10 @@
             }
         }
     };
-    mainUINavi.markCategroyAsRead = ^{
+    mainUINavi.toggleMarkAsRead = ^{
         
     };
-    mainUINavi.toggleOldestFirst = ^{
+    mainUINavi.toggleReadOrder = ^{
         
     };
     mainUINavi.toggleShowStoriesPolicy = ^{
@@ -295,6 +297,12 @@
     };
     mainUINavi.openWebpageDirectly = ^{
         
+    };
+    mainUINavi.toggleMarkMustRead = ^{
+    
+    };
+    mainUINavi.remove = ^{
+    
     };
 }
 

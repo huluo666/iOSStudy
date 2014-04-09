@@ -45,8 +45,8 @@ typedef struct {
 
 #pragma mark - init
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
+    
     self = [super initWithFrame:frame];
     if (self) {
         // init

@@ -145,6 +145,8 @@
 // disappear floater
 - (void)disappearFloaterAdjustView;
 
+@property (strong, nonatomic) NSMutableArray *cellTitles;
+
 @end
 
 @implementation DDMainUINaviController
@@ -168,6 +170,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSArray *titles =  @[@"Refresh",
+                         @"Mark Category As Read",
+                         @"Oldest Stories First",
+                         @"Show Updates Only",
+                         @"Open WebPage Directly",
+                         @"Promote to Must Read",
+                         @"Remove"];
+    self.cellTitles = [NSMutableArray arrayWithArray:titles];
 }
 
 #pragma mark - UIViewControllerTransitioningDelegate
@@ -201,10 +212,16 @@
         rowHeight = 64;
     }
     
+    _floaterViewType = DDFloaterViewTypeArticle;
+    NSInteger cellCount = 6;
+    if (_floaterViewType == DDFloaterViewTypeArticle) {
+        cellCount = 8;
+    }
+    
     CGRect frame = CGRectMake(CGRectGetWidth(screenBounds) * 0.2,
                               70,
                               CGRectGetWidth(screenBounds) * 0.78,
-                              rowHeight * 6);
+                              rowHeight * cellCount);
     UITableView *settingTableView = [[UITableView alloc]
                                      initWithFrame:frame
                                      style:UITableViewStylePlain];
@@ -216,8 +233,6 @@
     settingTableView.separatorColor = [UIColor grayColor];
     [self.view addSubview:settingTableView];
     
-    
-    NSLog(@"currentSelectedButtonIndex= %@", [kUserDefaults objectForKey:@"currentSelectedButtonIndex"]);
     HeaderView *headerView = [[HeaderView alloc] init];
     headerView.headerTitleOnlyView = ^{
         if (_titleOnlyView) {
@@ -249,15 +264,13 @@
                         DDImageWithName(@"mobile-action-mark-as-read"),
                         DDImageWithName(@"mobile-action-oldest-first"),
                         DDImageWithName(@"mobile-action-unread"),
-                        DDImageWithName(@"mobile-action-visit")];
-    NSArray *titles = @[@"Refresh",
-                        @"Mark Category As Read",
-                        @"Oldest Stories First",
-                        @"Show Updates Only",
-                        @"Open WebPage Directly"];
+                        DDImageWithName(@"mobile-action-visit"),
+                        DDImageWithName(@"mobile-action-mark-as-favorite"),
+                        DDImageWithName(@"mobile-action-remove")];
+    
     NSMutableArray *datas = [[NSMutableArray alloc] init];
-    for (int i = 0; i < 5; i++) {
-        NSArray *objs = @[images[i], titles[i]];
+    for (int i = 0; i < cellCount - 1; i++) {
+        NSArray *objs = @[images[i], _cellTitles[i]];
         NSArray *keys =  @[@"image", @"title"];
         NSDictionary *dict = [NSDictionary dictionaryWithObjects:objs forKeys:keys];
         [datas addObject:dict];
@@ -282,6 +295,7 @@
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
     [self disappearFloaterAdjustView];
 }
 
@@ -328,8 +342,10 @@
 #pragma mark - <UITableViewDelegate>
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    NSLog(@"%@", NSStringFromSelector(_cmd));
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSString *text = cell.textLabel.text;
+    NSInteger index = [_cellTitles indexOfObject:text];
     
     switch (indexPath.row) {
         case 0: {
@@ -341,17 +357,21 @@
         }
             break;
         case 1: {
-            // mark categroy as read
-            if (_markCategroyAsRead) {
-                _markCategroyAsRead();
+            // toggle mark categroy as read
+            if (_toggleMarkAsRead) {
+                _toggleMarkAsRead();
+                NSString *replaceText = [text isEqualToString:@"Mark Category As Read"] ? @"Undo Mark As Read" : @"Mark Category As Read";
+                [_cellTitles replaceObjectAtIndex:index withObject:replaceText];
                 [self disappearFloaterAdjustView];
             }
         }
             break;
         case 2: {
             // toggle oldest stories first
-            if (_toggleOldestFirst) {
-                _toggleOldestFirst();
+            if (_toggleReadOrder) {
+                _toggleReadOrder();
+                NSString *replaceText = [text isEqualToString:@"Oldest Stories First"] ? @"Undo Oldest First" : @"Oldest Stories First";
+                [_cellTitles replaceObjectAtIndex:index withObject:replaceText];
                 [self disappearFloaterAdjustView];
             }
         }
@@ -360,6 +380,8 @@
             // toggle show stories policy
             if (_toggleShowStoriesPolicy) {
                 _toggleShowStoriesPolicy();
+                NSString *replaceText = [text isEqualToString:@"Show Updates Only"] ? @"Show All Stories" : @"Show Updates Only";
+                [_cellTitles replaceObjectAtIndex:index withObject:replaceText];
                 [self disappearFloaterAdjustView];
             }
         }
@@ -368,6 +390,24 @@
             // open webpage directly
             if (_openWebpageDirectly) {
                 _openWebpageDirectly();
+                [self disappearFloaterAdjustView];
+            }
+        }
+            break;
+        case 5: {
+            // toggle mark must read
+            if (_toggleMarkMustRead) {
+                _toggleMarkMustRead();
+                NSString *replaceText = [text isEqualToString:@"Promote to Must Read"] ? @"Undo Must Read" : @"Promote to Must Read";
+                [_cellTitles replaceObjectAtIndex:index withObject:replaceText];
+                [self disappearFloaterAdjustView];
+            }
+        }
+            break;
+        case 6: {
+            // open webpage directly
+            if (_remove) {
+                _remove();
                 [self disappearFloaterAdjustView];
             }
         }

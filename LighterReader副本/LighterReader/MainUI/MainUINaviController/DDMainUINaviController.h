@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    DDFloaterViewTypeCategroy,
+    DDFloaterViewTypeArticle
+} DDFloaterViewType;
+
 @interface DDMainUINaviController : UINavigationController <UIViewControllerTransitioningDelegate>
 
 // Display floater adjust view
@@ -20,9 +25,13 @@
 @property (copy, nonatomic) void (^cardsView)(void);
 
 @property (copy, nonatomic) void (^refresh)(void);
-@property (copy, nonatomic) void (^markCategroyAsRead)(void);
-@property (copy, nonatomic) void (^toggleOldestFirst)(void);
+@property (copy, nonatomic) void (^toggleMarkAsRead)(void);
+@property (copy, nonatomic) void (^toggleReadOrder)(void);
 @property (copy, nonatomic) void (^toggleShowStoriesPolicy)(void);
 @property (copy, nonatomic) void (^openWebpageDirectly)(void);
+@property (copy, nonatomic) void (^toggleMarkMustRead)(void);
+@property (copy, nonatomic) void (^remove)(void);
+
+@property (assign, nonatomic) DDFloaterViewType floaterViewType;
 
 @end

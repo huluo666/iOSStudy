@@ -106,8 +106,21 @@
     if (_login) {
         /* show navi menu */
         // init
-        DDNaviMenuView *naviMenuViewStrong = [[DDNaviMenuView alloc]
-                                                initWithFrame:CGRectZero];
+        BOOL isExist = NO;
+        DDNaviMenuView *naviMenuViewStrong = nil;
+        
+        for (UIView *view in self.view.subviews) {
+            if ([view isKindOfClass:[DDNaviMenuView class]]) {
+                isExist = YES;
+                naviMenuViewStrong = (DDNaviMenuView *)view;
+            }
+        }
+
+        if (!isExist) {
+            naviMenuViewStrong = [[DDNaviMenuView alloc] initWithFrame:CGRectZero];
+            [self.view addSubview:naviMenuViewStrong];
+        }
+
         __weak DDNaviMenuView *naviMenuView = naviMenuViewStrong;
         naviMenuView.tag = kNaviMenuViewTag;
         naviMenuView.center = CGPointMake(-2 * CGRectGetMidX(self.view.frame),
@@ -133,12 +146,14 @@
                 } completion:^(BOOL finished) {
                     _menuShow = NO;
                     [self.view addGestureRecognizer:_swipRightGesture];
-                    [naviMenuView removeFromSuperview];
+                    if (!self.isLogin) {
+                        [naviMenuView removeFromSuperview];
+                    }
                 }];
             }
         };
         
-        [self.view addSubview:naviMenuView];
+        
     } else {
         /* show sign */
         // init

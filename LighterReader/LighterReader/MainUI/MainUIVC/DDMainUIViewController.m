@@ -286,10 +286,10 @@
             }
         }
     };
-    mainUINavi.markCategroyAsRead = ^{
+    mainUINavi.toggleMarkAsRead = ^{
         
     };
-    mainUINavi.toggleOldestFirst = ^{
+    mainUINavi.toggleReadOrder = ^{
         
     };
     mainUINavi.toggleShowStoriesPolicy = ^{
@@ -297,6 +297,12 @@
     };
     mainUINavi.openWebpageDirectly = ^{
         
+    };
+    mainUINavi.toggleMarkMustRead = ^{
+    
+    };
+    mainUINavi.remove = ^{
+    
     };
 }
 
