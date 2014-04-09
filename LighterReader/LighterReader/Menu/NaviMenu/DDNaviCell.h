@@ -17,6 +17,4 @@
 
 @property (nonatomic, strong) void (^imageButtonAction)(UIButton *sender);
 
-@property (nonatomic, assign, getter = isFolding) BOOL folding;
-
 @end

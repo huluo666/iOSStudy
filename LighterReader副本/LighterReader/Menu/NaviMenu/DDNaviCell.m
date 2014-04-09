@@ -77,7 +77,7 @@
 
     sender.selected = sender.isSelected ? NO : YES;
     if (_imageButtonAction) {
-        _imageButtonAction();
+        _imageButtonAction(sender);
     }
 }
 

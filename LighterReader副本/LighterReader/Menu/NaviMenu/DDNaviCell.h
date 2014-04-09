@@ -15,6 +15,8 @@
 @property (nonatomic, strong, readonly) UILabel *titleLabel;
 @property (nonatomic, strong, readonly) UILabel *commentLabel;
 
-@property (nonatomic, strong) void (^imageButtonAction)(void);
+@property (nonatomic, strong) void (^imageButtonAction)(UIButton *sender);
+
+@property (nonatomic, assign, getter = isFolding) BOOL folding;
 
 @end

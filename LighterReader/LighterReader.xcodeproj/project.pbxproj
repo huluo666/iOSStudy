@@ -61,7 +61,6 @@
 		950D885018F39D2C00F79319 /* mobile-selector-down-arrow-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D884418F39D2C00F79319 /* mobile-selector-down-arrow-white.png */; };
 		950D885118F39D2C00F79319 /* mobile-selector-explore-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D884518F39D2C00F79319 /* mobile-selector-explore-white.png */; };
 		950D885418F39DAE00F79319 /* DDNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D885318F39DAE00F79319 /* DDNaviCell.m */; };
-		950D889B18F429BA00F79319 /* DDCellObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D889A18F429BA00F79319 /* DDCellObj.m */; };
 		9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */; };
 		9511E24218E66E0C005B0EF6 /* DDSignMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E24118E66E0C005B0EF6 /* DDSignMenuView.m */; };
 		9511E24618E66E59005B0EF6 /* DDNaviMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E24518E66E59005B0EF6 /* DDNaviMenuView.m */; };
@@ -164,8 +163,6 @@
 		950D884518F39D2C00F79319 /* mobile-selector-explore-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-selector-explore-white.png"; sourceTree = "<group>"; };
 		950D885218F39DAE00F79319 /* DDNaviCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNaviCell.h; sourceTree = "<group>"; };
 		950D885318F39DAE00F79319 /* DDNaviCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNaviCell.m; sourceTree = "<group>"; };
-		950D889918F429BA00F79319 /* DDCellObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCellObj.h; sourceTree = "<group>"; };
-		950D889A18F429BA00F79319 /* DDCellObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCellObj.m; sourceTree = "<group>"; };
 		9511E23B18E66DF2005B0EF6 /* DDSignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignViewController.h; sourceTree = "<group>"; };
 		9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSignViewController.m; sourceTree = "<group>"; };
 		9511E24018E66E0C005B0EF6 /* DDSignMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignMenuView.h; sourceTree = "<group>"; };
@@ -420,8 +417,6 @@
 				9511E24518E66E59005B0EF6 /* DDNaviMenuView.m */,
 				950D885218F39DAE00F79319 /* DDNaviCell.h */,
 				950D885318F39DAE00F79319 /* DDNaviCell.m */,
-				950D889918F429BA00F79319 /* DDCellObj.h */,
-				950D889A18F429BA00F79319 /* DDCellObj.m */,
 			);
 			path = NaviMenu;
 			sourceTree = "<group>";
@@ -740,7 +735,6 @@
 				068F403C18E474DA006F3B91 /* UIView+FindUIViewController.m in Sources */,
 				06E6C1FF18F44CE200710133 /* DDMagazineCell.m in Sources */,
 				9511E24218E66E0C005B0EF6 /* DDSignMenuView.m in Sources */,
-				950D889B18F429BA00F79319 /* DDCellObj.m in Sources */,
 				95F5E82818E5670400E9F56D /* DDMainUINaviController.m in Sources */,
 				06E6C1FD18F44CE200710133 /* DDCustomCell.m in Sources */,
 				9589962F18E2BB850002EAF1 /* DDAppDelegate.m in Sources */,

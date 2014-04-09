@@ -8,7 +8,6 @@
 
 #import "DDNaviMenuView.h"
 #import "DDNaviCell.h"
-#import "DDCellObj.h"
 
 typedef struct {
     NSInteger start;
@@ -22,12 +21,8 @@ typedef struct {
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *originDataSource;
-@property (strong, nonatomic) NSArray *originTitles;
 
-@property (strong, nonatomic) NSMutableArray *foldingIndexs;
-
-
-// .....
+// section 2
 @property (strong, nonatomic) NSMutableArray *dataSource;
 
 @end
@@ -79,28 +74,16 @@ typedef struct {
     NSDictionary *sectionTitleDict = [NSDictionary dictionaryWithObject:section1Titles forKey:@"titles"];
     NSArray *section1 = @[sectionImageDict, sectionTitleDict];
     
-    // section 2
-//    NSArray *titles = @[@"All", @"CNiDev", @"11111", @"2222", @"3333", @"Reader Test", @"4444444", @"5555555", @"6666666", @"7777777", @"888888888", @"9999999999999", @"jjjj", @"ddddd", @"ddddd", @"ddddd", @"ddddd", @"ddddd"];
-    
-    NSArray *titles = @[@"All", @"CNiDev", @"11111", @"2222", @"3333", @"Reader Test", @"4444444", @"5555555", @"6666666"];
-    self.foldingIndexs = [[NSMutableArray alloc] initWithObjects:@1, @2, nil];
-    
-    
     // section 3
     NSArray *section3 = @[@"Recently Read", @"Edit Content", @"Switch Theme", @"Settings", @"Logout"];
     
-    self.originDataSource = @[section1, titles, section3];
+    self.originDataSource = @[section1, @[], section3];
     
     
     // .....
     _dataSource = [[NSMutableArray alloc] init];
     NSArray *titleStrings = @[@"All", @"CNiDev", @"Reader"];
-    
-    for (int i = 0 ; i < 3; i++) {
-        DDCellObj *obj = [[DDCellObj alloc] init];
-        obj.titleString = titleStrings[i];
-        [_dataSource addObject:obj];
-    }
+
 
 }
 
@@ -169,13 +152,7 @@ typedef struct {
         case 1: {
 
             DDNaviCell *cell = [[DDNaviCell alloc] init];
-            
-            if (0 == indexPath.row) {
-                cell.leftImageView.image = DDImageWithName(@"mobile-selector-latest-white");
-            }
-            
-            NSLog(@"%@", _dataSource);
-            cell.titleLabel.text = [_dataSource[indexPath.row] titleString];
+
             return cell;
         }
             break;

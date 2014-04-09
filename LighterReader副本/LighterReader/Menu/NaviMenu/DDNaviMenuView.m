@@ -8,6 +8,12 @@
 
 #import "DDNaviMenuView.h"
 #import "DDNaviCell.h"
+#import "DDCellObj.h"
+
+typedef struct {
+    NSInteger start;
+    NSInteger end;
+} DDRang;
 
 @interface DDNaviMenuView () <
     UITableViewDelegate,
@@ -15,8 +21,14 @@
 >
 
 @property (strong, nonatomic) UITableView *tableView;
-@property (strong, nonatomic) NSMutableArray *selfDataSource;
+@property (strong, nonatomic) NSArray *originDataSource;
 @property (strong, nonatomic) NSArray *originTitles;
+
+@property (strong, nonatomic) NSMutableArray *foldingIndexs;
+
+
+// .....
+@property (strong, nonatomic) NSMutableArray *dataSource;
 
 @end
 
@@ -68,14 +80,28 @@
     NSArray *section1 = @[sectionImageDict, sectionTitleDict];
     
     // section 2
-    NSArray *section2 = @[@"All", @"CNiDev", @"Reader Test"];
-    self.originTitles = section2;
+//    NSArray *titles = @[@"All", @"CNiDev", @"11111", @"2222", @"3333", @"Reader Test", @"4444444", @"5555555", @"6666666", @"7777777", @"888888888", @"9999999999999", @"jjjj", @"ddddd", @"ddddd", @"ddddd", @"ddddd", @"ddddd"];
+    
+    NSArray *titles = @[@"All", @"CNiDev", @"11111", @"2222", @"3333", @"Reader Test", @"4444444", @"5555555", @"6666666"];
+    self.foldingIndexs = [[NSMutableArray alloc] initWithObjects:@1, @2, nil];
+    
     
     // section 3
     NSArray *section3 = @[@"Recently Read", @"Edit Content", @"Switch Theme", @"Settings", @"Logout"];
     
-    self.selfDataSource = [NSMutableArray arrayWithArray:@[section1, section2, section3]];
+    self.originDataSource = @[section1, titles, section3];
     
+    
+    // .....
+    _dataSource = [[NSMutableArray alloc] init];
+    NSArray *titleStrings = @[@"All", @"CNiDev", @"Reader"];
+    
+    for (int i = 0 ; i < 3; i++) {
+        DDCellObj *obj = [[DDCellObj alloc] init];
+        obj.titleString = titleStrings[i];
+        [_dataSource addObject:obj];
+    }
+
 }
 
 #pragma mark - handle swip left
@@ -105,7 +131,7 @@
         }
             break;
         case 1: {
-            count = [self.selfDataSource[1] count];
+            count = _dataSource.count;
         }
             break;
         case 2: {
@@ -123,64 +149,33 @@
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *cellIdentifier = @"normalCell";
-    static NSString *dropDownCellIdentifier = @"DropDownCell";
+    static NSString *customCellIdentifier = @"customCell";
     switch (indexPath.section) {
         case 0: {
-            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:dropDownCellIdentifier];
+            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:customCellIdentifier];
             if (!cell) {
                 cell = [[DDNaviCell alloc]
                         initWithStyle:UITableViewCellStyleDefault
-                        reuseIdentifier:dropDownCellIdentifier];
+                        reuseIdentifier:customCellIdentifier];
             }
-            NSString *imageName =  self.selfDataSource[0][0][@"imagesName"][indexPath.row];
+            NSString *imageName =  self.originDataSource[0][0][@"imagesName"][indexPath.row];
             cell.leftImageView.image = DDImageWithName(imageName);
-            NSString *title = self.selfDataSource[0][1][@"titles"][indexPath.row];
+            NSString *title = self.originDataSource[0][1][@"titles"][indexPath.row];
             cell.titleLabel.text = title;
             return cell;
         }
             break;
             
         case 1: {
-            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:dropDownCellIdentifier];
-            if (!cell) {
-                cell = [[DDNaviCell alloc]
-                        initWithStyle:UITableViewCellStyleDefault
-                        reuseIdentifier:dropDownCellIdentifier];
 
-                if (indexPath.row) {
-                    [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-right-arrow-white")
-                                                forState:UIControlStateNormal];
-                    [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-down-arrow-white")
-                                                forState:UIControlStateSelected];
-                } else {
-                    cell.leftImageView.image = DDImageWithName(@"mobile-selector-latest-white");
-                }
+            DDNaviCell *cell = [[DDNaviCell alloc] init];
+            
+            if (0 == indexPath.row) {
+                cell.leftImageView.image = DDImageWithName(@"mobile-selector-latest-white");
             }
             
-            cell.titleLabel.text = self.selfDataSource[1][indexPath.row];
-            
-            __weak DDNaviCell *weakCell = cell;
-            cell.imageButtonAction = ^{
-                if (!indexPath.row) {
-                    return;
-                }
-                
-                if (weakCell.imageButton.isSelected) {
-                    NSLog(@"selected");
-                    NSLog(@"%@", self.selfDataSource);
-                    NSArray *section2 = @[@"All", @"CNiDev", @"add", @"add2", @"add3", @"add4", @"Reader Test"];
-                    [self.selfDataSource removeObjectAtIndex:1];
-                    [self.selfDataSource insertObject:section2 atIndex:1];
-                    [self.tableView reloadData];
-                    NSLog(@"%@", self.selfDataSource);
-                } else {
-                    NSLog(@"deSelected");
-                    [self.selfDataSource removeObjectAtIndex:1];
-                    [self.selfDataSource insertObject:self.originTitles atIndex:1];
-                    [self.tableView reloadData];
-                }
-
-            };
+            NSLog(@"%@", _dataSource);
+            cell.titleLabel.text = [_dataSource[indexPath.row] titleString];
             return cell;
         }
             break;
@@ -193,7 +188,7 @@
                         reuseIdentifier:cellIdentifier];
             }
             
-            cell.textLabel.text = self.selfDataSource[2][indexPath.row];
+            cell.textLabel.text = self.originDataSource[2][indexPath.row];
             return cell;
         }
             break;
@@ -211,14 +206,11 @@
     }
 }
 
-- (void)tableView:(UITableView *)tableView
-    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSLog(@"didSelectRowAtIndexPath");
-}
-
 #pragma mark - <UITableViewDelegate>
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSLog(@"%ld, %ld" ,indexPath.row, indexPath.section);
+}
 
 @end
