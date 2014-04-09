@@ -15,7 +15,8 @@
     UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *dataSource;
-@property (nonatomic, strong) NSArray *expandData;
+@property (nonatomic, strong) NSMutableDictionary *foldedCellIndexPaths;
+@property (nonatomic, strong) NSMutableArray *recored; // 记录rowHeight=0的indexPath
 
 @end
 
@@ -28,39 +29,40 @@
     tableView.delegate = self;
     tableView.dataSource = self;
     [self.view addSubview:tableView];
-    NSArray *titles = @[@"All", @"CNiDev", @"Test"];
-    _dataSource = [NSMutableArray array];
-    for (NSInteger i = 0; i < 3; i++) {
-        DDCellContent *content = [[DDCellContent alloc] init];
-        content.imageName = @"mobile-selector-right-arrow-white";
-        content.selectedImageName = @"mobile-selector-down-arrow-white";
-        content.titleString = titles[i];
-        content.row = i;
-        if (i) {
-            
-        }
-        [_dataSource addObject:content];
-    }
     
-    NSArray *titles1 = @[@"111", @"222", @"333"];
-    NSMutableArray *data = [NSMutableArray array];
-    for (int i = 0; i < 3; i++) {
-        DDCellContent *content = [[DDCellContent alloc] init];
-        content.titleString = titles1[i];
-        [data addObject:content];
+    _dataSource = [[NSMutableArray alloc] initWithArray:@[@"All"]];
+    _foldedCellIndexPaths = [[NSMutableDictionary alloc] init];
+    _recored = [[NSMutableArray alloc] init];
+    
+    NSDictionary *dict1 = @{@"CNiDev":@[@"1111", @"2222", @"2211", @"jd", @"333"], @"Reader":@[@"44444", @"55555", @"6666", @"77777"]};
+    [self addDataWithDictionary:dict1];
 
-    }
+}
+
+- (void)addDataWithDictionary:(NSDictionary *)dict {
     
-    NSArray *titles2 = @[@"444", @"555", @"6666", @"7777"];
-    NSMutableArray *data2 = [NSMutableArray array];
-    for (int i = 0; i < 4; i++) {
-        DDCellContent *content = [[DDCellContent alloc] init];
-        content.titleString = titles2[i];
-        [data2 addObject:content];
+    NSArray *keys = [dict allKeys];
+    for (NSString *title in keys) {
         
+        [_dataSource addObject:title];
+        NSLog(@"_dataSource = %@", _dataSource);
+        
+        NSInteger start = _dataSource.count;
+        NSIndexPath *key = [NSIndexPath indexPathForRow:start - 1 inSection:1];
+        
+        NSArray *valueArr = (NSArray *)[dict objectForKey:title];
+        
+        [_dataSource addObjectsFromArray:valueArr];
+        NSLog(@"_dataSource = %@", _dataSource);
+        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (NSInteger i = start; i <= start + valueArr.count - 1; i++) {
+            NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
+            [tempArr addObject:path];
+            [_recored addObject:path];
+        }
+        [_foldedCellIndexPaths setObject:tempArr forKey:key];
     }
     
-    self.expandData =@[data, data, data2];
 }
 
 #pragma mark - UITableViewDataSource
@@ -100,46 +102,26 @@
                 cell = [[DDNaviCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             }
             
+
+            if (indexPath.section == 1 && indexPath.row == 0) {
+                cell.leftImageView.image = [UIImage imageNamed:@"mobile-selector-latest-white"];
+            }
             
-            
-            [cell.imageButton setBackgroundImage:[UIImage imageNamed:[_dataSource[indexPath.row] imageName]] forState:UIControlStateNormal];
-            [cell.imageButton setBackgroundImage:[UIImage imageNamed:[_dataSource[indexPath.row] selectedImageName]] forState:UIControlStateSelected];
+            if ([[_foldedCellIndexPaths allKeys] containsObject:indexPath]) {
+                [cell.imageButton setBackgroundImage:[UIImage imageNamed:@"mobile-selector-right-arrow-white"] forState:UIControlStateNormal];
+                [cell.imageButton setBackgroundImage:[UIImage imageNamed:@"mobile-selector-down-arrow-white"] forState:UIControlStateSelected];
+            }
             
             cell.imageButtonAction = ^(UIButton *sender){
-                
-                NSLog(@"row = %ld", indexPath.row);
-                
-                NSInteger row = indexPath.row;
-                NSInteger section = indexPath.section;
-                NSInteger cellRow = [_dataSource[row] row];
-
-                NSLog(@"%ld %ld %ld", row, section, cellRow);
-                
-                NSRange range = NSMakeRange(row + 1, [_expandData[cellRow] count]);
-                NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
-                
-                NSMutableArray *indexPaths = [NSMutableArray array];
-                for (NSInteger index = 1; index <= [_expandData[cellRow] count]; index++) {
-                    NSIndexPath *expIndexPath = [NSIndexPath indexPathForRow:row+index inSection:section];
-                    [indexPaths addObject:expIndexPath];
-                }
-                
+                NSArray *arr = [_foldedCellIndexPaths objectForKey:indexPath];
                 if (sender.isSelected) {
-                    // need expand
-                    [_dataSource insertObjects:_expandData[cellRow] atIndexes:indexSet];
-                    [tableView reloadData];
-//                    [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationBottom];
+                    [_recored removeObjectsInArray:arr];
                 } else {
-                    // already expand
-                    [_dataSource removeObjectsAtIndexes:indexSet];
-                    [tableView reloadData];
-//                    [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
+                    [_recored addObjectsFromArray:arr];
                 }
+                [tableView reloadData];
             };
-            
-            
-            cell.titleLabel.text = [_dataSource[indexPath.row] titleString];
-            
+            cell.titleLabel.text = _dataSource[indexPath.row];
             return cell;
         }
             break;
@@ -158,10 +140,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    NSLog(@"sedtion:%ld row:%ld", indexPath.section, indexPath.row);
+    NSLog(@"%@", indexPath);
 }
 
 #pragma mark - UITableViewDelegate
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    NSInteger rowHeight = 44;
+    if ([_recored containsObject:indexPath]) {
+        rowHeight = 0;
+    }
+    return rowHeight;
+}
 
 @end

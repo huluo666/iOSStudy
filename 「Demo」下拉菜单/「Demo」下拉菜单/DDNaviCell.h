@@ -17,7 +17,5 @@
 
 @property (nonatomic, strong) void (^imageButtonAction)(UIButton *sender);
 
-@property (nonatomic, assign, getter = isExpandable) BOOL expandable;
-@property (nonatomic, assign, getter = isExpanded) BOOL expanded;
 
 @end
