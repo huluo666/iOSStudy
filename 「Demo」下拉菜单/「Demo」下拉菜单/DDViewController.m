@@ -36,6 +36,9 @@
         content.selectedImageName = @"mobile-selector-down-arrow-white";
         content.titleString = titles[i];
         content.row = i;
+        if (i) {
+            
+        }
         [_dataSource addObject:content];
     }
     
@@ -124,10 +127,12 @@
                 if (sender.isSelected) {
                     // need expand
                     [_dataSource insertObjects:_expandData[cellRow] atIndexes:indexSet];
-                    [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationBottom];
+                    [tableView reloadData];
+//                    [tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationBottom];
                 } else {
                     // already expand
-//                    [_dataSource removeObjectsAtIndexes:indexSet];
+                    [_dataSource removeObjectsAtIndexes:indexSet];
+                    [tableView reloadData];
 //                    [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationTop];
                 }
             };
