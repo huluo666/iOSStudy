@@ -18,9 +18,9 @@
 
 @implementation DDTitleOnlyCell
 
-@synthesize titleLabel;
-@synthesize reviewLabel;
-@synthesize hintLabel;
+@synthesize titleLabel = _titleLabel;
+@synthesize reviewLabel = _reviewLabel;
+@synthesize hintLabel = _hintLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -30,29 +30,27 @@
         CGFloat width = CGRectGetWidth(self.contentView.bounds);
         CGFloat height = CGRectGetHeight(self.contentView.bounds);
         
-        self.titleLabel = [[UILabel alloc] init];
-        self.titleLabel.frame = CGRectMake(5, 10, width - 10, height * 0.5 - 5);
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:14];
-        self.titleLabel.numberOfLines = 2;
-        self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail;
-        [self.contentView addSubview:self.titleLabel];
-//        self.titleLabel.backgroundColor = [UIColor yellowColor];
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.frame = CGRectMake(5, 10, width - 10, height * 0.5 - 5);
+        _titleLabel.font = [UIFont systemFontOfSize:14];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:14];
+        _titleLabel.numberOfLines = 2;
+        _titleLabel.lineBreakMode = NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail;
+        [self.contentView addSubview:_titleLabel];
         
-        self.reviewLabel = [[UILabel alloc] init];
-        self.reviewLabel.frame = CGRectMake(5, CGRectGetMaxY(self.titleLabel.frame), width - 10, height * 0.3);
-        self.reviewLabel.font = [UIFont systemFontOfSize:10];
-        self.reviewLabel.numberOfLines = 2;
-        self.reviewLabel.lineBreakMode = NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail;
-        [self.contentView addSubview:self.reviewLabel];
-//        self.reviewLabel.backgroundColor = [UIColor greenColor];
+        _reviewLabel = [[UILabel alloc] init];
+        _reviewLabel.frame = CGRectMake(5, CGRectGetMaxY(_titleLabel.frame), width - 10, height * 0.3);
+        _reviewLabel.font = [UIFont systemFontOfSize:10];
+        _reviewLabel.numberOfLines = 2;
+        _reviewLabel.lineBreakMode = NSLineBreakByWordWrapping | NSLineBreakByTruncatingTail;
+        [self.contentView addSubview:_reviewLabel];
         
-        self.hintLabel = [[UILabel alloc] init];
-        self.hintLabel.frame = CGRectMake(5, CGRectGetMaxY(self.reviewLabel.frame) + 2, width - 10, height * 0.1);
-        self.hintLabel.font = [UIFont systemFontOfSize:8];
-        self.hintLabel.numberOfLines = 1;
-        self.hintLabel.textColor = [UIColor grayColor];
-        [self.contentView addSubview:self.hintLabel];
+        _hintLabel = [[UILabel alloc] init];
+        _hintLabel.frame = CGRectMake(5, CGRectGetMaxY(_reviewLabel.frame) + 2, width - 10, height * 0.1);
+        _hintLabel.font = [UIFont systemFontOfSize:8];
+        _hintLabel.numberOfLines = 1;
+        _hintLabel.textColor = [UIColor grayColor];
+        [self.contentView addSubview:_hintLabel];
     }
     return self;
 }

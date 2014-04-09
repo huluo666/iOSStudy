@@ -8,7 +8,9 @@
 
 #import "DDNaviMenuView.h"
 #import "DDNaviCell.h"
-#import "DDCellObj.h"
+#import "DDRootViewController.h"
+#import "UIView+FindUIViewController.h"
+#import "DDPullDown.h"
 
 typedef struct {
     NSInteger start;
@@ -22,13 +24,20 @@ typedef struct {
 
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) NSArray *originDataSource;
-@property (strong, nonatomic) NSArray *originTitles;
 
-@property (strong, nonatomic) NSMutableArray *foldingIndexs;
+/* section 2 */
+@property (nonatomic, strong) NSMutableArray *dataSource;
+// flodable cell indexPathss
+@property (nonatomic, strong) NSMutableDictionary *foldableCellIndexPaths;
+// record rowHeight = 0 indexPaths
+@property (nonatomic, strong) NSMutableArray *recored;
+// add data to _dataSource
+- (void)addDataWithDictionary:(NSDictionary *)dict;
+// record already expanded indexPaths titles's indxPath
+@property (nonatomic, strong) NSMutableArray *selectedIndexPath;
 
-
-// .....
-@property (strong, nonatomic) NSMutableArray *dataSource;
+// add content
+- (void)addContentAction;
 
 @end
 
@@ -55,14 +64,25 @@ typedef struct {
         [self addGestureRecognizer:swipLeft];
         
         // tableView
-        self.tableView = [[UITableView alloc] initWithFrame:self.bounds
+        _tableView = [[UITableView alloc] initWithFrame:self.bounds
                                                       style:UITableViewStyleGrouped];
-        self.tableView.backgroundColor = [UIColor colorWithWhite:0.942 alpha:1.000];
-        self.tableView.showsVerticalScrollIndicator = NO;
-        self.tableView.dataSource = self;
-        self.tableView.delegate = self;
-        [self addSubview:self.tableView];
+        _tableView.backgroundColor = [UIColor colorWithWhite:0.942 alpha:1.000];
+        _tableView.showsVerticalScrollIndicator = NO;
+        _tableView.dataSource = self;
+        _tableView.delegate = self;
+        [self addSubview:_tableView];
         
+        // pull down refresh
+        DDPullDown *pullDown = [DDPullDown pullDown];
+        pullDown.scrollView = _tableView;
+        
+        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+            
+            [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+                                  withObject:@1
+                                  afterDelay:1];
+        };
+
         [self initDataSource];
     }
     return self;
@@ -79,29 +99,44 @@ typedef struct {
     NSDictionary *sectionTitleDict = [NSDictionary dictionaryWithObject:section1Titles forKey:@"titles"];
     NSArray *section1 = @[sectionImageDict, sectionTitleDict];
     
-    // section 2
-//    NSArray *titles = @[@"All", @"CNiDev", @"11111", @"2222", @"3333", @"Reader Test", @"4444444", @"5555555", @"6666666", @"7777777", @"888888888", @"9999999999999", @"jjjj", @"ddddd", @"ddddd", @"ddddd", @"ddddd", @"ddddd"];
-    
-    NSArray *titles = @[@"All", @"CNiDev", @"11111", @"2222", @"3333", @"Reader Test", @"4444444", @"5555555", @"6666666"];
-    self.foldingIndexs = [[NSMutableArray alloc] initWithObjects:@1, @2, nil];
-    
-    
     // section 3
     NSArray *section3 = @[@"Recently Read", @"Edit Content", @"Switch Theme", @"Settings", @"Logout"];
     
-    self.originDataSource = @[section1, titles, section3];
+    _originDataSource = @[section1, @[], section3];
     
+    // section 2
+    _dataSource = [[NSMutableArray alloc] initWithArray:@[@"All"]];
+    _foldableCellIndexPaths = [[NSMutableDictionary alloc] init];
+    _recored = [[NSMutableArray alloc] init];
     
-    // .....
-    _dataSource = [[NSMutableArray alloc] init];
-    NSArray *titleStrings = @[@"All", @"CNiDev", @"Reader"];
+    NSDictionary *dict1 = @{@"CNiDev":@[@"oneVcat", @"破船之家", @"博客园——biosli", @"luke", @"码农周刊"], @"Reader":@[@"44444", @"55555", @"6666", @"77777"], @"News":@[@"News-1", @"News-2", @"News-3", @"News-4", @"News-5"]};
+    [self addDataWithDictionary:dict1];
     
-    for (int i = 0 ; i < 3; i++) {
-        DDCellObj *obj = [[DDCellObj alloc] init];
-        obj.titleString = titleStrings[i];
-        [_dataSource addObject:obj];
-    }
+    _selectedIndexPath = [[NSMutableArray alloc] init];
+}
 
+#pragma mark - add data to _dataSource
+
+- (void)addDataWithDictionary:(NSDictionary *)dict {
+    
+    NSArray *keys = [dict allKeys];
+    for (NSString *title in keys) {
+        [_dataSource addObject:title];
+        
+        NSInteger start = _dataSource.count;
+        NSIndexPath *key = [NSIndexPath indexPathForRow:start - 1 inSection:1];
+        
+        NSArray *valueArr = (NSArray *)[dict objectForKey:title];
+        [_dataSource addObjectsFromArray:valueArr];
+        
+        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        for (NSInteger i = start; i <= start + valueArr.count - 1; i++) {
+            NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
+            [tempArr addObject:path];
+            [_recored addObject:path];
+        }
+        [_foldableCellIndexPaths setObject:tempArr forKey:key];
+    }
 }
 
 #pragma mark - handle swip left
@@ -145,11 +180,12 @@ typedef struct {
     return count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView
+- (DDNaviCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     static NSString *cellIdentifier = @"normalCell";
     static NSString *customCellIdentifier = @"customCell";
+    static NSString *dropCellIdentifier = @"dropCellIdentifier";
     switch (indexPath.section) {
         case 0: {
             DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:customCellIdentifier];
@@ -158,32 +194,65 @@ typedef struct {
                         initWithStyle:UITableViewCellStyleDefault
                         reuseIdentifier:customCellIdentifier];
             }
-            NSString *imageName =  self.originDataSource[0][0][@"imagesName"][indexPath.row];
+            NSString *imageName =  _originDataSource[0][0][@"imagesName"][indexPath.row];
             cell.leftImageView.image = DDImageWithName(imageName);
-            NSString *title = self.originDataSource[0][1][@"titles"][indexPath.row];
+            NSString *title = _originDataSource[0][1][@"titles"][indexPath.row];
             cell.titleLabel.text = title;
             return cell;
         }
             break;
             
         case 1: {
+            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:dropCellIdentifier];
+            if (!cell) {
+                cell = [[DDNaviCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dropCellIdentifier];
+            }
 
-            DDNaviCell *cell = [[DDNaviCell alloc] init];
-            
-            if (0 == indexPath.row) {
-                cell.leftImageView.image = DDImageWithName(@"mobile-selector-latest-white");
+            if (indexPath.section == 1 && indexPath.row == 0) {
+                cell.leftImageView.image = [UIImage imageNamed:@"mobile-selector-latest-white"];
+            } else {
+                cell.leftImageView.image = nil;
             }
             
-            NSLog(@"%@", _dataSource);
-            cell.titleLabel.text = [_dataSource[indexPath.row] titleString];
+            if ([[_foldableCellIndexPaths allKeys] containsObject:indexPath]) {
+                // can be flod
+                [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-right-arrow-white") forState:UIControlStateNormal];
+                [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-down-arrow-white") forState:UIControlStateSelected];
+                
+                // record group's selected
+                if ([_selectedIndexPath containsObject:indexPath]) {
+                    cell.imageButton.selected = YES;
+                } else {
+                    cell.imageButton.selected = NO;
+                }
+                
+                // flod、expand actions
+                cell.imageButtonAction = ^(UIButton *sender){
+                    NSArray *arr = [_foldableCellIndexPaths objectForKey:indexPath];
+                    if (sender.isSelected) {
+                        [_selectedIndexPath addObject:indexPath];
+                        [_recored removeObjectsInArray:arr];
+                    } else {
+                        [_selectedIndexPath removeObject:indexPath];
+                        [_recored addObjectsFromArray:arr];
+                    }
+                    [tableView reloadData];
+                };
+            } else {
+                // can not be flod
+                [cell.imageButton setBackgroundImage:nil forState:UIControlStateNormal];
+                [cell.imageButton setBackgroundImage:nil forState:UIControlStateSelected];
+            }
+            
+            cell.titleLabel.text = _dataSource[indexPath.row];
             return cell;
         }
             break;
             
         case 2: {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
-                cell = [[UITableViewCell alloc]
+                cell = [[DDNaviCell alloc]
                         initWithStyle:UITableViewCellStyleDefault
                         reuseIdentifier:cellIdentifier];
             }
@@ -194,9 +263,9 @@ typedef struct {
             break;
             
         default: {
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+            DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
             if (!cell) {
-                cell = [[UITableViewCell alloc]
+                cell = [[DDNaviCell alloc]
                         initWithStyle:UITableViewCellStyleDefault
                         reuseIdentifier:cellIdentifier];
             }
@@ -208,9 +277,112 @@ typedef struct {
 
 #pragma mark - <UITableViewDelegate>
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSLog(@"%ld, %ld" ,indexPath.row, indexPath.section);
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    switch (indexPath.section) {
+        case 0: {
+            
+        }
+            break;
+            
+        case 1: {
+            
+        }
+            break;
+            
+        case 2: {
+            if (4 == indexPath.row) {
+                // set root login NO
+                DDRootViewController *rootVC = (DDRootViewController *)[self viewController];
+                if (rootVC.isLogin) {
+                    rootVC.login = NO;
+                    
+                    [[NSNotificationCenter defaultCenter]
+                     postNotificationName:@"login"
+                     object:self
+                     userInfo:@{@"isLogined":@"0"}];
+                    
+                    if (_handleSwipLeft) {
+                        _handleSwipLeft();
+                    }
+                }
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView
+    heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    NSInteger rowHeight = 44;
+    if ([_recored containsObject:indexPath]) {
+        rowHeight = 0;
+    }
+    return rowHeight;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    if (1 == section) {
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 88)];
+        [self addSubview:view];
+        
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        button.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds) * 0.8, 40);
+        button.center = CGPointMake(CGRectGetMidX(self.bounds), 50);
+        [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [button setBackgroundColor:[UIColor colorWithWhite:0.822 alpha:1.000]];
+        [button setTitle:@"Add content" forState:UIControlStateNormal];
+        button.layer.borderWidth = 1;
+        button.layer.borderColor = [UIColor colorWithWhite:0.822 alpha:1.000].CGColor;
+        button.layer.cornerRadius = 5;
+        [button addTarget:self
+                   action:@selector(addContentAction)
+         forControlEvents:UIControlEventTouchUpInside];
+        
+        [view addSubview:button];
+        
+        return view;
+    } else if (2 == section){
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 88)];
+        [self addSubview:view];
+        
+        UILabel *label = [[UILabel alloc] init];
+        label.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds), 30);
+        label.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMaxY(view.bounds) - 15);
+        label.text = @"Version 2.0";
+        label.font = [UIFont systemFontOfSize:15];
+        label.textColor = [UIColor grayColor];
+        [view addSubview:label];
+        
+        return view;
+    } else {
+        return nil;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    
+    if (section) {
+        return 88;
+    } else {
+        return 0;
+    }
+}
+
+#pragma mark - addContentAction
+
+- (void)addContentAction {
+    
+    NSLog(@"addContentAction");
 }
 
 @end

@@ -21,10 +21,10 @@
 
 @implementation DDNaviCell
 
-@synthesize imageButton;
-@synthesize leftImageView;
-@synthesize titleLabel;
-@synthesize commentLabel;
+@synthesize imageButton = _imageButton;
+@synthesize leftImageView = _leftImageView;
+@synthesize titleLabel = _titleLabel;
+@synthesize commentLabel = _commentLabel;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -34,34 +34,34 @@
         CGFloat width = [[UIScreen mainScreen] bounds].size.width;
         self.contentView.bounds = CGRectMake(0, 0, width - 40, 44);
         
-        self.imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.imageButton.frame = CGRectMake(0, 0, 44, 44);
-        [self.imageButton addTarget:self action:@selector(imageButtonAction:)
+        _imageButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        _imageButton.frame = CGRectMake(0, 0, 44, 44);
+        [_imageButton addTarget:self action:@selector(imageButtonAction:)
                    forControlEvents:UIControlEventTouchUpInside];
         [self.imageButton setTitleColor:[UIColor redColor] forState:UIControlStateHighlighted];
-        [self.contentView addSubview:self.imageButton];
+        [self.contentView addSubview:_imageButton];
         
-        self.leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
-        [self.contentView addSubview:self.leftImageView];
+        _leftImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+        [self.contentView addSubview:_leftImageView];
         
-        self.titleLabel = [[UILabel alloc]
-                           initWithFrame:CGRectMake(44,
+        _titleLabel = [[UILabel alloc]
+                       initWithFrame:CGRectMake(44,
+                                                0,
+                                                CGRectGetWidth(self.contentView.bounds) - 44 - 44,
+                                                44)];
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
+        [self.contentView addSubview:_titleLabel];
+        
+        _commentLabel = [[UILabel alloc]
+                         initWithFrame:CGRectMake(CGRectGetMaxX(_titleLabel.frame),
                                                     0,
-                                                    CGRectGetWidth(self.contentView.bounds) - 44 - 44,
+                                                    CGRectGetWidth(self.contentView.bounds) -
+                                                    CGRectGetMaxX(_titleLabel.frame),
                                                     44)];
-        self.titleLabel.textAlignment = NSTextAlignmentLeft;
-        [self.contentView addSubview:self.titleLabel];
-        
-        self.commentLabel = [[UILabel alloc]
-                             initWithFrame:CGRectMake(CGRectGetMaxX(self.titleLabel.frame),
-                                                      0,
-                                                      CGRectGetWidth(self.contentView.bounds) -
-                                                      CGRectGetMaxX(self.titleLabel.frame),
-                                                      44)];
-        self.commentLabel.textColor = [UIColor grayColor];
-        self.commentLabel.font = [UIFont systemFontOfSize:15];
-        self.commentLabel.textAlignment = NSTextAlignmentLeft;
-        [self.contentView addSubview:self.commentLabel];
+        _commentLabel.textColor = [UIColor grayColor];
+        _commentLabel.font = [UIFont systemFontOfSize:15];
+        _commentLabel.textAlignment = NSTextAlignmentLeft;
+        [self.contentView addSubview:_commentLabel];
     }
     return self;
 }

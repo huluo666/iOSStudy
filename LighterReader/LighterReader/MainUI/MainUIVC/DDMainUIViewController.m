@@ -133,6 +133,8 @@
         // get search bar
         UIBarButtonItem *searchBarItem = self.navigationItem.rightBarButtonItem;
         UIImage *floaterSetingImage = DDImageWithName(@"mobile-icon-customize-white");
+        
+        // floater setting bar
         UIBarButtonItem *floaterSettingItem = [[UIBarButtonItem alloc]
                                                initWithImage:floaterSetingImage
                                                style:UIBarButtonItemStylePlain
@@ -149,12 +151,43 @@
         NSLog(@"%@", self.view.subviews);
     } else {
         // login out
+        NSArray *childs = self.childViewControllers;
+        if (childs) {
+            for (UIViewController *viewController in childs) {
+                if ([viewController isKindOfClass:[DDFlipPageViewController class]]) {
+                    [viewController.view removeFromSuperview];
+                    [viewController removeFromParentViewController];
+                }
+            }
+        }
+        // add hint label
+        CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds),
+                                  CGRectGetHeight(self.view.bounds) - 64);
+        UILabel *hintLabel = [[UILabel alloc] initWithFrame:frame];
+        hintLabel.font = [UIFont systemFontOfSize:24];
+        hintLabel.textAlignment = NSTextAlignmentCenter;
+        hintLabel.textColor = [UIColor orangeColor];
+        hintLabel.text = @"Swip right to get started";
+        [self.view addSubview:hintLabel];
+        
+        self.dataSource = nil;
+        
+        self.navigationItem.rightBarButtonItems = nil;
+        
+        // right search bar
+        UIImage *serchBarImage = DDImageWithName(@"mobile-icon-store-white");
+        UIBarButtonItem *serchBarItem = [[UIBarButtonItem alloc]
+                                         initWithImage:serchBarImage
+                                         style:UIBarButtonItemStylePlain
+                                         target:self
+                                         action:@selector(searchBarItemAction)];
+        self.navigationItem.rightBarButtonItem = serchBarItem;
     }
 }
 
 - (void)setCurrentCellTyp:(DDCellType)currentCellTyp {
     
-    if (currentCellTyp != self.currentCellTyp) {
+    if (currentCellTyp != _currentCellTyp) {
         _currentCellTyp = currentCellTyp;
         [self setPageViewControllerWithCellType:currentCellTyp];
     }

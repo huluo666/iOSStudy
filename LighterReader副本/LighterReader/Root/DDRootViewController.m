@@ -14,7 +14,7 @@
 #import "DDAppDelegate.h"
 #import "DDSearchMenuView.h"
 
-#define kSwipAnimationDuration 0.5
+#define kSwipAnimationDuration 0.8
 
 @interface DDRootViewController ()
 

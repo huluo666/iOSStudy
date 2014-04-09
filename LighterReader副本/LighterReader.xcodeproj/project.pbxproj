@@ -61,7 +61,11 @@
 		950D885018F39D2C00F79319 /* mobile-selector-down-arrow-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D884418F39D2C00F79319 /* mobile-selector-down-arrow-white.png */; };
 		950D885118F39D2C00F79319 /* mobile-selector-explore-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D884518F39D2C00F79319 /* mobile-selector-explore-white.png */; };
 		950D885418F39DAE00F79319 /* DDNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D885318F39DAE00F79319 /* DDNaviCell.m */; };
-		950D889B18F429BA00F79319 /* DDCellObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D889A18F429BA00F79319 /* DDCellObj.m */; };
+		95108E4D18F532E900FA7D3A /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95108E4418F532E900FA7D3A /* arrow.png */; };
+		95108E4E18F532E900FA7D3A /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95108E4518F532E900FA7D3A /* arrow@2x.png */; };
+		95108E4F18F532E900FA7D3A /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95108E4718F532E900FA7D3A /* DDRefreshBaseView.m */; };
+		95108E5018F532E900FA7D3A /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 95108E4918F532E900FA7D3A /* DDRefreshControlConst.m */; };
+		95108E5118F532E900FA7D3A /* DDPullDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 95108E4C18F532E900FA7D3A /* DDPullDown.m */; };
 		9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */; };
 		9511E24218E66E0C005B0EF6 /* DDSignMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E24118E66E0C005B0EF6 /* DDSignMenuView.m */; };
 		9511E24618E66E59005B0EF6 /* DDNaviMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9511E24518E66E59005B0EF6 /* DDNaviMenuView.m */; };
@@ -164,8 +168,14 @@
 		950D884518F39D2C00F79319 /* mobile-selector-explore-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-selector-explore-white.png"; sourceTree = "<group>"; };
 		950D885218F39DAE00F79319 /* DDNaviCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNaviCell.h; sourceTree = "<group>"; };
 		950D885318F39DAE00F79319 /* DDNaviCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNaviCell.m; sourceTree = "<group>"; };
-		950D889918F429BA00F79319 /* DDCellObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDCellObj.h; sourceTree = "<group>"; };
-		950D889A18F429BA00F79319 /* DDCellObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDCellObj.m; sourceTree = "<group>"; };
+		95108E4418F532E900FA7D3A /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		95108E4518F532E900FA7D3A /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		95108E4618F532E900FA7D3A /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
+		95108E4718F532E900FA7D3A /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
+		95108E4818F532E900FA7D3A /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
+		95108E4918F532E900FA7D3A /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
+		95108E4B18F532E900FA7D3A /* DDPullDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDown.h; sourceTree = "<group>"; };
+		95108E4C18F532E900FA7D3A /* DDPullDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDown.m; sourceTree = "<group>"; };
 		9511E23B18E66DF2005B0EF6 /* DDSignViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignViewController.h; sourceTree = "<group>"; };
 		9511E23C18E66DF2005B0EF6 /* DDSignViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSignViewController.m; sourceTree = "<group>"; };
 		9511E24018E66E0C005B0EF6 /* DDSignMenuView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignMenuView.h; sourceTree = "<group>"; };
@@ -314,10 +324,10 @@
 			isa = PBXGroup;
 			children = (
 				06E6C1ED18F44CE200710133 /* CardsCell */,
-				06E6C1F018F44CE200710133 /* CustomCell */,
-				06E6C1F318F44CE200710133 /* ListCell */,
 				06E6C1F618F44CE200710133 /* MagazineCell */,
+				06E6C1F318F44CE200710133 /* ListCell */,
 				06E6C1F918F44CE200710133 /* TitleOnlyCell */,
+				06E6C1F018F44CE200710133 /* CustomCell */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -395,6 +405,37 @@
 			path = PageView;
 			sourceTree = "<group>";
 		};
+		95108E4218F532E900FA7D3A /* PullRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				95108E4318F532E900FA7D3A /* BasePullControl */,
+				95108E4A18F532E900FA7D3A /* PullDownRefresh */,
+			);
+			path = PullRefresh;
+			sourceTree = "<group>";
+		};
+		95108E4318F532E900FA7D3A /* BasePullControl */ = {
+			isa = PBXGroup;
+			children = (
+				95108E4418F532E900FA7D3A /* arrow.png */,
+				95108E4518F532E900FA7D3A /* arrow@2x.png */,
+				95108E4618F532E900FA7D3A /* DDRefreshBaseView.h */,
+				95108E4718F532E900FA7D3A /* DDRefreshBaseView.m */,
+				95108E4818F532E900FA7D3A /* DDRefreshControlConst.h */,
+				95108E4918F532E900FA7D3A /* DDRefreshControlConst.m */,
+			);
+			path = BasePullControl;
+			sourceTree = "<group>";
+		};
+		95108E4A18F532E900FA7D3A /* PullDownRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				95108E4B18F532E900FA7D3A /* DDPullDown.h */,
+				95108E4C18F532E900FA7D3A /* DDPullDown.m */,
+			);
+			path = PullDownRefresh;
+			sourceTree = "<group>";
+		};
 		9511E23A18E66DF2005B0EF6 /* SignVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -420,8 +461,6 @@
 				9511E24518E66E59005B0EF6 /* DDNaviMenuView.m */,
 				950D885218F39DAE00F79319 /* DDNaviCell.h */,
 				950D885318F39DAE00F79319 /* DDNaviCell.m */,
-				950D889918F429BA00F79319 /* DDCellObj.h */,
-				950D889A18F429BA00F79319 /* DDCellObj.m */,
 			);
 			path = NaviMenu;
 			sourceTree = "<group>";
@@ -449,6 +488,7 @@
 		95297D2318E3F46E0051CE67 /* Menu */ = {
 			isa = PBXGroup;
 			children = (
+				95108E4218F532E900FA7D3A /* PullRefresh */,
 				0686FA5618EE5B8300A988C1 /* SearchMenu */,
 				9511E24318E66E35005B0EF6 /* NaviMenu */,
 				9511E23A18E66DF2005B0EF6 /* SignVC */,
@@ -680,6 +720,8 @@
 				06314BC318EDACC400CC5F3E /* mobile-action-list@2x.png in Resources */,
 				950D885118F39D2C00F79319 /* mobile-selector-explore-white.png in Resources */,
 				950D885018F39D2C00F79319 /* mobile-selector-down-arrow-white.png in Resources */,
+				95108E4E18F532E900FA7D3A /* arrow@2x.png in Resources */,
+				95108E4D18F532E900FA7D3A /* arrow.png in Resources */,
 				06314BD518EDACC400CC5F3E /* mobile-icon-home-white@2x.png in Resources */,
 				950D884918F39D2C00F79319 /* mobile-selector-explore-white@2x.png in Resources */,
 				06314BC018EDACC400CC5F3E /* Buffer-TwitterLogin.png in Resources */,
@@ -727,6 +769,7 @@
 				0686FA5C18EE656A00A988C1 /* DDSearchMenuView.m in Sources */,
 				9511E24618E66E59005B0EF6 /* DDNaviMenuView.m in Sources */,
 				9511E25418E69E89005B0EF6 /* DDDismissAnimation.m in Sources */,
+				95108E4F18F532E900FA7D3A /* DDRefreshBaseView.m in Sources */,
 				06E6C1FE18F44CE200710133 /* DDListCell.m in Sources */,
 				9503E51718ED80C800AC326C /* DDFlipPageViewController.m in Sources */,
 				9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */,
@@ -740,13 +783,14 @@
 				068F403C18E474DA006F3B91 /* UIView+FindUIViewController.m in Sources */,
 				06E6C1FF18F44CE200710133 /* DDMagazineCell.m in Sources */,
 				9511E24218E66E0C005B0EF6 /* DDSignMenuView.m in Sources */,
-				950D889B18F429BA00F79319 /* DDCellObj.m in Sources */,
 				95F5E82818E5670400E9F56D /* DDMainUINaviController.m in Sources */,
 				06E6C1FD18F44CE200710133 /* DDCustomCell.m in Sources */,
 				9589962F18E2BB850002EAF1 /* DDAppDelegate.m in Sources */,
 				95F5E81818E528C600E9F56D /* DDEncryption.m in Sources */,
 				9503E51818ED80C800AC326C /* DDPageViewController.m in Sources */,
+				95108E5018F532E900FA7D3A /* DDRefreshControlConst.m in Sources */,
 				9589962B18E2BB850002EAF1 /* main.m in Sources */,
+				95108E5118F532E900FA7D3A /* DDPullDown.m in Sources */,
 				9511E24E18E66FF3005B0EF6 /* DDMainUIViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,7 +31,6 @@
 
 @implementation HeaderView
 
-
 - (id)init
 {
     self = [super init];

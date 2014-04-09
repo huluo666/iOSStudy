@@ -130,18 +130,18 @@
         _dataSource = dataSource;
     }
 
-    self.currentPageIndex = 1;
+    _currentPageIndex = 1;
     
     NSInteger count = (double)[self contentRows];
     double divide = ceil((double)_dataSource.count / count);
     self.maxPageIndex =  (NSInteger)divide;
 
     NSArray *childVCs = self.childViewControllers;
-    self.preapedVC = (DDPageViewController *)childVCs[0];
-    self.appearedVC = (DDPageViewController *)childVCs[1];
+    _preapedVC = (DDPageViewController *)childVCs[0];
+    _appearedVC = (DDPageViewController *)childVCs[1];
 
-    self.appearedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex];
-    self.preapedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex + 1];
+    _appearedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex];
+    _preapedVC.dataSource = [self dataSourceWithPageIndex:_currentPageIndex + 1];
 }
 
 #pragma mark - swip gesture handler
@@ -199,7 +199,7 @@
     if (self.isProcessing) {
         return;
     }
-    self.processing = YES;
+    _processing = YES;
     
     UIView *appearedPageView = _pageViews[1];
     [UIView animateWithDuration:kAnimationDuration animations:^{
@@ -210,7 +210,7 @@
         [_pageViews removeObject:needAdjustView];
         [_pageViews insertObject:needAdjustView atIndex:0];
         
-        self.processing = NO;
+        _processing = NO;
     }];
 }
 
@@ -219,7 +219,7 @@
     if (self.isProcessing) {
         return;
     }
-    self.processing = YES;
+    _processing = YES;
     
     UIView *prepatedPageView =  _pageViews[0];
     
@@ -235,7 +235,7 @@
         upPageVC.dataSource = [self dataSourceWithPageIndex:index];
         [upPageVC.tableView reloadData];
     }
-    self.processing = NO;
+    _processing = NO;
 }
 
 - (void)upViewTransformToAppear {
@@ -243,7 +243,7 @@
     if (self.isProcessing) {
         return;
     }
-    self.processing = YES;
+    _processing = YES;
     
     UIView *upPageView = _pageViews[2];
     [UIView animateWithDuration:kAnimationDuration animations:^{
@@ -254,7 +254,7 @@
         [_pageViews removeObject:needAdjustView];
         [_pageViews addObject:needAdjustView];
         
-        self.processing = NO;
+        _processing = NO;
     }];
 }
 
@@ -262,7 +262,7 @@
 
 - (void)refresh {
 
-    self.processing = YES;
+    _processing = YES;
     UIView *appearedView = _pageViews[1];
     [UIView animateWithDuration:kAnimationDuration animations:^{
         appearedView.transform = CGAffineTransformScale(appearedView.transform, 0.5, 0.5);
@@ -280,7 +280,7 @@
     
     [self.arcLayer removeAllAnimations];
     [[self.view.subviews lastObject] removeFromSuperview];
-    self.processing = NO;
+    _processing = NO;
 }
 
 - (void)refreshAnimation {
@@ -298,13 +298,13 @@
                 startAngle:0
                   endAngle:2 * M_PI
                  clockwise:NO];
-    self.arcLayer = [CAShapeLayer layer];
-    self.arcLayer.path = path.CGPath;
-    self.arcLayer.fillColor = [UIColor lightGrayColor].CGColor;
-    self.arcLayer.strokeColor = [UIColor whiteColor].CGColor;
-    self.arcLayer.lineWidth = 5;
-    self.arcLayer.frame = loadingBackgroundView.frame;
-    [loadingBackgroundView.layer addSublayer:self.arcLayer];
+    _arcLayer = [CAShapeLayer layer];
+    _arcLayer.path = path.CGPath;
+    _arcLayer.fillColor = [UIColor lightGrayColor].CGColor;
+    _arcLayer.strokeColor = [UIColor whiteColor].CGColor;
+    _arcLayer.lineWidth = 5;
+    _arcLayer.frame = loadingBackgroundView.frame;
+    [loadingBackgroundView.layer addSublayer:_arcLayer];
     
     CABasicAnimation *animation=[CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     animation.duration = 1.5;
@@ -313,7 +313,7 @@
     animation.toValue = [NSNumber numberWithInteger:1];
     animation.fillMode = kCAFillModeForwards;
     animation.removedOnCompletion = YES;
-    [self.arcLayer addAnimation:animation forKey:@"animation"];
+    [_arcLayer addAnimation:animation forKey:@"animation"];
     
     CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds),
                               CGRectGetHeight(self.view.bounds) - 64);
@@ -344,7 +344,7 @@
 - (NSMutableArray *)dataSourceWithPageIndex:(NSInteger)pageIndex {
 
     NSMutableArray *dataSource = [[NSMutableArray alloc] init];
-    NSMutableArray *selfDataSource = self.dataSource;
+    NSMutableArray *selfDataSource = _dataSource;
     
     NSInteger dataSourceCount = selfDataSource.count;
     NSInteger contentRowsCount = self.contentRows * pageIndex;

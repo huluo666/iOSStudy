@@ -32,7 +32,7 @@ static NSString *cellIdentifier = @"cell";
 - (id)initWithCellType:(DDCellType)type {
     
     if (self = [super init]) {
-        self.celltype = type;
+        _celltype = type;
     }
     
     return self;
