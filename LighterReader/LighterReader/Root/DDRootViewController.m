@@ -211,7 +211,7 @@
         _backgroundView.alpha = 0.5;
     } completion:^(BOOL finished) {
         _menuShow = YES;
-        [self.view removeGestureRecognizer:_swipRightGesture];
+        [self.view removeGestureRecognizer:_swipLeftGesture];
     }];
     
     // disappear
@@ -223,7 +223,7 @@
                 _backgroundView.alpha = 0;
             } completion:^(BOOL finished) {
                 _menuShow = NO;
-                [self.view addGestureRecognizer:_swipRightGesture];
+                [self.view addGestureRecognizer:_swipLeftGesture];
                 [searchMenuView removeFromSuperview];
             }];
         }
