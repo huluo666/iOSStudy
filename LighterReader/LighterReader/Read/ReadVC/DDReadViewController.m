@@ -7,7 +7,7 @@
 //
 
 #import "DDReadViewController.h"
-#import "DDPullUp.h"
+#import "DDReadView.h"
 
 @interface DDReadViewController ()
 
@@ -20,10 +20,19 @@
 
 // scorllView
 - (void)loadReadView;
+@property (strong, nonatomic) DDReadView *previousReadView;
+@property (strong, nonatomic) DDReadView *appearedReadView;
+@property (strong, nonatomic) DDReadView *followingReadView;
+@property (strong, nonatomic) NSArray *positionFrame;
 
 @end
 
 @implementation DDReadViewController
+
+- (void)dealloc {
+    
+    NSLog(@"dealloced");
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -110,20 +119,36 @@
 
 - (void)loadReadView {
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    scrollView.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds));
-    scrollView.pagingEnabled = YES;
-//    scrollView.contentOffset = CGPointMake(CGRectGetWidth(self.view.bounds), 0);
-    [self.view addSubview:scrollView];
+    CGRect appearedFrame = self.view.bounds;
+    CGRect previousFrame = CGRectMake(-CGRectGetWidth(appearedFrame),
+                                      0,
+                                      CGRectGetWidth(appearedFrame),
+                                      CGRectGetHeight(appearedFrame));
+    CGRect followingFrame = CGRectMake(2 * CGRectGetWidth(appearedFrame),
+                                       0,
+                                       CGRectGetWidth(appearedFrame),
+                                       CGRectGetHeight(appearedFrame));
+    ;
+    _positionFrame = @[
+                       [NSValue valueWithCGRect:previousFrame],
+                       [NSValue valueWithCGRect:appearedFrame],
+                       [NSValue valueWithCGRect:followingFrame]
+                       ];
     
-    DDPullUp *pullUp = [DDPullUp pullUp];
-    pullUp.scrollView = scrollView;
+    _previousReadView = [[DDReadView alloc] initWithFrame:previousFrame];
+    _previousReadView.contentSize = CGSizeMake(320, 568 + 30);
+    _previousReadView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:_previousReadView];
     
-    __weak DDReadViewController *weakSelf = self;
-    pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-        
-    };
+    _appearedReadView = [[DDReadView alloc] initWithFrame:appearedFrame];
+    _appearedReadView.contentSize = CGSizeMake(320, 568 + 30);
+    _appearedReadView.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:_appearedReadView];
+    
+    _followingReadView = [[DDReadView alloc] initWithFrame:followingFrame];
+    _followingReadView.contentSize = CGSizeMake(320, 568 + 30);
+    _followingReadView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:_followingReadView];
 }
 
 @end

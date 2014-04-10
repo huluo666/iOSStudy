@@ -424,4 +424,41 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    
+    [super pushViewController:viewController animated:animated];
+    
+    CATransition* transition = [CATransition animation];
+    //执行时间长短
+    transition.duration = 0.5;
+    //动画的开始与结束的快慢
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
+    //各种动画效果
+    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    //动画方向
+    transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+    transition.removedOnCompletion = YES;
+    //将动画添加在视图层上
+    [self.view.layer addAnimation:transition forKey:nil];
+}
+
+- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
+    
+    [super popViewControllerAnimated:animated];
+    
+//    CATransition* transition = [CATransition animation];
+//    //执行时间长短
+//    transition.duration = 0.5;
+//    //动画的开始与结束的快慢
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
+//    //各种动画效果
+//    transition.type = kCATransitionReveal; //kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+    //动画方向
+//    transition.subtype = kCATransitionFromBottom; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+    //将动画添加在视图层上
+//    [self.view.layer addAnimation:transition forKey:nil];
+    
+    return self;
+}
+
 @end
