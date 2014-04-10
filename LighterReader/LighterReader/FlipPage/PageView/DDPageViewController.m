@@ -153,21 +153,9 @@ static NSString *cellIdentifier = @"cell";
     DDRootViewController *rootVC = (DDRootViewController *)[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController];
     [rootVC.view removeGestureRecognizer:rootVC.swipLeftGesture];
     [rootVC.view removeGestureRecognizer:rootVC.swipRightGesture];
-    
-//    CATransition* transition = [CATransition animation];
-//    //执行时间长短
-//    transition.duration = 0.5;
-//    //动画的开始与结束的快慢
-//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-//    //各种动画效果
-//    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-//    //动画方向
-//    transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-//    //将动画添加在视图层上
-//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
-    
+
     // now push
-    [self.navigationController pushViewController:readVC animated:NO];
+    [self.navigationController pushViewController:readVC animated:YES];
 }
 
 @end

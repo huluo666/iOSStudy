@@ -13,7 +13,10 @@ typedef enum {
     DDFloaterViewTypeArticle
 } DDFloaterViewType;
 
-@interface DDMainUINaviController : UINavigationController <UIViewControllerTransitioningDelegate>
+@interface DDMainUINaviController : UINavigationController <
+    UIViewControllerTransitioningDelegate,
+    UINavigationControllerDelegate
+>
 
 // Display floater adjust view
 - (void)showFloaterAdjustView;

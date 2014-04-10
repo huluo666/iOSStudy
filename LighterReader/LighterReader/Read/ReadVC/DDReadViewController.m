@@ -124,7 +124,7 @@
                                       0,
                                       CGRectGetWidth(appearedFrame),
                                       CGRectGetHeight(appearedFrame));
-    CGRect followingFrame = CGRectMake(2 * CGRectGetWidth(appearedFrame),
+    CGRect followingFrame = CGRectMake(CGRectGetWidth(appearedFrame),
                                        0,
                                        CGRectGetWidth(appearedFrame),
                                        CGRectGetHeight(appearedFrame));
@@ -135,20 +135,33 @@
                        [NSValue valueWithCGRect:followingFrame]
                        ];
     
-    _previousReadView = [[DDReadView alloc] initWithFrame:previousFrame];
-    _previousReadView.contentSize = CGSizeMake(320, 568 + 30);
-    _previousReadView.backgroundColor = [UIColor greenColor];
-    [self.view addSubview:_previousReadView];
-    
+
     _appearedReadView = [[DDReadView alloc] initWithFrame:appearedFrame];
     _appearedReadView.contentSize = CGSizeMake(320, 568 + 30);
     _appearedReadView.backgroundColor = [UIColor yellowColor];
     [self.view addSubview:_appearedReadView];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+
+    [super viewDidAppear:animated];
     
-    _followingReadView = [[DDReadView alloc] initWithFrame:followingFrame];
+    _previousReadView = [[DDReadView alloc] initWithFrame:[_positionFrame[0] CGRectValue]];
+    _previousReadView.contentSize = CGSizeMake(320, 568 + 30);
+    _previousReadView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:_previousReadView];
+    
+    _followingReadView = [[DDReadView alloc] initWithFrame:[_positionFrame[2] CGRectValue]];
     _followingReadView.contentSize = CGSizeMake(320, 568 + 30);
-    _followingReadView.backgroundColor = [UIColor greenColor];
+    _followingReadView.backgroundColor = [UIColor redColor];
     [self.view addSubview:_followingReadView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    
+    [super viewWillDisappear:animated];
+    [_previousReadView removeFromSuperview];
+    [_followingReadView removeFromSuperview];
 }
 
 @end

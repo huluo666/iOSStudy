@@ -71,6 +71,7 @@
     };
     DDMainUINaviController *navi = [[DDMainUINaviController alloc]
                                     initWithRootViewController:mainUIVC];
+    navi.delegate = navi;
     [self addChildViewController:navi];
     [self.view addSubview:navi.view];
     

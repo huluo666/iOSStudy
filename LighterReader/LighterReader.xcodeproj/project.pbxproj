@@ -37,6 +37,8 @@
 		06314BD718EDACC400CC5F3E /* mobile-icon-store-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314BB918EDACC400CC5F3E /* mobile-icon-store-white@2x.png */; };
 		06314BD818EDACC400CC5F3E /* navi.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314BBA18EDACC400CC5F3E /* navi.png */; };
 		06314BD918EDACC400CC5F3E /* navi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314BBB18EDACC400CC5F3E /* navi@2x.png */; };
+		0632C1ED18F6F13600A885CF /* DDPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1EA18F6F13600A885CF /* DDPopAnimation.m */; };
+		0632C1EE18F6F13600A885CF /* DDPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1EC18F6F13600A885CF /* DDPushAnimation.m */; };
 		06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06724FC818E716A400DA9A2F /* SystemConfiguration.framework */; };
 		06724FCD18E717A400DA9A2F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06724FCC18E717A400DA9A2F /* Reachability.m */; };
 		0686FA5C18EE656A00A988C1 /* DDSearchMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0686FA5B18EE656A00A988C1 /* DDSearchMenuView.m */; };
@@ -150,6 +152,10 @@
 		06314BB918EDACC400CC5F3E /* mobile-icon-store-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-store-white@2x.png"; sourceTree = "<group>"; };
 		06314BBA18EDACC400CC5F3E /* navi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navi.png; sourceTree = "<group>"; };
 		06314BBB18EDACC400CC5F3E /* navi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navi@2x.png"; sourceTree = "<group>"; };
+		0632C1E918F6F13600A885CF /* DDPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopAnimation.h; sourceTree = "<group>"; };
+		0632C1EA18F6F13600A885CF /* DDPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopAnimation.m; sourceTree = "<group>"; };
+		0632C1EB18F6F13600A885CF /* DDPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushAnimation.h; sourceTree = "<group>"; };
+		0632C1EC18F6F13600A885CF /* DDPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPushAnimation.m; sourceTree = "<group>"; };
 		06724FC818E716A400DA9A2F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06724FCB18E717A400DA9A2F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		06724FCC18E717A400DA9A2F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -342,6 +348,17 @@
 				06314BBB18EDACC400CC5F3E /* navi@2x.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		0632C1E818F6F13600A885CF /* NaviAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1E918F6F13600A885CF /* DDPopAnimation.h */,
+				0632C1EA18F6F13600A885CF /* DDPopAnimation.m */,
+				0632C1EB18F6F13600A885CF /* DDPushAnimation.h */,
+				0632C1EC18F6F13600A885CF /* DDPushAnimation.m */,
+			);
+			path = NaviAnimation;
 			sourceTree = "<group>";
 		};
 		06724FCA18E7176600DA9A2F /* Reachability */ = {
@@ -679,6 +696,7 @@
 		95AE911E18E3B0CB00181C39 /* MainUI */ = {
 			isa = PBXGroup;
 			children = (
+				0632C1E818F6F13600A885CF /* NaviAnimation */,
 				9511E24F18E69E89005B0EF6 /* ModalAnimation */,
 				95F5E82518E566D600E9F56D /* MainUINaviController */,
 				9511E24B18E66FF3005B0EF6 /* MainUIVC */,
@@ -875,6 +893,7 @@
 				06E6C1FE18F44CE200710133 /* DDListCell.m in Sources */,
 				950D84A818F69DB300A6DD64 /* DDRefreshBaseView.m in Sources */,
 				950D84FA18F6BC3D00A6DD64 /* DDReadView.m in Sources */,
+				0632C1ED18F6F13600A885CF /* DDPopAnimation.m in Sources */,
 				950D84A918F69DB300A6DD64 /* DDRefreshControlConst.m in Sources */,
 				9503E51718ED80C800AC326C /* DDFlipPageViewController.m in Sources */,
 				9511E25518E69E89005B0EF6 /* DDPresentAnimation.m in Sources */,
@@ -884,6 +903,7 @@
 				950D885418F39DAE00F79319 /* DDNaviCell.m in Sources */,
 				9511E23E18E66DF2005B0EF6 /* DDSignViewController.m in Sources */,
 				06E6C1FC18F44CE200710133 /* DDCardsCell.m in Sources */,
+				0632C1EE18F6F13600A885CF /* DDPushAnimation.m in Sources */,
 				950D84AA18F69DB300A6DD64 /* DDPullDown.m in Sources */,
 				95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */,
 				950D84F618F6BC2500A6DD64 /* DDReadViewController.m in Sources */,

@@ -9,6 +9,8 @@
 #import "DDMainUINaviController.h"
 #import "DDPresentAnimation.h"
 #import "DDDismissAnimation.h"
+#import "DDPushAnimation.h"
+#import "DDPopAnimation.h"
 
 #define kCellBackgroundColor [UIColor colorWithWhite:0.296 alpha:1.000]
 #define kCellSelectedBackgroundColor [UIColor colorWithWhite:0.196 alpha:1.000]
@@ -189,17 +191,34 @@
 #pragma mark - UIViewControllerTransitioningDelegate
 
 // Present
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-{
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    
     return [[DDPresentAnimation alloc] init];
     
 }
 
 // Dismiss
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-{
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    
     return [[DDDismissAnimation alloc] init];
 }
+
+#pragma mark - <UINavigationControllerDelegate>
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    
+    if (operation == UINavigationControllerOperationPush) {
+        return [[DDPushAnimation alloc] init];
+    }
+    if (operation == UINavigationControllerOperationPop) {
+        return [[DDPopAnimation alloc] init];
+    }
+    return nil;
+}
+
 
 #pragma mark - Display floater adjust view
 
@@ -422,43 +441,6 @@
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
-
-- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-    
-    [super pushViewController:viewController animated:animated];
-    
-    CATransition* transition = [CATransition animation];
-    //执行时间长短
-    transition.duration = 0.5;
-    //动画的开始与结束的快慢
-    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear];
-    //各种动画效果
-    transition.type = kCATransitionMoveIn; //kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-    //动画方向
-    transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-    transition.removedOnCompletion = YES;
-    //将动画添加在视图层上
-    [self.view.layer addAnimation:transition forKey:nil];
-}
-
-- (UIViewController *)popViewControllerAnimated:(BOOL)animated {
-    
-    [super popViewControllerAnimated:animated];
-    
-//    CATransition* transition = [CATransition animation];
-//    //执行时间长短
-//    transition.duration = 0.5;
-//    //动画的开始与结束的快慢
-//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault];
-//    //各种动画效果
-//    transition.type = kCATransitionReveal; //kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
-    //动画方向
-//    transition.subtype = kCATransitionFromBottom; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
-    //将动画添加在视图层上
-//    [self.view.layer addAnimation:transition forKey:nil];
-    
-    return self;
 }
 
 @end
