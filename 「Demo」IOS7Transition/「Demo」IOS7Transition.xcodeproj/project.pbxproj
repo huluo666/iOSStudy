@@ -1,0 +1,558 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0632C19818F6E24D00A885CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0632C19718F6E24D00A885CF /* Foundation.framework */; };
+		0632C19A18F6E24D00A885CF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0632C19918F6E24D00A885CF /* CoreGraphics.framework */; };
+		0632C19C18F6E24D00A885CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0632C19B18F6E24D00A885CF /* UIKit.framework */; };
+		0632C1A218F6E24D00A885CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0632C1A018F6E24D00A885CF /* InfoPlist.strings */; };
+		0632C1A418F6E24D00A885CF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1A318F6E24D00A885CF /* main.m */; };
+		0632C1A818F6E24D00A885CF /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1A718F6E24D00A885CF /* DDAppDelegate.m */; };
+		0632C1AB18F6E24D00A885CF /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0632C1A918F6E24D00A885CF /* Main_iPhone.storyboard */; };
+		0632C1AE18F6E24D00A885CF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0632C1AC18F6E24D00A885CF /* Main_iPad.storyboard */; };
+		0632C1B118F6E24D00A885CF /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1B018F6E24D00A885CF /* DDViewController.m */; };
+		0632C1B318F6E24D00A885CF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0632C1B218F6E24D00A885CF /* Images.xcassets */; };
+		0632C1BA18F6E24D00A885CF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0632C1B918F6E24D00A885CF /* XCTest.framework */; };
+		0632C1BB18F6E24D00A885CF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0632C19718F6E24D00A885CF /* Foundation.framework */; };
+		0632C1BC18F6E24D00A885CF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0632C19B18F6E24D00A885CF /* UIKit.framework */; };
+		0632C1C418F6E24D00A885CF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0632C1C218F6E24D00A885CF /* InfoPlist.strings */; };
+		0632C1C618F6E24D00A885CF /* _Demo_IOS7TransitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1C518F6E24D00A885CF /* _Demo_IOS7TransitionTests.m */; };
+		0632C1D418F6E36C00A885CF /* DDDismissAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1D118F6E36C00A885CF /* DDDismissAnimation.m */; };
+		0632C1D518F6E36C00A885CF /* DDPresentAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1D318F6E36C00A885CF /* DDPresentAnimation.m */; };
+		0632C1DC18F6E3E000A885CF /* DDModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1DB18F6E3E000A885CF /* DDModalViewController.m */; };
+		0632C1E018F6E69800A885CF /* DDNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1DF18F6E69800A885CF /* DDNaviViewController.m */; };
+		0632C1E418F6EA1800A885CF /* DDPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1E318F6EA1800A885CF /* DDPushAnimation.m */; };
+		0632C1E718F6EA2C00A885CF /* DDPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1E618F6EA2C00A885CF /* DDPopAnimation.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0632C1BD18F6E24D00A885CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0632C18C18F6E24D00A885CF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0632C19318F6E24D00A885CF;
+			remoteInfo = "「Demo」IOS7Transition";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0632C19418F6E24D00A885CF /* 「Demo」IOS7Transition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「Demo」IOS7Transition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0632C19718F6E24D00A885CF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		0632C19918F6E24D00A885CF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		0632C19B18F6E24D00A885CF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0632C19F18F6E24D00A885CF /* 「Demo」IOS7Transition-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」IOS7Transition-Info.plist"; sourceTree = "<group>"; };
+		0632C1A118F6E24D00A885CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0632C1A318F6E24D00A885CF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0632C1A518F6E24D00A885CF /* 「Demo」IOS7Transition-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "「Demo」IOS7Transition-Prefix.pch"; sourceTree = "<group>"; };
+		0632C1A618F6E24D00A885CF /* DDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
+		0632C1A718F6E24D00A885CF /* DDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
+		0632C1AA18F6E24D00A885CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		0632C1AD18F6E24D00A885CF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		0632C1AF18F6E24D00A885CF /* DDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
+		0632C1B018F6E24D00A885CF /* DDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
+		0632C1B218F6E24D00A885CF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		0632C1B818F6E24D00A885CF /* 「Demo」IOS7TransitionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "「Demo」IOS7TransitionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		0632C1B918F6E24D00A885CF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		0632C1C118F6E24D00A885CF /* 「Demo」IOS7TransitionTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」IOS7TransitionTests-Info.plist"; sourceTree = "<group>"; };
+		0632C1C318F6E24D00A885CF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0632C1C518F6E24D00A885CF /* _Demo_IOS7TransitionTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _Demo_IOS7TransitionTests.m; sourceTree = "<group>"; };
+		0632C1D018F6E36C00A885CF /* DDDismissAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDismissAnimation.h; sourceTree = "<group>"; };
+		0632C1D118F6E36C00A885CF /* DDDismissAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDismissAnimation.m; sourceTree = "<group>"; };
+		0632C1D218F6E36C00A885CF /* DDPresentAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPresentAnimation.h; sourceTree = "<group>"; };
+		0632C1D318F6E36C00A885CF /* DDPresentAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPresentAnimation.m; sourceTree = "<group>"; };
+		0632C1DA18F6E3E000A885CF /* DDModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDModalViewController.h; sourceTree = "<group>"; };
+		0632C1DB18F6E3E000A885CF /* DDModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDModalViewController.m; sourceTree = "<group>"; };
+		0632C1DE18F6E69800A885CF /* DDNaviViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNaviViewController.h; sourceTree = "<group>"; };
+		0632C1DF18F6E69800A885CF /* DDNaviViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNaviViewController.m; sourceTree = "<group>"; };
+		0632C1E218F6EA1800A885CF /* DDPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushAnimation.h; sourceTree = "<group>"; };
+		0632C1E318F6EA1800A885CF /* DDPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPushAnimation.m; sourceTree = "<group>"; };
+		0632C1E518F6EA2C00A885CF /* DDPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopAnimation.h; sourceTree = "<group>"; };
+		0632C1E618F6EA2C00A885CF /* DDPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopAnimation.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0632C19118F6E24D00A885CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0632C19A18F6E24D00A885CF /* CoreGraphics.framework in Frameworks */,
+				0632C19C18F6E24D00A885CF /* UIKit.framework in Frameworks */,
+				0632C19818F6E24D00A885CF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0632C1B518F6E24D00A885CF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0632C1BA18F6E24D00A885CF /* XCTest.framework in Frameworks */,
+				0632C1BC18F6E24D00A885CF /* UIKit.framework in Frameworks */,
+				0632C1BB18F6E24D00A885CF /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0632C18B18F6E24D00A885CF = {
+			isa = PBXGroup;
+			children = (
+				0632C19D18F6E24D00A885CF /* 「Demo」IOS7Transition */,
+				0632C1BF18F6E24D00A885CF /* 「Demo」IOS7TransitionTests */,
+				0632C19618F6E24D00A885CF /* Frameworks */,
+				0632C19518F6E24D00A885CF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		0632C19518F6E24D00A885CF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0632C19418F6E24D00A885CF /* 「Demo」IOS7Transition.app */,
+				0632C1B818F6E24D00A885CF /* 「Demo」IOS7TransitionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0632C19618F6E24D00A885CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0632C19718F6E24D00A885CF /* Foundation.framework */,
+				0632C19918F6E24D00A885CF /* CoreGraphics.framework */,
+				0632C19B18F6E24D00A885CF /* UIKit.framework */,
+				0632C1B918F6E24D00A885CF /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0632C19D18F6E24D00A885CF /* 「Demo」IOS7Transition */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1DD18F6E68500A885CF /* NaviVC */,
+				0632C1D918F6E3CE00A885CF /* ModalVC */,
+				0632C1E118F6E9E300A885CF /* NaviAnimation */,
+				0632C1CF18F6E36C00A885CF /* ModalAnimation */,
+				0632C1A618F6E24D00A885CF /* DDAppDelegate.h */,
+				0632C1A718F6E24D00A885CF /* DDAppDelegate.m */,
+				0632C1A918F6E24D00A885CF /* Main_iPhone.storyboard */,
+				0632C1AC18F6E24D00A885CF /* Main_iPad.storyboard */,
+				0632C1AF18F6E24D00A885CF /* DDViewController.h */,
+				0632C1B018F6E24D00A885CF /* DDViewController.m */,
+				0632C1B218F6E24D00A885CF /* Images.xcassets */,
+				0632C19E18F6E24D00A885CF /* Supporting Files */,
+			);
+			path = "「Demo」IOS7Transition";
+			sourceTree = "<group>";
+		};
+		0632C19E18F6E24D00A885CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0632C19F18F6E24D00A885CF /* 「Demo」IOS7Transition-Info.plist */,
+				0632C1A018F6E24D00A885CF /* InfoPlist.strings */,
+				0632C1A318F6E24D00A885CF /* main.m */,
+				0632C1A518F6E24D00A885CF /* 「Demo」IOS7Transition-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0632C1BF18F6E24D00A885CF /* 「Demo」IOS7TransitionTests */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1C518F6E24D00A885CF /* _Demo_IOS7TransitionTests.m */,
+				0632C1C018F6E24D00A885CF /* Supporting Files */,
+			);
+			path = "「Demo」IOS7TransitionTests";
+			sourceTree = "<group>";
+		};
+		0632C1C018F6E24D00A885CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1C118F6E24D00A885CF /* 「Demo」IOS7TransitionTests-Info.plist */,
+				0632C1C218F6E24D00A885CF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0632C1CF18F6E36C00A885CF /* ModalAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1D018F6E36C00A885CF /* DDDismissAnimation.h */,
+				0632C1D118F6E36C00A885CF /* DDDismissAnimation.m */,
+				0632C1D218F6E36C00A885CF /* DDPresentAnimation.h */,
+				0632C1D318F6E36C00A885CF /* DDPresentAnimation.m */,
+			);
+			path = ModalAnimation;
+			sourceTree = "<group>";
+		};
+		0632C1D918F6E3CE00A885CF /* ModalVC */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1DA18F6E3E000A885CF /* DDModalViewController.h */,
+				0632C1DB18F6E3E000A885CF /* DDModalViewController.m */,
+			);
+			path = ModalVC;
+			sourceTree = "<group>";
+		};
+		0632C1DD18F6E68500A885CF /* NaviVC */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1DE18F6E69800A885CF /* DDNaviViewController.h */,
+				0632C1DF18F6E69800A885CF /* DDNaviViewController.m */,
+			);
+			path = NaviVC;
+			sourceTree = "<group>";
+		};
+		0632C1E118F6E9E300A885CF /* NaviAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				0632C1E218F6EA1800A885CF /* DDPushAnimation.h */,
+				0632C1E318F6EA1800A885CF /* DDPushAnimation.m */,
+				0632C1E518F6EA2C00A885CF /* DDPopAnimation.h */,
+				0632C1E618F6EA2C00A885CF /* DDPopAnimation.m */,
+			);
+			path = NaviAnimation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0632C19318F6E24D00A885CF /* 「Demo」IOS7Transition */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0632C1C918F6E24D00A885CF /* Build configuration list for PBXNativeTarget "「Demo」IOS7Transition" */;
+			buildPhases = (
+				0632C19018F6E24D00A885CF /* Sources */,
+				0632C19118F6E24D00A885CF /* Frameworks */,
+				0632C19218F6E24D00A885CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "「Demo」IOS7Transition";
+			productName = "「Demo」IOS7Transition";
+			productReference = 0632C19418F6E24D00A885CF /* 「Demo」IOS7Transition.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0632C1B718F6E24D00A885CF /* 「Demo」IOS7TransitionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0632C1CC18F6E24D00A885CF /* Build configuration list for PBXNativeTarget "「Demo」IOS7TransitionTests" */;
+			buildPhases = (
+				0632C1B418F6E24D00A885CF /* Sources */,
+				0632C1B518F6E24D00A885CF /* Frameworks */,
+				0632C1B618F6E24D00A885CF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0632C1BE18F6E24D00A885CF /* PBXTargetDependency */,
+			);
+			name = "「Demo」IOS7TransitionTests";
+			productName = "「Demo」IOS7TransitionTests";
+			productReference = 0632C1B818F6E24D00A885CF /* 「Demo」IOS7TransitionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0632C18C18F6E24D00A885CF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DD;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = CUAN;
+				TargetAttributes = {
+					0632C1B718F6E24D00A885CF = {
+						TestTargetID = 0632C19318F6E24D00A885CF;
+					};
+				};
+			};
+			buildConfigurationList = 0632C18F18F6E24D00A885CF /* Build configuration list for PBXProject "「Demo」IOS7Transition" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0632C18B18F6E24D00A885CF;
+			productRefGroup = 0632C19518F6E24D00A885CF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0632C19318F6E24D00A885CF /* 「Demo」IOS7Transition */,
+				0632C1B718F6E24D00A885CF /* 「Demo」IOS7TransitionTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0632C19218F6E24D00A885CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0632C1AE18F6E24D00A885CF /* Main_iPad.storyboard in Resources */,
+				0632C1B318F6E24D00A885CF /* Images.xcassets in Resources */,
+				0632C1AB18F6E24D00A885CF /* Main_iPhone.storyboard in Resources */,
+				0632C1A218F6E24D00A885CF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0632C1B618F6E24D00A885CF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0632C1C418F6E24D00A885CF /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0632C19018F6E24D00A885CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0632C1E018F6E69800A885CF /* DDNaviViewController.m in Sources */,
+				0632C1DC18F6E3E000A885CF /* DDModalViewController.m in Sources */,
+				0632C1D518F6E36C00A885CF /* DDPresentAnimation.m in Sources */,
+				0632C1A818F6E24D00A885CF /* DDAppDelegate.m in Sources */,
+				0632C1E418F6EA1800A885CF /* DDPushAnimation.m in Sources */,
+				0632C1B118F6E24D00A885CF /* DDViewController.m in Sources */,
+				0632C1E718F6EA2C00A885CF /* DDPopAnimation.m in Sources */,
+				0632C1A418F6E24D00A885CF /* main.m in Sources */,
+				0632C1D418F6E36C00A885CF /* DDDismissAnimation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0632C1B418F6E24D00A885CF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0632C1C618F6E24D00A885CF /* _Demo_IOS7TransitionTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0632C1BE18F6E24D00A885CF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0632C19318F6E24D00A885CF /* 「Demo」IOS7Transition */;
+			targetProxy = 0632C1BD18F6E24D00A885CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0632C1A018F6E24D00A885CF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0632C1A118F6E24D00A885CF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		0632C1A918F6E24D00A885CF /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0632C1AA18F6E24D00A885CF /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		0632C1AC18F6E24D00A885CF /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0632C1AD18F6E24D00A885CF /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		0632C1C218F6E24D00A885CF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0632C1C318F6E24D00A885CF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0632C1C718F6E24D00A885CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0632C1C818F6E24D00A885CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0632C1CA18F6E24D00A885CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」IOS7Transition/「Demo」IOS7Transition-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」IOS7Transition/「Demo」IOS7Transition-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		0632C1CB18F6E24D00A885CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」IOS7Transition/「Demo」IOS7Transition-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」IOS7Transition/「Demo」IOS7Transition-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		0632C1CD18F6E24D00A885CF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「Demo」IOS7Transition.app/「Demo」IOS7Transition";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」IOS7Transition/「Demo」IOS7Transition-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "「Demo」IOS7TransitionTests/「Demo」IOS7TransitionTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		0632C1CE18F6E24D00A885CF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/「Demo」IOS7Transition.app/「Demo」IOS7Transition";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "「Demo」IOS7Transition/「Demo」IOS7Transition-Prefix.pch";
+				INFOPLIST_FILE = "「Demo」IOS7TransitionTests/「Demo」IOS7TransitionTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0632C18F18F6E24D00A885CF /* Build configuration list for PBXProject "「Demo」IOS7Transition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0632C1C718F6E24D00A885CF /* Debug */,
+				0632C1C818F6E24D00A885CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0632C1C918F6E24D00A885CF /* Build configuration list for PBXNativeTarget "「Demo」IOS7Transition" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0632C1CA18F6E24D00A885CF /* Debug */,
+				0632C1CB18F6E24D00A885CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		0632C1CC18F6E24D00A885CF /* Build configuration list for PBXNativeTarget "「Demo」IOS7TransitionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0632C1CD18F6E24D00A885CF /* Debug */,
+				0632C1CE18F6E24D00A885CF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0632C18C18F6E24D00A885CF /* Project object */;
+}
