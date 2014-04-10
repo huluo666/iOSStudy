@@ -163,6 +163,9 @@
         
         [kUserDefaults setObject:@0 forKey:@"currentSelectedButtonIndex"];
         [kUserDefaults synchronize];
+        
+        [self.navigationBar setBackIndicatorTransitionMaskImage:DDImageWithName(@"mobile-icon-toolbar-close-white")];
+        [self.navigationBar setBackIndicatorImage:DDImageWithName(@"mobile-icon-toolbar-close-white")];
     }
     return self;
 }
@@ -170,6 +173,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"d3";
     
     NSArray *titles =  @[@"Refresh",
                          @"Mark Category As Read",

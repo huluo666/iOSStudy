@@ -8,6 +8,7 @@
 
 #import "DDViewController.h"
 #import "DDPullDown.h"
+#import "DDDetailViewController.h"
 
 @interface DDViewController ()
 
@@ -20,6 +21,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor cyanColor];
     
     UIScrollView *scrollow = [[UIScrollView alloc] initWithFrame:self.view.frame];
     scrollow.contentSize = CGSizeMake(320, 1900);
@@ -42,6 +45,13 @@
         NSLog(@"!!!!!!!!%@当前状态：数据刷新完成", [refreshBaseView class]);
     };
 
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 200, 200, 40);
+    button.backgroundColor = [UIColor yellowColor];
+    [button setTitle:@"push" forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(push) forControlEvents:UIControlEventTouchUpInside];
+    [scrollow addSubview:button];
 }
 
 - (void)stopWithRefreshBaseView:(DDRefreshBaseView *)refreshBaseView {
@@ -51,10 +61,23 @@
     [refreshBaseView endRefreshingWithSuccess:YES];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)push {
+    
+    DDDetailViewController *detail = [[DDDetailViewController alloc] init];
+    
+//    CATransition* transition = [CATransition animation];
+//    //执行时间长短
+//    transition.duration = 0.5;
+//    //动画的开始与结束的快慢
+//    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+//    //各种动画效果
+//    transition.type = kCATransitionReveal; //kCATransitionMoveIn, kCATransitionPush, kCATransitionReveal, kCATransitionFade
+//    //动画方向
+//    transition.subtype = kCATransitionFromTop; //kCATransitionFromLeft, kCATransitionFromRight, kCATransitionFromTop, kCATransitionFromBottom
+//    //将动画添加在视图层上
+//    [self.navigationController.view.layer addAnimation:transition forKey:nil];
+    
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 @end

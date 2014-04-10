@@ -62,3 +62,10 @@ fprintf(stderr, "-------\n");                                               \
 #define kFloaterAdjustDislplayButtonTag 250
 
 #endif
+
+#ifndef LighterReader_DDReadViewController_m
+#define LighterReader_DDReadViewController_m
+
+#define kBarItemTag 300
+
+#endif

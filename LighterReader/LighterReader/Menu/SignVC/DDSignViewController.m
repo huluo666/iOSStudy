@@ -143,6 +143,11 @@
     // get email address, password
     NSString *emailAddress = ((UITextField *)_textFields[0]).text;
     NSString *password = ((UITextField *)_textFields[1]).text;
+    
+#pragma mark - TEST
+    
+    emailAddress = @"test@gmail.com";
+    password = @"123456";
 
     if (!emailAddress || 0 == emailAddress.length) {
         return;
@@ -166,10 +171,10 @@
         return;
     }
 
-    NSLog(@"emailAddress =  %@, password = %@", emailAddress, password);
+    
+    
     // encrypt password
     NSString *encryptionPassword = [DDEncryption encryptString:password];
-    NSLog(@"emailAddress =  %@， encryptionPassword = %@", emailAddress, encryptionPassword);
     
     NSDictionary *postDict = @{@"emailAddress":emailAddress,
                                @"encryptionPassword":encryptionPassword};

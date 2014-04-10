@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950D845F18F68ADF00A6DD64 /* DDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D845E18F68ADF00A6DD64 /* DDDetailViewController.m */; };
+		950D849218F69D7600A6DD64 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D848618F69D7600A6DD64 /* arrow.png */; };
+		950D849318F69D7600A6DD64 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D848718F69D7600A6DD64 /* arrow@2x.png */; };
+		950D849418F69D7600A6DD64 /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D848918F69D7600A6DD64 /* DDRefreshBaseView.m */; };
+		950D849518F69D7600A6DD64 /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D848B18F69D7600A6DD64 /* DDRefreshControlConst.m */; };
+		950D849618F69D7600A6DD64 /* DDPullDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D848E18F69D7600A6DD64 /* DDPullDown.m */; };
+		950D849718F69D7600A6DD64 /* DDPullUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 950D849118F69D7600A6DD64 /* DDPullUp.m */; };
 		95108DEA18F5253400FA7D3A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95108DE918F5253400FA7D3A /* Foundation.framework */; };
 		95108DEC18F5253400FA7D3A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95108DEB18F5253400FA7D3A /* CoreGraphics.framework */; };
 		95108DEE18F5253400FA7D3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95108DED18F5253400FA7D3A /* UIKit.framework */; };
@@ -22,11 +29,6 @@
 		95108E0E18F5253400FA7D3A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95108DED18F5253400FA7D3A /* UIKit.framework */; };
 		95108E1618F5253400FA7D3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95108E1418F5253400FA7D3A /* InfoPlist.strings */; };
 		95108E1818F5253400FA7D3A /* _Demo_____Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95108E1718F5253400FA7D3A /* _Demo_____Tests.m */; };
-		95108E3D18F52BFB00FA7D3A /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95108E3418F52BFB00FA7D3A /* arrow.png */; };
-		95108E3E18F52BFB00FA7D3A /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95108E3518F52BFB00FA7D3A /* arrow@2x.png */; };
-		95108E3F18F52BFB00FA7D3A /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95108E3718F52BFB00FA7D3A /* DDRefreshBaseView.m */; };
-		95108E4018F52BFB00FA7D3A /* DDRefreshControlConst.m in Sources */ = {isa = PBXBuildFile; fileRef = 95108E3918F52BFB00FA7D3A /* DDRefreshControlConst.m */; };
-		95108E4118F52BFB00FA7D3A /* DDPullDown.m in Sources */ = {isa = PBXBuildFile; fileRef = 95108E3C18F52BFB00FA7D3A /* DDPullDown.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		950D845D18F68ADF00A6DD64 /* DDDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDetailViewController.h; sourceTree = "<group>"; };
+		950D845E18F68ADF00A6DD64 /* DDDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDetailViewController.m; sourceTree = "<group>"; };
+		950D848618F69D7600A6DD64 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		950D848718F69D7600A6DD64 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		950D848818F69D7600A6DD64 /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
+		950D848918F69D7600A6DD64 /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
+		950D848A18F69D7600A6DD64 /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
+		950D848B18F69D7600A6DD64 /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
+		950D848D18F69D7600A6DD64 /* DDPullDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDown.h; sourceTree = "<group>"; };
+		950D848E18F69D7600A6DD64 /* DDPullDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDown.m; sourceTree = "<group>"; };
+		950D849018F69D7600A6DD64 /* DDPullUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUp.h; sourceTree = "<group>"; };
+		950D849118F69D7600A6DD64 /* DDPullUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUp.m; sourceTree = "<group>"; };
 		95108DE618F5253400FA7D3A /* 「Demo」下拉刷新.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「Demo」下拉刷新.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95108DE918F5253400FA7D3A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		95108DEB18F5253400FA7D3A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -60,14 +74,6 @@
 		95108E1318F5253400FA7D3A /* 「Demo」下拉刷新Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」下拉刷新Tests-Info.plist"; sourceTree = "<group>"; };
 		95108E1518F5253400FA7D3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		95108E1718F5253400FA7D3A /* _Demo_____Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_Demo_____Tests.m"; sourceTree = "<group>"; };
-		95108E3418F52BFB00FA7D3A /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		95108E3518F52BFB00FA7D3A /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
-		95108E3618F52BFB00FA7D3A /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
-		95108E3718F52BFB00FA7D3A /* DDRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshBaseView.m; sourceTree = "<group>"; };
-		95108E3818F52BFB00FA7D3A /* DDRefreshControlConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshControlConst.h; sourceTree = "<group>"; };
-		95108E3918F52BFB00FA7D3A /* DDRefreshControlConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRefreshControlConst.m; sourceTree = "<group>"; };
-		95108E3B18F52BFB00FA7D3A /* DDPullDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDown.h; sourceTree = "<group>"; };
-		95108E3C18F52BFB00FA7D3A /* DDPullDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDown.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		950D848418F69D7600A6DD64 /* PullControl */ = {
+			isa = PBXGroup;
+			children = (
+				950D848518F69D7600A6DD64 /* BasePullControl */,
+				950D848C18F69D7600A6DD64 /* PullDownRefresh */,
+				950D848F18F69D7600A6DD64 /* PullUpClose */,
+			);
+			path = PullControl;
+			sourceTree = "<group>";
+		};
+		950D848518F69D7600A6DD64 /* BasePullControl */ = {
+			isa = PBXGroup;
+			children = (
+				950D848618F69D7600A6DD64 /* arrow.png */,
+				950D848718F69D7600A6DD64 /* arrow@2x.png */,
+				950D848818F69D7600A6DD64 /* DDRefreshBaseView.h */,
+				950D848918F69D7600A6DD64 /* DDRefreshBaseView.m */,
+				950D848A18F69D7600A6DD64 /* DDRefreshControlConst.h */,
+				950D848B18F69D7600A6DD64 /* DDRefreshControlConst.m */,
+			);
+			path = BasePullControl;
+			sourceTree = "<group>";
+		};
+		950D848C18F69D7600A6DD64 /* PullDownRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				950D848D18F69D7600A6DD64 /* DDPullDown.h */,
+				950D848E18F69D7600A6DD64 /* DDPullDown.m */,
+			);
+			path = PullDownRefresh;
+			sourceTree = "<group>";
+		};
+		950D848F18F69D7600A6DD64 /* PullUpClose */ = {
+			isa = PBXGroup;
+			children = (
+				950D849018F69D7600A6DD64 /* DDPullUp.h */,
+				950D849118F69D7600A6DD64 /* DDPullUp.m */,
+			);
+			path = PullUpClose;
+			sourceTree = "<group>";
+		};
 		95108DDD18F5253400FA7D3A = {
 			isa = PBXGroup;
 			children = (
@@ -127,13 +174,15 @@
 		95108DEF18F5253400FA7D3A /* 「Demo」下拉刷新 */ = {
 			isa = PBXGroup;
 			children = (
-				95108E3218F52BFB00FA7D3A /* PullRefresh */,
+				950D848418F69D7600A6DD64 /* PullControl */,
 				95108DF818F5253400FA7D3A /* DDAppDelegate.h */,
 				95108DF918F5253400FA7D3A /* DDAppDelegate.m */,
 				95108DFB18F5253400FA7D3A /* Main_iPhone.storyboard */,
 				95108DFE18F5253400FA7D3A /* Main_iPad.storyboard */,
 				95108E0118F5253400FA7D3A /* DDViewController.h */,
 				95108E0218F5253400FA7D3A /* DDViewController.m */,
+				950D845D18F68ADF00A6DD64 /* DDDetailViewController.h */,
+				950D845E18F68ADF00A6DD64 /* DDDetailViewController.m */,
 				95108E0418F5253400FA7D3A /* Images.xcassets */,
 				95108DF018F5253400FA7D3A /* Supporting Files */,
 			);
@@ -167,37 +216,6 @@
 				95108E1418F5253400FA7D3A /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		95108E3218F52BFB00FA7D3A /* PullRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				95108E3318F52BFB00FA7D3A /* BasePullControl */,
-				95108E3A18F52BFB00FA7D3A /* PullDownRefresh */,
-			);
-			path = PullRefresh;
-			sourceTree = "<group>";
-		};
-		95108E3318F52BFB00FA7D3A /* BasePullControl */ = {
-			isa = PBXGroup;
-			children = (
-				95108E3418F52BFB00FA7D3A /* arrow.png */,
-				95108E3518F52BFB00FA7D3A /* arrow@2x.png */,
-				95108E3618F52BFB00FA7D3A /* DDRefreshBaseView.h */,
-				95108E3718F52BFB00FA7D3A /* DDRefreshBaseView.m */,
-				95108E3818F52BFB00FA7D3A /* DDRefreshControlConst.h */,
-				95108E3918F52BFB00FA7D3A /* DDRefreshControlConst.m */,
-			);
-			path = BasePullControl;
-			sourceTree = "<group>";
-		};
-		95108E3A18F52BFB00FA7D3A /* PullDownRefresh */ = {
-			isa = PBXGroup;
-			children = (
-				95108E3B18F52BFB00FA7D3A /* DDPullDown.h */,
-				95108E3C18F52BFB00FA7D3A /* DDPullDown.m */,
-			);
-			path = PullDownRefresh;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -279,9 +297,9 @@
 			files = (
 				95108E0018F5253400FA7D3A /* Main_iPad.storyboard in Resources */,
 				95108E0518F5253400FA7D3A /* Images.xcassets in Resources */,
-				95108E3E18F52BFB00FA7D3A /* arrow@2x.png in Resources */,
+				950D849318F69D7600A6DD64 /* arrow@2x.png in Resources */,
 				95108DFD18F5253400FA7D3A /* Main_iPhone.storyboard in Resources */,
-				95108E3D18F52BFB00FA7D3A /* arrow.png in Resources */,
+				950D849218F69D7600A6DD64 /* arrow.png in Resources */,
 				95108DF418F5253400FA7D3A /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,10 +321,12 @@
 			files = (
 				95108DFA18F5253400FA7D3A /* DDAppDelegate.m in Sources */,
 				95108E0318F5253400FA7D3A /* DDViewController.m in Sources */,
-				95108E4118F52BFB00FA7D3A /* DDPullDown.m in Sources */,
-				95108E4018F52BFB00FA7D3A /* DDRefreshControlConst.m in Sources */,
 				95108DF618F5253400FA7D3A /* main.m in Sources */,
-				95108E3F18F52BFB00FA7D3A /* DDRefreshBaseView.m in Sources */,
+				950D849618F69D7600A6DD64 /* DDPullDown.m in Sources */,
+				950D849518F69D7600A6DD64 /* DDRefreshControlConst.m in Sources */,
+				950D845F18F68ADF00A6DD64 /* DDDetailViewController.m in Sources */,
+				950D849418F69D7600A6DD64 /* DDRefreshBaseView.m in Sources */,
+				950D849718F69D7600A6DD64 /* DDPullUp.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -525,6 +545,7 @@
 				95108E1D18F5253400FA7D3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95108E1E18F5253400FA7D3A /* Build configuration list for PBXNativeTarget "「Demo」下拉刷新Tests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +554,7 @@
 				95108E2018F5253400FA7D3A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

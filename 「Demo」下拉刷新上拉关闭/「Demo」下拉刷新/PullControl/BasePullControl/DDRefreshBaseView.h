@@ -49,6 +49,7 @@ typedef enum {
 @property (assign, nonatomic) UIEdgeInsets scrollViewInsetRecord;   // 记录滚动视图滚动后的contentInSet
 @property (assign, nonatomic) CGFloat properVerticalPullValue;      // 合理的纵向滑动值
 @property (assign, nonatomic) DDRefreshType viewType;               // 控件类型
+@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 
 @property (retain, nonatomic) UIScrollView *scrollView;             // 滑动控件
 - (instancetype)initWihtScrollView:(UIScrollView *)scrollView;

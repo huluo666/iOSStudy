@@ -7,12 +7,16 @@
 //
 
 #import "DDAppDelegate.h"
+#import "DDViewController.h"
 
 @implementation DDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    DDViewController *VC = [[DDViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:VC];
+    self.window.rootViewController = navi;
+    self.window.backgroundColor = [UIColor whiteColor];
     return YES;
 }
 							

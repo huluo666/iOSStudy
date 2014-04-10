@@ -13,9 +13,9 @@ NSString * const DDPullDownToRefresh         = @"Pull to refresh";
 NSString * const DDPullDownDataLoading       = @"Refreshing...";
 NSString * const DDPullDownReleaseToLoadData = @"Release to refresh";
 
-NSString * const DDPullUpToRefresh           = @"上拉加载数据";
-NSString * const DDPullUpDataLoading         = @"上拉数据加载中...";
-NSString * const DDPullUpReleaseToLoadData   = @"上拉松开加载更多数据";
+NSString * const DDPullUpToRefresh           = @"Pull up to close";
+NSString * const DDPullUpDataLoading         = @"";
+NSString * const DDPullUpReleaseToLoadData   = @"Release to close";
 
 NSString * const DDRefreshContentOffSet      = @"contentOffset";
 NSString * const DDRefreshContentSize        = @"contentSize";
