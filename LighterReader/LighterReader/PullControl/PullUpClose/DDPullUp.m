@@ -36,6 +36,11 @@
 
 @implementation DDPullUp
 
+- (void)dealloc {
+    
+    NSLog(@"%@ dealloced", [self class]);
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

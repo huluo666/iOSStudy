@@ -52,8 +52,7 @@
         self.backgroundColor = [UIColor clearColor];
 
         // 状态显示标签
-        [self addSubview:_status = [self labelWithFont:
-                                     [UIFont systemFontOfSize:14]]];
+        [self addSubview:_status = [self labelWithFont:[UIFont systemFontOfSize:14]]];
         // 箭头头提示图片
         _arrow = [[UIImageView alloc]
                   initWithImage:[UIImage imageNamed:@"arrow"]];

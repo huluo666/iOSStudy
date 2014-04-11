@@ -11,6 +11,9 @@
 #import "DDListCell.h"
 #import "DDMagazineCell.h"
 #import "DDCardsCell.h"
+#import "DDReadViewController.h"
+#import "DDAppDelegate.h"
+#import "DDRootViewController.h"
 
 static NSString *cellIdentifier = @"cell";
 
@@ -41,7 +44,7 @@ static NSString *cellIdentifier = @"cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // calculate bounds and centers
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
 
@@ -60,6 +63,30 @@ static NSString *cellIdentifier = @"cell";
     self.tableView.rowHeight = rowHeight;
     self.tableView.bounces = NO;
     _dataSource = [[NSArray alloc] init];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    
+    // before appear, check rootVC's swip gestures, if not exist, add them
+    DDRootViewController *rootVC = (DDRootViewController *)[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController];
+    NSArray *gestures = rootVC.view.gestureRecognizers;
+    BOOL isExist = NO;
+    for (UIGestureRecognizer *ges in gestures) {
+        if ([ges isKindOfClass:[UISwipeGestureRecognizer class]]) {
+            UISwipeGestureRecognizer *swipGes = (UISwipeGestureRecognizer *)ges;
+            if (swipGes.direction == UISwipeGestureRecognizerDirectionRight ||
+                swipGes.direction == UISwipeGestureRecognizerDirectionLeft) {
+                isExist = YES;
+                break;
+            }
+        }
+    }
+    if (!isExist) {
+        [rootVC.view addGestureRecognizer:rootVC.swipRightGesture];
+        [rootVC.view addGestureRecognizer:rootVC.swipLeftGesture];
+    }
 }
 
 - (void)registerCellCllass {
@@ -115,56 +142,20 @@ static NSString *cellIdentifier = @"cell";
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    DDReadViewController *readVC = [[DDReadViewController alloc]
+                                    initWithDataSource:nil];
+    // before push invalidated rootVC swip gesture
+    DDRootViewController *rootVC = (DDRootViewController *)[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController];
+    [rootVC.view removeGestureRecognizer:rootVC.swipLeftGesture];
+    [rootVC.view removeGestureRecognizer:rootVC.swipRightGesture];
+
+    // now push
+    [self.navigationController pushViewController:readVC animated:YES];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
- */
-
 
 @end

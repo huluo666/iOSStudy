@@ -39,9 +39,18 @@ typedef struct {
 // add content
 - (void)addContentAction;
 
+/* must reades */
+@property (strong, nonatomic) NSMutableArray *mustReadList;
+@property (assign, nonatomic) NSInteger mustReadRows;
+
 @end
 
 @implementation DDNaviMenuView
+
+- (void)dealloc {
+    
+    NSLog(@"Navi Menu dealloced");
+}
 
 #pragma mark - init
 
@@ -49,9 +58,9 @@ typedef struct {
     
     self = [super initWithFrame:frame];
     if (self) {
+        
         // init
         self.backgroundColor = [UIColor colorWithWhite:0.863 alpha:1.000];
-        
         CGFloat width = [[UIScreen mainScreen] bounds].size.width;
         CGFloat height = [[UIScreen mainScreen] bounds].size.height;
         self.bounds = CGRectMake(0, 0, width - 40, height - 20);
@@ -71,7 +80,7 @@ typedef struct {
         _tableView.dataSource = self;
         _tableView.delegate = self;
         [self addSubview:_tableView];
-        
+
         // pull down refresh
         DDPullDown *pullDown = [DDPullDown pullDown];
         pullDown.scrollView = _tableView;
@@ -88,6 +97,23 @@ typedef struct {
     return self;
 }
 
+//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+//    
+//    // set root login NO
+//    DDRootViewController *rootVC = (DDRootViewController *)[self viewController];
+//    if (rootVC.isLogin) {
+//        rootVC.login = NO;
+//        
+//        [[NSNotificationCenter defaultCenter] postNotificationName:@"login"
+//                                                            object:nil
+//                                                          userInfo:@{@"isLogined":@"0"}];
+//        
+//        if (_handleSwipLeft) {
+//            _handleSwipLeft();
+//        }
+//    }
+//}
+
 - (void)initDataSource {
     
     // section 1
@@ -98,7 +124,7 @@ typedef struct {
     NSDictionary *sectionImageDict = [NSDictionary dictionaryWithObject:section1ImagesName forKey:@"imagesName"];
     NSDictionary *sectionTitleDict = [NSDictionary dictionaryWithObject:section1Titles forKey:@"titles"];
     NSArray *section1 = @[sectionImageDict, sectionTitleDict];
-    
+
     // section 3
     NSArray *section3 = @[@"Recently Read", @"Edit Content", @"Switch Theme", @"Settings", @"Logout"];
     
@@ -113,6 +139,10 @@ typedef struct {
     [self addDataWithDictionary:dict1];
     
     _selectedIndexPath = [[NSMutableArray alloc] init];
+    
+    // must reads
+//    _mustReadList = [[NSMutableArray alloc] initWithArray:@[@"Must reads", @"oneVcat", @"博客园"]];
+//    _mustReadRows = _mustReadList.count - 1;
 }
 
 #pragma mark - add data to _dataSource
@@ -162,7 +192,7 @@ typedef struct {
     NSInteger count = 0;
     switch (section) {
         case 0: {
-            count = 3;
+            count = 3 + _mustReadList.count - _mustReadRows;
         }
             break;
         case 1: {
@@ -194,10 +224,40 @@ typedef struct {
                         initWithStyle:UITableViewCellStyleDefault
                         reuseIdentifier:customCellIdentifier];
             }
-            NSString *imageName =  _originDataSource[0][0][@"imagesName"][indexPath.row];
-            cell.leftImageView.image = DDImageWithName(imageName);
-            NSString *title = _originDataSource[0][1][@"titles"][indexPath.row];
-            cell.titleLabel.text = title;
+            
+            if (indexPath.row < 3) {
+                NSString *imageName =  _originDataSource[0][0][@"imagesName"][indexPath.row];
+                cell.leftImageView.image = DDImageWithName(imageName);
+                NSString *title = _originDataSource[0][1][@"titles"][indexPath.row];
+                cell.titleLabel.text = title;
+            } else {
+                cell.titleLabel.text = _mustReadList[indexPath.row - 3];
+                if (3 == indexPath.row) {
+                    [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-favorite-white") forState:UIControlStateNormal];
+                    
+                    DDNaviCell *weakCell = cell;
+                    cell.imageButtonAction = ^(UIButton *sender) {
+                        _mustReadRows = sender.isSelected ? 0 : _mustReadList.count - 1;
+                        
+                        if (sender.isSelected) {
+                            [UIView animateWithDuration:0.2
+                                             animations:^{
+                                weakCell.imageButton.transform = CGAffineTransformRotate(weakCell.imageButton.transform, M_PI_2);
+                            } completion:^(BOOL finished) {
+                                [tableView reloadData];
+                            }];
+                        } else {
+                            [UIView animateWithDuration:0.2
+                                             animations:^{
+                                weakCell.imageButton.transform = CGAffineTransformIdentity;
+                            } completion:^(BOOL finished) {
+                                [tableView reloadData];
+                            }];
+                        }
+                    };
+                }
+            }
+            
             return cell;
         }
             break;
@@ -217,26 +277,32 @@ typedef struct {
             if ([[_foldableCellIndexPaths allKeys] containsObject:indexPath]) {
                 // can be flod
                 [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-right-arrow-white") forState:UIControlStateNormal];
-                [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-down-arrow-white") forState:UIControlStateSelected];
-                
-                // record group's selected
-                if ([_selectedIndexPath containsObject:indexPath]) {
-                    cell.imageButton.selected = YES;
-                } else {
-                    cell.imageButton.selected = NO;
-                }
                 
                 // flod、expand actions
+                DDNaviCell *weakCell = cell;
                 cell.imageButtonAction = ^(UIButton *sender){
                     NSArray *arr = [_foldableCellIndexPaths objectForKey:indexPath];
                     if (sender.isSelected) {
                         [_selectedIndexPath addObject:indexPath];
                         [_recored removeObjectsInArray:arr];
+                        
+                        [UIView animateWithDuration:0.2
+                                         animations:^{
+                            weakCell.imageButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+                        } completion:^(BOOL finished) {
+                            [tableView reloadData];
+                        }];
                     } else {
                         [_selectedIndexPath removeObject:indexPath];
                         [_recored addObjectsFromArray:arr];
+                        
+                        [UIView animateWithDuration:0.2
+                                         animations:^{
+                            weakCell.imageButton.transform = CGAffineTransformIdentity;
+                        } completion:^(BOOL finished) {
+                            [tableView reloadData];
+                        }];
                     }
-                    [tableView reloadData];
                 };
             } else {
                 // can not be flod
@@ -300,10 +366,9 @@ typedef struct {
                 if (rootVC.isLogin) {
                     rootVC.login = NO;
                     
-                    [[NSNotificationCenter defaultCenter]
-                     postNotificationName:@"login"
-                     object:self
-                     userInfo:@{@"isLogined":@"0"}];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"login"
+                                                                        object:nil
+                                                                      userInfo:@{@"isLogined":@"0"}];
                     
                     if (_handleSwipLeft) {
                         _handleSwipLeft();

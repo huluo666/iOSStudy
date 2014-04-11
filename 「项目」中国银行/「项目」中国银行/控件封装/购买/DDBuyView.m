@@ -173,6 +173,7 @@
     animation.calculationMode = kCAAnimationCubicPaced;
     animation.removedOnCompletion = YES;
     animation.delegate = self;
+    
     CGMutablePathRef curvedPath = CGPathCreateMutable();
     CGPathMoveToPoint(curvedPath, NULL, CGRectGetMidX(self.bounds),
                       CGRectGetMidY(self.bounds) + 100);

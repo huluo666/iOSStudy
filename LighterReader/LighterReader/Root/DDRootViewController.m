@@ -153,8 +153,6 @@
                 }];
             }
         };
-        
-        
     } else {
         /* show sign */
         // init

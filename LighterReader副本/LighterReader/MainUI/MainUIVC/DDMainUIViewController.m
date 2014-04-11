@@ -64,7 +64,6 @@
 {
     self = [super init];
     if (self) {
-        
         // left menu bar
         UIImage *menuBarImage = DDImageWithName(@"mobile-icon-home-white");
         UIBarButtonItem *menuBarItem = [[UIBarButtonItem alloc]
@@ -72,7 +71,14 @@
                                         style:UIBarButtonItemStylePlain
                                         target:self
                                         action:@selector(menuBarItemAction)];
-        self.navigationItem.leftBarButtonItem = menuBarItem;
+        
+        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                           target:nil action:nil];
+        negativeSpacer.width = -15;
+        
+        self.navigationItem.leftBarButtonItems = @[negativeSpacer, menuBarItem];
+//        self.navigationItem.leftBarButtonItem = menuBarItem;
         
         // right search bar
         UIImage *serchBarImage = DDImageWithName(@"mobile-icon-store-white");
@@ -81,18 +87,19 @@
                                          style:UIBarButtonItemStylePlain
                                          target:self
                                          action:@selector(searchBarItemAction)];
-        self.navigationItem.rightBarButtonItem = serchBarItem;
+        self.navigationItem.rightBarButtonItems = @[negativeSpacer, serchBarItem];
         
         // regist notify
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(processNotify:)
                                                      name:@"login" object:nil];
-        
     }
     return self;
 }
 
 - (void)viewDidLoad {
+    
+    self.title = @"";
     
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -130,18 +137,19 @@
         
         [self setPageViewControllerWithCellType:DDCellTypeTitleOnly];
         
-        // get search bar
-        UIBarButtonItem *searchBarItem = self.navigationItem.rightBarButtonItem;
+        // right bars
         UIImage *floaterSetingImage = DDImageWithName(@"mobile-icon-customize-white");
-        
-        // floater setting bar
         UIBarButtonItem *floaterSettingItem = [[UIBarButtonItem alloc]
                                                initWithImage:floaterSetingImage
                                                style:UIBarButtonItemStylePlain
                                                target:self
                                                action:@selector(floaterSettingItemAction)];
-        self.navigationItem.rightBarButtonItems = @[searchBarItem, floaterSettingItem];
+        NSArray *bars = self.navigationItem.rightBarButtonItems;
+        NSMutableArray *rightBarButtonItems = [NSMutableArray arrayWithArray:bars];
+        [rightBarButtonItems addObject:floaterSettingItem];
+        self.navigationItem.rightBarButtonItems = rightBarButtonItems;
         
+        // delete hint label
         for (UIView *view in self.view.subviews) {
             if ([view isKindOfClass:[UILabel class]]) {
                 UILabel *label = (UILabel *)view;
@@ -171,17 +179,11 @@
         [self.view addSubview:hintLabel];
         
         self.dataSource = nil;
-        
-        self.navigationItem.rightBarButtonItems = nil;
-        
-        // right search bar
-        UIImage *serchBarImage = DDImageWithName(@"mobile-icon-store-white");
-        UIBarButtonItem *serchBarItem = [[UIBarButtonItem alloc]
-                                         initWithImage:serchBarImage
-                                         style:UIBarButtonItemStylePlain
-                                         target:self
-                                         action:@selector(searchBarItemAction)];
-        self.navigationItem.rightBarButtonItem = serchBarItem;
+
+        // right bars
+        NSMutableArray *bars = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];
+        [bars removeLastObject];
+        self.navigationItem.rightBarButtonItems = bars;
     }
 }
 

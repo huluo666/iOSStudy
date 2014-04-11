@@ -94,8 +94,9 @@
     }
     
     // Cancel button
+    CGFloat buttonWidth = CGRectGetWidth([[UIScreen mainScreen] bounds]) * 0.2;
     UIButton *cancel = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    cancel.bounds = CGRectMake(0, 0, 60, 30);
+    cancel.bounds = CGRectMake(0, 0, buttonWidth, 30);
     cancel.center = CGPointMake(lastTextFiledCenter.x -
                                 CGRectGetMidX(cancel.bounds) - 5,
                                 lastTextFiledCenter.y +
@@ -114,7 +115,7 @@
     
     // Submit button
     UIButton *submit = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    submit.bounds = CGRectMake(0, 0, 60, 30);
+    submit.bounds = CGRectMake(0, 0, buttonWidth, 30);
     submit.center = CGPointMake(lastTextFiledCenter.x +
                                 CGRectGetMidX(cancel.bounds) + 5,
                                 lastTextFiledCenter.y +
@@ -143,6 +144,11 @@
     // get email address, password
     NSString *emailAddress = ((UITextField *)_textFields[0]).text;
     NSString *password = ((UITextField *)_textFields[1]).text;
+    
+#pragma mark - TEST
+    
+    emailAddress = @"test@gmail.com";
+    password = @"123456";
 
     if (!emailAddress || 0 == emailAddress.length) {
         return;
@@ -164,21 +170,28 @@
     if (!passwordLegal) {
         [self alertWithMessage:@"Password format error, please try again"];
         return;
-    }
-
-    NSLog(@"emailAddress =  %@, password = %@", emailAddress, password);
+    } 
+    
     // encrypt password
     NSString *encryptionPassword = [DDEncryption encryptString:password];
-    NSLog(@"emailAddress =  %@， encryptionPassword = %@", emailAddress, encryptionPassword);
     
     NSDictionary *postDict = @{@"emailAddress":emailAddress,
                                @"encryptionPassword":encryptionPassword};
+    
+    // show activityIndicatorView
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    UIView *clearView = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:clearView];
+    
     if (DDSignTypeSignup == _signtype) {
         /* singn up */
         // start http request insert user infos
         [DDHTTPManager startAsynchronousRequestWithURLString:kSignupURL
                                                       params:postDict
                                            completionHandler:^(BOOL success, id content) {
+            [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+            [clearView removeFromSuperview];
+                                               
             if (success) {
                 NSString *successMessage = [NSString stringWithFormat:@"%@, please sing in!", content];
                 [self alertWithMessage:successMessage];
@@ -196,6 +209,9 @@
         [DDHTTPManager startAsynchronousRequestWithURLString:kSigninURL
                                                       params:postDict
                                            completionHandler:^(BOOL success, id content) {
+           [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+           [clearView removeFromSuperview];
+
             if (!success) {
                 // failure
                 NSString *failureMessage = [NSString stringWithFormat:@"sign in failure with `%@`", content];

@@ -1,4 +1,4 @@
-//
+    //
 //  DDNaviCell.m
 //  LighterReader
 //
@@ -25,6 +25,11 @@
 @synthesize leftImageView = _leftImageView;
 @synthesize titleLabel = _titleLabel;
 @synthesize commentLabel = _commentLabel;
+
+- (void)dealloc {
+    
+    NSLog(@"%@", [self class]);
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

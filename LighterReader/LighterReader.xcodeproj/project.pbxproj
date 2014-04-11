@@ -644,12 +644,12 @@
 		9589962418E2BB850002EAF1 /* LighterReader */ = {
 			isa = PBXGroup;
 			children = (
-				950D849818F69DB300A6DD64 /* PullControl */,
 				950D837718F62DFB00A6DD64 /* Read */,
 				9503E51018ED80C800AC326C /* FlipPage */,
 				95297D2318E3F46E0051CE67 /* Menu */,
 				95AE911E18E3B0CB00181C39 /* MainUI */,
 				95297D3118E3FF8A0051CE67 /* Root */,
+				950D849818F69DB300A6DD64 /* PullControl */,
 				06724FCA18E7176600DA9A2F /* Reachability */,
 				95F5E81518E528A700E9F56D /* Encryption */,
 				068F403918E474C3006F3B91 /* Categroy */,
@@ -1017,7 +1017,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: shenzhen bluepoint interaction technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: shenzhen bluepoint interaction technology Co., Ltd.";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1028,6 +1029,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "64C3A5C9-A8E8-455D-9528-70B6A10799C6";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1055,6 +1057,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: shenzhen bluepoint interaction technology Co., Ltd.";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LighterReader/LighterReader-Prefix.pch";
 				INFOPLIST_FILE = "LighterReader/LighterReader-Info.plist";

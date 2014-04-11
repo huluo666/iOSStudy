@@ -41,11 +41,19 @@ typedef struct {
 
 /* must reades */
 @property (strong, nonatomic) NSMutableArray *mustReadList;
-@property (assign, nonatomic) NSInteger mustReadRows;
+//@property (assign, nonatomic) NSInteger mustReadRows;
+
 
 @end
 
+static NSInteger _mustReadRows;
+
 @implementation DDNaviMenuView
+
+- (void)dealloc {
+    
+    NSLog(@"Navi Menu dealloced");
+}
 
 #pragma mark - init
 
@@ -53,9 +61,9 @@ typedef struct {
     
     self = [super initWithFrame:frame];
     if (self) {
+        
         // init
         self.backgroundColor = [UIColor colorWithWhite:0.863 alpha:1.000];
-        
         CGFloat width = [[UIScreen mainScreen] bounds].size.width;
         CGFloat height = [[UIScreen mainScreen] bounds].size.height;
         self.bounds = CGRectMake(0, 0, width - 40, height - 20);
@@ -75,17 +83,24 @@ typedef struct {
         _tableView.dataSource = self;
         _tableView.delegate = self;
         [self addSubview:_tableView];
-        
+
         // pull down refresh
         DDPullDown *pullDown = [DDPullDown pullDown];
         pullDown.scrollView = _tableView;
         
-        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            
-            [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
-                                  withObject:@1
-                                  afterDelay:1];
-        };
+//        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//            
+//            [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
+//                                  withObject:@1
+//                                  afterDelay:1];
+//        };
+        
+        
+//
+//        __weak DDPullDown *weakPullDown = pullDown;
+//        pullDown.didRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//            weakPullDown.scrollView = nil;
+//        };
 
         [self initDataSource];
     }
@@ -102,7 +117,7 @@ typedef struct {
     NSDictionary *sectionImageDict = [NSDictionary dictionaryWithObject:section1ImagesName forKey:@"imagesName"];
     NSDictionary *sectionTitleDict = [NSDictionary dictionaryWithObject:section1Titles forKey:@"titles"];
     NSArray *section1 = @[sectionImageDict, sectionTitleDict];
-    
+
     // section 3
     NSArray *section3 = @[@"Recently Read", @"Edit Content", @"Switch Theme", @"Settings", @"Logout"];
     
@@ -110,7 +125,7 @@ typedef struct {
     
     // section 2
     _dataSource = [[NSMutableArray alloc] initWithArray:@[@"All"]];
-    _foldableCellIndexPaths = [[NSMutableDictionary alloc] init];
+    _foldableCellIndexPaths = [NSMutableDictionary dictionaryWithCapacity:0];
     _recored = [[NSMutableArray alloc] init];
     
     NSDictionary *dict1 = @{@"CNiDev":@[@"oneVcat", @"破船之家", @"博客园——biosli", @"luke", @"码农周刊"], @"Reader":@[@"44444", @"55555", @"6666", @"77777"], @"News":@[@"News-1", @"News-2", @"News-3", @"News-4", @"News-5"]};
@@ -137,13 +152,13 @@ typedef struct {
         NSArray *valueArr = (NSArray *)[dict objectForKey:title];
         [_dataSource addObjectsFromArray:valueArr];
         
-        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:0];
         for (NSInteger i = start; i <= start + valueArr.count - 1; i++) {
             NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
             [tempArr addObject:path];
             [_recored addObject:path];
         }
-        [_foldableCellIndexPaths setObject:tempArr forKey:key];
+        [self.foldableCellIndexPaths setObject:tempArr forKey:key];
     }
 }
 
@@ -209,27 +224,33 @@ typedef struct {
                 NSString *title = _originDataSource[0][1][@"titles"][indexPath.row];
                 cell.titleLabel.text = title;
             } else {
-                cell.titleLabel.text = _mustReadList[indexPath.row - 3];
+                __block NSMutableArray *blockMustReadList = _mustReadList;
+
+                cell.titleLabel.text = blockMustReadList[indexPath.row - 3];
                 if (3 == indexPath.row) {
                     [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-favorite-white") forState:UIControlStateNormal];
                     
-                    DDNaviCell *weakCell = cell;
+                    __weak DDNaviCell *weakCell = cell;
+                    __weak UITableView *weaktable = tableView;
+
                     cell.imageButtonAction = ^(UIButton *sender) {
-                        _mustReadRows = sender.isSelected ? 0 : _mustReadList.count - 1;
+                        
+                        /* property 何解 */
+                        _mustReadRows = sender.isSelected ? 0 : blockMustReadList.count - 1;
                         
                         if (sender.isSelected) {
                             [UIView animateWithDuration:0.2
                                              animations:^{
                                 weakCell.imageButton.transform = CGAffineTransformRotate(weakCell.imageButton.transform, M_PI_2);
                             } completion:^(BOOL finished) {
-                                [tableView reloadData];
+                                [weaktable reloadData];
                             }];
                         } else {
                             [UIView animateWithDuration:0.2
                                              animations:^{
                                 weakCell.imageButton.transform = CGAffineTransformIdentity;
                             } completion:^(BOOL finished) {
-                                [tableView reloadData];
+                                [weaktable reloadData];
                             }];
                         }
                     };
@@ -257,28 +278,36 @@ typedef struct {
                 [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-right-arrow-white") forState:UIControlStateNormal];
                 
                 // flod、expand actions
-                DDNaviCell *weakCell = cell;
-                cell.imageButtonAction = ^(UIButton *sender){
-                    NSArray *arr = [_foldableCellIndexPaths objectForKey:indexPath];
+                __weak DDNaviCell *weakCell = cell;
+                
+#pragma mark - TELL ME WHY
+                /* __weak、__block、__strong均可，直接在下面block里面直接使用会retain cycle？ */
+                __block NSMutableDictionary *blockFoldableCellIndexPaths = _foldableCellIndexPaths;
+                __block NSMutableArray *blockSelectedIndexPath = _selectedIndexPath;
+                __block NSMutableArray *blockRecored = _recored;
+                __weak UITableView *weaktable = tableView;
+                cell.imageButtonAction = ^(UIButton *sender) {
+
+                    NSArray *arr = [blockFoldableCellIndexPaths objectForKey:indexPath];
                     if (sender.isSelected) {
-                        [_selectedIndexPath addObject:indexPath];
-                        [_recored removeObjectsInArray:arr];
+                        [blockSelectedIndexPath addObject:indexPath];
+                        [blockRecored removeObjectsInArray:arr];
                         
                         [UIView animateWithDuration:0.2
                                          animations:^{
                             weakCell.imageButton.transform = CGAffineTransformMakeRotation(M_PI_2);
                         } completion:^(BOOL finished) {
-                            [tableView reloadData];
+                            [weaktable reloadData];
                         }];
                     } else {
-                        [_selectedIndexPath removeObject:indexPath];
-                        [_recored addObjectsFromArray:arr];
+                        [blockSelectedIndexPath removeObject:indexPath];
+                        [blockRecored addObjectsFromArray:arr];
                         
                         [UIView animateWithDuration:0.2
                                          animations:^{
                             weakCell.imageButton.transform = CGAffineTransformIdentity;
                         } completion:^(BOOL finished) {
-                            [tableView reloadData];
+                            [weaktable reloadData];
                         }];
                     }
                 };
@@ -344,10 +373,9 @@ typedef struct {
                 if (rootVC.isLogin) {
                     rootVC.login = NO;
                     
-                    [[NSNotificationCenter defaultCenter]
-                     postNotificationName:@"login"
-                     object:self
-                     userInfo:@{@"isLogined":@"0"}];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"login"
+                                                                        object:nil
+                                                                      userInfo:@{@"isLogined":@"0"}];
                     
                     if (_handleSwipLeft) {
                         _handleSwipLeft();

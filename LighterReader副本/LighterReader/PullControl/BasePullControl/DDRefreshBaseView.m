@@ -12,7 +12,6 @@
 @interface DDRefreshBaseView ()
 
 @property (assign, nonatomic) BOOL hasInsetInit;
-@property (strong, nonatomic) UIActivityIndicatorView *indicator;
 
 // 控件视图类型(PullDown或者PullUp)
 - (DDRefreshType)viewType;

@@ -29,6 +29,11 @@
     return [[self alloc] init];
 }
 
+- (void)dealloc {
+    
+    NSLog(@"%s", __FUNCTION__ );
+}
+
 #pragma mark - setter
 
 - (void)setScrollView:(UIScrollView *)scrollView {

@@ -71,6 +71,7 @@
     };
     DDMainUINaviController *navi = [[DDMainUINaviController alloc]
                                     initWithRootViewController:mainUIVC];
+    navi.delegate = navi;
     [self addChildViewController:navi];
     [self.view addSubview:navi.view];
     
@@ -102,7 +103,7 @@
 
 - (void)processMenu {
     
-    _login = YES;
+//    _login = YES;
     if (_login) {
         /* show navi menu */
         // init
@@ -152,8 +153,6 @@
                 }];
             }
         };
-        
-        
     } else {
         /* show sign */
         // init
@@ -210,7 +209,7 @@
         _backgroundView.alpha = 0.5;
     } completion:^(BOOL finished) {
         _menuShow = YES;
-        [self.view removeGestureRecognizer:_swipRightGesture];
+        [self.view removeGestureRecognizer:_swipLeftGesture];
     }];
     
     // disappear
@@ -222,7 +221,7 @@
                 _backgroundView.alpha = 0;
             } completion:^(BOOL finished) {
                 _menuShow = NO;
-                [self.view addGestureRecognizer:_swipRightGesture];
+                [self.view addGestureRecognizer:_swipLeftGesture];
                 [searchMenuView removeFromSuperview];
             }];
         }

@@ -10,20 +10,36 @@
 #import "DDPullUp.h"
 #import "UIView+FindUIViewController.h"
 
+@interface DDReadView ()
+
+@end
+
 @implementation DDReadView
+
+- (void)dealloc {
+    
+    NSLog(@"%@, dealloced", [self class]);
+}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+
+//        __weak DDReadView *weakSelf = self;
+//        
+//        DDPullUp *pullUp = [DDPullUp pullUp];
+//        pullUp.scrollView = weakSelf;
+//        pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//            [[weakSelf viewController].navigationController popViewControllerAnimated:YES];
+//        };
         
-        DDPullUp *pullUp = [DDPullUp pullUp];
-        pullUp.scrollView = self;
-        
-        pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            [[self viewController].navigationController popViewControllerAnimated:YES];
-            
-        };
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 40)];
+        label.font = [UIFont systemFontOfSize:24];
+        label.textAlignment = NSTextAlignmentCenter;
+        label.text = @"Reading...";
+        label.backgroundColor = [UIColor grayColor];
+        [self addSubview:label];
     }
     return self;
 }

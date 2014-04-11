@@ -10,6 +10,11 @@
 
 @implementation DDSearchMenuView
 
+- (void)dealloc {
+    
+    NSLog(@"DDSearchMenuView dealloced");
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

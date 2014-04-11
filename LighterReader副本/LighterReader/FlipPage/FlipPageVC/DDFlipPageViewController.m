@@ -119,7 +119,6 @@
     [self addChildViewController:upPageVC];
     [self.view addSubview:upPageVC.view];
     [_pageViews addObject:upPageVC.view];
-    
 }
 
 #pragma mark - setter

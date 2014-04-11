@@ -9,6 +9,8 @@
 #import "DDMainUINaviController.h"
 #import "DDPresentAnimation.h"
 #import "DDDismissAnimation.h"
+#import "DDPushAnimation.h"
+#import "DDPopAnimation.h"
 
 #define kCellBackgroundColor [UIColor colorWithWhite:0.296 alpha:1.000]
 #define kCellSelectedBackgroundColor [UIColor colorWithWhite:0.196 alpha:1.000]
@@ -163,6 +165,9 @@
         
         [kUserDefaults setObject:@0 forKey:@"currentSelectedButtonIndex"];
         [kUserDefaults synchronize];
+        
+        [self.navigationBar setBackIndicatorTransitionMaskImage:DDImageWithName(@"mobile-icon-toolbar-close-white")];
+        [self.navigationBar setBackIndicatorImage:DDImageWithName(@"mobile-icon-toolbar-close-white")];
     }
     return self;
 }
@@ -170,6 +175,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"d3";
     
     NSArray *titles =  @[@"Refresh",
                          @"Mark Category As Read",
@@ -184,17 +191,34 @@
 #pragma mark - UIViewControllerTransitioningDelegate
 
 // Present
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
-{
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
+    
     return [[DDPresentAnimation alloc] init];
     
 }
 
 // Dismiss
-- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed
-{
+- (id <UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
+    
     return [[DDDismissAnimation alloc] init];
 }
+
+#pragma mark - <UINavigationControllerDelegate>
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    
+    if (operation == UINavigationControllerOperationPush) {
+        return [[DDPushAnimation alloc] init];
+    }
+    if (operation == UINavigationControllerOperationPop) {
+        return [[DDPopAnimation alloc] init];
+    }
+    return nil;
+}
+
 
 #pragma mark - Display floater adjust view
 
