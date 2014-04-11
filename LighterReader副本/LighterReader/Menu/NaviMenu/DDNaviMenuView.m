@@ -141,8 +141,8 @@ typedef struct {
     _selectedIndexPath = [[NSMutableArray alloc] init];
     
     // must reads
-//    _mustReadList = [[NSMutableArray alloc] initWithArray:@[@"Must reads", @"oneVcat", @"博客园"]];
-//    _mustReadRows = _mustReadList.count - 1;
+    _mustReadList = [[NSMutableArray alloc] initWithArray:@[@"Must reads", @"oneVcat", @"博客园"]];
+    _mustReadRows = _mustReadList.count - 1;
 }
 
 #pragma mark - add data to _dataSource

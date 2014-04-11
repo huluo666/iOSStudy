@@ -9,8 +9,8 @@
 #import "DDPullDown.h"
 
 @interface DDPullDown () {
-    
-    DDRefreshState _lastState; // 记录上次刷新状态
+    // 记录上次刷新状态
+    DDRefreshState _lastState;
 }
 
 // 拖动状态为正常状态下的响应
@@ -32,6 +32,12 @@
 - (void)dealloc {
     
     NSLog(@"%s", __FUNCTION__ );
+}
+
+- (void)free {
+    
+    [super free];
+    [self.scrollView removeObserver:self forKeyPath:DDRefreshContentSize];
 }
 
 #pragma mark - setter

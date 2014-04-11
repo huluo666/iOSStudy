@@ -25,9 +25,6 @@
 
 // scorllView read view
 - (void)loadReadView;
-//@property (strong, nonatomic) DDReadView *previousReadView;
-//@property (strong, nonatomic) DDReadView *appearedReadView;
-//@property (strong, nonatomic) DDReadView *followingReadView;
 @property (strong, nonatomic) NSArray *positionFrame;
 @property (strong, nonatomic) NSMutableArray *readViews;
 
@@ -43,7 +40,7 @@
 @implementation DDReadViewController
 
 - (void)dealloc {
-    
+
     NSLog(@"%@, dealloced", [self class]);
 }
 
@@ -51,7 +48,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -69,10 +66,6 @@
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-//    self.edgesForExtendedLayout = UIRectEdgeTop;
-//    self.extendedLayoutIncludesOpaqueBars = YES;
-//    self.modalPresentationCapturesStatusBarAppearance = YES;
     
 	self.view.backgroundColor = [UIColor whiteColor];
 
@@ -134,7 +127,6 @@
 
 - (void)savedForLater {
     
-    
 }
 
 #pragma mark - read view
@@ -165,9 +157,7 @@
     DDReadView *previousReadView = [[DDReadView alloc] initWithFrame:previousFrame];
     previousReadView.contentSize = CGSizeMake(320, height + 250);
     previousReadView.backgroundColor = [UIColor greenColor];
-//    previousReadView.hidden = YES;
     _readViews = [[NSMutableArray alloc] initWithObjects:previousReadView, nil];
-//    [self.view addSubview:previousReadView];
     
     DDReadView *appearedReadView = [[DDReadView alloc] initWithFrame:appearedFrame];
     appearedReadView.contentSize = CGSizeMake(320, height + 250);
@@ -178,53 +168,7 @@
     DDReadView *followingReadView = [[DDReadView alloc] initWithFrame:followingFrame];
     followingReadView.contentSize = CGSizeMake(320, height + 250);
     followingReadView.backgroundColor = [UIColor redColor];
-//    followingReadView.hidden = YES;
     [_readViews addObject:followingReadView];
-//    [self.view addSubview:followingReadView];
-    
-
-#pragma mark - TELL ME WHY
-    /* 加了控件不走dealloc？ */
-
-    // add pullUp close
-    __weak __block DDReadViewController *weakSelf = self;
-    
-    DDPullUp *previousPullUp = [DDPullUp pullUp];
-    previousPullUp.scrollView = previousReadView;
-    previousPullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    };
-
-    DDPullUp *appearedPullUp = [DDPullUp pullUp];
-    appearedPullUp.scrollView = appearedReadView;
-    appearedPullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    };
-
-    DDPullUp *followingPullUp = [DDPullUp pullUp];
-    followingPullUp.scrollView = followingReadView;
-    followingPullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-        
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    };
-    
-//    for (DDReadView *readView in _readViews) {
-//        DDPullUp *pullUp = [DDPullUp pullUp];
-//        pullUp.scrollView = readView;
-//        pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
-//        };
-//    }
-    
-    
-//    for (NSInteger i = 0; i < 3; i++) {
-//        DDPullUp *pullUp = [DDPullUp pullUp];
-//        pullUp.scrollView = (DDReadView *)_readViews[i];
-//        pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
-//        };
-//    }
-
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -233,9 +177,6 @@
     
     [self.view addSubview:_readViews[0]];
     [self.view addSubview:_readViews[2]];
-    
-//    [_readViews[0] setHidden:NO];
-//    [_readViews[2] setHidden:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

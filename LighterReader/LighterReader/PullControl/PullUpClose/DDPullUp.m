@@ -8,9 +8,9 @@
 
 #import "DDPullUp.h"
 
-@interface DDPullUp ()
-{
-    DDRefreshState _lastState; // 记录上次刷新状态
+@interface DDPullUp () {
+    // 记录上次刷新状态
+    DDRefreshState _lastState;
 }
 
 // 重新调整页面布局
@@ -39,10 +39,12 @@
 - (void)dealloc {
     
     NSLog(@"%@ dealloced", [self class]);
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self.scrollView removeObserver:self forKeyPath:DDRefreshContentSize];
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
+- (id)initWithFrame:(CGRect)frame {
+    
     self = [super initWithFrame:frame];
     if (self) {
         // 移除不需要的控件
@@ -51,15 +53,15 @@
     return self;
 }
 
-+ (instancetype)pullUp
-{
++ (instancetype)pullUp {
+    
     return [[self alloc] init];
 }
 
 #pragma mark - 调整控件位置
 
-- (void)setFrame:(CGRect)frame
-{
+- (void)setFrame:(CGRect)frame {
+    
     [super setFrame:frame];
 
     // 移除进度指示器
@@ -68,15 +70,14 @@
     // 控件高度至少容下状态提示文本的高度
     if (CGRectGetHeight(frame) / 2 !=
         CGRectGetHeight(self.status.bounds)) {
-        self.status.center = CGPointMake(CGRectGetMidX(frame),
-                                         DDRefreshViewHeight / 2);
+        self.status.center = CGPointMake(CGRectGetMidX(frame), DDRefreshViewHeight / 2);
     }
 }
 
 #pragma mark - 重写setter
 
-- (void)setScrollView:(UIScrollView *)scrollView
-{
+- (void)setScrollView:(UIScrollView *)scrollView {
+    
     if (self.scrollView != scrollView) {
         // 移除以前的监视器
         [self.scrollView removeObserver:self forKeyPath:DDRefreshContentSize];
@@ -100,8 +101,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
-                       context:(void *)context
-{
+                       context:(void *)context {
 
     // 调用父类实现方法
     [super observeValueForKeyPath:keyPath
@@ -125,8 +125,8 @@
 
 #pragma mark - 调整布局
 
-- (void)adjustFrame
-{
+- (void)adjustFrame {
+    
     // 表格的高度
     CGFloat scrollViewHeight = CGRectGetHeight(self.scrollView.frame) -
         (self.scrollViewInsetRecord.top + self.scrollViewInsetRecord.bottom);
@@ -142,8 +142,8 @@
 
 #pragma mark - 设置不同状态对应的动画效果
 
-- (void)setState:(DDRefreshState)state
-{    
+- (void)setState:(DDRefreshState)state {
+    
     // 排出不必要的调用
     if (state == self.state) {
         return;
@@ -171,8 +171,8 @@
 
 #pragma mark - 响应状态方法
 
-- (void)responseStateNormal
-{
+- (void)responseStateNormal {
+    
     // 设置状态显示文本
     self.status.text = DDPullUpToRefresh;
     
@@ -198,15 +198,15 @@
     }
 }
 
-- (CGFloat)scrollViewOverViewHeight
-{
+- (CGFloat)scrollViewOverViewHeight {
+    
     CGFloat height = CGRectGetHeight(self.scrollView.frame) -
         (self.scrollViewInsetRecord.top + self.scrollViewInsetRecord.bottom);
     return self.scrollView.contentSize.height - height;
 }
 
-- (void)responseStatePulling
-{
+- (void)responseStatePulling {
+    
     self.status.text = DDPullUpReleaseToLoadData;
     [UIView animateWithDuration:DDRefreshAnimationDuration animations:^{
         self.arrow.transform = CGAffineTransformIdentity;
@@ -216,8 +216,8 @@
     }];
 }
 
-- (void)responseStateRefreshing
-{
+- (void)responseStateRefreshing {
+    
     self.status.text = DDPullUpDataLoading;
     [UIView animateWithDuration:DDRefreshAnimationDuration animations:^{
         self.arrow.transform = CGAffineTransformMakeRotation(M_PI);
@@ -234,13 +234,13 @@
 
 #pragma mark 父类方法中需要调用的实现
 
-- (DDRefreshType)viewType
-{
+- (DDRefreshType)viewType {
+    
     return DDRefreshTypePullUp;
 }
 
-- (CGFloat)properVerticalPullValue
-{
+- (CGFloat)properVerticalPullValue {
+    
     CGFloat overHeight = [self scrollViewOverViewHeight];
     CGFloat result = self.scrollViewInsetRecord.top;
     if (overHeight > 0) {

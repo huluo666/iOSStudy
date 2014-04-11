@@ -51,7 +51,8 @@ typedef enum {
 @property (assign, nonatomic) DDRefreshType viewType;               // 控件类型
 @property (strong, nonatomic) UIActivityIndicatorView *indicator;
 
-@property (weak, nonatomic) UIScrollView *scrollView;             // 滑动控件
+/* weak:它持有本类，它是本类的属性，故weak */
+@property (weak, nonatomic) UIScrollView *scrollView;               // 滑动控件
 - (instancetype)initWihtScrollView:(UIScrollView *)scrollView;
 
 // 委托
@@ -74,5 +75,7 @@ typedef enum {
 - (void)endRefreshingWithSuccess:(BOOL)success;
 // 设置刷新状态
 - (void)setState:(DDRefreshState)state;
+// 释放资源
+- (void)free;
 
 @end
