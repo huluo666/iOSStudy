@@ -50,7 +50,7 @@ typedef enum {
 @property (assign, nonatomic) CGFloat properVerticalPullValue;      // 合理的纵向滑动值
 @property (assign, nonatomic) DDRefreshType viewType;               // 控件类型
 
-@property (retain, nonatomic) UIScrollView *scrollView;             // 滑动控件
+@property (assign, nonatomic) UIScrollView *scrollView;             // 滑动控件
 - (instancetype)initWihtScrollView:(UIScrollView *)scrollView;
 
 // 委托

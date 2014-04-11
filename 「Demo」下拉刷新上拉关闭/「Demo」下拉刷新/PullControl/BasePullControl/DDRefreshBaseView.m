@@ -43,8 +43,8 @@
 #pragma mark - 复写构造方法
 
 // 复写初始化方法
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
+    
     self = [super initWithFrame:frame];
     if (self) {
         // 属性
@@ -83,7 +83,6 @@
     }
     return self;
 }
-
 
 - (void)removeFromSuperview {
     
@@ -142,8 +141,7 @@
     _status.frame = self.bounds;
     
     // 箭头图标
-    _arrow.center = CGPointMake(width / 2 - 100,
-                                height / 2);
+    _arrow.center = CGPointMake(width / 2 - 100, height / 2);
     // 进度指示器
     _indicator.center = _arrow.center;
 }
@@ -225,7 +223,6 @@
 
 - (void)setStateNormal {
     
-//    NSLog(@"setStateNormal");
     // 停止进度指示器动画
     [_indicator stopAnimating];
     
@@ -240,7 +237,6 @@
 
 - (void)setStateRefreshing {
     
-//    NSLog(@"setStateRefreshing");
     // 隐藏箭头
     _arrow.hidden = YES;
     

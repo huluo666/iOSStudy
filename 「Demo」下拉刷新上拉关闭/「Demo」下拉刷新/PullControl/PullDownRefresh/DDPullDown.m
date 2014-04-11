@@ -121,7 +121,8 @@
         inset.top = self.scrollViewInsetRecord.top + DDRefreshViewHeight;
         self.scrollView.contentInset = inset;
          // 设置滚动停留的位置
-        self.scrollView.contentOffset = CGPointMake(0, -self.scrollViewInsetRecord.top - DDRefreshViewHeight);
+        self.scrollView.contentOffset =
+            CGPointMake(0, -self.scrollViewInsetRecord.top - DDRefreshViewHeight);
     }];
 }
 @end
