@@ -22,8 +22,6 @@
 		95095ECA18F9022D00E89138 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95095EA918F9022D00E89138 /* UIKit.framework */; };
 		95095ED218F9022D00E89138 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95095ED018F9022D00E89138 /* InfoPlist.strings */; };
 		95095ED418F9022D00E89138 /* _Demo_________Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095ED318F9022D00E89138 /* _Demo_________Tests.m */; };
-		95095EDF18F9025900E89138 /* DDPullDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095EDE18F9025900E89138 /* DDPullDownViewController.m */; };
-		95095EE218F9026200E89138 /* DDPullUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095EE118F9026200E89138 /* DDPullUpViewController.m */; };
 		95095EF118F9027100E89138 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95095EE518F9027100E89138 /* arrow.png */; };
 		95095EF218F9027100E89138 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95095EE618F9027100E89138 /* arrow@2x.png */; };
 		95095EF318F9027100E89138 /* DDRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095EE818F9027100E89138 /* DDRefreshBaseView.m */; };
@@ -32,7 +30,9 @@
 		95095EF618F9027100E89138 /* DDPullUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095EF018F9027100E89138 /* DDPullUp.m */; };
 		95095F0118F90B1F00E89138 /* QBArrowRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095EFC18F90B1F00E89138 /* QBArrowRefreshControl.m */; };
 		95095F0218F90B1F00E89138 /* QBRefreshControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095EFE18F90B1F00E89138 /* QBRefreshControl.m */; };
-		95095F0518F90BB700E89138 /* DDQBPullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95095F0418F90BB700E89138 /* DDQBPullViewController.m */; };
+		9530E8C518F9242C00995F44 /* DDPullDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E8C018F9242C00995F44 /* DDPullDownViewController.m */; };
+		9530E8C618F9242C00995F44 /* DDPullUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E8C218F9242C00995F44 /* DDPullUpViewController.m */; };
+		9530E8C718F9242C00995F44 /* DDQBPullViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E8C418F9242C00995F44 /* DDQBPullViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +66,6 @@
 		95095ECF18F9022D00E89138 /* 「Demo」下拉刷新上拉关闭Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」下拉刷新上拉关闭Tests-Info.plist"; sourceTree = "<group>"; };
 		95095ED118F9022D00E89138 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		95095ED318F9022D00E89138 /* _Demo_________Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "_Demo_________Tests.m"; sourceTree = "<group>"; };
-		95095EDD18F9025900E89138 /* DDPullDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownViewController.h; sourceTree = "<group>"; };
-		95095EDE18F9025900E89138 /* DDPullDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownViewController.m; sourceTree = "<group>"; };
-		95095EE018F9026200E89138 /* DDPullUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUpViewController.h; sourceTree = "<group>"; };
-		95095EE118F9026200E89138 /* DDPullUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUpViewController.m; sourceTree = "<group>"; };
 		95095EE518F9027100E89138 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		95095EE618F9027100E89138 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		95095EE718F9027100E89138 /* DDRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRefreshBaseView.h; sourceTree = "<group>"; };
@@ -84,8 +80,12 @@
 		95095EFC18F90B1F00E89138 /* QBArrowRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBArrowRefreshControl.m; sourceTree = "<group>"; };
 		95095EFD18F90B1F00E89138 /* QBRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBRefreshControl.h; sourceTree = "<group>"; };
 		95095EFE18F90B1F00E89138 /* QBRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBRefreshControl.m; sourceTree = "<group>"; };
-		95095F0318F90BB700E89138 /* DDQBPullViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDQBPullViewController.h; sourceTree = "<group>"; };
-		95095F0418F90BB700E89138 /* DDQBPullViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDQBPullViewController.m; sourceTree = "<group>"; };
+		9530E8BF18F9242C00995F44 /* DDPullDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownViewController.h; sourceTree = "<group>"; };
+		9530E8C018F9242C00995F44 /* DDPullDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownViewController.m; sourceTree = "<group>"; };
+		9530E8C118F9242C00995F44 /* DDPullUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUpViewController.h; sourceTree = "<group>"; };
+		9530E8C218F9242C00995F44 /* DDPullUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUpViewController.m; sourceTree = "<group>"; };
+		9530E8C318F9242C00995F44 /* DDQBPullViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDQBPullViewController.h; sourceTree = "<group>"; };
+		9530E8C418F9242C00995F44 /* DDQBPullViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDQBPullViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +145,7 @@
 		95095EAB18F9022D00E89138 /* 「Demo」下拉刷新上拉关闭 */ = {
 			isa = PBXGroup;
 			children = (
+				9530E8BE18F9241300995F44 /* Controls */,
 				95095EF818F90ABE00E89138 /* QBPullControll */,
 				95095EE318F9027100E89138 /* PullControl */,
 				95095EB418F9022D00E89138 /* DDAppDelegate.h */,
@@ -155,12 +156,6 @@
 				95095EBE18F9022D00E89138 /* DDViewController.m */,
 				95095EC018F9022D00E89138 /* Images.xcassets */,
 				95095EAC18F9022D00E89138 /* Supporting Files */,
-				95095EDD18F9025900E89138 /* DDPullDownViewController.h */,
-				95095EDE18F9025900E89138 /* DDPullDownViewController.m */,
-				95095EE018F9026200E89138 /* DDPullUpViewController.h */,
-				95095EE118F9026200E89138 /* DDPullUpViewController.m */,
-				95095F0318F90BB700E89138 /* DDQBPullViewController.h */,
-				95095F0418F90BB700E89138 /* DDQBPullViewController.m */,
 			);
 			path = "「Demo」下拉刷新上拉关闭";
 			sourceTree = "<group>";
@@ -244,6 +239,19 @@
 				95095EFE18F90B1F00E89138 /* QBRefreshControl.m */,
 			);
 			path = QBPullControll;
+			sourceTree = "<group>";
+		};
+		9530E8BE18F9241300995F44 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				9530E8BF18F9242C00995F44 /* DDPullDownViewController.h */,
+				9530E8C018F9242C00995F44 /* DDPullDownViewController.m */,
+				9530E8C118F9242C00995F44 /* DDPullUpViewController.h */,
+				9530E8C218F9242C00995F44 /* DDPullUpViewController.m */,
+				9530E8C318F9242C00995F44 /* DDQBPullViewController.h */,
+				9530E8C418F9242C00995F44 /* DDQBPullViewController.m */,
+			);
+			path = Controls;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -348,16 +356,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				95095EB618F9022D00E89138 /* DDAppDelegate.m in Sources */,
-				95095EE218F9026200E89138 /* DDPullUpViewController.m in Sources */,
-				95095EDF18F9025900E89138 /* DDPullDownViewController.m in Sources */,
+				9530E8C518F9242C00995F44 /* DDPullDownViewController.m in Sources */,
 				95095EF318F9027100E89138 /* DDRefreshBaseView.m in Sources */,
 				95095F0118F90B1F00E89138 /* QBArrowRefreshControl.m in Sources */,
 				95095EF518F9027100E89138 /* DDPullDown.m in Sources */,
 				95095EBF18F9022D00E89138 /* DDViewController.m in Sources */,
 				95095EB218F9022D00E89138 /* main.m in Sources */,
+				9530E8C618F9242C00995F44 /* DDPullUpViewController.m in Sources */,
 				95095EF618F9027100E89138 /* DDPullUp.m in Sources */,
 				95095F0218F90B1F00E89138 /* QBRefreshControl.m in Sources */,
-				95095F0518F90BB700E89138 /* DDQBPullViewController.m in Sources */,
+				9530E8C718F9242C00995F44 /* DDQBPullViewController.m in Sources */,
 				95095EF418F9027100E89138 /* DDRefreshControlConst.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -581,6 +589,7 @@
 				95095ED918F9022D00E89138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		95095EDA18F9022D00E89138 /* Build configuration list for PBXNativeTarget "「Demo」下拉刷新上拉关闭Tests" */ = {
 			isa = XCConfigurationList;
@@ -589,6 +598,7 @@
 				95095EDC18F9022D00E89138 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

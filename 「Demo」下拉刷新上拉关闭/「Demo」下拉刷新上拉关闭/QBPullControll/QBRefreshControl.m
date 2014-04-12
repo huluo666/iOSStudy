@@ -23,7 +23,7 @@
 
 - (void)dealloc {
     
-    NSLog(@"%s,", __FUNCTION__);
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (id)init
