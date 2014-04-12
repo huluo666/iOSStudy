@@ -6,6 +6,8 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
+#define DDImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NAME ofType:@"png"]]
+#define kArrowDistancefromCenter 80
 
 #import <UIKit/UIKit.h>
 
@@ -14,16 +16,15 @@
 /* 拖动状态 */
 typedef enum {
     DDPullControlStateHidden,           // 隐藏状态
-    DDPullControlStatePullingDown,      // 下拉状态
-    DDPullControlStatePullingUp,        // 上拉状态
+    DDPullControlStatePulling,          // 拖动状态
     DDPullControlStateOveredThreshold,  // 超过临界值状态
     DDPullControlStateStoping           // 停止状态
 } DDPullControlState;
 
 /* 控件类型 */
 typedef enum {
-    DDPullControlTypeDown,
-    DDPullControlTypeUp
+    DDPullControlTypeDown = 1,
+    DDPullControlTypeUp = -1
 } DDPullControlType;
 
 
@@ -53,6 +54,8 @@ typedef enum {
 - (void)beginAction;
 - (void)endAction;
 
+@property (nonatomic, assign) DDPullControlType pullControlType;
+
 @end
 
 /* 拖动控件委托 */
@@ -69,12 +72,3 @@ typedef enum {
 - (void)pullControlDidEndAction:(DDPullControl *)pullControl;
 
 @end
-
-#define DDImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NAME ofType:@"png"]]
-
-#define kArrowDistancefromCenter 80
-
-#define kTitleLabelPullText @"Pull to refresh"
-#define kTitleLabelReleaseText @"Release to Refresh"
-#define kTitleLabelActionText @"Loading..."
-

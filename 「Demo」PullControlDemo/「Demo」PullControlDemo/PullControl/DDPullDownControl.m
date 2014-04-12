@@ -6,6 +6,10 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
+NSString * const DDPullDownToAction        = @"Pull to refresh";
+NSString * const DDPullDownAction          = @"Loading...";
+NSString * const DDPullDownReleaseToAction = @"Release to refresh";
+
 #import "DDPullDownControl.h"
 
 @interface DDPullDownControl ()
@@ -45,21 +49,22 @@
             _arrowView.hidden = NO;
         }
             break;
-        case DDPullControlStatePullingDown:
+        case DDPullControlStatePulling:
         {
-            self.titleLabel.text = kTitleLabelPullText;
+            self.titleLabel.text = DDPullDownToAction;
             
             [UIView animateWithDuration:0.2 animations:^{
-                _arrowView.transform = CGAffineTransformMakeRotation(0);
+                _arrowView.transform = CGAffineTransformIdentity;
             }];
         }
             break;
         case DDPullControlStateOveredThreshold:
         {
-            self.titleLabel.text = kTitleLabelReleaseText;
+            self.titleLabel.text = DDPullDownReleaseToAction;
     
             [UIView animateWithDuration:0.2 animations:^{
                 _arrowView.transform = CGAffineTransformMakeRotation(M_PI);
+
             }];
         }
             break;
@@ -67,7 +72,7 @@
         {
             _indicatorView.hidden = NO;
             [_indicatorView startAnimating];
-            self.titleLabel.text = kTitleLabelActionText;
+            self.titleLabel.text = DDPullDownAction;
             _arrowView.hidden = YES;
         }
             break;
@@ -79,7 +84,7 @@
 - (void)endAction {
     
     [super endAction];
-    _arrowView.transform = CGAffineTransformMakeRotation(0);
+    _arrowView.transform = CGAffineTransformMakeRotation(M_PI);
 }
 
 @end

@@ -525,6 +525,7 @@
 				9530E90818F9254E00995F44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9530E90918F9254E00995F44 /* Build configuration list for PBXNativeTarget "「Demo」PullControlDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +534,7 @@
 				9530E90B18F9254E00995F44 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

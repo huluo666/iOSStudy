@@ -46,9 +46,10 @@
     self = [super init];
     if (self) {
         
-        _threshold = -60;
+        _threshold = -64;
         _state = DDPullControlStateHidden;
         _dragging = NO;
+        _pullControlType = DDPullControlTypeDown;
 
         self.backgroundColor= [UIColor clearColor];
         
@@ -64,7 +65,7 @@
         [self addSubview:_indicatorView];
         
         _titleLabel = [[UILabel alloc] init];
-        _titleLabel.text = kTitleLabelPullText;
+        _titleLabel.text = @"ddd";
         _titleLabel.textColor = [UIColor grayColor];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.font = [UIFont fontWithName:@"Helvetica" size:15.0];
@@ -100,11 +101,6 @@
     }
     
     if([newSuperview isKindOfClass:[UIScrollView class]]) {
-//        self.frame = CGRectMake(0,
-//                                -CGRectGetHeight(self.bounds),
-//                                CGRectGetWidth(self.bounds),
-//                                CGRectGetHeight(self.bounds));
-        
         [newSuperview addObserver:self
                        forKeyPath:@"contentOffset"
                           options:NSKeyValueObservingOptionNew
@@ -127,14 +123,19 @@
                           delay:0.0
                         options:UIViewAnimationOptionCurveEaseOut
                      animations:^{
-        scrollView.contentInset = UIEdgeInsetsMake(-_threshold, 0, 0, 0);
+                         UIEdgeInsets edgeInsets = UIEdgeInsetsZero;
+                         if (DDPullControlTypeDown == self.pullControlType) {
+                             edgeInsets = UIEdgeInsetsMake(-_threshold, 0, 0, 0);
+                         } else {
+                             edgeInsets = UIEdgeInsetsMake(_threshold, 0, 0, 0);
+                         }
+                         scrollView.contentInset = edgeInsets;
                      }
                      completion:NULL];
     
     if([_delegate respondsToSelector:@selector(pullControlDidBeginAction:)]) {
         [_delegate pullControlDidBeginAction:self];
     }
-
 }
 
 - (void)endAction {
@@ -144,13 +145,12 @@
     }
     
     UIScrollView *scrollView = self.scrollView;
-    
-    if(scrollView.contentOffset.y < 0) {
+    CGFloat contentOffsetY = fabs(scrollView.contentOffset.y);
+    if(contentOffsetY == -_threshold) {
         CGPoint offset = scrollView.contentOffset;
         scrollView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         [scrollView setContentOffset:offset animated:NO];
-        
-        [UIView animateWithDuration:0.2
+        [UIView animateWithDuration:0.4
                               delay:0
                             options:UIViewAnimationOptionCurveEaseOut
                          animations:^{
@@ -160,7 +160,7 @@
     } else {
         scrollView.contentInset = UIEdgeInsetsZero;
     }
-    
+
     [self setState:DDPullControlStateHidden];
     
     if([_delegate respondsToSelector:@selector(pullControlDidEndAction:)]) {
@@ -199,22 +199,19 @@
     if(_state == DDPullControlStateStoping) {
         return;
     }
-    NSLog(@"_threshold = %f", _threshold);
-    NSLog(@"-contentOffset.y = %f", -scrollView.contentOffset.y);
-    if(_threshold <= scrollView.contentOffset.y) {
-        NSLog(@"111111");
-        if (scrollView.contentOffset.y < 0) {
-            [self setState:DDPullControlStatePullingDown];
-        } else {
-            [self setState:DDPullControlStatePullingUp];
-        }
-    } else if(_threshold > scrollView.contentOffset.y) {
-        NSLog(@"222222");
-        [self setState:DDPullControlStateOveredThreshold];
+
+    // 下拉为负、上拉为正 contentOffSetY
+    CGFloat contentOffSetY = scrollView.contentOffset.y * self.pullControlType;
+    
+    if(self.threshold <= contentOffSetY && contentOffSetY < 0) {
+        // 托动ing
+        self.state = DDPullControlStatePulling;
+    } else if(self.threshold > contentOffSetY) {
+        // 超过临界值(箭头反向、改变提示文字)，松手会执行Action(显示菊花，改变提示文字)
+        self.state = DDPullControlStateOveredThreshold;
     } else {
-        NSLog(@"3333");
-        [self setState:DDPullControlStateHidden];
-        NSLog(@"DDPullControlStateHidden");
+        // 反方向拖动ing
+        self.state = DDPullControlStateHidden;
     }
 }
 
@@ -226,10 +223,9 @@
     }
     
     if(_state == DDPullControlStateOveredThreshold) {
-        if(scrollView.contentOffset.y < _threshold) {
+        if(_threshold > scrollView.contentOffset.y * self.pullControlType) {
             [scrollView setContentOffset:scrollView.contentOffset animated:NO];
         }
-        
         [self beginAction];
     }
 }

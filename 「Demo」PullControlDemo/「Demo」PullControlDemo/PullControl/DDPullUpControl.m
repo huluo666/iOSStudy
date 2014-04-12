@@ -6,6 +6,10 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
+NSString * const DDPullUpToAction          = @"Pull up to close";
+NSString * const DDPullUpAction            = @"Closing...";
+NSString * const DDPullUpReleaseToAction   = @"Release to close";
+
 #import "DDPullUpControl.h"
 
 @interface DDPullUpControl ()
@@ -24,6 +28,15 @@
     NSLog(@"%s", __FUNCTION__);
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.pullControlType = DDPullControlTypeUp;
+    }
+    return self;
+}
+
 - (void)didMoveToSuperview {
     
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
@@ -31,7 +44,6 @@
     CGFloat contentSizeHeight = self.scrollView.contentSize.height;
     
     CGFloat y = contentSizeHeight > height - 60 ? contentSizeHeight : height - 60;
-    NSLog(@"y = %f", y);
     
     self.frame = CGRectMake(0, y, width, 60);
     
@@ -56,20 +68,21 @@
             _arrowView.hidden = NO;
         }
             break;
-        case DDPullControlStatePullingUp:
+        case DDPullControlStatePulling:
         {
-            self.titleLabel.text = @"Pulling Up";
+            self.titleLabel.text = DDPullUpToAction;
+            
             [UIView animateWithDuration:0.2 animations:^{
-                _arrowView.transform = CGAffineTransformMakeRotation(0);
+                _arrowView.transform = CGAffineTransformMakeRotation(M_PI);
             }];
         }
             break;
         case DDPullControlStateOveredThreshold:
         {
-            self.titleLabel.text = @"OveredThreshold";
+            self.titleLabel.text = DDPullUpReleaseToAction;
             
             [UIView animateWithDuration:0.2 animations:^{
-                _arrowView.transform = CGAffineTransformMakeRotation(M_PI);
+                _arrowView.transform = CGAffineTransformMakeRotation(0);
             }];
         }
             break;
@@ -77,7 +90,7 @@
         {
             _indicatorView.hidden = NO;
             [_indicatorView startAnimating];
-            self.titleLabel.text = @"Stoping";
+            self.titleLabel.text = DDPullUpAction;
             _arrowView.hidden = YES;
         }
             break;
@@ -85,6 +98,13 @@
             break;
     }
 }
+
+- (void)endAction {
+    
+    [super endAction];
+    _arrowView.transform = CGAffineTransformMakeRotation(0);
+}
+
 //
 //- (void)willMoveToSuperview:(UIView *)newSuperview {
 //
