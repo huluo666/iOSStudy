@@ -86,13 +86,24 @@
 - (void)loadRightBarButtonItems {
     
     // rightbar items
-    UIBarButtonItem *more = [[UIBarButtonItem alloc] initWithImage:DDImageWithName(@"mobile-icon-toolbar-overflow-white") style:UIBarButtonItemStylePlain target:self action:@selector(barItemAction:)];
+    UIBarButtonItem *more = [[UIBarButtonItem alloc]
+                             initWithImage:DDImageWithName(@"mobile-icon-toolbar-overflow-white")
+                             style:UIBarButtonItemStylePlain
+                             target:self
+                             action:@selector(barItemAction:)];
     more.tag = kBarItemTag;
     
-    UIBarButtonItem *mark = [[UIBarButtonItem alloc] initWithImage:DDImageWithName(@"mobile-icon-toolbar-feedly-white") style:UIBarButtonItemStylePlain target:self action:@selector(barItemAction:)];
+    UIBarButtonItem *mark = [[UIBarButtonItem alloc]
+                             initWithImage:DDImageWithName(@"mobile-icon-toolbar-feedly-white")
+                             style:UIBarButtonItemStylePlain
+                             target:self action:@selector(barItemAction:)];
     mark.tag = kBarItemTag + 1;
     
-    UIBarButtonItem *tweet = [[UIBarButtonItem alloc] initWithImage:DDImageWithName(@"mobile-icon-toolbar-twitter-white") style:UIBarButtonItemStylePlain target:self action:@selector(barItemAction:)];
+    UIBarButtonItem *tweet = [[UIBarButtonItem alloc]
+                              initWithImage:DDImageWithName(@"mobile-icon-toolbar-twitter-white")
+                              style:UIBarButtonItemStylePlain
+                              target:self
+                              action:@selector(barItemAction:)];
     tweet.tag = kBarItemTag + 2;
     
     self.navigationItem.rightBarButtonItems = @[more, mark, tweet];
