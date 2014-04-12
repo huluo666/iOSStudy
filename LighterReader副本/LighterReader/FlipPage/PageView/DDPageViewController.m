@@ -23,6 +23,11 @@ static NSString *cellIdentifier = @"cell";
 
 @implementation DDPageViewController
 
+- (void)dealloc {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];

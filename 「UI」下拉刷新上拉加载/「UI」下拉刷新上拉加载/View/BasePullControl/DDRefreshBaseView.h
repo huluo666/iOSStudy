@@ -42,15 +42,15 @@ typedef enum {
 
 @interface DDRefreshBaseView : UIView
 
-@property (retain, nonatomic) UILabel *lastUpdate;                  // 上次更新时间
-@property (assign, nonatomic) DDRefreshState state;                 // 刷新状态
-@property (retain, nonatomic) UILabel *status;                      // 状态显示
-@property (retain, nonatomic) UIImageView *arrow;                   // 箭头图标
-@property (assign, nonatomic) UIEdgeInsets scrollViewInsetRecord;   // 记录滚动视图滚动后的contentInSet
-@property (assign, nonatomic) CGFloat properVerticalPullValue;      // 合理的纵向滑动值
-@property (assign, nonatomic) DDRefreshType viewType;               // 控件类型
+@property (assign, nonatomic) UILabel *lastUpdate;                      // 上次更新时间
+@property (assign, nonatomic) DDRefreshState state;                     // 刷新状态
+@property (assign, nonatomic) UILabel *status;                          // 状态显示
+@property (assign, nonatomic) UIImageView *arrow;                       // 箭头图标
+@property (assign, nonatomic) UIEdgeInsets scrollViewInsetRecord;       // 记录滚动视图滚动后的contentInSet
+@property (assign, nonatomic) CGFloat properVerticalPullValue;          // 合理的纵向滑动值
+@property (assign, nonatomic) DDRefreshType viewType;                   // 控件类型
 
-@property (assign, nonatomic) UIScrollView *scrollView;             // 滑动控件
+@property (assign, nonatomic) UIScrollView *scrollView;                 // 滑动控件
 - (instancetype)initWihtScrollView:(UIScrollView *)scrollView;
 
 // 委托

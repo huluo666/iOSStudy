@@ -9,8 +9,6 @@
 #import "DDReadViewController.h"
 #import "DDReadView.h"
 #import "DDPullUp.h"
-#import "DDPullDown.h"
-#import "UIView+FindUIViewController.h"
 
 #define kPagingDuration 0.5f
 
@@ -35,13 +33,19 @@
 - (void)followingPage;
 - (void)pagingCancel;
 
+// pull up
+@property (nonatomic ,strong) NSMutableArray *pullUps;
+
 @end
 
 @implementation DDReadViewController
 
 - (void)dealloc {
 
-    NSLog(@"%@, dealloced", [self class]);
+    for (DDPullUp *pullUp in _pullUps) {
+        [pullUp free];
+    }
+    NSLog(@"%s", __FUNCTION__);
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -169,6 +173,18 @@
     followingReadView.contentSize = CGSizeMake(320, height + 250);
     followingReadView.backgroundColor = [UIColor redColor];
     [_readViews addObject:followingReadView];
+    
+    // add pull down
+    _pullUps = [[NSMutableArray alloc] init];
+    for (DDReadView *readView in _readViews) {
+        DDPullUp *pullUp = [DDPullUp pullUp];
+        pullUp.scrollView = readView;
+        __weak DDReadViewController *weakSelf = self;
+        pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        };
+        [_pullUps addObject:pullUp];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -10,10 +10,9 @@
 #import "DDPullUp.h"
 #import "UIView+FindUIViewController.h"
 
-@interface DDReadView () {
+@interface DDReadView ()
 
-    DDPullUp *_pullUpClose;
-}
+//@property (nonatomic, strong) DDPullUp *pullUp;
 
 @end
 
@@ -21,7 +20,7 @@
 
 - (void)dealloc {
     
-    [_pullUpClose free];
+//    [_pullUp free];
     NSLog(@"%@, dealloced", [self class]);
 }
 
@@ -30,14 +29,12 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        __weak DDReadView *weakSelf = self;
-        DDPullUp *pullUp = [DDPullUp pullUp];
-        pullUp.scrollView = weakSelf;
-        pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            [[weakSelf viewController].navigationController popViewControllerAnimated:YES];
-        };
-        
-        _pullUpClose = pullUp;
+//        __weak DDReadView *weakSelf = self;
+//        _pullUp = [DDPullUp pullUp];
+//        _pullUp.scrollView = weakSelf;
+//        _pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+//            [[weakSelf viewController].navigationController popViewControllerAnimated:YES];
+//        };
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 40)];
         label.font = [UIFont systemFontOfSize:24];

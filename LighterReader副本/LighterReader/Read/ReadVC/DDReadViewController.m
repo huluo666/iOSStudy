@@ -8,6 +8,9 @@
 
 #import "DDReadViewController.h"
 #import "DDReadView.h"
+#import "DDPullUp.h"
+#import "DDPullDown.h"
+#import "UIView+FindUIViewController.h"
 
 #define kPagingDuration 0.5f
 
@@ -22,9 +25,6 @@
 
 // scorllView read view
 - (void)loadReadView;
-//@property (strong, nonatomic) DDReadView *previousReadView;
-//@property (strong, nonatomic) DDReadView *appearedReadView;
-//@property (strong, nonatomic) DDReadView *followingReadView;
 @property (strong, nonatomic) NSArray *positionFrame;
 @property (strong, nonatomic) NSMutableArray *readViews;
 
@@ -40,15 +40,15 @@
 @implementation DDReadViewController
 
 - (void)dealloc {
-    
-    NSLog(@"dealloced");
+
+    NSLog(@"%@, dealloced", [self class]);
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
@@ -66,10 +66,6 @@
 {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    
-//    self.edgesForExtendedLayout = UIRectEdgeTop;
-//    self.extendedLayoutIncludesOpaqueBars = YES;
-//    self.modalPresentationCapturesStatusBarAppearance = YES;
     
 	self.view.backgroundColor = [UIColor whiteColor];
 
@@ -131,7 +127,6 @@
 
 - (void)savedForLater {
     
-    
 }
 
 #pragma mark - read view
@@ -174,47 +169,6 @@
     followingReadView.contentSize = CGSizeMake(320, height + 250);
     followingReadView.backgroundColor = [UIColor redColor];
     [_readViews addObject:followingReadView];
-
-    
-//    CGRect frame = self.view.frame;
-//    
-//    NSLog(@"%@", NSStringFromCGRect(frame));
-//    
-//    CGRect appearedFrame = CGRectMake(0,
-//                                      0,
-//                                      CGRectGetWidth(frame),
-//                                      CGRectGetHeight(frame) - 64);
-//    CGRect previousFrame = CGRectMake(-CGRectGetWidth(frame),
-//                                      64,
-//                                      CGRectGetWidth(appearedFrame),
-//                                      CGRectGetHeight(appearedFrame) - 64);
-//    CGRect followingFrame = CGRectMake(CGRectGetWidth(appearedFrame),
-//                                       64,
-//                                       CGRectGetWidth(appearedFrame),
-//                                       CGRectGetHeight(appearedFrame) - 64);
-//    
-//    _positionFrame = @[
-//                       [NSValue valueWithCGRect:previousFrame],
-//                       [NSValue valueWithCGRect:appearedFrame],
-//                       [NSValue valueWithCGRect:followingFrame]
-//                       ];
-//    CGFloat height = [[UIScreen mainScreen] applicationFrame].size.height;
-//    
-//    DDReadView *previousReadView = [[DDReadView alloc] initWithFrame:previousFrame];
-//    previousReadView.contentSize = CGSizeMake(320, height + 225);
-//    previousReadView.backgroundColor = [UIColor greenColor];
-//    _readViews = [[NSMutableArray alloc] initWithObjects:previousReadView, nil];
-//    
-//    DDReadView *appearedReadView = [[DDReadView alloc] initWithFrame:appearedFrame];
-//    appearedReadView.contentSize = CGSizeMake(320, height + 320);
-//    appearedReadView.backgroundColor = [UIColor yellowColor];
-//    [self.view addSubview:appearedReadView];
-//    [_readViews addObject:appearedReadView];
-//    
-//    DDReadView *followingReadView = [[DDReadView alloc] initWithFrame:followingFrame];
-//    followingReadView.contentSize = CGSizeMake(320, height + 225);
-//    followingReadView.backgroundColor = [UIColor redColor];
-//    [_readViews addObject:followingReadView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

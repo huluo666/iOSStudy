@@ -41,9 +41,10 @@ typedef struct {
 
 /* must reades */
 @property (strong, nonatomic) NSMutableArray *mustReadList;
-@property (assign, nonatomic) NSInteger mustReadRows;
 
 @end
+
+static NSInteger mustReadRowsCount;
 
 @implementation DDNaviMenuView
 
@@ -84,35 +85,16 @@ typedef struct {
         // pull down refresh
         DDPullDown *pullDown = [DDPullDown pullDown];
         pullDown.scrollView = _tableView;
-        
         pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            
             [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
                                   withObject:@1
                                   afterDelay:1];
         };
-
+        
         [self initDataSource];
     }
     return self;
 }
-
-//- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-//    
-//    // set root login NO
-//    DDRootViewController *rootVC = (DDRootViewController *)[self viewController];
-//    if (rootVC.isLogin) {
-//        rootVC.login = NO;
-//        
-//        [[NSNotificationCenter defaultCenter] postNotificationName:@"login"
-//                                                            object:nil
-//                                                          userInfo:@{@"isLogined":@"0"}];
-//        
-//        if (_handleSwipLeft) {
-//            _handleSwipLeft();
-//        }
-//    }
-//}
 
 - (void)initDataSource {
     
@@ -121,28 +103,33 @@ typedef struct {
                                     @"mobile-selector-saved-white",
                                     @"mobile-selector-explore-white"];
     NSArray *section1Titles = @[@"Home", @"Saved For Later", @"Explore"];
-    NSDictionary *sectionImageDict = [NSDictionary dictionaryWithObject:section1ImagesName forKey:@"imagesName"];
-    NSDictionary *sectionTitleDict = [NSDictionary dictionaryWithObject:section1Titles forKey:@"titles"];
+    NSDictionary *sectionImageDict = [NSDictionary dictionaryWithObject:section1ImagesName
+                                                                 forKey:@"imagesName"];
+    NSDictionary *sectionTitleDict = [NSDictionary dictionaryWithObject:section1Titles
+                                                                 forKey:@"titles"];
     NSArray *section1 = @[sectionImageDict, sectionTitleDict];
 
     // section 3
-    NSArray *section3 = @[@"Recently Read", @"Edit Content", @"Switch Theme", @"Settings", @"Logout"];
+    NSArray *section3 = @[@"Recently Read", @"Edit Content",
+                          @"Switch Theme", @"Settings", @"Logout"];
     
     _originDataSource = @[section1, @[], section3];
     
     // section 2
     _dataSource = [[NSMutableArray alloc] initWithArray:@[@"All"]];
-    _foldableCellIndexPaths = [[NSMutableDictionary alloc] init];
+    _foldableCellIndexPaths = [NSMutableDictionary dictionaryWithCapacity:0];
     _recored = [[NSMutableArray alloc] init];
     
-    NSDictionary *dict1 = @{@"CNiDev":@[@"oneVcat", @"破船之家", @"博客园——biosli", @"luke", @"码农周刊"], @"Reader":@[@"44444", @"55555", @"6666", @"77777"], @"News":@[@"News-1", @"News-2", @"News-3", @"News-4", @"News-5"]};
+    NSDictionary *dict1 = @{@"CNiDev":@[@"oneVcat", @"破船之家", @"博客园——biosli", @"luke", @"码农周刊"],
+                            @"Reader":@[@"44444", @"55555", @"6666", @"77777"],
+                            @"News":@[@"News-1", @"News-2", @"News-3", @"News-4", @"News-5"]};
     [self addDataWithDictionary:dict1];
     
     _selectedIndexPath = [[NSMutableArray alloc] init];
     
     // must reads
     _mustReadList = [[NSMutableArray alloc] initWithArray:@[@"Must reads", @"oneVcat", @"博客园"]];
-    _mustReadRows = _mustReadList.count - 1;
+    mustReadRowsCount = _mustReadList.count - 1;
 }
 
 #pragma mark - add data to _dataSource
@@ -159,13 +146,13 @@ typedef struct {
         NSArray *valueArr = (NSArray *)[dict objectForKey:title];
         [_dataSource addObjectsFromArray:valueArr];
         
-        NSMutableArray *tempArr = [[NSMutableArray alloc] init];
+        NSMutableArray *tempArr = [NSMutableArray arrayWithCapacity:0];
         for (NSInteger i = start; i <= start + valueArr.count - 1; i++) {
             NSIndexPath *path = [NSIndexPath indexPathForRow:i inSection:1];
             [tempArr addObject:path];
             [_recored addObject:path];
         }
-        [_foldableCellIndexPaths setObject:tempArr forKey:key];
+        [self.foldableCellIndexPaths setObject:tempArr forKey:key];
     }
 }
 
@@ -192,7 +179,7 @@ typedef struct {
     NSInteger count = 0;
     switch (section) {
         case 0: {
-            count = 3 + _mustReadList.count - _mustReadRows;
+            count = 3 + _mustReadList.count - mustReadRowsCount;
         }
             break;
         case 1: {
@@ -231,27 +218,30 @@ typedef struct {
                 NSString *title = _originDataSource[0][1][@"titles"][indexPath.row];
                 cell.titleLabel.text = title;
             } else {
-                cell.titleLabel.text = _mustReadList[indexPath.row - 3];
+                __block NSMutableArray *blockMustReadList = _mustReadList;
+                cell.titleLabel.text = blockMustReadList[indexPath.row - 3];
                 if (3 == indexPath.row) {
-                    [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-favorite-white") forState:UIControlStateNormal];
+                    [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-favorite-white")
+                                                forState:UIControlStateNormal];
                     
-                    DDNaviCell *weakCell = cell;
+                    __weak DDNaviCell *weakCell = cell;
+                    __weak UITableView *weaktable = tableView;
                     cell.imageButtonAction = ^(UIButton *sender) {
-                        _mustReadRows = sender.isSelected ? 0 : _mustReadList.count - 1;
-                        
+                        mustReadRowsCount = sender.isSelected ? 0 : blockMustReadList.count - 1;
                         if (sender.isSelected) {
                             [UIView animateWithDuration:0.2
                                              animations:^{
-                                weakCell.imageButton.transform = CGAffineTransformRotate(weakCell.imageButton.transform, M_PI_2);
+                                weakCell.imageButton.transform =
+                                                 CGAffineTransformRotate(weakCell.imageButton.transform, M_PI_2);
                             } completion:^(BOOL finished) {
-                                [tableView reloadData];
+                                [weaktable reloadData];
                             }];
                         } else {
                             [UIView animateWithDuration:0.2
                                              animations:^{
                                 weakCell.imageButton.transform = CGAffineTransformIdentity;
                             } completion:^(BOOL finished) {
-                                [tableView reloadData];
+                                [weaktable reloadData];
                             }];
                         }
                     };
@@ -265,7 +255,8 @@ typedef struct {
         case 1: {
             DDNaviCell *cell = [tableView dequeueReusableCellWithIdentifier:dropCellIdentifier];
             if (!cell) {
-                cell = [[DDNaviCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:dropCellIdentifier];
+                cell = [[DDNaviCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                         reuseIdentifier:dropCellIdentifier];
             }
 
             if (indexPath.section == 1 && indexPath.row == 0) {
@@ -275,39 +266,53 @@ typedef struct {
             }
             
             if ([[_foldableCellIndexPaths allKeys] containsObject:indexPath]) {
-                // can be flod
-                [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-right-arrow-white") forState:UIControlStateNormal];
+                // can be fold
+                [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-right-arrow-white")
+                                            forState:UIControlStateNormal];
                 
-                // flod、expand actions
-                DDNaviCell *weakCell = cell;
-                cell.imageButtonAction = ^(UIButton *sender){
-                    NSArray *arr = [_foldableCellIndexPaths objectForKey:indexPath];
+                // fold、expand actions
+                __weak DDNaviCell *weakCell = cell;
+                /* __weak、__block、__strong均可，直接在下面block里面直接使用会retain cycle？ */
+                __block NSMutableDictionary *blockFoldableCellIndexPaths = _foldableCellIndexPaths;
+                __block NSMutableArray *blockSelectedIndexPath = _selectedIndexPath;
+                __block NSMutableArray *blockRecored = _recored;
+                __weak UITableView *weaktable = tableView;
+                
+                if ([blockSelectedIndexPath containsObject:indexPath]) {
+                    weakCell.imageButton.selected = YES;
+                    weakCell.imageButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+                } else {
+                    weakCell.imageButton.selected = NO;
+                    weakCell.imageButton.transform = CGAffineTransformIdentity;
+                }
+                
+                cell.imageButtonAction = ^(UIButton *sender) {
+                    NSArray *arr = [blockFoldableCellIndexPaths objectForKey:indexPath];
                     if (sender.isSelected) {
-                        [_selectedIndexPath addObject:indexPath];
-                        [_recored removeObjectsInArray:arr];
+                        [blockSelectedIndexPath addObject:indexPath];
+                        [blockRecored removeObjectsInArray:arr];
                         
                         [UIView animateWithDuration:0.2
                                          animations:^{
                             weakCell.imageButton.transform = CGAffineTransformMakeRotation(M_PI_2);
                         } completion:^(BOOL finished) {
-                            [tableView reloadData];
+                            [weaktable reloadData];
                         }];
                     } else {
-                        [_selectedIndexPath removeObject:indexPath];
-                        [_recored addObjectsFromArray:arr];
+                        [blockSelectedIndexPath removeObject:indexPath];
+                        [blockRecored addObjectsFromArray:arr];
                         
                         [UIView animateWithDuration:0.2
                                          animations:^{
                             weakCell.imageButton.transform = CGAffineTransformIdentity;
                         } completion:^(BOOL finished) {
-                            [tableView reloadData];
+                            [weaktable reloadData];
                         }];
                     }
                 };
             } else {
-                // can not be flod
+                // can not be fold
                 [cell.imageButton setBackgroundImage:nil forState:UIControlStateNormal];
-                [cell.imageButton setBackgroundImage:nil forState:UIControlStateSelected];
             }
             
             cell.titleLabel.text = _dataSource[indexPath.row];
@@ -366,10 +371,10 @@ typedef struct {
                 if (rootVC.isLogin) {
                     rootVC.login = NO;
                     
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"login"
-                                                                        object:nil
-                                                                      userInfo:@{@"isLogined":@"0"}];
-                    
+                    NSNotificationCenter *notification = [NSNotificationCenter defaultCenter];
+                    [notification postNotificationName:@"login"
+                                                object:nil
+                                              userInfo:@{@"isLogined":@"0"}];
                     if (_handleSwipLeft) {
                         _handleSwipLeft();
                     }
@@ -393,11 +398,16 @@ typedef struct {
     return rowHeight;
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tableView
+    viewForFooterInSection:(NSInteger)section {
     
     if (1 == section) {
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 88)];
+        UIView *view = [[UIView alloc]
+                        initWithFrame:CGRectMake(0,
+                                                 0,
+                                                 CGRectGetWidth(self.bounds),
+                                                 88)];
         [self addSubview:view];
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -417,12 +427,14 @@ typedef struct {
         
         return view;
     } else if (2 == section){
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 88)];
+        UIView *view = [[UIView alloc]
+                        initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.bounds), 88)];
         [self addSubview:view];
         
         UILabel *label = [[UILabel alloc] init];
         label.bounds = CGRectMake(0, 0, CGRectGetWidth(self.bounds), 30);
-        label.center = CGPointMake(CGRectGetMidX(self.bounds), CGRectGetMaxY(view.bounds) - 15);
+        label.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                   CGRectGetMaxY(view.bounds) - 15);
         label.text = @"Version 2.0";
         label.font = [UIFont systemFontOfSize:15];
         label.textColor = [UIColor grayColor];
@@ -434,7 +446,8 @@ typedef struct {
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+- (CGFloat)tableView:(UITableView *)tableView
+    heightForFooterInSection:(NSInteger)section {
     
     if (section) {
         return 88;

@@ -42,9 +42,14 @@
 
 #pragma mark - 复写构造方法
 
+- (void)dealloc {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
 // 复写初始化方法
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
+    
     self = [super initWithFrame:frame];
     if (self) {
         // 属性
@@ -52,8 +57,7 @@
         self.backgroundColor = [UIColor clearColor];
 
         // 状态显示标签
-        [self addSubview:_status = [self labelWithFont:
-                                     [UIFont systemFontOfSize:14]]];
+        [self addSubview:_status = [self labelWithFont:[UIFont systemFontOfSize:14]]];
         // 箭头头提示图片
         _arrow = [[UIImageView alloc]
                   initWithImage:[UIImage imageNamed:@"arrow"]];
@@ -225,7 +229,6 @@
 
 - (void)setStateNormal {
     
-//    NSLog(@"setStateNormal");
     // 停止进度指示器动画
     [_indicator stopAnimating];
     
@@ -240,7 +243,6 @@
 
 - (void)setStateRefreshing {
     
-//    NSLog(@"setStateRefreshing");
     // 隐藏箭头
     _arrow.hidden = YES;
     
@@ -380,6 +382,12 @@
 - (void)endRefreshingWithSuccess:(BOOL)success {
     
     [self setState:DDRefreshStateNormal];
+}
+
+// 释放资源
+- (void)free {
+    
+    [_scrollView removeObserver:self forKeyPath:DDRefreshContentOffSet];
 }
 
 @end

@@ -42,6 +42,9 @@ typedef struct {
 /* must reades */
 @property (strong, nonatomic) NSMutableArray *mustReadList;
 
+/* pull down */
+@property (strong, nonatomic) DDPullDown *pullDown;
+
 @end
 
 static NSInteger mustReadRowsCount;
@@ -50,6 +53,7 @@ static NSInteger mustReadRowsCount;
 
 - (void)dealloc {
     
+    [_pullDown free];
     NSLog(@"Navi Menu dealloced");
 }
 
@@ -83,9 +87,9 @@ static NSInteger mustReadRowsCount;
         [self addSubview:_tableView];
 
         // pull down refresh
-        DDPullDown *pullDown = [DDPullDown pullDown];
-        pullDown.scrollView = _tableView;
-        pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
+        _pullDown = [DDPullDown pullDown];
+        _pullDown.scrollView = _tableView;
+        _pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
             [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
                                   withObject:@1
                                   afterDelay:1];
