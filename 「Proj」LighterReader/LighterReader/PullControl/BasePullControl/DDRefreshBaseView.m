@@ -282,7 +282,7 @@
     
     // 下拉contentOffSetVerticalValue为负数，上拉为正
     CGFloat contentOffSetVerticalValue = _scrollView.contentOffset.y * [self viewType];
-//    NSLog(@"1: contentOffSetVerticalValue = %f", contentOffSetVerticalValue);
+    NSLog(@"1: contentOffSetVerticalValue = %f", contentOffSetVerticalValue);
     CGFloat properVerticalPullValue = [self properVerticalPullValue];
 //    NSLog(@"2: properVerticalPullValue = %f", properVerticalPullValue);
 

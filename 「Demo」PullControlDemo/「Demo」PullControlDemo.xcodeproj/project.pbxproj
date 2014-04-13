@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		065A48B318FAC696005CB6FE /* DDPullControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48A918FAC696005CB6FE /* DDPullControl.m */; };
+		065A48B418FAC696005CB6FE /* DDPullDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48AC18FAC696005CB6FE /* DDPullDownControl.m */; };
+		065A48B518FAC696005CB6FE /* DDPullUpControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48AF18FAC696005CB6FE /* DDPullUpControl.m */; };
+		065A48B618FAC696005CB6FE /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A48B118FAC696005CB6FE /* arrow.png */; };
+		065A48B718FAC696005CB6FE /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A48B218FAC696005CB6FE /* arrow@2x.png */; };
+		065A48BF18FAC6F4005CB6FE /* DDDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48BB18FAC6F4005CB6FE /* DDDelegateViewController.m */; };
+		065A48C018FAC6F4005CB6FE /* DDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48BE18FAC6F4005CB6FE /* DDDetailViewController.m */; };
 		9530E8D518F9254E00995F44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9530E8D418F9254E00995F44 /* Foundation.framework */; };
 		9530E8D718F9254E00995F44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9530E8D618F9254E00995F44 /* CoreGraphics.framework */; };
 		9530E8D918F9254E00995F44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9530E8D818F9254E00995F44 /* UIKit.framework */; };
@@ -22,12 +29,6 @@
 		9530E90318F9254E00995F44 /* _Demo_PullControlDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E90218F9254E00995F44 /* _Demo_PullControlDemoTests.m */; };
 		9530E91218F9260200995F44 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E90F18F9260200995F44 /* DDAppDelegate.m */; };
 		9530E91318F9260200995F44 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E91118F9260200995F44 /* DDViewController.m */; };
-		9530E91618F9266300995F44 /* DDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E91518F9266300995F44 /* DDDetailViewController.m */; };
-		9530E91918F9271A00995F44 /* DDPullControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E91818F9271A00995F44 /* DDPullControl.m */; };
-		9530E91C18F9338E00995F44 /* DDPullDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E91B18F9338E00995F44 /* DDPullDownControl.m */; };
-		9530E91F18F9370F00995F44 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 9530E91D18F9370F00995F44 /* arrow.png */; };
-		9530E92018F9370F00995F44 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9530E91E18F9370F00995F44 /* arrow@2x.png */; };
-		9530E92318F9547B00995F44 /* DDPullUpControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E92218F9547B00995F44 /* DDPullUpControl.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		065A48A818FAC696005CB6FE /* DDPullControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullControl.h; sourceTree = "<group>"; };
+		065A48A918FAC696005CB6FE /* DDPullControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullControl.m; sourceTree = "<group>"; };
+		065A48AB18FAC696005CB6FE /* DDPullDownControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownControl.h; sourceTree = "<group>"; };
+		065A48AC18FAC696005CB6FE /* DDPullDownControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownControl.m; sourceTree = "<group>"; };
+		065A48AE18FAC696005CB6FE /* DDPullUpControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUpControl.h; sourceTree = "<group>"; };
+		065A48AF18FAC696005CB6FE /* DDPullUpControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUpControl.m; sourceTree = "<group>"; };
+		065A48B118FAC696005CB6FE /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		065A48B218FAC696005CB6FE /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		065A48BA18FAC6F4005CB6FE /* DDDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDelegateViewController.h; sourceTree = "<group>"; };
+		065A48BB18FAC6F4005CB6FE /* DDDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDelegateViewController.m; sourceTree = "<group>"; };
+		065A48BD18FAC6F4005CB6FE /* DDDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDetailViewController.h; sourceTree = "<group>"; };
+		065A48BE18FAC6F4005CB6FE /* DDDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDetailViewController.m; sourceTree = "<group>"; };
 		9530E8D118F9254E00995F44 /* 「Demo」PullControlDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「Demo」PullControlDemo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9530E8D418F9254E00995F44 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9530E8D618F9254E00995F44 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -61,16 +74,6 @@
 		9530E90F18F9260200995F44 /* DDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
 		9530E91018F9260200995F44 /* DDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
 		9530E91118F9260200995F44 /* DDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
-		9530E91418F9266300995F44 /* DDDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDetailViewController.h; sourceTree = "<group>"; };
-		9530E91518F9266300995F44 /* DDDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDetailViewController.m; sourceTree = "<group>"; };
-		9530E91718F9271A00995F44 /* DDPullControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullControl.h; sourceTree = "<group>"; };
-		9530E91818F9271A00995F44 /* DDPullControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullControl.m; sourceTree = "<group>"; };
-		9530E91A18F9338E00995F44 /* DDPullDownControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownControl.h; sourceTree = "<group>"; };
-		9530E91B18F9338E00995F44 /* DDPullDownControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownControl.m; sourceTree = "<group>"; };
-		9530E91D18F9370F00995F44 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
-		9530E91E18F9370F00995F44 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
-		9530E92118F9547B00995F44 /* DDPullUpControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUpControl.h; sourceTree = "<group>"; };
-		9530E92218F9547B00995F44 /* DDPullUpControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUpControl.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +100,69 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		065A48A718FAC696005CB6FE /* DDPullControl */ = {
+			isa = PBXGroup;
+			children = (
+				065A48A818FAC696005CB6FE /* DDPullControl.h */,
+				065A48A918FAC696005CB6FE /* DDPullControl.m */,
+			);
+			path = DDPullControl;
+			sourceTree = "<group>";
+		};
+		065A48AA18FAC696005CB6FE /* DDPullDownControl */ = {
+			isa = PBXGroup;
+			children = (
+				065A48AB18FAC696005CB6FE /* DDPullDownControl.h */,
+				065A48AC18FAC696005CB6FE /* DDPullDownControl.m */,
+			);
+			path = DDPullDownControl;
+			sourceTree = "<group>";
+		};
+		065A48AD18FAC696005CB6FE /* DDPullUpControl */ = {
+			isa = PBXGroup;
+			children = (
+				065A48AE18FAC696005CB6FE /* DDPullUpControl.h */,
+				065A48AF18FAC696005CB6FE /* DDPullUpControl.m */,
+			);
+			path = DDPullUpControl;
+			sourceTree = "<group>";
+		};
+		065A48B018FAC696005CB6FE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				065A48B118FAC696005CB6FE /* arrow.png */,
+				065A48B218FAC696005CB6FE /* arrow@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		065A48B818FAC6BB005CB6FE /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				065A48B918FAC6F4005CB6FE /* TableViewController */,
+				065A48BC18FAC6F4005CB6FE /* UIViewController */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
+		065A48B918FAC6F4005CB6FE /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				065A48BA18FAC6F4005CB6FE /* DDDelegateViewController.h */,
+				065A48BB18FAC6F4005CB6FE /* DDDelegateViewController.m */,
+			);
+			path = TableViewController;
+			sourceTree = "<group>";
+		};
+		065A48BC18FAC6F4005CB6FE /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				065A48BD18FAC6F4005CB6FE /* DDDetailViewController.h */,
+				065A48BE18FAC6F4005CB6FE /* DDDetailViewController.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
 		9530E8C818F9254E00995F44 = {
 			isa = PBXGroup;
 			children = (
@@ -170,14 +236,10 @@
 		9530E90C18F925A700995F44 /* PullControl */ = {
 			isa = PBXGroup;
 			children = (
-				9530E91D18F9370F00995F44 /* arrow.png */,
-				9530E91E18F9370F00995F44 /* arrow@2x.png */,
-				9530E91718F9271A00995F44 /* DDPullControl.h */,
-				9530E91818F9271A00995F44 /* DDPullControl.m */,
-				9530E91A18F9338E00995F44 /* DDPullDownControl.h */,
-				9530E91B18F9338E00995F44 /* DDPullDownControl.m */,
-				9530E92118F9547B00995F44 /* DDPullUpControl.h */,
-				9530E92218F9547B00995F44 /* DDPullUpControl.m */,
+				065A48AD18FAC696005CB6FE /* DDPullUpControl */,
+				065A48AA18FAC696005CB6FE /* DDPullDownControl */,
+				065A48A718FAC696005CB6FE /* DDPullControl */,
+				065A48B018FAC696005CB6FE /* Resource */,
 			);
 			path = PullControl;
 			sourceTree = "<group>";
@@ -185,14 +247,13 @@
 		9530E90D18F925CE00995F44 /* PullControlDemo */ = {
 			isa = PBXGroup;
 			children = (
+				065A48B818FAC6BB005CB6FE /* Controls */,
 				9530E90E18F9260200995F44 /* DDAppDelegate.h */,
 				9530E90F18F9260200995F44 /* DDAppDelegate.m */,
 				9530E91018F9260200995F44 /* DDViewController.h */,
 				9530E91118F9260200995F44 /* DDViewController.m */,
 				9530E8E618F9254E00995F44 /* Main_iPhone.storyboard */,
 				9530E8E918F9254E00995F44 /* Main_iPad.storyboard */,
-				9530E91418F9266300995F44 /* DDDetailViewController.h */,
-				9530E91518F9266300995F44 /* DDDetailViewController.m */,
 			);
 			path = PullControlDemo;
 			sourceTree = "<group>";
@@ -276,9 +337,9 @@
 			files = (
 				9530E8EB18F9254E00995F44 /* Main_iPad.storyboard in Resources */,
 				9530E8F018F9254E00995F44 /* Images.xcassets in Resources */,
-				9530E92018F9370F00995F44 /* arrow@2x.png in Resources */,
+				065A48B718FAC696005CB6FE /* arrow@2x.png in Resources */,
 				9530E8E818F9254E00995F44 /* Main_iPhone.storyboard in Resources */,
-				9530E91F18F9370F00995F44 /* arrow.png in Resources */,
+				065A48B618FAC696005CB6FE /* arrow.png in Resources */,
 				9530E8DF18F9254E00995F44 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,13 +359,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9530E91C18F9338E00995F44 /* DDPullDownControl.m in Sources */,
 				9530E91218F9260200995F44 /* DDAppDelegate.m in Sources */,
-				9530E91618F9266300995F44 /* DDDetailViewController.m in Sources */,
-				9530E91918F9271A00995F44 /* DDPullControl.m in Sources */,
+				065A48B318FAC696005CB6FE /* DDPullControl.m in Sources */,
+				065A48BF18FAC6F4005CB6FE /* DDDelegateViewController.m in Sources */,
 				9530E91318F9260200995F44 /* DDViewController.m in Sources */,
 				9530E8E118F9254E00995F44 /* main.m in Sources */,
-				9530E92318F9547B00995F44 /* DDPullUpControl.m in Sources */,
+				065A48C018FAC6F4005CB6FE /* DDDetailViewController.m in Sources */,
+				065A48B418FAC696005CB6FE /* DDPullDownControl.m in Sources */,
+				065A48B518FAC696005CB6FE /* DDPullUpControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

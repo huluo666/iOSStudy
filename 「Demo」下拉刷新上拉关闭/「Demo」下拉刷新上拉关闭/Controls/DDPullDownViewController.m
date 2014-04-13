@@ -9,9 +9,11 @@
 #import "DDPullDownViewController.h"
 #import "DDPullDown.h"
 
-@interface DDPullDownViewController ()
+@interface DDPullDownViewController () <UITableViewDataSource>
 
 @property (strong, nonatomic) DDPullDown *pullDown;
+@property (nonatomic, strong) NSMutableArray *dataSource;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -35,19 +37,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     self.view.backgroundColor = [UIColor whiteColor];
     
-    UIScrollView *scrollow = [[UIScrollView alloc] initWithFrame:self.view.frame];
-    scrollow.contentSize = CGSizeMake(CGRectGetWidth(self.view.bounds),
-                                      CGRectGetHeight(self.view.bounds) + 20);
-    [self.view addSubview:scrollow];
-    
-    
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
     
     __weak DDPullDownViewController *weakSelf = self;
     
     DDPullDown *pullDown = [DDPullDown pullDown];
-    pullDown.scrollView = scrollow;
+    pullDown.scrollView = self.tableView;
     pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
         // 刷新
         [weakSelf performSelector:@selector(stopWithRefreshBaseView:) withObject:refreshBaseView afterDelay:0.01];
@@ -59,11 +59,34 @@
     };
     
     _pullDown = pullDown;
+    
+    _dataSource = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < 16; i++) {
+        NSString *str = [NSString stringWithFormat:@"初始数据编号：%ld", i];
+        [_dataSource addObject:str];
+    }
 }
 
 - (void)stopWithRefreshBaseView:(DDRefreshBaseView *)refreshBaseView {
 
     [refreshBaseView endRefreshingWithSuccess:YES];
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return _dataSource.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *cellIdentifier = @"cellIdenitfier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.textLabel.text = _dataSource[indexPath.row];
+    return cell;
+}
+
 
 @end

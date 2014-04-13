@@ -27,6 +27,10 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
     // 1.注册
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:MJTableViewCellIdentifier];
@@ -41,6 +45,8 @@ NSString *const MJTableViewCellIdentifier = @"Cell";
     // 3.集成刷新控件
     // 3.1.下拉刷新
     [self addHeader];
+    
+    NSLog(@"%@", self.tableView);
     
     // 3.2.上拉加载更多
     [self addFooter];

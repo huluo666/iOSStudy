@@ -7,7 +7,7 @@
 //
 
 NSString * const DDPullDownToAction        = @"Pull to refresh";
-NSString * const DDPullDownAction          = @"Loading...";
+NSString * const DDPullDownAction          = @"refresh...";
 NSString * const DDPullDownReleaseToAction = @"Release to refresh";
 
 #import "DDPullDownControl.h"
@@ -18,15 +18,27 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
 
 @implementation DDPullDownControl
 
+#pragma mark -
+
 - (void)dealloc {
     
     NSLog(@"%s", __FUNCTION__);
 }
 
+#pragma mark - override
+
+- (CGFloat)properVerticalPullValue {
+
+    return self.scrollView.contentInset.top;
+}
+
+// 已经移动到父视图上，更新控件界面尺寸
 - (void)didMoveToSuperview {
     
+    [super didMoveToSuperview];
+    
     CGFloat width = CGRectGetWidth([[UIScreen mainScreen] bounds]);
-    self.frame = CGRectMake(0, _threshold, width, -_threshold);
+    self.frame = CGRectMake(0, -kPullControlHeight, width, kPullControlHeight);
     
     _arrowView.bounds = CGRectMake(0, 0, 30, 30);
     _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kArrowDistancefromCenter,
@@ -34,9 +46,10 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
     
     _indicatorView.frame = _arrowView.frame;
     
-    _titleLabel.frame = self.bounds;
+    _hintLabel.frame = self.bounds;
 }
 
+// 设置当前滚动状态
 - (void)setState:(DDPullControlState)state {
     
     [super setState:state];
@@ -51,7 +64,7 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
             break;
         case DDPullControlStatePulling:
         {
-            self.titleLabel.text = DDPullDownToAction;
+            _hintLabel.text = DDPullDownToAction;
             
             [UIView animateWithDuration:0.2 animations:^{
                 _arrowView.transform = CGAffineTransformIdentity;
@@ -60,7 +73,7 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
             break;
         case DDPullControlStateOveredThreshold:
         {
-            self.titleLabel.text = DDPullDownReleaseToAction;
+            _hintLabel.text = DDPullDownReleaseToAction;
     
             [UIView animateWithDuration:0.2 animations:^{
                 _arrowView.transform = CGAffineTransformMakeRotation(M_PI);
@@ -68,11 +81,11 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
             }];
         }
             break;
-        case DDPullControlStateStoping:
+        case DDPullControlStateAction:
         {
             _indicatorView.hidden = NO;
             [_indicatorView startAnimating];
-            self.titleLabel.text = DDPullDownAction;
+            _hintLabel.text = DDPullDownAction;
             _arrowView.hidden = YES;
         }
             break;
@@ -81,6 +94,7 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
     }
 }
 
+// 结束事务
 - (void)endAction {
     
     [super endAction];

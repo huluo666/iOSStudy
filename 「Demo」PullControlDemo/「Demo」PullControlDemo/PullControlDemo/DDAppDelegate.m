@@ -8,6 +8,7 @@
 
 #import "DDAppDelegate.h"
 #import "DDViewController.h"
+#import "DDDetailViewController.h"
 
 @implementation DDAppDelegate
 
@@ -16,6 +17,8 @@
     DDViewController *VC = [[DDViewController alloc] init];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:VC];
     self.window.rootViewController = navi;
+    
+//    self.window.rootViewController = [[DDDetailViewController alloc] init];
     self.window.backgroundColor = [UIColor whiteColor];
     return YES;
 }

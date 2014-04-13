@@ -74,6 +74,7 @@
 #pragma mark 重写调整frame
 - (void)adjustFrame
 {
+    NSLog(@"%@", self.scrollView);
     // 内容的高度
     CGFloat contentHeight = _scrollView.contentSize.height;
     // 表格的高度

@@ -10,11 +10,12 @@
 #import "QBRefreshControl.h"
 #import "QBArrowRefreshControl.h"
 
-@interface DDQBPullViewController () <QBRefreshControlDelegate>
+@interface DDQBPullViewController () <QBRefreshControlDelegate, UITableViewDataSource>
 
 @property (nonatomic, retain) QBArrowRefreshControl *myRefreshControl;
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *dataSource;
 
 @end
 
@@ -40,6 +41,7 @@
     bgView.backgroundColor = [UIColor blackColor];
     
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+    self.tableView.dataSource = self;
     [self.view addSubview:self.tableView];
     
     [self.tableView addSubview:bgView];
@@ -49,6 +51,13 @@
     refreshControl.delegate = self;
     [self.tableView addSubview:refreshControl];
     self.myRefreshControl = refreshControl;
+    
+    _dataSource = [[NSMutableArray alloc] init];
+    for (NSInteger i = 0; i < 16; i++) {
+        NSString *str = [NSString stringWithFormat:@"初始数据编号：%ld", i];
+        [_dataSource addObject:str];
+    }
+
     
 }
 
@@ -60,6 +69,22 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [self.myRefreshControl endRefreshing];
     });
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    return _dataSource.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *cellIdentifier = @"cellIdenitfier";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    cell.textLabel.text = _dataSource[indexPath.row];
+    return cell;
 }
 
 @end

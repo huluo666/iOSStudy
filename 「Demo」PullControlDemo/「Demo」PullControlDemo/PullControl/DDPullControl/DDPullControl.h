@@ -8,6 +8,7 @@
 
 #define DDImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NAME ofType:@"png"]]
 #define kArrowDistancefromCenter 80
+#define kPullControlHeight 64
 
 #import <UIKit/UIKit.h>
 
@@ -15,46 +16,64 @@
 
 /* 拖动状态 */
 typedef enum {
-    DDPullControlStateHidden,           // 隐藏状态
+    DDPullControlStateHidden,           // 反向拖动状态
     DDPullControlStatePulling,          // 拖动状态
     DDPullControlStateOveredThreshold,  // 超过临界值状态
-    DDPullControlStateStoping           // 停止状态
+    DDPullControlStateAction            // 执行动作ing状态
 } DDPullControlState;
 
 /* 控件类型 */
 typedef enum {
-    DDPullControlTypeDown = 1,
-    DDPullControlTypeUp = -1
+    DDPullControlTypeDown = -1,
+    DDPullControlTypeUp = 1
 } DDPullControlType;
 
 
 @interface DDPullControl : UIView {
-
-    /* 子类访问 */
-    CGFloat _threshold;
-
-    /* 子类访问 */
+    
+    /* 子类需要访问 */
+    
     UIImageView *_arrowView;
     UIActivityIndicatorView *_indicatorView;
-    UILabel *_titleLabel;
+    UILabel *_hintLabel;
+    UIEdgeInsets _scrollViewInsetRecord;
     BOOL _dragging;
 }
 
+/* 本类访问的属性 */
+
+// 委托
 @property (nonatomic, assign) id<DDPullControlDelegate> delegate;
-@property (nonatomic, assign) CGFloat threshold;
-@property (nonatomic, assign) DDPullControlState state;
+// 父视图
 @property (nonatomic, strong, readonly) UIScrollView *scrollView;
 
 /* 子类需要访问的属性 */
+
+// 控件类型
+@property (nonatomic, assign) DDPullControlType pullControlType;
+// 合适的垂直方向拖动的值(子类override其getter)
+@property (nonatomic, assign) CGFloat properVerticalPullValue;
+// 控件类型
+@property (nonatomic, assign) DDPullControlState state;
+// 箭头视图
 @property (nonatomic, retain) UIImageView *arrowView;
+// 进度指示器
 @property (nonatomic, retain) UIActivityIndicatorView *indicatorView;
-@property (nonatomic, retain) UILabel *titleLabel;
+// 提示文字
+@property (nonatomic, retain) UILabel *hintLabel;
+// 记录父滚动视图滚动后的contentInSet
+@property (assign, nonatomic) UIEdgeInsets scrollViewInsetRecord;
+// 滚动视图内容超过控件视图的高度(子类覆写)
+@property (assign, nonatomic) CGFloat scrollViewOverViewHeight;
+// 是否正在拖动
 @property (nonatomic, assign, getter = isDragging) BOOL dragging;
 
+// 开始执行事务
 - (void)beginAction;
+// 结束执行事务
 - (void)endAction;
 
-@property (nonatomic, assign) DDPullControlType pullControlType;
+- (void)adjustFrame;
 
 @end
 

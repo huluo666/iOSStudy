@@ -8,6 +8,7 @@
 
 #import "DDViewController.h"
 #import "DDDetailViewController.h"
+#import "DDDelegateViewController.h"
 
 @interface DDViewController ()
 
@@ -38,8 +39,11 @@
 
 - (void)pushAction:(UIButton *)sender {
     
-    DDDetailViewController *detailVC = [[DDDetailViewController alloc] init];
-    [self.navigationController pushViewController:detailVC animated:YES];
+//    DDDetailViewController *detailVC = [[DDDetailViewController alloc] init];
+//    [self.navigationController pushViewController:detailVC animated:YES];
+    
+    DDDelegateViewController *deleVC = [[DDDelegateViewController alloc] init];
+    [self.navigationController pushViewController:deleVC animated:YES];
 }
 
 @end

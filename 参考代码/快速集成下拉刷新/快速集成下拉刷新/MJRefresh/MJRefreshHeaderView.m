@@ -32,6 +32,9 @@
     
     // 2.加载时间
     self.lastUpdateTime = [[NSUserDefaults standardUserDefaults] objectForKey:MJRefreshHeaderTimeKey];
+
+    NSLog(@"%@", scrollView);
+    NSLog(@"%@", self.scrollView);
 }
 
 #pragma mark - 状态相关

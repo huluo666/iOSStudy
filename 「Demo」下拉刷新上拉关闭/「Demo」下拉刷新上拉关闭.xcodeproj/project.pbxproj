@@ -78,7 +78,7 @@
 		95095EF018F9027100E89138 /* DDPullUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUp.m; sourceTree = "<group>"; };
 		95095EFB18F90B1F00E89138 /* QBArrowRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBArrowRefreshControl.h; sourceTree = "<group>"; };
 		95095EFC18F90B1F00E89138 /* QBArrowRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBArrowRefreshControl.m; sourceTree = "<group>"; };
-		95095EFD18F90B1F00E89138 /* QBRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QBRefreshControl.h; sourceTree = "<group>"; };
+		95095EFD18F90B1F00E89138 /* QBRefreshControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QBRefreshControl.h; path = QBPullControll/QBRefreshControl.h; sourceTree = "<group>"; };
 		95095EFE18F90B1F00E89138 /* QBRefreshControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QBRefreshControl.m; sourceTree = "<group>"; };
 		9530E8BF18F9242C00995F44 /* DDPullDownViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownViewController.h; sourceTree = "<group>"; };
 		9530E8C018F9242C00995F44 /* DDPullDownViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownViewController.m; sourceTree = "<group>"; };
@@ -149,6 +149,7 @@
 				95095EF818F90ABE00E89138 /* QBPullControll */,
 				95095EE318F9027100E89138 /* PullControl */,
 				95095EB418F9022D00E89138 /* DDAppDelegate.h */,
+				95095EFD18F90B1F00E89138 /* QBRefreshControl.h */,
 				95095EB518F9022D00E89138 /* DDAppDelegate.m */,
 				95095EB718F9022D00E89138 /* Main_iPhone.storyboard */,
 				95095EBA18F9022D00E89138 /* Main_iPad.storyboard */,
@@ -235,7 +236,6 @@
 			children = (
 				95095EFB18F90B1F00E89138 /* QBArrowRefreshControl.h */,
 				95095EFC18F90B1F00E89138 /* QBArrowRefreshControl.m */,
-				95095EFD18F90B1F00E89138 /* QBRefreshControl.h */,
 				95095EFE18F90B1F00E89138 /* QBRefreshControl.m */,
 			);
 			path = QBPullControll;
