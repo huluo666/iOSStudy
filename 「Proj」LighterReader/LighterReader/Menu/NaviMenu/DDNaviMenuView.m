@@ -11,6 +11,7 @@
 #import "DDRootViewController.h"
 #import "UIView+FindUIViewController.h"
 #import "DDPullDownControl.h"
+#import "DDAbout.h"
 
 @interface DDNaviMenuView () <
     UITableViewDelegate,
@@ -111,7 +112,7 @@ static NSInteger mustReadRowsCount;
 
     // section 3
     NSArray *section3 = @[@"Recently Read", @"Edit Content",
-                          @"Switch Theme", @"Settings", @"Logout"];
+                          @"Switch Theme", @"Settings", @"Logout", @"About"];
     
     _originDataSource = @[section1, @[], section3];
     
@@ -187,7 +188,7 @@ static NSInteger mustReadRowsCount;
         }
             break;
         case 2: {
-            count = 5;
+            count = 6;
         }
             break;
         default:
@@ -398,6 +399,14 @@ static NSInteger mustReadRowsCount;
                         _handleSwipLeft();
                     }
                 }
+            }
+            if (5 == indexPath.row) {
+                // show about
+                CGFloat screenHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]) - 20;
+                NSLog(@"%f", screenHeight);
+                CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.bounds), screenHeight);
+                DDAbout *about = [[DDAbout alloc] initWithFrame:frame];
+                [self addSubview:about];
             }
         }
             break;

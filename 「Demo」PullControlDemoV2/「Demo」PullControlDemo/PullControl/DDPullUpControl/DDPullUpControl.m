@@ -32,33 +32,12 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
 {
     self = [super init];
     if (self) {
-        _pullControlType     = DDPullControlTypeUp;
-        
-        _pullToAction        = DDPullUpToAction;
-        _pullAction          = DDPullUpAction;
-        _pullReleaseToAction = DDPullUpReleaseToAction;
+        self.pullControlType = DDPullControlTypeUp;
     }
     return self;
 }
 
 #pragma mark - override
-
-- (void)willMoveToSuperview:(UIView *)newSuperview {
-
-    [super willMoveToSuperview:newSuperview];
-    
-    if([self scrollView] != nil) {
-        [[self scrollView] removeObserver:self forKeyPath:@"contentSize"];
-    }
-    
-    if([newSuperview isKindOfClass:[UIScrollView class]]) {
-        [newSuperview addObserver:self
-                       forKeyPath:@"contentSize"
-                          options:NSKeyValueObservingOptionNew
-                          context:NULL];
-        
-    }
-}
 
 // 已经移动到父视图上，更新控件界面尺寸
 - (void)didMoveToSuperview {
@@ -68,7 +47,7 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
     [self adjustFrame];
     
     _arrowView.bounds = CGRectMake(0, 0, 30, 30);
-    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kPullControlArrowDistancefromCenter,
+    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kArrowDistancefromCenter,
                                     CGRectGetMidY(self.bounds));
     
     _indicatorView.frame = _arrowView.frame;
@@ -90,10 +69,7 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
             break;
         case DDPullControlStatePulling:
         {
-            if (_showsScrollIndicatorPolicy) {
-                self.scrollView.showsVerticalScrollIndicator = YES;
-            }
-            _hintLabel.text = _pullToAction;
+            _hintLabel.text = DDPullUpToAction;
             
             [UIView animateWithDuration:0.2 animations:^{
                 _arrowView.transform = CGAffineTransformMakeRotation(M_PI);
@@ -102,10 +78,7 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
             break;
         case DDPullControlStateOveredThreshold:
         {
-            if (_showsScrollIndicatorPolicy) {
-                self.scrollView.showsVerticalScrollIndicator = NO;
-            }
-            _hintLabel.text = _pullReleaseToAction;
+            _hintLabel.text = DDPullUpReleaseToAction;
             
             [UIView animateWithDuration:0.2 animations:^{
                 _arrowView.transform = CGAffineTransformIdentity;
@@ -116,7 +89,7 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
         {
             _indicatorView.hidden = NO;
             [_indicatorView startAnimating];
-            _hintLabel.text = _pullAction;
+            _hintLabel.text = DDPullUpAction;
             _arrowView.hidden = YES;
         }
             break;
@@ -146,8 +119,9 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
 
 #pragma mark - private messages
 
-// 父视图contentSize变化时，调整该控件位置
 - (void)adjustFrame {
+    
+    [super adjustFrame];
     
     // 内容的高度
     CGFloat contentHeight = self.scrollView.contentSize.height;
@@ -170,13 +144,29 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
 
 #pragma mark - kvo
 
+- (void)willMoveToSuperview:(UIView *)newSuperview
+{
+    [super willMoveToSuperview:newSuperview];
+    
+    if([self scrollView] != nil) {
+        [[self scrollView] removeObserver:self forKeyPath:@"contentSize"];
+    }
+
+    [newSuperview addObserver:self
+                   forKeyPath:@"contentSize"
+                      options:NSKeyValueObservingOptionNew
+                      context:NULL];
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
     
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-    [self adjustFrame];
+    if ([keyPath isEqualToString:@"contentSize"]) {
+        [self adjustFrame];
+    }
 }
 
 @end

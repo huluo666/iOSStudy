@@ -6,12 +6,8 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-// 获取图片
-#define DDImageWithName(NAME) [UIImage imageWithContentsOfFile:\
-[[NSBundle mainBundle] pathForResource:NAME ofType:@"png"]]
-// 箭头与控件中心点的距离
-#define kPullControlArrowDistancefromCenter 80
-// 控件高度
+#define DDImageWithName(NAME) [UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:NAME ofType:@"png"]]
+#define kArrowDistancefromCenter 80
 #define kPullControlHeight 64
 
 #import <UIKit/UIKit.h>
@@ -41,13 +37,7 @@ typedef enum {
     UIActivityIndicatorView *_indicatorView;
     UILabel *_hintLabel;
     UIEdgeInsets _scrollViewInsetRecord;
-    DDPullControlType _pullControlType;
-    
-    NSString *_pullToAction;
-    NSString *_pullAction;
-    NSString *_pullReleaseToAction;
-    
-    BOOL _showsScrollIndicatorPolicy;
+    BOOL _dragging;
 }
 
 /* 本类访问的属性 */
@@ -83,24 +73,11 @@ typedef enum {
 // 结束执行事务
 - (void)endAction;
 
-/* 代码块回调 */
-@property (nonatomic, copy) void(^pullControlWillBeginAction)(DDPullControl *pullControl);
-@property (nonatomic, copy) void(^pullControlDidBeginAction)(DDPullControl *pullControl);
-@property (nonatomic, copy) void(^pullControlWillEndAction)(DDPullControl *pullControl);
-@property (nonatomic, copy) void(^pullControlDidEndAction)(DDPullControl *pullControl);
-
-/* 设置提示文字 */
-
-@property (nonatomic, strong) NSString *pullToAction;
-@property (nonatomic, strong) NSString *pullAction;
-@property (nonatomic, strong) NSString *pullReleaseToAction;
-
-/* 进度指示条策略， 默认为YES，自动调整合适的时候显示进度条 */
-@property (nonatomic, assign) BOOL showsScrollIndicatorPolicy;
+- (void)adjustFrame;
 
 @end
 
-/* 拖动控件委托协议 */
+/* 拖动控件委托 */
 @protocol DDPullControlDelegate <NSObject>
 
 @optional

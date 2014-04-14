@@ -60,7 +60,8 @@
         UILabel *label = [[UILabel alloc] init];
         label.bounds = CGRectMake(0, 0, 80, 30);
         label.center = CGPointMake(CGRectGetMidX(label.bounds),
-                                   150 + i * (CGRectGetHeight(label.bounds)+ 5));
+                                   CGRectGetMidX(self.view.bounds) +
+                                   i * (CGRectGetHeight(label.bounds)+ 5));
         label.font = [UIFont systemFontOfSize:15];
         label.textAlignment = NSTextAlignmentRight;
         label.text = titles[i];
