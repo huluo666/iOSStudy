@@ -14,6 +14,7 @@
 #import "DDReadViewController.h"
 #import "DDAppDelegate.h"
 #import "DDRootViewController.h"
+#import "DDFeeds.h"
 
 static NSString *cellIdentifier = @"cell";
 
@@ -141,9 +142,14 @@ static NSString *cellIdentifier = @"cell";
     
     DDCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier
                                                             forIndexPath:indexPath];
-    cell.titleLabel.text = [_dataSource[indexPath.row] objectForKey:@"title"];
-    cell.reviewLabel.text = [_dataSource[indexPath.row] objectForKey:@"review"];
-    cell.hintLabel.text = [_dataSource[indexPath.row] objectForKey:@"hint"];
+    if ([_dataSource[indexPath.row] isKindOfClass:[DDFeeds class]]) {
+        DDFeeds *feed = (DDFeeds *)_dataSource[indexPath.row];
+
+        cell.titleLabel.text = feed.title;
+        cell.reviewLabel.text = feed.review;
+        cell.hintLabel.text = feed.hint;
+    }
+
     return cell;
 }
 
@@ -153,7 +159,8 @@ static NSString *cellIdentifier = @"cell";
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
     DDReadViewController *readVC = [[DDReadViewController alloc]
-                                    initWithDataSource:nil];
+                                    initWithDataSource:_dataSource
+                                    indexPath:indexPath];
     // before push invalidated rootVC swip gesture
     DDRootViewController *rootVC = (DDRootViewController *)[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController];
     [rootVC.view removeGestureRecognizer:rootVC.swipLeftGesture];

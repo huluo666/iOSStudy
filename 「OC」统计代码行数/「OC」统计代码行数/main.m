@@ -12,7 +12,7 @@ NSUInteger codeLineCount(NSString *path);
 int main(int argc, const char * argv[])
 {
 //    NSString *path = @"/Users/cuan/Github/rimiedu";
-    NSString *path = @"/Users/cuan/Github/rimiedu/「项目」中国银行";
+    NSString *path = @"/Users/rimi1/Desktop/「Proj」LighterReader";
     NSLog(@"代码总行数为：%ld", codeLineCount(path));
     return 0;
 }

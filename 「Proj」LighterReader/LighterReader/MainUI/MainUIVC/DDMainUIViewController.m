@@ -10,6 +10,7 @@
 #import "Reachability.h"
 #import "DDMainUINaviController.h"
 #import "DDFlipPageViewController.h"
+#import "DDFeeds.h"
 
 @interface DDMainUIViewController ()
 
@@ -78,7 +79,6 @@
         negativeSpacer.width = -15;
         
         self.navigationItem.leftBarButtonItems = @[negativeSpacer, menuBarItem];
-//        self.navigationItem.leftBarButtonItem = menuBarItem;
         
         // right search bar
         UIImage *serchBarImage = DDImageWithName(@"mobile-icon-store-white");
@@ -122,18 +122,11 @@
 - (void)processNotify:(NSNotification *)notify {
     
     if ([notify.userInfo[@"isLogined"] integerValue]) {
-        // login in
-        NSMutableArray *dataSource = [[NSMutableArray alloc] init];
-        for (int i = 1; i <= 22; i++) {
-            NSString *title = [NSString stringWithFormat:
-                               @"Create a new instance of the appropriate %d class,"
-                               " insert it into the array, and add a new row to the table view", i];
-            NSString *review = @"Override to support conditional editing of the table view.";
-            NSString *hint = @"200k sina / 12h";
-            NSDictionary *dict = @{@"title":title, @"review":review, @"hint":hint};
-            [dataSource addObject:dict];
+        
+        _dataSource = [[NSMutableArray alloc] initWithArray:[DDFeeds feedsWithCapacity:22]];
+        for (DDFeeds *feed in _dataSource) {
+            NSLog(@"%@", feed);
         }
-        self.dataSource = dataSource;
         
         [self setPageViewControllerWithCellType:DDCellTypeTitleOnly];
         

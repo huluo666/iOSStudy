@@ -10,12 +10,7 @@
 #import "DDNaviCell.h"
 #import "DDRootViewController.h"
 #import "UIView+FindUIViewController.h"
-#import "DDPullDown.h"
-
-typedef struct {
-    NSInteger start;
-    NSInteger end;
-} DDRang;
+#import "DDPullDownControl.h"
 
 @interface DDNaviMenuView () <
     UITableViewDelegate,
@@ -42,9 +37,6 @@ typedef struct {
 /* must reades */
 @property (strong, nonatomic) NSMutableArray *mustReadList;
 
-/* pull down */
-@property (strong, nonatomic) DDPullDown *pullDown;
-
 @end
 
 static NSInteger mustReadRowsCount;
@@ -53,7 +45,6 @@ static NSInteger mustReadRowsCount;
 
 - (void)dealloc {
     
-    [_pullDown free];
     NSLog(@"Navi Menu dealloced");
 }
 
@@ -87,12 +78,17 @@ static NSInteger mustReadRowsCount;
         [self addSubview:_tableView];
 
         // pull down refresh
-        _pullDown = [DDPullDown pullDown];
-        _pullDown.scrollView = _tableView;
-        _pullDown.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            [refreshBaseView performSelector:@selector(endRefreshingWithSuccess:)
-                                  withObject:@1
-                                  afterDelay:1];
+        DDPullDownControl *pullDown = [[DDPullDownControl alloc] init];
+        [_tableView addSubview:pullDown];
+        
+        __weak UITableView *weakTableView = _tableView;
+        pullDown.pullControlDidBeginAction = ^(DDPullControl *pullControl){
+            
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC);
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [pullControl endAction];
+                [weakTableView reloadData];
+            });
         };
         
         [self initDataSource];
@@ -222,35 +218,54 @@ static NSInteger mustReadRowsCount;
                 NSString *title = _originDataSource[0][1][@"titles"][indexPath.row];
                 cell.titleLabel.text = title;
             } else {
+                cell.leftImageView.image = nil;
                 __block NSMutableArray *blockMustReadList = _mustReadList;
                 cell.titleLabel.text = blockMustReadList[indexPath.row - 3];
                 if (3 == indexPath.row) {
+                    __block NSMutableArray *blockSelectedIndexPath = _selectedIndexPath;
                     [cell.imageButton setBackgroundImage:DDImageWithName(@"mobile-selector-favorite-white")
                                                 forState:UIControlStateNormal];
                     
                     __weak DDNaviCell *weakCell = cell;
+                    if ([blockSelectedIndexPath containsObject:indexPath]) {
+                        weakCell.imageButton.selected = YES;
+                        weakCell.imageButton.transform = CGAffineTransformMakeRotation(M_PI_2);
+                    } else {
+                        weakCell.imageButton.selected = NO;
+                        weakCell.imageButton.transform = CGAffineTransformIdentity;
+                    }
                     __weak UITableView *weaktable = tableView;
+                    
                     cell.imageButtonAction = ^(UIButton *sender) {
                         mustReadRowsCount = sender.isSelected ? 0 : blockMustReadList.count - 1;
                         if (sender.isSelected) {
+                            [blockSelectedIndexPath addObject:indexPath];
                             [UIView animateWithDuration:0.2
                                              animations:^{
-                                weakCell.imageButton.transform =
-                                                 CGAffineTransformRotate(weakCell.imageButton.transform, M_PI_2);
-                            } completion:^(BOOL finished) {
-                                [weaktable reloadData];
-                            }];
+                                                 weakCell.imageButton.transform =
+                                                 CGAffineTransformMakeRotation(M_PI_2);
+                                             } completion:^(BOOL finished) {
+                                                 [weaktable reloadData];
+                                             }];
                         } else {
+                            [blockSelectedIndexPath removeObject:indexPath];
                             [UIView animateWithDuration:0.2
                                              animations:^{
-                                weakCell.imageButton.transform = CGAffineTransformIdentity;
-                            } completion:^(BOOL finished) {
-                                [weaktable reloadData];
-                            }];
+                                                 weakCell.imageButton.transform = CGAffineTransformIdentity;
+                                             } completion:^(BOOL finished) {
+                                                 [weaktable reloadData];
+                                             }];
                         }
                     };
+                } else {
+                    [cell.imageButton setBackgroundImage:nil forState:UIControlStateNormal];
                 }
+                
+                
+                
             }
+            
+            
             
             return cell;
         }
@@ -463,8 +478,14 @@ static NSInteger mustReadRowsCount;
 #pragma mark - addContentAction
 
 - (void)addContentAction {
-    
-    NSLog(@"addContentAction");
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please input RSS url you wanna feed"
+                                                    message:nil
+                                                   delegate:nil
+                                          cancelButtonTitle:@"cancel"
+                                          otherButtonTitles:@"confirm", nil];
+    alert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [alert show];
 }
 
 @end

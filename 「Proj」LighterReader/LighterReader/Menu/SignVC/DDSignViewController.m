@@ -80,10 +80,12 @@
         textField.autocorrectionType = UITextAutocorrectionTypeNo;
         textField.autocapitalizationType = UITextAutocapitalizationTypeWords;
         if (0 == i) {
-            [textField becomeFirstResponder];
+//            [textField becomeFirstResponder];
+            textField.text = @"test@gmail.com";
         }
         if (1 == i) {
             textField.secureTextEntry = YES;
+            textField.text = @"123456";
             lastTextFiledCenter = CGPointMake(CGRectGetMidX(textField.frame),
                                               CGRectGetMidY(textField.frame));
         }
@@ -147,8 +149,8 @@
     
 #pragma mark - TEST
     
-    emailAddress = @"test@gmail.com";
-    password = @"123456";
+//    emailAddress = @"test@gmail.com";
+//    password = @"123456";
 
     if (!emailAddress || 0 == emailAddress.length) {
         return;

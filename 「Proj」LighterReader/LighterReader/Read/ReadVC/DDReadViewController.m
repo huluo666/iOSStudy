@@ -8,7 +8,8 @@
 
 #import "DDReadViewController.h"
 #import "DDReadView.h"
-#import "DDPullUp.h"
+#import "DDPullUpControl.h"
+#import "DDFeeds.h"
 
 #define kPagingDuration 0.5f
 
@@ -33,8 +34,7 @@
 - (void)followingPage;
 - (void)pagingCancel;
 
-// pull up
-@property (nonatomic ,strong) NSMutableArray *pullUps;
+@property(nonatomic, strong) NSIndexPath *indexPath;
 
 @end
 
@@ -42,25 +42,14 @@
 
 - (void)dealloc {
 
-    for (DDPullUp *pullUp in _pullUps) {
-        [pullUp free];
-    }
     NSLog(@"%s", __FUNCTION__);
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
-}
-
-- (id)initWithDataSource:(id)dataSource {
+- (id)initWithDataSource:(NSArray *)dataSource indexPath:(NSIndexPath *)indexPath{
     
     if (self = [super init]) {
         _dataSource = dataSource;
+        _indexPath = indexPath;
     }
     
     return self;
@@ -69,8 +58,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 	self.view.backgroundColor = [UIColor whiteColor];
 
     // bar itmes
@@ -170,32 +158,20 @@
     CGFloat height = [[UIScreen mainScreen] applicationFrame].size.height;
     
     DDReadView *previousReadView = [[DDReadView alloc] initWithFrame:previousFrame];
-    previousReadView.contentSize = CGSizeMake(320, height + 250);
-    previousReadView.backgroundColor = [UIColor greenColor];
+    previousReadView.contentSize = CGSizeMake(320, height + 50);
     _readViews = [[NSMutableArray alloc] initWithObjects:previousReadView, nil];
+    [previousReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
     
     DDReadView *appearedReadView = [[DDReadView alloc] initWithFrame:appearedFrame];
-    appearedReadView.contentSize = CGSizeMake(320, height + 250);
-    appearedReadView.backgroundColor = [UIColor yellowColor];
+    appearedReadView.contentSize = CGSizeMake(320, height + 50);
     [self.view addSubview:appearedReadView];
     [_readViews addObject:appearedReadView];
+    [appearedReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
     
     DDReadView *followingReadView = [[DDReadView alloc] initWithFrame:followingFrame];
-    followingReadView.contentSize = CGSizeMake(320, height + 250);
-    followingReadView.backgroundColor = [UIColor redColor];
+    followingReadView.contentSize = CGSizeMake(320, height + 50);
     [_readViews addObject:followingReadView];
-    
-    // add pull down
-    _pullUps = [[NSMutableArray alloc] init];
-    for (DDReadView *readView in _readViews) {
-        DDPullUp *pullUp = [DDPullUp pullUp];
-        pullUp.scrollView = readView;
-        __weak DDReadViewController *weakSelf = self;
-        pullUp.beginRefreshBaseView = ^(DDRefreshBaseView *refreshBaseView) {
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        };
-        [_pullUps addObject:pullUp];
-    }
+    [followingReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

@@ -11,6 +11,6 @@
 @interface DDReadViewController : UIViewController
 
 @property (nonatomic, strong) id dataSource;
-- (id)initWithDataSource:(id)dataSource;
+- (id)initWithDataSource:(NSArray *)dataSource indexPath:(NSIndexPath *)indexPath;
 
 @end

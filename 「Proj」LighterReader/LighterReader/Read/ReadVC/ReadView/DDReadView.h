@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DDReadView : UIScrollView
+@interface DDReadView : UITextView
+
+- (void)setContent:(NSString *)content;
 
 @end
