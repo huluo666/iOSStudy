@@ -10,6 +10,8 @@
 
 @interface DDPullControl () <UIScrollViewDelegate>
 
+@property (nonatomic, assign, getter = hasInitInset) BOOL initInset;
+
 @end
 
 @implementation DDPullControl
@@ -18,15 +20,10 @@
 
 - (void)dealloc {
 
-//    [[self scrollView] removeObserver:self forKeyPath:@"contentOffset"];
-//    [[self scrollView] removeObserver:self forKeyPath:@"contentSize"];
     NSLog(@"%s", __FUNCTION__);
 }
 
-- (void)adjustFrame {
-
-}
-
+// 初始化子控件
 - (id)init
 {
     self = [super init];
@@ -40,7 +37,7 @@
         // arrow
         _arrowView = [[UIImageView alloc] init];
 
-        _arrowView.image = DDImageWithName(@"arrow");
+        _arrowView.image = DDImageWithName(@"DDPullControlArrow");
         [self addSubview:_arrowView];
         
         // indicator view
@@ -71,27 +68,19 @@
     return scrollView;
 }
 
+// 父视图发生改变时调用，(**初始化、dealloc前会调用**)
 - (void)willMoveToSuperview:(UIView *)newSuperview
 {
     if([self scrollView] != nil) {
         [[self scrollView] removeObserver:self forKeyPath:@"contentOffset"];
-        [[self scrollView] removeObserver:self forKeyPath:@"contentSize"];
     }
-
-    NSLog(@"%@", newSuperview);
     
     if([newSuperview isKindOfClass:[UIScrollView class]]) {
         [newSuperview addObserver:self
                        forKeyPath:@"contentOffset"
                           options:NSKeyValueObservingOptionNew
                           context:NULL];
-        [newSuperview addObserver:self
-                       forKeyPath:@"contentSize"
-                          options:NSKeyValueObservingOptionNew
-                          context:NULL];
-        
     }
-    NSLog(@"%@", newSuperview);
 }
 
 #pragma mark - kvo
@@ -102,21 +91,19 @@
                         change:(NSDictionary *)change
                        context:(void *)context {
     
-    if([keyPath isEqualToString:@"contentOffset"]) {
-        UIScrollView *scrollView = (UIScrollView *)object;
-        if(_dragging != scrollView.isDragging) {
-            if(!scrollView.isDragging) {
-                [self scrollViewDidEndDragging:scrollView willDecelerate:NO];
-            }
-            
-            _dragging = scrollView.isDragging;
-        }
-        [self scrollViewDidScroll:scrollView];
+    if(![keyPath isEqualToString:@"contentOffset"]) {
+        return;
     }
     
-    if ([keyPath isEqualToString:@"contentSize"]) {
-        [self adjustFrame];
+    UIScrollView *scrollView = (UIScrollView *)object;
+    if(_dragging != scrollView.isDragging) {
+        if(!scrollView.isDragging) {
+            [self scrollViewDidEndDragging:scrollView willDecelerate:NO];
+        }
+        
+        _dragging = scrollView.isDragging;
     }
+    [self scrollViewDidScroll:scrollView];
 }
 
 #pragma mark - <UIScrollViewDelegate>
@@ -124,13 +111,13 @@
 // 父视图开始被拖动
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    NSLog(@"type = %d", [self pullControlType]);
+//    NSLog(@"type = %d", [self pullControlType]);
     
     // pullControlType:下拉为-1，上拉为+1
     CGFloat contentOffSetVerticalValue = scrollView.contentOffset.y * [self pullControlType];
-    NSLog(@"1: contentOffSetVerticalValue = %f", contentOffSetVerticalValue);
+//    NSLog(@"1: contentOffSetVerticalValue = %f", contentOffSetVerticalValue);
     CGFloat properVerticalPullValue = [self properVerticalPullValue];
-    NSLog(@"2: properVerticalPullValue = %f", properVerticalPullValue);
+//    NSLog(@"2: properVerticalPullValue = %f", properVerticalPullValue);
     
     // 排除反方向拖动
     if (contentOffSetVerticalValue <=  properVerticalPullValue) {
@@ -143,7 +130,7 @@
     }
     
     CGFloat properContentOffsetVerticalValue = properVerticalPullValue + kPullControlHeight;
-    NSLog(@"3: properContentOffsetVerticalValue = %f", properContentOffsetVerticalValue);
+//    NSLog(@"3: properContentOffsetVerticalValue = %f", properContentOffsetVerticalValue);
     
     if (contentOffSetVerticalValue <= properContentOffsetVerticalValue &&
         contentOffSetVerticalValue > 0) {
@@ -181,6 +168,9 @@
     if([_delegate respondsToSelector:@selector(pullControlWillBeginAction:)]) {
         [_delegate pullControlWillBeginAction:self];
     }
+    if (_pullControlWillBeginAction) {
+        _pullControlWillBeginAction(self);
+    }
     
     [self setState:DDPullControlStateAction];
     
@@ -213,6 +203,9 @@
     if([_delegate respondsToSelector:@selector(pullControlDidBeginAction:)]) {
         [_delegate pullControlDidBeginAction:self];
     }
+    if (_pullControlDidBeginAction) {
+        _pullControlDidBeginAction(self);
+    }
 }
 
 // 结束执行事务
@@ -221,25 +214,47 @@
     if([_delegate respondsToSelector:@selector(pullControlWillEndAction:)]) {
         [_delegate pullControlWillEndAction:self];
     }
+    if (_pullControlWillEndAction) {
+        _pullControlWillEndAction(self);
+    }
 
-    // 事务执行完成，控件滚到合适位置
-    UIEdgeInsets inset = self.scrollView.contentInset;
+    // 事务执行完成
     if (DDPullControlTypeDown == [self pullControlType]) {
-        // 下拉控件
+        // 下拉控件，滚到父视图头部以上刚好看不见位置(还原inset)
+        UIEdgeInsets inset = self.scrollView.contentInset;
         inset.top = self.scrollViewInsetRecord.top;
         [UIView animateWithDuration:0.2 animations:^{
             self.scrollView.contentInset = inset;
         }];
     } else {
-        // 上拉控件
-        inset.bottom = self.scrollViewInsetRecord.bottom;
-        self.scrollView.contentInset = inset;
+        // 上拉控件，滚到底部看不见
+        CGPoint tempOffset;
+        CGFloat animtionDuration = 0.5;
+        if (self.state == DDPullControlStateAction) {
+            tempOffset = self.scrollView.contentOffset;
+            animtionDuration = 0;
+        }
+        // 内容未超过屏幕底端时animtionDuration ！= 0
+        [UIView animateWithDuration:animtionDuration
+                         animations:^{
+            UIEdgeInsets inset = self.scrollView.contentInset;
+            inset.bottom = self.scrollViewInsetRecord.bottom;
+            self.scrollView.contentInset = inset;
+        }];
+        
+        // 内容超过屏幕底端，不出现回滚动画，直接加载数据，控件`消失`
+        if (animtionDuration == 0) {
+            self.scrollView.contentOffset = tempOffset;
+        }
     }
     
     [self setState:DDPullControlStateHidden];
     
     if([_delegate respondsToSelector:@selector(pullControlDidEndAction:)]) {
         [_delegate pullControlDidEndAction:self];
+    }
+    if (_pullControlDidEndAction) {
+        _pullControlDidEndAction(self);
     }
 }
 

@@ -27,12 +27,13 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
 
 #pragma mark - override
 
+// 合适的垂直方向拖动的值
 - (CGFloat)properVerticalPullValue {
 
     return self.scrollView.contentInset.top;
 }
 
-// 已经移动到父视图上，更新控件界面尺寸
+// 已经移动到父视图上，更新控件界面尺寸(initialize、dealloc会called)
 - (void)didMoveToSuperview {
     
     [super didMoveToSuperview];
@@ -41,7 +42,7 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
     self.frame = CGRectMake(0, -kPullControlHeight, width, kPullControlHeight);
     
     _arrowView.bounds = CGRectMake(0, 0, 30, 30);
-    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kArrowDistancefromCenter,
+    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kPullControlArrowDistancefromCenter,
                                     CGRectGetMidY(self.bounds));
     
     _indicatorView.frame = _arrowView.frame;

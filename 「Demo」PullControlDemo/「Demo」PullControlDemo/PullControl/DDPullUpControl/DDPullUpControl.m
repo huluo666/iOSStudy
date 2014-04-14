@@ -32,12 +32,29 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
 {
     self = [super init];
     if (self) {
-        self.pullControlType = DDPullControlTypeUp;
+        _pullControlType = DDPullControlTypeUp;
     }
     return self;
 }
 
 #pragma mark - override
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+
+    [super willMoveToSuperview:newSuperview];
+    
+    if([self scrollView] != nil) {
+        [[self scrollView] removeObserver:self forKeyPath:@"contentSize"];
+    }
+    
+    if([newSuperview isKindOfClass:[UIScrollView class]]) {
+        [newSuperview addObserver:self
+                       forKeyPath:@"contentSize"
+                          options:NSKeyValueObservingOptionNew
+                          context:NULL];
+        
+    }
+}
 
 // 已经移动到父视图上，更新控件界面尺寸
 - (void)didMoveToSuperview {
@@ -47,7 +64,7 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
     [self adjustFrame];
     
     _arrowView.bounds = CGRectMake(0, 0, 30, 30);
-    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kArrowDistancefromCenter,
+    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kPullControlArrowDistancefromCenter,
                                     CGRectGetMidY(self.bounds));
     
     _indicatorView.frame = _arrowView.frame;
@@ -119,9 +136,8 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
 
 #pragma mark - private messages
 
+// 父视图contentSize变化时，调整该控件位置
 - (void)adjustFrame {
-    
-    [super adjustFrame];
     
     // 内容的高度
     CGFloat contentHeight = self.scrollView.contentSize.height;
