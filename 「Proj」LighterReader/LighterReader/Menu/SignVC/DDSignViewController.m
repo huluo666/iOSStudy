@@ -226,7 +226,9 @@
                 [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
                 
                 // notify login
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"login" object:self userInfo:@{@"isLogined":@"1"}];
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"login"
+                                                                    object:self
+                                                                  userInfo:@{@"isLogined":@"1"}];
             }
         }];
     }
@@ -270,7 +272,7 @@
     
     [alertView show];
     
-    // wait 1.2 seconds dismiss
+    // wait 2.2 seconds dismiss
     NSMethodSignature *signature = [UIAlertView instanceMethodSignatureForSelector:
                                     @selector(dismissWithClickedButtonIndex:animated:)];
     NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];

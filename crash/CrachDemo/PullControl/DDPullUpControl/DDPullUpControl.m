@@ -148,12 +148,8 @@ NSString * const DDPullUpReleaseToAction   = @"Release to loading";
 
 // 父视图contentSize变化时，调整该控件位置
 - (void)adjustFrame {
-
-#pragma mark - 不做判断一个控制器同时加载多个该控件会崩溃！！！！
     
-    UIScrollView *scrollView = self.scrollView;
-    
-    if (!scrollView) {
+    if (!self.scrollView) {
         return;
     }
     

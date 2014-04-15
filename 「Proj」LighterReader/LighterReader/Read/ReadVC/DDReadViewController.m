@@ -13,7 +13,12 @@
 
 #define kPagingDuration 0.5f
 
-@interface DDReadViewController ()
+@interface DDReadViewController () {
+
+    DDReadView *_previousReadView;
+    DDReadView *_appearedReadView;
+    DDReadView *_followingReadView;
+}
 
 - (void)loadRightBarButtonItems;
 
@@ -157,36 +162,51 @@
                        ];
     CGFloat height = [[UIScreen mainScreen] applicationFrame].size.height;
     
-    DDReadView *previousReadView = [[DDReadView alloc] initWithFrame:previousFrame];
-    previousReadView.contentSize = CGSizeMake(320, height + 50);
-    _readViews = [[NSMutableArray alloc] initWithObjects:previousReadView, nil];
-    [previousReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
+    _previousReadView = [[DDReadView alloc] initWithFrame:previousFrame];
+    _previousReadView.contentSize = CGSizeMake(320, height + 50);
+    _readViews = [[NSMutableArray alloc] initWithObjects:_previousReadView, nil];
+//    _previousReadView.backgroundColor = [UIColor greenColor];
+    [self.view addSubview:_previousReadView];
+    _previousReadView.hidden = YES;
+    [_previousReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
     
-    DDReadView *appearedReadView = [[DDReadView alloc] initWithFrame:appearedFrame];
-    appearedReadView.contentSize = CGSizeMake(320, height + 50);
-    [self.view addSubview:appearedReadView];
-    [_readViews addObject:appearedReadView];
-    [appearedReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
+    _appearedReadView = [[DDReadView alloc] initWithFrame:appearedFrame];
+    _appearedReadView.contentSize = CGSizeMake(320, height + 50);
+//    _appearedReadView.backgroundColor = [UIColor redColor];
     
-    DDReadView *followingReadView = [[DDReadView alloc] initWithFrame:followingFrame];
-    followingReadView.contentSize = CGSizeMake(320, height + 50);
-    [_readViews addObject:followingReadView];
-    [followingReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
+    [self.view addSubview:_appearedReadView];
+    [_readViews addObject:_appearedReadView];
+    [_appearedReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
+    
+    _followingReadView = [[DDReadView alloc] initWithFrame:followingFrame];
+    _followingReadView.contentSize = CGSizeMake(320, height + 50);
+//    _followingReadView.backgroundColor = [UIColor yellowColor];
+    _followingReadView.hidden = YES;
+    [_readViews addObject:_followingReadView];
+    [self.view addSubview:_followingReadView];
+    [_followingReadView setContent:((DDFeeds *)_dataSource[_indexPath.row]).content];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
 
     [super viewDidAppear:animated];
+//    
+//    [self.view addSubview:_readViews[0]];
+//    [self.view addSubview:_readViews[2]];
     
-    [self.view addSubview:_readViews[0]];
-    [self.view addSubview:_readViews[2]];
+    [_readViews[0] setHidden:NO];
+    [_readViews[2] setHidden:NO];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     
     [super viewWillDisappear:animated];
-    [_readViews[0] removeFromSuperview];
-    [_readViews[2] removeFromSuperview];
+//    [_readViews[0] removeFromSuperview];
+//    [_readViews[2] removeFromSuperview];
+    
+    [_readViews[0] setHidden:YES];
+    [_readViews[2] setHidden:YES];
 }
 
 #pragma mark - slip paging

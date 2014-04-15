@@ -1,69 +1,25 @@
 //
 //  DDAppDelegate.m
-//  LighterReader
+//  CrachDemo
 //
-//  Created by 萧川 on 14-3-26.
+//  Created by 萧川 on 14-4-15.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
 #import "DDAppDelegate.h"
-#import "DDRootViewController.h"
-@interface WBBaseRequest ()
-- (void)debugPrint;
-@end
-
-@interface WBBaseResponse ()
-- (void)debugPrint;
-@end
+#import "DDViewController.h"
 
 @implementation DDAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [WeiboSDK enableDebugMode:YES];
-    NSLog(@"%d",[WeiboSDK registerApp:kAppKey]);
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    self.window.backgroundColor = [UIColor whiteColor];
-
-    // root view controller
-    DDRootViewController *rootVC = [[DDRootViewController alloc] init];
-    self.rootVC = rootVC;
-    self.window.rootViewController = rootVC;
-
-    // navi bar style
-    [UIBarButtonItem appearance];
-    
-    [self.window makeKeyAndVisible];
+    DDViewController *viewControl = [[DDViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:viewControl];
+    self.window.rootViewController = navi;
+    self.window.backgroundColor =[UIColor whiteColor];
     return YES;
 }
-- (void)didReceiveWeiboRequest:(WBBaseRequest *)request{
-    
-}
-
-- (void)didReceiveWeiboResponse:(WBBaseResponse *)response{
-    
-    if ([response isKindOfClass:WBAuthorizeResponse.class]) {
-        self.wbtoken = [(WBAuthorizeResponse *)response accessToken];
-        if (self.wbtoken) {
-            //success
-            DDRootViewController *rootVC = (DDRootViewController *)[[((DDAppDelegate *)[[UIApplication sharedApplication] delegate]) window] rootViewController];
-            [rootVC setLogin:YES];
-            // notify login
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"login"
-                                                                object:self
-                                                              userInfo:@{@"isLogined":@"1"}];
-            [rootVC disapearSignView];
-        } else {
-            
-        }
-    }
-}
-
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-    
-    return [WeiboSDK handleOpenURL:url delegate:self];
-}
-
+							
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -18,6 +18,9 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *dataSource;
 
+@property (nonatomic, strong) DDPullDownControl *pullDownControl;
+@property (nonatomic, strong) DDPullUpControl *pullUpControl;
+
 @end
 
 @implementation DDDetailViewController
@@ -31,8 +34,9 @@
 {
     [super viewDidLoad];
 
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    _tableView.dataSource  = self;
+    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds
+                                              style:UITableViewStylePlain];
+    _tableView.dataSource = self;
     [self.view addSubview:_tableView];
     
     _dataSource = [[NSMutableArray alloc] init];
@@ -41,15 +45,17 @@
         [_dataSource addObject:str];
     }
     
-    DDPullDownControl *pullDownControl = [[DDPullDownControl alloc] init];
-    pullDownControl.delegate = self;
-    pullDownControl.backgroundColor = [UIColor yellowColor];
-    [self.tableView addSubview:pullDownControl];
+    _pullDownControl = [[DDPullDownControl alloc] init];
+    _pullDownControl.delegate = self;
+    _pullDownControl.backgroundColor = [UIColor yellowColor];
+    [_tableView addSubview:_pullDownControl];
     
-    DDPullUpControl *pullUpControl = [[DDPullUpControl alloc] init];
-    pullUpControl.delegate = self;
-    pullUpControl.backgroundColor = [UIColor greenColor];
-    [_tableView addSubview:pullUpControl];
+    _pullUpControl = [[DDPullUpControl alloc] init];
+    _pullUpControl.delegate = self;
+    _pullUpControl.backgroundColor = [UIColor greenColor];
+    [_tableView addSubview:_pullUpControl];
+    
+    NSLog(@"%@" ,self.tableView);
 }
 
 #pragma mark - <DDPullControlDelegate>
@@ -64,7 +70,7 @@
     }
     
     if ([pullControl isMemberOfClass:[DDPullUpControl class]]) {
-        for (NSInteger i = 0; i < 5; i++) {
+        for (NSInteger i = 0; i < 15; i++) {
             NSString *str = [NSString stringWithFormat:@"上拉随机数据编号：%ld", i];
             [_dataSource addObject:str];
         }
@@ -72,8 +78,9 @@
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 2.0 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [pullControl endAction];
-        [_tableView reloadData];
+        [_pullDownControl endAction];
+        [_pullUpControl endAction];
+        [self.tableView reloadData];
     });
 }
 

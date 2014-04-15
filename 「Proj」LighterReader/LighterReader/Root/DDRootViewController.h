@@ -14,4 +14,6 @@
 @property (strong, nonatomic) UISwipeGestureRecognizer *swipRightGesture;
 @property (strong, nonatomic) UISwipeGestureRecognizer *swipLeftGesture;
 
+- (void)disapearSignView;
+
 @end

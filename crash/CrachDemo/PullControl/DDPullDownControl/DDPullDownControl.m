@@ -7,7 +7,7 @@
 //
 
 NSString * const DDPullDownToAction        = @"Pull to refresh";
-NSString * const DDPullDownAction          = @"refresh...";
+NSString * const DDPullDownAction          = @"Refreshing...";
 NSString * const DDPullDownReleaseToAction = @"Release to refresh";
 
 #import "DDPullDownControl.h"
@@ -25,14 +25,26 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
     NSLog(@"%s", __FUNCTION__);
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _pullToAction        = DDPullDownToAction;
+        _pullAction          = DDPullDownAction;
+        _pullReleaseToAction = DDPullDownReleaseToAction;
+    }
+    return self;
+}
+
 #pragma mark - override
 
+// 合适的垂直方向拖动的值
 - (CGFloat)properVerticalPullValue {
 
     return self.scrollView.contentInset.top;
 }
 
-// 已经移动到父视图上，更新控件界面尺寸
+// 已经移动到父视图上，更新控件界面尺寸(initialize、dealloc会called)
 - (void)didMoveToSuperview {
     
     [super didMoveToSuperview];
@@ -41,7 +53,7 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
     self.frame = CGRectMake(0, -kPullControlHeight, width, kPullControlHeight);
     
     _arrowView.bounds = CGRectMake(0, 0, 30, 30);
-    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kArrowDistancefromCenter,
+    _arrowView.center = CGPointMake(CGRectGetMidX(self.bounds) - kPullControlArrowDistancefromCenter,
                                     CGRectGetMidY(self.bounds));
     
     _indicatorView.frame = _arrowView.frame;
@@ -64,7 +76,10 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
             break;
         case DDPullControlStatePulling:
         {
-            _hintLabel.text = DDPullDownToAction;
+            if (_showsScrollIndicatorPolicy) {
+                self.scrollView.showsVerticalScrollIndicator = YES;
+            }
+            _hintLabel.text = _pullToAction;
             
             [UIView animateWithDuration:0.2 animations:^{
                 _arrowView.transform = CGAffineTransformIdentity;
@@ -73,7 +88,10 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
             break;
         case DDPullControlStateOveredThreshold:
         {
-            _hintLabel.text = DDPullDownReleaseToAction;
+            if (_showsScrollIndicatorPolicy) {
+                self.scrollView.showsVerticalScrollIndicator = NO;
+            }
+            _hintLabel.text = _pullReleaseToAction;
     
             [UIView animateWithDuration:0.2 animations:^{
                 _arrowView.transform = CGAffineTransformMakeRotation(M_PI);
@@ -85,7 +103,7 @@ NSString * const DDPullDownReleaseToAction = @"Release to refresh";
         {
             _indicatorView.hidden = NO;
             [_indicatorView startAnimating];
-            _hintLabel.text = DDPullDownAction;
+            _hintLabel.text = _pullAction;
             _arrowView.hidden = YES;
         }
             break;

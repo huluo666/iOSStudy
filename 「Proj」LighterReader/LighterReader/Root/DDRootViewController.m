@@ -45,7 +45,7 @@
     [super viewDidLoad];
 
     /* very import */
-    DDAppDelegate *ddDelegate = [[UIApplication sharedApplication] delegate];
+    DDAppDelegate *ddDelegate = (DDAppDelegate *)[[UIApplication sharedApplication] delegate];
     ddDelegate.rootVC = self;
     
     // gesture
@@ -248,6 +248,12 @@
         DDSearchMenuView *searchMenuView = (DDSearchMenuView *)[self.view viewWithTag:kSearchMenuViewTag];
         [searchMenuView swipRightAction];
     }
+}
+
+- (void)disapearSignView {
+    
+    DDSignMenuView *signMenuView = (DDSignMenuView *)[self.view viewWithTag:kSignMenuViewTag];
+    [signMenuView swipLeftAction];
 }
 
 @end

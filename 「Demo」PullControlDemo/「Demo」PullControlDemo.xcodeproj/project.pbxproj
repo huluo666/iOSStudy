@@ -10,8 +10,9 @@
 		065A48B318FAC696005CB6FE /* DDPullControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48A918FAC696005CB6FE /* DDPullControl.m */; };
 		065A48B418FAC696005CB6FE /* DDPullDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48AC18FAC696005CB6FE /* DDPullDownControl.m */; };
 		065A48B518FAC696005CB6FE /* DDPullUpControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48AF18FAC696005CB6FE /* DDPullUpControl.m */; };
-		065A48B618FAC696005CB6FE /* DDPullControlArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A48B118FAC696005CB6FE /* DDPullControlArrow.png */; };
-		065A48B718FAC696005CB6FE /* DDPullControlArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A48B218FAC696005CB6FE /* DDPullControlArrow@2x.png */; };
+		065A48B618FAC696005CB6FE /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A48B118FAC696005CB6FE /* arrow.png */; };
+		065A48B718FAC696005CB6FE /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 065A48B218FAC696005CB6FE /* arrow@2x.png */; };
+		065A48BF18FAC6F4005CB6FE /* DDDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48BB18FAC6F4005CB6FE /* DDDelegateViewController.m */; };
 		065A48C018FAC6F4005CB6FE /* DDDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 065A48BE18FAC6F4005CB6FE /* DDDetailViewController.m */; };
 		9530E8D518F9254E00995F44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9530E8D418F9254E00995F44 /* Foundation.framework */; };
 		9530E8D718F9254E00995F44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9530E8D618F9254E00995F44 /* CoreGraphics.framework */; };
@@ -26,11 +27,8 @@
 		9530E8F918F9254E00995F44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9530E8D818F9254E00995F44 /* UIKit.framework */; };
 		9530E90118F9254E00995F44 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9530E8FF18F9254E00995F44 /* InfoPlist.strings */; };
 		9530E90318F9254E00995F44 /* _Demo_PullControlDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E90218F9254E00995F44 /* _Demo_PullControlDemoTests.m */; };
-		95B6B9A618FB77E70027382B /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6B9A318FB77E70027382B /* DDAppDelegate.m */; };
-		95B6B9A718FB77E70027382B /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6B9A518FB77E70027382B /* DDViewController.m */; };
-		95B6B9AB18FB78810027382B /* DDDelegateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6B9AA18FB78810027382B /* DDDelegateViewController.m */; };
-		95B6B9AF18FB78A30027382B /* DDBlockViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6B9AE18FB78A30027382B /* DDBlockViewController.m */; };
-		95B6B9B618FB81590027382B /* DDModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B6B9B518FB81590027382B /* DDModalViewController.m */; };
+		9530E91218F9260200995F44 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E90F18F9260200995F44 /* DDAppDelegate.m */; };
+		9530E91318F9260200995F44 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9530E91118F9260200995F44 /* DDViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,8 +48,10 @@
 		065A48AC18FAC696005CB6FE /* DDPullDownControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownControl.m; sourceTree = "<group>"; };
 		065A48AE18FAC696005CB6FE /* DDPullUpControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUpControl.h; sourceTree = "<group>"; };
 		065A48AF18FAC696005CB6FE /* DDPullUpControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUpControl.m; sourceTree = "<group>"; };
-		065A48B118FAC696005CB6FE /* DDPullControlArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DDPullControlArrow.png; sourceTree = "<group>"; };
-		065A48B218FAC696005CB6FE /* DDPullControlArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DDPullControlArrow@2x.png"; sourceTree = "<group>"; };
+		065A48B118FAC696005CB6FE /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		065A48B218FAC696005CB6FE /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		065A48BA18FAC6F4005CB6FE /* DDDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDelegateViewController.h; sourceTree = "<group>"; };
+		065A48BB18FAC6F4005CB6FE /* DDDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDelegateViewController.m; sourceTree = "<group>"; };
 		065A48BD18FAC6F4005CB6FE /* DDDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDetailViewController.h; sourceTree = "<group>"; };
 		065A48BE18FAC6F4005CB6FE /* DDDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDetailViewController.m; sourceTree = "<group>"; };
 		9530E8D118F9254E00995F44 /* 「Demo」PullControlDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "「Demo」PullControlDemo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,16 +70,10 @@
 		9530E8FE18F9254E00995F44 /* 「Demo」PullControlDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "「Demo」PullControlDemoTests-Info.plist"; sourceTree = "<group>"; };
 		9530E90018F9254E00995F44 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9530E90218F9254E00995F44 /* _Demo_PullControlDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _Demo_PullControlDemoTests.m; sourceTree = "<group>"; };
-		95B6B9A218FB77E70027382B /* DDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
-		95B6B9A318FB77E70027382B /* DDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
-		95B6B9A418FB77E70027382B /* DDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
-		95B6B9A518FB77E70027382B /* DDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
-		95B6B9A918FB78810027382B /* DDDelegateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDDelegateViewController.h; sourceTree = "<group>"; };
-		95B6B9AA18FB78810027382B /* DDDelegateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDDelegateViewController.m; sourceTree = "<group>"; };
-		95B6B9AD18FB78A30027382B /* DDBlockViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDBlockViewController.h; sourceTree = "<group>"; };
-		95B6B9AE18FB78A30027382B /* DDBlockViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDBlockViewController.m; sourceTree = "<group>"; };
-		95B6B9B418FB81590027382B /* DDModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDModalViewController.h; sourceTree = "<group>"; };
-		95B6B9B518FB81590027382B /* DDModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDModalViewController.m; sourceTree = "<group>"; };
+		9530E90E18F9260200995F44 /* DDAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
+		9530E90F18F9260200995F44 /* DDAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
+		9530E91018F9260200995F44 /* DDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
+		9530E91118F9260200995F44 /* DDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,8 +130,8 @@
 		065A48B018FAC696005CB6FE /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				065A48B118FAC696005CB6FE /* DDPullControlArrow.png */,
-				065A48B218FAC696005CB6FE /* DDPullControlArrow@2x.png */,
+				065A48B118FAC696005CB6FE /* arrow.png */,
+				065A48B218FAC696005CB6FE /* arrow@2x.png */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -145,12 +139,19 @@
 		065A48B818FAC6BB005CB6FE /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				95B6B9B318FB81270027382B /* ModalVC */,
-				95B6B9AC18FB788F0027382B /* BlockMethodVC */,
-				95B6B9A818FB78810027382B /* DelegateMethodVC */,
+				065A48B918FAC6F4005CB6FE /* TableViewController */,
 				065A48BC18FAC6F4005CB6FE /* UIViewController */,
 			);
 			path = Controls;
+			sourceTree = "<group>";
+		};
+		065A48B918FAC6F4005CB6FE /* TableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				065A48BA18FAC6F4005CB6FE /* DDDelegateViewController.h */,
+				065A48BB18FAC6F4005CB6FE /* DDDelegateViewController.m */,
+			);
+			path = TableViewController;
 			sourceTree = "<group>";
 		};
 		065A48BC18FAC6F4005CB6FE /* UIViewController */ = {
@@ -246,50 +247,15 @@
 		9530E90D18F925CE00995F44 /* PullControlDemo */ = {
 			isa = PBXGroup;
 			children = (
-				95B6B9A118FB77D90027382B /* Classes */,
 				065A48B818FAC6BB005CB6FE /* Controls */,
-			);
-			path = PullControlDemo;
-			sourceTree = "<group>";
-		};
-		95B6B9A118FB77D90027382B /* Classes */ = {
-			isa = PBXGroup;
-			children = (
+				9530E90E18F9260200995F44 /* DDAppDelegate.h */,
+				9530E90F18F9260200995F44 /* DDAppDelegate.m */,
+				9530E91018F9260200995F44 /* DDViewController.h */,
+				9530E91118F9260200995F44 /* DDViewController.m */,
 				9530E8E618F9254E00995F44 /* Main_iPhone.storyboard */,
 				9530E8E918F9254E00995F44 /* Main_iPad.storyboard */,
-				95B6B9A218FB77E70027382B /* DDAppDelegate.h */,
-				95B6B9A318FB77E70027382B /* DDAppDelegate.m */,
-				95B6B9A418FB77E70027382B /* DDViewController.h */,
-				95B6B9A518FB77E70027382B /* DDViewController.m */,
 			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		95B6B9A818FB78810027382B /* DelegateMethodVC */ = {
-			isa = PBXGroup;
-			children = (
-				95B6B9A918FB78810027382B /* DDDelegateViewController.h */,
-				95B6B9AA18FB78810027382B /* DDDelegateViewController.m */,
-			);
-			path = DelegateMethodVC;
-			sourceTree = "<group>";
-		};
-		95B6B9AC18FB788F0027382B /* BlockMethodVC */ = {
-			isa = PBXGroup;
-			children = (
-				95B6B9AD18FB78A30027382B /* DDBlockViewController.h */,
-				95B6B9AE18FB78A30027382B /* DDBlockViewController.m */,
-			);
-			path = BlockMethodVC;
-			sourceTree = "<group>";
-		};
-		95B6B9B318FB81270027382B /* ModalVC */ = {
-			isa = PBXGroup;
-			children = (
-				95B6B9B418FB81590027382B /* DDModalViewController.h */,
-				95B6B9B518FB81590027382B /* DDModalViewController.m */,
-			);
-			path = ModalVC;
+			path = PullControlDemo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,9 +337,9 @@
 			files = (
 				9530E8EB18F9254E00995F44 /* Main_iPad.storyboard in Resources */,
 				9530E8F018F9254E00995F44 /* Images.xcassets in Resources */,
-				065A48B718FAC696005CB6FE /* DDPullControlArrow@2x.png in Resources */,
+				065A48B718FAC696005CB6FE /* arrow@2x.png in Resources */,
 				9530E8E818F9254E00995F44 /* Main_iPhone.storyboard in Resources */,
-				065A48B618FAC696005CB6FE /* DDPullControlArrow.png in Resources */,
+				065A48B618FAC696005CB6FE /* arrow.png in Resources */,
 				9530E8DF18F9254E00995F44 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,16 +359,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9530E91218F9260200995F44 /* DDAppDelegate.m in Sources */,
 				065A48B318FAC696005CB6FE /* DDPullControl.m in Sources */,
+				065A48BF18FAC6F4005CB6FE /* DDDelegateViewController.m in Sources */,
+				9530E91318F9260200995F44 /* DDViewController.m in Sources */,
 				9530E8E118F9254E00995F44 /* main.m in Sources */,
 				065A48C018FAC6F4005CB6FE /* DDDetailViewController.m in Sources */,
-				95B6B9AF18FB78A30027382B /* DDBlockViewController.m in Sources */,
-				95B6B9A718FB77E70027382B /* DDViewController.m in Sources */,
 				065A48B418FAC696005CB6FE /* DDPullDownControl.m in Sources */,
-				95B6B9B618FB81590027382B /* DDModalViewController.m in Sources */,
 				065A48B518FAC696005CB6FE /* DDPullUpControl.m in Sources */,
-				95B6B9A618FB77E70027382B /* DDAppDelegate.m in Sources */,
-				95B6B9AB18FB78810027382B /* DDDelegateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,7 +403,7 @@
 				9530E8E718F9254E00995F44 /* Base */,
 			);
 			name = Main_iPhone.storyboard;
-			path = ../..;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9530E8E918F9254E00995F44 /* Main_iPad.storyboard */ = {
@@ -448,7 +412,7 @@
 				9530E8EA18F9254E00995F44 /* Base */,
 			);
 			name = Main_iPad.storyboard;
-			path = ../..;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		9530E8FF18F9254E00995F44 /* InfoPlist.strings */ = {

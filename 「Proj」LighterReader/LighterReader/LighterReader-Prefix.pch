@@ -14,4 +14,7 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
     #import "DDMacroDefinition.h"
+    #import "WeiboSDK.h"
+    #define kAppKey @"1141256304"
+    #define kRedirectURI  @"https://api.weibo.com/oauth2/default.html"
 #endif

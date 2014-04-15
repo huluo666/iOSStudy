@@ -9,9 +9,14 @@
 #import <UIKit/UIKit.h>
 @class DDRootViewController;
 
-@interface DDAppDelegate : UIResponder <UIApplicationDelegate>
+@interface DDAppDelegate : UIResponder <
+    UIApplicationDelegate,
+    WeiboSDKDelegate
+>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) DDRootViewController *rootVC;
+
+@property (strong, nonatomic) NSString *wbtoken;
 
 @end

@@ -93,16 +93,25 @@
                                              CGRectGetMidY(loginWithBuffer.bounds) +
                                              30);
         
-        UIButton *loginWithReader = [self buttonWithBackgroundImage:nil];
-        loginWithReader.tag = kMenuButtonTag + 3;
-        loginWithReader.center = CGPointMake(CGRectGetMidX(self.bounds),
+
+        UIButton *loginWithWeibo = [self buttonWithBackgroundImage:nil];
+        loginWithWeibo.tag = kMenuButtonTag + 3;
+        loginWithWeibo.center = CGPointMake(CGRectGetMidX(self.bounds),
                                              CGRectGetMaxY(loginWithBuffer.frame) +
+                                             CGRectGetMidY(loginWithWeibo.bounds) +
+                                             30);
+        [loginWithWeibo setTitle:@"Sign in with Sina Weibo" forState:UIControlStateNormal];
+        
+        UIButton *loginWithReader = [self buttonWithBackgroundImage:nil];
+        loginWithReader.tag = kMenuButtonTag + 4;
+        loginWithReader.center = CGPointMake(CGRectGetMidX(self.bounds),
+                                             CGRectGetMaxY(loginWithWeibo.frame) +
                                              CGRectGetMidY(loginWithReader.bounds) +
                                              30);
         [loginWithReader setTitle:@"Sign in with Lighter Reader" forState:UIControlStateNormal];
         
         UIButton *createNewAccount = [self buttonWithBackgroundImage:nil];
-        createNewAccount.tag = kMenuButtonTag + 4;
+        createNewAccount.tag = kMenuButtonTag + 5;
         createNewAccount.center = CGPointMake(CGRectGetMidX(self.bounds),
                                               CGRectGetMaxY(loginWithReader.frame) +
                                               CGRectGetMidY(createNewAccount.bounds) +
@@ -149,13 +158,26 @@
     DDRootViewController *rootVC = (DDRootViewController *)[self viewController];
     DDSignViewController *signVC = [[DDSignViewController alloc] init];
 
+    if (3 == index) {
+        // sina wibo login
+        WBAuthorizeRequest *request = [WBAuthorizeRequest request];
+        request.redirectURI = kRedirectURI;
+        request.scope = @"all";
+        request.userInfo = @{@"SSO_From": @"SendMessageToWeiboViewController",
+                             @"Other_Info_1": [NSNumber numberWithInt:123],
+                             @"Other_Info_2": @[@"obj1", @"obj2"],
+                             @"Other_Info_3": @{@"key1": @"obj1", @"key2": @"obj2"}};
+        [WeiboSDK sendRequest:request];
+        return;
+    }
+    
     id navi = rootVC.childViewControllers[0];
     if ([navi isKindOfClass:[DDMainUINaviController class]]) {
         DDMainUINaviController *mainVC = (DDMainUINaviController *)navi;
         signVC.transitioningDelegate = mainVC;
         [mainVC presentViewController:signVC animated:YES completion:nil];
     }
-    if (4 == index) {
+    if (5 == index) {
         // 注册
         signVC.signtype = DDSignTypeSignup;
     }

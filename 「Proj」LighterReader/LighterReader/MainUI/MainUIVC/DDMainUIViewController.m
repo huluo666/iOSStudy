@@ -92,7 +92,8 @@
         // regist notify
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(processNotify:)
-                                                     name:@"login" object:nil];
+                                                     name:@"login"
+                                                   object:nil];
     }
     return self;
 }
@@ -108,25 +109,18 @@
 
     [self setTitleViewTitle:@"All/Home"];
     
-    // add hint label
-    CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds),
-                              CGRectGetHeight(self.view.bounds) - 64);
-    UILabel *hintLabel = [[UILabel alloc] initWithFrame:frame];
-    hintLabel.font = [UIFont systemFontOfSize:24];
-    hintLabel.textAlignment = NSTextAlignmentCenter;
-    hintLabel.textColor = [UIColor orangeColor];
-    hintLabel.text = @"Swip right to get started";
-    [self.view addSubview:hintLabel];
+    // before logined
+    self.dataSource = [[NSMutableArray alloc] initWithArray:[DDFeeds feedsWithCapacity:12]];
+    
+    [self setPageViewControllerWithCellType:DDCellTypeTitleOnly];
+    
 }
 
 - (void)processNotify:(NSNotification *)notify {
     
     if ([notify.userInfo[@"isLogined"] integerValue]) {
         
-        _dataSource = [[NSMutableArray alloc] initWithArray:[DDFeeds feedsWithCapacity:22]];
-        for (DDFeeds *feed in _dataSource) {
-            NSLog(@"%@", feed);
-        }
+        self.dataSource = [[NSMutableArray alloc] initWithArray:[DDFeeds feedsWithCapacity:42]];
         
         [self setPageViewControllerWithCellType:DDCellTypeTitleOnly];
         
@@ -141,37 +135,10 @@
         NSMutableArray *rightBarButtonItems = [NSMutableArray arrayWithArray:bars];
         [rightBarButtonItems addObject:floaterSettingItem];
         self.navigationItem.rightBarButtonItems = rightBarButtonItems;
-        
-        // delete hint label
-        for (UIView *view in self.view.subviews) {
-            if ([view isKindOfClass:[UILabel class]]) {
-                UILabel *label = (UILabel *)view;
-                [label removeFromSuperview];
-            }
-        }
-        NSLog(@"%@", self.view.subviews);
     } else {
-        // login out
-        NSArray *childs = self.childViewControllers;
-        if (childs) {
-            for (UIViewController *viewController in childs) {
-                if ([viewController isKindOfClass:[DDFlipPageViewController class]]) {
-                    [viewController.view removeFromSuperview];
-                    [viewController removeFromParentViewController];
-                }
-            }
-        }
-        // add hint label
-        CGRect frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds),
-                                  CGRectGetHeight(self.view.bounds) - 64);
-        UILabel *hintLabel = [[UILabel alloc] initWithFrame:frame];
-        hintLabel.font = [UIFont systemFontOfSize:24];
-        hintLabel.textAlignment = NSTextAlignmentCenter;
-        hintLabel.textColor = [UIColor orangeColor];
-        hintLabel.text = @"Swip right to get started";
-        [self.view addSubview:hintLabel];
+        self.dataSource = [[NSMutableArray alloc] initWithArray:[DDFeeds feedsWithCapacity:12]];
         
-        self.dataSource = nil;
+        [self setPageViewControllerWithCellType:DDCellTypeTitleOnly];
 
         // right bars
         NSMutableArray *bars = [NSMutableArray arrayWithArray:self.navigationItem.rightBarButtonItems];

@@ -1,0 +1,607 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95639DEC18FCD5120084F733 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95639DEB18FCD5120084F733 /* Foundation.framework */; };
+		95639DEE18FCD5120084F733 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95639DED18FCD5120084F733 /* CoreGraphics.framework */; };
+		95639DF018FCD5120084F733 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95639DEF18FCD5120084F733 /* UIKit.framework */; };
+		95639DF618FCD5120084F733 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95639DF418FCD5120084F733 /* InfoPlist.strings */; };
+		95639DF818FCD5120084F733 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639DF718FCD5120084F733 /* main.m */; };
+		95639DFC18FCD5120084F733 /* DDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639DFB18FCD5120084F733 /* DDAppDelegate.m */; };
+		95639DFF18FCD5120084F733 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95639DFD18FCD5120084F733 /* Main_iPhone.storyboard */; };
+		95639E0218FCD5120084F733 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95639E0018FCD5120084F733 /* Main_iPad.storyboard */; };
+		95639E0518FCD5120084F733 /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639E0418FCD5120084F733 /* DDViewController.m */; };
+		95639E0718FCD5120084F733 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95639E0618FCD5120084F733 /* Images.xcassets */; };
+		95639E0E18FCD5120084F733 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95639E0D18FCD5120084F733 /* XCTest.framework */; };
+		95639E0F18FCD5120084F733 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95639DEB18FCD5120084F733 /* Foundation.framework */; };
+		95639E1018FCD5120084F733 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95639DEF18FCD5120084F733 /* UIKit.framework */; };
+		95639E1818FCD5120084F733 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 95639E1618FCD5120084F733 /* InfoPlist.strings */; };
+		95639E1A18FCD5120084F733 /* CrachDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639E1918FCD5120084F733 /* CrachDemoTests.m */; };
+		95639E3018FCD5690084F733 /* DDPullControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639E2618FCD5690084F733 /* DDPullControl.m */; };
+		95639E3218FCD5690084F733 /* DDPullUpControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639E2C18FCD5690084F733 /* DDPullUpControl.m */; };
+		95639E3318FCD5690084F733 /* DDPullControlArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95639E2E18FCD5690084F733 /* DDPullControlArrow.png */; };
+		95639E3418FCD5690084F733 /* DDPullControlArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95639E2F18FCD5690084F733 /* DDPullControlArrow@2x.png */; };
+		95639E3C18FCD5820084F733 /* DDReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639E3818FCD5820084F733 /* DDReadViewController.m */; };
+		95639E3D18FCD5820084F733 /* DDReadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639E3B18FCD5820084F733 /* DDReadView.m */; };
+		95639E4118FCD64B0084F733 /* UIView+FindUIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95639E4018FCD64B0084F733 /* UIView+FindUIViewController.m */; };
+		95B5E6DD18FD54AD00CE4F9C /* DDPullDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B5E6DC18FD54AD00CE4F9C /* DDPullDownControl.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95639E1118FCD5120084F733 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 95639DE018FCD5120084F733 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 95639DE718FCD5120084F733;
+			remoteInfo = CrachDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		95639DE818FCD5120084F733 /* CrachDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrachDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		95639DEB18FCD5120084F733 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		95639DED18FCD5120084F733 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		95639DEF18FCD5120084F733 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		95639DF318FCD5120084F733 /* CrachDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrachDemo-Info.plist"; sourceTree = "<group>"; };
+		95639DF518FCD5120084F733 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95639DF718FCD5120084F733 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		95639DF918FCD5120084F733 /* CrachDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CrachDemo-Prefix.pch"; sourceTree = "<group>"; };
+		95639DFA18FCD5120084F733 /* DDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDAppDelegate.h; sourceTree = "<group>"; };
+		95639DFB18FCD5120084F733 /* DDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDAppDelegate.m; sourceTree = "<group>"; };
+		95639DFE18FCD5120084F733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		95639E0118FCD5120084F733 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		95639E0318FCD5120084F733 /* DDViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDViewController.h; sourceTree = "<group>"; };
+		95639E0418FCD5120084F733 /* DDViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDViewController.m; sourceTree = "<group>"; };
+		95639E0618FCD5120084F733 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		95639E0C18FCD5120084F733 /* CrachDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CrachDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95639E0D18FCD5120084F733 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		95639E1518FCD5120084F733 /* CrachDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CrachDemoTests-Info.plist"; sourceTree = "<group>"; };
+		95639E1718FCD5120084F733 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		95639E1918FCD5120084F733 /* CrachDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CrachDemoTests.m; sourceTree = "<group>"; };
+		95639E2518FCD5690084F733 /* DDPullControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullControl.h; sourceTree = "<group>"; };
+		95639E2618FCD5690084F733 /* DDPullControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullControl.m; sourceTree = "<group>"; };
+		95639E2B18FCD5690084F733 /* DDPullUpControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUpControl.h; sourceTree = "<group>"; };
+		95639E2C18FCD5690084F733 /* DDPullUpControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUpControl.m; sourceTree = "<group>"; };
+		95639E2E18FCD5690084F733 /* DDPullControlArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DDPullControlArrow.png; sourceTree = "<group>"; };
+		95639E2F18FCD5690084F733 /* DDPullControlArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DDPullControlArrow@2x.png"; sourceTree = "<group>"; };
+		95639E3718FCD5820084F733 /* DDReadViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDReadViewController.h; sourceTree = "<group>"; };
+		95639E3818FCD5820084F733 /* DDReadViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDReadViewController.m; sourceTree = "<group>"; };
+		95639E3A18FCD5820084F733 /* DDReadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDReadView.h; sourceTree = "<group>"; };
+		95639E3B18FCD5820084F733 /* DDReadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDReadView.m; sourceTree = "<group>"; };
+		95639E3F18FCD64B0084F733 /* UIView+FindUIViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+FindUIViewController.h"; sourceTree = "<group>"; };
+		95639E4018FCD64B0084F733 /* UIView+FindUIViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+FindUIViewController.m"; sourceTree = "<group>"; };
+		95B5E6DB18FD54AD00CE4F9C /* DDPullDownControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownControl.h; sourceTree = "<group>"; };
+		95B5E6DC18FD54AD00CE4F9C /* DDPullDownControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownControl.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		95639DE518FCD5120084F733 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95639DEE18FCD5120084F733 /* CoreGraphics.framework in Frameworks */,
+				95639DF018FCD5120084F733 /* UIKit.framework in Frameworks */,
+				95639DEC18FCD5120084F733 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95639E0918FCD5120084F733 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95639E0E18FCD5120084F733 /* XCTest.framework in Frameworks */,
+				95639E1018FCD5120084F733 /* UIKit.framework in Frameworks */,
+				95639E0F18FCD5120084F733 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95639DDF18FCD5120084F733 = {
+			isa = PBXGroup;
+			children = (
+				95639DF118FCD5120084F733 /* CrachDemo */,
+				95639E1318FCD5120084F733 /* CrachDemoTests */,
+				95639DEA18FCD5120084F733 /* Frameworks */,
+				95639DE918FCD5120084F733 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		95639DE918FCD5120084F733 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				95639DE818FCD5120084F733 /* CrachDemo.app */,
+				95639E0C18FCD5120084F733 /* CrachDemoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		95639DEA18FCD5120084F733 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				95639DEB18FCD5120084F733 /* Foundation.framework */,
+				95639DED18FCD5120084F733 /* CoreGraphics.framework */,
+				95639DEF18FCD5120084F733 /* UIKit.framework */,
+				95639E0D18FCD5120084F733 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95639DF118FCD5120084F733 /* CrachDemo */ = {
+			isa = PBXGroup;
+			children = (
+				95639DFA18FCD5120084F733 /* DDAppDelegate.h */,
+				95639DFB18FCD5120084F733 /* DDAppDelegate.m */,
+				95639DFD18FCD5120084F733 /* Main_iPhone.storyboard */,
+				95639E0018FCD5120084F733 /* Main_iPad.storyboard */,
+				95639E0318FCD5120084F733 /* DDViewController.h */,
+				95639E0418FCD5120084F733 /* DDViewController.m */,
+				95639E3518FCD5820084F733 /* Read */,
+				95639E2318FCD5690084F733 /* PullControl */,
+				95639E0618FCD5120084F733 /* Images.xcassets */,
+				95639DF218FCD5120084F733 /* Supporting Files */,
+			);
+			path = CrachDemo;
+			sourceTree = "<group>";
+		};
+		95639DF218FCD5120084F733 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95639DF318FCD5120084F733 /* CrachDemo-Info.plist */,
+				95639DF418FCD5120084F733 /* InfoPlist.strings */,
+				95639DF718FCD5120084F733 /* main.m */,
+				95639DF918FCD5120084F733 /* CrachDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95639E1318FCD5120084F733 /* CrachDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				95639E1918FCD5120084F733 /* CrachDemoTests.m */,
+				95639E1418FCD5120084F733 /* Supporting Files */,
+			);
+			path = CrachDemoTests;
+			sourceTree = "<group>";
+		};
+		95639E1418FCD5120084F733 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				95639E1518FCD5120084F733 /* CrachDemoTests-Info.plist */,
+				95639E1618FCD5120084F733 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		95639E2318FCD5690084F733 /* PullControl */ = {
+			isa = PBXGroup;
+			children = (
+				95B5E6DA18FD54AD00CE4F9C /* DDPullDownControl */,
+				95639E3E18FCD64B0084F733 /* Categroy */,
+				95639E2418FCD5690084F733 /* DDPullControl */,
+				95639E2A18FCD5690084F733 /* DDPullUpControl */,
+				95639E2D18FCD5690084F733 /* Resource */,
+			);
+			path = PullControl;
+			sourceTree = "<group>";
+		};
+		95639E2418FCD5690084F733 /* DDPullControl */ = {
+			isa = PBXGroup;
+			children = (
+				95639E2518FCD5690084F733 /* DDPullControl.h */,
+				95639E2618FCD5690084F733 /* DDPullControl.m */,
+			);
+			path = DDPullControl;
+			sourceTree = "<group>";
+		};
+		95639E2A18FCD5690084F733 /* DDPullUpControl */ = {
+			isa = PBXGroup;
+			children = (
+				95639E2B18FCD5690084F733 /* DDPullUpControl.h */,
+				95639E2C18FCD5690084F733 /* DDPullUpControl.m */,
+			);
+			path = DDPullUpControl;
+			sourceTree = "<group>";
+		};
+		95639E2D18FCD5690084F733 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				95639E2E18FCD5690084F733 /* DDPullControlArrow.png */,
+				95639E2F18FCD5690084F733 /* DDPullControlArrow@2x.png */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		95639E3518FCD5820084F733 /* Read */ = {
+			isa = PBXGroup;
+			children = (
+				95639E3918FCD5820084F733 /* ReadView */,
+				95639E3618FCD5820084F733 /* ReadVC */,
+			);
+			path = Read;
+			sourceTree = "<group>";
+		};
+		95639E3618FCD5820084F733 /* ReadVC */ = {
+			isa = PBXGroup;
+			children = (
+				95639E3718FCD5820084F733 /* DDReadViewController.h */,
+				95639E3818FCD5820084F733 /* DDReadViewController.m */,
+			);
+			path = ReadVC;
+			sourceTree = "<group>";
+		};
+		95639E3918FCD5820084F733 /* ReadView */ = {
+			isa = PBXGroup;
+			children = (
+				95639E3A18FCD5820084F733 /* DDReadView.h */,
+				95639E3B18FCD5820084F733 /* DDReadView.m */,
+			);
+			name = ReadView;
+			path = ReadVC/ReadView;
+			sourceTree = "<group>";
+		};
+		95639E3E18FCD64B0084F733 /* Categroy */ = {
+			isa = PBXGroup;
+			children = (
+				95639E3F18FCD64B0084F733 /* UIView+FindUIViewController.h */,
+				95639E4018FCD64B0084F733 /* UIView+FindUIViewController.m */,
+			);
+			path = Categroy;
+			sourceTree = "<group>";
+		};
+		95B5E6DA18FD54AD00CE4F9C /* DDPullDownControl */ = {
+			isa = PBXGroup;
+			children = (
+				95B5E6DB18FD54AD00CE4F9C /* DDPullDownControl.h */,
+				95B5E6DC18FD54AD00CE4F9C /* DDPullDownControl.m */,
+			);
+			path = DDPullDownControl;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		95639DE718FCD5120084F733 /* CrachDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95639E1D18FCD5120084F733 /* Build configuration list for PBXNativeTarget "CrachDemo" */;
+			buildPhases = (
+				95639DE418FCD5120084F733 /* Sources */,
+				95639DE518FCD5120084F733 /* Frameworks */,
+				95639DE618FCD5120084F733 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CrachDemo;
+			productName = CrachDemo;
+			productReference = 95639DE818FCD5120084F733 /* CrachDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		95639E0B18FCD5120084F733 /* CrachDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95639E2018FCD5120084F733 /* Build configuration list for PBXNativeTarget "CrachDemoTests" */;
+			buildPhases = (
+				95639E0818FCD5120084F733 /* Sources */,
+				95639E0918FCD5120084F733 /* Frameworks */,
+				95639E0A18FCD5120084F733 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95639E1218FCD5120084F733 /* PBXTargetDependency */,
+			);
+			name = CrachDemoTests;
+			productName = CrachDemoTests;
+			productReference = 95639E0C18FCD5120084F733 /* CrachDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		95639DE018FCD5120084F733 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DD;
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = CUAN;
+				TargetAttributes = {
+					95639E0B18FCD5120084F733 = {
+						TestTargetID = 95639DE718FCD5120084F733;
+					};
+				};
+			};
+			buildConfigurationList = 95639DE318FCD5120084F733 /* Build configuration list for PBXProject "CrachDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 95639DDF18FCD5120084F733;
+			productRefGroup = 95639DE918FCD5120084F733 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				95639DE718FCD5120084F733 /* CrachDemo */,
+				95639E0B18FCD5120084F733 /* CrachDemoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		95639DE618FCD5120084F733 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95639E0218FCD5120084F733 /* Main_iPad.storyboard in Resources */,
+				95639E0718FCD5120084F733 /* Images.xcassets in Resources */,
+				95639DFF18FCD5120084F733 /* Main_iPhone.storyboard in Resources */,
+				95639E3418FCD5690084F733 /* DDPullControlArrow@2x.png in Resources */,
+				95639E3318FCD5690084F733 /* DDPullControlArrow.png in Resources */,
+				95639DF618FCD5120084F733 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95639E0A18FCD5120084F733 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95639E1818FCD5120084F733 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		95639DE418FCD5120084F733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95639E3018FCD5690084F733 /* DDPullControl.m in Sources */,
+				95639DFC18FCD5120084F733 /* DDAppDelegate.m in Sources */,
+				95639E3C18FCD5820084F733 /* DDReadViewController.m in Sources */,
+				95639E4118FCD64B0084F733 /* UIView+FindUIViewController.m in Sources */,
+				95639E3218FCD5690084F733 /* DDPullUpControl.m in Sources */,
+				95639E0518FCD5120084F733 /* DDViewController.m in Sources */,
+				95B5E6DD18FD54AD00CE4F9C /* DDPullDownControl.m in Sources */,
+				95639E3D18FCD5820084F733 /* DDReadView.m in Sources */,
+				95639DF818FCD5120084F733 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95639E0818FCD5120084F733 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95639E1A18FCD5120084F733 /* CrachDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95639E1218FCD5120084F733 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 95639DE718FCD5120084F733 /* CrachDemo */;
+			targetProxy = 95639E1118FCD5120084F733 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		95639DF418FCD5120084F733 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95639DF518FCD5120084F733 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		95639DFD18FCD5120084F733 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95639DFE18FCD5120084F733 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		95639E0018FCD5120084F733 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95639E0118FCD5120084F733 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		95639E1618FCD5120084F733 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				95639E1718FCD5120084F733 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		95639E1B18FCD5120084F733 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "64C3A5C9-A8E8-455D-9528-70B6A10799C6";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		95639E1C18FCD5120084F733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "64C3A5C9-A8E8-455D-9528-70B6A10799C6";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95639E1E18FCD5120084F733 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CrachDemo/CrachDemo-Prefix.pch";
+				INFOPLIST_FILE = "CrachDemo/CrachDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		95639E1F18FCD5120084F733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CrachDemo/CrachDemo-Prefix.pch";
+				INFOPLIST_FILE = "CrachDemo/CrachDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		95639E2118FCD5120084F733 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CrachDemo.app/CrachDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CrachDemo/CrachDemo-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "CrachDemoTests/CrachDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		95639E2218FCD5120084F733 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CrachDemo.app/CrachDemo";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CrachDemo/CrachDemo-Prefix.pch";
+				INFOPLIST_FILE = "CrachDemoTests/CrachDemoTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		95639DE318FCD5120084F733 /* Build configuration list for PBXProject "CrachDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95639E1B18FCD5120084F733 /* Debug */,
+				95639E1C18FCD5120084F733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95639E1D18FCD5120084F733 /* Build configuration list for PBXNativeTarget "CrachDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95639E1E18FCD5120084F733 /* Debug */,
+				95639E1F18FCD5120084F733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95639E2018FCD5120084F733 /* Build configuration list for PBXNativeTarget "CrachDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95639E2118FCD5120084F733 /* Debug */,
+				95639E2218FCD5120084F733 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 95639DE018FCD5120084F733 /* Project object */;
+}
