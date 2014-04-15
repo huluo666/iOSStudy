@@ -40,6 +40,7 @@
 		06314BD918EDACC400CC5F3E /* navi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314BBB18EDACC400CC5F3E /* navi@2x.png */; };
 		0632C1ED18F6F13600A885CF /* DDPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1EA18F6F13600A885CF /* DDPopAnimation.m */; };
 		0632C1EE18F6F13600A885CF /* DDPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1EC18F6F13600A885CF /* DDPushAnimation.m */; };
+		06549A0D18FD64CF00EC08E6 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06549A0C18FD64CF00EC08E6 /* libWeiboSDK.a */; };
 		06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06724FC818E716A400DA9A2F /* SystemConfiguration.framework */; };
 		06724FCD18E717A400DA9A2F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06724FCC18E717A400DA9A2F /* Reachability.m */; };
 		0686FA5C18EE656A00A988C1 /* DDSearchMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0686FA5B18EE656A00A988C1 /* DDSearchMenuView.m */; };
@@ -102,7 +103,6 @@
 		95AB115118F56AFB006B55EC /* mobile-selector-favorite-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 95AB114F18F56AFB006B55EC /* mobile-selector-favorite-white.png */; };
 		95AB115218F56AFB006B55EC /* mobile-selector-favorite-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95AB115018F56AFB006B55EC /* mobile-selector-favorite-white@2x.png */; };
 		95AE913418E3F10B00181C39 /* DDHTTPManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95AE913318E3F10B00181C39 /* DDHTTPManager.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		95B5E6B318FD463500CE4F9C /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 95B5E6B218FD463500CE4F9C /* libWeiboSDK.a */; };
 		95B5E6D518FD543700CE4F9C /* DDPullControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B5E6CB18FD543700CE4F9C /* DDPullControl.m */; };
 		95B5E6D618FD543700CE4F9C /* DDPullDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B5E6CE18FD543700CE4F9C /* DDPullDownControl.m */; };
 		95B5E6D718FD543700CE4F9C /* DDPullUpControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95B5E6D118FD543700CE4F9C /* DDPullUpControl.m */; };
@@ -161,6 +161,7 @@
 		0632C1EA18F6F13600A885CF /* DDPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopAnimation.m; sourceTree = "<group>"; };
 		0632C1EB18F6F13600A885CF /* DDPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushAnimation.h; sourceTree = "<group>"; };
 		0632C1EC18F6F13600A885CF /* DDPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPushAnimation.m; sourceTree = "<group>"; };
+		06549A0C18FD64CF00EC08E6 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		06724FC818E716A400DA9A2F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06724FCB18E717A400DA9A2F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		06724FCC18E717A400DA9A2F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -249,7 +250,6 @@
 		95AE912318E3B4C200181C39 /* DDMacroDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDMacroDefinition.h; sourceTree = "<group>"; };
 		95AE913218E3F10B00181C39 /* DDHTTPManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHTTPManager.h; sourceTree = "<group>"; };
 		95AE913318E3F10B00181C39 /* DDHTTPManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHTTPManager.m; sourceTree = "<group>"; };
-		95B5E6B218FD463500CE4F9C /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		95B5E6CA18FD543700CE4F9C /* DDPullControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullControl.h; sourceTree = "<group>"; };
 		95B5E6CB18FD543700CE4F9C /* DDPullControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullControl.m; sourceTree = "<group>"; };
 		95B5E6CD18FD543700CE4F9C /* DDPullDownControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownControl.h; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95B5E6B318FD463500CE4F9C /* libWeiboSDK.a in Frameworks */,
+				06549A0D18FD64CF00EC08E6 /* libWeiboSDK.a in Frameworks */,
 				06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */,
 				9589962118E2BB850002EAF1 /* CoreGraphics.framework in Frameworks */,
 				9589962318E2BB850002EAF1 /* UIKit.framework in Frameworks */,
@@ -494,7 +494,7 @@
 		9509D89118FCC5BE00549AA4 /* libWeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
-				95B5E6B218FD463500CE4F9C /* libWeiboSDK.a */,
+				06549A0C18FD64CF00EC08E6 /* libWeiboSDK.a */,
 				9509D89318FCC5BE00549AA4 /* WeiboSDK.bundle */,
 				9509D89418FCC5BE00549AA4 /* WeiboSDK.h */,
 			);
@@ -1099,6 +1099,7 @@
 					"$(inherited)",
 					"/Users/rimi1/Desktop/「Proj」LighterReader/LighterReader/libWeiboSDK",
 					/Users/rimi1/Desktop/bug/LighterReader/libWeiboSDK,
+					"/Users/cuan/Github/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1121,6 +1122,7 @@
 					"$(inherited)",
 					"/Users/rimi1/Desktop/「Proj」LighterReader/LighterReader/libWeiboSDK",
 					/Users/rimi1/Desktop/bug/LighterReader/libWeiboSDK,
+					"/Users/cuan/Github/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
