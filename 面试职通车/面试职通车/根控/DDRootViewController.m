@@ -35,7 +35,7 @@
     // 加载主页
     DDHomeViewController *homeVC = [[DDHomeViewController alloc] init];
     UINavigationController *navi = [[UINavigationController alloc]
-                                    initWithRootViewController:homeVC];
+                                        initWithRootViewController:homeVC];
     navi.delegate = self;
     [self addChildViewController:navi];
     [self.view addSubview:navi.view];
@@ -44,7 +44,7 @@
     UIImage *barImage = DDImageWithName(@"title_back");
     [[UINavigationBar appearance] setBackgroundImage:barImage forBarMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
+
     NSDictionary *textAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor],
                                      NSFontAttributeName:[UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:16.0]};
     [[UINavigationBar appearance] setTitleTextAttributes:textAttributes];

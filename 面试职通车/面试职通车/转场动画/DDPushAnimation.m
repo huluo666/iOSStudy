@@ -24,13 +24,13 @@
     // 2. set init frame for toVC
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
-    toVC.view.frame = CGRectOffset(finalFrame, 2 * screenBounds.size.width, 0);
+    toVC.view.frame = CGRectOffset(finalFrame, screenBounds.size.width, 0);
     
-    CGRect fromFinalFrame = CGRectMake(-20, finalFrame.origin.y, finalFrame.size.width, finalFrame.size.height);
+    CGRect fromFinalFrame = CGRectMake(-120, finalFrame.origin.y, finalFrame.size.width, finalFrame.size.height);
     
     // 3. Add toVC's view to containerView
     UIView *containerView = [transitionContext containerView];
-//    [containerView addSubview:fromVC.view];
+    [containerView addSubview:fromVC.view];
     [containerView addSubview:toVC.view];
     
     // 4. Do animate now

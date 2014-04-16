@@ -24,7 +24,7 @@
     // 2. Set init frame for fromVC
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     CGRect initFrame = [transitionContext initialFrameForViewController:fromVC];
-    CGRect finalFrame = CGRectOffset(initFrame, 2 * screenBounds.size.height, 0);
+    CGRect finalFrame = CGRectOffset(initFrame, screenBounds.size.height, 0);
     
     // 3. Add target view to the container, and move it to back.
     UIView *containerView = [transitionContext containerView];
