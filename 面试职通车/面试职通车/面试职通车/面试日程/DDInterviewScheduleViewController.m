@@ -15,6 +15,11 @@
 
 @implementation DDInterviewScheduleViewController
 
+- (void)dealloc {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

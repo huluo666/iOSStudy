@@ -1,24 +1,29 @@
 //
-//  YYSalaryQueryViewController.m
+//  DDMoreOptionsViewController.m
 //  面试职通车
 //
 //  Created by 萧川 on 14-4-16.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "YYSalaryQueryViewController.h"
+#import "DDMoreOptionsViewController.h"
 
-@interface YYSalaryQueryViewController ()
+@interface DDMoreOptionsViewController ()
 
 @end
 
-@implementation YYSalaryQueryViewController
+@implementation DDMoreOptionsViewController
+
+- (void)dealloc {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.title = @"更多";
     }
     return self;
 }
@@ -26,7 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    self.view.backgroundColor = [UIColor yellowColor];
 }
 
 - (void)didReceiveMemoryWarning

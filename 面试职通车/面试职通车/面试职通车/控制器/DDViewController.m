@@ -17,21 +17,20 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.navigationItem.hidesBackButton = YES;
-
-        UIImage *menuBarImage = DDImageWithName(@"title_return");
-        UIBarButtonItem *menuBarItem = [[UIBarButtonItem alloc]
-                                        initWithImage:menuBarImage
+        
+        UIImage *backBarImage = DDImageWithName(@"title_return");
+        UIBarButtonItem *backBarItem = [[UIBarButtonItem alloc]
+                                        initWithImage:backBarImage
                                         style:UIBarButtonItemStylePlain
                                         target:self
                                         action:@selector(backBarItemAction)];
         
-        UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc]
-                                           initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                           target:nil action:nil];
-        negativeSpacer.width = -20;
-        self.navigationItem.leftBarButtonItems = @[negativeSpacer, menuBarItem];
-        
+        UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]
+                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
+                                       target:nil
+                                       action:nil];
+        fixedSpace.width = -20;
+        self.navigationItem.leftBarButtonItems = @[fixedSpace, backBarItem];
     }
     return self;
 }

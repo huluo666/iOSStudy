@@ -1,18 +1,23 @@
 //
-//  YYPersonalResumeViewController.m
+//  LTZInterviewSkillsViewController.m
 //  面试职通车
 //
 //  Created by 萧川 on 14-4-16.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "YYPersonalResumeViewController.h"
+#import "LTZInterviewSkillsViewController.h"
 
-@interface YYPersonalResumeViewController ()
+@interface LTZInterviewSkillsViewController ()
 
 @end
 
-@implementation YYPersonalResumeViewController
+@implementation LTZInterviewSkillsViewController
+
+- (void)dealloc {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

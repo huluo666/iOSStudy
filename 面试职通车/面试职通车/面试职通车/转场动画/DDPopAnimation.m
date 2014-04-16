@@ -12,7 +12,7 @@
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
 {
-    return 0.8f;
+    return 0.5f;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
@@ -22,23 +22,30 @@
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
     // 2. Set init frame for fromVC
-    CGRect screenBounds = [[UIScreen mainScreen] bounds];
     CGRect initFrame = [transitionContext initialFrameForViewController:fromVC];
-    CGRect finalFrame = CGRectOffset(initFrame, screenBounds.size.height, 0);
+
+    toVC.view.frame = CGRectMake(-CGRectGetMidX(initFrame),
+                                 initFrame.origin.y,
+                                 CGRectGetWidth(initFrame),
+                                 CGRectGetHeight(initFrame));
     
     // 3. Add target view to the container, and move it to back.
     UIView *containerView = [transitionContext containerView];
     [containerView addSubview:toVC.view];
+    [containerView addSubview:fromVC.view];
     [containerView sendSubviewToBack:toVC.view];
     
     // 4. Do animate now
     NSTimeInterval duration = [self transitionDuration:transitionContext];
     [UIView animateWithDuration:duration animations:^{
-        fromVC.view.frame = finalFrame;
+        fromVC.view.frame = CGRectMake(CGRectGetWidth(initFrame),
+                                       initFrame.origin.y,
+                                       CGRectGetWidth(initFrame),
+                                       CGRectGetHeight(initFrame));
+        toVC.view.frame = initFrame;
     } completion:^(BOOL finished) {
         [transitionContext completeTransition:![transitionContext transitionWasCancelled]];
     }];
 }
-
 
 @end

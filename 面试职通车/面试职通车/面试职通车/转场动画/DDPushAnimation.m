@@ -12,7 +12,7 @@
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext
 {
-    return 0.8f;
+    return 0.5f;
 }
 
 - (void)animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext
@@ -20,13 +20,15 @@
     // 1. get controllers from transition context
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toVC = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
-    
+
     // 2. set init frame for toVC
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
     CGRect finalFrame = [transitionContext finalFrameForViewController:toVC];
     toVC.view.frame = CGRectOffset(finalFrame, screenBounds.size.width, 0);
-    
-    CGRect fromFinalFrame = CGRectMake(-120, finalFrame.origin.y, finalFrame.size.width, finalFrame.size.height);
+    CGRect fromFinalFrame = CGRectMake(-CGRectGetMidX(finalFrame),
+                                       CGRectGetMinY(finalFrame),
+                                       CGRectGetWidth(finalFrame),
+                                       CGRectGetHeight(finalFrame));
     
     // 3. Add toVC's view to containerView
     UIView *containerView = [transitionContext containerView];
@@ -48,7 +50,7 @@
                      completion:^(BOOL finished) {
                          // 5. Tell context that we completed.
                          [transitionContext completeTransition:YES];
-                     }];
+    }];
 }
 
 @end
