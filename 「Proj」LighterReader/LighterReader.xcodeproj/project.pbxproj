@@ -40,7 +40,6 @@
 		06314BD918EDACC400CC5F3E /* navi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 06314BBB18EDACC400CC5F3E /* navi@2x.png */; };
 		0632C1ED18F6F13600A885CF /* DDPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1EA18F6F13600A885CF /* DDPopAnimation.m */; };
 		0632C1EE18F6F13600A885CF /* DDPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 0632C1EC18F6F13600A885CF /* DDPushAnimation.m */; };
-		06549A0D18FD64CF00EC08E6 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06549A0C18FD64CF00EC08E6 /* libWeiboSDK.a */; };
 		06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 06724FC818E716A400DA9A2F /* SystemConfiguration.framework */; };
 		06724FCD18E717A400DA9A2F /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06724FCC18E717A400DA9A2F /* Reachability.m */; };
 		0686FA5C18EE656A00A988C1 /* DDSearchMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0686FA5B18EE656A00A988C1 /* DDSearchMenuView.m */; };
@@ -53,6 +52,7 @@
 		9503E51718ED80C800AC326C /* DDFlipPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E51318ED80C800AC326C /* DDFlipPageViewController.m */; };
 		9503E51818ED80C800AC326C /* DDPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9503E51618ED80C800AC326C /* DDPageViewController.m */; };
 		9509D89618FCC5BE00549AA4 /* WeiboSDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9509D89318FCC5BE00549AA4 /* WeiboSDK.bundle */; };
+		950C77B118FE039E00AAD534 /* libWeiboSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 950C77B018FE039E00AAD534 /* libWeiboSDK.a */; };
 		950D844B18F63F5000A6DD64 /* mobile-icon-toolbar-close-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D844918F63F5000A6DD64 /* mobile-icon-toolbar-close-white.png */; };
 		950D844C18F63F5000A6DD64 /* mobile-icon-toolbar-close-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D844A18F63F5000A6DD64 /* mobile-icon-toolbar-close-white@2x.png */; };
 		950D845318F672B200A6DD64 /* mobile-icon-toolbar-twitter-white.png in Resources */ = {isa = PBXBuildFile; fileRef = 950D844D18F672B200A6DD64 /* mobile-icon-toolbar-twitter-white.png */; };
@@ -161,7 +161,6 @@
 		0632C1EA18F6F13600A885CF /* DDPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPopAnimation.m; sourceTree = "<group>"; };
 		0632C1EB18F6F13600A885CF /* DDPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushAnimation.h; sourceTree = "<group>"; };
 		0632C1EC18F6F13600A885CF /* DDPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPushAnimation.m; sourceTree = "<group>"; };
-		06549A0C18FD64CF00EC08E6 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		06724FC818E716A400DA9A2F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		06724FCB18E717A400DA9A2F /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		06724FCC18E717A400DA9A2F /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		9503E51618ED80C800AC326C /* DDPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPageViewController.m; sourceTree = "<group>"; };
 		9509D89318FCC5BE00549AA4 /* WeiboSDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WeiboSDK.bundle; sourceTree = "<group>"; };
 		9509D89418FCC5BE00549AA4 /* WeiboSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeiboSDK.h; sourceTree = "<group>"; };
+		950C77B018FE039E00AAD534 /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeiboSDK.a; sourceTree = "<group>"; };
 		950D844918F63F5000A6DD64 /* mobile-icon-toolbar-close-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-toolbar-close-white.png"; sourceTree = "<group>"; };
 		950D844A18F63F5000A6DD64 /* mobile-icon-toolbar-close-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-toolbar-close-white@2x.png"; sourceTree = "<group>"; };
 		950D844D18F672B200A6DD64 /* mobile-icon-toolbar-twitter-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mobile-icon-toolbar-twitter-white.png"; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				06549A0D18FD64CF00EC08E6 /* libWeiboSDK.a in Frameworks */,
+				950C77B118FE039E00AAD534 /* libWeiboSDK.a in Frameworks */,
 				06724FC918E716A400DA9A2F /* SystemConfiguration.framework in Frameworks */,
 				9589962118E2BB850002EAF1 /* CoreGraphics.framework in Frameworks */,
 				9589962318E2BB850002EAF1 /* UIKit.framework in Frameworks */,
@@ -494,7 +494,7 @@
 		9509D89118FCC5BE00549AA4 /* libWeiboSDK */ = {
 			isa = PBXGroup;
 			children = (
-				06549A0C18FD64CF00EC08E6 /* libWeiboSDK.a */,
+				950C77B018FE039E00AAD534 /* libWeiboSDK.a */,
 				9509D89318FCC5BE00549AA4 /* WeiboSDK.bundle */,
 				9509D89418FCC5BE00549AA4 /* WeiboSDK.h */,
 			);
@@ -1100,6 +1100,7 @@
 					"/Users/rimi1/Desktop/「Proj」LighterReader/LighterReader/libWeiboSDK",
 					/Users/rimi1/Desktop/bug/LighterReader/libWeiboSDK,
 					"/Users/cuan/Github/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
+					"/Users/rimi1/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1123,6 +1124,7 @@
 					"/Users/rimi1/Desktop/「Proj」LighterReader/LighterReader/libWeiboSDK",
 					/Users/rimi1/Desktop/bug/LighterReader/libWeiboSDK,
 					"/Users/cuan/Github/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
+					"/Users/rimi1/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
