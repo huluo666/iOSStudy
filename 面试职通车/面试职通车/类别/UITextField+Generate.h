@@ -23,10 +23,10 @@
 - (id)initWithOrigin:(CGPoint)anOrigin
        textAlignment:(NSTextAlignment)theTextAlignment
             textSize:(float)aSize
-           backRetainImage:(UIImage *)backRetainImage;
+           backRetinaImage:(UIImage *)backRetinaImage;
 
 + (id)textFiedlWithOrigin:(CGPoint)anOrigin
             textAlignment:(NSTextAlignment)theTextAlignment
                  textSize:(float)aSize
-                backRetainImage:(UIImage *)backRetainImage;
+                backRetinaImage:(UIImage *)backRetinaImage;
 @end

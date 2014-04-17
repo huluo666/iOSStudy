@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "DDViewController.h"
 
 @interface DDLoginViewController : DDViewController
 

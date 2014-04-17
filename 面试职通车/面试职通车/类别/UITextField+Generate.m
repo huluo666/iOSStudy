@@ -41,16 +41,16 @@
 - (id)initWithOrigin:(CGPoint)anOrigin
        textAlignment:(NSTextAlignment)theTextAlignment
             textSize:(float)aSize
-     backRetainImage:(UIImage *)backRetainImage {
+     backRetinaImage:(UIImage *)backRetinaImage {
     
     CGRect frame = CGRectMake(anOrigin.x,
                               anOrigin.y,
-                              backRetainImage.size.width / 2,
-                              backRetainImage.size.height / 2);
+                              backRetinaImage.size.width / 2,
+                              backRetinaImage.size.height / 2);
     if (self = [super initWithFrame:frame]) {
         self.backgroundColor = [UIColor clearColor];
         self.textAlignment = theTextAlignment;
-        self.background = backRetainImage;
+        self.background = backRetinaImage;
         self.font = [UIFont systemFontOfSize:aSize];
     }
     
@@ -60,12 +60,12 @@
 + (id)textFiedlWithOrigin:(CGPoint)anOrigin
             textAlignment:(NSTextAlignment)theTextAlignment
                  textSize:(float)aSize
-          backRetainImage:(UIImage *)backRetainImage {
+          backRetinaImage:(UIImage *)backRetinaImage {
     
     return [[self alloc] initWithOrigin:anOrigin
                           textAlignment:theTextAlignment
                                textSize:aSize
-                              backImage:backRetainImage];
+                              backImage:backRetinaImage];
 }
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "DDViewController.h"
-
+#import "UIButton+Generate.h"
 
 @interface DDViewController ()
 
@@ -47,6 +47,7 @@
 
 - (void)viewDidLoad {
 
+    self.view.backgroundColor = [UIColor whiteColor];
     UIImage *image = DDImageWithName(@"title_back");
     UIImageView *backView = [[UIImageView alloc] initWithImage:image];
     [self.view addSubview:backView];
@@ -69,12 +70,12 @@
     [_titleView addSubview:titleLabel];
     
     // 添加按钮
-    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
-    [leftButton setBackgroundImage:DDImageWithName(@"title_return") forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
-    
+    UIButton *leftButton = [[UIButton alloc]
+                            initWithOrigin:CGPointZero
+                            image:DDImageWithName(@"title_return")
+                            target:self
+                            action:@selector(popSelf)];
     [_titleView addSubview:leftButton];
-    
 }
 
 - (void)popSelf {

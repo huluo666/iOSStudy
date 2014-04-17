@@ -7,8 +7,13 @@
 //
 
 #import "DDLoginViewController.h"
+#import "DDSignUpViewController.h"
+#import "DDRetrievePasswordViewController.h"
 
 @interface DDLoginViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *userName;
+@property (weak, nonatomic) IBOutlet UITextField *passWord;
 
 @end
 
@@ -18,7 +23,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
+        self.title = @"登录";
     }
     return self;
 }
@@ -26,13 +31,34 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    [self.userName becomeFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
+- (IBAction)submitLogin:(UIButton *)sender {
+   
+    NSString *userName = self.userName.text;
+    NSString *passWord = self.passWord.text;
+    
+    NSLog(@"%@", userName);
+    NSLog(@"%@", passWord);
+}
 
+- (IBAction)signUp:(UIButton *)sender {
+    
+    DDSignUpViewController *signVC = [[DDSignUpViewController alloc] init];
+    [self.navigationController pushViewController:signVC animated:YES];
+}
+
+
+- (IBAction)forgotPassWord:(UIButton *)sender {
+    
+    DDRetrievePasswordViewController *retrieve = [[DDRetrievePasswordViewController alloc] init];
+    [self.navigationController pushViewController:retrieve animated:YES];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+
+    [self.view endEditing:YES];
 }
 
 @end

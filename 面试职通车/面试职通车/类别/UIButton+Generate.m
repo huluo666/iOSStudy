@@ -40,16 +40,16 @@
 }
 
 - (UIButton *)initWithOrigin:(CGPoint)anOrigin
-                 retainImage:(UIImage *)aRetainImage
+                 retinaImage:(UIImage *)aRetinaImage
                       target:(id)aTarget
                       action:(SEL)sel {
     
     CGRect rect = CGRectMake(anOrigin.x,
                              anOrigin.y,
-                             aRetainImage.size.width / 2,
-                             aRetainImage.size.height / 2);
+                             aRetinaImage.size.width / 2,
+                             aRetinaImage.size.height / 2);
     if (self = [super initWithFrame:rect]) {
-        [self setBackgroundImage:aRetainImage forState:UIControlStateNormal];
+        [self setBackgroundImage:aRetinaImage forState:UIControlStateNormal];
         [self addTarget:aTarget
                  action:sel
        forControlEvents:UIControlEventTouchUpInside];
@@ -58,12 +58,12 @@
 }
 
 + (UIButton *)buttonWithOrigin:(CGPoint)anOrigin
-                 retainImage:(UIImage *)aRetainImage
+                 retinaImage:(UIImage *)aRetinaImage
                       target:(id)aTarget
                       action:(SEL)sel {
     
     return [[self alloc] initWithOrigin:anOrigin
-                            retainImage:aRetainImage
+                            retinaImage:aRetinaImage
                                  target:aTarget
                                  action:sel];
 }

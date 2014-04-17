@@ -13,6 +13,6 @@
 - (UIButton *)initWithOrigin:(CGPoint)anOrigin image:(UIImage *)anImage target:(id)aTarget action:(SEL)sel;
 + (UIButton *)buttonWithOrigin:(CGPoint)anOrigin image:(UIImage *)anImage target:(id)aTarget action:(SEL)sel;
 
-- (UIButton *)initWithOrigin:(CGPoint)anOrigin retainImage:(UIImage *)aRetainImage target:(id)aTarget action:(SEL)sel;
-+ (UIButton *)buttonWithOrigin:(CGPoint)anOrigin retainImage:(UIImage *)aRetainImage target:(id)aTarget action:(SEL)sel;
+- (UIButton *)initWithOrigin:(CGPoint)anOrigin retinaImage:(UIImage *)aRetinaImage target:(id)aTarget action:(SEL)sel;
++ (UIButton *)buttonWithOrigin:(CGPoint)anOrigin retinaImage:(UIImage *)aRetinaImage target:(id)aTarget action:(SEL)sel;
 @end

@@ -1,24 +1,29 @@
 //
-//  DDSignupViewController.m
+//  DDSignUpViewController.m
 //  面试职通车
 //
 //  Created by 萧川 on 14-4-17.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "DDSignupViewController.h"
+#import "DDSignUpViewController.h"
 
-@interface DDSignupViewController ()
+@interface DDSignUpViewController ()
+
+@property (weak, nonatomic) IBOutlet UITextField *userName;
+
+@property (weak, nonatomic) IBOutlet UITextField *passWord;
+@property (weak, nonatomic) IBOutlet UITextField *repeatPassWord;
 
 @end
 
-@implementation DDSignupViewController
+@implementation DDSignUpViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.title = @"注册";
     }
     return self;
 }
@@ -26,13 +31,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    [self.userName becomeFirstResponder];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)submitSignup:(UIButton *)sender {
+    
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.view endEditing:YES];
 }
 
 @end
