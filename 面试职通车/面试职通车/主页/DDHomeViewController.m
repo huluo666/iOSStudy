@@ -12,8 +12,9 @@
 #import "DDNaviCell.h"
 #import "DDLoginViewController.h"
 #import "DDJobsDataSource.h"
-#import "UIAlertView+autoDismiss.h"
+#import "UIAlertView+Toast.h"
 #import "DDPullDownControl.h"
+#import "DDHTTPManager.h"
 
 @interface DDHomeViewController () <UIAlertViewDelegate>
 
@@ -29,6 +30,11 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.title = @"面试职通车";
+         
+        // 请求网络
+        [DDHTTPManager startAsynchronousRequestWithURLString:DDAPIURL(Url_recruitment) params:@{@"sortname":@"0", @"page":@0} completionHandler:^(BOOL sucess, id content) {
+            
+        }];
         _naviDataSource = [[DDNaviDataSource alloc] init];
         _jobsDataSource = [[DDJobsDataSource alloc] init];
     }
@@ -42,6 +48,13 @@
     
     // 隐藏左上角按钮
     [[[self.titleView subviews] lastObject] setHidden:YES];
+    
+    // 添加左侧城市选择
+    UIButton *selectCityButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    selectCityButton.frame = CGRectMake(0, 12, 61, 24);
+    [selectCityButton setBackgroundImage:DDImageWithName(@"title_arrow") forState:UIControlStateNormal];
+    [selectCityButton addTarget:self action:@selector(selectCityAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.titleView addSubview:selectCityButton];
     
     // 添加登录与注册
     UIButton *authorityButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -72,6 +85,8 @@
     UITableView *jobsTableView = [[UITableView alloc] initWithFrame:frame style:UITableViewStylePlain];
     jobsTableView.backgroundColor = [UIColor redColor];
     jobsTableView.dataSource = _jobsDataSource;
+    jobsTableView.delegate  =_jobsDataSource;
+    jobsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:jobsTableView];
     
     DDPullDownControl *pullDown = [[DDPullDownControl alloc] init];
@@ -111,6 +126,10 @@
         [[DDAuthorityManager defaultAuthorityManager] setLogined:NO];
         [UIAlertView toastWithTitle:nil message:@"您已经退出" duration:0.8];
     }
+}
+
+- (void)selectCityAction {
+
 }
 
 @end

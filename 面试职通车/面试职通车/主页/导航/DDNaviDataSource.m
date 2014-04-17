@@ -61,9 +61,7 @@
     [cell.button setBackgroundImage:DDImageWithName(backViewName) forState:UIControlStateNormal];
     [cell.button setBackgroundImage:DDImageWithName(selectedBackViewName) forState:UIControlStateHighlighted];
     [cell.button setBackgroundImage:DDImageWithName(selectedBackViewName) forState:UIControlStateSelected];
-    __weak DDNaviCell *weakCell = cell;
     cell.cellButtonDidTap = ^{
-        [weakCell.button setSelected:YES];
         // 获取类字节码
         Class clazz = NSClassFromString(_naviSubControlClassNames[indexPath.row]);
         // 创建类对应的实例

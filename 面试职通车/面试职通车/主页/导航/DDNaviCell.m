@@ -27,14 +27,15 @@
         _button = [UIButton buttonWithType:UIButtonTypeCustom];
         _button.bounds = CGRectMake(0, 0, 60, 60);
         _button.center = CGPointMake(CGRectGetMidX(bounds), CGRectGetHeight(bounds) * 0.4);
-        [_button addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
+        [_button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.contentView addSubview:_button];
     }
     return self;
 }
 
-- (void)buttonAction {
+- (void)buttonAction:(UIButton *)sender {
     
+    sender.selected =  sender.isSelected ? NO : YES;
     if (_cellButtonDidTap) {
         _cellButtonDidTap();
     }

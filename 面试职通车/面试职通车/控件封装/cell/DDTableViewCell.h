@@ -10,4 +10,6 @@
 
 @interface DDTableViewCell : UITableViewCell
 
+@property (nonatomic, strong) UIView *grayLineView;
+
 @end

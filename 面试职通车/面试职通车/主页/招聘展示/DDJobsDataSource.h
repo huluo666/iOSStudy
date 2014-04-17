@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DDJobsDataSource : NSObject <UITableViewDataSource>
+@interface DDJobsDataSource : NSObject <UITableViewDataSource, UITableViewDelegate>
 
 @end

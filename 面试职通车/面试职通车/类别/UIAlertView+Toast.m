@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
-#import "UIAlertView+autoDismiss.h"
+#import "UIAlertView+Toast.h"
 
-@implementation UIAlertView (autoDismiss)
+@implementation UIAlertView (toast)
 
 
 + (void)toastWithTitle:(NSString *)theTitle

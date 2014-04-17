@@ -26,14 +26,56 @@ add
 
 8d26c8c3-a93e-914f-81c0-39ac1f2234f7
 
-UIAlertView+autoDismiss.h
+UIAlertView+Toast.m
 file
 
 
 
 add
 
-UIAlertView+autoDismiss.m
+UITextField+Generate.h
+file
+
+
+
+add
+
+UIButton+Generate.h
+file
+
+
+
+add
+
+UITextField+Generate.m
+file
+
+
+
+add
+
+UILabel+Generate.h
+file
+
+
+
+add
+
+UIButton+Generate.m
+file
+
+
+
+add
+
+UIAlertView+Toast.h
+file
+
+
+
+add
+
+UILabel+Generate.m
 file
 
 

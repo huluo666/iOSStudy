@@ -262,7 +262,7 @@
     } else {
         /* 加载完成，内容没有占满整屏，contentOffset伴随动画回到zero */
         
-        CGPoint tempOffset;
+        CGPoint tempOffset = CGPointZero;
         CGFloat animtionDuration = 0.2;
         CGFloat screenHeight = CGRectGetHeight([[UIScreen mainScreen] bounds]);
         if (self.scrollView.contentSize.height + kPullControlHeight > screenHeight) {
