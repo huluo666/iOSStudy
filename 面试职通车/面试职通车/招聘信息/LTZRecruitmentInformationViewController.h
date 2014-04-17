@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTZRecruitmentInformationViewController : UIViewController
+@interface LTZRecruitmentInformationViewController : DDViewController
 
 @end

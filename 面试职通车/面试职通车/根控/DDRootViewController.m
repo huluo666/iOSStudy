@@ -33,9 +33,10 @@
     [super viewDidLoad];
     
     // 加载主页
-    DDHomeViewController *homeVC = [[DDHomeViewController alloc] init];
+    DDHomeViewController *homeVC = [[DDHomeViewController alloc] initWithType:DDViewControllerTypeHasExtends];
     UINavigationController *navi = [[UINavigationController alloc]
                                         initWithRootViewController:homeVC];
+    navi.navigationBar.hidden = YES;
     navi.delegate = self;
     [self addChildViewController:navi];
     [self.view addSubview:navi.view];

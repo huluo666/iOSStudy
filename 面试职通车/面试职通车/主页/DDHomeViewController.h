@@ -2,12 +2,12 @@
 //  DDHomeViewController.h
 //  面试职通车
 //
-//  Created by 萧川 on 14-4-16.
+//  Created by 萧川 on 14-4-17.
 //  Copyright (c) 2014年 CUAN. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface DDHomeViewController : UIViewController
+@interface DDHomeViewController : DDViewController
 
 @end

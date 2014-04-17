@@ -23,11 +23,27 @@ static DDAuthorityManager *singleton = nil;
 
 + (id)allocWithZone:(struct _NSZone *)zone {
     
-    return [self defaultAuthorityManager];
+    @synchronized(self) {
+        if (!singleton) {
+            singleton = [super allocWithZone:zone];
+            return singleton;
+        }
+    }
+    return nil;
 }
 
 - (id)copyWithZone:(NSZone *)zone {
 
+    return self;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        _logined = NO;
+    }
     return self;
 }
 

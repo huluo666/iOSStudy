@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LTZInterviewSkillsViewController : UIViewController
+@interface LTZInterviewSkillsViewController : DDViewController
 
 @end

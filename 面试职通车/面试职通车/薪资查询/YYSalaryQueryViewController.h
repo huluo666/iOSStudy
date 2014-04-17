@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YYSalaryQueryViewController : UIViewController
+@interface YYSalaryQueryViewController : DDViewController
 
 @end

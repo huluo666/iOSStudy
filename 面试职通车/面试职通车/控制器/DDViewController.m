@@ -8,7 +8,10 @@
 
 #import "DDViewController.h"
 
+
 @interface DDViewController ()
+
+
 @end
 
 @implementation DDViewController
@@ -17,29 +20,70 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        UIImage *backBarImage = DDImageWithName(@"title_return");
-        UIBarButtonItem *backBarItem = [[UIBarButtonItem alloc]
-                                        initWithImage:backBarImage
-                                        style:UIBarButtonItemStylePlain
-                                        target:self
-                                        action:@selector(backBarItemAction)];
-        
-        UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc]
-                                       initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace
-                                       target:nil
-                                       action:nil];
-        fixedSpace.width = -20;
-        self.navigationItem.leftBarButtonItems = @[fixedSpace, backBarItem];
+
     }
     return self;
 }
 
-- (void)backBarItemAction {
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        return [self initWithType:DDViewControllerTypeDefault];
+    }
+    return self;
+}
+
+
+- (id)initWithType:(DDViewControllerType)aViewControllerType {
+    
+    if (self = [super init]) {
+
+        _viewControllerType = aViewControllerType;
+        _titleView = [[UIView alloc] init];
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+
+    UIImage *image = DDImageWithName(@"title_back");
+    UIImageView *backView = [[UIImageView alloc] initWithImage:image];
+    [self.view addSubview:backView];
+    
+    if (DDViewControllerTypeDefault == _viewControllerType) {
+        backView.frame = CGRectMake(0, 0, 320, 64);
+    } else {
+        backView.frame = CGRectMake(0, 0, 320, 290);
+
+    }
+    
+    // 添加titleView
+    _titleView.frame = CGRectMake(0, 20, 320, 44);
+    [self.view addSubview:_titleView];
+    
+    // 添加titleLael
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:_titleView.bounds];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.text = self.title;
+    [_titleView addSubview:titleLabel];
+    
+    // 添加按钮
+    UIButton *leftButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 60, 44)];
+    [leftButton setBackgroundImage:DDImageWithName(@"title_return") forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(popSelf) forControlEvents:UIControlEventTouchUpInside];
+    
+    [_titleView addSubview:leftButton];
+    
+}
+
+- (void)popSelf {
     
     if (self.navigationController) {
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
+
+
 
 @end

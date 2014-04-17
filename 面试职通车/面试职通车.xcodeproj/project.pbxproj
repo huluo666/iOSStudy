@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9504668018FF60AD00B51882 /* DDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9504667E18FF60AD00B51882 /* DDHomeViewController.m */; };
+		9504668118FF60AD00B51882 /* DDHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9504667F18FF60AD00B51882 /* DDHomeViewController.xib */; };
 		95A2C05018FEB0A600FA3F30 /* DDPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A2C04F18FEB0A600FA3F30 /* DDPushAnimation.m */; };
 		95A2C05318FEB0D800FA3F30 /* DDPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 95A2C05218FEB0D800FA3F30 /* DDPopAnimation.m */; };
 		95CE7D1D18FEA58000B4ED9B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95CE7D1C18FEA58000B4ED9B /* Foundation.framework */; };
@@ -153,7 +155,6 @@
 		95CE7E5018FEA5B900B4ED9B /* title_save@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95CE7DCE18FEA5B900B4ED9B /* title_save@2x.png */; };
 		95CE7E5418FEA5CB00B4ED9B /* DDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E5318FEA5CB00B4ED9B /* DDViewController.m */; };
 		95CE7E5818FEA5F000B4ED9B /* DDAuthorityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E5718FEA5F000B4ED9B /* DDAuthorityManager.m */; };
-		95CE7E5E18FEA63400B4ED9B /* DDHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E5D18FEA63400B4ED9B /* DDHomeViewController.m */; };
 		95CE7E6218FEA64100B4ED9B /* LTZRecruitmentInformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E6118FEA64100B4ED9B /* LTZRecruitmentInformationViewController.m */; };
 		95CE7E6618FEA65200B4ED9B /* YYSalaryQueryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E6518FEA65200B4ED9B /* YYSalaryQueryViewController.m */; };
 		95CE7E6A18FEA65700B4ED9B /* DDInterviewScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E6918FEA65700B4ED9B /* DDInterviewScheduleViewController.m */; };
@@ -161,6 +162,18 @@
 		95CE7E7218FEA66100B4ED9B /* DDMoreOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E7118FEA66100B4ED9B /* DDMoreOptionsViewController.m */; };
 		95CE7E7618FEA66600B4ED9B /* YYPersonalResumeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E7518FEA66600B4ED9B /* YYPersonalResumeViewController.m */; };
 		95CE7E7A18FEA6F800B4ED9B /* DDRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95CE7E7918FEA6F800B4ED9B /* DDRootViewController.m */; };
+		95DFC56218FFB43400C438BF /* DDNaviCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFC55F18FFB43400C438BF /* DDNaviCell.m */; };
+		95DFC56318FFB43400C438BF /* DDNaviDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFC56118FFB43400C438BF /* DDNaviDataSource.m */; };
+		95DFC56918FFB59300C438BF /* DDLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFC56818FFB59300C438BF /* DDLoginViewController.m */; };
+		95DFC56C18FFB5A000C438BF /* DDSignupViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFC56B18FFB5A000C438BF /* DDSignupViewController.m */; };
+		95DFC57218FFB9ED00C438BF /* DDJobsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 95DFC57118FFB9ED00C438BF /* DDJobsDataSource.m */; };
+		95E9FF5E18FFC0260071CF76 /* UIAlertView+autoDismiss.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E9FF5D18FFC0260071CF76 /* UIAlertView+autoDismiss.m */; };
+		95E9FF6518FFC2B90071CF76 /* DDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E9FF6418FFC2B90071CF76 /* DDTableViewCell.m */; };
+		95E9FF7318FFC2E60071CF76 /* DDPullControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E9FF6918FFC2E60071CF76 /* DDPullControl.m */; };
+		95E9FF7418FFC2E60071CF76 /* DDPullDownControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E9FF6C18FFC2E60071CF76 /* DDPullDownControl.m */; };
+		95E9FF7518FFC2E60071CF76 /* DDPullUpControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 95E9FF6F18FFC2E60071CF76 /* DDPullUpControl.m */; };
+		95E9FF7618FFC2E60071CF76 /* DDPullControlArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E9FF7118FFC2E60071CF76 /* DDPullControlArrow.png */; };
+		95E9FF7718FFC2E60071CF76 /* DDPullControlArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 95E9FF7218FFC2E60071CF76 /* DDPullControlArrow@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +187,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9504667D18FF60AD00B51882 /* DDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeViewController.h; sourceTree = "<group>"; };
+		9504667E18FF60AD00B51882 /* DDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeViewController.m; sourceTree = "<group>"; };
+		9504667F18FF60AD00B51882 /* DDHomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DDHomeViewController.xib; sourceTree = "<group>"; };
 		95A2C04E18FEB0A600FA3F30 /* DDPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPushAnimation.h; sourceTree = "<group>"; };
 		95A2C04F18FEB0A600FA3F30 /* DDPushAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPushAnimation.m; sourceTree = "<group>"; };
 		95A2C05118FEB0D800FA3F30 /* DDPopAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPopAnimation.h; sourceTree = "<group>"; };
@@ -329,8 +345,6 @@
 		95CE7E5618FEA5F000B4ED9B /* DDAuthorityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDAuthorityManager.h; sourceTree = "<group>"; };
 		95CE7E5718FEA5F000B4ED9B /* DDAuthorityManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDAuthorityManager.m; sourceTree = "<group>"; };
 		95CE7E5A18FEA60C00B4ED9B /* DDMacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDMacroDefinition.h; sourceTree = "<group>"; };
-		95CE7E5C18FEA63400B4ED9B /* DDHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDHomeViewController.h; sourceTree = "<group>"; };
-		95CE7E5D18FEA63400B4ED9B /* DDHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDHomeViewController.m; sourceTree = "<group>"; };
 		95CE7E6018FEA64100B4ED9B /* LTZRecruitmentInformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTZRecruitmentInformationViewController.h; sourceTree = "<group>"; };
 		95CE7E6118FEA64100B4ED9B /* LTZRecruitmentInformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTZRecruitmentInformationViewController.m; sourceTree = "<group>"; };
 		95CE7E6418FEA65200B4ED9B /* YYSalaryQueryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYSalaryQueryViewController.h; sourceTree = "<group>"; };
@@ -345,6 +359,28 @@
 		95CE7E7518FEA66600B4ED9B /* YYPersonalResumeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYPersonalResumeViewController.m; sourceTree = "<group>"; };
 		95CE7E7818FEA6F800B4ED9B /* DDRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDRootViewController.h; sourceTree = "<group>"; };
 		95CE7E7918FEA6F800B4ED9B /* DDRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDRootViewController.m; sourceTree = "<group>"; };
+		95DFC55E18FFB43400C438BF /* DDNaviCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNaviCell.h; sourceTree = "<group>"; };
+		95DFC55F18FFB43400C438BF /* DDNaviCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNaviCell.m; sourceTree = "<group>"; };
+		95DFC56018FFB43400C438BF /* DDNaviDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDNaviDataSource.h; sourceTree = "<group>"; };
+		95DFC56118FFB43400C438BF /* DDNaviDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDNaviDataSource.m; sourceTree = "<group>"; };
+		95DFC56718FFB59300C438BF /* DDLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDLoginViewController.h; sourceTree = "<group>"; };
+		95DFC56818FFB59300C438BF /* DDLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDLoginViewController.m; sourceTree = "<group>"; };
+		95DFC56A18FFB5A000C438BF /* DDSignupViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDSignupViewController.h; sourceTree = "<group>"; };
+		95DFC56B18FFB5A000C438BF /* DDSignupViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDSignupViewController.m; sourceTree = "<group>"; };
+		95DFC57018FFB9ED00C438BF /* DDJobsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDJobsDataSource.h; sourceTree = "<group>"; };
+		95DFC57118FFB9ED00C438BF /* DDJobsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDJobsDataSource.m; sourceTree = "<group>"; };
+		95E9FF5C18FFC0260071CF76 /* UIAlertView+autoDismiss.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+autoDismiss.h"; sourceTree = "<group>"; };
+		95E9FF5D18FFC0260071CF76 /* UIAlertView+autoDismiss.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+autoDismiss.m"; sourceTree = "<group>"; };
+		95E9FF6318FFC2B90071CF76 /* DDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDTableViewCell.h; sourceTree = "<group>"; };
+		95E9FF6418FFC2B90071CF76 /* DDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDTableViewCell.m; sourceTree = "<group>"; };
+		95E9FF6818FFC2E60071CF76 /* DDPullControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullControl.h; sourceTree = "<group>"; };
+		95E9FF6918FFC2E60071CF76 /* DDPullControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullControl.m; sourceTree = "<group>"; };
+		95E9FF6B18FFC2E60071CF76 /* DDPullDownControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullDownControl.h; sourceTree = "<group>"; };
+		95E9FF6C18FFC2E60071CF76 /* DDPullDownControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullDownControl.m; sourceTree = "<group>"; };
+		95E9FF6E18FFC2E60071CF76 /* DDPullUpControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDPullUpControl.h; sourceTree = "<group>"; };
+		95E9FF6F18FFC2E60071CF76 /* DDPullUpControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDPullUpControl.m; sourceTree = "<group>"; };
+		95E9FF7118FFC2E60071CF76 /* DDPullControlArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DDPullControlArrow.png; sourceTree = "<group>"; };
+		95E9FF7218FFC2E60071CF76 /* DDPullControlArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "DDPullControlArrow@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -415,11 +451,14 @@
 		95CE7D2218FEA58000B4ED9B /* 面试职通车 */ = {
 			isa = PBXGroup;
 			children = (
+				95E9FF5B18FFC00E0071CF76 /* 类别 */,
+				95DFC57318FFBAAF00C438BF /* 控件封装 */,
+				95DFC56518FFB57F00C438BF /* 登录与注册 */,
 				95CE7E6F18FEA66100B4ED9B /* 更多选项 */,
 				95CE7E7318FEA66600B4ED9B /* 个人简历 */,
-				95CE7E6B18FEA65C00B4ED9B /* 面试技巧 */,
 				95CE7E6718FEA65700B4ED9B /* 面试日程 */,
 				95CE7E6318FEA65200B4ED9B /* 薪资查询 */,
+				95CE7E6B18FEA65C00B4ED9B /* 面试技巧 */,
 				95CE7E5F18FEA64100B4ED9B /* 招聘信息 */,
 				95CE7E5B18FEA62700B4ED9B /* 主页 */,
 				95CE7E7718FEA6BE00B4ED9B /* 根控 */,
@@ -564,7 +603,6 @@
 				95CE7DA918FEA5B900B4ED9B /* more_新手帮助@2x.png */,
 				95CE7DAA18FEA5B900B4ED9B /* more_系统设置.png */,
 				95CE7DAB18FEA5B900B4ED9B /* more_系统设置@2x.png */,
-				95CE7DAC18FEA5B900B4ED9B /* NaviAnimation */,
 				95CE7DAD18FEA5B900B4ED9B /* picker_background@2x.png */,
 				95CE7DAE18FEA5B900B4ED9B /* picker_background副本.png */,
 				95CE7DAF18FEA5B900B4ED9B /* picker_cancle@2x.png */,
@@ -603,13 +641,6 @@
 			path = "资源";
 			sourceTree = "<group>";
 		};
-		95CE7DAC18FEA5B900B4ED9B /* NaviAnimation */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = NaviAnimation;
-			sourceTree = "<group>";
-		};
 		95CE7E5118FEA5CB00B4ED9B /* 控制器 */ = {
 			isa = PBXGroup;
 			children = (
@@ -631,8 +662,11 @@
 		95CE7E5B18FEA62700B4ED9B /* 主页 */ = {
 			isa = PBXGroup;
 			children = (
-				95CE7E5C18FEA63400B4ED9B /* DDHomeViewController.h */,
-				95CE7E5D18FEA63400B4ED9B /* DDHomeViewController.m */,
+				95DFC56418FFB45300C438BF /* 招聘展示 */,
+				95DFC55D18FFB41A00C438BF /* 导航 */,
+				9504667D18FF60AD00B51882 /* DDHomeViewController.h */,
+				9504667E18FF60AD00B51882 /* DDHomeViewController.m */,
+				9504667F18FF60AD00B51882 /* DDHomeViewController.xib */,
 			);
 			path = "主页";
 			sourceTree = "<group>";
@@ -698,6 +732,111 @@
 				95CE7E7918FEA6F800B4ED9B /* DDRootViewController.m */,
 			);
 			path = "根控";
+			sourceTree = "<group>";
+		};
+		95DFC55D18FFB41A00C438BF /* 导航 */ = {
+			isa = PBXGroup;
+			children = (
+				95DFC55E18FFB43400C438BF /* DDNaviCell.h */,
+				95DFC55F18FFB43400C438BF /* DDNaviCell.m */,
+				95DFC56018FFB43400C438BF /* DDNaviDataSource.h */,
+				95DFC56118FFB43400C438BF /* DDNaviDataSource.m */,
+			);
+			path = "导航";
+			sourceTree = "<group>";
+		};
+		95DFC56418FFB45300C438BF /* 招聘展示 */ = {
+			isa = PBXGroup;
+			children = (
+				95DFC57018FFB9ED00C438BF /* DDJobsDataSource.h */,
+				95DFC57118FFB9ED00C438BF /* DDJobsDataSource.m */,
+			);
+			path = "招聘展示";
+			sourceTree = "<group>";
+		};
+		95DFC56518FFB57F00C438BF /* 登录与注册 */ = {
+			isa = PBXGroup;
+			children = (
+				95DFC56718FFB59300C438BF /* DDLoginViewController.h */,
+				95DFC56818FFB59300C438BF /* DDLoginViewController.m */,
+				95DFC56A18FFB5A000C438BF /* DDSignupViewController.h */,
+				95DFC56B18FFB5A000C438BF /* DDSignupViewController.m */,
+			);
+			path = "登录与注册";
+			sourceTree = "<group>";
+		};
+		95DFC57318FFBAAF00C438BF /* 控件封装 */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF6618FFC2CB0071CF76 /* 拖动刷新 */,
+				95E9FF6218FFC2AA0071CF76 /* cell */,
+			);
+			path = "控件封装";
+			sourceTree = "<group>";
+		};
+		95E9FF5B18FFC00E0071CF76 /* 类别 */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF5C18FFC0260071CF76 /* UIAlertView+autoDismiss.h */,
+				95E9FF5D18FFC0260071CF76 /* UIAlertView+autoDismiss.m */,
+			);
+			path = "类别";
+			sourceTree = "<group>";
+		};
+		95E9FF6218FFC2AA0071CF76 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF6318FFC2B90071CF76 /* DDTableViewCell.h */,
+				95E9FF6418FFC2B90071CF76 /* DDTableViewCell.m */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		95E9FF6618FFC2CB0071CF76 /* 拖动刷新 */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF6718FFC2E60071CF76 /* DDPullControl */,
+				95E9FF6A18FFC2E60071CF76 /* DDPullDownControl */,
+				95E9FF6D18FFC2E60071CF76 /* DDPullUpControl */,
+				95E9FF7018FFC2E60071CF76 /* Resource */,
+			);
+			path = "拖动刷新";
+			sourceTree = "<group>";
+		};
+		95E9FF6718FFC2E60071CF76 /* DDPullControl */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF6818FFC2E60071CF76 /* DDPullControl.h */,
+				95E9FF6918FFC2E60071CF76 /* DDPullControl.m */,
+			);
+			path = DDPullControl;
+			sourceTree = "<group>";
+		};
+		95E9FF6A18FFC2E60071CF76 /* DDPullDownControl */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF6B18FFC2E60071CF76 /* DDPullDownControl.h */,
+				95E9FF6C18FFC2E60071CF76 /* DDPullDownControl.m */,
+			);
+			path = DDPullDownControl;
+			sourceTree = "<group>";
+		};
+		95E9FF6D18FFC2E60071CF76 /* DDPullUpControl */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF6E18FFC2E60071CF76 /* DDPullUpControl.h */,
+				95E9FF6F18FFC2E60071CF76 /* DDPullUpControl.m */,
+			);
+			path = DDPullUpControl;
+			sourceTree = "<group>";
+		};
+		95E9FF7018FFC2E60071CF76 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				95E9FF7118FFC2E60071CF76 /* DDPullControlArrow.png */,
+				95E9FF7218FFC2E60071CF76 /* DDPullControlArrow@2x.png */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -782,6 +921,7 @@
 				95CE7DD718FEA5B900B4ED9B /* 4.png in Resources */,
 				95CE7E0F18FEA5B900B4ED9B /* item_05_normal.png in Resources */,
 				95CE7E3818FEA5B900B4ED9B /* recruitment_cell_line@2x.png in Resources */,
+				95E9FF7718FFC2E60071CF76 /* DDPullControlArrow@2x.png in Resources */,
 				95CE7E3618FEA5B900B4ED9B /* recruiment_bg@2x.png in Resources */,
 				95CE7E0218FEA5B900B4ED9B /* item_01_selected@2x.png in Resources */,
 				95CE7DEA18FEA5B900B4ED9B /* alert_back@2x.png in Resources */,
@@ -869,6 +1009,7 @@
 				95CE7E1F18FEA5B900B4ED9B /* main_itemBack.png in Resources */,
 				95CE7DE418FEA5B900B4ED9B /* activity_06@2x.png in Resources */,
 				95CE7DDB18FEA5B900B4ED9B /* activity_02.png in Resources */,
+				9504668118FF60AD00B51882 /* DDHomeViewController.xib in Resources */,
 				95CE7E2018FEA5B900B4ED9B /* main_itemBack@2x.png in Resources */,
 				95CE7DEF18FEA5B900B4ED9B /* calendar_eventBack.png in Resources */,
 				95CE7E0E18FEA5B900B4ED9B /* item_04_selected@2x.png in Resources */,
@@ -881,6 +1022,7 @@
 				95CE7E3B18FEA5B900B4ED9B /* resume_buttonBack.png in Resources */,
 				95CE7E0018FEA5B900B4ED9B /* item_01_normal@2x.png in Resources */,
 				95CE7E2118FEA5B900B4ED9B /* main_tableLine@2x.png in Resources */,
+				95E9FF7618FFC2E60071CF76 /* DDPullControlArrow.png in Resources */,
 				95CE7DF818FEA5B900B4ED9B /* inter_close@2x.png in Resources */,
 				95CE7E2E18FEA5B900B4ED9B /* more_系统设置@2x.png in Resources */,
 				95CE7DD818FEA5B900B4ED9B /* 4@2x.png in Resources */,
@@ -927,18 +1069,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				95CE7E7A18FEA6F800B4ED9B /* DDRootViewController.m in Sources */,
-				95CE7E5E18FEA63400B4ED9B /* DDHomeViewController.m in Sources */,
+				95DFC56918FFB59300C438BF /* DDLoginViewController.m in Sources */,
+				95DFC57218FFB9ED00C438BF /* DDJobsDataSource.m in Sources */,
+				9504668018FF60AD00B51882 /* DDHomeViewController.m in Sources */,
 				95CE7D2D18FEA58000B4ED9B /* DDAppDelegate.m in Sources */,
 				95CE7E7618FEA66600B4ED9B /* YYPersonalResumeViewController.m in Sources */,
+				95E9FF7418FFC2E60071CF76 /* DDPullDownControl.m in Sources */,
 				95CE7E7218FEA66100B4ED9B /* DDMoreOptionsViewController.m in Sources */,
 				95CE7E6E18FEA65C00B4ED9B /* LTZInterviewSkillsViewController.m in Sources */,
+				95DFC56218FFB43400C438BF /* DDNaviCell.m in Sources */,
 				95A2C05318FEB0D800FA3F30 /* DDPopAnimation.m in Sources */,
 				95CE7E5418FEA5CB00B4ED9B /* DDViewController.m in Sources */,
 				95CE7E6618FEA65200B4ED9B /* YYSalaryQueryViewController.m in Sources */,
 				95CE7E6218FEA64100B4ED9B /* LTZRecruitmentInformationViewController.m in Sources */,
+				95E9FF5E18FFC0260071CF76 /* UIAlertView+autoDismiss.m in Sources */,
+				95E9FF7518FFC2E60071CF76 /* DDPullUpControl.m in Sources */,
+				95E9FF6518FFC2B90071CF76 /* DDTableViewCell.m in Sources */,
 				95CE7D2918FEA58000B4ED9B /* main.m in Sources */,
+				95E9FF7318FFC2E60071CF76 /* DDPullControl.m in Sources */,
 				95CE7E5818FEA5F000B4ED9B /* DDAuthorityManager.m in Sources */,
+				95DFC56C18FFB5A000C438BF /* DDSignupViewController.m in Sources */,
 				95CE7E6A18FEA65700B4ED9B /* DDInterviewScheduleViewController.m in Sources */,
+				95DFC56318FFB43400C438BF /* DDNaviDataSource.m in Sources */,
 				95A2C05018FEB0A600FA3F30 /* DDPushAnimation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

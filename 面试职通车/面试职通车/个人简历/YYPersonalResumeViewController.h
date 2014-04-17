@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YYPersonalResumeViewController : UIViewController
+@interface YYPersonalResumeViewController : DDViewController
 
 @end

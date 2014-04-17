@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    DDViewControllerTypeDefault,
+    DDViewControllerTypeHasExtends
+} DDViewControllerType;
+
 @interface DDViewController : UIViewController
+
+@property (nonatomic, assign) DDViewControllerType viewControllerType;
+- (id)initWithType:(DDViewControllerType)aViewControllerType;
+
+@property (nonatomic, strong) UIView *titleView;
+
 
 @end
