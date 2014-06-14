@@ -1097,10 +1097,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/rimi1/Desktop/「Proj」LighterReader/LighterReader/libWeiboSDK",
-					/Users/rimi1/Desktop/bug/LighterReader/libWeiboSDK,
-					"/Users/cuan/Github/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
-					"/Users/rimi1/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
+					$PROJECT_DIR/LighterReader/libWeiboSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1121,10 +1118,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/rimi1/Desktop/「Proj」LighterReader/LighterReader/libWeiboSDK",
-					/Users/rimi1/Desktop/bug/LighterReader/libWeiboSDK,
-					"/Users/cuan/Github/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
-					"/Users/rimi1/rimiedu/「Proj」LighterReader/LighterReader/libWeiboSDK",
+					$PROJECT_DIR/LighterReader/libWeiboSDK,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
